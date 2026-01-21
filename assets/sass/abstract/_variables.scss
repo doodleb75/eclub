@@ -1,0 +1,121 @@
+// 색상 및 폰트 변수 정의
+// 모든 색상은 이 파일을 참조하여 변수 형태로 사용한다.
+
+// 브랜드 색상
+$primary: #ffeb00; // 브랜드 메인 컬러 (이마트 옐로우)
+$primary-red: #ff5452; // 포인트 컬러 (가격, 강조 버튼 등)
+$secondary: #000000; // 보조 컬러
+
+// 기본 색상
+$white: #ffffff;
+$black: #000000;
+
+// 회색 계열 (디자인 가이드 기반)
+$gray-900: #222222; // 주요 타이틀 및 텍스트
+$gray-850: #333333; // 중간 강조 텍스트 (Tabs active 등)
+$gray-830: #363636; // 뱃지 텍스트 등
+$gray-800: #444444; // 서브 타이틀 및 본문
+$gray-700: #666666; // 부연 설명 및 안내 문구
+$gray-600: #999999; // 비활성 텍스트 및 플레이스홀더 (Tabs inactive 등)
+$gray-500: #aaaaaa; // 약한 비활성 상태
+$gray-400: #cccccc; // 주요 경계선 (Border)
+$gray-300: #d9d9d9; // 보조 경계선
+$gray-200: #e5e5e5; // 연한 구분선
+$gray-150: #e1e1e1; // 아주 연한 구분선 (Dividers)
+$gray-100: #f8f9fa; // 기본 배경색
+$gray-70: #eeeeee; // 아주 연한 경계선
+$gray-60: #f3f3f3; // 뱃지 배경 등
+$gray-50: #fbfbfb; // 아주 연한 배경 (배송비 무료 박스 등)
+
+// 포인트 및 특수 색상
+$color-search-border: #ffaa00; // 검색창 강조색
+
+// 배송 타입별 색상 (카테고리 헤더용)
+$delivery-ambient: #a68d6f; // 상온배송 (브라운)
+$delivery-cold: #3d91ff; // 저온배송 (블루)
+$delivery-frozen: #2f4f89; // 냉동배송 / 직냉배송 (딥블루)
+
+// 폰트 설정
+$font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+$base-font-size: 16px;
+
+// 폰트 사이즈 (rem 사용)
+$fs-10: rem(10);
+$fs-12: rem(12);
+$fs-13: rem(13);
+$fs-14: rem(14);
+$fs-15: rem(15);
+$fs-16: rem(16);
+$fs-18: rem(18);
+$fs-20: rem(20);
+$fs-24: rem(24);
+$fs-28: rem(28);
+$fs-30: rem(30);
+$fs-34: rem(34); // 장바구니 메인 타이틀
+
+// Semantic Font Sizes (Aliases)
+$fs-base: $fs-16;
+$fs-sm: $fs-14;
+$fs-xs: $fs-12;
+$fs-md: $fs-15;
+$fs-lg: $fs-18;
+$fs-xl: $fs-20; // 탭 타이틀 등
+$fs-xxl: $fs-24;
+$fs-title: $fs-34;
+
+// 호환성용 별칭
+$font-size-base: $fs-base;
+$font-size-sm: $fs-sm;
+$font-size-xs: $fs-xs;
+$font-size-md: $fs-md;
+$font-size-lg: $fs-lg;
+$font-size-xl: $fs-xxl;
+$font-size-title: $fs-28;
+
+// 폰트 굵기
+$fw-thin: 100;
+$fw-light: 300;
+$fw-regular: 400; // 보통
+$fw-medium: 500; // 중간
+$fw-semibold: 600; // 프로젝트 기본 굵기
+$fw-bold: 700; // 굵게
+
+// 호환성용 별칭
+$font-weight-thin: $fw-thin;
+$font-weight-light: $fw-light;
+$font-weight-regular: $fw-regular;
+$font-weight-medium: $fw-medium;
+$font-weight-semibold: $fw-semibold;
+$font-weight-bold: $fw-bold;
+
+// 간격 및 크기 (rem 사용)
+$spacing-xxs: rem(2); // 피그마 xxxs
+$spacing-xs: rem(3); // 피그마 item spacing/3
+$spacing-sm: rem(4);
+$spacing-md: rem(8);
+$spacing-base: rem(16);
+$spacing-lg: rem(20);
+$spacing-xl: rem(24);
+$spacing-xxl: rem(32);
+$spacing-3xl: rem(40);
+$spacing-4xl: rem(50);
+$spacing-5xl: rem(60);
+
+// 보더 반경
+$radius-xs: rem(2);
+$radius-sm: rem(4);
+$radius-md: rem(6);
+$radius-lg: rem(8);
+$radius-xl: rem(12);
+$radius-xxl: rem(20);
+$radius-round: rem(30); // 검색창 등
+
+// 상태 컬러
+$color-success: #28a745;
+$color-warning: #ffc107;
+$color-danger: $primary-red;
+$color-info: #17a2b8;
+
+// 레이아웃
+$pc-max-width: rem(1280); // PC 최대 가로폭
+$max-width: $pc-max-width;

@@ -1,0 +1,65 @@
+// 푸터 공통 스타일
+.footer {
+    padding: rem(60) 0;
+    background-color: $gray-50;
+    color: $gray-600;
+    border-top: 1px solid $gray-200;
+
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: rem(40);
+
+        .footer-links {
+            display: flex;
+            gap: rem(20);
+
+            a {
+                font-size: $font-size-sm;
+                font-weight: $font-weight-medium;
+                color: $gray-700;
+            }
+        }
+    }
+
+    .footer-content {
+        display: flex;
+        gap: rem(60);
+        margin-bottom: rem(30);
+
+        .company-info {
+            flex: 1;
+            font-size: $font-size-xs;
+            line-height: 1.8;
+
+            p {
+                margin-bottom: rem(4);
+            }
+        }
+
+        .customer-center {
+            width: rem(300);
+
+            .tel {
+                font-size: $font-size-xl;
+                font-weight: $font-weight-bold;
+                color: $gray-900;
+                margin-bottom: rem(10);
+            }
+
+            .hours {
+                font-size: $font-size-xs;
+                color: $gray-600;
+            }
+        }
+    }
+
+    .footer-bottom {
+        font-size: $font-size-xs;
+        color: $gray-400;
+
+        .copyright {
+            margin-top: rem(20);
+        }
+    }
+}

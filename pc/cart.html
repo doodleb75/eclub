@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 장바구니">
+    <title>장바구니 | E-Club</title>
+    <link rel="stylesheet" href="../assets/sass/pc/main.css">
+</head>
+
+<body class="cart-page">
+    <div id="wrap">
+        <header class="header">
+            <div class="container">
+                <div class="header-top">
+                    <h1 class="logo"><a href="/pc/index.html">E-Club</a></h1>
+                    <div class="search-area">
+                        <input type="text" class="search-input" placeholder="검색어를 입력하세요">
+                        <button type="button" class="btn-search"><span class="blind">검색</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <a href="#" class="menu-item"><i class="icon"></i><span>회원정보</span></a>
+                        <a href="#" class="menu-item"><i class="icon"></i><span>최근본상품</span></a>
+                        <a href="/pc/cart.html" class="menu-item"><i class="icon"></i><span>장바구니</span></a>
+                        <a href="#" class="menu-item"><i class="icon"></i><span>찜한상품</span></a>
+                        <a href="#" class="menu-item"><i class="icon"></i><span>마이페이지</span></a>
+                    </div>
+                </div>
+                <nav class="header-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item category"><i class="icon-menu"></i>카테고리</li>
+                        <li class="nav-item">이벤트</li>
+                        <li class="nav-item">BIG SALE</li>
+                        <li class="nav-item">즐겨찾기</li>
+                        <li class="nav-item">쇼핑리스트</li>
+                        <li class="nav-item">브랜드관</li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main id="container">
+            <div class="container">
+                <h2 class="page-title">장바구니</h2>
+
+                <div class="cart-tab-wrap">
+                    <ul class="cart-tabs">
+                        <li class="tab-item active">전체 6</li>
+                        <li class="tab-item">상온상품 3</li>
+                        <li class="tab-item">저온상품 3</li>
+                        <li class="tab-item">직냉상품 0</li>
+                        <li class="tab-item">최근 구매 상품 12</li>
+                    </ul>
+                </div>
+
+                <div class="cart-container">
+                    <div class="cart-content">
+                        <div class="free-shipping-info">
+                            <p><strong>35,800원</strong> 더 담으면 <strong>무료배송!</strong> (결제 금액 기준)</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="cart-group">
+                            <div class="group-header">
+                                <input type="checkbox" checked>
+                                <span class="group-name">상온배송</span>
+                                <span class="group-date">01/13 (화) 도착 예정</span>
+                            </div>
+
+                            <!-- 상품 아이템 1 -->
+                            <div class="cart-item">
+                                <input type="checkbox" class="item-checkbox" checked>
+                                <div class="item-image">
+                                    <img src="../assets/images/common/placeholder.png" alt="상품 이미지">
+                                </div>
+                                <div class="item-info">
+                                    <p class="brand">유한킴벌리</p>
+                                    <p class="name">유한킴벌리 크리넥스 데코&소프트 3겹 30m*30롤</p>
+                                    <p class="options">수량 1개 / 추가 옵션 없음</p>
+                                </div>
+                                <div class="item-quantity">
+                                    <button>-</button>
+                                    <input type="text" value="2">
+                                    <button>+</button>
+                                </div>
+                                <div class="item-price">
+                                    <p class="original">42,000원</p>
+                                    <p class="final">36,800원</p>
+                                </div>
+                                <button class="btn-delete">X</button>
+                            </div>
+
+                            <!-- 상품 아이템 2 -->
+                            <div class="cart-item">
+                                <input type="checkbox" class="item-checkbox" checked>
+                                <div class="item-image">
+                                    <img src="../assets/images/common/placeholder.png" alt="상품 이미지">
+                                </div>
+                                <div class="item-info">
+                                    <p class="brand">엘지생활건강</p>
+                                    <p class="name">엘지생활건강 퐁퐁 베이킹소다 깔끔한 레몬향 700ml</p>
+                                    <p class="options">수량 1개 / 추가 옵션 없음</p>
+                                </div>
+                                <div class="item-quantity">
+                                    <button>-</button>
+                                    <input type="text" value="1">
+                                    <button>+</button>
+                                </div>
+                                <div class="item-price">
+                                    <p class="final">3,500원</p>
+                                </div>
+                                <button class="btn-delete">X</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="cart-sidebar">
+                        <div class="sidebar-box">
+                            <h3 class="box-title">결제 금액</h3>
+                            <div class="price-details">
+                                <div class="price-row">
+                                    <span class="label">상품 금액 (3개)</span>
+                                    <span class="value">468,000원</span>
+                                </div>
+                                <div class="price-row">
+                                    <span class="label">할인 금액</span>
+                                    <span class="value">-126,094원</span>
+                                </div>
+                                <div class="price-row">
+                                    <span class="label">배송비</span>
+                                    <span class="value">0원</span>
+                                </div>
+                                <div class="price-row total">
+                                    <span class="label">총 결제 금액 (6개)</span>
+                                    <span class="value">558,280원</span>
+                                </div>
+                            </div>
+                            <button class="btn-order" onclick="location.href='/pc/checkout.html'">558,280원 주문하기</button>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-top">
+                    <ul class="footer-links">
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+                </div>
+                <div class="footer-content">
+                    <div class="company-info">
+                        <p>(주)이마트 | 대표자 : 한채양 | 주소 : 서울특별시 성동구 뚝섬로 13길 11, 1층</p>
+                        <p>사업자등록번호 : 211-88-75675 | 통신판매업신고 : 2022-서울성동-01952</p>
+                        <p class="copyright">© EMART ALL RIGHTS RESERVED</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+// 헤더 공통 스타일
+.header {
+    background-color: $white;
+    border-bottom: 1px solid $gray-200;
+
+    .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: rem(20) 0;
+
+        .logo {
+            width: rem(120);
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .search-area {
+            flex: 1;
+            max-width: rem(500);
+            margin: 0 rem(40);
+            position: relative;
+
+            .search-input {
+                width: 100%;
+                height: rem(44);
+                padding: 0 rem(20);
+                border: 2px solid $primary;
+                border-radius: rem(22);
+                font-size: $fs-15;
+                outline: none;
+
+                &::placeholder {
+                    color: $gray-600;
+                }
+            }
+
+            .btn-search {
+                position: absolute;
+                right: rem(15);
+                top: 50%;
+                transform: translateY(-50%);
+                width: rem(24);
+                height: rem(24);
+                background-color: transparent;
+                // 아이콘 생략
+            }
+        }
+
+        .user-menu {
+            display: flex;
+            gap: rem(20);
+
+            .menu-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: rem(4);
+                font-size: $fs-12;
+                color: $gray-700;
+
+                .icon {
+                    width: rem(24);
+                    height: rem(24);
+                    background-color: $gray-100; // 임시
+                }
+            }
+        }
+    }
+
+    .header-nav {
+        border-top: 1px solid $gray-200;
+
+        .nav-list {
+            display: flex;
+            gap: rem(30);
+            padding: rem(15) 0;
+
+            .nav-item {
+                font-size: $fs-16;
+                font-weight: $fw-bold;
+                color: $gray-900;
+
+                &.category {
+                    display: flex;
+                    align-items: center;
+                    gap: rem(8);
+                    color: $gray-900;
+                }
+
+                &.active {
+                    color: $primary-red;
+                }
+            }
+        }
+    }
+}

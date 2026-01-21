@@ -1,0 +1,6 @@
+// px를 rem으로 변환하는 함수
+// 디자인 가이드의 px 수치를 rem() 규칙을 사용해 적용한다.
+
+@function rem($px) {
+    @return ($px / 16) * 1rem;
+}

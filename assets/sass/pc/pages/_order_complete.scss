@@ -1,0 +1,101 @@
+// 주문완료 페이지 스타일
+.order-complete-page {
+    padding: rem(100) 0;
+    text-align: center;
+
+    .success-icon {
+        width: rem(80);
+        height: rem(80);
+        margin: 0 auto rem(30);
+        background-color: $primary;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $white;
+        font-size: rem(40);
+    }
+
+    .success-msg {
+        font-size: $fs-28;
+        font-weight: $fw-bold;
+        margin-bottom: rem(15);
+    }
+
+    .order-number {
+        font-size: $fs-18;
+        color: $gray-600;
+        margin-bottom: rem(60);
+
+        strong {
+            color: $gray-900;
+            text-decoration: underline;
+        }
+    }
+
+    .info-container {
+        max-width: rem(800);
+        margin: 0 auto rem(60);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: rem(20);
+
+        .info-box {
+            text-align: left;
+            padding: rem(40);
+            border: 1px solid $gray-200;
+            border-radius: rem(12);
+
+            h4 {
+                font-size: $font-size-lg;
+                font-weight: $font-weight-bold;
+                margin-bottom: rem(20);
+                padding-bottom: rem(15);
+                border-bottom: 1px solid $gray-100;
+            }
+
+            .info-row {
+                display: flex;
+                margin-bottom: rem(12);
+                font-size: $font-size-md;
+
+                .label {
+                    width: rem(100);
+                    color: $gray-500;
+                }
+
+                .value {
+                    flex: 1;
+                    color: $gray-800;
+                }
+            }
+        }
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: center;
+        gap: rem(20);
+
+        .btn {
+            width: rem(200);
+            height: rem(54);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: rem(8);
+            font-size: $font-size-lg;
+            font-weight: $font-weight-bold;
+
+            &.btn-outline {
+                border: 1px solid $gray-300;
+                color: $gray-700;
+            }
+
+            &.btn-primary {
+                background-color: $secondary;
+                color: $white;
+            }
+        }
+    }
+}

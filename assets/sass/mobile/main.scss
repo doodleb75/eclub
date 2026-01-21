@@ -1,0 +1,39 @@
+@import "../abstract/variables";
+@import "../abstract/functions";
+@import "../abstract/mixins";
+@import "../base/reset";
+@import "../base/common";
+
+// Mobile 전용 스타일 (APK 대응)
+
+#wrap {
+    position: relative;
+    width: 100%;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: rem(56);
+    background: $white;
+    border-bottom: 1px solid $gray-200;
+    @include flex-center;
+}
+
+main {
+    padding-bottom: rem(60); // 하단 탭바 공간
+}
+
+#mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: rem(60);
+    background: $white;
+    border-top: 1px solid $gray-200;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

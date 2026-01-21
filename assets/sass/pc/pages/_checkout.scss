@@ -1,0 +1,134 @@
+// 주문결제 페이지 스타일
+.checkout-page {
+    padding: rem(60) 0;
+
+    .page-title {
+        font-size: $fs-28;
+        font-weight: $fw-bold;
+        margin-bottom: rem(40);
+        text-align: center;
+    }
+
+    .checkout-container {
+        display: flex;
+        gap: rem(40);
+        align-items: flex-start;
+    }
+
+    .checkout-content {
+        flex: 1;
+
+        section {
+            margin-bottom: rem(50);
+
+            .section-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: rem(15);
+                border-bottom: 2px solid $gray-900;
+                margin-bottom: rem(25);
+
+                h3 {
+                    font-size: $fs-24;
+                    font-weight: $fw-bold;
+                }
+
+                .btn-edit {
+                    font-size: $font-size-sm;
+                    color: $gray-600;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .shipping-info {
+            .info-box {
+                padding: rem(25);
+                border: 1px solid $gray-200;
+                border-radius: rem(8);
+
+                .address-name {
+                    font-weight: $font-weight-bold;
+                    margin-bottom: rem(10);
+                }
+
+                .address-text {
+                    font-size: $font-size-md;
+                    color: $gray-700;
+                    line-height: 1.6;
+                }
+            }
+        }
+
+        .payment-methods {
+            .methods-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: rem(15);
+
+                .method-item {
+                    height: rem(60);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid $gray-200;
+                    border-radius: rem(8);
+                    font-size: $font-size-md;
+                    cursor: pointer;
+
+                    &.active {
+                        border-color: $primary;
+                        background-color: lighten($primary, 45%);
+                        font-weight: $font-weight-bold;
+                    }
+                }
+            }
+        }
+    }
+
+    .checkout-sidebar {
+        width: rem(340);
+        position: sticky;
+        top: rem(20);
+
+        .sidebar-box {
+            border: 1px solid $gray-200;
+            border-radius: rem(12);
+            padding: rem(30);
+            background-color: $white;
+
+            .price-summary {
+                .price-row {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: rem(15);
+                    font-size: $font-size-md;
+
+                    &.total {
+                        margin-top: rem(20);
+                        padding-top: rem(20);
+                        border-top: 1px solid $gray-100;
+                        font-weight: $font-weight-bold;
+
+                        .value {
+                            font-size: $font-size-xl;
+                            color: $secondary;
+                        }
+                    }
+                }
+            }
+
+            .btn-pay {
+                width: 100%;
+                height: rem(54);
+                background-color: $secondary;
+                color: $white;
+                font-size: $font-size-lg;
+                font-weight: $font-weight-bold;
+                border-radius: rem(8);
+                margin-top: rem(30);
+            }
+        }
+    }
+}

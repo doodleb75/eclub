@@ -1,0 +1,23 @@
+// 공통 믹스인 정의
+
+// 플렉스 박스 중앙 정렬
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// 텍스트 한 줄 줄임표
+@mixin ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 텍스트 여러 줄 줄임표
+@mixin multi-ellipsis($lines) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
