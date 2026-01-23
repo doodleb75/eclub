@@ -1,65 +1,189 @@
 // 푸터 공통 스타일
 .footer {
-    padding: rem(60) 0;
-    background-color: $gray-50;
-    color: $gray-600;
-    border-top: 1px solid $gray-200;
+    background-color: $bg-footer; // 푸터 배경색 (회색)
+    padding: rem(39) 0; // 상하 패딩 (피그마 기준)
+    font-family: $font-family;
 
-    .footer-top {
+    .footer-container {
+        width: rem(1198); // 콘텐츠 중앙 정렬 너비
+        margin: 0 auto;
+    }
+
+    // 상단 퀵 메뉴 (회색 버튼형)
+    .footer-menu {
         display: flex;
-        justify-content: space-between;
+        gap: rem(8);
         margin-bottom: rem(40);
 
-        .footer-links {
-            display: flex;
-            gap: rem(20);
+        a {
+            background-color: rgba(138, 138, 138, 0.1);
+            padding: rem(6) rem(20);
+            border-radius: rem(4);
+            font-size: rem(13);
+            font-weight: $fw-bold;
+            color: $gray-700;
+            line-height: rem(19.5);
+            transition: background-color 0.2s;
 
-            a {
-                font-size: $font-size-sm;
-                font-weight: $font-weight-medium;
-                color: $gray-700;
+            &:hover {
+                background-color: rgba(138, 138, 138, 0.2);
+            }
+
+            &.bold {
+                font-weight: $fw-bold;
             }
         }
     }
 
-    .footer-content {
-        display: flex;
-        gap: rem(60);
-        margin-bottom: rem(30);
+    // 상단 공지사항/자료실 영역
+    .footer-notice {
+        margin-bottom: rem(48);
+
+        .notice-row {
+            display: flex;
+            gap: rem(80); // 컬럼 간 간격
+        }
+
+        .notice-col {
+            flex: 1;
+
+            .col-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: rem(12);
+                padding-bottom: rem(8);
+
+                h3 {
+                    font-size: rem(14);
+                    font-weight: $fw-bold;
+                    color: $black;
+                }
+
+                .btn-more {
+                    font-size: rem(13);
+                    font-weight: $fw-regular;
+                    color: $gray-700;
+                    text-decoration: underline;
+                    text-underline-offset: rem(2);
+                }
+            }
+
+            .notice-list {
+                li {
+                    margin-bottom: rem(8);
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    a {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: rem(14);
+                        font-weight: $fw-regular;
+                        color: $gray-850;
+
+                        &:hover {
+                            color: darken($gray-850, 15%);
+                        }
+
+                        .tit {
+                            @include truncate; // 말줄임
+                            max-width: rem(460);
+                        }
+
+                        .date {
+                            color: $gray-700;
+                            margin-left: rem(10);
+                            font-size: rem(13);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 하단 푸터 본문
+    .footer-body {
+        border-top: 1px solid rgba(138, 138, 138, 0.1);
+        padding-top: rem(30);
+        font-weight: $fw-regular;
+
+        .copyright {
+            font-size: rem(13);
+            color: $gray-700;
+            margin-bottom: rem(12);
+            text-transform: uppercase;
+        }
 
         .company-info {
-            flex: 1;
-            font-size: $font-size-xs;
-            line-height: 1.8;
+            font-size: rem(13);
+            color: $gray-700;
+            line-height: 1.6;
+            margin-bottom: rem(20);
+            word-break: keep-all;
 
             p {
                 margin-bottom: rem(4);
+
+                &:last-child {
+                    margin-top: rem(12);
+                    margin-bottom: 0;
+                }
+            }
+
+            .link {
+                text-decoration: underline;
+                color: $gray-700;
             }
         }
 
-        .customer-center {
-            width: rem(300);
+        .legal-links {
+            margin-bottom: rem(16);
+            display: flex;
+            gap: rem(12);
 
-            .tel {
-                font-size: $font-size-xl;
-                font-weight: $font-weight-bold;
-                color: $gray-900;
-                margin-bottom: rem(10);
-            }
+            a {
+                font-size: rem(13);
+                color: $gray-700;
+                text-decoration: underline;
+                text-underline-offset: rem(2);
 
-            .hours {
-                font-size: $font-size-xs;
-                color: $gray-600;
+                &.bold {
+                    font-weight: $fw-bold;
+                }
             }
         }
-    }
 
-    .footer-bottom {
-        font-size: $font-size-xs;
-        color: $gray-400;
+        .extra-info {
+            margin-bottom: rem(24);
 
-        .copyright {
-            margin-top: rem(20);
+            p {
+                font-size: rem(13);
+                color: $gray-700;
+            }
+        }
+
+        .certifications {
+            .cert-item {
+                display: flex;
+                align-items: center;
+                gap: rem(8);
+
+                img {
+                    width: rem(28);
+                    height: rem(28);
+                }
+
+                span {
+                    font-size: rem(13);
+                    color: $gray-700;
+                    text-decoration: underline;
+                    text-underline-offset: rem(2);
+                }
+            }
         }
     }
 }

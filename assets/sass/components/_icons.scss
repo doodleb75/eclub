@@ -1,0 +1,122 @@
+// 공통 아이콘 스타일
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+
+// 헤더 아이콘 - 상대 경로 적용
+.icon-search {
+    @include icon-mask('../../icons/search.svg', rem(24));
+}
+
+.icon-archive {
+    @include icon-mask('../../icons/product-tag.svg', rem(24));
+}
+
+.icon-document {
+    @include icon-mask('../../icons/product-tag.svg', rem(24));
+}
+
+.icon-excel {
+    display: inline-block;
+    width: rem(16);
+    height: rem(16);
+    background: url('../../icons/document.svg') no-repeat center / contain;
+    vertical-align: middle;
+}
+
+.icon-history {
+    @include icon-mask('../../icons/history.svg', rem(24));
+}
+
+.icon-clock {
+    @include icon-mask('../../icons/history.svg', rem(24));
+}
+
+.icon-cart {
+    @include icon-mask('../../icons/cart.svg', rem(24));
+}
+
+.icon-coupon {
+    @include icon-mask('../../icons/coupon.svg', rem(24));
+}
+
+.icon-ticket {
+    @include icon-mask('../../icons/coupon.svg', rem(24));
+}
+
+.icon-heart {
+    @include icon-mask('../../icons/heart.svg', rem(24));
+}
+
+.icon-user {
+    @include icon-mask('../../icons/user.svg', rem(24));
+}
+
+.icon-chevron-down {
+    @include icon-mask('../../icons/chevron-down.svg', rem(14));
+}
+
+.icon-chevron-up {
+    @include icon-mask('../../icons/chevron-down.svg', rem(14));
+    transform: rotate(180deg);
+}
+
+.icon-chevron-right {
+    @include icon-mask('../../icons/chevron-right.svg', rem(24));
+}
+
+.icon-shipping {
+    @include icon-mask('../../icons/shipping.svg', rem(24));
+}
+
+.icon-upload {
+    @include icon-mask('../../icons/file_upload.svg', rem(16));
+}
+
+// 공통/기타 아이콘
+.icon-toggle {
+    @include icon-mask('../../icons/chevron-down.svg', rem(16));
+}
+
+.icon-info {
+    @include icon-mask('../../icons/info.svg', rem(16));
+}
+
+.icon-heart-fill {
+    @include icon-mask('../../icons/heart-fill.svg', rem(24));
+    color: $point-red;
+}
+
+.icon-trash {
+    @include icon-mask('../../icons/trash.svg', rem(24));
+}
+
+.icon-star {
+    @include icon-mask('../../icons/sparkling.svg', rem(16));
+}
+
+.icon-plus {
+    @include icon-mask('../../icons/plus.svg', rem(16));
+}
+
+.icon-minus {
+    @include icon-mask('../../icons/minus.svg', rem(16));
+}
+
+.icon-content-copy {
+    @include icon-mask('../../icons/content_copy.svg', rem(16));
+}
+
+.icon-slider-arrow {
+    @include icon-mask('../../icons/slider_arrow_right.svg', rem(20));
+    color: $white;
+}

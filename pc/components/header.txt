@@ -1,0 +1,81 @@
+<header id="header" class="header">
+    <!-- 정보 바 -->
+    <div class="header-info-bar">
+        <div class="container">
+            <ul class="info-list">
+                <li>당월배송금액 <b>83,003,000원</b></li>
+                <li>당일주문금액 <b>503,000원</b></li>
+                <li>배송예정금액 <b>1,203,560원</b></li>
+                <li>가용포인트 <b>600,400원</b></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 메인 헤더 -->
+    <div class="header-main">
+        <div class="container">
+            <div class="logo-area">
+                <h1 class="logo"><a href="/pc/index.html">E-클럽</a></h1>
+                <span class="slogan">사장님들의 성공 파트너</span>
+            </div>
+
+            <div class="search-area">
+                <div class="search-box">
+                    <input type="text" placeholder="검색어를 입력하세요">
+                    <button type="button" class="btn-search">
+                        <i class="icon-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="user-controls">
+                <a href="#" class="icon-link archive" title="주문건수">
+                    <i class="icon-document"></i>
+                </a>
+                <a href="#" class="icon-link history" title="주문내역">
+                    <i class="icon-clock"></i>
+                </a>
+                <a href="#" class="icon-link cart" title="장바구니">
+                    <i class="icon-cart"></i>
+                </a>
+                <a href="#" class="icon-link coupon" title="쿠폰">
+                    <i class="icon-ticket"></i>
+                </a>
+                <a href="#" class="icon-link wish" title="관심상품">
+                    <i class="icon-heart"></i>
+                </a>
+                <a href="#" class="icon-link mypage" title="마이페이지">
+                    <i class="icon-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 내비게이션 -->
+    <nav class="header-nav">
+        <div class="container">
+            <div class="nav-left">
+                <button type="button" class="category-toggle">
+                    카테고리<i class="icon-chevron-down"></i>
+                </button>
+                <ul class="main-menu">
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">BIG SALE</a></li>
+                    <li><a href="#">즐겨찾기</a></li>
+                    <li><a href="#">쇼핑리스트</a></li>
+                    <li><a href="#">브랜드관</a></li>
+                    <li><a href="#">법인전용</a></li>
+                    <li><a href="#">삼성카드</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="user-info">
+                    <span>회원코드 &nbsp;&nbsp;577921</span>
+                    <span>라성마트 <b>이승규</b>님</span>
+                    <span>영업담당자 김대영 02 380 5093</span>
+                    <a href="#" class="btn-logout">로그아웃</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

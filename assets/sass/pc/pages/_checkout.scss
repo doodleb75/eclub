@@ -1,133 +1,667 @@
-// 주문결제 페이지 스타일
+@charset "UTF-8";
+
+// 주문결제 페이지 전용 스타일
+
 .checkout-page {
-    padding: rem(60) 0;
-
-    .page-title {
-        font-size: $fs-28;
-        font-weight: $fw-bold;
-        margin-bottom: rem(40);
-        text-align: center;
-    }
-
     .checkout-container {
-        display: flex;
-        gap: rem(40);
-        align-items: flex-start;
+        margin-top: rem(16); // 컨테이너 상단 여백 추가
     }
 
     .checkout-content {
-        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: rem(12); // 섹션 간 간격 (Figma Box Spacing)
+    }
 
-        section {
-            margin-bottom: rem(50);
+    .checkout-sidebar {
+        top: rem(16); // 상단에서 16px 여백 확보
+    }
 
-            .section-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding-bottom: rem(15);
-                border-bottom: 2px solid $gray-900;
-                margin-bottom: rem(25);
+    // 공통 박스 스타일
+    .checkout-box {
+        background-color: $white;
+        border: 1px solid $gray-350; // #dedede
+        padding: rem(30) rem(30); // Figma 기준 내부 패딩
+        margin-bottom: rem(32);
 
-                h3 {
-                    font-size: $fs-24;
-                    font-weight: $fw-bold;
-                }
+        .box-title {
+            font-size: rem(18);
+            font-weight: $fw-bold;
+            color: $black;
+            line-height: rem(24); // 높이 명시해서 자식 요소들과 정렬 맞춤
+            letter-spacing: rem(-0.5);
+            margin: 0;
+        }
 
-                .btn-edit {
-                    font-size: $font-size-sm;
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: rem(20);
+        }
+
+        .cart-tab-wrap {
+            border: 0;
+            margin-bottom: rem(20);
+        }
+
+
+        .cart-item {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    // 1. 배송지 정보 & 배송예정일
+    .delivery-info {
+        display: flex;
+        flex-direction: column;
+        gap: rem(24);
+
+        .info-group {
+            .box-title {
+                margin-bottom: rem(8);
+            }
+
+            .box-desc {
+                font-size: rem(14);
+                color: $gray-850;
+                font-weight: $fw-medium;
+                line-height: 1.5;
+                letter-spacing: rem(-0.5);
+
+                &.gray {
                     color: $gray-600;
-                    text-decoration: underline;
                 }
             }
         }
+    }
 
-        .shipping-info {
-            .info-box {
-                padding: rem(25);
-                border: 1px solid $gray-200;
-                border-radius: rem(8);
+    // 2. 전체 주문상품 Summary
+    .order-summary {
+        padding: rem(24) rem(40); // Figma Background 기준 패딩
+        display: flex;
+        flex-direction: column;
+        gap: rem(10); // 헤더와 썸네일 사이 간격
 
-                .address-name {
-                    font-weight: $font-weight-bold;
-                    margin-bottom: rem(10);
+        .summary-header {
+            padding: 0; // 내부 패딩 제거 (부모에서 처리)
+            border-bottom: 0; // 구분선 제거
+
+            .title-wrap {
+                display: flex;
+                align-items: center;
+                gap: rem(24);
+
+                .box-title {
+                    font-size: rem(18);
+                    font-weight: $fw-bold;
+                    color: $black;
                 }
 
-                .address-text {
-                    font-size: $font-size-md;
-                    color: $gray-700;
-                    line-height: 1.6;
-                }
-            }
-        }
-
-        .payment-methods {
-            .methods-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: rem(15);
-
-                .method-item {
-                    height: rem(60);
+                .sub-counts {
+                    font-size: rem(18); // 피그마 기준 타이틀과 동일 크기
+                    color: $gray-600;
+                    font-weight: $fw-medium;
                     display: flex;
                     align-items: center;
-                    justify-content: center;
-                    border: 1px solid $gray-200;
-                    border-radius: rem(8);
-                    font-size: $font-size-md;
-                    cursor: pointer;
 
-                    &.active {
-                        border-color: $primary;
-                        background-color: lighten($primary, 45%);
-                        font-weight: $font-weight-bold;
+                    .sep {
+                        display: inline-block;
+                        width: 1px;
+                        height: rem(14);
+                        background-color: $gray-350;
+                        margin: 0 rem(16);
+                        font-size: 0; // 텍스트 | 숨김
+                    }
+                }
+            }
+        }
+
+        .summary-body {
+            padding: 0; // 내부 패딩 제거
+
+            .product-thumbnails {
+                display: flex;
+                flex-wrap: wrap;
+                gap: rem(8);
+
+                .thumb {
+                    width: rem(60); // 요청사항: 60x60
+                    height: rem(60);
+                    border-radius: rem(4);
+                    background-color: $gray-55;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover; // 요청사항: 썸네일 덮는 전체 이미지
                     }
                 }
             }
         }
     }
 
-    .checkout-sidebar {
-        width: rem(340);
-        position: sticky;
-        top: rem(20);
+    // 3. 결제수단
+    .payment-method {
+        .box-header {
+            .checkbox-container {
+                display: flex;
+                align-items: center;
+                gap: rem(8);
+                cursor: pointer;
+                height: rem(24); // 높이 명시
 
-        .sidebar-box {
-            border: 1px solid $gray-200;
-            border-radius: rem(12);
-            padding: rem(30);
-            background-color: $white;
+                input {
+                    display: none;
+                }
 
-            .price-summary {
-                .price-row {
+                .checkmark {
+                    width: rem(24);
+                    height: rem(24);
+                    background-color: $gray-850;
+                    border-radius: rem(3);
+                    position: relative;
                     display: flex;
-                    justify-content: space-between;
-                    margin-bottom: rem(15);
-                    font-size: $font-size-md;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: rem(1); // 시각적으로 살짝 내려서 텍스트와 맞춤
 
-                    &.total {
-                        margin-top: rem(20);
-                        padding-top: rem(20);
-                        border-top: 1px solid $gray-100;
-                        font-weight: $font-weight-bold;
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: rem(8);
+                        top: rem(4);
+                        width: rem(6);
+                        height: rem(11);
+                        border: solid white;
+                        border-width: 0 rem(2) rem(2) 0;
+                        transform: rotate(45deg);
+                    }
+                }
+
+                input:not(:checked)~.checkmark {
+                    background-color: $gray-150;
+                }
+
+                .label-text {
+                    font-size: rem(14);
+                    color: $gray-600;
+                    font-weight: $fw-medium;
+                    line-height: 1;
+                    margin-top: rem(1); // 시각적 정렬 보정
+                }
+            }
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: rem(8);
+            margin-bottom: rem(30);
+
+            .btn-method {
+                height: rem(52);
+                border: 1px solid $gray-300;
+                background-color: $white;
+                color: $gray-700;
+                font-size: rem(13); // 14 -> 15
+                font-weight: $fw-bold; // medium -> bold
+                border-radius: rem(2);
+                cursor: pointer;
+                transition: all 0.2s;
+                letter-spacing: rem(-0.5);
+
+                &:hover {
+                    border-color: $gray-600;
+                }
+
+                &.active {
+                    background-color: $gray-850; // Figma Dark Bg
+                    color: $white;
+                    border-color: $gray-850;
+                    font-weight: $fw-bold;
+                }
+            }
+        }
+
+        .method-details-box {
+            display: none; // 기본 숨김
+            background-color: $gray-95; // #f8f8f8
+            padding: rem(16) rem(79); // Figma
+            margin-bottom: rem(24);
+
+            &.active {
+                display: block; // 활성화 시 노출
+            }
+
+            .split-layout {
+                display: flex;
+                align-items: stretch;
+                justify-content: flex-start;
+                gap: rem(65); // Figma Gap
+
+                // Left Column: Bank Info
+                .col-left {
+                    flex: 0 0 rem(269); // Figma Width 269px
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    .bank-info-group {
+                        display: flex;
+                        flex-direction: column;
+                        gap: rem(21);
+                        width: 100%;
+
+                        .bank-row {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .label {
+                                font-size: rem(13);
+                                font-weight: $fw-bold;
+                                color: $gray-850; // #333333
+                                letter-spacing: rem(-0.5);
+                            }
+
+                            .value {
+                                font-size: rem(13);
+                                color: $gray-850;
+                                font-weight: $fw-bold;
+                                letter-spacing: rem(-0.5);
+                            }
+                        }
+
+                        .btn-copy {
+                            align-self: center;
+                            width: rem(151);
+                            height: rem(28);
+                            border: 1.5px solid $gray-400; // #cccccc
+                            background-color: $white;
+                            font-size: rem(12);
+                            color: $gray-600; // #999999
+                            font-weight: $fw-bold;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: rem(6);
+                            border-radius: rem(2);
+
+                            i {
+                                @include icon-mask('../../icons/content_copy.svg', rem(20));
+                                background-color: $gray-600;
+                            }
+                        }
+                    }
+                }
+
+                // Vertical Divider
+                .v-line {
+                    width: rem(2);
+                    background-color: #ddd; // Figma
+                }
+
+                // Right Column: Buyer Info
+                .col-right {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    gap: rem(8);
+
+                    .info-row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .label {
+                            font-size: rem(13);
+                            color: $gray-600; // #999999
+                            font-weight: $fw-bold;
+                            letter-spacing: rem(-0.5);
+                        }
 
                         .value {
-                            font-size: $font-size-xl;
-                            color: $secondary;
+                            font-size: rem(13);
+                            color: $gray-850; // #333333
+                            font-weight: $fw-bold;
+                            letter-spacing: rem(-0.5);
+                            text-align: right;
+                        }
+
+                        &.head {
+                            .label {
+                                color: $gray-850;
+                            }
+
+                            .value {
+                                color: $gray-850;
+                            }
+                        }
+                    }
+
+                    .info-body {
+                        display: flex;
+                        flex-direction: column;
+                        gap: rem(8);
+                        padding-left: rem(12);
+                        border-left: 3px solid $gray-300; // Figma Vertical Line inside content
+
+                        .info-row {
+                            .label {
+                                font-weight: $fw-medium;
+                                color: $gray-600;
+                            }
+
+                            .value {
+                                font-weight: $fw-medium;
+                                color: $gray-600;
+                            }
                         }
                     }
                 }
             }
+        }
 
-            .btn-pay {
-                width: 100%;
-                height: rem(54);
-                background-color: $secondary;
-                color: $white;
-                font-size: $font-size-lg;
-                font-weight: $font-weight-bold;
-                border-radius: rem(8);
-                margin-top: rem(30);
+
+
+        .notice-list {
+            margin-top: rem(20);
+            list-style: none;
+
+            li {
+                position: relative;
+                padding-left: rem(12);
+                font-size: rem(13);
+                color: $gray-500;
+                line-height: 1.6;
+                margin-bottom: rem(6);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: rem(8);
+                    width: rem(3);
+                    height: rem(3);
+                    background-color: $gray-400;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    // 4. 적용된 할인
+    .discount {
+        .discount-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: rem(20);
+            padding-right: rem(40);
+
+            .left {
+                display: flex;
+                align-items: center;
+                gap: rem(12);
+
+                .box-title {
+                    display: flex;
+                    align-items: center;
+                    gap: rem(8);
+                    font-size: rem(18);
+                    font-weight: $fw-bold;
+                    color: $black;
+
+                    .btn-toggle {
+                        border: none;
+                        background: none;
+                        cursor: pointer;
+                        padding: 0;
+                        display: flex;
+                        align-items: center;
+                        gap: rem(8);
+                        font: inherit;
+                        color: inherit;
+
+                        i {
+                            @include icon-mask('../../icons/chevron-down.svg', rem(14));
+                            background-color: $gray-850;
+                            transition: transform 0.2s ease-in-out;
+                            transform: rotate(0deg);
+                        }
+
+                        &.active i {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+
+                .badge {
+                    background-color: $point-red;
+                    color: $white;
+                    font-size: rem(12);
+                    font-weight: $fw-bold;
+                    padding: rem(3) rem(8);
+                    border-radius: rem(2);
+                    height: rem(20);
+                    display: flex;
+                    align-items: center;
+                    letter-spacing: rem(-0.5);
+                    margin-top: rem(2); // 타이틀과 시각적 중앙을 맞추기 위한 미세 조정
+                }
+            }
+
+            .discount-total {
+                font-size: rem(22);
+                font-weight: $fw-bold;
+                color: $black;
+            }
+        }
+
+        .discount-body {
+            background-color: $gray-55; // #f7f7f7
+            padding: rem(10) rem(40);
+            border-radius: rem(4);
+
+            .discount-row {
+                display: flex;
+                flex-wrap: wrap; // detail-list 대응용
+                align-items: center;
+                padding: rem(20) 0;
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+
+                .row-header {
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+
+                    .label {
+                        width: rem(126); // Figma 기준 레이블 너비 고정
+                        font-size: rem(16);
+                        font-weight: $fw-bold;
+                        color: $gray-850;
+                    }
+
+                    .btn-change {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(8);
+                        padding: rem(5) rem(10) rem(5) rem(16); // 피그마와 유사하게 패딩 미세 조정
+                        border: 1px solid $gray-350;
+                        background-color: $white;
+                        font-size: rem(14);
+                        font-weight: $fw-bold;
+                        color: $gray-850;
+                        border-radius: rem(4);
+                        cursor: pointer;
+
+                        &.disabled {
+                            background-color: $gray-55;
+                            color: $gray-500;
+                            border-color: $gray-350;
+                            opacity: 0.5;
+                            cursor: default;
+                        }
+
+                        i {
+                            @include icon-mask('../../icons/chevron-right.svg', rem(8) rem(12));
+                            background-color: currentColor;
+                        }
+                    }
+                }
+
+                .row-value {
+                    font-size: rem(18);
+                    font-weight: $fw-bold;
+                    color: $gray-850;
+                    text-align: right;
+                    min-width: rem(100);
+                }
+
+                .detail-list {
+                    width: 100%;
+                    list-style: none;
+                    margin-top: rem(12);
+                    padding-left: rem(12);
+                    padding-top: rem(12);
+                    border-left: 3px solid $gray-350;
+                    display: flex;
+                    flex-direction: column;
+                    gap: rem(8);
+
+                    li {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        font-size: rem(14);
+                        color: $gray-600;
+                        line-height: rem(16);
+
+                        .name {
+                            flex: 1;
+                            padding-right: rem(20);
+                        }
+
+                        .amount {
+                            font-weight: $fw-medium;
+                            text-align: right;
+                            white-space: nowrap;
+                        }
+                    }
+                }
+            }
+        }
+
+        .auto-apply-msg {
+            margin-top: rem(16);
+            font-size: rem(14);
+            color: $gray-600;
+            font-weight: $fw-medium;
+        }
+    }
+
+    // 5. 포인트
+    .points {
+        display: block; // 가로 정렬 오류 수정을 위해 block 처리
+        padding: rem(24) rem(40);
+
+        .box-header {
+            display: flex;
+            align-items: center;
+            gap: rem(24);
+            margin-bottom: rem(16);
+            justify-content: flex-start;
+
+            .box-title {
+                font-size: rem(18);
+                font-weight: $fw-bold;
+                color: $black;
+                margin-right: 0;
+            }
+
+            .current-points {
+                font-size: rem(18);
+                font-weight: $fw-bold;
+                color: $black;
+            }
+        }
+
+        .box-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: rem(16);
+
+            .input-area {
+                display: flex;
+                align-items: center;
+                gap: rem(11);
+
+                input {
+                    width: rem(360);
+                    height: rem(52);
+                    border: 1px solid $gray-400;
+                    padding: 0 rem(20);
+                    font-size: rem(14);
+                    text-align: left;
+                    border-radius: rem(4);
+                    color: $black;
+
+                    &::placeholder {
+                        color: $gray-500;
+                    }
+                }
+
+                .btn-use-all {
+                    height: rem(52);
+                    min-width: rem(80);
+                    padding: 0 rem(16);
+                    background-color: $gray-60; // #f3f3f3
+                    border: none;
+                    font-size: rem(14);
+                    font-weight: $fw-bold;
+                    color: $black;
+                    border-radius: rem(4);
+                    cursor: pointer;
+                }
+            }
+
+            .accumulate-info {
+                display: flex;
+                flex-direction: column;
+                gap: rem(10);
+                text-align: right;
+
+                .info-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: rem(20);
+                    font-size: rem(14);
+
+                    .label {
+                        color: $gray-600;
+                        font-weight: $fw-medium;
+                    }
+
+                    .value {
+                        color: $gray-850;
+                        font-weight: $fw-medium;
+                        min-width: rem(63);
+
+                        b {
+                            font-size: rem(14);
+                            font-weight: $fw-bold;
+                        }
+                    }
+                }
             }
         }
     }
