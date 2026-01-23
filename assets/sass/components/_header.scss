@@ -1,0 +1,261 @@
+// 헤더 공통 스타일
+
+.header {
+    background-color: $white;
+
+    .container {
+        max-width: $pc-max-width;
+        margin: 0 auto;
+    }
+}
+
+// 상단 정보 바 (당월배송금액 등)
+.header-info-bar {
+    padding: rem(8) 0;
+
+    .info-list {
+        display: flex;
+        justify-content: flex-end;
+        gap: rem(20);
+        list-style: none;
+
+        li {
+            font-size: rem(13);
+            color: $gray-900;
+            position: relative;
+            font-weight: $fw-regular;
+
+            &::after {
+                content: '';
+                position: absolute;
+                right: rem(-10);
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1px;
+                height: rem(10);
+                background-color: $gray-300;
+            }
+
+            &:last-child::after {
+                display: none;
+            }
+
+            b {
+                font-weight: $fw-regular;
+                color: $gray-600;
+                margin-left: rem(4);
+            }
+        }
+    }
+}
+
+// 메인 헤더 (로고, 검색, 아이콘)
+.header-main {
+    padding: rem(20) 0;
+
+    .container {
+        display: flex;
+        align-items: flex-end; // Bottom align items like the design
+        justify-content: space-between;
+        gap: rem(20);
+    }
+
+    .logo-area {
+        display: flex;
+        align-items: flex-end;
+        gap: rem(12);
+        min-width: rem(200);
+
+        .logo {
+            a {
+                display: block;
+                width: rem(113);
+                height: rem(47);
+                // Ensure path uses /assets/images/common/ as requested for the new logo
+                background: url('../../images/common/eclub-logo.svg') no-repeat center / contain;
+                text-indent: -9999px;
+            }
+        }
+
+        .slogan {
+            font-size: rem(12);
+            color: $gray-800;
+            font-weight: $fw-semibold;
+        }
+    }
+
+    .search-area {
+        width: rem(540);
+        max-width: 100%;
+        margin: 0 rem(20);
+
+        .search-box {
+            position: relative;
+            border: 2px solid $color-search-border;
+            border-radius: rem(30);
+            padding: 0 rem(24);
+            background-color: $white;
+            height: rem(48);
+            display: flex;
+            align-items: center;
+
+            input {
+                flex: 1;
+                border: none;
+                outline: none;
+                font-size: rem(15);
+                color: $gray-900;
+                background: transparent;
+
+                &::placeholder {
+                    color: $gray-400;
+                }
+            }
+
+            .btn-search {
+                flex-shrink: 0;
+                @include flex-center;
+                width: rem(24);
+                height: rem(24);
+                border: none;
+                background: none;
+                cursor: pointer;
+                margin-left: rem(10);
+                color: $color-search-border;
+
+                &:hover {
+                    @include btn-hover-effect;
+                }
+            }
+        }
+    }
+
+    .user-controls {
+        display: flex;
+        gap: rem(20);
+        align-items: center;
+        padding-bottom: rem(8); // Align with search box
+
+        .icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: rem(32);
+            height: rem(32);
+            position: relative;
+            color: $gray-700;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $gray-900;
+            }
+
+            &.coupon {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: rem(-1);
+                    right: rem(2);
+                    width: rem(6);
+                    height: rem(6);
+                    background-color: $color-search-border;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+// 내비게이션 바
+.header-nav {
+    padding: rem(12) 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-left {
+        display: flex;
+        align-items: center;
+        gap: rem(16);
+
+        .category-toggle {
+            display: flex;
+            align-items: center;
+            gap: rem(8);
+            font-size: rem(14);
+            font-weight: $fw-bold;
+            color: $gray-900;
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            [class^="icon-chevron"] {
+                color: $gray-700;
+            }
+
+            &:hover [class^="icon-chevron"] {
+                color: $black;
+            }
+        }
+
+        .main-menu {
+            display: flex;
+            gap: rem(8);
+            list-style: none;
+
+            a {
+                padding: rem(6) rem(7);
+                font-size: rem(14);
+                font-weight: $fw-semibold;
+                color: $gray-900;
+                text-decoration: none;
+
+                &:hover {
+                    color: $primary-red;
+                }
+            }
+        }
+    }
+
+    .nav-right {
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: rem(16);
+            font-size: rem(13);
+            color: $gray-700;
+            font-weight: $fw-regular;
+
+            span {
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: rem(-8);
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 1px;
+                    height: rem(10);
+                    background-color: $gray-300;
+                }
+
+                &:last-child::after {
+                    display: none;
+                }
+            }
+
+            .btn-logout {
+                color: $gray-700;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

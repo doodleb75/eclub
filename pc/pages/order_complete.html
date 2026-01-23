@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 장바구니">
+    <title>주문완료 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/eclub/assets/css/pc/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="checkout-page">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/eclub/pc/components/header.txt"></div>
+
+        <main id="container">
+            <!-- 페이지 타이틀 & 브레드크럼 -->
+            <div class="page-header">
+                <div class="container">
+                    <h2 class="page-title">주문완료</h2>
+                    <nav aria-label="현재 진행 단계">
+                        <ol class="breadcrumb">
+                            <li>장바구니</li>
+                            <li>주문결제</li>
+                            <li class="active" aria-current="step">주문완료</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="order-complete-container">
+                    <div class="complete-header">
+                        <h2 class="title">주문해주셔서 감사합니다.</h2>
+                        <div class="order-number">
+                            주문번호 <strong>202601197659271</strong>
+                        </div>
+                    </div>
+
+                    <div class="summary-bar">
+                        <div class="item">
+                            <span class="label">주문금액</span>
+                            <span class="price">730,300원</span>
+                        </div>
+                        <div class="divider">-</div>
+                        <div class="item">
+                            <span class="label">상품할인</span>
+                            <span class="price">128,192원</span>
+                        </div>
+                        <div class="divider">-</div>
+                        <div class="item">
+                            <span class="label">프로모션</span>
+                            <span class="price">18,402원</span>
+                        </div>
+                        <div class="divider">-</div>
+                        <div class="item">
+                            <span class="label">결제할인</span>
+                            <span class="price">22,800원</span>
+                        </div>
+                        <div class="divider">=</div>
+                        <div class="item final">
+                            <span class="label">최종결제금액</span>
+                            <span class="price"><b>558,280</b>원</span>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <!-- 결제정보 -->
+                        <div class="info-box">
+                            <h3 class="box-title">결제정보</h3>
+                            <div class="info-list">
+                                <div class="info-row">
+                                    <span class="label">주문상품</span>
+                                    <span class="value">전체 6건 ( 상온 3건 / 저온 3건 )</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">결제금액</span>
+                                    <span class="value">558,280원</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">결제일시</span>
+                                    <span class="value">2026. 01. 19(월) 13:55</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">가상계좌</span>
+                                    <div class="value bank-info-group">
+                                        <span class="value">기업은행 378 910070 99301</span>
+                                        <button type="button" class="btn-copy btn-copy-small">
+                                            <i class="icon-content-copy"></i> 입금 계좌번호 복사하기
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">결제기한</span>
+                                    <span class="value"><b class="gray-850">오늘 (01/19) 13:59</b> 까지 미입금 시 취소</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 배송정보 -->
+                        <div class="info-box">
+                            <h3 class="box-title">배송정보</h3>
+                            <div class="info-list">
+                                <div class="info-row">
+                                    <span class="label">배송지</span>
+                                    <span class="value">[78022] 서울 성동구 성수일로 56 BY상가 101-104호 이클럽마트</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">배송예상일</span>
+                                    <span class="value highlight">2026. 01. 21(수)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="/eclub/" class="btn btn-shopping">계속쇼핑하기</a>
+                        <a href="#" class="btn btn-detail">주문상세보기</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div data-include="/eclub/pc/components/footer.txt"></div>
+    </div>
+    <script src="/eclub/assets/js/components/quantity-control.js"></script>
+    <script src="/eclub/assets/js/components/ui-toggle.js"></script>
+    <script src="/eclub/assets/js/components/ui-tabs.js"></script>
+    <script src="/eclub/assets/js/components/scroll-spy.js"></script>
+    <script src="/eclub/assets/js/components/favorites.js"></script>
+    <script src="/eclub/assets/js/components/cart-selection.js"></script>
+    <script src="/eclub/assets/js/components/ui-clipboard.js"></script>
+    <script src="/eclub/assets/js/pc/main.js"></script>
+</body>
+
+</html>

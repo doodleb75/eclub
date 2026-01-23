@@ -1,0 +1,41 @@
+// 브라우저 기본 스타일 초기화
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; // 모바일 터치 하이라이트 제거
+}
+
+html {
+    font-size: 16px; // rem 기준점
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    border: none;
+}

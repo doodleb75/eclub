@@ -1,0 +1,25 @@
+@import "../abstract/functions";
+@import "../abstract/variables";
+@import "../abstract/mixins";
+@import "../base/reset";
+@import "../base/common";
+
+// 공통 컴포넌트
+@import "../components/header";
+@import "../components/footer";
+@import "../components/icons";
+
+// 페이지별 스타일
+@import "pages/cart";
+@import "pages/checkout";
+@import "pages/order_complete";
+
+// PC 전용 스타일
+#wrap {
+    min-width: $pc-layout-min-width;
+}
+
+.container {
+    width: $max-width;
+    margin: 0 auto;
+}

@@ -1,0 +1,215 @@
+// 주문완료 페이지 스타일
+.order-complete-container {
+    padding: rem(100) 0 rem(160);
+    text-align: center;
+    max-width: $pc-max-width;
+    margin: 0 auto;
+
+    .complete-header {
+        margin-bottom: rem(80);
+
+        .title {
+            font-size: rem(42);
+            font-weight: $fw-bold;
+            color: $gray-850;
+            letter-spacing: rem(-0.5);
+            margin-bottom: rem(50);
+        }
+
+        .order-number {
+            font-size: $fs-15;
+            color: $gray-700;
+            letter-spacing: rem(-0.3);
+
+            strong {
+                font-weight: $fw-semibold;
+                color: $gray-600;
+                text-decoration: underline;
+                margin-left: rem(4);
+            }
+        }
+    }
+
+    .summary-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(20);
+        margin-bottom: rem(70);
+        font-size: rem(18);
+        font-weight: $fw-bold;
+        color: $gray-850;
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: rem(8);
+
+            &.final {
+                margin-left: rem(10);
+
+                .label {
+                    color: $point-red;
+                }
+
+                .price {
+                    font-size: rem(18);
+                    font-weight: $fw-extrabold;
+                    color: $point-red;
+                    display: flex;
+                    align-items: center;
+                    gap: rem(2);
+
+                    b {
+                        font-size: rem(30);
+                        font-weight: $fw-extrabold;
+                        color: $point-red;
+                    }
+                }
+            }
+        }
+
+        .divider {
+            color: $gray-850;
+            font-weight: $fw-regular;
+        }
+    }
+
+    .info-section {
+        max-width: rem(840);
+        margin: 0 auto rem(80);
+        display: flex;
+        flex-direction: column;
+        gap: rem(24);
+
+        .info-box {
+            border: 1px solid $gray-350;
+            border-radius: rem(4);
+            padding: rem(40) rem(60);
+            text-align: left;
+            background-color: $white;
+
+            .box-title {
+                font-size: rem(24);
+                font-weight: $fw-bold;
+                color: $gray-850;
+                margin-bottom: rem(30);
+            }
+
+            .info-list {
+                display: flex;
+                flex-direction: column;
+                gap: rem(15);
+            }
+
+            .info-row {
+                display: flex;
+                align-items: center;
+                font-size: rem(16);
+                line-height: rem(21);
+
+                .label {
+                    width: rem(125);
+                    color: $gray-850;
+                    font-weight: $fw-bold;
+                    position: relative;
+                    flex-shrink: 0;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        right: rem(35);
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 1px;
+                        height: rem(12);
+                        background-color: $gray-200;
+                    }
+                }
+
+                .value {
+                    flex: 1;
+                    color: $gray-600;
+                    font-weight: $fw-semibold;
+
+                    b {
+                        font-weight: $fw-bold;
+                        color: $gray-850;
+                    }
+
+                    &.highlight {
+                        color: $point-red;
+                        font-weight: $fw-bold;
+                    }
+                }
+            }
+        }
+    }
+
+    .btn-copy-small {
+        display: inline-flex;
+        align-items: center;
+        gap: rem(4);
+        padding: rem(5) rem(10);
+        border: 1px solid $gray-400;
+        border-radius: rem(2);
+        font-size: rem(12);
+        color: $gray-600;
+        margin-left: rem(10);
+        background: $white;
+        font-weight: $fw-semibold;
+        cursor: pointer;
+
+        .icon-content-copy {
+            width: rem(14);
+            height: rem(14);
+            background-color: $gray-400;
+        }
+
+        &:hover {
+            color: darken($gray-600, 15%);
+            background-color: darken($white, 5%);
+        }
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: center;
+        gap: rem(10);
+
+        .btn {
+            width: rem(255);
+            height: rem(56);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: rem(20);
+            font-weight: $fw-bold;
+            border-radius: rem(4);
+            transition: opacity 0.2s;
+
+            &:hover {
+                opacity: 0.9;
+            }
+
+            &.btn-shopping {
+                border: 1px solid $gray-400;
+                color: $gray-850;
+                background-color: $white;
+
+                &:hover {
+                    background-color: darken($white, 5%);
+                }
+            }
+
+            &.btn-detail {
+                background-color: $point-red;
+                color: $white;
+
+                &:hover {
+                    background-color: darken($point-red, 5%);
+                }
+            }
+        }
+    }
+}
