@@ -1,0 +1,996 @@
+// 장바구니 페이지 전용 스타일
+
+// .cart-page {
+//     #container {
+//         padding-bottom: rem(100); // 하단 여백 확보
+//     }
+// }
+main {
+    padding-bottom: rem(0) !important;
+}
+
+// 페이지 타이틀 & 브레드크럼
+.page-header {
+    border-bottom: 1px solid $gray-70; // #eee
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: rem(40) 0 rem(30);
+    }
+
+    .page-title {
+        font-size: $fs-34;
+        font-weight: $fw-bold;
+        color: $gray-850;
+        line-height: 1;
+        letter-spacing: rem(-1);
+    }
+
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: rem(12);
+        list-style: none;
+
+        li {
+            font-size: $fs-20;
+            font-weight: $fw-bold;
+            color: $gray-600; // #999
+            display: flex;
+            align-items: center;
+            gap: rem(12);
+
+            &::after {
+                content: '';
+                @include icon-mask('../../icons/chevron-right.svg', rem(24));
+                -webkit-mask-size: rem(8) rem(14);
+                mask-size: rem(8) rem(14);
+                background-color: $gray-600;
+            }
+
+            &:last-child::after {
+                display: none;
+            }
+
+            &.active {
+                color: $gray-900;
+                font-weight: $fw-bold;
+
+                &::after {
+                    background-color: $gray-900;
+                }
+            }
+        }
+    }
+}
+
+// 탭 메뉴 영역
+.cart-tab-wrap {
+    border-bottom: 1px solid $gray-70;
+    position: sticky;
+    top: rem(50); // 헤더 높이만큼 아래에 고정
+    width: 100%;
+    z-index: 99; // 헤더(100)보다 아래
+    background-color: $white;
+
+    .container {
+        padding: 0;
+    }
+
+    .cart-tabs {
+        display: flex;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        .tab-item {
+            flex: 1;
+            position: relative;
+            text-align: center;
+
+            .tab-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: rem(50);
+                font-size: $fs-16;
+                font-weight: $fw-bold;
+                color: $gray-600; // #999
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .badge {
+                font-size: inherit;
+                font-weight: inherit;
+                color: inherit;
+                background: none;
+                padding: 0;
+                margin-left: rem(4);
+                min-width: auto;
+                height: auto;
+                border-radius: 0;
+                display: inline-block;
+            }
+
+            &.active {
+                .tab-link {
+                    color: $gray-850; // #333
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -1px;
+                    left: rem(15);
+                    right: rem(15);
+                    height: rem(2);
+                    background-color: $gray-900; // #222
+                }
+            }
+        }
+    }
+}
+
+// 선택 관리 바
+.cart-select-bar {
+    background-color: $white;
+
+    .container {
+        padding: rem(10) rem(16);
+    }
+
+    .select-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .checkbox-container {
+            .checkmark {
+                width: rem(22);
+                height: rem(22);
+                background-color: $gray-850; // #333333
+                border: none;
+                border-radius: rem(2);
+
+                &::after {
+                    left: rem(7);
+                    top: rem(3);
+                    width: rem(7);
+                    height: rem(12);
+                    border: solid $white;
+                    border-width: 0 rem(2) rem(2) 0;
+                }
+            }
+
+            .text {
+                color: $gray-850;
+                font-size: $fs-15;
+                font-weight: $fw-bold;
+                margin-left: rem(8);
+            }
+        }
+
+        .btn-delete-selected {
+            border: 1px solid $gray-350; // #dedede
+            background-color: $white;
+            border-radius: rem(4);
+            height: rem(32);
+            padding: 0 rem(11);
+            font-size: rem(13);
+            font-weight: $fw-bold;
+            color: $gray-850;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                border-color: $gray-400;
+            }
+        }
+    }
+}
+
+// 메인 레이아웃 (콘텐츠 + 사이드바)
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: rem(24);
+    align-items: stretch;
+
+    .cart-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .cart-sidebar {
+        width: 100%;
+        position: static;
+        padding: rem(16);
+    }
+}
+
+// 배송 그룹 섹션
+.cart-group {
+    background-color: $white;
+    margin-bottom: rem(24);
+    overflow: hidden;
+
+    &.ambient {
+        .group-header {
+            background-color: $delivery-ambient;
+        }
+
+        .progress-bar {
+            background-color: $color-ambient-progress-bar;
+        }
+    }
+
+    &.cold {
+        .group-header {
+            background-color: $delivery-cold;
+        }
+
+        .progress-bar {
+            background-color: $color-cold-progress-bar;
+        }
+    }
+
+    &.cooling {
+        .group-header {
+            background-color: $delivery-cooling;
+        }
+
+        .progress-bar {
+            background-color: $color-cooling-progress-bar;
+        }
+    }
+
+    .group-header {
+        padding: rem(12) rem(16) rem(9);
+        display: flex;
+        align-items: center;
+        color: $white;
+        gap: rem(16);
+
+        .header-left {
+            width: rem(54);
+            flex-shrink: 0;
+
+            .group-title {
+                font-size: $fs-16;
+                font-weight: $fw-bold;
+                letter-spacing: rem(-0.5);
+                color: $white;
+            }
+        }
+
+        .header-center {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: rem(16);
+
+            .progress-wrap {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: rem(4);
+
+                .progress-bar {
+                    width: 100%;
+                    // max-width: rem(217);
+                    height: rem(9);
+                    overflow: hidden;
+
+                    .progress {
+                        height: 100%;
+                        background-color: $white;
+                    }
+                }
+
+                .limit-txt {
+                    font-size: rem(13);
+                    font-weight: $fw-semibold;
+                    color: $white;
+                    letter-spacing: rem(-0.5);
+                    white-space: nowrap;
+
+                    b {
+                        font-weight: $fw-bold;
+                    }
+                }
+            }
+
+            .icon-shipping {
+                display: block;
+                @include icon-mask('../../icons/shipping.svg', rem(24));
+                background-color: $white;
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    .cart-item-list {
+        list-style: none;
+    }
+
+    .group-footer {
+        padding: rem(8) rem(16);
+        background-color: $white;
+        text-align: center;
+
+        .footer-msg {
+            font-size: $fs-12;
+            color: $gray-600;
+
+            .sep {
+                display: inline-block;
+                width: 1px;
+                height: rem(12);
+                background-color: $gray-300;
+                margin: 0 rem(20);
+            }
+        }
+    }
+}
+
+// 개별 상품 아이템
+.cart-item {
+    display: flex;
+    flex-direction: column;
+    padding: rem(27) rem(16) rem(20); // 피그마 분석 여백
+    border-bottom: 10px solid $gray-60;
+    gap: rem(10); // 피그마 분석 gap-[10px]
+
+    // &:last-child {
+    //     border-bottom: none;
+    // }
+
+    .item-main {
+        display: flex;
+        gap: rem(12); // 피그마 분석 gap-[12px]
+        align-items: flex-start;
+    }
+
+    .item-visual {
+        display: flex;
+        align-items: flex-start;
+        gap: rem(6); // 피그마 분석 gap-[6px]
+        flex-shrink: 0;
+        height: rem(130);
+        padding-top: rem(8);
+    }
+
+    .item-check {
+        flex-shrink: 0;
+    }
+
+    .item-thumb {
+        width: rem(72);
+        height: rem(72);
+        background-color: $gray-55;
+        border-radius: $radius-sm;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .item-info-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: rem(8); // 피그마 분석 gap-[8px]
+        min-width: 0;
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            .item-meta {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                column-gap: rem(8);
+                font-size: $fs-13;
+                color: $gray-600;
+                font-weight: $fw-semibold;
+                letter-spacing: rem(-0.52);
+
+                .sep {
+                    display: inline-block;
+                    width: 1px;
+                    height: rem(12);
+                    background-color: $gray-300;
+                }
+            }
+
+            .info-actions {
+                display: flex;
+                align-items: center;
+                gap: rem(12); // 피그마 분석 gap-[12px]
+
+                button {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &.btn-wish {
+                        color: $gray-450;
+                        @include icon-mask('../../icons/heart.svg', rem(24));
+                        background-color: $gray-450;
+
+                        &.active {
+                            @include icon-mask('../../icons/heart-fill.svg', rem(24));
+                            background-color: $point-red;
+                        }
+                    }
+
+                    &.btn-delete {
+                        @include icon-mask('../../icons/trash.svg', rem(24));
+                        background-color: $gray-850;
+                    }
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+
+                    i {
+                        display: none; // 마스크 아이콘 사용으로 태그 숨김 (또는 아이콘 파일 수정시 대응)
+                    }
+                }
+            }
+        }
+
+        .item-name {
+            display: block;
+            font-size: $fs-16;
+            font-weight: $fw-bold;
+            color: $gray-900;
+            line-height: rem(22);
+            text-decoration: none;
+            word-break: keep-all;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        // 가격 및 수량 영역
+        .item-price-qty {
+            display: flex;
+            flex-direction: column;
+            gap: rem(2); // 피그마 분석 gap-[2px]
+
+            .price-info {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: rem(0); // 피그마에서 gap 없음
+            }
+
+            .price-top {
+                display: flex;
+                align-items: center;
+                gap: rem(6);
+                margin-bottom: rem(2); // 피그마 분석
+
+                .badge-discount {
+                    padding: rem(1) rem(6);
+                    background-color: $point-red;
+                    color: $white;
+                    font-size: $fs-11;
+                    font-weight: $fw-bold;
+                    border-radius: $radius-sm;
+                    letter-spacing: rem(-0.22);
+                }
+
+                .origin-price {
+                    font-size: $fs-14;
+                    color: $gray-900;
+                    text-decoration: line-through;
+                    font-weight: $fw-medium;
+
+                    span {
+                        text-decoration: none;
+                        display: inline-block;
+                    }
+                }
+            }
+
+            .price-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .main-price {
+                display: flex;
+                align-items: baseline;
+                font-size: rem(26);
+                font-weight: $fw-medium;
+                color: $point-red;
+                line-height: 1;
+                letter-spacing: rem(-1.04);
+
+                span {
+                    font-size: $fs-22;
+                }
+            }
+
+            // 수량 선택기
+            .qty-selector {
+                display: flex;
+                align-items: center;
+                width: rem(108); // PC rem(137) 대비 축소
+                height: rem(40);
+                background-color: $gray-95; // PC 동일
+                border: 1px solid $gray-175;
+                border-radius: rem(4);
+                overflow: hidden;
+
+                button {
+                    width: rem(36); // PC rem(40) 대비 축소
+                    height: 100%;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $gray-900;
+
+                    &:hover {
+                        background-color: $color-shadow;
+                    }
+
+                    i {
+                        font-size: rem(14); // PC rem(16) 대비 축소
+                        // 이미 전역 클래스(.icon-minus, .icon-plus)에서 마스킹 처리됨
+                    }
+                }
+
+                input {
+                    flex: 1;
+                    width: 0;
+                    height: 100%;
+                    border: none;
+                    text-align: center;
+                    font-size: rem(16); // PC 동일
+                    font-weight: $fw-semibold; // PC 동일
+                    color: $gray-900;
+                    background: none;
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    // 할인 드롭다운
+    .discount-dropdown {
+        width: 100%;
+        margin-top: rem(10); // 피그마 분석 간격
+
+        .dropdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            .btn-discount-toggle {
+                display: flex;
+                align-items: center;
+                gap: rem(8);
+                font-size: $fs-15;
+                font-weight: $fw-bold; // 피그마 분석 Bold
+                color: $gray-850;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+
+                i {
+                    width: rem(16);
+                    height: rem(16);
+                    background-color: $gray-850;
+                    transition: transform 0.2s;
+                    transform: rotate(0deg); // 기본: 닫힘 (Down)
+
+                    // _icons.scss에서 정의된 .icon-chevron-up의 기본 transform(180deg)을 0deg로 덮어씌워 Down으로 만듦
+                }
+
+                &.active i {
+                    transform: rotate(180deg); // 활성: 열림 (Up)
+                }
+            }
+
+            .total-discount {
+                font-size: $fs-18;
+                font-weight: $fw-bold;
+                color: $gray-850;
+            }
+        }
+
+        .discount-content {
+            display: none;
+            margin-top: rem(16);
+            padding: rem(2) 0 rem(2) rem(8);
+            border-left: 3px solid $gray-300;
+            width: 100%;
+
+            &.active {
+                display: block;
+            }
+
+            .discount-list {
+                list-style: none;
+                padding-top: rem(6);
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: $fs-13;
+                    color: $gray-600;
+                    margin-bottom: rem(6);
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .unit-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: rem(10); // 피그마 분석 간격
+
+        .spec {
+            font-size: $fs-15; // 피그마 분석 text-[15px]
+            color: $gray-850;
+            font-weight: $fw-bold;
+
+            .sep {
+                display: inline-block;
+                color: $gray-300;
+                margin: 0 rem(8);
+            }
+        }
+
+        .per-price {
+            font-size: $fs-16; // 피그마 분석 text-[16px]
+            color: $point-red;
+            font-weight: $fw-bold;
+            display: flex;
+            align-items: center;
+            gap: rem(4);
+
+            b {
+                font-weight: $fw-bold;
+            }
+
+            .btn-info {
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                color: $gray-450;
+
+                @include icon-mask('../../icons/help-outline.svg', rem(20));
+                background-color: $gray-450;
+
+                i {
+                    display: none;
+                }
+
+                &:hover {
+                    background-color: $gray-700;
+                }
+            }
+        }
+    }
+}
+
+// 사이드바 박스 공통
+.sidebar-box {
+    background-color: $white;
+    border: 1px solid $gray-350; // #dedede
+    padding: rem(20) rem(16); // 피그마 px-[16px] py-[20px] 기준
+    margin-bottom: rem(20);
+
+    .box-title {
+        font-size: $fs-18;
+        font-weight: $fw-bold;
+        color: $gray-850;
+        margin-bottom: rem(15);
+    }
+}
+
+.delivery-info {
+    padding: rem(20) rem(16); // Figma Original
+
+    .address {
+        font-size: $fs-13;
+        font-weight: $fw-medium;
+        color: $gray-850;
+        line-height: rem(18);
+    }
+}
+
+.payment-summary {
+    // 결제 금액 박스 패딩 Figma px-[13px] py-[12px] 반영
+    padding: rem(14) rem(14);
+
+    .box-title {
+        margin-bottom: rem(16);
+    }
+
+    .summary-content {
+        .summary-item-group {
+            margin-bottom: rem(21); // Figma Gap 21px 반영
+
+            .group-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: rem(9); // Figma Gap 9px 반영
+                font-size: rem(13);
+
+                .label {
+                    color: $gray-850;
+                    font-weight: $fw-bold; // Figma Bold 반영
+                }
+
+                .price {
+                    font-weight: $fw-bold;
+                    color: $gray-850;
+                }
+
+                &.discount {
+                    margin-top: rem(9);
+
+                    .btn-sum-discount {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(6);
+                        font-size: rem(13);
+                        font-weight: $fw-bold;
+                        color: $gray-850;
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        padding: 0;
+
+                        i {
+                            font-size: rem(16);
+                            color: $gray-850;
+                            transition: transform 0.2s;
+                            transform: rotate(0deg);
+                            transform-origin: center;
+                        }
+
+                        &.active i {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                    .price {
+                        color: $gray-850;
+                        font-weight: $fw-bold;
+                    }
+                }
+
+                &.subtotal {
+                    margin-top: rem(9);
+                    margin-bottom: 0;
+
+                    .label {
+                        font-weight: $fw-bold;
+                    }
+
+                    .price {
+                        color: $point-red;
+                    }
+                }
+            }
+
+            .discount-details {
+                list-style: none;
+                padding: rem(8) 0 rem(0) rem(11);
+                border-left: rem(3) solid $gray-300;
+                margin: 0 0 rem(9) rem(13);
+                margin-left: 0;
+                display: none; // 기본 숨김
+
+                &.active {
+                    display: block;
+                }
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: rem(13);
+                    color: $gray-600;
+                    margin-bottom: rem(8);
+                    font-weight: $fw-semibold; // SemiBold 반영
+                    margin-bottom: rem(6);
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid $border-divider-light; // Figma Divider Color
+            margin: rem(16) 0;
+        }
+
+        .total-final {
+            margin: rem(21) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .final-label {
+                font-size: rem(14); // Figma 14px (13.6 rounded)
+                font-weight: $fw-bold;
+                color: $point-red;
+            }
+
+            .final-price {
+                font-size: rem(15); // Figma 14px level
+                font-weight: $fw-bold;
+                color: $point-red;
+            }
+        }
+    }
+
+    .btn-order {
+        width: 100%;
+        height: rem(52); // Figma Height 52px 반영
+        background-color: $point-red;
+        color: $white;
+        border: none;
+        border-radius: rem(4);
+        font-size: rem(20); // Figma Font Size 20px 반영
+        font-weight: $fw-bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(8);
+
+        &:hover {
+            background-color: darken($point-red, 5%);
+        }
+    }
+}
+
+// 공통 체크박스 스타일 보강
+.checkbox-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-left: rem(26);
+    cursor: pointer;
+    font-size: $fs-14;
+    user-select: none;
+    min-height: rem(18);
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked~.checkmark {
+            background-color: $gray-850;
+            border-color: $gray-850;
+
+            &::after {
+                display: block;
+            }
+        }
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: rem(22);
+        width: rem(22);
+        background-color: $white;
+        border: 1px solid $gray-400;
+        border-radius: $radius-sm;
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: none;
+            left: rem(7);
+            top: rem(4);
+            width: rem(4);
+            height: rem(8);
+            border: solid $white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    }
+}
+
+// 장바구니 안내 섹션
+.cart-guide {
+    padding: 0 rem(16);
+    // margin-top: rem(16);
+    background-color: $white;
+    border-radius: $radius-sm;
+
+    h3 {
+        font-size: $fs-18;
+        font-weight: $fw-bold;
+        color: $gray-900;
+        margin-bottom: rem(20);
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+
+        i {
+            color: $gray-900;
+        }
+    }
+
+    .guide-list {
+        list-style: none;
+
+        li {
+            font-size: $fs-14;
+            color: $gray-600;
+            margin-bottom: rem(10);
+            padding-left: rem(14);
+            position: relative;
+            line-height: 1.6;
+
+            &::before {
+                content: '-';
+                position: absolute;
+                left: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

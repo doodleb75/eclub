@@ -34,7 +34,7 @@
 }
 
 .icon-history {
-    @include icon-mask('../../icons/history.svg', rem(24));
+    @include icon-mask('../../icons/history-back.svg', rem(24));
 }
 
 .icon-clock {
@@ -119,4 +119,13 @@
 .icon-slider-arrow {
     @include icon-mask('../../icons/slider_arrow_right.svg', rem(20));
     color: $white;
+}
+
+.icon-home {
+    @include icon-mask('../../icons/home.svg', rem(24));
+}
+
+.icon-chevron-left {
+    @include icon-mask('../../icons/chevron-right.svg', rem(24));
+    transform: rotate(180deg);
 }

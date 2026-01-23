@@ -69,7 +69,7 @@ body {
   background-color: #ffffff;
 }
 .header .container {
-  max-width: 74.875rem;
+  max-width: 75rem;
   margin: 0 auto;
 }
 
@@ -293,7 +293,8 @@ body {
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
 }
 .footer .footer-container {
-  width: 74.875rem;
+  width: 100%;
+  max-width: 75rem;
   margin: 0 auto;
 }
 .footer .footer-menu {
@@ -499,8 +500,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/history.svg") no-repeat 50% 50%;
-  mask: url("../../icons/history.svg") no-repeat 50% 50%;
+  -webkit-mask: url("../../icons/history-back.svg") no-repeat 50% 50%;
+  mask: url("../../icons/history-back.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -726,6 +727,29 @@ body {
   -webkit-mask-size: contain;
   mask-size: contain;
   color: #ffffff;
+}
+
+.icon-home {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("../../icons/home.svg") no-repeat 50% 50%;
+  mask: url("../../icons/home.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-chevron-left {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("../../icons/chevron-right.svg") no-repeat 50% 50%;
+  mask: url("../../icons/chevron-right.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transform: rotate(180deg);
 }
 
 .cart-page #container {
@@ -2181,7 +2205,7 @@ body {
 .order-complete-container {
   padding: 6.25rem 0 10rem;
   text-align: center;
-  max-width: 74.875rem;
+  max-width: 75rem;
   margin: 0 auto;
 }
 .order-complete-container .complete-header {
@@ -2367,6 +2391,6 @@ body {
 }
 
 .container {
-  width: 74.875rem;
+  width: 75rem;
   margin: 0 auto;
 }

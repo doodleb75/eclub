@@ -1,0 +1,198 @@
+// 모바일 전용 푸터 스타일
+.footer {
+    background-color: #f5f5f5; // Figma: bg-[#f5f5f5]
+    padding: rem(22) rem(24) rem(34); // 상단 22px, 좌우 12px, 하단 120px
+    text-align: left;
+
+    .footer-container {
+        width: 100%;
+    }
+
+    // 상단 버튼 (FAQ, 공지사항)
+    .footer-buttons {
+        display: flex;
+        justify-content: space-between; // Figma: justify-between
+        gap: rem(16); // Adjusted for fit, Figma has 150px width items
+        margin-bottom: rem(15); // Adjust margin as per overall spacing
+
+        .btn-footer {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: rem(30); // Calculated: ~29-30px
+            background-color: $white;
+            border: 1px solid #aaaaaa; // Figma: #aaa
+            border-radius: rem(3);
+            font-size: rem(13);
+            font-weight: $fw-medium;
+            color: $black;
+            text-decoration: none;
+        }
+    }
+
+    // 사용자 정보 (Simple List Type)
+    .user-info-simple {
+        padding: rem(17) 0 rem(28);
+
+        .user-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: rem(9);
+
+            .icon-loc {
+                display: inline-block;
+                width: rem(13);
+                height: rem(17);
+                background-color: $gray-600; // #999 (Adjusted for visual balance)
+                // Path relative to output CSS (assets/css/mobile/main.css -> assets/icons)
+                mask: url('../../icons/home.svg') no-repeat center / contain;
+                -webkit-mask: url('../../icons/home.svg') no-repeat center / contain;
+                margin-right: rem(6);
+            }
+
+            .text {
+                font-size: rem(13);
+                color: $gray-700; // #666
+                line-height: rem(18);
+
+                .store {
+                    font-weight: $fw-regular;
+                    margin-right: rem(3);
+                }
+
+                .name {
+                    font-weight: $fw-semibold;
+                }
+            }
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: rem(4);
+
+            li {
+                display: flex;
+                align-items: flex-start;
+                font-size: rem(13);
+                line-height: rem(19);
+
+                .label {
+                    display: inline-block;
+                    width: rem(84); // 6 chars * 13px + buffer, aligned
+                    color: $gray-900; // #222
+                    letter-spacing: rem(-0.5);
+                }
+
+                .value {
+                    color: $gray-700; // #666
+                    letter-spacing: 0;
+                }
+            }
+        }
+    }
+
+    // 브랜드 로고
+    .footer-brand {
+        margin-bottom: rem(20);
+
+        img {
+            width: rem(87);
+            height: auto;
+            // filter: grayscale(100%);
+            // opacity: 0.5;
+        }
+    }
+
+    // 푸터 링크
+    .footer-links {
+        margin-bottom: rem(20);
+
+        .link-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: rem(4);
+
+            &::after {
+                content: "";
+                display: block;
+                height: rem(10);
+                width: rem(1);
+                background-color: $gray-700;
+                margin-left: rem(6);
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            a {
+                font-size: rem(11); // Figma: 11.271px
+                color: #727272; // Figma: #727272
+                text-decoration: none;
+                line-height: 1;
+
+                &.bold {
+                    font-weight: $fw-bold;
+                    color: $gray-900; // #222
+                }
+
+                // Add pseudo-element for separator if not using span based on visual check
+                // However, Figma data shows separate text blocks or lines.
+                // Assuming simple spacing for row 1, pipe for row 2
+            }
+
+            // Row 1 specific spacing if needed, but flex gap or margin is easier
+            // Row 1: "이용안내" "서비스이용약관" -> Just space or pipe? Figma data suggests separate blocks.
+            // Let's add margin-right to first item of row 1
+            &:first-child>a:first-child {
+                margin-right: rem(8);
+            }
+
+            .sep {
+                display: inline-block;
+                width: 1px;
+                height: rem(10);
+                background-color: #d9d9d9;
+                margin: 0 rem(8);
+            }
+        }
+    }
+
+    // 회사 정보
+    .company-info {
+        font-size: rem(11);
+        color: #888888;
+        line-height: rem(17); // Figma: leading-[17.34px] or so
+        margin-bottom: rem(17);
+
+        p {
+            margin-bottom: 0;
+            word-break: keep-all;
+        }
+
+        a {
+            color: $gray-900; // #222 based on design for some parts? No base color is #888
+            // But specific links are underlined and darker? 
+            // Figma text for phone: #888? Wait, phone number usually interactable.
+            // Let's follow Figma strictly: Most text #888.
+
+            &.underline {
+                text-decoration: underline;
+                color: $gray-900; // Make interactable links slightly darker or keep #888 but clean
+                color: #222; // Figma visual check suggests darker for links? 
+                // Actually the design shows "02 380 5123" is underlined, color looks like body text.
+                // Let's set specific color if needed.
+            }
+        }
+    }
+
+    // Copyright
+    .copyright {
+        font-size: rem(8);
+        color: #888888;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+}
