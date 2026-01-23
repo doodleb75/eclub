@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 장바구니">
+    <title>장바구니 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/eclub/assets/css/mobile/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="cart-page">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/eclub/mobile/components/header.txt"></div>
+
+        <main id="container">
+            <!-- 페이지 타이틀 & 브레드크럼 -->
+
+
+            <!-- 탭 메뉴 영역 -->
+            <nav class="cart-tab-wrap" aria-label="장바구니 탭">
+                <div class="container">
+                    <ul class="cart-tabs">
+                        <li class="tab-item"><a href="#section-ambient" class="tab-link">상온상품 <span
+                                    class="badge">3</span></a></li>
+                        <li class="tab-item"><a href="#section-cold" class="tab-link">저온상품 <span
+                                    class="badge">3</span></a></li>
+                        <li class="tab-item"><a href="#section-cooling" class="tab-link">직냉상품 <span
+                                    class="badge">1</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- 선택 관리 바 -->
+            <div class="cart-select-bar">
+                <div class="container">
+                    <div class="select-actions">
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked>
+                            <span class="checkmark"></span>
+                            <span class="text">전체선택</span>
+                        </label>
+                        <button type="button" class="btn-delete-selected">전체삭제</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="cart-container">
+                    <!-- 왼쪽 장바구니 리스트 영역 -->
+                    <div class="cart-content">
+                        <!-- 상온배송 그룹 -->
+                        <section class="cart-group ambient" id="section-ambient">
+                            <div class="group-header">
+                                <div class="header-left">
+                                    <span class="group-title">상온배송</span>
+                                </div>
+                                <div class="header-center">
+                                    <div class="progress-wrap">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 65%;"></div>
+                                        </div>
+                                        <p class="limit-txt"><b>127,080원</b> 추가 시 주문가능 (결제 금액 기준)</p>
+                                    </div>
+                                    <i class="icon-shipping"></i>
+                                </div>
+                            </div>
+
+                            <ul class="cart-item-list">
+                                <!-- 상품 1 (할인 내역 확장 상태) -->
+                                <li class="cart-item">
+                                    <div class="item-main">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/eclub/assets/images/cart/cart-list-01.png"
+                                                        alt="유한킴벌리 크리넥스 데코&소프트"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-group">
+                                            <div class="item-header">
+                                                <div class="item-meta">
+                                                    <span>2087686064968</span>
+                                                </div>
+                                                <div class="info-actions">
+                                                    <button type="button" class="btn-wish active"><i
+                                                            class="icon-heart-fill"></i></button>
+                                                    <button type="button" class="btn-delete"><i
+                                                            class="icon-trash"></i></button>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="item-name">유한킴벌리 크리넥스 데코&소프트 3겹 30m*30롤</a>
+
+                                            <div class="item-price-qty">
+                                                <div class="price-info">
+                                                    <div class="price-top">
+                                                        <span class="badge-discount">19% 할인</span>
+                                                        <del class="origin-price">51,000<span>원</span></del>
+                                                    </div>
+                                                    <div class="price-row">
+                                                        <div class="main-price">36,800<span>원</span></div>
+                                                        <div class="qty-selector qty-box">
+                                                            <button type="button" class="btn-minus"
+                                                                aria-label="수량 빼기"><i class="icon-minus"
+                                                                    aria-hidden="true"></i></button>
+                                                            <input type="text" value="2" min="0" aria-label="수량">
+                                                            <button type="button" class="btn-plus"
+                                                                aria-label="수량 더하기"><i class="icon-plus"
+                                                                    aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="discount-dropdown">
+                                        <div class="dropdown-header">
+                                            <button type="button" class="btn-discount-toggle active" data-toggle="slide"
+                                                data-scope=".discount-dropdown" data-target=".discount-content">상품
+                                                할인예상금액 <i class="icon-chevron-up"></i></button>
+                                            <span class="total-discount">-12,500원</span>
+                                        </div>
+                                        <div class="discount-content active">
+                                            <ul class="discount-list">
+                                                <li><span class="label">상품쿠폰</span> <span class="val">-10,900원</span>
+                                                </li>
+                                                <li><span class="label">생활 10품목 이상 5% 쿠폰</span> <span
+                                                        class="val">-2,900원</span></li>
+                                                <li><span class="label">설 연휴 프로모션</span> <span
+                                                        class="val">-1,900원</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="unit-info">
+                                        <div class="spec">박스 당 입수 8개 <span class="sep">|</span> 낱개환산 16개</div>
+                                        <div class="per-price">개당 <b>4,200원</b> <button type="button"
+                                                class="btn-info"><i class="icon-info"></i></button></div>
+                                    </div>
+                                </li>
+                                <!-- 상품 2 (할인 내역 확장 상태) -->
+                                <li class="cart-item">
+                                    <div class="item-main">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/eclub/assets/images/cart/cart-list-02.png"
+                                                        alt="엘지생활건강 퐁퐁 베이킹소다"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-group">
+                                            <div class="item-header">
+                                                <div class="item-meta">
+                                                    <span>2087686064968</span>
+                                                </div>
+                                                <div class="info-actions">
+                                                    <button type="button" class="btn-wish"><i
+                                                            class="icon-heart"></i></button>
+                                                    <button type="button" class="btn-delete"><i
+                                                            class="icon-trash"></i></button>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="item-name">엘지생활건강 퐁퐁 베이킹소다 깔끔한 민트향 700ml</a>
+
+                                            <div class="item-price-qty">
+                                                <div class="price-info">
+                                                    <div class="price-top">
+                                                        <span class="badge-discount">19% 할인</span>
+                                                        <del class="origin-price">51,000<span>원</span></del>
+                                                    </div>
+                                                    <div class="price-row">
+                                                        <div class="main-price">36,800<span>원</span></div>
+                                                        <div class="qty-selector qty-box">
+                                                            <button type="button" class="btn-minus"
+                                                                aria-label="수량 빼기"><i class="icon-minus"
+                                                                    aria-hidden="true"></i></button>
+                                                            <input type="text" value="1" min="0" aria-label="수량">
+                                                            <button type="button" class="btn-plus"
+                                                                aria-label="수량 더하기"><i class="icon-plus"
+                                                                    aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="discount-dropdown">
+                                        <div class="dropdown-header">
+                                            <button type="button" class="btn-discount-toggle active" data-toggle="slide"
+                                                data-scope=".discount-dropdown" data-target=".discount-content">상품
+                                                할인예상금액 <i class="icon-chevron-up"></i></button>
+                                            <span class="total-discount">-12,500원</span>
+                                        </div>
+                                        <div class="discount-content active">
+                                            <ul class="discount-list">
+                                                <li><span class="label">상품쿠폰</span> <span class="val">-10,900원</span>
+                                                </li>
+                                                <li><span class="label">생활 10품목 이상 5% 쿠폰</span> <span
+                                                        class="val">-2,900원</span></li>
+                                                <li><span class="label">설 연휴 프로모션</span> <span
+                                                        class="val">-1,900원</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="unit-info">
+                                        <div class="spec">박스 당 입수 8개 <span class="sep">|</span> 낱개환산 16개</div>
+                                        <div class="per-price">개당 <b>4,200원</b> <button type="button"
+                                                class="btn-info"><i class="icon-info"></i></button></div>
+                                    </div>
+                                </li>
+                                <!-- 상품 3 (할인 내역 축소 상태) -->
+                                <li class="cart-item">
+                                    <div class="item-main">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/eclub/assets/images/cart/cart-list-03.png"
+                                                        alt="유한양행 유한락스"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-group">
+                                            <div class="item-header">
+                                                <div class="item-meta">
+                                                    <span>2087686064968</span>
+                                                </div>
+                                                <div class="info-actions">
+                                                    <button type="button" class="btn-wish active"><i
+                                                            class="icon-heart-fill"></i></button>
+                                                    <button type="button" class="btn-delete"><i
+                                                            class="icon-trash"></i></button>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="item-name">유한양행 유한락스 레귤러 2L</a>
+
+                                            <div class="item-price-qty">
+                                                <div class="price-info">
+                                                    <div class="price-top">
+                                                        <span class="badge-discount">19% 할인</span>
+                                                        <del class="origin-price">51,000<span>원</span></del>
+                                                    </div>
+                                                    <div class="price-row">
+                                                        <div class="main-price">36,800<span>원</span></div>
+                                                        <div class="qty-selector qty-box">
+                                                            <button type="button" class="btn-minus"
+                                                                aria-label="수량 빼기"><i class="icon-minus"
+                                                                    aria-hidden="true"></i></button>
+                                                            <input type="text" value="3" min="0" aria-label="수량">
+                                                            <button type="button" class="btn-plus"
+                                                                aria-label="수량 더하기"><i class="icon-plus"
+                                                                    aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="discount-dropdown">
+                                        <div class="dropdown-header">
+                                            <button type="button" class="btn-discount-toggle active" data-toggle="slide"
+                                                data-scope=".discount-dropdown" data-target=".discount-content">상품
+                                                할인예상금액 <i class="icon-chevron-up"></i></button>
+                                            <span class="total-discount">-12,500원</span>
+                                        </div>
+                                        <div class="discount-content active">
+                                            <ul class="discount-list">
+                                                <li><span class="label">상품쿠폰</span> <span class="val">-10,900원</span>
+                                                </li>
+                                                <li><span class="label">생활 10품목 이상 5% 쿠폰</span> <span
+                                                        class="val">-2,900원</span></li>
+                                                <li><span class="label">설 연휴 프로모션</span> <span
+                                                        class="val">-1,900원</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="unit-info">
+                                        <div class="spec">박스 당 입수 8개 <span class="sep">|</span> 낱개환산 16개</div>
+                                        <div class="per-price">개당 <b>4,200원</b> <button type="button"
+                                                class="btn-info"><i class="icon-info"></i></button></div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="group-footer">
+                                <p class="footer-msg">배송비 무료 | 상온상품 30만원 이상 주문 가능</p>
+                            </div>
+                        </section>
+
+                        <!-- 저온배송 그룹 -->
+                        <section class="cart-group cold" id="section-cold">
+                            <div class="group-header">
+                                <div class="header-left">
+                                    <span class="group-title">저온배송</span>
+                                </div>
+                                <div class="header-center">
+                                    <div class="progress-wrap">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 80%;"></div>
+                                        </div>
+                                        <p class="limit-txt"><b>27,966원</b> 추가 시 주문가능 (결제 금액 기준)</p>
+                                    </div>
+                                    <i class="icon-shipping"></i>
+                                </div>
+                            </div>
+                            <ul class="cart-item-list">
+                                <!-- 상품 1 (할인 내역 확장 상태) -->
+                                <li class="cart-item">
+                                    <div class="item-main">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/eclub/assets/images/cart/cart-list-04.png"
+                                                        alt="칠갑 우리쌀 떡국떡"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-group">
+                                            <div class="item-header">
+                                                <div class="item-meta">
+                                                    <span>2087686064968</span>
+                                                </div>
+                                                <div class="info-actions">
+                                                    <button type="button" class="btn-wish active"><i
+                                                            class="icon-heart-fill"></i></button>
+                                                    <button type="button" class="btn-delete"><i
+                                                            class="icon-trash"></i></button>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="item-name">칠갑 우리쌀 떡국떡 2kg</a>
+
+                                            <div class="item-price-qty">
+                                                <div class="price-info">
+                                                    <div class="price-top">
+                                                        <span class="badge-discount">19% 할인</span>
+                                                        <del class="origin-price">51,000<span>원</span></del>
+                                                    </div>
+                                                    <div class="price-row">
+                                                        <div class="main-price">36,800<span>원</span></div>
+                                                        <div class="qty-selector qty-box">
+                                                            <button type="button" class="btn-minus"
+                                                                aria-label="수량 빼기"><i class="icon-minus"
+                                                                    aria-hidden="true"></i></button>
+                                                            <input type="text" value="1" min="0" aria-label="수량">
+                                                            <button type="button" class="btn-plus"
+                                                                aria-label="수량 더하기"><i class="icon-plus"
+                                                                    aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="discount-dropdown">
+                                        <div class="dropdown-header">
+                                            <button type="button" class="btn-discount-toggle active" data-toggle="slide"
+                                                data-scope=".discount-dropdown" data-target=".discount-content">상품
+                                                할인예상금액 <i class="icon-chevron-up"></i></button>
+                                            <span class="total-discount">-16,122원</span>
+                                        </div>
+                                        <div class="discount-content active">
+                                            <ul class="discount-list">
+                                                <li><span class="label">릴레이 적용</span> <span class="val">-10,734원</span>
+                                                </li>
+                                                <li><span class="label">저온상품 월간 특가</span> <span
+                                                        class="val">-2,694원</span></li>
+                                                <li><span class="label">설 연휴 특가</span> <span class="val">-2,694원</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="unit-info">
+                                        <div class="spec">박스 당 입수 8개 <span class="sep">|</span> 낱개환산 16개</div>
+                                        <div class="per-price">개당 <b>4,200원</b> <button type="button"
+                                                class="btn-info"><i class="icon-info"></i></button></div>
+                                    </div>
+                                </li>
+                                <!-- 상품 2 (할인 내역 확장 상태) -->
+                                <li class="cart-item">
+                                    <div class="item-main">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/eclub/assets/images/cart/cart-list-05.png"
+                                                        alt="풀무원 무항생제 목초란"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-group">
+                                            <div class="item-header">
+                                                <div class="item-meta">
+                                                    <span>2087686064968</span>
+                                                </div>
+                                                <div class="info-actions">
+                                                    <button type="button" class="btn-wish"><i
+                                                            class="icon-heart"></i></button>
+                                                    <button type="button" class="btn-delete"><i
+                                                            class="icon-trash"></i></button>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="item-name">풀무원 무항생제 목초란 15구</a>
+
+                                            <div class="item-price-qty">
+                                                <div class="price-info">
+                                                    <div class="price-top">
+                                                        <span class="badge-discount">19% 할인</span>
+                                                        <del class="origin-price">51,000<span>원</span></del>
+                                                    </div>
+                                                    <div class="price-row">
+                                                        <div class="main-price">36,800<span>원</span></div>
+                                                        <div class="qty-selector qty-box">
+                                                            <button type="button" class="btn-minus"
+                                                                aria-label="수량 빼기"><i class="icon-minus"
+                                                                    aria-hidden="true"></i></button>
+                                                            <input type="text" value="1" min="0" aria-label="수량">
+                                                            <button type="button" class="btn-plus"
+                                                                aria-label="수량 더하기"><i class="icon-plus"
+                                                                    aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="discount-dropdown">
+                                        <div class="dropdown-header">
+                                            <button type="button" class="btn-discount-toggle active" data-toggle="slide"
+                                                data-scope=".discount-dropdown" data-target=".discount-content">상품
+                                                할인예상금액 <i class="icon-chevron-up"></i></button>
+                                            <span class="total-discount">-16,122원</span>
+                                        </div>
+                                        <div class="discount-content active">
+                                            <ul class="discount-list">
+                                                <li><span class="label">릴레이 적용</span> <span class="val">-10,734원</span>
+                                                </li>
+                                                <li><span class="label">저온상품 월간 특가</span> <span
+                                                        class="val">-2,694원</span></li>
+                                                <li><span class="label">설 연휴 특가</span> <span class="val">-2,694원</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="unit-info">
+                                        <div class="spec">박스 당 입수 8개 <span class="sep">|</span> 낱개환산 16개</div>
+                                        <div class="per-price">개당 <b>4,200원</b> <button type="button"
+                                                class="btn-info"><i class="icon-info"></i></button></div>
+                                    </div>
+                                </li>
+                                <!-- 상품 3 (할인 내역 축소 상태) -->
+                                <li class="cart-item">
+                                    <div class="item-main">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/eclub/assets/images/cart/cart-list-06.png"
+                                                        alt="훈제삼겹 슬라이스"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-group">
+                                            <div class="item-header">
+                                                <div class="item-meta">
+                                                    <span>2087686064968</span>
+                                                </div>
+                                                <div class="info-actions">
+                                                    <button type="button" class="btn-wish active"><i
+                                                            class="icon-heart-fill"></i></button>
+                                                    <button type="button" class="btn-delete"><i
+                                                            class="icon-trash"></i></button>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="item-name">훈제삼겹 슬라이스 400g</a>
+
+                                            <div class="item-price-qty">
+                                                <div class="price-info">
+                                                    <div class="price-top">
+                                                        <span class="badge-discount">19% 할인</span>
+                                                        <del class="origin-price">51,000<span>원</span></del>
+                                                    </div>
+                                                    <div class="price-row">
+                                                        <div class="main-price">36,800<span>원</span></div>
+                                                        <div class="qty-selector qty-box">
+                                                            <button type="button" class="btn-minus"
+                                                                aria-label="수량 빼기"><i class="icon-minus"
+                                                                    aria-hidden="true"></i></button>
+                                                            <input type="text" value="3" min="0" aria-label="수량">
+                                                            <button type="button" class="btn-plus"
+                                                                aria-label="수량 더하기"><i class="icon-plus"
+                                                                    aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="discount-dropdown">
+                                        <div class="dropdown-header">
+                                            <button type="button" class="btn-discount-toggle active" data-toggle="slide"
+                                                data-scope=".discount-dropdown" data-target=".discount-content">상품
+                                                할인예상금액 <i class="icon-chevron-up"></i></button>
+                                            <span class="total-discount">-16,122원</span>
+                                        </div>
+                                        <div class="discount-content active">
+                                            <ul class="discount-list">
+                                                <li><span class="label">릴레이 적용</span> <span class="val">-10,734원</span>
+                                                </li>
+                                                <li><span class="label">저온상품 월간 특가</span> <span
+                                                        class="val">-2,694원</span></li>
+                                                <li><span class="label">설 연휴 특가</span> <span class="val">-2,694원</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="unit-info">
+                                        <div class="spec">박스 당 입수 8개 <span class="sep">|</span> 낱개환산 16개</div>
+                                        <div class="per-price">개당 <b>4,200원</b> <button type="button"
+                                                class="btn-info"><i class="icon-info"></i></button></div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="group-footer">
+                                <p class="footer-msg">배송비 무료 | 저온상품 30만원 이상 주문 가능</p>
+                            </div>
+                        </section>
+
+                        <!-- 직냉배송 그룹 -->
+                        <section class="cart-group cooling" id="section-cooling">
+                            <div class="group-header">
+                                <div class="header-left">
+                                    <span class="group-title">직냉상품</span>
+                                </div>
+                                <div class="header-center">
+                                    <div class="progress-wrap">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 20%;"></div>
+                                        </div>
+                                        <p class="limit-txt"><b>35,000원</b> 추가 시 주문가능 (결제 금액 기준)</p>
+                                    </div>
+                                    <i class="icon-shipping"></i>
+                                </div>
+                            </div>
+                            <ul class="cart-item-list">
+                                <!-- 상품 1 (직냉 예시) -->
+                                <li class="cart-item">
+                                    <div class="item-main">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/eclub/assets/images/cart/cart-list-04.png"
+                                                        alt="직냉 상품 예시"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-group">
+                                            <div class="item-header">
+                                                <div class="item-meta">
+                                                    <span>공급사명</span>
+                                                    <span class="sep"></span>
+                                                    <span>1234567890</span>
+                                                    <span class="sep"></span>
+                                                    <span>DC</span>
+                                                    <span class="sep"></span>
+                                                    <span>최대주문 10박스</span>
+                                                </div>
+                                                <div class="info-actions">
+                                                    <button type="button" class="btn-wish"><i
+                                                            class="icon-heart"></i></button>
+                                                    <button type="button" class="btn-delete"><i
+                                                            class="icon-trash"></i></button>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="item-name">직냉 배송 상품 1</a>
+
+                                            <div class="item-price-qty">
+                                                <div class="price-info">
+                                                    <div class="price-top">
+                                                        <span class="badge-discount">10% 할인</span>
+                                                        <del class="origin-price">50,000<span>원</span></del>
+                                                    </div>
+                                                    <div class="price-row">
+                                                        <div class="main-price">45,000<span>원</span></div>
+                                                        <div class="qty-selector qty-box">
+                                                            <button type="button" class="btn-minus"
+                                                                aria-label="수량 빼기"><i class="icon-minus"
+                                                                    aria-hidden="true"></i></button>
+                                                            <input type="text" value="1" min="0" aria-label="수량">
+                                                            <button type="button" class="btn-plus"
+                                                                aria-label="수량 더하기"><i class="icon-plus"
+                                                                    aria-hidden="true"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="discount-dropdown">
+                                        <div class="dropdown-header">
+                                            <button type="button" class="btn-discount-toggle active" data-toggle="slide"
+                                                data-scope=".discount-dropdown" data-target=".discount-content">상품
+                                                할인예상금액 <i class="icon-chevron-up"></i></button>
+                                            <span class="total-discount">-5,000원</span>
+                                        </div>
+                                        <div class="discount-content active">
+                                            <ul class="discount-list">
+                                                <li><span class="label">이벤트 특가</span> <span class="val">-5,000원</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="unit-info">
+                                        <div class="spec">박스 당 입수 10개 <span class="sep">|</span> 낱개환산 10개</div>
+                                        <div class="per-price">개당 <b>4,500원</b> <button type="button"
+                                                class="btn-info"><i class="icon-info"></i></button></div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="group-footer">
+                                <p class="footer-msg">배송비 무료 <span class="sep"></span> 직냉상품 50만원 이상 주문 가능</p>
+                            </div>
+                        </section>
+
+                        <!-- 장바구니 안내 -->
+                        <div class="cart-guide">
+                            <h3><i class="icon-info"></i> 장바구니 안내</h3>
+                            <ul class="guide-list">
+                                <li>장바구니에 담긴 상품은 최대 90일까지 보관되며 60개까지 담을 수 있습니다.</li>
+                                <li>품절/중지된 상품은 장바구니에 담을 수 없으며, 주문가능상태로 변경 시 반영됩니다.</li>
+                                <li>수량 및 결제금액은 주문시점의 가격과 기획전/제휴 혜택에 따라 변경될 수 있습니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 오른쪽 사이드바 영역 -->
+                    <aside class="cart-sidebar">
+                        <div class="sidebar-box delivery-info">
+                            <h3 class="box-title">기본 배송지 : 이클럽마트</h3>
+                            <div class="address">
+                                <p>[78022] 서울 성동구 성수일로 56 BY상가 101-104호 <br aria-hidden="true">이클럽마트</p>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-box payment-summary">
+                            <h3 class="box-title">결제 금액</h3>
+                            <div class="summary-content">
+                                <!-- 상온상품 요약 -->
+                                <div class="summary-item-group">
+                                    <div class="group-row">
+                                        <span class="label">상온상품 (3개)</span>
+                                        <span class="price">444,090원</span>
+                                    </div>
+                                    <div class="group-row discount">
+                                        <button type="button" class="btn-sum-discount active" data-toggle="slide"
+                                            data-scope=".summary-item-group" data-target=".discount-details">할인 금액 <i
+                                                class="icon-chevron-up"></i></button>
+                                        <span class="price">-128,094원</span>
+                                    </div>
+                                    <ul class="discount-details active">
+                                        <li><span>상품 쿠폰</span> <span>-22,800원</span></li>
+                                        <li><span>상온상품 월간 쿠폰</span> <span>-2,694원</span></li>
+                                        <li><span>설 연휴 프로모션</span> <span>-102,900원</span></li>
+                                    </ul>
+                                    <div class="group-row subtotal">
+                                        <span class="label">상온상품 결제금액</span>
+                                        <span class="price">328,094원</span>
+                                    </div>
+                                </div>
+                                <hr class="divider">
+                                <!-- 저온상품 요약 -->
+                                <div class="summary-item-group">
+                                    <div class="group-row">
+                                        <span class="label">저온상품 (3개)</span>
+                                        <span class="price">444,090원</span>
+                                    </div>
+                                    <div class="group-row discount">
+                                        <button type="button" class="btn-sum-discount active" data-toggle="slide"
+                                            data-scope=".summary-item-group" data-target=".discount-details">할인 금액 <i
+                                                class="icon-chevron-up"></i></button>
+                                        <span class="price">-128,094원</span>
+                                    </div>
+                                    <ul class="discount-details active">
+                                        <li><span>상품 쿠폰</span> <span>-22,800원</span></li>
+                                        <li><span>저온상품 월간 쿠폰</span> <span>-2,694원</span></li>
+                                        <li><span>설 연휴 프로모션</span> <span>-102,900원</span></li>
+                                    </ul>
+                                    <div class="group-row subtotal">
+                                        <span class="label">저온상품 결제금액</span>
+                                        <span class="price">328,094원</span>
+                                    </div>
+                                </div>
+
+                                <hr class="divider">
+                                <div class="total-final">
+                                    <span class="final-label">총 결제 금액 (6개)</span>
+                                    <span class="final-price">558,280원</span>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-order">558,280원 주문하기</button>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <div data-include="/eclub/mobile/components/footer.txt"></div>
+    </div>
+    <script src="/eclub/assets/js/components/quantity-control.js"></script>
+    <script src="/eclub/assets/js/components/ui-toggle.js"></script>
+    <script src="/eclub/assets/js/components/scroll-spy.js"></script>
+    <script src="/eclub/assets/js/components/favorites.js"></script>
+    <script src="/eclub/assets/js/components/cart-selection.js"></script>
+    <script src="/eclub/assets/js/pc/main.js"></script>
+</body>
+
+</html>

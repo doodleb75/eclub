@@ -9,8 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = [];
 
     // 탭 헤더 높이 계산 (sticky offset 용)
-    // 여유분 조금 더해서 스크롤 시 타이틀이 가려지지 않게 함
-    const getHeaderHeight = () => tabWrap.offsetHeight + 20;
+    // 헤더(50px) + 탭(50px) = 약 100px 공간 필요
+    const getHeaderHeight = () => {
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 50;
+        return headerHeight + tabWrap.offsetHeight;
+    };
 
     // 섹션 맵핑
     methodLinks.forEach(link => {
@@ -26,15 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         } else if (id === '#wrap') {
-            // '전체' 탭 처리를 위한 가상의 섹션 (페이지 최상단)
             sections.push({
                 id: '#wrap',
-                el: document.body, // 혹은 document.querySelector('#wrap')
+                el: document.body,
                 link: link,
                 parent: link.closest('.tab-item')
             });
         }
     });
+
+    // 2. 스크롤 감지 (Scroll Spy) 및 상태 변수
+    let isAutoScrolling = false; // 클릭으로 인한 자동 스크롤 중 여부
+    let scrollTimeout = null;
+    let isThrottled = false;     // 스크롤 이벤트 성능 최적화용
 
     // 1. 클릭 이동 (Smooth Scroll)
     methodLinks.forEach(link => {
@@ -42,27 +50,44 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = link.getAttribute('href');
 
+            // 즉시 활성화 처리
+            methodLinks.forEach(l => l.closest('.tab-item').classList.remove('active'));
+            link.closest('.tab-item').classList.add('active');
+
+            // 자동 스크롤 모드 진입 (스파이 동작 일시 정지)
+            isAutoScrolling = true;
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+
+            // 스크롤이 끝났다고 판단할 안전 장치 (1.2초 후 해제)
+            scrollTimeout = setTimeout(() => {
+                isAutoScrolling = false;
+            }, 1200);
+
             if (targetId === '#wrap' || targetId === '#') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 const targetEl = document.querySelector(targetId);
                 if (targetEl) {
-                    const top = targetEl.getBoundingClientRect().top + window.scrollY - getHeaderHeight();
+                    const offset = getHeaderHeight();
+                    const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
                     window.scrollTo({ top: top, behavior: 'smooth' });
                 }
             }
         });
     });
 
-    // 2. 스크롤 감지 (Scroll Spy)
-    let isScrolling = false;
-
+    // 3. 스크롤 이벤트 리스너
     window.addEventListener('scroll', () => {
-        if (isScrolling) return;
-        isScrolling = true;
+        // 자동 스크롤 중이면 로직 무시 (UI 떨림 방지)
+        if (isAutoScrolling) return;
+
+        // 성능 최적화 (Throttling)
+        if (isThrottled) return;
+        isThrottled = true;
 
         requestAnimationFrame(() => {
-            const scrollPos = window.scrollY + getHeaderHeight() + 50; // 감지 오프셋 보정
+            const offset = getHeaderHeight();
+            const scrollPos = window.scrollY + offset + 10;
 
             // 현재 활성화할 섹션 찾기
             let currentSection = null;
@@ -75,13 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // 모든 탭 active 제거 후 현재 섹션 탭 active
             if (currentSection) {
                 methodLinks.forEach(l => l.closest('.tab-item').classList.remove('active'));
                 currentSection.parent.classList.add('active');
             }
 
-            isScrolling = false;
+            isThrottled = false;
         });
     });
 });

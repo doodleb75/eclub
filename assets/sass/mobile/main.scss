@@ -4,22 +4,91 @@
 @import "../base/reset";
 @import "../base/common";
 
+// 공통 컴포넌트
+@import "../components/header";
+@import "components/footer";
+@import "../components/icons";
+
+// 페이지별 스타일
+@import "pages/cart";
+
 // Mobile 전용 스타일 (APK 대응)
+
+html,
+body {
+    width: 100%;
+    overflow-x: clip; // 가로 스크롤 방지 (sticky 지원 개선)
+}
 
 #wrap {
     position: relative;
     width: 100%;
+    min-width: 0 !important; // PC의 1280px min-width 설정 무효화
 }
 
 header {
     position: sticky;
     top: 0;
     z-index: 100;
-    height: rem(56);
+    height: rem(50);
     background: $white;
     border-bottom: 1px solid $gray-200;
-    @include flex-center;
+
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0 rem(8); // 사이드 패딩 (버튼 패딩 포함하여 약 16px 확보)
+        position: relative;
+
+        .page-title {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 rem(48); // 피그마 분석 패딩 적용 (아이콘 영역 확보)
+            font-size: rem(16);
+            font-weight: $fw-bold;
+            color: $black;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .header-left,
+        .header-right {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        button,
+        a {
+            background: none;
+            border: none;
+            padding: rem(10); // 기본 터치 영역 확보
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: $black;
+
+            i {
+                font-size: rem(24);
+                color: $black;
+            }
+        }
+    }
 }
+
+// 모바일 헤더 히스토리 화살표 명칭 대응 (sass 파일에 .icon-history로 기정의됨)
+
 
 main {
     padding-bottom: rem(60); // 하단 탭바 공간

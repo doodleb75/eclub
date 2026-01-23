@@ -5,7 +5,8 @@
     font-family: $font-family;
 
     .footer-container {
-        width: rem(1198); // 콘텐츠 중앙 정렬 너비
+        width: 100%;
+        max-width: $pc-max-width; // 콘텐츠 중앙 정렬 너비
         margin: 0 auto;
     }
 
