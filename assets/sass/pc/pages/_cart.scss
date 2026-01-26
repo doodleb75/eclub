@@ -317,7 +317,8 @@
 
             .icon-shipping {
                 display: block;
-                @include icon-mask('../../icons/shipping.svg', rem(24));
+                width: rem(24);
+                height: rem(24);
                 background-color: $white;
             }
         }

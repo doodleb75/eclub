@@ -65,6 +65,352 @@ body {
   border: 0;
 }
 
+.icon,
+[class^=icon-],
+[class*=" icon-"] {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-search {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/search.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/search.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-clear {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/clear.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/clear.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-archive {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-document {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-excel {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background: url("/assets/icons/document.svg") no-repeat center/contain;
+  vertical-align: middle;
+}
+
+.icon-history {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/history-back.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/history-back.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-clock {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/history.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/history.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-cart {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/cart.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/cart.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-coupon {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-ticket {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-heart {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/heart.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/heart.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-user {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/user.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/user.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-chevron-down {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-chevron-up {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transform: rotate(180deg);
+}
+
+.icon-chevron-right {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-shipping {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/shipping.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/shipping.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-upload {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/file_upload.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/file_upload.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-toggle {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-info {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/info.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/info.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-heart-fill {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/heart-fill.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/heart-fill.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  color: #ff5447;
+}
+
+.icon-trash {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/trash.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/trash.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-star {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/sparkling.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/sparkling.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-plus {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/plus.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/plus.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-minus {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/minus.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/minus.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-content-copy {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/content_copy.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/content_copy.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-slider-arrow {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/slider_arrow_right.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/slider_arrow_right.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  color: #ffffff;
+}
+
+.icon-home {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/home.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/home.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-location,
+.icon-loc {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/location.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/location.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-truck {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/truck.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/truck.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-chevron-left {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transform: rotate(180deg);
+}
+
 .header {
   background-color: #ffffff;
 }
@@ -441,352 +787,6 @@ body {
   text-underline-offset: 0.125rem;
 }
 
-.icon,
-[class^=icon-],
-[class*=" icon-"] {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  background-color: currentColor;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-search {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/search.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/search.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-clear {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/clear.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/clear.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-archive {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-document {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-excel {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background: url("/assets/icons/document.svg") no-repeat center/contain;
-  vertical-align: middle;
-}
-
-.icon-history {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/history-back.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/history-back.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-clock {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/history.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/history.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-cart {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/cart.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/cart.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-coupon {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-ticket {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-heart {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/heart.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/heart.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-user {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/user.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/user.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-chevron-down {
-  display: inline-block;
-  width: 0.875rem;
-  height: 0.875rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-chevron-up {
-  display: inline-block;
-  width: 0.875rem;
-  height: 0.875rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  transform: rotate(180deg);
-}
-
-.icon-chevron-right {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-shipping {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/shipping.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/shipping.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-upload {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/file_upload.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/file_upload.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-toggle {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-info {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/info.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/info.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-heart-fill {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/heart-fill.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/heart-fill.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  color: #ff5447;
-}
-
-.icon-trash {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/trash.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/trash.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-star {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/sparkling.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/sparkling.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-plus {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/plus.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/plus.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-minus {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/minus.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/minus.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-content-copy {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/content_copy.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/content_copy.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-slider-arrow {
-  display: inline-block;
-  width: 1.25rem;
-  height: 1.25rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/slider_arrow_right.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/slider_arrow_right.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  color: #ffffff;
-}
-
-.icon-home {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/home.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/home.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-location {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/location.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/location.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-truck {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/truck.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/truck.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-.icon-chevron-left {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
-  mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  transform: rotate(180deg);
-}
-
 .cart-page #container {
   padding-bottom: 6.25rem;
 }
@@ -1061,14 +1061,8 @@ body {
 }
 .cart-group .group-header .header-center .icon-shipping {
   display: block;
-  display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
-  background-color: currentColor;
-  -webkit-mask: url("../../icons/shipping.svg") no-repeat 50% 50%;
-  mask: url("../../icons/shipping.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
   background-color: #ffffff;
 }
 .cart-group .group-header .header-right {
@@ -1909,14 +1903,8 @@ body {
   border-radius: 0.125rem;
 }
 .checkout-page .payment-method .method-details-box .split-layout .col-left .bank-info-group .btn-copy i {
-  display: inline-block;
   width: 1.25rem;
   height: 1.25rem;
-  background-color: currentColor;
-  -webkit-mask: url("../../icons/content_copy.svg") no-repeat 50% 50%;
-  mask: url("../../icons/content_copy.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
   background-color: #999999;
 }
 .checkout-page .payment-method .method-details-box .split-layout .v-line {
@@ -2022,14 +2010,8 @@ body {
   color: inherit;
 }
 .checkout-page .discount .discount-header .left .box-title .btn-toggle i {
-  display: inline-block;
   width: 0.875rem;
   height: 0.875rem;
-  background-color: currentColor;
-  -webkit-mask: url("../../icons/chevron-down.svg") no-repeat 50% 50%;
-  mask: url("../../icons/chevron-down.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
   background-color: #333333;
   transition: transform 0.2s ease-in-out;
   transform: rotate(0deg);
@@ -2101,14 +2083,8 @@ body {
   cursor: default;
 }
 .checkout-page .discount .discount-body .discount-row .row-header .btn-change i {
-  display: inline-block;
   width: 0.5rem;
   height: 0.75rem;
-  background-color: currentColor;
-  -webkit-mask: url("../../icons/chevron-right.svg") no-repeat 50% 50%;
-  mask: url("../../icons/chevron-right.svg") no-repeat 50% 50%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
   background-color: currentColor;
 }
 .checkout-page .discount .discount-body .discount-row .row-value {

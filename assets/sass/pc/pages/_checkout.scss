@@ -292,7 +292,8 @@
                             border-radius: rem(2);
 
                             i {
-                                @include icon-mask('../../icons/content_copy.svg', rem(20));
+                                width: rem(20);
+                                height: rem(20);
                                 background-color: $gray-600;
                             }
                         }
@@ -428,7 +429,8 @@
                         color: inherit;
 
                         i {
-                            @include icon-mask('../../icons/chevron-down.svg', rem(14));
+                            width: rem(14);
+                            height: rem(14);
                             background-color: $gray-850;
                             transition: transform 0.2s ease-in-out;
                             transform: rotate(0deg);
@@ -511,7 +513,8 @@
                         }
 
                         i {
-                            @include icon-mask('../../icons/chevron-right.svg', rem(8) rem(12));
+                            width: rem(8);
+                            height: rem(12);
                             background-color: currentColor;
                         }
                     }
