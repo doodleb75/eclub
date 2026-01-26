@@ -44,10 +44,9 @@
                 display: inline-block;
                 width: rem(13);
                 height: rem(17);
-                background-color: $gray-600; // #999 (Adjusted for visual balance)
-                // Path relative to output CSS (assets/css/mobile/main.css -> assets/icons)
-                mask: url('../../icons/home.svg') no-repeat center / contain;
-                -webkit-mask: url('../../icons/home.svg') no-repeat center / contain;
+                background-color: $gray-600; // #999 
+                mask: url('../../icons/location.svg') no-repeat center / contain;
+                -webkit-mask: url('../../icons/location.svg') no-repeat center / contain;
                 margin-right: rem(6);
             }
 

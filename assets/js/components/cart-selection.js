@@ -25,24 +25,26 @@ const cartSelection = (() => {
             const groupHeaderCheckbox = group.querySelector('.group-header .checkbox-container input[type="checkbox"]');
             const itemCheckboxes = group.querySelectorAll('.cart-item .item-check input[type="checkbox"]');
 
-            if (!groupHeaderCheckbox) return;
+            // 2. 그룹 선택 이벤트 핸들러 (그룹 체크박스가 있는 경우에만)
+            if (groupHeaderCheckbox) {
+                groupHeaderCheckbox.addEventListener('click', (e) => {
+                    // 부모 전파 방지 (필요 시)
+                    // e.stopPropagation(); 
+                });
 
-            // 2. 그룹 선택 이벤트 핸들러
-            groupHeaderCheckbox.addEventListener('click', (e) => {
-                // 부모 전파 방지 (필요 시)
-                // e.stopPropagation(); 
-            });
-
-            groupHeaderCheckbox.addEventListener('change', (e) => {
-                const isChecked = e.target.checked;
-                toggleGroupItems(isChecked, itemCheckboxes);
-                updateMasterState(masterCheckbox);
-            });
+                groupHeaderCheckbox.addEventListener('change', (e) => {
+                    const isChecked = e.target.checked;
+                    toggleGroupItems(isChecked, itemCheckboxes);
+                    updateMasterState(masterCheckbox);
+                });
+            }
 
             // 3. 개별 아이템 선택 이벤트 핸들러
             itemCheckboxes.forEach(itemCheckbox => {
                 itemCheckbox.addEventListener('change', () => {
-                    updateGroupHeaderState(groupHeaderCheckbox, itemCheckboxes);
+                    if (groupHeaderCheckbox) {
+                        updateGroupHeaderState(groupHeaderCheckbox, itemCheckboxes);
+                    }
                     updateMasterState(masterCheckbox);
                 });
             });

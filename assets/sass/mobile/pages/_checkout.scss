@@ -1,0 +1,1091 @@
+@charset "UTF-8";
+
+// 주문결제 페이지 전용 스타일
+
+.checkout-page {
+    // padding: rem(16);
+
+    .checkout-container {
+        padding: rem(16);
+        padding-top: 0;
+        margin-top: rem(16); // 컨테이너 상단 여백 추가
+    }
+
+    .checkout-content {
+        display: flex;
+        flex-direction: column;
+        gap: rem(12); // 섹션 간 간격 (Figma Box Spacing)
+    }
+
+    .checkout-sidebar {
+        top: rem(16); // 상단에서 16px 여백 확보
+    }
+
+    // 공통 박스 스타일
+    .checkout-box {
+        background-color: $white;
+        border: 1px solid $gray-350; // #dedede
+        padding: rem(16) rem(16); // Figma 기준 내부 패딩
+
+        // margin-bottom 제거: container gap으로 제어
+
+        .box-title {
+            font-size: rem(18);
+            font-weight: $fw-bold;
+            color: $black;
+            line-height: rem(24);
+            letter-spacing: rem(-0.5);
+            margin: 0;
+        }
+
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: rem(20);
+        }
+
+        .cart-tab-wrap {
+            border: 0;
+            margin-bottom: rem(8);
+        }
+
+        .cart-item {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    // .cart-group 스타일 보정 (checkout-box와 유사하게)
+    // 2. 주문 상품 (Cart Group)
+    // 2. 주문 상품 (Cart Group)
+    .cart-group {
+        border: 0;
+        margin-bottom: 0;
+        background-color: transparent;
+        padding: 0;
+
+        .group-header {
+            //display: none; // 체크아웃에서는 그룹 헤더 숨김 (피그마 디자인에 따라)
+        }
+
+        // 체크아웃 내 리스트 스타일 재정의
+        .cart-item-list {
+            // border: 1px solid $gray-350;
+            background-color: $white;
+            border-radius: rem(4) rem(4) 0 0; // 상단만 라운드 (하단은 그룹 풋터 연결 시)
+            // 만약 풋터 없으면 전체 라운드
+
+            &:last-child {
+                border-radius: rem(4);
+            }
+        }
+
+        .cart-item {
+            padding: rem(20) rem(16); // 상하 20px, 좌우 16px 패딩
+            border-bottom: 10px solid $gray-60; // 아이템 간 구분 (피그마 배경색)
+            background-color: $white;
+            display: flex;
+            flex-direction: column;
+            gap: rem(16); // item-main, discount-dropdown, unit-info 간 간격
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            .item-main {
+                display: flex;
+                gap: rem(12); // 이미지/정보 영역 간격
+
+                .item-visual {
+                    display: flex;
+                    gap: rem(8); // 체크박스/썸네일 간격
+                    height: auto !important;
+                    align-items: flex-start;
+                    padding-top: 0 !important;
+
+                    .item-check {
+                        margin-top: rem(4); // 텍스트 1줄 라인에 맞춰 정렬 조정
+                    }
+
+                    .item-thumb {
+                        width: rem(73); // 75px fixed
+                        height: rem(73);
+                        border-radius: rem(8);
+                        border: 1px solid $gray-70; // #eeeeee
+                        background-color: $white; // 기본 흰색
+                        flex-shrink: 0;
+                        overflow: hidden;
+
+                        a,
+                        img {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: rem(4);
+                        }
+                    }
+                }
+
+                .item-info-group {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    gap: rem(4); // 텍스트 행 간 간격
+                    min-width: 0;
+
+                    .item-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        gap: rem(12);
+                        width: 100%;
+
+                        .item-name {
+                            flex: 1;
+                            min-width: 0;
+                            font-size: rem(15);
+                            font-weight: $fw-bold;
+                            color: $gray-900;
+                            line-height: rem(20);
+                            letter-spacing: rem(-0.5);
+                            word-break: keep-all;
+                            @include truncate(2);
+                        }
+
+                        .info-actions {
+                            flex-shrink: 0;
+
+                            .btn-clear {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 0;
+                                background: none;
+                                border: none;
+                                width: rem(24);
+                                height: rem(24);
+                                -webkit-mask: none;
+                                mask: none;
+
+                                .icon-clear {
+                                    width: rem(20); // 사이즈 커스텀
+                                    height: rem(20);
+                                    background-color: $gray-600; // 색상 커스텀
+                                    display: inline-block !important; // _cart.scss의 억제 방지
+                                }
+
+                                &:hover {
+                                    .icon-clear {
+                                        background-color: $gray-850;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .item-price-qty {
+                        margin-top: rem(4);
+
+                        .price-info {
+                            .price-top {
+                                display: flex;
+                                align-items: center;
+                                gap: rem(6);
+                                margin-bottom: rem(2);
+
+                                .badge-discount {
+                                    display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    // width: rem(54);
+                                    height: rem(18);
+                                    background-color: $point-red;
+                                    color: $white;
+                                    font-size: rem(11);
+                                    font-weight: $fw-bold;
+                                    border-radius: rem(4);
+                                    letter-spacing: rem(-0.3);
+                                }
+
+                                .origin-price {
+                                    font-size: rem(14);
+                                    color: $gray-500; // #aaaaaa
+                                    text-decoration: line-through;
+                                    line-height: rem(18);
+                                    letter-spacing: rem(-0.5);
+
+                                    span {
+                                        font-size: inherit;
+                                    }
+                                }
+                            }
+
+                            .price-row {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                gap: rem(16);
+
+                                .main-price {
+                                    font-size: rem(24);
+                                    font-weight: $fw-bold;
+                                    color: $point-red;
+                                    line-height: 1;
+                                    letter-spacing: rem(-0.5);
+
+                                    span {
+                                        font-size: rem(16);
+                                    }
+                                }
+
+                                .qty-selector {
+                                    width: rem(87);
+                                    height: rem(32);
+                                    border: 1px solid $gray-175; // #e3e3e3
+                                    border-radius: rem(4);
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    padding: 0 rem(4);
+
+                                    button {
+                                        width: rem(24);
+                                        height: rem(24);
+                                        padding: 0;
+                                        background: none;
+                                        border: none;
+                                        outline: none; // 포커스 제거
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+
+                                        i {
+                                            background-color: $gray-850;
+                                            width: rem(12);
+                                            height: rem(12);
+                                        }
+
+                                        &.btn-minus i {
+                                            @extend .icon-minus;
+                                            width: rem(12);
+                                            height: rem(12);
+                                        }
+
+                                        &.btn-plus i {
+                                            @extend .icon-plus;
+                                            width: rem(12);
+                                            height: rem(12);
+                                        }
+
+                                    }
+
+                                    input {
+                                        width: rem(20);
+                                        // border: none;
+                                        // text-align: center;
+                                        font-size: rem(14);
+
+                                        // font-weight: $fw-medium;
+                                        // color: $gray-900;
+                                        // padding: 0;
+                                        // background: none; // 배경 속성 제거
+                                        // outline: none; // 포커스 속성 제거
+                                        &:focus-visible {
+                                            outline-color: rgb(16, 16, 16);
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .discount-dropdown {
+                .dropdown-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .btn-discount-toggle {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(2);
+                        font-size: rem(14);
+                        font-weight: $fw-bold;
+                        color: $gray-900;
+                        padding: 0;
+                        background: none;
+                        border: none;
+
+                        i {
+                            @include icon-mask('../../icons/chevron-down.svg', rem(12));
+                            background-color: $gray-900;
+                            transition: transform 0.3s;
+                        }
+
+                        &.active i {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                    .total-discount {
+                        font-size: rem(15);
+                        font-weight: $fw-bold;
+                        color: $gray-850;
+                        letter-spacing: rem(-0.5);
+                    }
+                }
+
+                .discount-content {
+                    display: none;
+                    margin-top: rem(10);
+                    padding-top: rem(10);
+
+                    &.active {
+                        display: block;
+                    }
+
+                    .discount-list {
+                        display: flex;
+                        flex-direction: column;
+                        padding-top: 0 !important;
+
+                        li {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .label {
+                                font-size: rem(13);
+                                color: $gray-500;
+                                letter-spacing: rem(-0.5);
+                            }
+
+                            .val {
+                                font-size: rem(14);
+                                color: $gray-500;
+                                letter-spacing: rem(-0.5);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .unit-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .spec {
+                    font-size: rem(14);
+                    font-weight: $fw-bold;
+                    color: $gray-900;
+                    letter-spacing: rem(-0.5);
+                    display: flex;
+                    align-items: center;
+                    gap: rem(4);
+
+                    .sep {
+                        display: inline-block;
+                        width: rem(1);
+                        height: rem(10);
+                        background-color: $gray-300;
+                        margin: 0 rem(8);
+                        vertical-align: middle;
+                    }
+                }
+
+                .per-price {
+                    font-size: rem(14);
+                    font-weight: $fw-bold;
+                    color: $point-red;
+                    letter-spacing: rem(-0.5);
+                    display: flex;
+                    align-items: center;
+                    gap: rem(3);
+
+                    b {
+                        font-weight: inherit;
+                    }
+
+                    .btn-info {
+                        padding: 0;
+                        background: none;
+                        border: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: rem(24);
+                        height: rem(24);
+
+                        i {
+                            @extend .icon-info;
+                            width: rem(16);
+                            height: rem(16);
+                            background-color: $gray-600; // #999999로 변경하여 가독성 확보
+                        }
+
+                        &:hover i {
+                            background-color: $gray-800;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .group-footer {
+            display: none; // 배송비 안내 등은 체크아웃에서 숨김 (필요시 노출)
+        }
+    }
+
+    // 1. 배송지 정보
+    .delivery-info {
+        padding: rem(18) rem(16); // Figma: py-[18px] px-[16px]
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: rem(14); // Figma: gap-[14px]
+
+            .box-title {
+                font-size: rem(18); // Figma: text-[18px]
+                font-weight: $fw-bold;
+                color: $black;
+                margin-bottom: 0;
+                line-height: rem(24);
+            }
+
+            .box-desc {
+                font-size: rem(13); // Figma: text-[13px]
+                color: $black; // Default color
+                font-weight: $fw-medium;
+                line-height: rem(18);
+                margin: 0;
+
+                &.gray {
+                    color: $gray-600; // #999 from Figma
+                }
+            }
+        }
+    }
+
+    // 2. 전체 주문상품 Summary
+    .order-summary {
+        padding: rem(18) rem(16); // Figma: px-[16px] py-[18px]
+        display: flex;
+        flex-direction: column;
+        gap: rem(18); // Figma: gap-[18px] between title and thumbnails
+
+        .box-title {
+            font-size: rem(18); // Figma: text-[18px]
+            font-weight: $fw-bold;
+            color: $black;
+            margin: 0;
+            line-height: rem(24);
+            display: flex;
+            align-items: center;
+            gap: rem(4); // "전체 주문상품" + "6건" gap
+        }
+
+        .product-thumbnails {
+            display: flex;
+            flex-wrap: nowrap; // 가로 한줄 유지
+            overflow-x: auto; // 가로 스크롤 허용
+            gap: rem(9); // Figma: gap-[9px]
+            -webkit-overflow-scrolling: touch; // 모바일 부드러운 스크롤
+            scrollbar-width: none; // 스크롤바 숨김 (Firefox)
+            -ms-overflow-style: none; // 스크롤바 숨김 (IE/Edge)
+
+            &::-webkit-scrollbar {
+                display: none; // 스크롤바 숨김 (Chrome/Safari)
+            }
+
+            .thumb {
+                flex-shrink: 0; // 썸네일 압축 방지
+                width: rem(80); // 썸네일 크기 확대
+                height: rem(80);
+                border-radius: rem(4); // Figma: rounded-[3.429px] ~ 4px
+                background-color: $gray-55;
+                overflow: hidden;
+                position: relative;
+                border: 1px solid $gray-100; // 썸네일 테두리
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    .cart-section {
+        border: 0 !important;
+        padding: 0 !important;
+        margin-left: rem(-16);
+        margin-right: rem(-16);
+    }
+
+    // 3. 결제수단
+    .payment-method {
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: rem(12);
+            cursor: pointer;
+            height: auto;
+            min-height: 0 !important;
+            margin-bottom: rem(16);
+
+            .label-text {
+                font-size: rem(14);
+                color: $gray-600;
+                font-weight: $fw-medium;
+                line-height: 1;
+            }
+        }
+
+        .box-header {}
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: rem(8);
+            margin-bottom: rem(20);
+
+            .btn-method {
+                width: 100%;
+                height: rem(52);
+                border: 1px solid $gray-300;
+                background-color: $white;
+                color: $gray-700;
+                font-size: rem(13); // 14 -> 15
+                font-weight: $fw-bold;
+                cursor: pointer;
+                transition: all 0.2s;
+                letter-spacing: rem(-0.5);
+
+                &:hover {
+                    border-color: $gray-600;
+                }
+
+                &.active {
+                    background-color: $gray-850; // Figma Dark Bg
+                    color: $white;
+                    border-color: $gray-850;
+                    font-weight: $fw-bold;
+                }
+            }
+        }
+
+        .method-details-box {
+            display: none; // 기본 숨김
+            background-color: $gray-95; // #f8f8f8
+            padding: rem(24) rem(20); // 결제 상세 정보 박스 패딩
+            margin-bottom: rem(24);
+
+            &.active {
+                display: block; // 활성화 시 노출
+            }
+
+            .split-layout {
+                display: flex;
+                flex-direction: column;
+                gap: rem(24);
+
+                // Left Column: Bank Info
+                .col-left {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    .bank-info-group {
+                        display: flex;
+                        flex-direction: column;
+                        gap: rem(16);
+                        width: 100%;
+
+                        .bank-row {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .label {
+                                font-size: rem(13);
+                                font-weight: $fw-bold;
+                                color: $gray-850; // #333333
+                                letter-spacing: rem(-0.5);
+                            }
+
+                            .value {
+                                font-size: rem(13);
+                                color: $gray-850;
+                                font-weight: $fw-bold;
+                                letter-spacing: rem(-0.5);
+                            }
+                        }
+
+                        .btn-copy {
+                            align-self: center;
+                            width: rem(151);
+                            height: rem(28);
+                            border: 1.5px solid $gray-400; // #cccccc
+                            background-color: $white;
+                            font-size: rem(12);
+                            color: $gray-600; // #999999
+                            font-weight: $fw-bold;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: rem(6);
+                            border-radius: rem(2);
+
+                            i {
+                                @extend .icon-content-copy;
+                                width: rem(20);
+                                height: rem(20);
+                                background-color: $gray-600;
+                            }
+
+                        }
+                    }
+                }
+
+                // Vertical Divider - Mobile에서는 숨김 혹은 가로선으로 변경
+                .v-line {
+                    display: none;
+                }
+
+                // Right Column: Buyer Info (모바일에서 아래로 배치)
+                .col-right {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: rem(8);
+
+
+                    .info-row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .label {
+                            font-size: rem(13);
+                            color: $gray-600; // #999999
+                            font-weight: $fw-bold;
+                            letter-spacing: rem(-0.5);
+                        }
+
+                        .value {
+                            font-size: rem(13);
+                            color: $gray-850; // #333333
+                            font-weight: $fw-bold;
+                            letter-spacing: rem(-0.5);
+                            text-align: right;
+                        }
+
+                        &.head {
+                            .label {
+                                color: $gray-850;
+                            }
+
+                            .value {
+                                color: $gray-850;
+                            }
+                        }
+                    }
+
+                    .info-body {
+                        display: flex;
+                        flex-direction: column;
+                        gap: rem(8);
+                        padding-left: rem(12);
+                        border-left: 3px solid $gray-300; // Figma Vertical Line inside content
+
+                        .info-row {
+                            .label {
+                                font-weight: $fw-medium;
+                                color: $gray-600;
+                            }
+
+                            .value {
+                                font-weight: $fw-medium;
+                                color: $gray-600;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        .notice-list {
+            margin-top: rem(20);
+            list-style: none;
+
+            li {
+                position: relative;
+                padding-left: rem(12);
+                font-size: rem(13);
+                color: $gray-500;
+                line-height: 1.6;
+                margin-bottom: rem(4);
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: rem(8);
+                    width: rem(3);
+                    height: rem(3);
+                    background-color: $gray-400;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    // 4. 적용된 할인
+    .discount {
+        padding: rem(20);
+        background-color: $gray-95; // #f8f8f8
+        border: none !important;
+        margin-left: rem(-16);
+        margin-right: rem(-16);
+
+        .discount-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .left {
+                display: flex;
+                align-items: center;
+                gap: rem(8);
+
+                .box-title {
+                    margin: 0;
+
+                    .btn-toggle {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(8); // gap synced with PC
+                        font-size: rem(18);
+                        font-weight: $fw-bold;
+                        color: $gray-900;
+                        border: none;
+                        background: none;
+                        cursor: pointer;
+                        padding: 0;
+
+                        i {
+                            @extend .icon-chevron-down;
+                            width: rem(14);
+                            height: rem(14);
+                            background-color: $gray-850;
+                            transition: transform 0.2s ease-in-out;
+                            transform: rotate(0deg); // Force initial rotation
+                        }
+
+
+                        &.active i {
+                            transform: rotate(180deg); // Flipped rotation
+                        }
+                    }
+                }
+
+                .badge {
+                    background-color: $point-red;
+                    color: $white;
+                    font-size: rem(12);
+                    font-weight: $fw-bold;
+                    padding: rem(3) rem(8);
+                    border-radius: rem(2);
+                    height: rem(20);
+                    display: flex;
+                    align-items: center;
+                    letter-spacing: rem(-0.5);
+                    margin-top: rem(2);
+                }
+            }
+
+            .right {
+                .discount-total {
+                    font-size: rem(18);
+                    font-weight: $fw-bold;
+                    color: $gray-900;
+                    letter-spacing: rem(-0.5);
+                }
+            }
+        }
+
+        .discount-body {
+            display: none;
+            flex-direction: column;
+            gap: rem(24);
+            margin-top: rem(24);
+
+            .discount-row {
+                display: flex;
+                flex-direction: column;
+                gap: rem(8);
+
+                .row-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .label {
+                        font-size: rem(14);
+                        font-weight: $fw-bold;
+                        color: $gray-850;
+                        letter-spacing: rem(-0.5);
+                    }
+
+                    .btn-change {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(8); // gap synced with PC
+                        padding: rem(5) rem(10) rem(5) rem(16); // padding synced with PC
+                        background-color: $white;
+                        border: 1px solid $gray-300;
+                        border-radius: rem(4);
+                        font-size: rem(14); // synced with PC
+                        font-weight: $fw-bold;
+                        color: $gray-850;
+                        cursor: pointer;
+                        letter-spacing: rem(-0.5);
+
+                        i {
+                            @include icon-mask('../../icons/chevron-right.svg', rem(8) rem(12)); // Size synced with PC
+                            background-color: $gray-850;
+                        }
+
+                        &.disabled {
+                            color: $gray-300;
+                            border-color: $gray-200;
+                            cursor: default;
+
+                            i {
+                                background-color: $gray-300;
+                            }
+                        }
+                    }
+                }
+
+                .row-value {
+                    font-size: rem(13); // Visual check
+                    font-weight: $fw-medium;
+                    text-align: right;
+                    color: $gray-850;
+                    letter-spacing: rem(-0.5);
+                }
+
+                // Detailed List Style
+                .detail-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: rem(6);
+                    padding-left: rem(12);
+                    border-left: 2px solid $gray-200;
+                    margin-top: rem(4);
+
+                    li {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: rem(13);
+                        color: $gray-600;
+                        letter-spacing: rem(-0.5);
+
+                        .name {
+                            flex: 1;
+                            @include ellipsis;
+                            margin-right: rem(16);
+                            font-weight: $fw-medium;
+                        }
+
+                        .amount {
+                            font-weight: $fw-medium;
+                            white-space: nowrap;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+
+        .discount-header.active~.discount-body {
+            display: flex;
+        }
+
+        .auto-apply-msg {
+            margin-top: rem(24);
+            font-size: rem(14);
+            color: $gray-500; // #aaaaaa
+            font-weight: $fw-medium;
+            line-height: rem(20);
+        }
+    }
+}
+
+
+// 5. 포인트
+.points {
+    border: 0 !important;
+    margin-left: rem(-16);
+    margin-right: rem(-16);
+    padding: rem(20) rem(16); // 모바일 기준 패딩 조정
+
+    .box-header {
+        display: flex;
+        align-items: center;
+        gap: rem(24);
+        margin-bottom: rem(14); // 피그마 gap-14 반영
+        justify-content: flex-start;
+
+        .box-title {
+            font-size: rem(18);
+            font-weight: $fw-bold;
+            color: $gray-850;
+            margin: 0;
+            line-height: rem(24);
+        }
+
+        .current-points {
+            font-size: rem(18);
+            font-weight: $fw-bold;
+            color: $gray-850;
+            line-height: rem(24);
+            letter-spacing: rem(-0.5);
+        }
+    }
+
+    .box-body {
+        display: flex;
+        flex-direction: column; // 모바일 세로 배치
+        align-items: flex-end; // 포인트 정보 우측 정렬
+        gap: rem(10); // 하단 정보와의 간격
+
+        .input-area {
+            display: flex;
+            align-items: center;
+            gap: rem(13); // 피그마 gap-13 반영
+            width: 100%;
+
+            input {
+                flex: 1;
+                height: rem(44);
+                border: 1px solid $gray-300;
+                padding: 0 rem(16);
+                font-size: rem(14);
+                border-radius: rem(4);
+                color: $black;
+                font-weight: $fw-medium;
+
+                &::placeholder {
+                    color: $gray-500;
+                    letter-spacing: rem(-0.28);
+                }
+            }
+
+            .btn-use-all {
+                width: rem(66);
+                height: rem(44);
+                background-color: $gray-60;
+                border: none;
+                font-size: rem(14);
+                font-weight: $fw-bold;
+                color: $gray-850;
+                border-radius: rem(4);
+                cursor: pointer;
+                letter-spacing: rem(-0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .accumulate-info {
+            display: flex;
+            flex-direction: column;
+            gap: rem(4); // 정보 행 간 간격
+            text-align: right;
+
+            .info-row {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: rem(20);
+
+                .label {
+                    font-size: rem(13);
+                    color: $gray-600;
+                    line-height: rem(16);
+                }
+
+                .value {
+                    font-size: rem(14);
+                    color: $gray-850;
+                    font-weight: $fw-bold;
+                    line-height: rem(16);
+
+                    b {
+                        font-weight: inherit; // 상위 .value의 bold 상속
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 6. 최종 결제 금액 (Payment Summary) -- Moved inside .checkout-page
+.payment-summary {
+    border: 0 !important;
+    margin-left: rem(-16);
+    margin-right: rem(-16);
+    padding: 0;
+    background-color: $white;
+
+    .summary-footer-info {
+        // height: rem(41);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: rem(14);
+        font-weight: $fw-bold;
+        color: $gray-850;
+        background-color: $white;
+        border: 1px solid $gray-200;
+        border-bottom: 0;
+        padding: rem(16)
+    }
+
+    .btn-order {
+        width: 100%;
+        height: rem(63);
+        background-color: $point-red; // 빨간색 배경
+        color: $white;
+        font-size: rem(20);
+        font-weight: $fw-bold;
+        border: none;
+        border-radius: 0; // 풀와이드 직각 버튼
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            background-color: darken($point-red, 5%);
+        }
+    }
+}
