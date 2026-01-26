@@ -441,7 +441,9 @@ body {
   text-underline-offset: 0.125rem;
 }
 
-.icon {
+.icon,
+[class^=icon-],
+[class*=" icon-"] {
   display: inline-block;
   vertical-align: middle;
   line-height: 1;
@@ -459,8 +461,19 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/search.svg") no-repeat 50% 50%;
-  mask: url("../../icons/search.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/search.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/search.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-clear {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/clear.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/clear.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -470,8 +483,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/product-tag.svg") no-repeat 50% 50%;
-  mask: url("../../icons/product-tag.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -481,8 +494,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/product-tag.svg") no-repeat 50% 50%;
-  mask: url("../../icons/product-tag.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/product-tag.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -491,7 +504,7 @@ body {
   display: inline-block;
   width: 1rem;
   height: 1rem;
-  background: url("../../icons/document.svg") no-repeat center/contain;
+  background: url("/assets/icons/document.svg") no-repeat center/contain;
   vertical-align: middle;
 }
 
@@ -500,8 +513,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/history-back.svg") no-repeat 50% 50%;
-  mask: url("../../icons/history-back.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/history-back.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/history-back.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -511,8 +524,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/history.svg") no-repeat 50% 50%;
-  mask: url("../../icons/history.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/history.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/history.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -522,8 +535,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/cart.svg") no-repeat 50% 50%;
-  mask: url("../../icons/cart.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/cart.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/cart.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -533,8 +546,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/coupon.svg") no-repeat 50% 50%;
-  mask: url("../../icons/coupon.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -544,8 +557,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/coupon.svg") no-repeat 50% 50%;
-  mask: url("../../icons/coupon.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/coupon.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -555,8 +568,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/heart.svg") no-repeat 50% 50%;
-  mask: url("../../icons/heart.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/heart.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/heart.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -566,8 +579,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/user.svg") no-repeat 50% 50%;
-  mask: url("../../icons/user.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/user.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/user.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -577,8 +590,8 @@ body {
   width: 0.875rem;
   height: 0.875rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/chevron-down.svg") no-repeat 50% 50%;
-  mask: url("../../icons/chevron-down.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -588,8 +601,8 @@ body {
   width: 0.875rem;
   height: 0.875rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/chevron-down.svg") no-repeat 50% 50%;
-  mask: url("../../icons/chevron-down.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
   transform: rotate(180deg);
@@ -600,8 +613,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/chevron-right.svg") no-repeat 50% 50%;
-  mask: url("../../icons/chevron-right.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -611,8 +624,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/shipping.svg") no-repeat 50% 50%;
-  mask: url("../../icons/shipping.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/shipping.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/shipping.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -622,8 +635,8 @@ body {
   width: 1rem;
   height: 1rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/file_upload.svg") no-repeat 50% 50%;
-  mask: url("../../icons/file_upload.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/file_upload.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/file_upload.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -633,8 +646,8 @@ body {
   width: 1rem;
   height: 1rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/chevron-down.svg") no-repeat 50% 50%;
-  mask: url("../../icons/chevron-down.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-down.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -644,8 +657,8 @@ body {
   width: 1rem;
   height: 1rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/info.svg") no-repeat 50% 50%;
-  mask: url("../../icons/info.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/info.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/info.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -655,8 +668,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/heart-fill.svg") no-repeat 50% 50%;
-  mask: url("../../icons/heart-fill.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/heart-fill.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/heart-fill.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
   color: #ff5447;
@@ -667,8 +680,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/trash.svg") no-repeat 50% 50%;
-  mask: url("../../icons/trash.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/trash.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/trash.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -678,8 +691,8 @@ body {
   width: 1rem;
   height: 1rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/sparkling.svg") no-repeat 50% 50%;
-  mask: url("../../icons/sparkling.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/sparkling.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/sparkling.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -689,8 +702,8 @@ body {
   width: 1rem;
   height: 1rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/plus.svg") no-repeat 50% 50%;
-  mask: url("../../icons/plus.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/plus.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/plus.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -700,8 +713,8 @@ body {
   width: 1rem;
   height: 1rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/minus.svg") no-repeat 50% 50%;
-  mask: url("../../icons/minus.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/minus.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/minus.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -711,8 +724,8 @@ body {
   width: 1rem;
   height: 1rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/content_copy.svg") no-repeat 50% 50%;
-  mask: url("../../icons/content_copy.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/content_copy.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/content_copy.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -722,8 +735,8 @@ body {
   width: 1.25rem;
   height: 1.25rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/slider_arrow_right.svg") no-repeat 50% 50%;
-  mask: url("../../icons/slider_arrow_right.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/slider_arrow_right.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/slider_arrow_right.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
   color: #ffffff;
@@ -734,8 +747,30 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/home.svg") no-repeat 50% 50%;
-  mask: url("../../icons/home.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/home.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/home.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-location {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/location.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/location.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-truck {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/truck.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/truck.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -745,8 +780,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../../icons/chevron-right.svg") no-repeat 50% 50%;
-  mask: url("../../icons/chevron-right.svg") no-repeat 50% 50%;
+  -webkit-mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/chevron-right.svg") no-repeat 50% 50%;
   -webkit-mask-size: contain;
   mask-size: contain;
   transform: rotate(180deg);

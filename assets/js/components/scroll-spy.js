@@ -9,11 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = [];
 
     // 탭 헤더 높이 계산 (sticky offset 용)
-    // 헤더(50px) + 탭(50px) = 약 100px 공간 필요
+    // Mobile: top: 50px (Header Height) + Tab Height
+    // PC: top: 0px + Tab Height
     const getHeaderHeight = () => {
-        const header = document.querySelector('header');
-        const headerHeight = header ? header.offsetHeight : 50;
-        return headerHeight + tabWrap.offsetHeight;
+        const computedStyle = window.getComputedStyle(tabWrap);
+        const topVal = parseFloat(computedStyle.top);
+        const stickyTop = isNaN(topVal) ? 0 : topVal; // 'auto' or invalid -> 0
+
+        return stickyTop + tabWrap.offsetHeight;
     };
 
     // 섹션 맵핑

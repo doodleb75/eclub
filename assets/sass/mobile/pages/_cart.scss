@@ -44,11 +44,12 @@ main {
 
             &::after {
                 content: '';
-                @include icon-mask('../../icons/chevron-right.svg', rem(24));
+                @extend .icon-chevron-right;
                 -webkit-mask-size: rem(8) rem(14);
                 mask-size: rem(8) rem(14);
                 background-color: $gray-600;
             }
+
 
             &:last-child::after {
                 display: none;
@@ -149,22 +150,22 @@ main {
         justify-content: space-between;
 
         .checkbox-container {
-            .checkmark {
-                width: rem(22);
-                height: rem(22);
-                background-color: $gray-850; // #333333
-                border: none;
-                border-radius: rem(2);
+            // .checkmark {
+            //     width: rem(22);
+            //     height: rem(22);
+            //     background-color: $gray-850; // #333333
+            //     border: none;
+            //     border-radius: rem(2);
 
-                &::after {
-                    left: rem(7);
-                    top: rem(3);
-                    width: rem(7);
-                    height: rem(12);
-                    border: solid $white;
-                    border-width: 0 rem(2) rem(2) 0;
-                }
-            }
+            //     &::after {
+            //         left: rem(7);
+            //         top: rem(3);
+            //         width: rem(7);
+            //         height: rem(12);
+            //         border: solid $white;
+            //         border-width: 0 rem(2) rem(2) 0;
+            //     }
+            // }
 
             .text {
                 color: $gray-850;
@@ -308,10 +309,13 @@ main {
 
             .icon-shipping {
                 display: block;
-                @include icon-mask('../../icons/shipping.svg', rem(24));
+                @extend .icon-shipping;
+                width: rem(24);
+                height: rem(24);
                 background-color: $white;
                 flex-shrink: 0;
             }
+
         }
     }
 
@@ -330,7 +334,7 @@ main {
 
             .sep {
                 display: inline-block;
-                width: 1px;
+                width: rem(1);
                 height: rem(12);
                 background-color: $gray-300;
                 margin: 0 rem(20);
@@ -401,8 +405,9 @@ main {
         .item-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
+            gap: rem(12);
 
             .item-meta {
                 display: flex;
@@ -438,22 +443,36 @@ main {
 
                     &.btn-wish {
                         color: $gray-450;
-                        @include icon-mask('../../icons/heart.svg', rem(24));
+                        @extend .icon-heart;
+                        width: rem(24);
+                        height: rem(24);
                         background-color: $gray-450;
 
                         &.active {
-                            @include icon-mask('../../icons/heart-fill.svg', rem(24));
+                            @extend .icon-heart-fill;
+                            width: rem(24);
+                            height: rem(24);
                             background-color: $point-red;
                         }
                     }
 
                     &.btn-delete {
-                        @include icon-mask('../../icons/trash.svg', rem(24));
+                        @extend .icon-trash;
+                        width: rem(24);
+                        height: rem(24);
                         background-color: $gray-850;
                     }
 
+                    &.btn-clear {
+                        @extend .icon-clear;
+                        width: rem(24);
+                        height: rem(24);
+                        background-color: $gray-600; // #999999
+                    }
+
+
                     &:hover {
-                        opacity: 0.8;
+                        // opacity: 0.8;
                     }
 
                     i {
@@ -465,6 +484,7 @@ main {
 
         .item-name {
             display: block;
+            flex: 1;
             font-size: $fs-16;
             font-weight: $fw-bold;
             color: $gray-900;
@@ -522,6 +542,7 @@ main {
             .price-row {
                 display: flex;
                 justify-content: space-between;
+                flex-wrap: wrap;
                 align-items: center;
                 width: 100%;
             }
@@ -529,7 +550,7 @@ main {
             .main-price {
                 display: flex;
                 align-items: baseline;
-                font-size: rem(26);
+                font-size: rem(24);
                 font-weight: $fw-medium;
                 color: $point-red;
                 line-height: 1;
@@ -677,8 +698,11 @@ main {
 
             .sep {
                 display: inline-block;
-                color: $gray-300;
+                width: rem(1);
+                height: rem(10);
+                background-color: $gray-300;
                 margin: 0 rem(8);
+                vertical-align: middle;
             }
         }
 
@@ -701,19 +725,24 @@ main {
                 cursor: pointer;
                 display: flex;
                 align-items: center;
-                color: $gray-450;
-
-                @include icon-mask('../../icons/help-outline.svg', rem(20));
-                background-color: $gray-450;
+                justify-content: center;
+                width: rem(24);
+                height: rem(24);
 
                 i {
-                    display: none;
+                    @extend .icon-info;
+                    width: rem(16);
+                    height: rem(16);
+                    background-color: $gray-600;
                 }
 
                 &:hover {
-                    background-color: $gray-700;
+                    i {
+                        background-color: $gray-800;
+                    }
                 }
             }
+
         }
     }
 }
