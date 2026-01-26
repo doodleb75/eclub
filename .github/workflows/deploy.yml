@@ -39,6 +39,10 @@ jobs:
           find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.txt" \) -not -path "*/node_modules/*" -not -path "*/.git/*" -exec sed -i 's|"/mobile/|"/eclub/mobile/|g' {} +
           find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.txt" \) -not -path "*/node_modules/*" -not -path "*/.git/*" -exec sed -i "s|\`/mobile/|\`/eclub/mobile/|g" {} +
 
+          find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.txt" \) -not -path "*/node_modules/*" -not -path "*/.git/*" -exec sed -i "s|'/common/|'/eclub/common/|g" {} +
+          find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.txt" \) -not -path "*/node_modules/*" -not -path "*/.git/*" -exec sed -i 's|"/common/|"/eclub/common/|g' {} +
+          find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.txt" \) -not -path "*/node_modules/*" -not -path "*/.git/*" -exec sed -i "s|\`/common/|\`/eclub/common/|g" {} +
+
           # 루트 경로 (/) 처리 - href="/" 등을 href="/eclub/" 로 변경
           find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.txt" \) -not -path "*/node_modules/*" -not -path "*/.git/*" -exec sed -i 's|href="/"|href="/eclub/"|g' {} +
           find . -type f \( -name "*.html" -o -name "*.js" -o -name "*.txt" \) -not -path "*/node_modules/*" -not -path "*/.git/*" -exec sed -i "s|href='/'|href='/eclub/'|g" {} +
