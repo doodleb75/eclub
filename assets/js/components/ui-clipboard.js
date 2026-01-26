@@ -7,7 +7,7 @@ const uiClipboard = (() => {
             btn.addEventListener('click', () => {
                 // 부모 컨테이너 내의 .value 요소 찾기
                 const container = btn.closest('.bank-info-group') || btn.parentElement;
-                const valueSpan = container.querySelector('.value');
+                const valueSpan = container.querySelector('.js-copy-value') || container.querySelector('.value');
 
                 if (!valueSpan) return;
 

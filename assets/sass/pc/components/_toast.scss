@@ -1,0 +1,59 @@
+@use "sass:math";
+@import "../../abstract/functions";
+@import "../../abstract/variables";
+
+/**
+ * 전역 토스트 알림 (Toast)
+ * - 특정 동작 성공/안내 시 트리거 요소 근처에 노출됩니다.
+ */
+
+.toast-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+.toast-item {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(8);
+    padding: rem(10) rem(12);
+    background: #00B87A; // 디자인 가이드 컬러 (성공)
+    border-radius: rem(4);
+    box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.15);
+    color: $white;
+    font-size: rem(14);
+    font-weight: $fw-semibold;
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(rem(10));
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: auto;
+
+    &.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    // 아이콘 세팅
+    .toast-icon {
+        flex-shrink: 0;
+        width: rem(20);
+        height: rem(20);
+
+        // 아이콘이 정의되지 않았을 경우를 대비한 기본 체크 모양 (SVG)
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM10 17l-5-5 1.41-1.41L10 14.17l7.59-7.59L18.5 8 10 17z'/%3E%3C/svg%3E") no-repeat center / contain;
+    }
+
+    .toast-message {
+        white-space: nowrap;
+    }
+
+    // 타입별 확장 (필요 시)
+    &.type-error {
+        background: $primary-red;
+    }
+}

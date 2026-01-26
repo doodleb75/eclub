@@ -2325,6 +2325,208 @@ main {
   background-color: rgb(255, 60.3016304348, 45.5);
 }
 
+.order-complete-container {
+  padding: 3.125rem 0 3.75rem;
+  text-align: center;
+  background-color: #ffffff;
+}
+.order-complete-container .complete-header {
+  margin-bottom: 2.5rem;
+}
+.order-complete-container .complete-header .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333333;
+  letter-spacing: -0.03125rem;
+  margin-bottom: 1.25rem;
+}
+.order-complete-container .complete-header .order-number {
+  font-size: 0.9375rem;
+  color: #666666;
+  letter-spacing: -0.01875rem;
+}
+.order-complete-container .complete-header .order-number .number {
+  font-weight: 700;
+  color: #999999;
+  text-decoration: underline;
+  margin-left: 0.25rem;
+}
+.order-complete-container .summary-card {
+  background-color: #f7f7f7;
+  padding: 2.5rem 3.125rem;
+  margin: 0 auto 0.625rem;
+  text-align: left;
+  width: calc(100% - 2.5rem);
+  max-width: 22.5rem;
+}
+.order-complete-container .summary-card .summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.order-complete-container .summary-card .summary-header .label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #333333;
+}
+.order-complete-container .summary-card .summary-header .price {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #333333;
+}
+.order-complete-container .summary-card .summary-body {
+  border-left: 3px solid #dedede;
+  margin-left: 0.625rem;
+  padding: 0.75rem 0 0rem 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.order-complete-container .summary-card .summary-body .detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.order-complete-container .summary-card .summary-body .detail-item:last-child {
+  margin-bottom: 0;
+}
+.order-complete-container .summary-card .summary-body .detail-item .label {
+  font-size: 0.875rem;
+  color: #999999;
+}
+.order-complete-container .summary-card .summary-body .detail-item .price {
+  font-size: 0.875rem;
+  color: #999999;
+}
+.order-complete-container .summary-card .summary-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.25rem;
+}
+.order-complete-container .summary-card .summary-footer .label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ff5447;
+}
+.order-complete-container .summary-card .summary-footer .price {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #ff5447;
+}
+.order-complete-container .info-section {
+  padding: 0 1.25rem;
+  text-align: left;
+}
+.order-complete-container .info-section .info-box {
+  font-weight: 500;
+  padding: 2rem 0;
+}
+.order-complete-container .info-section .info-box.border-top {
+  border-top: 1px solid #eeeeee;
+}
+.order-complete-container .info-section .info-box .box-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 0.625rem;
+}
+.order-complete-container .info-section .info-box .info-list .info-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.375rem 0;
+}
+.order-complete-container .info-section .info-box .info-list .info-row .label {
+  width: 6.25rem;
+  font-size: 0.875rem;
+  color: #999999;
+  flex-shrink: 0;
+  padding-right: 0.625rem;
+  position: relative;
+}
+.order-complete-container .info-section .info-box .info-list .info-row .label::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0.3125rem;
+  width: 1px;
+  height: 0.75rem;
+  background-color: #e5e5e5;
+}
+.order-complete-container .info-section .info-box .info-list .info-row .value {
+  flex: 1;
+  padding-left: 1.5rem;
+  font-size: 0.8125rem;
+  color: #666666;
+  line-height: 1.25rem;
+}
+.order-complete-container .info-section .info-box .info-list .info-row .value small {
+  font-size: 0.8125rem;
+  color: #aaaaaa;
+  margin-left: 0.375rem;
+}
+.order-complete-container .info-section .info-box .info-list .info-row .value b {
+  font-weight: 500;
+  color: #333333;
+}
+.order-complete-container .info-section .info-box .info-list .info-row .value.highlight {
+  color: #ff5447;
+  font-weight: 700;
+}
+.order-complete-container .info-section .info-box .info-list .info-row .value .bank-text {
+  margin-bottom: 0.625rem;
+}
+.order-complete-container .btn-copy-account {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0 1rem;
+  height: 2.125rem;
+  border: 1px solid #cccccc;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  color: #999999;
+  background: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+}
+.order-complete-container .btn-copy-account .icon-content-copy, .order-complete-container .btn-copy-account .checkout-page .payment-method .method-details-box .split-layout .col-left .bank-info-group .btn-copy i, .checkout-page .payment-method .method-details-box .split-layout .col-left .bank-info-group .btn-copy .order-complete-container .btn-copy-account i {
+  background-color: #999999;
+}
+.order-complete-container .btn-copy-account:hover {
+  background-color: #f8f8f8;
+  color: #333333;
+}
+.order-complete-container .btn-copy-account:hover .icon-content-copy, .order-complete-container .btn-copy-account:hover .checkout-page .payment-method .method-details-box .split-layout .col-left .bank-info-group .btn-copy i, .checkout-page .payment-method .method-details-box .split-layout .col-left .bank-info-group .btn-copy .order-complete-container .btn-copy-account:hover i {
+  background-color: #333333;
+}
+.order-complete-container .action-buttons {
+  padding: 1.25rem 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.order-complete-container .action-buttons .btn {
+  width: 100%;
+  height: 3.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 0.25rem;
+}
+.order-complete-container .action-buttons .btn.btn-shopping {
+  border: 1px solid #cccccc;
+  color: #333333;
+  background-color: #ffffff;
+}
+.order-complete-container .action-buttons .btn.btn-detail {
+  background-color: #ff5447;
+  color: #ffffff;
+}
+
 html,
 body {
   width: 100%;

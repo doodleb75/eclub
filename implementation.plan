@@ -1,0 +1,41 @@
+# 전역 모달(Modal) 시스템 및 마크업 분리 구현 계획
+
+## 1. 개요
+상품 썸네일 클릭 시 상세 옵션(사이즈 등)을 설정할 수 있는 모달 시스템을 구축합니다. 기존의 JS 내장 템플릿 방식과 달리, 모달의 내용은 별도의 HTML 파일로 관리하여 유지보수성을 높입니다.
+
+## 2. 주요 작업 내용
+
+### 2.1 마크업 분리 및 위치 선정
+- 파일 위치: `common/components/modal-item-option.html`
+- 선정 이유: PC와 Mobile에서 공통으로 사용될 가능성이 높으므로 전역(common) 폴더에서 관리합니다.
+- 내용: 상품 이미지와 함께 상세 옵션을 선택할 수 있는 구조.
+
+### 2.2 스타일 정의 (SCSS)
+- 파일 위치: `assets/sass/pc/components/_modal.scss`
+- 주요 스타일:
+    - `.modal-overlay`: 화면 전체를 덮는 반투명 배경 (Dimmed)
+    - `.modal-container`: 실제 모달 창 (중앙 정렬, 유연한 크기 설정)
+    - `.modal-header / .modal-body / .modal-footer`: 구조적 분리
+    - 애니메이션: Fade In + Scale Up 효과 적용
+
+### 2.3 로직 구현 (JS)
+- 파일 위치: `assets/js/components/modal.js`
+- 기능:
+    - `Modal.open(url)`: 인자로 받은 HTML 파일 경로(url)를 `fetch`로 읽어와 모달 본문에 삽입.
+    - `Modal.close()`: 모달 제거 및 스크롤 잠금 해제.
+    - 외부 클릭 시 닫기 및 ESC 키 대응.
+
+### 2.4 메인 설정 업데이트
+- `assets/sass/pc/main.scss`: `_modal.scss` 임포트.
+- `pc/pages/cart.html`: 썸네일 링크에 `data-modal-url` 속성 추가 및 `modal.js` 로드.
+
+## 3. 상세 사양
+- **크기 설정**: 모달 컨테이너에 `max-width`를 %로 설정할 수 있는 옵션 제공.
+- **비동기 로딩**: HTML 로딩 중 '로딩 바' 표시 (필요 시).
+- **이벤트 위임**: 모든 모달 오픈 트리거를 전역에서 감시.
+
+## 4. 일정 및 순서
+1. `pc/components/modal-item-option.html` 컨텐츠 파일 생성.
+2. `_modal.scss` 기본 레이아웃 및 스타일 정의.
+3. `modal.js` 비동기 fetch 및 렌더링 로직 구현.
+4. `cart.html` 적용 및 동작 테스트.

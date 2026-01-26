@@ -1,0 +1,241 @@
+// 주문완료 페이지 스타일 (Mobile)
+.order-complete-container {
+    padding: rem(50) 0 rem(60);
+    text-align: center;
+    background-color: $white;
+
+    .complete-header {
+        margin-bottom: rem(40);
+
+        .title {
+            font-size: rem(24);
+            font-weight: $fw-bold;
+            color: $gray-850;
+            letter-spacing: rem(-0.5);
+            margin-bottom: rem(20);
+        }
+
+        .order-number {
+            font-size: rem(15);
+            color: $gray-700;
+            letter-spacing: rem(-0.3);
+
+            .number {
+                font-weight: $fw-bold;
+                color: $gray-600;
+                text-decoration: underline;
+                margin-left: rem(4);
+            }
+        }
+    }
+
+    // 결제 요약 카드
+    .summary-card {
+        background-color: $gray-55;
+        padding: rem(40) rem(50); // 피그마의 여유로운 공간감 반영
+        margin: 0 auto rem(10);
+        text-align: left;
+        width: calc(100% - #{rem(40)}); // 양옆 rem(20) 여백
+        max-width: rem(360);
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: rem(16);
+
+            .label {
+                font-size: rem(15);
+                font-weight: $fw-bold;
+                color: $gray-850;
+            }
+
+            .price {
+                font-size: rem(17);
+                font-weight: $fw-bold;
+                color: $gray-850;
+            }
+        }
+
+        .summary-body {
+            border-left: 3px solid $gray-350;
+            margin-left: rem(10);
+            padding: rem(12) 0 rem(0) rem(12);
+            margin-bottom: rem(20);
+
+            .detail-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: rem(8);
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .label {
+                    font-size: rem(14);
+                    color: $gray-600;
+                }
+
+                .price {
+                    font-size: rem(14);
+                    color: $gray-600;
+                }
+            }
+        }
+
+        .summary-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: rem(4);
+
+            .label {
+                font-size: rem(15);
+                font-weight: $fw-bold;
+                color: $point-red;
+            }
+
+            .price {
+                font-size: rem(17);
+                font-weight: $fw-bold;
+                color: $point-red;
+            }
+        }
+    }
+
+    .info-section {
+        padding: 0 rem(20);
+        text-align: left;
+
+        .info-box {
+            font-weight: $fw-medium;
+            padding: rem(32) 0;
+
+            &.border-top {
+                border-top: 1px solid $gray-70;
+            }
+
+            .box-title {
+                font-size: rem(18);
+                font-weight: $fw-bold;
+                color: $gray-850;
+                margin-bottom: rem(10);
+            }
+
+            .info-list {
+                .info-row {
+                    display: flex;
+                    align-items: flex-start;
+                    padding: rem(6) 0;
+
+                    .label {
+                        width: rem(100); // 레이블 영역 확보
+                        font-size: rem(14);
+                        color: $gray-600;
+                        flex-shrink: 0;
+                        padding-right: rem(10);
+                        position: relative;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            right: 0;
+                            top: rem(5);
+                            width: 1px;
+                            height: rem(12);
+                            background-color: $gray-200;
+                        }
+                    }
+
+                    .value {
+                        flex: 1;
+                        padding-left: rem(24); // 피그마 세로선 기준 여백
+                        font-size: rem(13);
+                        color: $gray-700;
+                        line-height: rem(20);
+
+                        small {
+                            font-size: rem(13);
+                            color: $gray-500;
+                            margin-left: rem(6);
+                        }
+
+                        b {
+                            font-weight: $fw-medium;
+                            color: $gray-850;
+                        }
+
+                        &.highlight {
+                            color: $point-red;
+                            font-weight: $fw-bold;
+                        }
+
+                        .bank-text {
+                            margin-bottom: rem(10);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .btn-copy-account {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(6);
+        padding: 0 rem(16);
+        height: rem(34);
+        border: 1px solid $gray-400;
+        border-radius: rem(4);
+        font-size: rem(13);
+        color: $gray-600;
+        background: $white;
+        font-weight: $fw-medium;
+        cursor: pointer;
+
+        .icon-content-copy {
+            background-color: $gray-600; // currentColor 대신 직접 지정하여 시인성 확보
+        }
+
+        &:hover {
+            background-color: $gray-95;
+            color: $gray-850;
+
+            .icon-content-copy {
+                background-color: $gray-850;
+            }
+        }
+    }
+
+    .action-buttons {
+        padding: rem(20) rem(20) 0;
+        display: flex;
+        flex-direction: column;
+        gap: rem(12);
+
+        .btn {
+            width: 100%;
+            height: rem(54);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: rem(18);
+            font-weight: $fw-bold;
+            border-radius: rem(4);
+
+            &.btn-shopping {
+                border: 1px solid $gray-400;
+                color: $gray-850;
+                background-color: $white;
+            }
+
+            &.btn-detail {
+                background-color: $point-red;
+                color: $white;
+            }
+        }
+    }
+}
