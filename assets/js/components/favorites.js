@@ -12,7 +12,7 @@ const favorites = (() => {
             if (!btn) return;
 
             e.preventDefault();
-            e.stopPropagation();
+            // e.stopPropagation(); // 전역 이벤트를 위해 전파 차단 해제
             toggle(btn);
         });
     };
@@ -24,24 +24,33 @@ const favorites = (() => {
     const toggle = (btn) => {
         const icon = btn.querySelector('i');
         const isActive = btn.classList.contains('active');
+        let message = "";
 
         if (isActive) {
             // 찜 해제
             btn.classList.remove('active');
             if (icon) {
-                // 아이콘 교체: fill -> line
                 icon.classList.remove('icon-heart-fill');
                 icon.classList.add('icon-heart');
             }
+            message = "관심상품에서 해제되었습니다.";
         } else {
             // 찜 등록
             btn.classList.add('active');
             if (icon) {
-                // 아이콘 교체: line -> fill
                 icon.classList.remove('icon-heart');
                 icon.classList.add('icon-heart-fill');
             }
-            // TODO: API 호출 또는 토스트 메시지 연동 가능
+            message = "관심상품에 저장되었습니다.";
+        }
+
+        // 전역 토스트 연동
+        if (typeof Toast !== 'undefined') {
+            Toast.show({
+                message: message,
+                trigger: btn,
+                type: 'success'
+            });
         }
     };
 

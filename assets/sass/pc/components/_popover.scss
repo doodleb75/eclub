@@ -1,0 +1,208 @@
+@use "sass:math";
+@import "../../abstract/functions";
+@import "../../abstract/variables";
+
+/**
+ * 전역 레이어 팝업 (범용 툴팁 시스템)
+ * - 공통 프레임워크와 타입별 모디파이어로 구성
+ */
+
+.popover-layer {
+    display: none; // 기본 비노출
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background: $white;
+    border: 1px solid $gray-150;
+    border-radius: rem(8);
+    box-shadow: 0 rem(10) rem(30) rgba(0, 0, 0, 0.1);
+
+    &.active {
+        display: block; // 활성화 시 노출
+    }
+
+    // 팝업 내 공통 레이아웃 요소들
+    .popover-inner {
+        padding: rem(24) rem(24) rem(16);
+    }
+
+    // 팝업 푸터 (공통으로 사용될 수 있는 하단 버튼 영역)
+    .popover-footer {
+        margin-top: rem(20);
+
+        .btn-confirm {
+            width: 100%;
+            height: rem(52);
+            background: $gray-850;
+            color: $white;
+            font-size: rem(16);
+            font-weight: $fw-bold;
+            border-radius: $radius-sm;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            &:hover {
+                background: $gray-900;
+            }
+        }
+    }
+
+    /* -------------------------------------------
+       Type: Discount (장바구니 할인내역 등)
+       ------------------------------------------- */
+    &.type-discount {
+        width: rem(320);
+
+        .popover-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 rem(16);
+            margin-bottom: rem(10);
+
+            .title {
+                font-size: rem(15);
+                font-weight: $fw-bold;
+                color: $gray-900;
+            }
+
+            .qty {
+                font-size: rem(15);
+                font-weight: $fw-bold;
+                color: $gray-900;
+
+                span {
+                    margin-left: rem(4);
+                }
+            }
+        }
+
+        .price-summary {
+            padding: rem(16);
+            background: $gray-95;
+            border-radius: rem(12);
+            margin-bottom: rem(12);
+
+            .price-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: rem(13);
+                line-height: rem(20);
+                margin-bottom: rem(4);
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                &.sale-price {
+                    margin-top: rem(8);
+                    padding-top: rem(8);
+                    border-top: 1px solid $gray-350;
+
+                    .label,
+                    .val {
+                        font-weight: $fw-bold;
+                    }
+                }
+
+                .label {
+                    color: $gray-900;
+                    font-weight: $fw-semibold;
+                }
+
+                .val {
+                    color: $gray-900;
+                    font-weight: $fw-bold;
+                    text-align: right;
+                }
+            }
+        }
+
+        .discount-list {
+            position: relative;
+            padding-left: rem(12);
+            padding-top: rem(12);
+            margin-bottom: rem(16);
+            margin-left: rem(10);
+            margin-right: rem(10);
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: rem(3);
+                background: $gray-200;
+                border-radius: rem(1);
+            }
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: rem(8);
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .label,
+                .val {
+                    font-size: rem(13);
+                    font-weight: $fw-semibold;
+                    color: $gray-600;
+                }
+            }
+        }
+
+        .final-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 rem(10);
+
+            .label {
+                font-size: rem(13);
+                font-weight: $fw-bold;
+                color: $point-red;
+            }
+
+            .val {
+                font-size: rem(18);
+                font-weight: $fw-bold;
+                color: $point-red;
+            }
+        }
+    }
+
+    /* -------------------------------------------
+       Type: Simple (간단한 메시지 툴팁)
+       ------------------------------------------- */
+    &.type-simple {
+        width: auto;
+        min-width: rem(200);
+
+        .popover-inner {
+            padding: rem(16);
+        }
+
+        .message {
+            font-size: rem(14);
+            color: $gray-800;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .popover-footer {
+            margin-top: rem(12);
+
+            .btn-confirm {
+                height: rem(48);
+                font-size: rem(14);
+            }
+        }
+    }
+}
