@@ -639,7 +639,7 @@ input[type=text]:focus-visible {
 }
 
 .footer {
-  background-color: #f6f6f6;
+  background-color: #f5f5f5;
   padding: 2.4375rem 0;
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
 }
@@ -1078,18 +1078,36 @@ input[type=text]:focus-visible {
 .modal-header .btn-modal-close:hover {
   color: #222222;
 }
+.modal-header.type-center {
+  justify-content: center;
+  padding: 2.875rem 1.5rem 0;
+  border-bottom: none;
+}
+.modal-header.type-center .modal-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.0625rem;
+  color: #000000;
+}
+.modal-header.type-center .btn-modal-close {
+  position: absolute;
+  right: 0.6875rem;
+  top: 0.6875rem;
+  width: 2.25rem;
+  height: 2.1875rem;
+}
 .modal-header.no-border {
   border-bottom: none;
 }
 
 .modal-body {
-  padding: 1.5rem;
+  padding: 0 1.5rem;
   max-height: 70vh;
   overflow-y: auto;
 }
 
 .modal-footer {
-  padding: 1rem 1.5rem 1.5rem;
+  padding: 2.5rem 1.5rem 1.0625rem;
 }
 
 .option-setup .item-preview .modal-item-img {
@@ -1162,6 +1180,213 @@ input[type=text]:focus-visible {
 .confirm-footer .btn-group button.btn-confirm:hover,
 .alert-footer .btn-group button.btn-confirm:hover {
   background: #222222;
+}
+
+.excel-upload-form .form-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+  margin-top: 3.1875rem;
+}
+@media screen and (max-width: 768px) {
+  .excel-upload-form .form-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    margin-top: 1.875rem;
+  }
+}
+.excel-upload-form .form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: -0.04375rem;
+  white-space: nowrap;
+}
+.excel-upload-form .file-input-group {
+  display: flex;
+  flex: 1;
+  gap: 0.5rem;
+  width: 100%;
+}
+@media screen and (max-width: 480px) {
+  .excel-upload-form .file-input-group {
+    flex-wrap: wrap;
+  }
+  .excel-upload-form .file-input-group .file-name {
+    flex: none;
+    width: 100%;
+  }
+  .excel-upload-form .file-input-group button {
+    flex: 1;
+  }
+}
+.excel-upload-form .file-input-group .file-name {
+  flex: 1;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid #cccccc;
+  border-radius: 0.25rem;
+  background: #ffffff;
+  font-size: 0.875rem;
+  color: #222222;
+}
+.excel-upload-form .file-input-group .file-name::placeholder {
+  color: #999999;
+}
+.excel-upload-form .file-input-group button {
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid #cccccc;
+  border-radius: 0.25rem;
+  background: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.excel-upload-form .file-input-group button:hover {
+  background: #f8f9fa;
+}
+
+.btn-excel-submit {
+  width: 100%;
+  height: 3.375rem;
+  background: #ff5447;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  letter-spacing: -0.05rem;
+}
+.btn-excel-submit:hover {
+  background: rgb(255, 60.3016304348, 45.5);
+}
+
+.modal-excel-upload {
+  padding: 2.875rem 1.5rem 1.0625rem;
+  position: relative;
+}
+.modal-excel-upload .modal-header {
+  display: block;
+  padding: 0;
+  border-bottom: none;
+  margin-bottom: 3.1875rem;
+  text-align: center;
+}
+.modal-excel-upload .modal-header .modal-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: -0.0625rem;
+  margin: 0;
+  width: 100%;
+}
+.modal-excel-upload .modal-header .btn-modal-close {
+  position: absolute;
+  top: 0.6875rem;
+  right: 0.6875rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.modal-excel-upload .modal-header .btn-modal-close .icon-close {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/clear.svg") no-repeat 50% 50%;
+  mask: url("/assets/icons/clear.svg") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  color: #000000;
+}
+.modal-excel-upload .modal-body {
+  padding: 0;
+  margin-bottom: 2.5rem;
+}
+.modal-excel-upload .modal-body .file-upload-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.modal-excel-upload .modal-body .file-upload-row .label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: -0.04375rem;
+  flex-shrink: 0;
+  margin-right: 0.9375rem;
+}
+.modal-excel-upload .modal-body .file-upload-row .file-info-box {
+  flex: 1;
+  height: 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  background-color: #ffffff;
+  padding: 0 0.75rem;
+  display: flex;
+  align-items: center;
+}
+.modal-excel-upload .modal-body .file-upload-row .file-info-box .file-name-display {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 0.875rem;
+  color: #000000;
+  outline: none;
+  cursor: default;
+}
+.modal-excel-upload .modal-body .file-upload-row .action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.modal-excel-upload .modal-body .file-upload-row .action-buttons button {
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  background: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: -0.04375rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.modal-excel-upload .modal-body .file-upload-row .action-buttons button:hover {
+  background-color: #fbfbfb;
+}
+.modal-excel-upload .modal-footer {
+  padding: 0;
+}
+.modal-excel-upload .modal-footer .btn-register {
+  width: 100%;
+  height: 3.375rem;
+  background-color: #ff5452;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.05rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-excel-upload .modal-footer .btn-register:hover {
+  background-color: rgb(255, 60.3016304348, 45.5);
 }
 
 .cart-page #container {
@@ -2164,7 +2389,6 @@ input[type=text]:focus-visible {
 .checkout-page .payment-method .box-header .checkbox-container .checkmark {
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #333333;
   border-radius: 0.1875rem;
   position: relative;
   display: flex;
@@ -2182,9 +2406,6 @@ input[type=text]:focus-visible {
   border: solid white;
   border-width: 0 0.125rem 0.125rem 0;
   transform: rotate(45deg);
-}
-.checkout-page .payment-method .box-header .checkbox-container input:not(:checked) ~ .checkmark {
-  background-color: #e1e1e1;
 }
 .checkout-page .payment-method .box-header .checkbox-container .label-text {
   font-size: 0.875rem;
