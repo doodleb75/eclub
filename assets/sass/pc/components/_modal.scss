@@ -49,7 +49,7 @@
     justify-content: flex-end;
     align-items: center;
     padding: rem(10);
-    border-bottom: 1px solid $gray-150;
+    // border-bottom: 1px solid $gray-150;
 
     .modal-title {
         font-size: rem(18);
@@ -246,6 +246,10 @@
         }
 
         button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: rem(6);
             height: rem(40);
             padding: 0 rem(12);
             border: 1px solid $gray-400;
@@ -267,7 +271,7 @@
 .btn-excel-submit {
     width: 100%;
     height: rem(54);
-    background: $point-red;
+    background: $gray-850;
     color: $white;
     font-size: rem(16);
     font-weight: $fw-medium;
@@ -278,6 +282,6 @@
     letter-spacing: rem(-0.8);
 
     &:hover {
-        background: darken($point-red, 5%);
+        background: darken($gray-850, 5%);
     }
 }

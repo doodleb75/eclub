@@ -130,18 +130,26 @@ const Popover = (() => {
         const scrollY = window.scrollY;
         const popoverWidth = instance.offsetWidth;
 
-        let left = rect.left + scrollX - (popoverWidth / 2) + (rect.width / 2);
+        let left = rect.right + scrollX - popoverWidth;
         let top = rect.bottom + scrollY + 12;
 
-        // 좌우 끝단 방어코드
+        // 좌우 끝단 방어코드 (우측 정렬이므로 좌측 끝단만 체크)
         const margin = 10;
         if (left < margin) left = margin;
-        if (left + popoverWidth > window.innerWidth - margin) {
-            left = window.innerWidth - popoverWidth - margin;
-        }
 
         instance.style.top = `${top}px`;
         instance.style.left = `${left}px`;
+
+        // 5. 하단 잘림 방지 스크롤
+        const popoverRect = instance.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        if (popoverRect.bottom > viewportHeight) {
+            const scrollAmount = popoverRect.bottom - viewportHeight + 20; // 여유 공간 20px 포함
+            window.scrollBy({
+                top: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
     };
 
     const hide = () => {
