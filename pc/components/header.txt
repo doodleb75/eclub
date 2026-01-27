@@ -35,7 +35,7 @@
                 <a href="#" class="icon-link history" title="주문내역">
                     <i class="icon-clock"></i>
                 </a>
-                <a href="#" class="icon-link cart" title="장바구니">
+                <a href="/eclub/pc/pages/cart.html" class="icon-link cart" title="장바구니">
                     <i class="icon-cart"></i>
                 </a>
                 <a href="#" class="icon-link coupon" title="쿠폰">

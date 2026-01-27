@@ -633,12 +633,19 @@
                     min-width: rem(80);
                     padding: 0 rem(16);
                     background-color: $gray-60; // #f3f3f3
-                    border: none;
+                    border: 1px solid $gray-60;
                     font-size: rem(14);
                     font-weight: $fw-bold;
                     color: $black;
                     border-radius: rem(4);
                     cursor: pointer;
+                    transition: all .2s;
+
+                    &:hover {
+                        background-color: $gray-55;
+                        border-color: $gray-300;
+                        transition: all .2s;
+                    }
                 }
             }
 
