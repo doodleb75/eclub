@@ -18,7 +18,7 @@
     background: rgba(0, 0, 0, 0.6); // 배경 어둡게 (Dimmed)
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(2px); // 미세한 블러 효과로 고급스러움 추가
+    //backdrop-filter: blur(2px); // 미세한 블러 효과로 고급스러움 추가
 
     &.active {
         display: flex; // 활성화 시 플렉스로 중앙 정렬
@@ -147,20 +147,20 @@
             transition: background 0.2s;
 
             &.btn-cancel {
-                background: $gray-100;
-                color: $gray-600;
+                background: $gray-300;
+                color: $gray-700;
 
                 &:hover {
-                    background: $gray-200;
+                    background: $gray-400;
                 }
             }
 
             &.btn-confirm {
-                background: $gray-900;
+                background: $gray-850;
                 color: $white;
 
                 &:hover {
-                    background: $black;
+                    background: $gray-900;
                 }
             }
         }

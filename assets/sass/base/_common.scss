@@ -33,3 +33,8 @@ body {
     white-space: nowrap;
     border: 0;
 }
+
+// 폼 요소 전역 스타일
+input[type="text"]:focus-visible {
+    outline-color: $gray-900;
+}

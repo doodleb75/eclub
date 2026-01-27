@@ -42,7 +42,7 @@ img {
 
 body {
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   color: #222222;
   line-height: 1.5;
@@ -64,6 +64,10 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+input[type=text]:focus-visible {
+  outline-color: #222222;
 }
 
 .icon,
@@ -981,13 +985,13 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.625rem 0.75rem;
+  padding: 0.375rem 0.625rem;
   background: #00B87A;
   border-radius: 0.25rem;
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
   color: #ffffff;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5;
   opacity: 0;
   transform: translateY(0.625rem);
@@ -1026,7 +1030,6 @@ body {
   background: rgba(0, 0, 0, 0.6);
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(2px);
 }
 .modal-overlay.active {
   display: flex;
@@ -1144,21 +1147,21 @@ body {
 }
 .confirm-footer .btn-group button.btn-cancel,
 .alert-footer .btn-group button.btn-cancel {
-  background: #f8f9fa;
-  color: #999999;
+  background: #d9d9d9;
+  color: #666666;
 }
 .confirm-footer .btn-group button.btn-cancel:hover,
 .alert-footer .btn-group button.btn-cancel:hover {
-  background: #e5e5e5;
+  background: #cccccc;
 }
 .confirm-footer .btn-group button.btn-confirm,
 .alert-footer .btn-group button.btn-confirm {
-  background: #222222;
+  background: #333333;
   color: #ffffff;
 }
 .confirm-footer .btn-group button.btn-confirm:hover,
 .alert-footer .btn-group button.btn-confirm:hover {
-  background: #000000;
+  background: #222222;
 }
 
 .cart-page #container {
@@ -1386,9 +1389,6 @@ body {
 .cart-group .group-header .header-left {
   flex-shrink: 0;
 }
-.cart-group .group-header .header-left .checkbox-container .checkmark {
-  border: none;
-}
 .cart-group .group-header .header-left .checkbox-container .group-title {
   font-size: 1.5rem;
   font-weight: 700;
@@ -1549,7 +1549,7 @@ body {
   display: block;
   font-size: 1rem;
   font-weight: 700;
-  color: #222222;
+  color: #333333;
   line-height: 1.375rem;
   margin-bottom: 0.5rem;
   text-decoration: none;
@@ -1613,7 +1613,6 @@ body {
 }
 .cart-item .item-info-wrap .discount-dropdown .discount-content {
   display: none;
-  margin-top: 1rem;
   padding: 0.125rem 0 0.125rem 0.5rem;
   border-left: 3px solid #d9d9d9;
   width: 20rem;
@@ -1630,7 +1629,7 @@ body {
   justify-content: space-between;
   font-size: 0.8125rem;
   color: #999999;
-  margin-bottom: 0.375rem;
+  padding-top: 0.375rem;
 }
 .cart-item .item-info-wrap .discount-dropdown .discount-content .discount-list li:last-child {
   margin-bottom: 0;
@@ -1843,7 +1842,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5625rem;
   font-size: 0.8125rem;
 }
 .payment-summary .summary-content .summary-item-group .group-row .label {
@@ -1975,7 +1973,7 @@ body {
 }
 .checkbox-container input:checked ~ .checkmark {
   background-color: #333333;
-  border-color: #333333;
+  border: none;
 }
 .checkbox-container input:checked ~ .checkmark::after {
   display: block;
@@ -1995,12 +1993,12 @@ body {
   content: "";
   position: absolute;
   display: none;
-  left: 0.4375rem;
+  left: 0.5rem;
   top: 0.25rem;
   width: 0.25rem;
   height: 0.5rem;
   border: solid #ffffff;
-  border-width: 0 2px 2px 0;
+  border-width: 0 0.125rem 0.125rem 0;
   transform: rotate(45deg);
 }
 
@@ -2324,9 +2322,12 @@ body {
 .checkout-page .payment-method .method-details-box .split-layout .col-right .info-body {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   padding-left: 0.75rem;
   border-left: 3px solid #d9d9d9;
+  padding-top: 0.5rem;
+}
+.checkout-page .payment-method .method-details-box .split-layout .col-right .info-body .info-row {
+  padding-top: 0.25rem;
 }
 .checkout-page .payment-method .method-details-box .split-layout .col-right .info-body .info-row .label {
   font-weight: 500;
@@ -2453,6 +2454,7 @@ body {
   font-weight: 700;
   color: #333333;
   border-radius: 0.25rem;
+  transition: border-color 0.2s ease-in-out;
   cursor: pointer;
 }
 .checkout-page .discount .discount-body .discount-row .row-header .btn-change.disabled {
@@ -2466,6 +2468,11 @@ body {
   width: 0.5rem;
   height: 0.75rem;
   background-color: currentColor;
+}
+.checkout-page .discount .discount-body .discount-row .row-header .btn-change:hover {
+  background: #f7f7f7;
+  border-color: #999999;
+  transition: border-color 0.2s ease-in-out;
 }
 .checkout-page .discount .discount-body .discount-row .row-value {
   font-size: 1.125rem;
@@ -2483,7 +2490,7 @@ body {
   border-left: 3px solid #dedede;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  padding-top: 0.625rem;
 }
 .checkout-page .discount .discount-body .discount-row .detail-list li {
   display: flex;
@@ -2491,6 +2498,7 @@ body {
   align-items: flex-start;
   font-size: 0.875rem;
   color: #999999;
+  padding: 0.25rem 0;
   line-height: 1rem;
 }
 .checkout-page .discount .discount-body .discount-row .detail-list li .name {
@@ -2591,6 +2599,12 @@ body {
 .checkout-page .points .box-body .accumulate-info .info-row .value b {
   font-size: 0.875rem;
   font-weight: 700;
+}
+.checkout-page .cart-group {
+  margin-bottom: 0;
+}
+.checkout-page .cart-group .cart-item:last-child {
+  border-bottom: 0.0625rem solid #dedede;
 }
 
 .order-complete-container {

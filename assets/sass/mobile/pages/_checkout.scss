@@ -148,7 +148,7 @@
                             min-width: 0;
                             font-size: rem(15);
                             font-weight: $fw-bold;
-                            color: $gray-900;
+                            color: $gray-850;
                             line-height: rem(20);
                             letter-spacing: rem(-0.5);
                             word-break: keep-all;
@@ -157,6 +157,8 @@
 
                         .info-actions {
                             flex-shrink: 0;
+                            position: relative;
+                            top: rem(-2);
 
                             .btn-clear {
                                 display: flex;
@@ -205,14 +207,16 @@
                                     background-color: $point-red;
                                     color: $white;
                                     font-size: rem(11);
-                                    font-weight: $fw-bold;
+                                    font-weight: $fw-medium;
                                     border-radius: rem(4);
                                     letter-spacing: rem(-0.3);
                                 }
 
                                 .origin-price {
+                                    display: flex;
+                                    gap: rem(2);
                                     font-size: rem(14);
-                                    color: $gray-500; // #aaaaaa
+                                    color: $gray-800; // #aaaaaa
                                     text-decoration: line-through;
                                     line-height: rem(18);
                                     letter-spacing: rem(-0.5);
@@ -230,14 +234,16 @@
                                 gap: rem(16);
 
                                 .main-price {
-                                    font-size: rem(24);
-                                    font-weight: $fw-bold;
+                                    display: flex;
+                                    gap: rem(4);
+                                    font-size: rem(22);
+                                    font-weight: $fw-medium;
                                     color: $point-red;
                                     line-height: 1;
                                     letter-spacing: rem(-0.5);
 
                                     span {
-                                        font-size: rem(16);
+                                        font-weight: $fw-bold;
                                     }
                                 }
 
@@ -284,18 +290,7 @@
 
                                     input {
                                         width: rem(20);
-                                        // border: none;
-                                        // text-align: center;
                                         font-size: rem(14);
-
-                                        // font-weight: $fw-medium;
-                                        // color: $gray-900;
-                                        // padding: 0;
-                                        // background: none; // 배경 속성 제거
-                                        // outline: none; // 포커스 속성 제거
-                                        &:focus-visible {
-                                            outline-color: rgb(16, 16, 16);
-                                        }
 
                                     }
                                 }
@@ -314,7 +309,7 @@
                     .btn-discount-toggle {
                         display: flex;
                         align-items: center;
-                        gap: rem(2);
+                        gap: rem(8);
                         font-size: rem(14);
                         font-weight: $fw-bold;
                         color: $gray-900;
@@ -344,8 +339,8 @@
 
                 .discount-content {
                     display: none;
-                    margin-top: rem(10);
-                    padding-top: rem(10);
+                    // margin-top: rem(10);
+                    // padding-top: rem(10);
 
                     &.active {
                         display: block;
@@ -384,8 +379,8 @@
 
                 .spec {
                     font-size: rem(14);
-                    font-weight: $fw-bold;
-                    color: $gray-900;
+                    font-weight: $fw-semibold;
+                    color: $gray-800;
                     letter-spacing: rem(-0.5);
                     display: flex;
                     align-items: center;
@@ -403,7 +398,7 @@
 
                 .per-price {
                     font-size: rem(14);
-                    font-weight: $fw-bold;
+                    font-weight: $fw-semibold;
                     color: $point-red;
                     letter-spacing: rem(-0.5);
                     display: flex;
@@ -897,10 +892,10 @@
                 .detail-list {
                     display: flex;
                     flex-direction: column;
-                    gap: rem(6);
                     padding-left: rem(12);
-                    border-left: 2px solid $gray-200;
+                    border-left: 3px solid $gray-200;
                     margin-top: rem(4);
+                    padding-top: rem(10);
 
                     li {
                         display: flex;
@@ -908,6 +903,7 @@
                         align-items: center;
                         font-size: rem(13);
                         color: $gray-600;
+                        padding: rem(3) 0;
                         letter-spacing: rem(-0.5);
 
                         .name {
