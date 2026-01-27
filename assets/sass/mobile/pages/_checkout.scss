@@ -140,6 +140,7 @@
                         justify-content: space-between;
                         align-items: flex-start;
                         gap: rem(12);
+                        min-height: rem(40);
                         width: 100%;
 
                         .item-name {
@@ -1048,46 +1049,46 @@
             }
         }
     }
-}
 
-// 6. 최종 결제 금액 (Payment Summary) -- Moved inside .checkout-page
-.payment-summary {
-    border: 0 !important;
-    margin-left: rem(-16);
-    margin-right: rem(-16);
-    padding: 0;
-    background-color: $white;
-
-    .summary-footer-info {
-        // height: rem(41);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: rem(14);
-        font-weight: $fw-bold;
-        color: $gray-850;
+    // 6. 최종 결제 금액 (Payment Summary) -- Moved inside .checkout-page
+    .payment-summary {
+        border: 0 !important;
+        margin-left: rem(-16);
+        margin-right: rem(-16);
+        padding: 0;
         background-color: $white;
-        border: 1px solid $gray-200;
-        border-bottom: 0;
-        padding: rem(16)
-    }
 
-    .btn-order {
-        width: 100%;
-        height: rem(63);
-        background-color: $point-red; // 빨간색 배경
-        color: $white;
-        font-size: rem(20);
-        font-weight: $fw-bold;
-        border: none;
-        border-radius: 0; // 풀와이드 직각 버튼
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        .summary-footer-info {
+            // height: rem(41);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: rem(14);
+            font-weight: $fw-bold;
+            color: $gray-850;
+            background-color: $white;
+            border: 1px solid $gray-200;
+            border-bottom: 0;
+            padding: rem(16)
+        }
 
-        &:hover {
-            background-color: darken($point-red, 5%);
+        .btn-order {
+            width: 100%;
+            height: rem(63);
+            background-color: $point-red; // 빨간색 배경
+            color: $white;
+            font-size: rem(20);
+            font-weight: $fw-bold;
+            border: none;
+            border-radius: 0; // 풀와이드 직각 버튼
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: darken($point-red, 5%);
+            }
         }
     }
 }

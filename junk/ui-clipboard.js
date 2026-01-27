@@ -16,14 +16,14 @@ const uiClipboard = (() => {
                 const accountNumber = originalText.replace(/[^0-9\-\s]/g, '').trim();
 
                 if (accountNumber) {
-                    copyToClipboard(accountNumber);
+                    copyToClipboard(accountNumber, btn); // 버튼 요소를 트리거로 전달
                 }
             });
         });
     };
 
     // 클립보드 복사 실행
-    const copyToClipboard = (text) => {
+    const copyToClipboard = (text, trigger) => {
         if (!navigator.clipboard) {
             // 구형 브라우저 대응용 임시 textarea 생성
             const textArea = document.createElement("textarea");
@@ -37,7 +37,9 @@ const uiClipboard = (() => {
 
             try {
                 const successful = document.execCommand('copy');
-                if (successful) alert('계좌번호가 복사되었습니다.');
+                if (successful) {
+                    showToast('계좌번호가 복사되었습니다.', trigger);
+                }
             } catch (err) {
                 console.error('Fallback 복사 실패:', err);
             }
@@ -47,10 +49,19 @@ const uiClipboard = (() => {
         }
 
         navigator.clipboard.writeText(text).then(() => {
-            alert('계좌번호가 복사되었습니다.'); // 복사 완료 알림
+            showToast('계좌번호가 복사되었습니다.', trigger);
         }).catch(err => {
             console.error('클립보드 복사 실패:', err);
         });
+    };
+
+    // 토스트 노출 (Toast가 정의되어 있지 않으면 alert으로 대체)
+    const showToast = (message, trigger) => {
+        if (typeof Toast !== 'undefined') {
+            Toast.show({ message, trigger });
+        } else {
+            alert(message);
+        }
     };
 
     return { init };

@@ -232,6 +232,7 @@ main {
         display: flex;
         align-items: center;
         color: $white;
+        height: rem(72) !important;
         gap: rem(16);
 
         .header-left {
@@ -250,7 +251,7 @@ main {
             flex: 1;
             display: flex;
             align-items: center;
-            gap: rem(16);
+            gap: rem(24);
 
             .progress-wrap {
                 flex: 1;
@@ -271,9 +272,9 @@ main {
 
                 .limit-txt {
                     font-size: rem(13);
-                    font-weight: $fw-semibold;
+                    font-weight: $fw-medium;
                     color: $white;
-                    letter-spacing: rem(-0.5);
+                    letter-spacing: rem(-0.7);
                     white-space: nowrap;
 
                     b {
@@ -336,7 +337,7 @@ main {
         align-items: flex-start;
         gap: rem(6);
         flex-shrink: 0;
-        height: rem(130);
+        // height: rem(130);
         padding-top: rem(8);
     }
 
@@ -456,6 +457,7 @@ main {
             line-height: rem(22);
             text-decoration: none;
             word-break: keep-all;
+            min-height: rem(40);
 
             &:hover {
                 text-decoration: underline;
@@ -530,7 +532,7 @@ main {
                 display: flex;
                 align-items: center;
                 width: rem(108);
-                height: rem(40);
+                height: rem(32);
                 background-color: $gray-95;
                 border: rem(1) solid $gray-175;
                 border-radius: rem(4);
