@@ -21,7 +21,7 @@ const Popover = (() => {
                             <span class="val">${data.original || '0원'}</span>
                         </div>
                         <div class="price-row">
-                            <span class="label">최근 20일 최저가</span>
+                            <span class="label hidden-toggle">최근 20일 최저가</span>
                             <span class="val">${data.lowest || '0원'}</span>
                         </div>
                         <div class="price-row sale-price">

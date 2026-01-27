@@ -272,7 +272,7 @@ main {
 
                 .limit-txt {
                     font-size: rem(13);
-                    font-weight: $fw-medium;
+                    font-weight: $fw-semibold;
                     color: $white;
                     letter-spacing: rem(-0.7);
                     white-space: nowrap;
@@ -284,6 +284,8 @@ main {
             }
 
             .icon-shipping {
+                position: relative;
+                top: rem(-4);
                 display: block;
                 @extend .icon-shipping;
                 width: rem(24);
@@ -337,7 +339,6 @@ main {
         align-items: flex-start;
         gap: rem(6);
         flex-shrink: 0;
-        // height: rem(130);
         padding-top: rem(8);
     }
 
@@ -418,12 +419,16 @@ main {
                         width: rem(24);
                         height: rem(24);
                         background-color: $gray-450;
+                        -webkit-mask-size: rem(21); // 비활성 시 Outline 기준이라 커 보이는 것을 보정하기 위해 사이즈 축소
+                        mask-size: rem(21);
 
                         &.active {
                             @extend .icon-heart-fill;
                             width: rem(24);
                             height: rem(24);
                             background-color: $point-red;
+                            -webkit-mask-size: rem(24); // 활성 시 원래 사이즈로 복구
+                            mask-size: rem(24);
                         }
                     }
 
@@ -453,7 +458,7 @@ main {
             flex: 1;
             font-size: $fs-16;
             font-weight: $fw-bold;
-            color: $gray-900;
+            color: $gray-850;
             line-height: rem(22);
             text-decoration: none;
             word-break: keep-all;
@@ -612,14 +617,14 @@ main {
 
             .total-discount {
                 font-size: $fs-18;
-                font-weight: $fw-bold;
+                font-weight: $fw-semibold;
                 color: $gray-850;
             }
         }
 
         .discount-content {
             display: none;
-            margin-top: rem(16);
+            // margin-top: rem(16);
             padding: rem(2) 0 rem(2) rem(8);
             border-left: rem(3) solid $gray-300;
             width: 100%;
@@ -656,8 +661,8 @@ main {
 
         .spec {
             font-size: $fs-15;
-            color: $gray-850;
-            font-weight: $fw-bold;
+            color: $gray-800;
+            font-weight: $fw-semibold;
 
             .sep {
                 display: inline-block;
@@ -672,13 +677,13 @@ main {
         .per-price {
             font-size: $fs-16;
             color: $point-red;
-            font-weight: $fw-bold;
+            font-weight: $fw-semibold;
             display: flex;
             align-items: center;
             gap: rem(4);
 
             b {
-                font-weight: $fw-bold;
+                font-weight: $fw-semibold;
             }
 
             .btn-info {
@@ -906,7 +911,7 @@ main {
 
         &:checked~.checkmark {
             background-color: $gray-850;
-            border-color: $gray-850;
+            border: none;
 
             &::after {
                 display: block;
@@ -929,7 +934,7 @@ main {
             content: '';
             position: absolute;
             display: none;
-            left: rem(7);
+            left: rem(8); // 오른쪽으로 1px 이동
             top: rem(4);
             width: rem(4);
             height: rem(8);

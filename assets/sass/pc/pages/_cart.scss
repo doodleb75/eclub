@@ -256,11 +256,6 @@
             flex-shrink: 0;
 
             .checkbox-container {
-                .checkmark {
-                    // background-color: $gray-900;
-                    border: none;
-                }
-
                 .group-title {
                     font-size: $fs-24;
                     font-weight: $fw-bold;
@@ -461,7 +456,7 @@
                 display: block;
                 font-size: $fs-16;
                 font-weight: $fw-bold;
-                color: $gray-900;
+                color: $gray-850;
                 line-height: rem(22);
                 margin-bottom: rem(8);
                 text-decoration: none;
@@ -536,7 +531,7 @@
 
             .discount-content {
                 display: none;
-                margin-top: rem(16);
+                // margin-top: rem(16);
                 padding: rem(2) 0 rem(2) rem(8);
                 border-left: 3px solid $gray-300;
                 width: rem(320);
@@ -554,7 +549,7 @@
                         justify-content: space-between;
                         font-size: rem(13);
                         color: $gray-600;
-                        margin-bottom: rem(6);
+                        padding-top: rem(6);
 
                         &:last-child {
                             margin-bottom: 0;
@@ -815,7 +810,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom: rem(9); // Figma Gap 9px 반영
+                // margin-bottom: rem(9); // Figma Gap 9px 반영
                 font-size: rem(13);
 
                 .label {
@@ -971,7 +966,7 @@
 
         &:checked~.checkmark {
             background-color: $gray-850;
-            border-color: $gray-850;
+            border: none;
 
             &::after {
                 display: block;
@@ -994,12 +989,12 @@
             content: '';
             position: absolute;
             display: none;
-            left: rem(7);
+            left: rem(8); // 오른쪽으로 1px 이동
             top: rem(4);
             width: rem(4);
             height: rem(8);
             border: solid $white;
-            border-width: 0 2px 2px 0;
+            border-width: 0 rem(2) rem(2) 0; // rem 적용
             transform: rotate(45deg);
         }
     }
