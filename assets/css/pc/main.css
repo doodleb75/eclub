@@ -1037,7 +1037,7 @@ body {
   width: 90%;
   max-width: 31.25rem;
   background: #ffffff;
-  border-radius: 0.75rem;
+  border-radius: 0.25rem;
   box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transform: scale(0.9);
@@ -1051,9 +1051,9 @@ body {
 
 .modal-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  padding: 1.25rem 1.5rem;
+  padding: 0.625rem;
   border-bottom: 1px solid #e1e1e1;
 }
 .modal-header .modal-title {
@@ -1065,9 +1065,18 @@ body {
   font-size: 1.5rem;
   color: #999999;
   cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .modal-header .btn-modal-close:hover {
   color: #222222;
+}
+.modal-header.no-border {
+  border-bottom: none;
 }
 
 .modal-body {
@@ -1097,6 +1106,59 @@ body {
   color: #ffffff;
   font-weight: 700;
   border-radius: 0.25rem;
+}
+
+.confirm-body,
+.alert-body {
+  padding: 0.625rem 1.5rem 2.5rem;
+  text-align: center;
+}
+.confirm-body .confirm-message,
+.confirm-body .alert-message,
+.alert-body .confirm-message,
+.alert-body .alert-message {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #222222;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.confirm-footer,
+.alert-footer {
+  padding: 0;
+}
+.confirm-footer .btn-group,
+.alert-footer .btn-group {
+  display: flex;
+}
+.confirm-footer .btn-group button,
+.alert-footer .btn-group button {
+  flex: 1;
+  height: 3.25rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+.confirm-footer .btn-group button.btn-cancel,
+.alert-footer .btn-group button.btn-cancel {
+  background: #f8f9fa;
+  color: #999999;
+}
+.confirm-footer .btn-group button.btn-cancel:hover,
+.alert-footer .btn-group button.btn-cancel:hover {
+  background: #e5e5e5;
+}
+.confirm-footer .btn-group button.btn-confirm,
+.alert-footer .btn-group button.btn-confirm {
+  background: #222222;
+  color: #ffffff;
+}
+.confirm-footer .btn-group button.btn-confirm:hover,
+.alert-footer .btn-group button.btn-confirm:hover {
+  background: #000000;
 }
 
 .cart-page #container {
@@ -1599,8 +1661,14 @@ body {
 .cart-item .item-price-qty .info-actions button.btn-wish {
   color: #c8c8c8;
 }
+.cart-item .item-price-qty .info-actions button.btn-wish i.icon-heart {
+  transform: scale(0.9);
+}
 .cart-item .item-price-qty .info-actions button.btn-wish.active {
   color: #ff5447;
+}
+.cart-item .item-price-qty .info-actions button.btn-wish.active i.icon-heart-fill {
+  transform: scale(1);
 }
 .cart-item .item-price-qty .info-actions button.btn-delete {
   color: #666666;

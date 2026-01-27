@@ -49,6 +49,25 @@ const cartSelection = (() => {
                 });
             });
         });
+
+        // 선택 삭제 버튼 이벤트 핸들러
+        const btnDeleteSelected = document.querySelector('.btn-delete-selected');
+        if (btnDeleteSelected) {
+            btnDeleteSelected.addEventListener('click', (e) => {
+                const checkedItems = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]:checked');
+
+                if (checkedItems.length === 0) {
+                    // 체크된 상품이 없을 경우
+                    e.preventDefault();
+                    e.stopImmediatePropagation(); // modal.js의 전역 이벤트를 막음
+
+                    Modal.open('/eclub/common/components/modal-alert.html', {
+                        width: '300px'
+                    });
+                }
+                // 체크된 상품이 있으면 modal.js의 전역 이벤트가 실행되어 modal-confirm.html이 열림
+            });
+        }
     };
 
     // 전체 상태 토글 (그룹 및 하위 아이템 모두)

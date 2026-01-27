@@ -30,7 +30,7 @@
     width: 90%; // 기본 너비 (반응형)
     max-width: rem(500); // PC 최대 너비
     background: $white;
-    border-radius: rem(12);
+    border-radius: rem(4);
     box-shadow: 0 rem(20) rem(60) rgba(0, 0, 0, 0.3);
     overflow: hidden;
     transform: scale(0.9);
@@ -46,9 +46,10 @@
 // 모달 내부 구조
 .modal-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: rem(20) rem(24);
+    // padding: rem(20) rem(24);
+    padding: rem(10);
     border-bottom: 1px solid $gray-150;
 
     .modal-title {
@@ -61,10 +62,20 @@
         font-size: rem(24);
         color: $gray-600;
         cursor: pointer;
+        background: transparent;
+        border: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
             color: $gray-900;
         }
+    }
+
+    &.no-border {
+        border-bottom: none;
     }
 }
 
@@ -101,4 +112,57 @@
     color: $white;
     font-weight: $fw-bold;
     border-radius: $radius-sm;
+}
+
+// 컨피름(확인/취소) 및 알림(Alert) 모달 스타일
+.confirm-body,
+.alert-body {
+    padding: rem(10) rem(24) rem(40);
+    text-align: center;
+
+    .confirm-message,
+    .alert-message {
+        font-size: rem(15);
+        font-weight: $fw-medium;
+        color: $gray-900;
+        line-height: 1.5;
+        word-break: keep-all;
+    }
+}
+
+.confirm-footer,
+.alert-footer {
+    padding: 0;
+
+    .btn-group {
+        display: flex;
+
+        button {
+            flex: 1;
+            height: rem(52);
+            font-size: rem(15);
+            font-weight: $fw-medium;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s;
+
+            &.btn-cancel {
+                background: $gray-100;
+                color: $gray-600;
+
+                &:hover {
+                    background: $gray-200;
+                }
+            }
+
+            &.btn-confirm {
+                background: $gray-900;
+                color: $white;
+
+                &:hover {
+                    background: $black;
+                }
+            }
+        }
+    }
 }

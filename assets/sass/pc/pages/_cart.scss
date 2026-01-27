@@ -592,8 +592,17 @@
                 &.btn-wish {
                     color: $gray-450;
 
+                    // 라인 아이콘이 스트로크로 인해 커 보이는 문제 보정
+                    i.icon-heart {
+                        transform: scale(0.9);
+                    }
+
                     &.active {
                         color: $point-red;
+
+                        i.icon-heart-fill {
+                            transform: scale(1);
+                        }
                     }
                 }
 

@@ -8,6 +8,7 @@
 // 공통 컴포넌트
 @import "components/header";
 @import "components/footer";
+@import "../pc/components/toast";
 
 // 페이지별 스타일
 @import "pages/cart";
