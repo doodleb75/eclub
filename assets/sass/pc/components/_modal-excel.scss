@@ -1,0 +1,132 @@
+@import "../../abstract/functions";
+@import "../../abstract/variables";
+@import "../../abstract/mixins";
+
+// 엑셀 업로드 모달 스타일
+.modal-excel-upload {
+    padding: rem(46) rem(24) rem(17); // 상단 46, 좌우 24, 하단 17
+    position: relative;
+
+    .modal-header {
+        display: block; // 전역 모달 헤더의 flex 설정 해제
+        padding: 0;
+        border-bottom: none;
+        margin-bottom: rem(51); // 타이틀과 하단 요소 간격
+        text-align: center;
+
+        .modal-title {
+            font-size: rem(20);
+            font-weight: $fw-medium; // Pretendard:Medium
+            color: $black;
+            letter-spacing: rem(-1);
+            margin: 0;
+            width: 100%;
+        }
+
+        .btn-modal-close {
+            position: absolute;
+            top: rem(11);
+            right: rem(11);
+            width: rem(36);
+            height: rem(36);
+            padding: 0;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            .icon-close {
+                @include icon-mask('/assets/icons/clear.svg', rem(24)); // clear.svg 사용
+                color: $black;
+            }
+        }
+    }
+
+    .modal-body {
+        padding: 0;
+        margin-bottom: rem(40); // 바디와 등록 버튼 간격
+
+        .file-upload-row {
+            display: flex;
+            align-items: center;
+            gap: rem(8);
+
+            .label {
+                font-size: rem(14);
+                font-weight: $fw-medium;
+                color: $black;
+                letter-spacing: rem(-0.7);
+                flex-shrink: 0;
+                margin-right: rem(15);
+            }
+
+            .file-info-box {
+                flex: 1;
+                height: rem(40);
+                border: 1px solid #ddd;
+                border-radius: rem(4);
+                background-color: $white;
+                padding: 0 rem(12);
+                display: flex;
+                align-items: center;
+
+                .file-name-display {
+                    border: none;
+                    background: transparent;
+                    width: 100%;
+                    font-size: rem(14);
+                    color: $black;
+                    outline: none;
+                    cursor: default;
+                }
+            }
+
+            .action-buttons {
+                display: flex;
+                gap: rem(8);
+
+                button {
+                    height: rem(40);
+                    padding: 0 rem(12);
+                    border: 1px solid #ddd;
+                    border-radius: rem(4);
+                    background: $white;
+                    font-size: rem(14);
+                    font-weight: $fw-medium;
+                    color: $black;
+                    letter-spacing: rem(-0.7);
+                    cursor: pointer;
+                    white-space: nowrap;
+
+                    &:hover {
+                        background-color: $gray-50;
+                    }
+                }
+            }
+        }
+    }
+
+    .modal-footer {
+        padding: 0;
+
+        .btn-register {
+            width: 100%;
+            height: rem(54); // py 17 기준 높이
+            background-color: $primary-red; // #ff5447
+            color: $white;
+            font-size: rem(16);
+            font-weight: $fw-medium;
+            letter-spacing: rem(-0.8);
+            border: none;
+            border-radius: rem(4);
+            cursor: pointer;
+            @include flex-center;
+
+            &:hover {
+                background-color: darken(#ff5447, 5%);
+            }
+        }
+    }
+}

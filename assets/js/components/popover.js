@@ -4,6 +4,7 @@
  */
 const Popover = (() => {
     let instance = null;
+    let lastTrigger = null; // 마지막으로 팝업을 트리거한 요소
 
     // 1. 디자인 타입별 HTML 템플릿 정의
     const templates = {
@@ -79,6 +80,14 @@ const Popover = (() => {
     const show = (trigger, customData = null) => {
         if (!instance) init();
 
+        // 이미 같은 트리거로 활성화된 상태면 닫기 (토글 기능)
+        if (instance.classList.contains('active') && lastTrigger === trigger) {
+            hide();
+            return;
+        }
+
+        lastTrigger = trigger;
+
         // 1. 템플릿 타입 결정 (기본값 discount)
         const templateType = trigger.dataset.popoverTemplate || 'discount';
         const templateFn = templates[templateType];
@@ -136,7 +145,10 @@ const Popover = (() => {
     };
 
     const hide = () => {
-        if (instance) instance.classList.remove('active');
+        if (instance) {
+            instance.classList.remove('active');
+            lastTrigger = null; // 트리거 정보 초기화
+        }
     };
 
     // 바깥 클릭 시 닫기

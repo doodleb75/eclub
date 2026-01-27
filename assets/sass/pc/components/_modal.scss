@@ -48,7 +48,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    // padding: rem(20) rem(24);
     padding: rem(10);
     border-bottom: 1px solid $gray-150;
 
@@ -74,19 +73,40 @@
         }
     }
 
+    &.type-center {
+        justify-content: center;
+        padding: rem(46) rem(24) 0;
+        border-bottom: none;
+
+        .modal-title {
+            font-size: rem(20);
+            font-weight: $fw-medium;
+            letter-spacing: rem(-1);
+            color: $black;
+        }
+
+        .btn-modal-close {
+            position: absolute;
+            right: rem(11);
+            top: rem(11);
+            width: rem(36);
+            height: rem(35);
+        }
+    }
+
     &.no-border {
         border-bottom: none;
     }
 }
 
 .modal-body {
-    padding: rem(24);
+    padding: 0 rem(24);
     max-height: 70vh;
     overflow-y: auto; // 내용이 많을 경우 스크롤 처리
 }
 
 .modal-footer {
-    padding: rem(16) rem(24) rem(24);
+    padding: rem(40) rem(24) rem(17);
 }
 
 // 상품 옵션 설정
@@ -164,5 +184,100 @@
                 }
             }
         }
+    }
+}
+
+// 장바구니 엑셀 일괄등록 모달
+.excel-upload-form {
+    .form-row {
+        display: flex;
+        align-items: center;
+        gap: rem(15);
+        margin-top: rem(51);
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: rem(10);
+            margin-top: rem(30);
+        }
+    }
+
+    .form-label {
+        font-size: rem(14);
+        font-weight: $fw-medium;
+        color: $black;
+        letter-spacing: rem(-0.7);
+        white-space: nowrap;
+    }
+
+    .file-input-group {
+        display: flex;
+        flex: 1;
+        gap: rem(8);
+        width: 100%;
+
+        @media screen and (max-width: 480px) {
+            flex-wrap: wrap;
+
+            .file-name {
+                flex: none;
+                width: 100%;
+            }
+
+            button {
+                flex: 1;
+            }
+        }
+
+        .file-name {
+            flex: 1;
+            height: rem(40);
+            padding: 0 rem(12);
+            border: 1px solid $gray-400;
+            border-radius: $radius-sm;
+            background: $white;
+            font-size: rem(14);
+            color: $gray-900;
+
+            &::placeholder {
+                color: $gray-600;
+            }
+        }
+
+        button {
+            height: rem(40);
+            padding: 0 rem(12);
+            border: 1px solid $gray-400;
+            border-radius: $radius-sm;
+            background: $white;
+            font-size: rem(14);
+            font-weight: $fw-medium;
+            color: $black;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            &:hover {
+                background: $gray-100;
+            }
+        }
+    }
+}
+
+.btn-excel-submit {
+    width: 100%;
+    height: rem(54);
+    background: $point-red;
+    color: $white;
+    font-size: rem(16);
+    font-weight: $fw-medium;
+    border: none;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: rem(-0.8);
+
+    &:hover {
+        background: darken($point-red, 5%);
     }
 }
