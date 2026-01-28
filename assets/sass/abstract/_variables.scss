@@ -3,6 +3,7 @@
 // 브랜드 컬러
 $primary: #ffeb00; // 메인 컬러 (이마트)
 $primary-red: #ff5452; // 기본 포인트 (가격, 강조 버튼)
+$point-dark-red: #AE0000; // main 강조 red
 $point-red: #ff5447; // 강조 포인트 (피그마 분석)
 $secondary: #000000; // 보조 컬러
 
@@ -44,6 +45,11 @@ $border-divider-light: rgba(138, 138, 138, 0.1); // 피그마 구분선
 
 // 배송 타입별 컬러
 $delivery-ambient: #AA8A8A; // 쓱배송(상온)
+$color-badge-ambient-bg: #e6dada; // 상온 태그 배경
+$color-badge-ambient-text: #4d2424; // 상온 태그 텍스트
+$color-badge-cold-bg: #def1ff; // 저온 태그 배경
+$color-badge-cold-text: #00568a; // 저온 태그 텍스트
+$color-badge-hot-deal: #D00053; // 오늘의 핫딜 태그 배경
 $delivery-cold: #649EC2; // 쓱배송(저온)
 $delivery-frozen: #2f4f89; // 쓱배송(냉동)
 $delivery-cooling: #FFA000; // 직냉배송
@@ -139,5 +145,5 @@ $color-info: #17a2b8;
 
 // 레이아웃
 $pc-layout-min-width: rem(1280); // 가로 스크롤 기준
-$pc-max-width: rem(1200); // 컨테이너 최대 너비
+$pc-max-width: rem(1280); // 컨테이너 최대 너비
 $max-width: $pc-max-width;
