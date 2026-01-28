@@ -150,3 +150,59 @@ $icon-path: '/assets/icons'; // 루트 절대 경로 적용
     @include icon-mask('#{$icon-path}/chevron-right.svg', rem(24));
     transform: rotate(180deg);
 }
+
+// Time Sale Icons
+.icon-arrow-right-main {
+    @include icon-mask('#{$icon-path}/main/arrow_right.svg', rem(20));
+}
+
+.icon-time-alarm {
+    display: inline-block;
+    width: rem(24);
+    height: rem(24);
+    background: url('#{$icon-path}/main/icon-main-time.svg') no-repeat center / contain;
+    vertical-align: middle;
+}
+
+.icon-btn-prev {
+    @include icon-mask('#{$icon-path}/main/btn_prev.svg', rem(24));
+}
+
+.icon-btn-next {
+    @include icon-mask('#{$icon-path}/main/btn_next.svg', rem(24));
+}
+
+.icon-minus-main {
+    @include icon-mask('#{$icon-path}/main/icon_minus.svg', rem(12));
+}
+
+.icon-plus-main {
+    @include icon-mask('#{$icon-path}/main/icon_plus.svg', rem(12));
+}
+
+.icon-cart-main {
+    @include icon-mask('#{$icon-path}/main/icon_cart.svg', rem(24));
+}
+
+.icon-heart-main {
+    @include icon-mask('#{$icon-path}/main/icon_heart.svg', rem(24));
+}
+
+
+
+// Main Page Icons
+.icon-main-pause {
+    @include icon-mask('/assets/icons/main/icon-main-pause.svg', rem(24));
+}
+
+.icon-main-plus {
+    @include icon-mask('/assets/icons/main/icon-main-plus.svg', rem(24));
+}
+
+.icon-main-prev {
+    @include icon-mask('/assets/icons/main/icon-main-prev.svg', rem(24));
+}
+
+.icon-main-next {
+    @include icon-mask('/assets/icons/main/icon-main-next.svg', rem(24));
+}

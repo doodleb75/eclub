@@ -6,7 +6,7 @@
   "scripts": {
     "sass": "sass assets/sass:assets/css --no-source-map",
     "watch": "sass --watch assets/sass:assets/css --no-source-map",
-    "serve": "live-server --port=8081 --host=127.0.0.1",
+    "serve": "live-server --port=8081 --host=127.0.0.1 --open=pc/index.html",
     "dev": "concurrently \"npm run watch\" \"npm run serve\""
   },
   "repository": {
