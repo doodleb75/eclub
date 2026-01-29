@@ -383,6 +383,135 @@ const Eclub = {
         }
     },
 
+    // 슬라이더 (가로 스크롤)
+    Slider: {
+        init() {
+            const sliders = document.querySelectorAll('.list-slider');
+            sliders.forEach(list => {
+                this.initSlider(list);
+            });
+        },
+        initSlider(list) {
+            const section = list.closest('.home-container');
+            if (!section) return;
+            const controls = section.querySelector('.pagination-controls');
+            if (!controls) return;
+
+            const prevBtn = controls.querySelector('.prev');
+            const nextBtn = controls.querySelector('.next');
+            const currentEl = controls.querySelector('.current');
+            const totalEl = controls.querySelector('.total');
+
+            // 상태 업데이트 함수
+            const updateState = () => {
+                const items = list.querySelectorAll('.product-item');
+                const itemsCount = items.length;
+                const itemsPerPage = 5;
+                const totalPages = Math.ceil(itemsCount / itemsPerPage) || 1;
+
+                // Total 페이지 업데이트
+                if (totalEl) {
+                    const text = totalEl.innerText.trim();
+                    if (text.startsWith('/')) {
+                        totalEl.innerText = '/ ' + totalPages;
+                    } else {
+                        totalEl.innerText = totalPages;
+                    }
+                }
+
+                // 현재 페이지 및 버튼 상태 업데이트
+                this.updatePagination(list, currentEl, totalPages, prevBtn, nextBtn);
+            };
+
+            // 초기 실행
+            updateState();
+
+            // Dom 변경 감지 (아이템 추가/삭제)
+            const observer = new MutationObserver(() => {
+                updateState();
+            });
+            observer.observe(list, { childList: true, subtree: true });
+
+            // 스크롤 이벤트
+            list.addEventListener('scroll', () => {
+                // 스크롤 시에는 itemsCount가 변하지 않으므로, 
+                // totalPages를 매번 계산하지 않으려면 클로저 변수를 써야 하지만,
+                // updatePagination 내부에서만 사용하는 값이라면,
+                // 여기서 다시 계산해서 넘겨주거나, updateState를 호출하는 방식은 비효율적일 수 있음.
+                // 다만 렌더링 성능에 큰 지장이 없다면 단순하게 itemsCount 다시 구해서 넘김.
+                const items = list.querySelectorAll('.product-item');
+                const totalPages = Math.ceil(items.length / 5) || 1;
+                this.updatePagination(list, currentEl, totalPages, prevBtn, nextBtn);
+            });
+
+            if (prevBtn) {
+                prevBtn.onclick = () => this.scroll(list, 'left');
+            }
+            if (nextBtn) {
+                nextBtn.onclick = () => this.scroll(list, 'right');
+            }
+        },
+        scroll(element, direction) {
+            const style = window.getComputedStyle(element);
+            const gap = parseFloat(style.gap) || 20;
+
+            const item = element.querySelector('.product-item');
+            if (!item) return;
+            const itemWidth = item.offsetWidth;
+
+            const scrollUnit = (itemWidth + gap) * 5;
+
+            const currentScroll = element.scrollLeft;
+            const targetScroll = direction === 'left' ? currentScroll - scrollUnit : currentScroll + scrollUnit;
+
+            element.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+            });
+        },
+        updatePagination(element, currentEl, totalPages, prevBtn, nextBtn) {
+            const scrollLeft = element.scrollLeft;
+            const width = element.clientWidth;
+            const scrollWidth = element.scrollWidth;
+
+            if (width === 0) return;
+
+            let page = Math.round(scrollLeft / width) + 1;
+
+            // 끝에 도달했으면 마지막 페이지로 처리 (오차 범위 5px)
+            if (scrollLeft + width >= scrollWidth - 5) {
+                page = totalPages;
+            }
+
+            // 범위 보정
+            if (page > totalPages) page = totalPages;
+            if (page < 1) page = 1;
+
+            if (currentEl) currentEl.innerText = page;
+
+            // 버튼 Disabled 처리
+            if (prevBtn) {
+                if (page === 1) {
+                    prevBtn.classList.add('disabled');
+                    prevBtn.setAttribute('disabled', 'true');
+                } else {
+                    prevBtn.classList.remove('disabled');
+                    prevBtn.removeAttribute('disabled');
+                }
+            }
+
+            if (nextBtn) {
+                if (page === totalPages) {
+                    nextBtn.classList.add('disabled');
+                    nextBtn.setAttribute('disabled', 'true');
+                } else {
+                    nextBtn.classList.remove('disabled');
+                    nextBtn.removeAttribute('disabled');
+                }
+            }
+        }
+    },
+
     // 스크롤 위치 감지 (탭 활성화)
     ScrollSpy: {
         init() {
@@ -489,6 +618,7 @@ const Eclub = {
         this.Quantity.init();
         this.Favorites.init();
         this.CartSelection.init();
+        this.Slider.init();
         this.ScrollSpy.init();
         console.log('Eclub Common UI Initialized');
     }

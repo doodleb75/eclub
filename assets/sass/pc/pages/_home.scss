@@ -50,17 +50,17 @@
                 color: $gray-600;
                 text-decoration: none;
                 gap: rem(4);
-                transition: all 0.2s;
+                @include hover-transition;
 
                 i {
                     width: rem(20);
                     height: rem(20);
                     background-color: $gray-600;
+                    @include hover-transition;
                 }
 
                 &:hover {
                     color: $gray-800;
-                    transition: all 0.2s;
 
                     i {
                         background-color: $gray-800;
@@ -71,15 +71,41 @@
 
         // 공통 상품 리스트 (기본 그리드 형태)
         .product-list {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             gap: rem(20);
             row-gap: rem(40);
             margin-bottom: rem(40);
 
+            // Slider Type (Flex)
+            &.list-slider {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+
+                scroll-snap-type: x mandatory;
+                /* Add scroll snap */
+
+                &::-webkit-scrollbar {
+                    display: none;
+                    /* Chrome, Safari, Opera */
+                }
+
+                .product-item {
+                    flex: 0 0 calc((100% - #{rem(80)}) / 5);
+                    /* 5 items visible */
+                    width: calc((100% - #{rem(80)}) / 5);
+                    scroll-snap-align: start;
+                    /* Snap to start of item */
+                }
+            }
+
             .product-item {
-                width: rem(240);
-                flex: 0 0 auto;
+                width: 100%;
 
                 .image-box {
                     position: relative;
@@ -88,6 +114,19 @@
                     background-color: $gray-100;
                     overflow: hidden;
                     margin-bottom: rem(8);
+
+                    .link-thumb {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        @include hover-transition;
+
+                        &:hover {
+                            .prod-img {
+                                transform: scale(1.05);
+                            }
+                        }
+                    }
 
                     .badge-time {
                         position: absolute;
@@ -99,6 +138,7 @@
                         font-weight: $fw-bold;
                         padding: rem(8);
                         z-index: 1;
+                        pointer-events: none; // 뱃지가 클릭을 방해하지 않도록
 
                         &.badge-hot-deal {
                             background-color: $color-badge-hot-deal;
@@ -109,6 +149,7 @@
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
+                        @include hover-transition;
                     }
                 }
 
@@ -138,6 +179,7 @@
                             align-items: center;
                             justify-content: center;
                             padding: 0;
+                            @include hover-transition;
 
                             i {
                                 background-color: $gray-700;
@@ -146,7 +188,7 @@
                             }
 
                             &:hover {
-                                background-color: $gray-150;
+                                background: darken($white, 5%);
                             }
                         }
 
@@ -219,6 +261,16 @@
                         -webkit-box-orient: vertical;
                         overflow: hidden;
                         text-overflow: ellipsis;
+
+                        .link-name {
+                            color: inherit;
+                            text-decoration: none;
+                            @include hover-transition;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
 
                         .badge-type {
                             display: inline-block;
@@ -322,6 +374,19 @@
                 border-radius: $radius-sm;
                 cursor: pointer;
 
+                @include hover-transition;
+
+                &:hover {
+                    background-color: $gray-50;
+                    border-color: $gray-500;
+
+                    @include hover-transition;
+
+                    i {
+                        background-color: $gray-900;
+                    }
+                }
+
                 i {
                     display: block;
                     width: rem(24);
@@ -332,9 +397,20 @@
                 &.prev i {
                     transform: rotate(180deg);
                 }
+
+                &.disabled {
+                    background-color: $gray-100;
+                    border-color: $gray-200;
+                    cursor: not-allowed;
+
+                    i {
+                        background-color: $gray-300;
+                    }
+                }
             }
 
             .page-count {
+                width: 60px;
                 font-size: $fs-16;
                 font-weight: $fw-bold;
                 line-height: rem(40);
@@ -515,6 +591,7 @@
                         color: inherit;
                         cursor: pointer;
                         padding: 0;
+                        @include hover-transition;
 
                         i {
                             display: inline-block;
@@ -522,6 +599,7 @@
                             background-color: $gray-600;
                             width: rem(20);
                             height: rem(20);
+                            @include hover-transition;
                         }
 
                         &:hover {
@@ -605,6 +683,7 @@
                         background: $gray-150;
                         border-radius: 50%;
                         overflow: hidden;
+                        @include hover-transition;
 
                         img {
                             width: 100%;
@@ -620,13 +699,13 @@
                         color: $gray-800;
                         letter-spacing: -0.025em;
                         white-space: nowrap;
+                        @include hover-transition;
                     }
                 }
 
                 &:hover {
                     .icon {
                         transform: translateY(-3px);
-                        transition: transform 0.2s;
                     }
 
                     .txt {
@@ -696,9 +775,10 @@
 
                 .product-list {
                     flex: 1;
+                    grid-template-columns: repeat(4, 1fr); // 4열 배치
 
                     .product-item {
-                        width: calc((100% - #{rem(60)}) / 4); // 4열 배치
+                        width: 100%;
                     }
                 }
             }
@@ -765,6 +845,7 @@
                         gap: rem(4);
                         color: $white;
                         text-decoration: none;
+                        @include hover-transition;
 
                         i {
                             @include icon-mask('#{$icon-path}/main/arrow_right.svg', rem(14));
@@ -856,7 +937,7 @@
                         border: 1px solid $gray-70;
                         border-radius: rem(30);
                         cursor: pointer;
-                        transition: all 0.2s;
+                        @include hover-transition;
 
                         &:hover {
                             border-color: $gray-400;

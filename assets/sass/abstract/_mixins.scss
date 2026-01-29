@@ -76,3 +76,8 @@
         text-overflow: ellipsis;
     }
 }
+
+// 공통 트랜지션 적용
+@mixin hover-transition($speed: $transition-speed) {
+    transition: all $speed ease;
+}

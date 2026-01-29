@@ -1636,30 +1636,51 @@ input[type=text]:focus-visible {
   color: #999999;
   text-decoration: none;
   gap: 0.25rem;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .home-section .section-title-box .link-all i {
   width: 1.25rem;
   height: 1.25rem;
   background-color: #999999;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .home-section .section-title-box .link-all:hover {
   color: #444444;
-  transition: all 0.2s;
 }
 .main-page-wrapper .home-section .section-title-box .link-all:hover i {
   background-color: #444444;
 }
 .main-page-wrapper .home-section .product-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.25rem;
   row-gap: 2.5rem;
   margin-bottom: 2.5rem;
 }
+.main-page-wrapper .home-section .product-list.list-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  scroll-snap-type: x mandatory;
+  /* Add scroll snap */
+}
+.main-page-wrapper .home-section .product-list.list-slider::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+.main-page-wrapper .home-section .product-list.list-slider .product-item {
+  flex: 0 0 calc((100% - 5rem) / 5);
+  /* 5 items visible */
+  width: calc((100% - 5rem) / 5);
+  scroll-snap-align: start;
+  /* Snap to start of item */
+}
 .main-page-wrapper .home-section .product-list .product-item {
-  width: 15rem;
-  flex: 0 0 auto;
+  width: 100%;
 }
 .main-page-wrapper .home-section .product-list .product-item .image-box {
   position: relative;
@@ -1668,6 +1689,15 @@ input[type=text]:focus-visible {
   background-color: #f8f9fa;
   overflow: hidden;
   margin-bottom: 0.5rem;
+}
+.main-page-wrapper .home-section .product-list .product-item .image-box .link-thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+.main-page-wrapper .home-section .product-list .product-item .image-box .link-thumb:hover .prod-img {
+  transform: scale(1.05);
 }
 .main-page-wrapper .home-section .product-list .product-item .image-box .badge-time {
   position: absolute;
@@ -1679,6 +1709,7 @@ input[type=text]:focus-visible {
   font-weight: 700;
   padding: 0.5rem;
   z-index: 1;
+  pointer-events: none;
 }
 .main-page-wrapper .home-section .product-list .product-item .image-box .badge-time.badge-hot-deal {
   background-color: #D00053;
@@ -1687,6 +1718,7 @@ input[type=text]:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .home-section .product-list .product-item .control-bar {
   display: flex;
@@ -1714,6 +1746,7 @@ input[type=text]:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 0;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .home-section .product-list .product-item .control-bar .qty-control button i {
   background-color: #666666;
@@ -1721,7 +1754,7 @@ input[type=text]:focus-visible {
   height: 1.0625rem;
 }
 .main-page-wrapper .home-section .product-list .product-item .control-bar .qty-control button:hover {
-  background-color: #e1e1e1;
+  background: rgb(242.25, 242.25, 242.25);
 }
 .main-page-wrapper .home-section .product-list .product-item .control-bar .qty-control input {
   width: calc(100% - 4rem);
@@ -1783,6 +1816,14 @@ input[type=text]:focus-visible {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.main-page-wrapper .home-section .product-list .product-item .prod-info .prod-name .link-name {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.main-page-wrapper .home-section .product-list .product-item .prod-info .prod-name .link-name:hover {
+  text-decoration: underline;
 }
 .main-page-wrapper .home-section .product-list .product-item .prod-info .prod-name .badge-type {
   display: inline-block;
@@ -1870,6 +1911,15 @@ input[type=text]:focus-visible {
   background: #ffffff;
   border-radius: 0.25rem;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+.main-page-wrapper .home-section .pagination-controls .btn-page:hover {
+  background-color: #fbfbfb;
+  border-color: #aaaaaa;
+  transition: all 0.2s ease;
+}
+.main-page-wrapper .home-section .pagination-controls .btn-page:hover i {
+  background-color: #222222;
 }
 .main-page-wrapper .home-section .pagination-controls .btn-page i {
   display: block;
@@ -1880,7 +1930,16 @@ input[type=text]:focus-visible {
 .main-page-wrapper .home-section .pagination-controls .btn-page.prev i {
   transform: rotate(180deg);
 }
+.main-page-wrapper .home-section .pagination-controls .btn-page.disabled {
+  background-color: #f8f9fa;
+  border-color: #e5e5e5;
+  cursor: not-allowed;
+}
+.main-page-wrapper .home-section .pagination-controls .btn-page.disabled i {
+  background-color: #d9d9d9;
+}
 .main-page-wrapper .home-section .pagination-controls .page-count {
+  width: 60px;
   font-size: 1rem;
   font-weight: 700;
   line-height: 2.5rem;
@@ -2037,6 +2096,7 @@ input[type=text]:focus-visible {
   color: inherit;
   cursor: pointer;
   padding: 0;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .main-visual .main-slider-controls .control-box .nav-controls .btn-control i {
   display: inline-block;
@@ -2044,6 +2104,7 @@ input[type=text]:focus-visible {
   background-color: #999999;
   width: 1.25rem;
   height: 1.25rem;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .main-visual .main-slider-controls .control-box .nav-controls .btn-control:hover i {
   background-color: #999999;
@@ -2110,6 +2171,7 @@ input[type=text]:focus-visible {
   background: #e1e1e1;
   border-radius: 50%;
   overflow: hidden;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .quick-menu-section .quick-menu-row li a .icon img {
   width: 100%;
@@ -2123,10 +2185,10 @@ input[type=text]:focus-visible {
   color: #444444;
   letter-spacing: -0.025em;
   white-space: nowrap;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .quick-menu-section .quick-menu-row li:hover .icon {
   transform: translateY(-3px);
-  transition: transform 0.2s;
 }
 .main-page-wrapper .quick-menu-section .quick-menu-row li:hover .txt {
   color: #000000;
@@ -2179,9 +2241,10 @@ input[type=text]:focus-visible {
 }
 .main-page-wrapper .time-sale-section.flash-deal-section .flash-deal-wrap .product-list {
   flex: 1;
+  grid-template-columns: repeat(4, 1fr);
 }
 .main-page-wrapper .time-sale-section.flash-deal-section .flash-deal-wrap .product-list .product-item {
-  width: calc((100% - 3.75rem) / 4);
+  width: 100%;
 }
 .main-page-wrapper .exhibition-section .exhibition-banner {
   position: relative;
@@ -2238,6 +2301,7 @@ input[type=text]:focus-visible {
   gap: 0.25rem;
   color: #ffffff;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .exhibition-section .exhibition-banner .banner-content .banner-footer .link-more i {
   display: inline-block;
@@ -2342,7 +2406,7 @@ input[type=text]:focus-visible {
   border: 1px solid #eeeeee;
   border-radius: 1.875rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 .main-page-wrapper .category-best-section .category-tabs-wrap .category-tabs li button:hover,
 .main-page-wrapper .customer-purchase-section .category-tabs-wrap .category-tabs li button:hover,
