@@ -1,0 +1,32 @@
+// 브랜드 소개 섹션 스타일
+.brand-intro {
+    margin-top: rem(100);
+    padding-bottom: rem(100); // 푸터와의 간격 확보
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(15);
+    text-align: center;
+
+    .logo {
+        width: rem(48);
+        height: rem(20);
+        background: url('../../images/common/eclub-logo.svg') no-repeat center / contain;
+    }
+
+    .since {
+        font-size: rem(13);
+        color: $gray-700;
+        font-weight: $fw-regular;
+        line-height: 1.4;
+    }
+
+    .desc {
+        max-width: rem(380);
+        font-size: rem(13);
+        color: $gray-700;
+        font-weight: $fw-regular;
+        line-height: rem(18);
+        word-break: keep-all;
+    }
+}
