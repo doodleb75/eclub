@@ -153,3 +153,6 @@ $color-info: #17a2b8;
 $pc-layout-min-width: rem(1280); // 가로 스크롤 기준
 $pc-max-width: rem(1280); // 컨테이너 최대 너비
 $max-width: $pc-max-width;
+
+// 트랜지션
+$transition-speed: 0.2s;
