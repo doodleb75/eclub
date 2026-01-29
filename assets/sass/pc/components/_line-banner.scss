@@ -1,0 +1,20 @@
+// 라인 배너 스타일
+.line-banner {
+    background-color: $color-eclub-blue;
+    height: rem(42);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .banner-content {
+        color: $white;
+        font-size: rem(14);
+        font-weight: $fw-regular;
+
+        b,
+        strong {
+            font-weight: $fw-bold;
+        }
+    }
+}

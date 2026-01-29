@@ -33,7 +33,7 @@
                 transform: translateY(-50%);
                 width: 1px;
                 height: rem(10);
-                background-color: $gray-300;
+                background-color: $gray-500;
             }
 
             &:last-child::after {
@@ -162,6 +162,23 @@
                     border-radius: 50%;
                 }
             }
+
+            .cart-count {
+                position: absolute;
+                top: rem(-8);
+                right: rem(-8);
+                // width: rem(12);
+                // height: rem(12);
+                border-radius: 40%;
+                padding: rem(2) rem(6);
+                background-color: $color-search-border;
+                color: $gray-700;
+                font-size: rem(12);
+                font-weight: $fw-bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
     }
 }
@@ -240,11 +257,24 @@
                     transform: translateY(-50%);
                     width: 1px;
                     height: rem(10);
-                    background-color: $gray-300;
+                    background-color: $gray-700;
                 }
 
                 &:last-child::after {
                     display: none;
+                }
+
+                .customer-grade {
+                    font-size: rem(10);
+                    line-height: 120%;
+                    font-weight: $fw-regular;
+                    font-style: normal;
+                    padding: rem(2) rem(6);
+                    color: $white;
+                    background: $gray-700;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: rem(4);
                 }
             }
 
