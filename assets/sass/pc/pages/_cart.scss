@@ -1019,11 +1019,10 @@
 }
 
 .payment-summary {
-    // 피그마 패딩 및 간격 정밀 조정
-    padding: rem(24); // 기본 24px
+    padding: rem(24);
 
     .box-title {
-        font-size: rem(20); // 타이틀 강조
+        font-size: rem(20);
         font-weight: $fw-bold;
         color: $gray-850;
         margin-bottom: rem(24);
@@ -1039,56 +1038,14 @@
                 justify-content: space-between;
                 align-items: center;
                 color: $gray-850;
-
-                .label {
-                    // font-weight: $fw-bold;
-                }
-
-                .price {
-                    font-weight: $fw-bold;
-                }
-
-                // 최상단 상품 요약
-                &.total-select {
-                    font-size: rem(18);
-                    margin-bottom: rem(20);
-
-                    .label {
-                        font-weight: $fw-bold;
-                    }
-
-                    .price {
-                        font-family: inherit;
-                        font-size: rem(22);
-                        font-weight: $fw-bold;
-
-                        b {
-                            font-weight: $fw-medium;
-                            font-size: rem(18);
-                            margin-left: rem(2);
-                        }
-                    }
-                }
-
-                // 분류별 (저온/상온)
-                &.sub-item {
-                    font-size: rem(13);
-                    margin-bottom: rem(8);
-                    color: $gray-850;
-
-                    .label {
-                        font-weight: $fw-bold;
-                    }
-
-                    .price {
-                        font-weight: $fw-bold;
-                    }
-                }
+                margin-bottom: rem(8);
+                font-size: rem(16);
+                font-weight: $fw-bold;
 
                 // 할인내역 토글 행
-                &.discount-toggle {
-                    margin-top: rem(4); // sub-item 사이 간격 조절
-                    padding-bottom: rem(4);
+                &.discount {
+                    margin-top: rem(4);
+                    margin-bottom: rem(8);
 
                     .btn-sum-discount {
                         display: flex;
@@ -1103,7 +1060,6 @@
                         padding: 0;
 
                         i {
-                            // font-size: rem(16);
                             color: $gray-850;
                             transition: transform 0.2s;
                             transform: rotate(0deg);
@@ -1116,58 +1072,41 @@
                     }
 
                     .price {
-                        color: $point-red;
                         font-weight: $fw-bold;
-                        // font-size: rem(18);
+                        // color: $gray-850; 
                     }
+                }
+
+                // 소계 행
+                &.subtotal {
+                    margin-top: rem(12);
+                    margin-bottom: rem(20);
                 }
             }
 
             // 폴딩되는 상세 영역
-            .discount-details-wrap {
+            .discount-details {
                 display: none;
+                list-style: none;
+                padding-left: rem(12);
+                border-left: 2px solid $gray-300;
+                margin-left: rem(2);
+                margin-bottom: rem(8);
 
                 &.active {
                     display: block;
                 }
 
-                .discount-group {
-                    margin-bottom: rem(16);
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: rem(13);
+                    color: $gray-600;
+                    padding-top: rem(6);
+                    font-weight: $fw-medium;
 
-                    &:last-child {
-                        margin-bottom: 0;
-                    }
-
-                    .group-header {
-                        display: flex;
-                        justify-content: space-between;
-                        font-size: rem(14);
-                        font-weight: $fw-semibold;
-                        color: $gray-850;
-                        margin-bottom: rem(10);
-                    }
-
-                    .detail-list {
-                        list-style: none;
-                        padding-left: rem(12); // 피그마 분석 들여쓰기
-                        border-left: 2px solid $gray-300;
-                        margin-left: rem(2);
-
-                        li {
-                            display: flex;
-                            justify-content: space-between;
-                            font-size: rem(13);
-                            color: $gray-600;
-                            padding-top: rem(6);
-                            font-weight: $fw-medium;
-                            position: relative;
-                            bottom: rem(-4);
-
-                            &:last-child {
-                                margin-bottom: 0;
-                            }
-
-                        }
+                    &:first-child {
+                        padding-top: 0;
                     }
                 }
             }
@@ -1176,7 +1115,7 @@
         .divider {
             border: none;
             border-top: 1px solid $gray-200;
-            margin: rem(16) 0;
+            margin: rem(20) 0;
         }
 
         .total-final {
@@ -1186,37 +1125,37 @@
             align-items: center;
 
             .final-label {
-                font-size: rem(13);
+                font-size: rem(13); // 피그마/스크린샷상 다른 텍스트보다 작거나 강조됨. 기존 유지하되 색상 변경
                 font-weight: $fw-bold;
                 color: $point-red;
             }
 
             .final-price {
-                font-size: rem(13);
+                font-size: rem(18);
                 font-weight: $fw-bold;
                 color: $point-red;
             }
         }
     }
+}
 
-    .btn-order {
-        width: 100%;
-        height: rem(60);
-        background-color: $point-red;
-        color: $white;
-        border: none;
-        border-radius: rem(4);
-        font-size: rem(22);
-        font-weight: $fw-bold;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.2s;
+.btn-order {
+    width: 100%;
+    height: rem(60);
+    background-color: $point-red;
+    color: $white;
+    border: none;
+    border-radius: rem(4);
+    font-size: rem(22);
+    font-weight: $fw-bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
 
-        &:hover {
-            background-color: darken($point-red, 5%);
-        }
+    &:hover {
+        background-color: darken($point-red, 5%);
     }
 }
 
