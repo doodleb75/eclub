@@ -323,7 +323,10 @@ const Eclub = {
             const groups = container.querySelectorAll('.cart-group');
 
             // 전체 선택 체크박스
-            masterCheckbox.addEventListener('change', (e) => this.toggleAll(e.target.checked, groups));
+            masterCheckbox.addEventListener('change', (e) => {
+                this.toggleAll(e.target.checked, groups);
+                this.updateDeleteButtonState();
+            });
 
             // 그룹 및 개별 체크박스
             groups.forEach(group => {
@@ -333,12 +336,14 @@ const Eclub = {
                     groupHeaderCheckbox.addEventListener('change', (e) => {
                         this.toggleGroupItems(e.target.checked, itemCheckboxes);
                         this.updateMasterState(masterCheckbox);
+                        this.updateDeleteButtonState();
                     });
                 }
                 itemCheckboxes.forEach(itemCheckbox => {
                     itemCheckbox.addEventListener('change', () => {
                         if (groupHeaderCheckbox) this.updateGroupHeaderState(groupHeaderCheckbox, itemCheckboxes);
                         this.updateMasterState(masterCheckbox);
+                        this.updateDeleteButtonState();
                     });
                 });
             });
@@ -353,6 +358,9 @@ const Eclub = {
                         : '/eclub/common/components/modal-confirm.html';
                 });
             }
+
+            // 초기 버튼 상태 체크
+            this.updateDeleteButtonState();
         },
         // 전체 체크박스 토글
         toggleAll(isChecked, groups) {
@@ -380,6 +388,21 @@ const Eclub = {
                 return;
             }
             masterCheckbox.checked = Array.from(allItemCheckboxes).every(cb => cb.checked);
+        },
+        // 선택삭제 버튼 상태 업데이트
+        updateDeleteButtonState() {
+            const btns = document.querySelectorAll('.cart-select-bar .action-btns .btn-select-action');
+            // '선택삭제' 텍스트를 가진 버튼 찾기
+            const targetBtn = Array.from(btns).find(b => b.textContent.trim() === '선택삭제');
+
+            if (targetBtn) {
+                const checkedItems = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]:checked');
+                if (checkedItems.length > 0) {
+                    targetBtn.removeAttribute('disabled');
+                } else {
+                    targetBtn.setAttribute('disabled', '');
+                }
+            }
         }
     },
 
@@ -408,6 +431,21 @@ const Eclub = {
                 const itemsCount = items.length;
                 const itemsPerPage = 5;
                 const totalPages = Math.ceil(itemsCount / itemsPerPage) || 1;
+
+                // 마지막 페이지 여백 처리 (부족한 아이템만큼 우측 마진 추가)
+                items.forEach(item => item.style.marginRight = ''); // 초기화
+
+                const remainder = itemsCount % itemsPerPage;
+                if (itemsCount > 0 && remainder > 0) {
+                    const item = items[0];
+                    const style = window.getComputedStyle(list);
+                    const gap = parseFloat(style.gap) || 20;
+                    const itemWidth = item.offsetWidth;
+                    const missingCount = itemsPerPage - remainder;
+                    const marginToAdd = (itemWidth + gap) * missingCount;
+
+                    items[itemsCount - 1].style.marginRight = `${marginToAdd}px`;
+                }
 
                 // Total 페이지 업데이트
                 if (totalEl) {
@@ -588,6 +626,37 @@ const Eclub = {
         }
     },
 
+    // 입력 필드 핸들러 (숫자 제한 등)
+    InputHandler: {
+        init() {
+            // 숫자만 입력 가능하도록 제한 (data-input="number")
+            document.addEventListener('input', (e) => {
+                const input = e.target;
+                if (input.dataset.input === 'number' || input.getAttribute('data-input') === 'number') {
+                    input.value = input.value.replace(/[^0-9]/g, '');
+                }
+            });
+
+            // 숫자 입력 시 한글/특수문자 차단 (keydown 보조)
+            document.addEventListener('keydown', (e) => {
+                const input = e.target;
+                if (input.dataset.input === 'number' || input.getAttribute('data-input') === 'number') {
+                    // 허용 키: BACKSPACE, DELETE, TAB, ESCAPE, ENTER, 방향키, 숫자, 넘패드 숫자
+                    const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+                    if (allowedKeys.includes(e.key)) return;
+
+                    // Ctrl/Cmd 조합 허용 (A, C, V, X)
+                    if ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase())) return;
+
+                    // 숫자만 허용
+                    if (!/^\d$/.test(e.key)) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
+    },
+
     // HTML 인클루드 로더
     Loader: {
         async init() {
@@ -620,6 +689,7 @@ const Eclub = {
         this.CartSelection.init();
         this.Slider.init();
         this.ScrollSpy.init();
+        this.InputHandler.init();
         console.log('Eclub Common UI Initialized');
     }
 };

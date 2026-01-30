@@ -30,8 +30,9 @@
     width: 90%; // 기본 너비 (반응형)
     max-width: rem(500); // PC 최대 너비
     background: $white;
-    border-radius: rem(4);
+    border-radius: 0; // 외곽 보더 라운드 제거
     box-shadow: 0 rem(20) rem(60) rgba(0, 0, 0, 0.3);
+    border: rem(1) solid $gray-350;
     overflow: hidden;
     transform: scale(0.9);
     opacity: 0;
@@ -137,50 +138,57 @@
 // 컨피름(확인/취소) 및 알림(Alert) 모달 스타일
 .confirm-body,
 .alert-body {
-    padding: rem(10) rem(24) rem(40);
+    padding: rem(50) rem(32) rem(20); // 상단 및 좌우 여백 재조정
     text-align: center;
 
     .confirm-message,
     .alert-message {
-        font-size: rem(15);
-        font-weight: $fw-medium;
+        font-size: rem(15); // 사용자 요청에 따라 15px로 수정
+        font-weight: $fw-semibold;
         color: $gray-900;
         line-height: 1.5;
+        letter-spacing: rem(-0.8);
         word-break: keep-all;
     }
 }
 
 .confirm-footer,
 .alert-footer {
-    padding: 0;
+    padding: 0 rem(32) rem(32); // 좌우 및 하단 패딩 최적화
 
     .btn-group {
         display: flex;
+        gap: rem(12); // 버튼 사이 간격 12px
 
         button {
             flex: 1;
-            height: rem(52);
+            // height: rem(52); // 높이 52px로 최적화
             font-size: rem(15);
-            font-weight: $fw-medium;
+            padding: rem(14) rem(16);
+            font-weight: $fw-semibold;
             cursor: pointer;
+            border-radius: rem(4); // 버튼 라운드는 6px 유지
             border: none;
-            transition: background 0.2s;
+            transition: all $transition-speed;
 
             &.btn-cancel {
-                background: $gray-300;
+                background: $white;
+                border: 1px solid $gray-400;
                 color: $gray-700;
 
                 &:hover {
-                    background: $gray-400;
+                    color: $gray-900;
+                    background: $gray-100;
+                    border-color: $gray-500;
                 }
             }
 
             &.btn-confirm {
-                background: $gray-850;
+                background: $gray-900;
                 color: $white;
 
                 &:hover {
-                    background: $gray-900;
+                    background: $black;
                 }
             }
         }

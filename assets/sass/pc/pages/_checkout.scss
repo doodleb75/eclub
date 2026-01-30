@@ -232,6 +232,91 @@
                 display: block; // 활성화 시 노출
             }
 
+            .card-info-notice {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: rem(16);
+                padding: rem(24) 0;
+
+                .notice-text {
+                    font-size: rem(13);
+                    font-weight: $fw-bold;
+                    color: $gray-850;
+                    letter-spacing: rem(-0.5);
+                    margin: 0;
+                }
+
+                .btn-check-limit {
+                    height: rem(28);
+                    padding: 0 rem(24);
+                    border: 1px solid $gray-350;
+                    background-color: $white;
+                    font-size: rem(13);
+                    font-weight: $fw-bold;
+                    color: $gray-600;
+                    border-radius: rem(2);
+                    cursor: pointer;
+                    transition: all 0.2s;
+
+                    &:hover {
+                        background-color: $gray-55;
+                        border-color: $gray-600;
+                    }
+                }
+            }
+
+            .ssgpay-info-area {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: rem(24) 0;
+
+                .phone-row {
+                    display: flex;
+                    align-items: center;
+                    gap: rem(12);
+                    margin-bottom: rem(16);
+
+                    .label {
+                        font-size: rem(13);
+                        font-weight: $fw-bold;
+                        color: $gray-850;
+                        letter-spacing: rem(-0.5);
+                    }
+
+                    .input-group {
+                        display: flex;
+                        gap: rem(4);
+
+                        input {
+                            width: rem(54);
+                            height: rem(28);
+                            border: 1px solid $gray-350;
+                            background-color: $white;
+                            border-radius: rem(2);
+                            text-align: center;
+                            font-size: rem(13);
+                            font-weight: $fw-bold;
+                            color: $gray-850; // 입력된 숫자는 어둡게
+                            cursor: text; // 입력 가능하도록 커서 변경
+
+                            &::placeholder {
+                                color: $gray-300; // placeholder 컬러는 기존의 옅은 그래이
+                            }
+                        }
+                    }
+                }
+
+                .notice-text {
+                    font-size: rem(13);
+                    font-weight: $fw-bold;
+                    color: $gray-850;
+                    letter-spacing: rem(-0.5);
+                    margin: 0;
+                }
+            }
+
             .split-layout {
                 display: flex;
                 align-items: stretch;

@@ -2,12 +2,15 @@
 
 .header {
     background-color: $white;
+    padding-bottom: rem(20);
 
-    .container {
-        max-width: $pc-max-width;
+    // 헤더 전체 컨테이너 1280px 적용
+    >.container {
+        max-width: rem(1280);
         margin: 0 auto;
     }
 }
+
 
 // 상단 정보 바 (당월배송금액 등)
 .header-info-bar {
@@ -52,19 +55,16 @@
 // 메인 헤더 (로고, 검색, 아이콘)
 .header-main {
     padding: rem(20) 0;
-
-    .container {
-        display: flex;
-        align-items: flex-end; // Bottom align items like the design
-        justify-content: space-between;
-        gap: rem(20);
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(64);
 
     .logo-area {
         display: flex;
         align-items: flex-end;
         gap: rem(12);
-        min-width: rem(200);
+        min-width: rem(250);
 
         .logo {
             a {
@@ -85,17 +85,18 @@
     }
 
     .search-area {
-        width: rem(540);
+        // width: rem(540);
+        width: 100%;
         max-width: 100%;
-        margin: 0 rem(20);
+        // margin: 0 rem(20);
 
         .search-box {
             position: relative;
-            border: 2px solid $color-search-border;
-            border-radius: rem(30);
-            padding: 0 rem(24);
+            border: 1px solid $gray-800; // 보더 1px, 다크 그레이색상 변경
+            border-radius: 0; // 사각형 디자인 적용
+            padding: 0 rem(16); // 내부 좌우 패딩 조정
             background-color: $white;
-            height: rem(48);
+            height: rem(40); // 높이 rem(44)로 조정
             display: flex;
             align-items: center;
 
@@ -104,11 +105,11 @@
                 border: none;
                 outline: none;
                 font-size: rem(15);
-                color: $gray-900;
+                color: $black;
                 background: transparent;
 
                 &::placeholder {
-                    color: $gray-400;
+                    color: $gray-600; // 플레이스홀더 색상 변경
                 }
             }
 
@@ -120,8 +121,7 @@
                 border: none;
                 background: none;
                 cursor: pointer;
-                margin-left: rem(10);
-                color: $color-search-border;
+                color: $gray-800; // 아이콘 색상 변경
 
                 &:hover {
                     @include btn-hover-effect;
@@ -132,9 +132,43 @@
 
     .user-controls {
         display: flex;
-        gap: rem(20);
+        gap: rem(24);
         align-items: center;
-        padding-bottom: rem(8); // Align with search box
+
+        .browser-zoom {
+            display: flex;
+            align-items: center;
+            margin-right: rem(8); // Space before user icons
+            display: none;
+
+            button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                @include flex-center;
+                width: rem(32);
+                height: rem(32);
+                color: $gray-600;
+                transition: color 0.2s ease;
+
+                &:hover {
+                    color: $black;
+                }
+            }
+
+            .divider {
+                width: 1px;
+                height: rem(24);
+                background-color: $gray-500;
+                margin: 0 rem(8);
+            }
+        }
+
+        .user-menu {
+            display: flex;
+            gap: rem(20);
+            align-items: center;
+        }
 
         .icon-link {
             display: flex;
@@ -186,12 +220,9 @@
 // 내비게이션 바
 .header-nav {
     padding: rem(12) 0;
-
-    .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .nav-left {
         display: flex;

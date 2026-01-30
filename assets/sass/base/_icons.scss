@@ -1,6 +1,18 @@
 // 공통 아이콘 스타일 세팅
 $icon-path: '/assets/icons'; // 루트 절대 경로 적용
 
+// 마스크 아이콘 믹스인
+@mixin icon-mask($url, $size: rem(24), $color: currentColor) {
+    display: inline-block;
+    width: $size;
+    height: $size;
+    background-color: $color;
+    -webkit-mask: url($url) no-repeat center;
+    mask: url($url) no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+
 .icon,
 [class^="icon-"],
 [class*=" icon-"] {
@@ -205,4 +217,13 @@ $icon-path: '/assets/icons'; // 루트 절대 경로 적용
 
 .icon-main-next {
     @include icon-mask('/assets/icons/main/icon-main-next.svg', rem(24));
+}
+
+// Browser Zoom Icons
+.icon-zoom-in {
+    @include icon-mask('/assets/icons/main/zoom_in.svg', rem(30));
+}
+
+.icon-zoom-out {
+    @include icon-mask('/assets/icons/main/zoom_out.svg', rem(30));
 }
