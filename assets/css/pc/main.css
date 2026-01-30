@@ -3422,43 +3422,15 @@ body {
   justify-content: space-between;
   align-items: center;
   color: #333333;
-}
-.payment-summary .summary-content .summary-item-group .group-row .price {
-  font-weight: 700;
-}
-.payment-summary .summary-content .summary-item-group .group-row.total-select {
-  font-size: 1.125rem;
-  margin-bottom: 1.25rem;
-}
-.payment-summary .summary-content .summary-item-group .group-row.total-select .label {
-  font-weight: 700;
-}
-.payment-summary .summary-content .summary-item-group .group-row.total-select .price {
-  font-family: inherit;
-  font-size: 1.375rem;
-  font-weight: 700;
-}
-.payment-summary .summary-content .summary-item-group .group-row.total-select .price b {
-  font-weight: 500;
-  font-size: 1.125rem;
-  margin-left: 0.125rem;
-}
-.payment-summary .summary-content .summary-item-group .group-row.sub-item {
-  font-size: 0.8125rem;
   margin-bottom: 0.5rem;
-  color: #333333;
-}
-.payment-summary .summary-content .summary-item-group .group-row.sub-item .label {
+  font-size: 1rem;
   font-weight: 700;
 }
-.payment-summary .summary-content .summary-item-group .group-row.sub-item .price {
-  font-weight: 700;
-}
-.payment-summary .summary-content .summary-item-group .group-row.discount-toggle {
+.payment-summary .summary-content .summary-item-group .group-row.discount {
   margin-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
-.payment-summary .summary-content .summary-item-group .group-row.discount-toggle .btn-sum-discount {
+.payment-summary .summary-content .summary-item-group .group-row.discount .btn-sum-discount {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -3470,62 +3442,48 @@ body {
   cursor: pointer;
   padding: 0;
 }
-.payment-summary .summary-content .summary-item-group .group-row.discount-toggle .btn-sum-discount i {
+.payment-summary .summary-content .summary-item-group .group-row.discount .btn-sum-discount i {
   color: #333333;
   transition: transform 0.2s;
   transform: rotate(0deg);
   transform-origin: center;
 }
-.payment-summary .summary-content .summary-item-group .group-row.discount-toggle .btn-sum-discount.active i {
+.payment-summary .summary-content .summary-item-group .group-row.discount .btn-sum-discount.active i {
   transform: rotate(180deg);
 }
-.payment-summary .summary-content .summary-item-group .group-row.discount-toggle .price {
-  color: #ff5447;
+.payment-summary .summary-content .summary-item-group .group-row.discount .price {
   font-weight: 700;
 }
-.payment-summary .summary-content .summary-item-group .discount-details-wrap {
+.payment-summary .summary-content .summary-item-group .group-row.subtotal {
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.payment-summary .summary-content .summary-item-group .discount-details {
   display: none;
-}
-.payment-summary .summary-content .summary-item-group .discount-details-wrap.active {
-  display: block;
-}
-.payment-summary .summary-content .summary-item-group .discount-details-wrap .discount-group {
-  margin-bottom: 1rem;
-}
-.payment-summary .summary-content .summary-item-group .discount-details-wrap .discount-group:last-child {
-  margin-bottom: 0;
-}
-.payment-summary .summary-content .summary-item-group .discount-details-wrap .discount-group .group-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #333333;
-  margin-bottom: 0.625rem;
-}
-.payment-summary .summary-content .summary-item-group .discount-details-wrap .discount-group .detail-list {
   list-style: none;
   padding-left: 0.75rem;
   border-left: 2px solid #d9d9d9;
   margin-left: 0.125rem;
+  margin-bottom: 0.5rem;
 }
-.payment-summary .summary-content .summary-item-group .discount-details-wrap .discount-group .detail-list li {
+.payment-summary .summary-content .summary-item-group .discount-details.active {
+  display: block;
+}
+.payment-summary .summary-content .summary-item-group .discount-details li {
   display: flex;
   justify-content: space-between;
   font-size: 0.8125rem;
   color: #999999;
   padding-top: 0.375rem;
   font-weight: 500;
-  position: relative;
-  bottom: -0.25rem;
 }
-.payment-summary .summary-content .summary-item-group .discount-details-wrap .discount-group .detail-list li:last-child {
-  margin-bottom: 0;
+.payment-summary .summary-content .summary-item-group .discount-details li:first-child {
+  padding-top: 0;
 }
 .payment-summary .summary-content .divider {
   border: none;
   border-top: 1px solid #e5e5e5;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
 }
 .payment-summary .summary-content .total-final {
   margin-bottom: 1rem;
@@ -3539,11 +3497,12 @@ body {
   color: #ff5447;
 }
 .payment-summary .summary-content .total-final .final-price {
-  font-size: 0.8125rem;
+  font-size: 1.125rem;
   font-weight: 700;
   color: #ff5447;
 }
-.payment-summary .btn-order {
+
+.btn-order {
   width: 100%;
   height: 3.75rem;
   background-color: #ff5447;
@@ -3558,7 +3517,7 @@ body {
   justify-content: center;
   transition: background-color 0.2s;
 }
-.payment-summary .btn-order:hover {
+.btn-order:hover {
   background-color: rgb(255, 60.3016304348, 45.5);
 }
 

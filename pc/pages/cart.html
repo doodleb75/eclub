@@ -734,79 +734,64 @@
                     </div>
 
                     <!-- 오른쪽 사이드바 영역 -->
-                    <aside class="cart-sidebar">
-                        <div class="sidebar-box delivery-info">
-                            <h3 class="box-title">배송지 : 이클럽마트</h3>
-                            <div class="address">
-                                <p>[78022] 서울 성동구 성수일로 56 BY상가 101-104호 <br aria-hidden="true">이클럽마트</p>
-                            </div>
-                        </div>
-
+                    <aside class="cart-sidebar checkout-sidebar">
                         <div class="sidebar-box payment-summary">
-                            <!-- <h3 class="box-title">결제 금액</h3> -->
+                            <h3 class="box-title">결제 금액</h3>
                             <div class="summary-content">
-                                <!-- 선택상품 총액 및 분류 -->
+                                <!-- 상온상품 요약 -->
                                 <div class="summary-item-group">
-                                    <div class="group-row total-select">
-                                        <span class="label">선택상품 (25개)</span>
-                                        <span class="price">560,000<b>원</b></span>
+                                    <div class="group-row">
+                                        <span class="label">상온상품 (3개)</span>
+                                        <span class="price">444,090원</span>
                                     </div>
-                                    <div class="group-row sub-item">
-                                        <span class="label">저온상품 (10개)</span>
-                                        <span class="price">320,000원</span>
-                                    </div>
-                                    <div class="group-row sub-item">
-                                        <span class="label">상온상품 (15개)</span>
-                                        <span class="price">230,000원</span>
-                                    </div>
-
-                                    <!-- 할인내역 토글 -->
-                                    <div class="group-row discount-toggle">
+                                    <div class="group-row discount">
                                         <button type="button" class="btn-sum-discount active" data-toggle="slide"
-                                            data-scope=".summary-item-group" data-target=".discount-details-wrap">할인내역
-                                            <i class="icon-chevron-up"></i></button>
-                                        <span class="price">-82,000원</span>
+                                            data-scope=".summary-item-group" data-target=".discount-details">할인 금액 <i
+                                                class="icon-chevron-up"></i></button>
+                                        <span class="price">-128,094원</span>
                                     </div>
-
-                                    <!-- 폴딩되는 상세 할인내역 -->
-                                    <div class="discount-details-wrap active">
-                                        <!-- 프로모션 그룹 -->
-                                        <div class="discount-group">
-                                            <div class="group-header">
-                                                <span class="label">프로모션</span>
-                                                <span class="price">-31,000원</span>
-                                            </div>
-                                            <ul class="detail-list">
-                                                <li><span>수량릴레이</span> <span>-10,000원</span></li>
-                                                <li><span>결제할인</span> <span>-9,689원</span></li>
-                                                <li><span>결제할인가격대별</span> <span>-10,000원</span></li>
-                                                <li><span>다품목할인</span> <span>-1,000원</span></li>
-                                                <li><span>연계할인</span> <span>-1,000원</span></li>
-                                            </ul>
-                                        </div>
-                                        <!-- 쿠폰 그룹 -->
-                                        <div class="discount-group">
-                                            <div class="group-header">
-                                                <span class="label">쿠폰</span>
-                                                <span class="price">-40,311원</span>
-                                            </div>
-                                            <ul class="detail-list">
-                                                <li><span>결제할인쿠폰 3%</span> <span>-16,211원</span></li>
-                                                <li><span>상품할인쿠폰 100원</span> <span>-4,100원</span></li>
-                                            </ul>
-                                        </div>
+                                    <ul class="discount-details active">
+                                        <li><span>상품 쿠폰</span> <span>-22,800원</span></li>
+                                        <li><span>상온상품 월간 쿠폰</span> <span>-2,694원</span></li>
+                                        <li><span>설 연휴 프로모션</span> <span>-102,900원</span></li>
+                                    </ul>
+                                    <div class="group-row subtotal">
+                                        <span class="label">상온상품 결제금액</span>
+                                        <span class="price">328,094원</span>
+                                    </div>
+                                </div>
+                                <hr class="divider">
+                                <!-- 저온상품 요약 -->
+                                <div class="summary-item-group">
+                                    <div class="group-row">
+                                        <span class="label">저온상품 (3개)</span>
+                                        <span class="price">444,090원</span>
+                                    </div>
+                                    <div class="group-row discount">
+                                        <button type="button" class="btn-sum-discount active" data-toggle="slide"
+                                            data-scope=".summary-item-group" data-target=".discount-details">할인 금액 <i
+                                                class="icon-chevron-up"></i></button>
+                                        <span class="price">-128,094원</span>
+                                    </div>
+                                    <ul class="discount-details active">
+                                        <li><span>상품 쿠폰</span> <span>-22,800원</span></li>
+                                        <li><span>저온상품 월간 쿠폰</span> <span>-2,694원</span></li>
+                                        <li><span>설 연휴 프로모션</span> <span>-102,900원</span></li>
+                                    </ul>
+                                    <div class="group-row subtotal">
+                                        <span class="label">저온상품 결제금액</span>
+                                        <span class="price">328,094원</span>
                                     </div>
                                 </div>
 
                                 <hr class="divider">
-
                                 <div class="total-final">
-                                    <span class="final-label">결제 예정 금액 (25개)</span>
-                                    <span class="final-price">478,000원</span>
+                                    <span class="final-label">총 결제 금액 (6개)</span>
+                                    <span class="final-price">558,280원</span>
                                 </div>
                             </div>
                             <button type="button" class="btn-order"
-                                onclick="location.href='/pc/pages/checkout.html'">478,000원 주문하기</button>
+                                onclick="location.href='/pc/pages/checkout.html'">558,280원 주문하기</button>
                         </div>
                     </aside>
                 </div>
