@@ -115,8 +115,10 @@
                                 <!-- 신용카드 상세 정보 -->
                                 <div id="method-credit" class="method-details-box" data-tab-content
                                     data-tab-group="payment-method">
-                                    <p style="padding: rem(20) 0; text-align: center; color: #999;">신용카드 결제 정보 영역입니다.
-                                    </p>
+                                    <div class="card-info-notice">
+                                        <p class="notice-text">카드는 삼성 B2B 카드만 가능하며 카드 결제시 일시불에 한해 가능합니다.</p>
+                                        <button type="button" class="btn-check-limit">카드 한도조회</button>
+                                    </div>
                                 </div>
 
                                 <!-- 가상계좌 선택 시 노출되는 정보 영역 -->
@@ -166,22 +168,49 @@
                                 <!-- SSG PAY CARD 상세 정보 -->
                                 <div id="method-ssgpay-card" class="method-details-box" data-tab-content
                                     data-tab-group="payment-method">
-                                    <p style="padding: rem(20) 0; text-align: center; color: #999;">SSG PAY CARD 결제 정보
-                                        영역입니다.</p>
+                                    <div class="ssgpay-info-area">
+                                        <div class="phone-row">
+                                            <span class="label">휴대폰 번호</span>
+                                            <div class="input-group">
+                                                <input type="tel" data-input="number" placeholder="010" maxlength="3">
+                                                <input type="tel" data-input="number" placeholder="0000" maxlength="4">
+                                                <input type="tel" data-input="number" placeholder="0000" maxlength="4">
+                                            </div>
+                                        </div>
+                                        <p class="notice-text">SSG페이를 사용하시고자 한다면 스마트폰에서 SSG페이 앱을 설치해주세요.</p>
+                                    </div>
                                 </div>
 
                                 <!-- SSG PAY 계좌이체 상세 정보 -->
                                 <div id="method-ssgpay-bank" class="method-details-box" data-tab-content
                                     data-tab-group="payment-method">
-                                    <p style="padding: rem(20) 0; text-align: center; color: #999;">SSG PAY 계좌이체 결제 정보
-                                        영역입니다.</p>
+                                    <div class="ssgpay-info-area">
+                                        <div class="phone-row">
+                                            <span class="label">휴대폰 번호</span>
+                                            <div class="input-group">
+                                                <input type="tel" data-input="number" placeholder="010" maxlength="3">
+                                                <input type="tel" data-input="number" placeholder="0000" maxlength="4">
+                                                <input type="tel" data-input="number" placeholder="0000" maxlength="4">
+                                            </div>
+                                        </div>
+                                        <p class="notice-text">SSG페이를 사용하시고자 한다면 스마트폰에서 SSG페이 앱을 설치해주세요.</p>
+                                    </div>
                                 </div>
 
                                 <!-- SSG MONEY 상세 정보 -->
                                 <div id="method-ssgmoney" class="method-details-box" data-tab-content
                                     data-tab-group="payment-method">
-                                    <p style="padding: rem(20) 0; text-align: center; color: #999;">SSG MONEY 결제 정보
-                                        영역입니다.</p>
+                                    <div class="ssgpay-info-area">
+                                        <div class="phone-row">
+                                            <span class="label">휴대폰 번호</span>
+                                            <div class="input-group">
+                                                <input type="tel" data-input="number" placeholder="010" maxlength="3">
+                                                <input type="tel" data-input="number" placeholder="0000" maxlength="4">
+                                                <input type="tel" data-input="number" placeholder="0000" maxlength="4">
+                                            </div>
+                                        </div>
+                                        <p class="notice-text">SSG페이를 사용하시고자 한다면 스마트폰에서 SSG페이 앱을 설치해주세요.</p>
+                                    </div>
                                 </div>
 
 
@@ -287,7 +316,7 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="input-area">
-                                        <input type="text" placeholder="사용할 포인트를 입력해주세요.">
+                                        <input type="text" data-input="number" placeholder="사용할 포인트를 입력해주세요.">
                                         <button type="button" class="btn-use-all">전액사용</button>
                                     </div>
                                     <div class="accumulate-info">

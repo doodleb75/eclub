@@ -22,7 +22,7 @@ $gray-600: #999999; // 비활성/플레이스홀더
 $gray-500: #aaaaaa; // 약한 비활성
 $gray-450: #c8c8c8; // 보조 플레이스홀더
 $gray-400: #cccccc; // 주요 보더
-$gray-350: #dedede; // 박스/구분선
+$gray-350: #dddddd; // 박스/구분선
 $gray-300: #d9d9d9; // 보조 보더
 $gray-200: #e5e5e5; // 연한 구분선
 $gray-175: #e3e3e3; // 피그마 분석
@@ -56,6 +56,8 @@ $color-badge-ranking-bg: #E33939;
 $delivery-cold: #649EC2; // 쓱배송(저온)
 $delivery-frozen: #2f4f89; // 쓱배송(냉동)
 $delivery-cooling: #FFA000; // 직냉배송
+$color-badge-cooling-bg: #fff1d6; // 직냉 태그 배경
+$color-badge-cooling-text: #8a5e00; // 직냉 태그 텍스트
 $color-badge-zone-bg: #347577; // 상권추천 태그 배경
 $color-badge-recommend-bg: #366193; // 고객 구매추천 태그 배경
 
@@ -151,7 +153,7 @@ $color-info: #17a2b8;
 
 // 레이아웃
 $pc-layout-min-width: rem(1280); // 가로 스크롤 기준
-$pc-max-width: rem(1280); // 컨테이너 최대 너비
+$pc-max-width: rem(1200); // 컨테이너 최대 너비
 $max-width: $pc-max-width;
 
 // 트랜지션
