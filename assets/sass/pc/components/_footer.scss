@@ -1,189 +1,182 @@
 // 푸터 공통 스타일
 .footer {
-    background-color: $bg-footer; // 푸터 배경색 (회색)
-    padding: rem(39) 0; // 상하 패딩 (피그마 기준)
-    font-family: $font-family;
+    display: block;
+    padding: rem(50) 0 rem(60);
+    border-top: 1px solid #e5e5e5;
 
     .footer-container {
         width: 100%;
-        max-width: $pc-max-width; // 콘텐츠 중앙 정렬 너비
+        max-width: rem(1280);
         margin: 0 auto;
+        padding: 0 rem(68);
     }
 
-    // 상단 퀵 메뉴 (회색 버튼형)
+    // 푸터 콘텐츠 레이아웃
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: rem(40);
+    }
+
+    // 좌측 영역
+    .footer-left {
+        flex: 1;
+    }
+
+    // 상단 퀵 메뉴 (버튼형)
     .footer-menu {
         display: flex;
-        gap: rem(8);
-        margin-bottom: rem(40);
+        flex-wrap: nowrap;
+        gap: rem(7);
+        margin-bottom: rem(35);
 
         a {
-            background-color: rgba(138, 138, 138, 0.1);
-            padding: rem(6) rem(20);
+            background-color: #efefef;
+            padding: rem(8) rem(18);
             border-radius: rem(4);
             font-size: rem(13);
             font-weight: $fw-bold;
-            color: $gray-700;
-            line-height: rem(19.5);
-            transition: background-color 0.2s;
+            color: $gray-800;
+            line-height: 1;
+            white-space: nowrap;
+            transition: all 0.2s;
 
             &:hover {
-                background-color: rgba(138, 138, 138, 0.2);
+                background-color: #e5e5e5;
             }
 
-            &.bold {
-                font-weight: $fw-bold;
-            }
-        }
-    }
-
-    // 상단 공지사항/자료실 영역
-    .footer-notice {
-        margin-bottom: rem(48);
-
-        .notice-row {
-            display: flex;
-            gap: rem(80); // 컬럼 간 간격
-        }
-
-        .notice-col {
-            flex: 1;
-
-            .col-header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-bottom: rem(12);
-                padding-bottom: rem(8);
-
-                h3 {
-                    font-size: rem(14);
-                    font-weight: $fw-bold;
-                    color: $black;
-                }
-
-                .btn-more {
-                    font-size: rem(13);
-                    font-weight: $fw-regular;
-                    color: $gray-700;
-                    text-decoration: underline;
-                    text-underline-offset: rem(2);
-                }
-            }
-
-            .notice-list {
-                li {
-                    margin-bottom: rem(8);
-
-                    &:last-child {
-                        margin-bottom: 0;
-                    }
-
-                    a {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        font-size: rem(14);
-                        font-weight: $fw-regular;
-                        color: $gray-850;
-
-                        &:hover {
-                            color: darken($gray-850, 15%);
-                        }
-
-                        .tit {
-                            @include truncate; // 말줄임
-                            max-width: rem(460);
-                        }
-
-                        .date {
-                            color: $gray-700;
-                            margin-left: rem(10);
-                            font-size: rem(13);
-                        }
-                    }
-                }
+            &.point {
+                color: #ff5452;
             }
         }
     }
 
-    // 하단 푸터 본문
-    .footer-body {
-        border-top: 1px solid rgba(138, 138, 138, 0.1);
-        padding-top: rem(30);
-        font-weight: $fw-regular;
-
+    // 기업 정보 및 저작권
+    .footer-brand-info {
         .copyright {
             font-size: rem(13);
-            color: $gray-700;
-            margin-bottom: rem(12);
-            text-transform: uppercase;
+            color: $gray-600;
+            margin-bottom: rem(15);
+            font-weight: $fw-regular;
         }
 
         .company-info {
-            font-size: rem(13);
+            font-size: rem(12);
+            font-weight: $fw-regular;
             color: $gray-700;
-            line-height: 1.6;
-            margin-bottom: rem(20);
+            line-height: 1.7;
             word-break: keep-all;
 
             p {
-                margin-bottom: rem(4);
-
-                &:last-child {
-                    margin-top: rem(12);
-                    margin-bottom: 0;
-                }
-            }
-
-            .link {
-                text-decoration: underline;
-                color: $gray-700;
+                margin-bottom: rem(2);
+                letter-spacing: rem(-0.3);
             }
         }
+    }
 
-        .legal-links {
-            margin-bottom: rem(16);
-            display: flex;
-            gap: rem(12);
+    // 우측 영역
+    .footer-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(25);
+        flex-shrink: 0;
+    }
 
-            a {
-                font-size: rem(13);
-                color: $gray-700;
-                text-decoration: underline;
-                text-underline-offset: rem(2);
+    // 담당자 및 연락처 영역
+    .service-contact {
+        display: flex;
+        align-items: flex-start;
+        gap: rem(30);
 
-                &.bold {
-                    font-weight: $fw-bold;
-                }
-            }
-        }
+        // QR 영역
+        .app-install {
+            text-align: center;
 
-        .extra-info {
-            margin-bottom: rem(24);
-
-            p {
-                font-size: rem(13);
-                color: $gray-700;
-            }
-        }
-
-        .certifications {
-            .cert-item {
-                display: flex;
-                align-items: center;
-                gap: rem(8);
+            .qr-code {
+                width: rem(76);
+                height: rem(76);
+                margin-bottom: rem(8);
 
                 img {
-                    width: rem(28);
-                    height: rem(28);
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                }
+            }
+
+            .txt {
+                font-size: rem(11);
+                color: $gray-800;
+                font-weight: $fw-medium;
+                letter-spacing: rem(-0.5);
+            }
+        }
+
+        // 매니저 정보 영역
+        .manager-info {
+            text-align: left;
+
+            .contact-header {
+                // manager-name에서 변경
+                display: flex;
+                align-items: center;
+                gap: rem(10);
+                margin-bottom: rem(10);
+
+                .label {
+                    font-size: rem(22);
+                    color: $gray-700;
+                    font-weight: $fw-regular;
                 }
 
-                span {
-                    font-size: rem(13);
+                .name {
+                    font-size: rem(22);
                     color: $gray-700;
-                    text-decoration: underline;
-                    text-underline-offset: rem(2);
                 }
+            }
+
+            .phone {
+                font-size: rem(28);
+                font-weight: $fw-bold;
+                color: $gray-700;
+                margin-bottom: rem(18);
+                line-height: 1;
+                letter-spacing: rem(-0.5);
+            }
+
+            .hours {
+                font-size: rem(13);
+                color: $gray-600;
+                letter-spacing: rem(-0.2);
+            }
+        }
+    }
+
+    // 하단 로고 영역
+    .footer-logos {
+        display: flex;
+        align-items: center;
+        gap: rem(26);
+        margin-top: rem(5);
+
+        .divider {
+            display: inline-block;
+            width: rem(1);
+            height: rem(18);
+            background-color: #e0e0e0;
+        }
+
+        img {
+            display: block;
+
+            &.logo-everyday {
+                height: rem(30);
+            }
+
+            &.logo-eclub {
+                height: rem(24);
             }
         }
     }

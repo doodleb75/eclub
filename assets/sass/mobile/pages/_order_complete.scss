@@ -8,23 +8,25 @@
         margin-bottom: rem(40);
 
         .title {
-            font-size: rem(24);
+            font-size: rem(28);
             font-weight: $fw-bold;
-            color: $gray-850;
+            color: $gray-900;
             letter-spacing: rem(-0.5);
-            margin-bottom: rem(20);
+            line-height: 1.35;
+            margin-bottom: rem(10);
         }
 
         .order-number {
             font-size: rem(15);
-            color: $gray-700;
+            color: $gray-600;
             letter-spacing: rem(-0.3);
 
             .number {
                 font-weight: $fw-bold;
-                color: $gray-600;
+                color: $gray-900;
                 text-decoration: underline;
-                margin-left: rem(4);
+                text-underline-position: under;
+                margin-left: rem(6);
             }
         }
     }
@@ -32,7 +34,7 @@
     // 결제 요약 카드
     .summary-card {
         background-color: $gray-55;
-        padding: rem(40) rem(50); // 피그마의 여유로운 공간감 반영
+        padding: rem(24) rem(32); // 피그마의 여유로운 공간감 반영
         margin: 0 auto rem(10);
         text-align: left;
         width: calc(100% - #{rem(40)}); // 양옆 rem(20) 여백
@@ -59,7 +61,6 @@
 
         .summary-body {
             border-left: 3px solid $gray-350;
-            margin-left: rem(10);
             padding: rem(12) 0 rem(0) rem(12);
             margin-bottom: rem(20);
 

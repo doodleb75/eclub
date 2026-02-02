@@ -1,0 +1,184 @@
+// 바닥글 스크롤 방지
+body.no-scroll {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+// 바텀 시트 (Bottom Sheet) 공통 스타일
+.bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: $white;
+
+    border-radius: 0; // radius 제거
+    box-shadow: 0 0 rem(8) 0 rgba(0, 0, 0, 0.2); // 그림자 효과 수정
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    padding: rem(0) rem(16) calc(rem(16) + env(safe-area-inset-bottom)); // 하단 여백 및 세이프 에어리어 확보
+
+    // 헤더와 바디를 묶는 래퍼
+    .sheet-wrap {
+        // padding: rem(16); // 헤더와 바디 공통 패딩
+    }
+
+    // 토글 버튼 영역
+    .sheet-header {
+        display: flex;
+        justify-content: center;
+        padding-bottom: rem(8); // 하단 간격 유지
+        cursor: pointer; // 영역 전체 클릭 가능하게 표시
+        padding-top: rem(16);
+        // border-bottom 제거 (summary-section 상단으로 이동)
+
+        .btn-sheet-toggle {
+            background: none;
+            border: none;
+            padding: 0; // 패딩 초기화
+            cursor: pointer;
+
+            i {
+                display: block;
+                transition: transform 0.3s;
+                color: $black;
+                width: rem(20); // 아이콘 크기 확대
+                height: rem(20);
+                -webkit-mask-size: contain;
+                mask-size: contain;
+            }
+        }
+    }
+
+    // 펼쳐졌을 때 상태
+    &.is-expanded {
+        .payment-summary {
+            margin-top: 0;
+            padding: 0;
+            padding-bottom: rem(16);
+        }
+
+        .summary-section {
+            padding-top: rem(12);
+        }
+
+        .btn-sheet-toggle i {
+            transform: rotate(0deg) !important; // chevron-up(180) -> expanded(0, down)
+        }
+
+        .sheet-body {
+            max-height: 80vh;
+            overflow-y: auto;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    .sheet-body {
+        padding: 0;
+        max-height: 0;
+        overflow-y: auto; // 내용이 길어질 경우 스크롤 허용
+        transition: max-height 0.3s ease-in-out, visibility 0.3s, opacity 0.3s;
+        visibility: hidden;
+        opacity: 0;
+
+        .payment-summary {
+            // padding: rem(0) 0 0; // 래퍼 패딩이 있으므로 상단 간격만 조정
+            border: 0;
+        }
+    }
+
+    // 요약 및 버튼 섹션 (항상 노출되는 부분과 하단 고정 부분 병합)
+    .summary-section {
+        padding: 0;
+        padding-top: rem(12);
+        border-top: 1px solid $gray-350; // 구분선 추가
+
+        .payment-summary {
+            padding: 0 !important;
+            border: 0;
+
+            .summary-content {
+                .divider {
+                    display: none; // 하단 고정 영역의 구분선 숨김 (UI 깔끔하게)
+                }
+
+                .total-final {
+                    margin-bottom: rem(15);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .final-label {
+                        font-size: rem(13); // Figma: 13px
+                        font-weight: $fw-bold;
+                        color: $point-red;
+                        letter-spacing: rem(-0.5);
+                    }
+
+                    .final-price-group {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(4);
+
+                        .original-price {
+                            font-size: rem(13); // Figma: 13px
+                            font-weight: $fw-bold;
+                            color: $gray-600;
+                            text-decoration: line-through;
+                            letter-spacing: rem(-0.5);
+                        }
+                    }
+
+                    .final-price {
+                        font-size: rem(13); // Figma: 13px
+                        font-weight: $fw-bold;
+                        color: $point-red;
+                        letter-spacing: rem(-0.5);
+                    }
+                }
+            }
+        }
+
+        .btn-pay {
+            width: 100%;
+            height: rem(58); // cart.html의 btn-order 높이와 동일하게 조정
+            margin-top: rem(10); // 결제 예정 금액과의 간격 추가
+            background: $point-red;
+            color: $white;
+            border: none;
+            border-radius: rem(4); // radius 0 적용
+            font-size: rem(20);
+            font-weight: $fw-bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            &:active {
+                opacity: 0.9;
+            }
+        }
+    }
+}
+
+// 바텀 시트 활성화 시 본문 오버레이
+.sheet-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+
+    &.is-visible {
+        opacity: 1;
+        visibility: visible;
+    }
+}

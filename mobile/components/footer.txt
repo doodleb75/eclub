@@ -1,38 +1,28 @@
 <footer id="footer" class="footer">
     <div class="footer-container">
-        <!-- 상단 버튼 2개 -->
+        <!-- 상단 버튼 (자주하는 질문, 공지사항) -->
         <div class="footer-buttons">
-            <a href="#" class="btn-footer">FAQ</a>
+            <a href="#" class="btn-footer">자주하는 질문</a>
             <a href="#" class="btn-footer">공지사항</a>
         </div>
 
-        <!-- 사용자 정보 및 금액 정보 -->
-        <div class="user-info-simple">
-            <div class="user-header">
-                <i class="icon-loc"></i>
-                <span class="text">
-                    <span class="store">라성마트</span>
+        <!-- 사용자 정보 -->
+        <div class="footer-user-info">
+            <div class="user-row primary">
+                <span class="badge-grade">SILVER</span>
+                <span class="user-text">
+                    <span class="store">이클럽마트</span>
                     <span class="name">이승규</span>님
                 </span>
+                <span class="divider">|</span>
+                <span class="member-code">회원코드 577921</span>
             </div>
-            <ul class="info-list">
-                <li>
-                    <span class="label">가용포인트</span>
-                    <span class="value">600,400원</span>
-                </li>
-                <li>
-                    <span class="label">배송예정금액</span>
-                    <span class="value">1,203,560원</span>
-                </li>
-                <li>
-                    <span class="label">당월배송금액</span>
-                    <span class="value">83,003,000원</span>
-                </li>
-                <li>
-                    <span class="label">당일주문금액</span>
-                    <span class="value">503,000원</span>
-                </li>
-            </ul>
+            <div class="user-row secondary">
+                <span class="label">영업담당자</span>
+                <span class="divider">|</span>
+                <span class="manager">김대영</span>
+                <span class="tel">02 380 5093</span>
+            </div>
         </div>
 
         <!-- 로고 -->
@@ -40,31 +30,33 @@
             <img src="/eclub/assets/images/common/eclub-logo.svg" alt="e클럽">
         </div>
 
-        <!-- 링크 -->
+        <!-- 약관 및 정책 링크 -->
         <div class="footer-links">
-            <div class="link-row">
-                <a href="#">이용안내 서비스이용약관</a>
-            </div>
-            <div class="link-row">
-                <a href="#">고정형 영상정보처리기기운영 · 관리방침</a>
-                <a href="#" class="bold">개인정보 처리방침</a>
-            </div>
-            <div class="link-row">
-                <a href="#">청소년 보호 정책</a>
-            </div>
-        </div>
-
-        <!-- 회사 정보 -->
-        <div class="company-info">
-            <p>대표 : 한채양</p>
-            <p>고객센터 : <a href="tel:023805123" class="underline">02 380 5123</a></p>
-            <p>통신판매업 : 제 2023-서울중구-0921호</p>
-            <p>사업자등록번호 : 206-86-50913 <a href="#" class="link-biz underline">사업자정보확인</a></p>
-            <p>본사 : 서울특별시 성동구 성수일로 56, 8/9/10층</p>
-            <p>입점,제휴문의 : <a href="mailto:ecrt.emarteveryday.co.kr" class="link-email underline">ecrt.emarteveryday.co.kr</a></p>
+            <a href="#">이용안내</a>
+            <a href="#">서비스이용약관</a>
+            <a href="#">고정형 영상정보처리기기운영·관리방침</a>
+            <a href="#" class="bold">개인정보 처리방침</a>
+            <a href="#">청소년 보호 정책</a>
         </div>
 
         <!-- Copyright -->
-        <p class="copyright">Copyright© E-MART EVERYDAY Inc. All Rights Reserved.</p>
+        <p class="copyright">© EMART ALL RIGHTS RESERVED</p>
+
+        <!-- 회사 정보 -->
+        <div class="company-info">
+            <p>
+                <span>(주) 이마트</span>
+                <span>대표자 : 한채양</span>
+                <span>사업자등록번호 : 206-86-50913</span>
+                <span>서울특별시 중구 세종대로7길 37(순화동)</span>
+                <a href="#" class="link-biz underline">사업자등록번호 확인</a>
+            </p>
+            <p>
+                <span>통신판매업신고번호 : 제 2023-서울중구-0921호</span>
+                <span>이메일 : <a href="mailto:b2b_admin@emarteveryday.co.kr">b2b_admin@emarteveryday.co.kr</a></span>
+                <span>호스팅제공자 : (주)신세계아이앤씨</span>
+                <span>전화 : 02-380-5052, 02-6488-1173</span>
+            </p>
+        </div>
     </div>
 </footer>

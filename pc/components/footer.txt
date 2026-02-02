@@ -1,106 +1,64 @@
 <footer id="footer" class="footer">
     <div class="footer-container">
-        <!-- 상단 퀵 메뉴 -->
-        <div class="footer-menu">
-            <a href="#">공지사항</a>
-            <a href="#">고객의 소리</a>
-            <a href="#">자주하는 질문</a>
-            <a href="#">자료실</a>
-            <a href="#">설문조사</a>
-            <a href="#" class="bold">개인정보처리방침</a>
-            <a href="#">이용약관</a>
-        </div>
+        <!-- 푸터 레이아웃 상단 (좌우 분할) -->
+        <div class="footer-content">
+            <!-- 좌측: 메뉴 및 기업 정보 -->
+            <div class="footer-left">
+                <!-- 상단 퀵 메뉴 (버튼형) -->
+                <div class="footer-menu">
+                    <a href="#">공지사항</a>
+                    <a href="#">고객의 소리</a>
+                    <a href="#">자주하는 질문</a>
+                    <a href="#">자료실</a>
+                    <a href="#">설문조사</a>
+                    <a href="#" class="point">개인정보 처리방침</a>
+                    <a href="#">이용약관</a>
+                </div>
 
-        <!-- 상단 공지사항 및 자료실 -->
-        <div class="footer-notice">
-            <div class="notice-row">
-                <div class="notice-col">
-                    <div class="col-header">
-                        <h3>공지사항</h3>
-                        <a href="#" class="btn-more">전체보기</a>
+                <!-- 기업 및 저작권 정보 -->
+                <div class="footer-brand-info">
+                    <p class="copyright">COPYRIGHT 2015 EMART INC. LTD. ALL RIGHTS RESERVED.</p>
+                    <div class="company-info">
+                        <p>
+                            (주)이마트 | 대표자 : 한채양 | 주소 : 서울특별시 중구 세종대로7길 37(순화동) | 사업자등록번호 : 206-86-50913(사업자등록번호 확인) | 통신판매
+                        </p>
+                        <p>
+                            업신고번호 : 제2023-서울중구-0921호 | 호스팅사업자 : (주)신세계아이앤씨 | 이메일 : b2b_admin@emarteveryday.co.kr | 전화 :
+                        </p>
+                        <p>02-380-5052, 02-6488-1173</p>
                     </div>
-                    <ul class="notice-list">
-                        <li>
-                            <a href="#">
-                                <span class="tit">2025년 APEC 정상회의에 따른 일부 지역 택배 배송 지연 및 중단 안내</span>
-                                <span class="date">2025.10.27</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="tit">추석 연휴 고객센터 휴무 및 배송/교환/반품 지연 안내</span>
-                                <span class="date">2025.10.02</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="tit">배송 서비스 일시 중단 안내</span>
-                                <span class="date">2025.09.30</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="notice-col">
-                    <div class="col-header">
-                        <h3>자료실</h3>
-                        <a href="#" class="btn-more">전체보기</a>
-                    </div>
-                    <ul class="notice-list">
-                        <li>
-                            <a href="#">
-                                <span class="tit">수입축산물 이력관리제 대상 여부 확인 방법</span>
-                                <span class="date">2025.10.27</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="tit">이클럽 주문 사이트 오류 시 조치 방법</span>
-                                <span class="date">2025.10.02</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="tit">건강기능식 판매 식약처 신고 방법</span>
-                                <span class="date">2025.09.30</span>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
-        </div>
 
-        <div class="footer-body">
-            <p class="copyright">© EMART ALL RIGHTS RESERVED</p>
-            <div class="company-info">
-                <p>
-                    (주) 이마트 | 대표자 : 한채양 | 주소 : 서울특별시 성동구 아차산로 13길 11, 1층 (성수동2가, 캠퍼스 엔1) ) | 호스팅사업자 : (주)신세계아이앤씨
-                    | 통신판매업 : 2022-서울성동-01952 | 사업자등록번호 : 211-88-79575(사업자정보확인)
-                </p>
-                <p>
-                    당사는 고객님이 현금 결제한 금액에 대해 우리은행과 채무지급보증 계약을 체결하여 안전거래를 보장하고 있습니다. <a href="#" class="link">서비스
-                        가입사실 확인</a>
-                </p>
-                <p>
-                    일부 상품의 경우 주식회사 이마트는 통신판매의 당사자가 아닌 통신판매중개자로서 상품, 상품정보, 거래에 대한 책임이 제한될 수 있으므로, 각 상품 페이지에서 구체적인
-                    내용을 확인하시기 바랍니다.
-                </p>
-            </div>
-            <div class="legal-links">
-                <a href="#" class="bold">개인정보처리방침</a>
-                <a href="#">이용약관</a>
-                <a href="#">결제대행 위탁사</a>
-                <a href="#">분쟁해결기준</a>
-                <a href="#">영상정보처리기기 운영 · 관리방침</a>
-            </div>
-            <div class="extra-info">
-                <p>윤리·준법경영 국제 표준 통합 인증 · 안전보건경영시스템 국제 인증</p>
-            </div>
-            <div class="certifications">
-                <div class="cert-item">
-                    <img src="/eclub/assets/images/common/isms-logo.png" alt="정보보호 관리체계 ISMS 인증">
-                    <span>정보보호 관리체계 ISMS 인증</span>
+
+            <!-- 우측: 고객지원 및 로고 -->
+            <div class="footer-right">
+                <div class="service-contact">
+                    <!-- 앱 설치 QR -->
+                    <div class="app-install">
+                        <div class="qr-code">
+                            <img src="/eclub/assets/images/common/footer-qr.png" alt="모바일앱 설치 QR">
+                        </div>
+                        <span class="txt">모바일앱 설치하기</span>
+                    </div>
+                    <!-- 담당자 정보 -->
+                    <div class="manager-info">
+                        <div class="contact-header">
+                            <span class="label">회원점 담당자</span>
+                            <span class="name">양수찬</span>
+                        </div>
+                        <div class="phone">010 9299 8821</div>
+                        <div class="hours">평일 08시 30분 - 17시 30분 / 공휴일 휴무</div>
+                    </div>
+                </div>
+                <!-- 브랜드 로고 -->
+                <div class="footer-logos">
+                    <img src="/eclub/assets/images/common/footer-everday-logo.svg" alt="emart everyday" class="logo-everyday">
+                    <span class="divider"></span>
+                    <img src="/eclub/assets/images/common/eclub-logo.svg" alt="e클럽" class="logo-eclub">
                 </div>
             </div>
+
         </div>
     </div>
 </footer>

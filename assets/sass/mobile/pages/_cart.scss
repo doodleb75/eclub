@@ -1,7 +1,14 @@
-// 장바구니 페이지
 main {
-    padding-bottom: rem(0) !important;
+    padding-bottom: rem(20) !important;
 }
+
+// 장바구니 페이지
+.cart-page {
+    .footer {
+        padding-bottom: $height-bottom-sheet !important; // 바텀 시트 높이만큼 여백 확보
+    }
+}
+
 
 // 헤더 및 브레드크럼
 .page-header {
@@ -132,12 +139,55 @@ main {
     }
 }
 
+// 배송 요약 정보 스타일
+.cart-delivery-summary {
+    background-color: $white;
+
+    .min-order-notice {
+        display: flex;
+        align-items: center;
+        padding: rem(20) rem(16) rem(12);
+        font-size: rem(13);
+        color: $gray-600;
+
+        .sep {
+            display: inline-block;
+            width: rem(1);
+            height: rem(10);
+            background-color: $gray-200;
+            margin: 0 rem(10);
+        }
+
+        .value {
+            font-weight: $fw-medium;
+        }
+    }
+
+    .delivery-info {
+        margin: 0 rem(16) rem(20);
+        border: rem(1) solid $gray-200;
+        border-radius: rem(2);
+        box-shadow: none;
+
+        .box-title {
+            font-size: rem(18);
+            margin-bottom: rem(12);
+        }
+
+        .address {
+            font-size: rem(15);
+            line-height: 1.4;
+            color: $gray-850;
+        }
+    }
+}
+
 // 선택 항목 관리
 .cart-select-bar {
     background-color: $white;
 
     .container {
-        padding: rem(13) rem(16);
+        padding: rem(13) rem(16) 0;
     }
 
     .select-actions {
@@ -167,7 +217,7 @@ main {
                 padding: 0 rem(12);
                 font-size: rem(13);
                 font-weight: $fw-bold;
-                color: $gray-800;
+                color: $gray-700;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
@@ -379,6 +429,10 @@ main {
             }
         }
     }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 // 상품 아이템
@@ -387,7 +441,7 @@ main {
     flex-direction: column;
     padding: rem(27) rem(16) rem(20);
     border-bottom: rem(1) solid $gray-350;
-    gap: rem(10);
+    background-color: $white;
 
     .item-main {
         display: flex;
@@ -400,12 +454,10 @@ main {
         align-items: flex-start;
         gap: rem(8);
         flex-shrink: 0;
-        padding-top: rem(0);
-    }
 
-    .item-check {
-        flex-shrink: 0;
-        padding-top: rem(4);
+        .item-check {
+            padding-top: rem(4);
+        }
     }
 
     .item-thumb {
@@ -425,176 +477,107 @@ main {
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
     }
 
     .item-info-group {
         flex: 1;
+        min-width: 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        min-height: rem(90);
-        min-width: 0;
 
         .item-title-row {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: rem(16);
+            gap: rem(12);
 
             .item-name {
-                font-size: rem(14);
+                font-size: rem(15);
                 line-height: rem(20);
                 color: $gray-900;
-                font-weight: $fw-medium;
+                font-weight: $fw-bold;
+                @include truncate(2);
                 letter-spacing: rem(-0.5);
-                word-break: break-all;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                line-clamp: 2;
             }
 
             .info-actions {
                 display: flex;
                 gap: rem(8);
+                margin-top: rem(2);
                 flex-shrink: 0;
 
                 button {
                     width: rem(18);
                     height: rem(18);
-                    padding: 0;
                     background: none;
                     border: none;
+                    color: $gray-700;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    padding: 0;
 
                     i {
-                        width: 100%;
-                        height: 100%;
+                        display: block;
+                        width: rem(18) !important;
+                        height: rem(18) !important;
+                        background-color: currentColor;
                     }
-                }
 
-                .btn-wish,
-                .btn-delete {
-                    color: $gray-700;
-                }
+                    &.btn-wish {
+                        &.active {
+                            color: $primary-red;
 
-                .btn-wish {
-                    &:not(.active) i {
-                        width: rem(16);
-                        height: rem(16);
+                            i {
+                                @extend .icon-heart-fill;
+                            }
+                        }
+
+                        &:not(.active) i {
+                            @extend .icon-heart;
+                            width: rem(16) !important;
+                            height: rem(16) !important;
+                        }
+                    }
+
+                    &.btn-delete i {
+                        @extend .icon-trash;
                     }
                 }
             }
         }
 
-        .item-supply-info {
-            display: flex;
-            align-items: center;
-            gap: rem(4);
-            font-size: rem(13);
-            color: $gray-600;
-            margin-top: rem(4);
-            flex-wrap: wrap;
-
-            .sep {
-                display: inline-block;
-                width: rem(1);
-                height: rem(10);
-                background-color: $gray-300;
-            }
-        }
-
-        .item-price-row {
+        .item-calc-row {
             display: flex;
             justify-content: space-between;
-            gap: rem(8);
             align-items: flex-end;
-            margin-top: auto;
+            margin-top: rem(12);
 
-            .price-area {
-                display: flex;
-                flex-direction: column;
-                gap: rem(2);
-
-                .original-price-row {
-                    display: flex;
-                    align-items: center;
-                    gap: rem(4);
-                    font-size: rem(14);
-                    margin-bottom: rem(2);
-
-                    .discount-rate {
-                        background-color: $point-red;
-                        color: $white;
-                        font-size: rem(12);
-                        font-weight: $fw-bold;
-                        padding: rem(2) rem(4);
-                        border-radius: rem(2);
-                        line-height: 1;
-                        @include ellipsis;
-                    }
-
-                    .base-price {
-                        color: $gray-500;
-                        text-decoration: line-through;
-                        font-size: rem(14);
-                        font-weight: $fw-regular;
-                    }
-                }
-            }
-
-            .main-price {
-                font-size: rem(18);
-                font-weight: $fw-bold;
-                color: $gray-700; // 기본 Black
-                line-height: 1;
-                letter-spacing: rem(-0.5);
-
-                span {
-                    margin-left: rem(2);
-                }
-
-                &.discounted {
-                    color: $point-red;
-                }
-            }
-
-            // 수량 선택기
             .qty-selector {
                 display: flex;
                 align-items: center;
-                width: rem(100);
-                height: rem(32);
+                width: rem(96);
+                height: rem(36);
+                border: rem(1) solid $gray-350;
+                border-radius: rem(4);
                 background-color: $white;
-                border: 1px solid $gray-300;
-                border-radius: $radius-sm;
-                overflow: hidden;
 
                 button {
                     width: rem(32);
                     height: 100%;
-                    background: none;
                     border: none;
-                    cursor: pointer;
+                    background: none;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     color: $gray-700;
                     padding: 0;
 
-                    &:hover {
-                        background-color: $gray-50;
-                    }
-
                     i {
-                        width: rem(14);
-                        height: rem(14);
+                        width: rem(18);
+                        height: rem(18);
                         background-color: currentColor;
                     }
                 }
@@ -602,155 +585,100 @@ main {
                 input {
                     flex: 1;
                     width: 0;
-                    height: 100%;
-                    border: none;
                     text-align: center;
-                    font-size: $fs-14;
+                    border: none;
+                    font-size: rem(14);
                     font-weight: $fw-semibold;
                     color: $gray-900;
                     background: none;
-                    padding: 0;
                     outline: none;
-                }
-            }
-        }
-    }
-
-    // 할인 정보
-    .discount-dropdown {
-        width: 100%;
-
-        .dropdown-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-
-            .btn-discount-toggle {
-                display: flex;
-                align-items: center;
-                gap: rem(8);
-                font-size: rem(13);
-                font-weight: $fw-bold;
-                color: $gray-850;
-                background: none;
-                border: none;
-                cursor: pointer;
-                padding: 0;
-
-                i {
-                    width: rem(16);
-                    height: rem(16);
-                    background-color: $gray-850;
-                    transition: transform 0.2s;
-                    transform: rotate(0deg); // 기본: 닫힘
-                }
-
-                &.active i {
-                    transform: rotate(180deg); // 기본: 열림
+                    padding: 0;
                 }
             }
 
-            .total-discount {
-                font-size: rem(13);
-                font-weight: $fw-semibold;
-                color: $gray-850;
-            }
-        }
+            .price-area {
+                text-align: right;
 
-        .discount-content {
-            display: none;
-            // margin-top: rem(16);
-            padding: rem(2) 0 rem(0) rem(8);
-            border-left: rem(2) solid $gray-350;
-            width: 100%;
-
-            &.active {
-                display: block;
-            }
-
-            .discount-list {
-                list-style: none;
-                padding-top: rem(6);
-
-                li {
+                .unit-price {
                     display: flex;
-                    justify-content: space-between;
-                    font-size: $fs-13;
+                    align-items: center;
+                    gap: rem(4);
+                    font-size: rem(12);
                     color: $gray-600;
                     margin-bottom: rem(4);
-                    position: relative;
-                    bottom: rem(-4);
+                    font-weight: $fw-medium;
 
-                    &:last-child {
-                        margin-bottom: 0;
+                    .base-price {
+                        text-decoration: line-through;
+                        margin-right: rem(4);
+                        color: $gray-500;
+                    }
+
+                    .discount-price {
+                        color: $point-red;
+                        font-weight: $fw-bold;
+                    }
+                }
+
+                .main-price {
+                    font-size: rem(18);
+                    font-weight: $fw-semibold;
+                    color: $gray-900;
+                    line-height: 1;
+
+                    &.discounted {
+                        color: $point-red;
+                    }
+
+                    span {
+                        font-size: rem(18);
+                        margin-left: rem(1);
+                        font-weight: $fw-regular;
                     }
                 }
             }
         }
     }
 
-    .unit-info {
+    .item-bottom-group {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: rem(6);
+        margin-top: rem(8);
 
-        width: 100%;
+        .unit-info {
+            .spec {
+                font-size: rem(12);
+                color: $gray-600;
+                font-weight: $fw-medium;
 
-        .spec {
-            font-size: rem(13);
-            color: $gray-700;
-            font-weight: $fw-semibold;
-
-            .sep {
-                display: inline-block;
-                width: rem(1);
-                height: rem(10);
-                background-color: $gray-300;
-                margin: 0 rem(8);
-                vertical-align: middle;
+                .sep {
+                    display: inline-block;
+                    width: rem(1);
+                    height: rem(10);
+                    background-color: $gray-200;
+                    margin: 0 rem(8);
+                    vertical-align: middle;
+                }
             }
         }
 
-        .per-price {
-            font-size: rem(13);
-            color: $gray-900;
-            font-weight: $fw-semibold;
+        .discount-info {
             display: flex;
             align-items: center;
-            gap: rem(4);
+            gap: rem(8);
+            font-size: rem(13);
+            font-weight: $fw-semibold;
+            color: $gray-700;
 
-            &.discounted {
-                color: $point-red;
+            .label {
+                color: $gray-700;
             }
 
-            b {
+            .val {
+                color: $gray-700;
                 font-weight: $fw-semibold;
-            }
-
-            .btn-info {
-                background: none;
-                border: none;
-                padding: 0;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: rem(24);
-                height: rem(24);
-
-                i {
-                    @extend .icon-info;
-                    width: rem(16);
-                    height: rem(16);
-                    background-color: $gray-600;
-                }
-
-                &:hover {
-                    i {
-                        background-color: $gray-800;
-                    }
-                }
             }
         }
     }
@@ -844,6 +772,11 @@ main {
 
                     .price {
                         font-weight: $fw-bold;
+                    }
+
+                    .discounted {
+                        font-size: rem(14);
+                        color: $point-red;
                     }
                 }
 
@@ -1015,8 +948,8 @@ main {
         top: 50%;
         left: 0;
         transform: translateY(-50%);
-        height: rem(20);
-        width: rem(20);
+        height: rem(18);
+        width: rem(18);
         background-color: $white;
         border: 1px solid $gray-300;
         border-radius: $radius-sm;
@@ -1027,8 +960,8 @@ main {
             display: block; // 미체크 시에도 노출 (PC 스타일)
             left: rem(6);
             top: rem(2);
-            width: rem(5);
-            height: rem(9);
+            width: rem(3);
+            height: rem(7);
             border: solid $gray-300; // 미체크 시 회색
             border-width: 0 rem(2) rem(2) 0;
             transform: rotate(45deg);
