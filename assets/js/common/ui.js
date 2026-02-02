@@ -313,6 +313,46 @@ const Eclub = {
         }
     },
 
+    // 바텀 시트 (결제/장바구니 요약)
+    BottomSheet: {
+        init() {
+            const sheets = document.querySelectorAll('.bottom-sheet');
+            sheets.forEach(sheet => {
+                const header = sheet.querySelector('.sheet-header');
+                const body = sheet.querySelector('.sheet-body');
+                if (!header || !body) return;
+
+                header.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const isExpanded = sheet.classList.contains('is-expanded');
+
+                    if (isExpanded) {
+                        this.collapse(sheet, body);
+                    } else {
+                        this.expand(sheet, body);
+                    }
+                });
+            });
+        },
+        expand(sheet, body) {
+            sheet.classList.add('is-expanded');
+            body.style.maxHeight = body.scrollHeight + 'px';
+
+            // 만약 오버레이가 필요하다면 여기서 처리
+            const overlay = document.querySelector('.sheet-overlay');
+            if (overlay) overlay.classList.add('is-visible');
+            document.body.classList.add('no-scroll');
+        },
+        collapse(sheet, body) {
+            sheet.classList.remove('is-expanded');
+            body.style.maxHeight = '0';
+
+            const overlay = document.querySelector('.sheet-overlay');
+            if (overlay) overlay.classList.remove('is-visible');
+            document.body.classList.remove('no-scroll');
+        }
+    },
+
     // 장바구니 전체/그룹 선택
     CartSelection: {
         init() {
@@ -686,6 +726,7 @@ const Eclub = {
         this.Tabs.init();
         this.Quantity.init();
         this.Favorites.init();
+        this.BottomSheet.init();
         this.CartSelection.init();
         this.Slider.init();
         this.ScrollSpy.init();

@@ -136,6 +136,9 @@ $spacing-3xl: rem(40);
 $spacing-4xl: rem(50);
 $spacing-5xl: rem(60);
 
+// 컴포넌트별 고정 높이/크기
+$height-bottom-sheet: rem(220); // 결제 바텀시트 기본(축소) 높이
+
 // 보더 라운드
 $radius-xs: rem(2);
 $radius-sm: rem(4);

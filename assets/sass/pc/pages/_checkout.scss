@@ -11,6 +11,7 @@
         display: flex;
         flex-direction: column;
         gap: rem(12); // 섹션 간 간격 (Figma Box Spacing)
+        margin-bottom: rem(80);
     }
 
     .checkout-sidebar {
@@ -23,6 +24,12 @@
         border: 1px solid $gray-350; // #dedede
         padding: rem(30) rem(30); // Figma 기준 내부 패딩
         margin-bottom: rem(32);
+
+        &.products-box {
+            border: 0;
+            padding: 0;
+            background-color: transparent; // 박스 스타일 제거 시 배경 투명 처리 고려
+        }
 
         .box-title {
             font-size: rem(18);
@@ -42,13 +49,18 @@
 
         .cart-tab-wrap {
             border: 0;
-            margin-bottom: rem(20);
         }
 
 
         .cart-item {
             padding-left: 0;
             padding-right: 0;
+        }
+
+        &.products-box {
+            border: 0;
+            padding: 0;
+            background-color: transparent; // 박스 스타일 제거 시 배경 투명 처리 고려
         }
     }
 
@@ -480,184 +492,190 @@
 
     // 4. 적용된 할인
     .discount {
-        .discount-header {
+        .discount-wrap {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: rem(20);
-            padding-right: rem(40);
+            flex-direction: column;
+            width: rem(620);
 
-            .left {
+            .discount-header {
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
-                gap: rem(12);
+                margin-bottom: rem(20);
+                padding-right: rem(40);
 
-                .box-title {
+                .left {
                     display: flex;
                     align-items: center;
-                    gap: rem(8);
-                    font-size: rem(18);
+                    gap: rem(12);
+
+                    .box-title {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(10);
+                        font-size: rem(18);
+                        font-weight: $fw-bold;
+                        color: $black;
+
+                        .btn-toggle {
+                            border: none;
+                            background: none;
+                            cursor: pointer;
+                            padding: 0;
+                            display: flex;
+                            align-items: center;
+                            gap: rem(8);
+                            font: inherit;
+                            color: inherit;
+
+                            i {
+                                width: rem(20);
+                                height: rem(20);
+                                background-color: $gray-600;
+                                transition: transform 0.2s ease-in-out;
+                                transform: rotate(0deg);
+                            }
+
+                            &.active i {
+                                transform: rotate(180deg);
+                            }
+                        }
+                    }
+
+                    .badge {
+                        background-color: $point-red;
+                        color: $white;
+                        font-size: rem(12);
+                        font-weight: $fw-bold;
+                        padding: rem(3) rem(8);
+                        border-radius: rem(2);
+                        height: rem(20);
+                        display: flex;
+                        align-items: center;
+                        letter-spacing: rem(-0.5);
+                        margin-top: rem(2); // 타이틀과 시각적 중앙을 맞추기 위한 미세 조정
+                    }
+                }
+
+                .discount-total {
+                    font-size: rem(22);
                     font-weight: $fw-bold;
                     color: $black;
-
-                    .btn-toggle {
-                        border: none;
-                        background: none;
-                        cursor: pointer;
-                        padding: 0;
-                        display: flex;
-                        align-items: center;
-                        gap: rem(8);
-                        font: inherit;
-                        color: inherit;
-
-                        i {
-                            width: rem(14);
-                            height: rem(14);
-                            background-color: $gray-850;
-                            transition: transform 0.2s ease-in-out;
-                            transform: rotate(0deg);
-                        }
-
-                        &.active i {
-                            transform: rotate(180deg);
-                        }
-                    }
-                }
-
-                .badge {
-                    background-color: $point-red;
-                    color: $white;
-                    font-size: rem(12);
-                    font-weight: $fw-bold;
-                    padding: rem(3) rem(8);
-                    border-radius: rem(2);
-                    height: rem(20);
-                    display: flex;
-                    align-items: center;
-                    letter-spacing: rem(-0.5);
-                    margin-top: rem(2); // 타이틀과 시각적 중앙을 맞추기 위한 미세 조정
                 }
             }
 
-            .discount-total {
-                font-size: rem(22);
-                font-weight: $fw-bold;
-                color: $black;
-            }
-        }
+            .discount-body {
+                background-color: $gray-55; // #f7f7f7
+                padding: rem(10) rem(40);
+                border-radius: rem(4);
 
-        .discount-body {
-            background-color: $gray-55; // #f7f7f7
-            padding: rem(10) rem(40);
-            border-radius: rem(4);
-
-            .discount-row {
-                display: flex;
-                flex-wrap: wrap; // detail-list 대응용
-                align-items: center;
-                padding: rem(20) 0;
-
-                &:last-child {
-                    border-bottom: 0;
-                }
-
-                .row-header {
+                .discount-row {
                     display: flex;
+                    flex-wrap: wrap; // detail-list 대응용
                     align-items: center;
-                    flex: 1;
+                    padding: rem(20) 0;
 
-                    .label {
-                        width: rem(126); // Figma 기준 레이블 너비 고정
-                        font-size: rem(16);
-                        font-weight: $fw-bold;
-                        color: $gray-850;
+                    &:last-child {
+                        border-bottom: 0;
                     }
 
-                    .btn-change {
+                    .row-header {
                         display: flex;
                         align-items: center;
-                        gap: rem(8);
-                        padding: rem(5) rem(10) rem(5) rem(16); // 피그마와 유사하게 패딩 미세 조정
-                        border: 1px solid $gray-350;
-                        background-color: $white;
-                        font-size: rem(14);
-                        font-weight: $fw-bold;
-                        color: $gray-850;
-                        border-radius: rem(4);
-                        transition: border-color 0.2s ease-in-out;
-                        cursor: pointer;
+                        flex: 1;
 
-                        &.disabled {
-                            background-color: $gray-55;
-                            color: $gray-500;
-                            border-color: $gray-350;
-                            opacity: 0.5;
-                            cursor: default;
+                        .label {
+                            width: rem(126); // Figma 기준 레이블 너비 고정
+                            font-size: rem(16);
+                            font-weight: $fw-bold;
+                            color: $gray-850;
                         }
 
-                        i {
-                            width: rem(8);
-                            height: rem(12);
-                            background-color: currentColor;
-                        }
-
-                        &:hover {
-                            background: $gray-55;
-                            border-color: $gray-600;
+                        .btn-change {
+                            display: flex;
+                            align-items: center;
+                            gap: rem(8);
+                            padding: rem(5) rem(10) rem(5) rem(16); // 피그마와 유사하게 패딩 미세 조정
+                            border: 1px solid $gray-350;
+                            background-color: $white;
+                            font-size: rem(14);
+                            font-weight: $fw-bold;
+                            color: $gray-850;
+                            border-radius: rem(4);
                             transition: border-color 0.2s ease-in-out;
+                            cursor: pointer;
+
+                            &.disabled {
+                                background-color: $gray-55;
+                                color: $gray-500;
+                                border-color: $gray-350;
+                                opacity: 0.5;
+                                cursor: default;
+                            }
+
+                            i {
+                                width: rem(8);
+                                height: rem(12);
+                                background-color: currentColor;
+                            }
+
+                            &:hover {
+                                background: $gray-55;
+                                border-color: $gray-600;
+                                transition: border-color 0.2s ease-in-out;
+                            }
                         }
                     }
-                }
 
-                .row-value {
-                    font-size: rem(18);
-                    font-weight: $fw-bold;
-                    color: $gray-850;
-                    text-align: right;
-                    min-width: rem(100);
-                }
+                    .row-value {
+                        font-size: rem(18);
+                        font-weight: $fw-bold;
+                        color: $gray-850;
+                        text-align: right;
+                        min-width: rem(100);
+                    }
 
-                .detail-list {
-                    width: 100%;
-                    list-style: none;
-                    margin-top: rem(12);
-                    padding-left: rem(12);
-                    padding-top: rem(12);
-                    border-left: 3px solid $gray-350;
-                    display: flex;
-                    flex-direction: column;
-                    padding-top: rem(10);
-
-                    li {
+                    .detail-list {
+                        width: 100%;
+                        list-style: none;
+                        margin-top: rem(12);
+                        padding-left: rem(12);
+                        padding-top: rem(12);
+                        border-left: 3px solid $gray-350;
                         display: flex;
-                        justify-content: space-between;
-                        align-items: flex-start;
-                        font-size: rem(14);
-                        color: $gray-600;
-                        padding: rem(4) 0;
-                        line-height: rem(16);
+                        flex-direction: column;
+                        padding-top: rem(10);
 
-                        .name {
-                            flex: 1;
-                            padding-right: rem(20);
-                        }
+                        li {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            font-size: rem(14);
+                            color: $gray-600;
+                            padding: rem(4) 0;
+                            line-height: rem(16);
 
-                        .amount {
-                            font-weight: $fw-medium;
-                            text-align: right;
-                            white-space: nowrap;
+                            .name {
+                                flex: 1;
+                                padding-right: rem(20);
+                            }
+
+                            .amount {
+                                font-weight: $fw-medium;
+                                text-align: right;
+                                white-space: nowrap;
+                            }
                         }
                     }
                 }
             }
-        }
 
-        .auto-apply-msg {
-            margin-top: rem(16);
-            font-size: rem(14);
-            color: $gray-600;
-            font-weight: $fw-medium;
+            .auto-apply-msg {
+                margin-top: rem(16);
+                font-size: rem(14);
+                color: $gray-600;
+                font-weight: $fw-medium;
+            }
         }
     }
 
@@ -669,19 +687,28 @@
         .box-header {
             display: flex;
             align-items: center;
-            gap: rem(24);
-            margin-bottom: rem(16);
             justify-content: flex-start;
+            gap: rem(20); // 24 -> 20
+            margin-bottom: rem(16);
 
             .box-title {
+                display: flex;
+                align-items: center;
+                gap: rem(4);
                 font-size: rem(18);
                 font-weight: $fw-bold;
                 color: $black;
                 margin-right: 0;
+
+                i {
+                    width: rem(18);
+                    height: rem(18);
+                    background-color: $gray-700; // #cccccc
+                }
             }
 
             .current-points {
-                font-size: rem(18);
+                font-size: rem(22); // 18 -> 22
                 font-weight: $fw-bold;
                 color: $black;
             }
@@ -692,20 +719,22 @@
             align-items: center;
             justify-content: space-between;
             gap: rem(16);
+            border-radius: rem(4);
 
             .input-area {
                 display: flex;
                 align-items: center;
-                gap: rem(11);
+                border: 1px solid $gray-400;
+                border-radius: rem(4);
+                overflow: hidden;
 
                 input {
                     width: rem(360);
-                    height: rem(52);
-                    border: 1px solid $gray-400;
+                    height: rem(48);
+                    border: none; // 내부 보더 제거
                     padding: 0 rem(20);
                     font-size: rem(14);
-                    text-align: left;
-                    border-radius: rem(4);
+                    text-align: center; // 중앙 정렬
                     color: $black;
 
                     &::placeholder {
@@ -714,21 +743,20 @@
                 }
 
                 .btn-use-all {
-                    height: rem(52);
-                    min-width: rem(80);
+                    height: rem(48);
                     padding: 0 rem(16);
-                    background-color: $gray-60; // #f3f3f3
-                    border: 1px solid $gray-60;
+                    background-color: $gray-55; // #f7f7f7
+                    border: none;
+                    border-left: 1px solid $gray-300; // 좌측 구분선
                     font-size: rem(14);
                     font-weight: $fw-bold;
                     color: $black;
-                    border-radius: rem(4);
+                    border-radius: 0;
                     cursor: pointer;
                     transition: all .2s;
 
                     &:hover {
-                        background-color: $gray-55;
-                        border-color: $gray-300;
+                        background-color: $gray-70;
                         transition: all .2s;
                     }
                 }
@@ -743,8 +771,8 @@
                 .info-row {
                     display: flex;
                     align-items: center;
-                    justify-content: flex-end;
-                    gap: rem(20);
+                    justify-content: space-between;
+                    gap: rem(24); // 피그마 분석 기준
                     font-size: rem(14);
 
                     .label {
@@ -755,10 +783,10 @@
                     .value {
                         color: $gray-850;
                         font-weight: $fw-medium;
-                        min-width: rem(63);
+                        min-width: rem(80);
 
                         b {
-                            font-size: rem(14);
+                            font-size: rem(16); // 강조 포인트
                             font-weight: $fw-bold;
                         }
                     }
@@ -767,12 +795,230 @@
         }
     }
 
-    .cart-group {
-        margin-bottom: 0;
+    // 6. 상품 리스트 영역
+    .checkout-products-area {
+        margin-top: rem(20);
 
-        .cart-item {
-            &:last-child {
-                border-bottom: rem(1) solid $gray-350;
+        .cart-tab-wrap {
+            border-bottom: 1px solid $gray-200; // 피그마 분석 - 연한 구분선
+            margin-bottom: rem(24);
+
+            .cart-tabs {
+                display: flex;
+                align-items: center;
+                padding: 0 rem(40);
+
+                .tab-item {
+                    display: flex;
+                    align-items: center;
+
+                    // 구분선 (Separator)
+                    // &::after {
+                    //     content: '';
+                    //     width: 1px;
+                    //     height: rem(12);
+                    //     background-color: $gray-200;
+                    //     margin: 0 rem(24);
+                    // }
+
+                    &:last-child::after {
+                        display: none;
+                    }
+
+                    .tab-link {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(8);
+                        font-size: rem(20);
+                        font-weight: $fw-medium;
+                        color: $gray-600;
+                        padding: rem(12) 0;
+                        text-decoration: none;
+
+                        .badge {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            min-width: rem(20);
+                            height: rem(20);
+                            padding: 0 rem(6);
+                            background-color: $gray-60; // 뱃지 배경
+                            color: $gray-830; // 뱃지 텍스트
+                            font-size: rem(12);
+                            font-weight: $fw-medium;
+                            border-radius: rem(10);
+                        }
+                    }
+
+                    &.active {
+                        .tab-link {
+                            color: $black;
+                            font-weight: $fw-bold;
+                        }
+                    }
+                }
+            }
+        }
+
+        .cart-group {
+
+            margin-bottom: 0 !important;
+
+            .group-header {
+                height: rem(40);
+                display: flex;
+                align-items: center;
+                padding: 0 rem(20);
+                font-size: rem(16);
+                font-weight: $fw-bold;
+
+                &.ambient {
+                    background-color: $color-badge-ambient-bg;
+                    color: $color-badge-ambient-text;
+                }
+
+                &.cold {
+                    background-color: $color-badge-cold-bg;
+                    color: $color-badge-cold-text;
+                }
+
+                &.cooling {
+                    background-color: $color-badge-cooling-bg;
+                    color: $color-badge-cooling-text;
+                }
+            }
+
+
+            .cart-item {
+                display: flex;
+                padding: rem(24) rem(40);
+                border-bottom: 1px solid $gray-200;
+                gap: rem(32);
+
+                .item-thumb {
+                    width: rem(140);
+                    height: rem(140);
+                    border: 1px solid $gray-150;
+                    border-radius: rem(4);
+                    overflow: hidden;
+                    flex-shrink: 0;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                        background-color: $white;
+                    }
+                }
+
+                .item-info {
+                    flex: 1;
+                    padding-top: rem(4);
+
+                    .item-name {
+                        font-size: rem(16);
+                        font-weight: $fw-bold;
+                        color: $black;
+                        margin-bottom: rem(10);
+                        display: block;
+                        line-height: 1.4;
+                    }
+
+                    .item-meta {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        gap: rem(8);
+                        font-size: rem(13);
+                        color: $gray-600;
+
+                        .sep {
+                            display: inline-block;
+                            width: 1px;
+                            height: rem(10);
+                            background-color: $gray-300;
+                        }
+                    }
+                }
+
+                .item-calc {
+                    width: rem(200); // 가격 영역 너비 고정
+                    text-align: right;
+                    display: flex;
+                    flex-direction: column;
+
+                    .per-unit {
+                        font-size: rem(14);
+                        color: $gray-700;
+                        margin-bottom: rem(4);
+
+                        del {
+                            color: $gray-600;
+                            margin: 0 rem(4);
+                            text-decoration: line-through;
+                        }
+
+                        .current {
+                            font-weight: $fw-bold;
+                            color: $gray-700;
+
+                            &.discounted {
+                                color: $point-red;
+                            }
+                        }
+                    }
+
+                    .total-price {
+                        font-size: rem(24);
+                        font-weight: $fw-bold;
+                        color: $black;
+                        margin-bottom: rem(6);
+                        line-height: 1.2;
+
+                        &.discounted {
+                            color: $point-red;
+                        }
+                    }
+
+                    .unit-detail {
+                        font-size: rem(12);
+                        color: $gray-600;
+                        margin-bottom: rem(4);
+                        letter-spacing: rem(-0.5);
+
+                        .sep {
+                            display: inline-block;
+                            width: 1px;
+                            height: rem(10);
+                            background-color: $gray-300;
+                            margin: 0 rem(12);
+                            vertical-align: middle;
+                        }
+                    }
+
+                    .discount-amount {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        gap: rem(6);
+                        font-size: rem(13);
+                        font-weight: $fw-medium;
+                        color: $gray-700;
+                        margin-bottom: rem(20);
+
+                        span {
+                            font-size: rem(14);
+                            font-weight: $fw-bold;
+                        }
+                    }
+
+                    .item-qty {
+                        font-size: rem(16);
+                        font-weight: $fw-semibold;
+                        color: $gray-700;
+                        margin-top: auto;
+                    }
+                }
             }
         }
     }
