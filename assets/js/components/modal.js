@@ -105,6 +105,7 @@ const Modal = (() => {
 
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden'; // 모바일 사파리 대응
 
             // 스크립트 실행
             contentArea.querySelectorAll('script').forEach(oldScript => {
@@ -123,6 +124,7 @@ const Modal = (() => {
         if (!overlay) return;
         overlay.classList.remove('active');
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
         setTimeout(() => {
             overlay.querySelector('.modal-content').innerHTML = '';
             wrap.style = '';

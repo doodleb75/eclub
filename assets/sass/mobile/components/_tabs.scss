@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+// 탭 (Tabs) 공통 컴포넌트
+.cart-tab-wrap {
+    background-color: $white;
+    border-bottom: 1px solid $gray-200;
+
+    .cart-tabs {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .tab-item {
+            flex: 1;
+            text-align: center;
+
+            .tab-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: rem(54);
+                font-size: rem(16);
+                font-weight: $fw-bold;
+                color: $gray-600;
+                text-decoration: none;
+
+                .badge {
+                    margin-left: rem(4);
+                }
+            }
+
+            &.active {
+                background-color: $white;
+                border-bottom: rem(2) solid $black;
+
+                .tab-link {
+                    color: $black;
+                }
+            }
+        }
+    }
+}

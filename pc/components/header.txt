@@ -32,6 +32,7 @@
                     <button type="button" class="btn-zoom-out" title="축소"><i class="icon-zoom-out"></i></button>
                     <span class="divider"></span>
                     <button type="button" class="btn-zoom-in" title="확대"><i class="icon-zoom-in"></i></button>
+                    <span class="zoom-value">100%</span>
                 </div>
                 <div class="user-menu">
                     <a href="#" class="icon-link archive" title="주문건수">

@@ -138,8 +138,8 @@
         .browser-zoom {
             display: flex;
             align-items: center;
-            margin-right: rem(8); // Space before user icons
-            display: none;
+            margin-right: rem(8);
+            position: relative;
 
             button {
                 background: none;
@@ -158,15 +158,27 @@
 
             .divider {
                 width: 1px;
-                height: rem(24);
-                background-color: $gray-500;
-                margin: 0 rem(8);
+                height: rem(14);
+                background-color: $gray-400;
+                margin: 0 rem(16);
+            }
+
+            .zoom-value {
+                position: absolute;
+                left: rem(-38);
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: rem(12);
+                color: $gray-800;
+                font-family: inherit;
+                font-weight: $fw-medium;
+                letter-spacing: -0.02em;
             }
         }
 
         .user-menu {
             display: flex;
-            gap: rem(20);
+            gap: rem(18);
             align-items: center;
         }
 
@@ -188,8 +200,8 @@
                 &::after {
                     content: '';
                     position: absolute;
-                    top: rem(-1);
-                    right: rem(2);
+                    top: rem(-2);
+                    right: rem(0);
                     width: rem(6);
                     height: rem(6);
                     background-color: $color-search-border;

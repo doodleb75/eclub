@@ -26,7 +26,7 @@
         width: rem(320);
         flex: 0 0 rem(320); // Force fixed width
         position: sticky;
-        top: rem(67);
+        top: rem(0);
     }
 }
 
@@ -38,8 +38,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid $gray-70;
+        border-bottom: rem(1) solid $gray-70;
         padding: rem(0) 0 rem(30);
+    }
+
+    .title-area {
+        display: flex;
+        align-items: flex-end;
+        gap: rem(24);
     }
 
     .page-title {
@@ -48,6 +54,32 @@
         color: $gray-850;
         line-height: 1;
         letter-spacing: rem(-1);
+    }
+
+    .min-order-info {
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        font-size: $fs-14;
+        color: $gray-600;
+
+        .info-label {
+            font-weight: $fw-medium;
+        }
+
+        .info-value {
+            display: flex;
+            align-items: center;
+            gap: rem(6);
+            font-weight: $fw-medium;
+
+            &::before {
+                content: "";
+                width: rem(1);
+                height: rem(12);
+                background-color: $gray-350;
+            }
+        }
     }
 
     .breadcrumb {
@@ -88,13 +120,18 @@
     }
 }
 
+// 스티키 영역 (선택바 + 탭)
+.cart-sticky-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: $white;
+}
+
 // 탭 메뉴 영역
 .cart-tab-wrap {
     // border-bottom: 1px solid $gray-70;
-    position: sticky;
-    top: 0;
     width: 100%;
-    z-index: 100;
     background-color: $white; // 고정 시 배경 유지
 
     .container {
@@ -129,28 +166,22 @@
             }
 
             .badge {
-                font-size: $fs-14;
-                color: $gray-700;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
                 min-width: rem(20);
                 height: rem(20);
                 padding: 0 rem(6);
                 background-color: $gray-60; // 배지 배경색
+                color: $gray-830; // 뱃지 텍스트
+                font-size: rem(12);
+                font-weight: $fw-medium;
                 border-radius: rem(10);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: $fw-regular;
             }
 
             &.active {
                 color: $gray-900;
                 font-weight: $fw-bold;
-
-                .badge {
-                    background-color: $gray-900;
-                    color: $white;
-                    font-weight: $fw-bold;
-                }
             }
 
             &.recent {
@@ -281,6 +312,7 @@
     background-color: $white;
     margin-bottom: rem(80);
     overflow: hidden;
+    scroll-margin-top: rem(110); // 스티키 영역 높이만큼 오프셋 확보
 
     .group-header {
         padding: rem(13) rem(24) rem(13) rem(10);
@@ -665,6 +697,7 @@
         border-radius: $radius-lg;
         overflow: hidden;
         flex-shrink: 0;
+        position: relative; // 썸네일 상태 라벨 위치 기준
 
         a {
             display: block;
@@ -676,6 +709,23 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        // 품절 등 상태 라벨
+        .status-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: rem(42);
+            background-color: rgba(0, 0, 0, 0.6); // Figma: #000000, 60%
+            color: $white;
+            font-size: rem(15); // Figma: 15px
+            font-weight: $fw-bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
         }
     }
 
@@ -722,6 +772,17 @@
                     background-color: $gray-350;
                     margin: 0 rem(8);
                 }
+            }
+
+            // 품절/주문불가 안내 텍스트
+            .txt-error {
+                display: block;
+                color: $point-red;
+                font-size: rem(15); // Figma: 15px
+                font-weight: $fw-bold;
+                margin-top: rem(16); // Figma: 16px
+                line-height: normal;
+                letter-spacing: rem(-0.5);
             }
         }
 
@@ -935,69 +996,107 @@
                 margin: 0 rem(8);
             }
         }
+    }
 
-        .total-discount {
-            font-size: rem(13);
-            color: $gray-700;
-            font-weight: $fw-bold;
-            margin-top: rem(2);
+    .total-discount {
+        font-size: rem(13);
+        color: $gray-700;
+        font-weight: $fw-bold;
+        margin-top: rem(2);
 
-            span {
-                color: $gray-850;
-                margin-left: rem(4);
-            }
+        span {
+            color: $gray-850;
+            margin-left: rem(4);
         }
     }
 
-    // 수량 선택기
-    .qty-selector {
-        display: flex;
-        align-items: center;
-        width: rem(150); // 너비 최적화
-        height: rem(36); // 높이 축소
-        background-color: $white; // 배경색 설정
-        border: 1px solid $gray-300; // 테두리 색상 반영
-        border-radius: $radius-sm; // 4px
-        overflow: hidden;
+    // 품절 시 가격 영역 텍스트 컬러 조정
+    .is-soldout & {
+        .price-info {
 
-        button {
-            width: rem(32); // 높이와 맞춰 정사각형 유지
-            height: 100%;
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: $gray-700; // 아이콘 컬러 수정 (#666666)
-            transition: background-color $transition-speed;
-
-            &:hover {
-                background-color: $gray-50; // 밝은 회색 호버 효과
+            .unit-price,
+            .unit-price del,
+            .unit-price .current,
+            .main-price,
+            .main-price span,
+            .unit-info,
+            .spec,
+            .total-discount,
+            .total-discount span {
+                color: $gray-600 !important;
             }
 
-            i {
-                width: rem(18);
-                height: rem(18);
-                background-color: currentColor; // 아이콘 색상을 부모 text color와 연동
+            // 할인 컬러 등도 무시하고 덮어쓰기 위해 !important 사용 고려 또는 구체적 명시
+            .unit-price.is-discount .current,
+            .main-price.is-discount {
+                color: $gray-600;
             }
-        }
-
-        input {
-            flex: 1;
-            width: 0;
-            height: 100%;
-            border: none;
-            text-align: center;
-            font-size: $fs-14; // 폰트 사이즈 조정 (14px)
-            font-weight: $fw-semibold;
-            color: $gray-900;
-            background: none;
-            padding: 0;
-            outline: none;
         }
     }
 }
+
+// 수량 선택기
+.qty-selector {
+    display: flex;
+    align-items: center;
+    width: rem(150); // 너비 최적화
+    height: rem(36); // 높이 축소
+    background-color: $white; // 배경색 설정
+    border: rem(1) solid $gray-300; // 테두리 색상 반영
+    border-radius: $radius-sm; // 4px
+    overflow: hidden;
+
+    &.disabled {
+        background-color: $gray-50;
+        pointer-events: none;
+
+        input {
+            color: $gray-400;
+        }
+
+        button {
+            color: $gray-300;
+        }
+    }
+
+    button {
+        width: rem(32); // 높이와 맞춰 정사각형 유지
+        height: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $gray-700; // 아이콘 컬러 수정 (#666666)
+        transition: background-color $transition-speed;
+
+        &:hover {
+            background-color: $gray-50; // 밝은 회색 호버 효과
+        }
+
+        i {
+            width: rem(18);
+            height: rem(18);
+            background-color: currentColor; // 아이콘 색상을 부모 text color와 연동
+        }
+    }
+
+    input {
+        flex: 1;
+        width: 0;
+        height: 100%;
+        border: none;
+        text-align: center;
+        font-size: $fs-14; // 폰트 사이즈 조정 (14px)
+        font-weight: $fw-semibold;
+        color: $gray-900;
+        background: none;
+        padding: 0;
+        outline: none;
+    }
+}
+
 
 // 사이드바 박스 공통
 .sidebar-box {
@@ -1209,15 +1308,6 @@
                 }
 
                 .final-price {
-                    font-size: rem(18); // Mobile uses 13? But PC used 18 previously. Mobile header also uses 18.
-                    // Wait, Mobile SCSS L889 has font-size: rem(13). 
-                    // PC used 18.
-                    // I'll stick to Mobile variable if possible, or keep PC size if it looks better?
-                    // User said "Refer style SAME as cart.html mobile".
-                    // Mobile SCSS said `font-size: rem(13)` for `.final-price`.
-                    // But Mobile HTML text "478,000" looks large in design usually.
-                    // Mobile `.total-final` L889 says `rem(13)`.
-                    // I will trust the code.
                     font-size: rem(13);
                     font-weight: $fw-bold;
                     color: $point-red;
@@ -1285,7 +1375,7 @@
         height: rem(20); // 20px로 수정
         width: rem(20);
         background-color: $white;
-        border: 1px solid $gray-300; // 피그마 분석 보더 컬러
+        border: rem(1) solid $gray-300; // 피그마 분석 보더 컬러
         border-radius: $radius-sm;
 
         &::after {

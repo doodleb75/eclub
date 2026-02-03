@@ -1,0 +1,139 @@
+@import "../../abstract/functions";
+@import "../../abstract/variables";
+
+// 배송비 쿠폰 모달 스타일 (Mobile)
+
+// 모달 헤더 (이 모달에만 적용되거나, 모바일 공통 헤더 스타일이 부재할 경우 사용)
+.modal-header {
+    padding: rem(20) rem(16) 0; // 상단 여백 확보, 하단은 body와 조절
+    min-height: rem(56);
+    display: flex;
+    align-items: center;
+    background: $white;
+
+    &.type-center {
+        justify-content: center;
+    }
+
+    .modal-title {
+        font-size: rem(18);
+        font-weight: $fw-bold;
+        color: $gray-900;
+        line-height: 1.3;
+        letter-spacing: rem(-0.9);
+    }
+}
+
+.shipping-coupon-body {
+    padding: rem(20) rem(16) rem(24);
+}
+
+.coupon-list {
+    display: flex;
+    flex-direction: column;
+    gap: rem(10);
+}
+
+.coupon-item {
+    position: relative;
+
+    .coupon-radio {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked+.coupon-label {
+            border-color: $gray-900;
+            border-width: rem(1);
+        }
+    }
+
+    .coupon-label {
+        display: flex;
+        flex-direction: column;
+        padding: rem(16); // 좌우 패딩 축소 (24 -> 16)
+        border: rem(1) solid $gray-350;
+        border-radius: rem(4);
+        cursor: pointer;
+        transition: border-color 0.2s, background 0.2s;
+        -webkit-tap-highlight-color: transparent;
+
+        &:active {
+            background: $gray-50;
+        }
+    }
+
+    // 쿠폰 설명
+    .coupon-desc {
+        font-size: rem(12);
+        color: $gray-850;
+        margin-bottom: rem(2);
+        font-weight: $fw-regular;
+        letter-spacing: rem(-0.6);
+    }
+
+    // 쿠폰 이름
+    .coupon-name {
+        font-size: rem(16); // 18 -> 16
+        font-weight: $fw-bold;
+        color: $gray-900;
+        margin-bottom: rem(4);
+        letter-spacing: rem(-0.8);
+    }
+
+    // 사용 기한
+    .coupon-date {
+        font-size: rem(12);
+        color: $gray-600;
+        font-weight: $fw-regular;
+        letter-spacing: rem(-0.6);
+    }
+
+    // 적용안함 전용 텍스트
+    .coupon-name-single {
+        font-size: rem(15); // 16 -> 15
+        font-weight: $fw-bold;
+        color: $gray-900;
+        padding: rem(4) 0; // 8 -> 4
+        letter-spacing: rem(-0.8);
+    }
+}
+
+// 배송비 쿠폰 모달 하단 버튼
+.shipping-coupon-footer {
+    padding: 0 rem(16) rem(24); // 좌우 패딩 16, 하단 24
+
+    .btn-group-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: rem(8); // 10 -> 8
+        width: 100%;
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: rem(52); // 터치 타겟 고려 48 -> 52
+            border-radius: rem(4);
+            font-size: rem(16);
+            font-weight: $fw-bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: rem(-0.8);
+        }
+
+        .btn-apply {
+            background: $gray-900;
+            color: $white;
+            border: none;
+        }
+
+        .btn-cancel {
+            background: $white;
+            color: $gray-900;
+            border: rem(1) solid $gray-400;
+        }
+    }
+}

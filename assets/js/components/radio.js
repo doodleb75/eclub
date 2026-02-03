@@ -20,8 +20,6 @@ class CustomRadio extends HTMLElement {
         const name = this.getAttribute('name') || '';
         const value = this.getAttribute('value') || '';
 
-        // 아이콘 색상은 CSS가 아닌 SVG 내부 fill 속성으로 처리됨
-        // #1F95FF -> Primary Blue, #CCCCCC -> Gray 300
 
         this.innerHTML = `
             <label class="custom-radio-wrap">

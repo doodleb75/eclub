@@ -244,7 +244,9 @@
                                         <div class="discount-row">
                                             <div class="row-header">
                                                 <span class="label">배송비 할인</span>
-                                                <button type="button" class="btn-change">쿠폰 변경하기 <i
+                                                <button type="button" class="btn-change"
+                                                    data-modal-url="/common/components/modal/modal-shipping-coupon.html"
+                                                    data-modal-width="398px">쿠폰 변경하기 <i
                                                         class="icon-chevron-right"></i></button>
                                             </div>
                                             <div class="row-value">무료배송</div>
@@ -299,7 +301,9 @@
                                         <div class="discount-row">
                                             <div class="row-header">
                                                 <span class="label">결제쿠폰 할인</span>
-                                                <button type="button" class="btn-change">쿠폰 변경하기 <i
+                                                <button type="button" class="btn-change"
+                                                    data-modal-url="/common/components/modal/modal-coupon.html"
+                                                    data-modal-width="398px">쿠폰 변경하기 <i
                                                         class="icon-chevron-right"></i></button>
                                             </div>
                                             <div class="row-value">-22,800원</div>
@@ -316,7 +320,11 @@
                             <!-- 보유 포인트 사용 -->
                             <section class="checkout-box points">
                                 <div class="box-header">
-                                    <h3 class="box-title">보유 포인트 사용 <i class="icon-info"></i></h3>
+                                    <h3 class="box-title">보유 포인트 사용
+                                        <button type="button" class="btn-info" data-popover-template="pointInfo">
+                                            <i class="icon-info"></i>
+                                        </button>
+                                    </h3>
                                     <span class="current-points">67,090원</span>
                                 </div>
                                 <div class="box-body">
@@ -341,18 +349,21 @@
                         <section class="checkout-box products-box">
                             <!-- 주문상품 리스트 (Green Box) -->
                             <div class="checkout-products-area">
-                                <nav class="cart-tab-wrap" aria-label="장바구니 탭">
-                                    <div class="tab-inner">
-                                        <ul class="cart-tabs">
-                                            <li class="tab-item active"><a href="#section-cold" class="tab-link">저온상품
-                                                    <span class="badge">3</span></a></li>
-                                            <li class="tab-item"><a href="#section-ambient" class="tab-link">상온상품 <span
-                                                        class="badge">12</span></a></li>
-                                            <li class="tab-item"><a href="#section-cooling" class="tab-link">직납상품 <span
-                                                        class="badge">0</span></a></li>
-                                        </ul>
-                                    </div>
-                                </nav>
+                                <div class="cart-sticky-wrap">
+                                    <nav class="cart-tab-wrap" aria-label="장바구니 탭">
+                                        <div class="tab-inner">
+                                            <ul class="cart-tabs">
+                                                <li class="tab-item active"><a href="#section-cold"
+                                                        class="tab-link">저온상품
+                                                        <span class="badge">3</span></a></li>
+                                                <li class="tab-item"><a href="#section-ambient" class="tab-link">상온상품
+                                                        <span class="badge">12</span></a></li>
+                                                <li class="tab-item"><a href="#section-cooling" class="tab-link">직납상품
+                                                        <span class="badge">0</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
                                 <!-- 저온배송 그룹 -->
                                 <section class="cart-group cold" id="section-cold">
                                     <div class="group-header cold">저온배송</div>
@@ -667,7 +678,7 @@
                                 </div>
                             </div>
                             <button type="button" class="btn-order"
-                                onclick="location.href='/pc/pages/checkout.html'">478,000원 주문하기</button>
+                                onclick="location.href='/pc/pages/order_complete.html'">478,000원 주문하기</button>
                         </div>
                     </aside>
                 </div>

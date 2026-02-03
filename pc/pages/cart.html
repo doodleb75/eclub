@@ -20,7 +20,13 @@
             <!-- 페이지 타이틀 & 브레드크럼 -->
             <div class="page-header">
                 <div class="container">
-                    <h2 class="page-title">장바구니</h2>
+                    <div class="title-area">
+                        <h2 class="page-title">장바구니</h2>
+                        <div class="min-order-info" aria-label="최소주문금액 안내">
+                            <span class="info-label">최소주문금액 안내</span>
+                            <span class="info-value">저온 250,000원 / 상온 300,000원</span>
+                        </div>
+                    </div>
                     <nav aria-label="현재 진행 단계">
                         <ol class="breadcrumb">
                             <li class="active" aria-current="step">장바구니</li>
@@ -31,54 +37,54 @@
                 </div>
             </div>
 
-
-
-
             <div class="container cart-page-layout">
                 <div class="cart-main">
-                    <!-- 선택 관리 바 -->
-                    <div class="cart-select-bar">
-                        <div class="container">
-                            <div class="select-actions">
-                                <label class="checkbox-container">
-                                    <input type="checkbox" checked>
-                                    <span class="checkmark"></span>
-                                    <span class="text">전체선택</span>
-                                </label>
-                                <span class="separator"></span>
-                                <button type="button" class="btn-delete-selected"
-                                    data-modal-url="/common/components/modal-confirm.html"
-                                    data-modal-width="320px">선택삭제</button>
-                            </div>
-                            <div class="tab-actions">
-                                <button type="button" class="btn-excel-upload"
-                                    data-modal-url="/common/components/modal-excel-upload.html"
-                                    data-modal-width="540px">
-                                    <i class="icon-excel"></i>
-                                    <span>엑셀 업로드</span>
-                                    <i class="icon-upload"></i>
-                                </button>
+                    <!-- 스티키 영역: 선택 바 + 탭 메뉴 -->
+                    <div class="cart-sticky-wrap">
+                        <!-- 선택 관리 바 -->
+                        <div class="cart-select-bar">
+                            <div class="container">
+                                <div class="select-actions">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        <span class="text">전체선택</span>
+                                    </label>
+                                    <span class="separator"></span>
+                                    <button type="button" class="btn-delete-selected"
+                                        data-modal-url="/common/components/modal/modal-confirm.html"
+                                        data-modal-width="320px">선택삭제</button>
+                                </div>
+                                <div class="tab-actions">
+                                    <button type="button" class="btn-excel-upload"
+                                        data-modal-url="/common/components/modal/modal-excel-upload.html"
+                                        data-modal-width="540px">
+                                        <i class="icon-excel"></i>
+                                        <span>엑셀 업로드</span>
+                                        <i class="icon-upload"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 탭 메뉴 영역 -->
-                    <nav class="cart-tab-wrap" aria-label="장바구니 탭">
-                        <div class="container">
-                            <ul class="cart-tabs">
-                                <!-- <li class="tab-item active"><a href="#wrap" class="tab-link">전체 <span class="badge">6</span></a>
-                        </li> -->
-                                <li class="tab-item"><a href="#section-cold" class="tab-link">저온상품 <span
-                                            class="badge">3</span></a></li>
-                                <li class="tab-item"><a href="#section-ambient" class="tab-link">상온상품 <span
-                                            class="badge">3</span></a></li>
-                                <li class="tab-item"><a href="#section-cooling" class="tab-link">직납상품 <span
-                                            class="badge">1</span></a></li>
-                                <li class="tab-item recent"><a href="#" class="tab-link">최근 구매 상품 <span
-                                            class="badge">62</span></a></li>
-                            </ul>
-                        </div>
-                    </nav>
+                        <!-- 탭 메뉴 영역 -->
+                        <nav class="cart-tab-wrap" aria-label="장바구니 탭">
+                            <div class="container">
+                                <ul class="cart-tabs">
+                                    <!-- <li class="tab-item active"><a href="#wrap" class="tab-link">전체 <span class="badge">6</span></a>
+                            </li> -->
+                                    <li class="tab-item"><a href="#section-cold" class="tab-link">저온상품 <span
+                                                class="badge">3</span></a></li>
+                                    <li class="tab-item"><a href="#section-ambient" class="tab-link">상온상품 <span
+                                                class="badge">3</span></a></li>
+                                    <li class="tab-item"><a href="#section-cooling" class="tab-link">직납상품 <span
+                                                class="badge">1</span></a></li>
+                                    <li class="tab-item recent"><a href="#" class="tab-link">최근 구매 상품 <span
+                                                class="badge">62</span></a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
                     <div class="cart-container">
                         <!-- 왼쪽 장바구니 리스트 영역 -->
                         <div class="cart-content">
@@ -142,7 +148,7 @@
                                                 <button type="button" class="btn-wish active"><i
                                                         class="icon-heart-fill"></i></button>
                                                 <button type="button" class="btn-delete"
-                                                    data-modal-url="/common/components/modal-confirm.html"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
                                                     data-modal-width="320px"><i class="icon-trash"></i></button>
                                             </div>
                                             <div class="price-info">
@@ -202,7 +208,7 @@
                                                 <button type="button" class="btn-wish"><i
                                                         class="icon-heart"></i></button>
                                                 <button type="button" class="btn-delete"
-                                                    data-modal-url="/common/components/modal-confirm.html"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
                                                     data-modal-width="320px"><i class="icon-trash"></i></button>
                                             </div>
                                             <div class="price-info">
@@ -261,7 +267,7 @@
                                                 <button type="button" class="btn-wish"><i
                                                         class="icon-heart"></i></button>
                                                 <button type="button" class="btn-delete"
-                                                    data-modal-url="/common/components/modal-confirm.html"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
                                                     data-modal-width="320px"><i class="icon-trash"></i></button>
                                             </div>
                                             <div class="price-info">
@@ -280,6 +286,127 @@
                                                 <button type="button" class="btn-minus" aria-label="수량 빼기"><i
                                                         class="icon-minus" aria-hidden="true"></i></button>
                                                 <input type="text" value="2" min="0" aria-label="수량">
+                                                <button type="button" class="btn-plus" aria-label="수량 더하기"><i
+                                                        class="icon-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 상품: 품절 (Sold Out) -->
+                                    <li class="cart-item is-soldout">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/assets/images/cart/cart-list-04.png"
+                                                        alt="팔도 비락수정과 1.5L">
+                                                    <div class="status-label">일시품절</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-wrap">
+                                            <div class="item-info">
+                                                <a href="#" class="item-name">팔도 비락수정과 1.5L</a>
+                                                <div class="item-meta">
+                                                    <span>팔도</span>
+                                                    <span class="sep"></span>
+                                                    <span>88096239287182</span>
+                                                    <span class="sep"></span>
+                                                    <span>DC</span>
+                                                    <span class="sep"></span>
+                                                    <span>최대구매 2개</span>
+                                                </div>
+                                                <p class="txt-error">일시 품절되어 주문이 불가합니다.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price-qty">
+                                            <div class="info-actions">
+                                                <button type="button" class="btn-wish"><i
+                                                        class="icon-heart"></i></button>
+                                                <button type="button" class="btn-delete"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
+                                                    data-modal-width="320px"><i class="icon-trash"></i></button>
+                                            </div>
+                                            <div class="price-info">
+                                                <div class="unit-price">
+                                                    개당 <del>2,880원</del> <span class="current">2,780원</span>
+                                                </div>
+                                                <div class="main-price">69,120<span>원</span></div>
+                                                <div class="unit-info">
+                                                    <div class="spec">박스 당 입수 12 <span class="sep">|</span> 낱개환산 24개
+                                                    </div>
+                                                    <div class="total-discount">총 할인 금액 <span>-2,400원</span></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="qty-selector qty-box disabled">
+                                                <button type="button" class="btn-minus" aria-label="수량 빼기"><i
+                                                        class="icon-minus" aria-hidden="true"></i></button>
+                                                <input type="text" value="1" min="0" aria-label="수량" disabled>
+                                                <button type="button" class="btn-plus" aria-label="수량 더하기"><i
+                                                        class="icon-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- 상품: 리드타임 대기 (Not Lead Time) -->
+                                    <li class="cart-item">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/assets/images/cart/cart-list-04.png"
+                                                        alt="팔도 비락수정과 1.5L">
+                                                    <div class="status-label">곧 주문가능</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-wrap">
+                                            <div class="item-info">
+                                                <a href="#" class="item-name">팔도 비락수정과 1.5L</a>
+                                                <div class="item-meta">
+                                                    <span>팔도</span>
+                                                    <span class="sep"></span>
+                                                    <span>88096239287182</span>
+                                                    <span class="sep"></span>
+                                                    <span>TC</span>
+                                                </div>
+                                                <p class="txt-error">2월 6일 14시부터 주문 가능합니다.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price-qty">
+                                            <div class="info-actions">
+                                                <button type="button" class="btn-wish"><i
+                                                        class="icon-heart"></i></button>
+                                                <button type="button" class="btn-delete"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
+                                                    data-modal-width="320px"><i class="icon-trash"></i></button>
+                                            </div>
+                                            <div class="price-info">
+                                                <div class="unit-price">
+                                                    개당 <del>2,880원</del> <span class="current">2,780원</span>
+                                                </div>
+                                                <div class="main-price">69,120<span>원</span></div>
+                                                <div class="unit-info">
+                                                    <div class="spec">박스 당 입수 12 <span class="sep">|</span> 낱개환산 24개
+                                                    </div>
+                                                    <div class="total-discount">총 할인 금액 <span>-2,400원</span></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="qty-selector qty-box disabled">
+                                                <button type="button" class="btn-minus" aria-label="수량 빼기"><i
+                                                        class="icon-minus" aria-hidden="true"></i></button>
+                                                <input type="text" value="2" min="0" aria-label="수량" disabled>
                                                 <button type="button" class="btn-plus" aria-label="수량 더하기"><i
                                                         class="icon-plus" aria-hidden="true"></i></button>
                                             </div>
@@ -352,7 +479,7 @@
                                                 <button type="button" class="btn-wish active"><i
                                                         class="icon-heart-fill"></i></button>
                                                 <button type="button" class="btn-delete"
-                                                    data-modal-url="/common/components/modal-confirm.html"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
                                                     data-modal-width="320px"><i class="icon-trash"></i></button>
                                             </div>
                                             <div class="price-info">
@@ -410,7 +537,7 @@
                                                 <button type="button" class="btn-wish"><i
                                                         class="icon-heart"></i></button>
                                                 <button type="button" class="btn-delete"
-                                                    data-modal-url="/common/components/modal-confirm.html"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
                                                     data-modal-width="320px"><i class="icon-trash"></i></button>
                                             </div>
                                             <div class="price-info">
@@ -497,7 +624,7 @@
                                                 <button type="button" class="btn-wish"><i
                                                         class="icon-heart"></i></button>
                                                 <button type="button" class="btn-delete"
-                                                    data-modal-url="/common/components/modal-confirm.html"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
                                                     data-modal-width="320px"><i class="icon-trash"></i></button>
                                             </div>
                                             <div class="price-info">
