@@ -93,7 +93,6 @@ body.no-scroll {
     // 요약 및 버튼 섹션 (항상 노출되는 부분과 하단 고정 부분 병합)
     .summary-section {
         padding: 0;
-        padding-top: rem(12);
         border-top: 1px solid $gray-350; // 구분선 추가
 
         .payment-summary {

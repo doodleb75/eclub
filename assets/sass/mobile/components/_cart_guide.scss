@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+// 쇼핑 가이드 (장바구니/주문결제 공통)
+.cart-guide {
+    padding: 0 rem(16);
+    background-color: $white;
+    border-radius: $radius-sm;
+
+    h3 {
+        font-size: $fs-18;
+        font-weight: $fw-bold;
+        color: $gray-900;
+        margin-bottom: rem(20);
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+
+        i {
+            color: $gray-900;
+        }
+    }
+
+    .guide-list {
+        list-style: none;
+
+        li {
+            font-size: $fs-14;
+            color: $gray-600;
+            margin-bottom: rem(10);
+            padding-left: rem(14);
+            position: relative;
+            line-height: 1.6;
+
+            &::before {
+                content: '-';
+                position: absolute;
+                left: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

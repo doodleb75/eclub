@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+// 결제 요약 (Payment Summary) 공통 컴포넌트
+.payment-summary {
+    .summary-content {
+        .summary-item-group {
+            margin-bottom: 0;
+
+            .group-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: $gray-850;
+
+                .price {
+                    font-weight: $fw-bold;
+                }
+
+                // 최상단 상품 요약
+                &.total-select {
+                    font-size: rem(18);
+                    margin-bottom: rem(20);
+
+                    .label {
+                        font-weight: $fw-bold;
+                    }
+
+                    .price {
+                        font-family: inherit;
+                        font-size: rem(22);
+                        font-weight: $fw-bold;
+
+                        b {
+                            font-weight: $fw-medium;
+                            font-size: rem(18);
+                            margin-left: rem(2);
+                        }
+                    }
+                }
+
+                // 분류별 (저온/상온)
+                &.sub-item {
+                    font-size: rem(13);
+                    margin-bottom: rem(8);
+                    color: $gray-850;
+
+                    .label {
+                        font-weight: $fw-bold;
+                    }
+
+                    .price {
+                        font-weight: $fw-bold;
+                    }
+
+                    .discounted {
+                        font-size: rem(14);
+                        color: $point-red;
+                    }
+                }
+
+                // 할인내역 토글 행
+                &.discount-toggle {
+                    margin-top: rem(4);
+                    padding-bottom: rem(4);
+
+                    .btn-sum-discount {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(4);
+                        font-size: rem(14);
+                        font-weight: $fw-semibold;
+                        color: $gray-850;
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        padding: 0;
+
+                        i {
+                            color: $gray-850;
+                            transition: transform 0.2s;
+                            transform: rotate(0deg);
+                            transform-origin: center;
+                        }
+
+                        &.active i {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                    .price {
+                        color: $point-red;
+                        font-weight: $fw-bold;
+                    }
+                }
+            }
+
+            // 폴딩되는 상세 영역
+            .discount-details-wrap {
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+
+                .discount-group {
+                    margin-bottom: rem(16);
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .group-header {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: rem(14);
+                        font-weight: $fw-semibold;
+                        color: $gray-850;
+                        margin-bottom: rem(10);
+                    }
+
+                    .detail-list {
+                        list-style: none;
+                        padding-left: rem(12);
+                        border-left: rem(2) solid $gray-300;
+                        margin-left: rem(2);
+
+                        li {
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: rem(13);
+                            color: $gray-600;
+                            padding-top: rem(6);
+                            font-weight: $fw-medium;
+                            position: relative;
+                            bottom: rem(-4);
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .divider {
+            border: none;
+            border-top: rem(1) solid $gray-200;
+            margin: rem(16) 0;
+        }
+
+        .total-final {
+            margin-bottom: rem(16);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .final-label {
+                font-size: rem(13);
+                font-weight: $fw-bold;
+                color: $point-red;
+            }
+
+            .final-price {
+                font-size: rem(13);
+                font-weight: $fw-bold;
+                color: $point-red;
+            }
+        }
+    }
+
+    .btn-order,
+    .btn-pay {
+        width: 100%;
+        height: rem(60);
+        background-color: $point-red;
+        color: $white;
+        border: none;
+        border-radius: rem(4);
+        font-size: rem(22);
+        font-weight: $fw-bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: darken($point-red, 5%);
+        }
+    }
+}

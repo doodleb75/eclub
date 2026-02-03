@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+// 공통 체크박스 스타일
+.checkbox-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-left: rem(20);
+    cursor: pointer;
+    font-size: $fs-14;
+    user-select: none;
+    min-height: rem(20);
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked~.checkmark {
+            background-color: $gray-850;
+            border-color: $gray-850;
+
+            &::after {
+                border-color: $white;
+            }
+        }
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: rem(18);
+        width: rem(18);
+        background-color: $white;
+        border: rem(1) solid $gray-300;
+        border-radius: $radius-sm;
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: block; // 미체크 시에도 노출 (PC 스타일)
+            left: rem(6);
+            top: rem(2);
+            width: rem(3);
+            height: rem(7);
+            border: solid $gray-300; // 미체크 시 회색
+            border-width: 0 rem(2) rem(2) 0;
+            transform: rotate(45deg);
+        }
+    }
+}

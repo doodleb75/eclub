@@ -30,7 +30,7 @@
                 font-weight: $fw-bold;
                 color: $gray-850;
                 background-color: $white;
-                border: 1px solid $gray-200;
+                border: rem(1) solid $gray-200;
                 border-bottom: 0;
                 padding: rem(16)
             }
@@ -59,7 +59,7 @@
     .checkout-content {
         display: flex;
         flex-direction: column;
-        gap: rem(12); // 섹션 간 간격 (Figma Box Spacing)
+        gap: rem(40); // 섹션 간 간격 (Figma Box Spacing)
     }
 
     .checkout-sidebar {
@@ -79,46 +79,6 @@
             position: sticky;
             top: rem(50);
             z-index: 10;
-            background-color: $white;
-            border-bottom: 1px solid $gray-200;
-            margin-bottom: 0;
-
-            .cart-tabs {
-                display: flex;
-                padding: 0;
-                margin: 0;
-                list-style: none;
-
-                .tab-item {
-                    flex: 1;
-                    text-align: center;
-                    background-color: $gray-50;
-
-                    .tab-link {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        height: rem(54);
-                        font-size: rem(16);
-                        font-weight: $fw-bold;
-                        color: $gray-600;
-                        text-decoration: none;
-
-                        .badge {
-                            margin-left: rem(4);
-                        }
-                    }
-
-                    &.active {
-                        background-color: $white;
-                        border-bottom: rem(2) solid $black;
-
-                        .tab-link {
-                            color: $black;
-                        }
-                    }
-                }
-            }
         }
 
         .cart-group {
@@ -292,46 +252,6 @@
             }
         }
 
-        .cart-guide {
-            padding: rem(24) rem(16);
-            background-color: $white;
-
-            h3 {
-                font-size: rem(16);
-                font-weight: $fw-bold;
-                color: $black;
-                margin-bottom: rem(12);
-                display: flex;
-                align-items: center;
-                gap: rem(6);
-            }
-
-            .guide-list {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-
-                li {
-                    font-size: rem(13);
-                    color: $gray-600;
-                    line-height: rem(20);
-                    margin-bottom: rem(4);
-                    padding-left: rem(10);
-                    position: relative;
-
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        left: 0;
-                        top: rem(8);
-                        width: rem(3);
-                        height: rem(3);
-                        background-color: $gray-400;
-                        border-radius: 50%;
-                    }
-                }
-            }
-        }
     }
 
     // 1. 배송지 정보
@@ -432,6 +352,10 @@
     // 3. 결제수단
     .payment-method {
 
+        .box-header {
+            margin-bottom: rem(12);
+        }
+
         .checkbox-container {
             display: flex;
             align-items: center;
@@ -459,7 +383,7 @@
             .btn-method {
                 width: 100%;
                 height: rem(52);
-                border: 1px solid $gray-300;
+                border: rem(1) solid $gray-300;
                 background-color: $white;
                 color: $gray-700;
                 font-size: rem(13); // 14 -> 15
@@ -848,7 +772,7 @@
                             height: rem(24);
                             padding: 0 rem(8);
                             background-color: $white;
-                            border: 1px solid $gray-300;
+                            border: rem(1) solid $gray-300;
                             border-radius: rem(4);
                             font-size: rem(12);
                             font-weight: $fw-bold;
@@ -944,10 +868,8 @@
     // 6. 최종 결제 금액
     .payment-summary {
         margin-top: rem(18);
-        padding: rem(24) rem(16);
-        padding-top: 0;
+        padding: 0 rem(16) rem(24);
         background-color: $white;
-        border: 1px solid $gray-350;
 
         .summary-footer-info {
             font-size: rem(13);
@@ -955,31 +877,6 @@
             text-align: center;
             margin-bottom: rem(16);
             letter-spacing: rem(-0.5);
-        }
-
-        .btn-order {
-            width: 100%;
-            height: rem(56);
-            background-color: $point-red;
-            color: $white;
-            font-size: rem(18);
-            font-weight: $fw-bold;
-            border: none;
-            border-radius: rem(4);
-            cursor: pointer;
-            letter-spacing: rem(-0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            &:active {
-                background-color: darken($point-red, 5%);
-            }
-        }
-
-        .discounted {
-            color: $point-red;
-            font-size: rem(14);
         }
     }
 }
@@ -1018,12 +915,12 @@
         display: flex;
         flex-direction: column; // 모바일 세로 배치
         align-items: center; // 포인트 정보 우측 정렬
-        gap: rem(10); // 하단 정보와의 간격
+        gap: rem(12); // 하단 정보와의 간격
 
         .input-area {
             display: flex;
             align-items: center;
-            border: 1px solid $gray-300;
+            border: rem(1) solid $gray-300;
             width: 100%;
 
             input {
@@ -1032,6 +929,7 @@
                 height: rem(44);
                 padding: 0 rem(16);
                 font-size: rem(14);
+                text-align: center;
                 color: $black;
                 font-weight: $fw-medium;
 
@@ -1042,9 +940,9 @@
             }
 
             .btn-use-all {
-                width: rem(66);
+                padding: 0 rem(16);
                 height: rem(44);
-                border-left: 1px solid $gray-300;
+                border-left: rem(1) solid $gray-300 !important;
                 background-color: $gray-60;
                 border: none;
                 font-size: rem(14);
@@ -1056,6 +954,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
+                &:hover {
+                    background-color: $gray-70;
+                }
             }
         }
 

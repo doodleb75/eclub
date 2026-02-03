@@ -26,7 +26,7 @@
                     <!-- 최소주문금액 안내 -->
                     <div class="min-order-notice">
                         <span class="label">최소주문금액 안내</span>
-                        <span class="sep">|</span>
+                        <span class="sep"></span>
                         <span class="value">저온 250,000원 / 상온 300,000원</span>
                     </div>
 
@@ -40,38 +40,41 @@
                 </div>
             </div>
 
-            <!-- 선택 관리 바 -->
-            <div class="cart-select-bar">
-                <div class="container">
-                    <div class="select-actions">
-                        <label class="checkbox-container">
-                            <input type="checkbox" checked>
-                            <span class="checkmark"></span>
-                            <span class="text">전체선택</span>
-                        </label>
-                        <div class="action-btns">
-                            <button type="button" class="btn-select-action" disabled
-                                data-modal-url="/eclub/mobile/components/modal-confirm.html"
-                                data-modal-width="85%">선택삭제</button>
+            <!-- 스티키 영역: 선택 바 + 탭 메뉴 -->
+            <div class="cart-sticky-wrap">
+                <!-- 선택 관리 바 -->
+                <div class="cart-select-bar">
+                    <div class="container">
+                        <div class="select-actions">
+                            <label class="checkbox-container">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                <span class="text">전체선택</span>
+                            </label>
+                            <div class="action-btns">
+                                <button type="button" class="btn-select-action" disabled
+                                    data-modal-url="/eclub/mobile/components/modal-sel-del.html"
+                                    data-modal-width="75%">선택삭제</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- 탭 메뉴 영역 -->
+                <nav class="cart-tab-wrap" aria-label="장바구니 탭">
+                    <div class="container">
+                        <ul class="cart-tabs">
+                            <!-- <li class="tab-item active"><a href="#wrap" class="tab-link">전체 <span class="badge">6</span></a>
+                            </li> -->
+                            <li class="tab-item"><a href="#section-cold" class="tab-link">저온상품 <span
+                                        class="badge">3</span></a></li>
+                            <li class="tab-item"><a href="#section-ambient" class="tab-link">상온상품 <span
+                                        class="badge">3</span></a></li>
+                            <li class="tab-item"><a href="#section-cooling" class="tab-link">직납상품 <span
+                                        class="badge">0</span></a></li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            <!-- 탭 메뉴 영역 -->
-            <nav class="cart-tab-wrap" aria-label="장바구니 탭">
-                <div class="container">
-                    <ul class="cart-tabs">
-                        <!-- <li class="tab-item active"><a href="#wrap" class="tab-link">전체 <span class="badge">6</span></a>
-                        </li> -->
-                        <li class="tab-item"><a href="#section-cold" class="tab-link">저온상품 <span
-                                    class="badge">3</span></a></li>
-                        <li class="tab-item"><a href="#section-ambient" class="tab-link">상온상품 <span
-                                    class="badge">3</span></a></li>
-                        <li class="tab-item"><a href="#section-cooling" class="tab-link">직납상품 <span
-                                    class="badge">0</span></a></li>
-                    </ul>
-                </div>
-            </nav>
 
 
             <div class="container">
@@ -120,7 +123,7 @@
                                                             class="icon-heart-fill"></i></button>
                                                     <button type="button" class="btn-delete"
                                                         data-modal-url="/eclub/mobile/components/modal-confirm.html"
-                                                        data-modal-width="85%"><i class="icon-trash"></i></button>
+                                                        data-modal-width="75%"><i class="icon-trash"></i></button>
                                                 </div>
                                             </div>
 
@@ -167,8 +170,9 @@
                                                 <div class="info-actions">
                                                     <button type="button" class="btn-wish"><i
                                                             class="icon-heart"></i></button>
-                                                    <button type="button" class="btn-delete"><i
-                                                            class="icon-trash"></i></button>
+                                                    <button type="button" class="btn-delete"
+                                                        data-modal-url="/eclub/mobile/components/modal-confirm.html"
+                                                        data-modal-width="75%"><i class="icon-trash"></i></button>
                                                 </div>
                                             </div>
 
@@ -222,8 +226,9 @@
                                                 <div class="info-actions">
                                                     <button type="button" class="btn-wish active"><i
                                                             class="icon-heart-fill"></i></button>
-                                                    <button type="button" class="btn-delete"><i
-                                                            class="icon-trash"></i></button>
+                                                    <button type="button" class="btn-delete"
+                                                        data-modal-url="/eclub/mobile/components/modal-confirm.html"
+                                                        data-modal-width="75%"><i class="icon-trash"></i></button>
                                                 </div>
                                             </div>
 
@@ -295,8 +300,9 @@
                                                 <div class="info-actions">
                                                     <button type="button" class="btn-wish active"><i
                                                             class="icon-heart-fill"></i></button>
-                                                    <button type="button" class="btn-delete"><i
-                                                            class="icon-trash"></i></button>
+                                                    <button type="button" class="btn-delete"
+                                                        data-modal-url="/eclub/mobile/components/modal-confirm.html"
+                                                        data-modal-width="75%"><i class="icon-trash"></i></button>
                                                 </div>
                                             </div>
 
@@ -350,8 +356,9 @@
                                                 <div class="info-actions">
                                                     <button type="button" class="btn-wish"><i
                                                             class="icon-heart"></i></button>
-                                                    <button type="button" class="btn-delete"><i
-                                                            class="icon-trash"></i></button>
+                                                    <button type="button" class="btn-delete"
+                                                        data-modal-url="/eclub/mobile/components/modal-confirm.html"
+                                                        data-modal-width="75%"><i class="icon-trash"></i></button>
                                                 </div>
                                             </div>
 
@@ -400,8 +407,9 @@
                                                 <div class="info-actions">
                                                     <button type="button" class="btn-wish active"><i
                                                             class="icon-heart-fill"></i></button>
-                                                    <button type="button" class="btn-delete"><i
-                                                            class="icon-trash"></i></button>
+                                                    <button type="button" class="btn-delete"
+                                                        data-modal-url="/eclub/mobile/components/modal-confirm.html"
+                                                        data-modal-width="75%"><i class="icon-trash"></i></button>
                                                 </div>
                                             </div>
 
@@ -477,8 +485,9 @@
                                                 <div class="info-actions">
                                                     <button type="button" class="btn-wish"><i
                                                             class="icon-heart"></i></button>
-                                                    <button type="button" class="btn-delete"><i
-                                                            class="icon-trash"></i></button>
+                                                    <button type="button" class="btn-delete"
+                                                        data-modal-url="/eclub/mobile/components/modal-confirm.html"
+                                                        data-modal-width="75%"><i class="icon-trash"></i></button>
                                                 </div>
                                             </div>
                                             <div class="item-calc-row">

@@ -199,6 +199,58 @@ const Eclub = {
         }
     },
 
+    // 브라우저 줌 (80~120%)
+    BrowserZoom: {
+        zoomLevel: 100, // 기본값
+        min: 80,        // 최소 80%
+        max: 120,       // 최대 120%
+        step: 10,       // 10% 단위 증감
+
+        init() {
+            const container = document.querySelector('.browser-zoom');
+            if (!container) return;
+
+            // 로컬스토리지 저장된 값 확인
+            const savedZoom = localStorage.getItem('eclub_zoom_level');
+            if (savedZoom) {
+                this.zoomLevel = parseInt(savedZoom, 10);
+            }
+
+            this.applyZoom();
+            this.bindEvents(container);
+        },
+
+        bindEvents(container) {
+            const btnIn = container.querySelector('.btn-zoom-in');
+            const btnOut = container.querySelector('.btn-zoom-out');
+
+            if (btnIn) {
+                btnIn.addEventListener('click', () => this.changeZoom(this.step));
+            }
+            if (btnOut) {
+                btnOut.addEventListener('click', () => this.changeZoom(-this.step));
+            }
+        },
+
+        changeZoom(delta) {
+            const newLevel = this.zoomLevel + delta;
+            if (newLevel >= this.min && newLevel <= this.max) {
+                this.zoomLevel = newLevel;
+                this.applyZoom();
+                localStorage.setItem('eclub_zoom_level', this.zoomLevel);
+            }
+        },
+
+        applyZoom() {
+            document.body.style.zoom = `${this.zoomLevel}%`;
+            // 텍스트 업데이트
+            const display = document.querySelector('.browser-zoom .zoom-value');
+            if (display) {
+                display.textContent = `${this.zoomLevel}%`;
+            }
+        }
+    },
+
     // 탭 시스템
     Tabs: {
         // 탭 트리거 초기화
@@ -394,8 +446,8 @@ const Eclub = {
                 deleteSelectedBtn.addEventListener('click', () => {
                     const checkedItems = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]:checked');
                     deleteSelectedBtn.dataset.modalUrl = checkedItems.length === 0
-                        ? '/eclub/common/components/modal-alert.html'
-                        : '/eclub/common/components/modal-confirm.html';
+                        ? '/eclub/common/components/modal/modal-alert.html'
+                        : '/eclub/common/components/modal/modal-select-del.html';
                 });
             }
 
@@ -600,10 +652,11 @@ const Eclub = {
 
             // 헤더 높이(Sticky 포함) 계산
             const getHeaderHeight = () => {
-                const computedStyle = window.getComputedStyle(tabWrap);
+                const stickyWrap = tabWrap.closest('.cart-sticky-wrap') || tabWrap;
+                const computedStyle = window.getComputedStyle(stickyWrap);
                 const topVal = parseFloat(computedStyle.top);
                 const stickyTop = isNaN(topVal) ? 0 : topVal;
-                return stickyTop + tabWrap.offsetHeight;
+                return stickyTop + stickyWrap.offsetHeight;
             };
 
             // 섹션 데이터 프리로드
@@ -719,8 +772,8 @@ const Eclub = {
     },
 
     // 전체 모듈 초기화
-    init() {
-        this.Loader.init();
+    async init() {
+        await this.Loader.init();
         this.Clipboard.init();
         this.Toggle.init();
         this.Tabs.init();
@@ -731,6 +784,7 @@ const Eclub = {
         this.Slider.init();
         this.ScrollSpy.init();
         this.InputHandler.init();
+        if (this.BrowserZoom) this.BrowserZoom.init();
         console.log('Eclub Common UI Initialized');
     }
 };

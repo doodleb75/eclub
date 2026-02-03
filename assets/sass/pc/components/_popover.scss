@@ -24,7 +24,7 @@
 
     // 팝업 내 공통 레이아웃 요소들
     .popover-inner {
-        padding: rem(24) rem(24) rem(16);
+        padding: rem(24) rem(16) rem(16);
     }
 
     // 팝업 푸터 (공통으로 사용될 수 있는 하단 버튼 영역)
@@ -122,8 +122,8 @@
 
         .discount-list {
             position: relative;
-            padding-left: rem(12);
-            padding-top: rem(12);
+            padding-left: rem(10);
+            padding-top: rem(6);
             margin-bottom: rem(16);
             margin-left: rem(10);
             margin-right: rem(10);
@@ -143,7 +143,11 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom: rem(8);
+                margin-bottom: rem(2);
+                font-size: rem(13);
+                color: $gray-600;
+                position: relative;
+                bottom: rem(-4);
 
                 &:last-child {
                     margin-bottom: 0;
@@ -171,7 +175,7 @@
             }
 
             .val {
-                font-size: rem(18);
+                font-size: rem(13);
                 font-weight: $fw-bold;
                 color: $point-red;
             }
@@ -203,6 +207,77 @@
                 height: rem(48);
                 font-size: rem(14);
             }
+        }
+    }
+
+    /* -------------------------------------------
+       Type: Point Info (포인트 적립/사용 안내)
+       ------------------------------------------- */
+    &.type-pointInfo {
+        width: rem(440); // Figma image looks wider than simple tooltips
+
+        .popover-header {
+            text-align: center;
+            margin-bottom: rem(20);
+            display: flex;
+            justify-content: center;
+
+            .title {
+                font-size: rem(24);
+                font-weight: $fw-bold;
+                color: $gray-900;
+                margin: 0;
+            }
+        }
+
+        .popover-content {
+            padding: 0 rem(16);
+
+            .info-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    position: relative;
+                    // padding-left: rem(10);
+                    font-size: rem(14); // 가독성 위해 14px
+                    color: $gray-900;
+                    line-height: rem(22);
+                    margin-bottom: rem(8);
+                    word-break: keep-all;
+                    letter-spacing: rem(-0.5);
+
+                    // &::before {
+                    //     // 점 스타일
+                    //     content: '-';
+                    //     position: absolute;
+                    //     left: 0;
+                    //     top: 0;
+                    //     color: $gray-850;
+                    // }
+
+                    // // 기존 원형 점 스타일로 오버라이드
+                    // &::before {
+                    //     content: '';
+                    //     position: absolute;
+                    //     left: 0;
+                    //     top: rem(9); 
+                    //     width: rem(3);
+                    //     height: rem(3);
+                    //     background-color: $gray-600;
+                    //     border-radius: 50%;
+                    // }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .popover-footer {
+            padding: 0 rem(16); // 좌우 패딩 
         }
     }
 }

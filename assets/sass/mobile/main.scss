@@ -10,6 +10,12 @@
 @import "components/footer";
 @import "components/bottom_sheet";
 @import "components/modal";
+@import "components/modal-coupon";
+@import "components/modal-shipping-coupon";
+@import "components/checkbox";
+@import "components/cart_guide";
+@import "components/payment_summary";
+@import "components/tabs";
 @import "../pc/components/toast";
 
 // 페이지별 스타일
@@ -23,6 +29,7 @@ html,
 body {
     width: 100%;
     overflow-x: clip; // 가로 스크롤 방지 (sticky 지원 개선)
+    scroll-behavior: smooth; // 탭 이동 시 부드러운 스크롤
 }
 
 #wrap {

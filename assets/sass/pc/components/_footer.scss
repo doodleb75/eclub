@@ -128,12 +128,13 @@
                 .label {
                     font-size: rem(22);
                     color: $gray-700;
-                    font-weight: $fw-regular;
+                    font-weight: $fw-medium;
                 }
 
                 .name {
                     font-size: rem(22);
                     color: $gray-700;
+                    font-weight: $fw-medium;
                 }
             }
 
@@ -141,7 +142,7 @@
                 font-size: rem(28);
                 font-weight: $fw-bold;
                 color: $gray-700;
-                margin-bottom: rem(18);
+                margin-bottom: rem(16);
                 line-height: 1;
                 letter-spacing: rem(-0.5);
             }

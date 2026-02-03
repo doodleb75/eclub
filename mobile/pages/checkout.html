@@ -104,7 +104,7 @@
                             <div id="method-credit" class="method-details-box" data-tab-content
                                 data-tab-group="payment-method">
                                 <div class="card-info-notice">
-                                    <p class="notice-text">카드는 삼성 B2B 카드만 가능하며 카드 결제시 일시불에 한해 가능합니다.</p>
+                                    <p class="notice-text">카드는 삼성 B2B 카드만 가능하며<br> 카드 결제시 일시불에 한해 가능합니다.</p>
                                     <button type="button" class="btn-check-limit">카드 한도조회</button>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                                             <input type="tel" data-input="number" placeholder="0000" maxlength="4">
                                         </div>
                                     </div>
-                                    <p class="notice-text">SSG페이를 사용하시고자 한다면 스마트폰에서 SSG페이 앱을 설치해주세요.</p>
+                                    <p class="notice-text">SSG페이를 사용하시고자 한다면 <br>스마트폰에서 SSG페이 앱을 설치해주세요.</p>
                                 </div>
                             </div>
 
@@ -181,7 +181,7 @@
                                             <input type="tel" data-input="number" placeholder="0000" maxlength="4">
                                         </div>
                                     </div>
-                                    <p class="notice-text">SSG페이를 사용하시고자 한다면 스마트폰에서 SSG페이 앱을 설치해주세요.</p>
+                                    <p class="notice-text">SSG페이를 사용하시고자 한다면 <br>스마트폰에서 SSG페이 앱을 설치해주세요.</p>
                                 </div>
                             </div>
 
@@ -197,7 +197,7 @@
                                             <input type="tel" data-input="number" placeholder="0000" maxlength="4">
                                         </div>
                                     </div>
-                                    <p class="notice-text">SSG페이를 사용하시고자 한다면 스마트폰에서 SSG페이 앱을 설치해주세요.</p>
+                                    <p class="notice-text">SSG페이를 사용하시고자 한다면 <br>스마트폰에서 SSG페이 앱을 설치해주세요.</p>
                                 </div>
                             </div>
 
@@ -230,8 +230,9 @@
                                     <div class="row-header">
                                         <div class="left">
                                             <span class="label">배송비 할인</span>
-                                            <button type="button" class="btn-change">쿠폰 변경하기 <i
-                                                    class="icon icon-chevron-right"></i></button>
+                                            <button type="button" class="btn-change"
+                                                data-modal-url="/eclub/common/components/modal/modal-shipping-coupon.html">쿠폰
+                                                변경하기 <i class="icon icon-chevron-right"></i></button>
                                         </div>
                                         <div class="right">
                                             <span class="row-total">무료배송</span>
@@ -316,7 +317,8 @@
                                     <div class="row-header">
                                         <div class="left">
                                             <span class="label">결제쿠폰 할인</span>
-                                            <button type="button" class="btn-change">쿠폰 변경하기 <i
+                                            <button type="button" class="btn-change"
+                                                data-modal-url="/eclub/common/components/modal/modal-coupon.html">쿠폰 변경하기 <i
                                                     class="icon icon-chevron-right"></i></button>
                                         </div>
                                         <div class="right">
@@ -388,7 +390,8 @@
                                             </div>
                                             <div class="item-content-wrap">
                                                 <div class="item-info">
-                                                    <a href="#" class="item-name">칠갑 우리쌀 떡국떡 2kg</a>
+                                                    <a href="#" class="item-name">팔도 비락수정과 1.5L팔도 비락수정과 1.5L팔도 비락수정과
+                                                        1.5L</a>
                                                 </div>
                                                 <div class="item-qty">수량 2</div>
                                                 <div class="item-calc">
@@ -687,12 +690,9 @@
         <div data-include="/eclub/mobile/components/footer.txt"></div>
     </div>
     <script src="/eclub/assets/js/common/ui.js"></script>
-    <script>
-        // 간단한 탭 및 토글 초기화 (필요시)
-        document.addEventListener('DOMContentLoaded', () => {
-            // UI Toggle, Tabs scripts should handle interactions
-        });
-    </script>
+    <script src="/eclub/assets/js/components/popover.js"></script>
+    <script src="/eclub/assets/js/components/modal.js"></script>
+    <script src="/eclub/assets/js/components/modal-item-option.js"></script>
 </body>
 
 </html>

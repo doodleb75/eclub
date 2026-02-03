@@ -151,7 +151,7 @@
         align-items: center;
         gap: rem(4);
         padding: rem(5) rem(10);
-        border: 1px solid $gray-400;
+        border: rem(1) solid $gray-400;
         border-radius: rem(2);
         font-size: rem(12);
         color: $gray-600;
@@ -193,7 +193,7 @@
             }
 
             &.btn-shopping {
-                border: 1px solid $gray-400;
+                border: rem(1) solid $gray-400;
                 color: $gray-850;
                 background-color: $white;
 
