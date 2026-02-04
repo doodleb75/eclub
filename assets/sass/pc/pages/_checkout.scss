@@ -5,9 +5,13 @@
 .checkout-page {
     .checkout-container {
         margin-top: rem(16); // 컨테이너 상단 여백 추가
+        display: flex;
+        gap: rem(32);
+        align-items: flex-start;
     }
 
     .checkout-content {
+        flex: 1;
         display: flex;
         flex-direction: column;
         gap: rem(12); // 섹션 간 간격 (Figma Box Spacing)
@@ -15,7 +19,13 @@
     }
 
     .checkout-sidebar {
+        width: rem(320);
+        position: sticky;
         top: rem(16); // 상단에서 16px 여백 확보
+
+        .payment-summary {
+            padding: rem(16);
+        }
     }
 
     // 공통 박스 스타일
@@ -564,14 +574,14 @@
 
             .discount-body {
                 background-color: $gray-55; // #f7f7f7
-                padding: rem(10) rem(40);
+                padding: rem(24) rem(40);
                 border-radius: rem(4);
 
                 .discount-row {
                     display: flex;
                     flex-wrap: wrap; // detail-list 대응용
                     align-items: center;
-                    padding: rem(20) 0;
+                    padding: rem(0) 0 rem(20);
 
                     &:last-child {
                         border-bottom: 0;
@@ -583,10 +593,11 @@
                         flex: 1;
 
                         .label {
-                            width: rem(126); // Figma 기준 레이블 너비 고정
+                            // width: rem(126); // Figma 기준 레이블 너비 고정
                             font-size: rem(16);
                             font-weight: $fw-bold;
                             color: $gray-850;
+                            margin-right: rem(40);
                         }
 
                         .btn-change {
@@ -636,19 +647,20 @@
                     .detail-list {
                         width: 100%;
                         list-style: none;
-                        margin-top: rem(12);
+                        margin-top: rem(2);
                         padding-left: rem(12);
-                        padding-top: rem(12);
+                        padding-top: rem(6);
                         border-left: 3px solid $gray-350;
                         display: flex;
                         flex-direction: column;
-                        padding-top: rem(10);
 
                         li {
                             display: flex;
                             justify-content: space-between;
                             align-items: flex-start;
-                            font-size: rem(14);
+                            position: relative;
+                            bottom: -4px;
+                            font-size: rem(13);
                             color: $gray-600;
                             padding: rem(4) 0;
                             line-height: rem(16);
@@ -1024,6 +1036,189 @@
                         font-weight: $fw-semibold;
                         color: $gray-700;
                         margin-top: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    // 할인 정보 영역 (사이드바)
+    .discount-info-area {
+
+        .info-title {
+            font-size: rem(13);
+            color: $gray-600;
+            font-weight: $fw-medium;
+            margin-bottom: rem(12);
+        }
+
+        .discount-card {
+            .card-header {
+                margin-bottom: rem(0);
+
+                .header-main {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding-bottom: rem(12);
+                    padding-top: 0;
+                    margin-top: rem(8);
+                    gap: rem(8); // Figma Spacing
+                }
+
+                .badge-max {
+                    display: inline-flex;
+                    align-items: center;
+                    height: rem(22);
+                    padding: 0 rem(8);
+                    background-color: $point-red;
+                    color: $white;
+                    font-size: rem(12);
+                    font-weight: $fw-bold;
+                    border-radius: rem(2);
+                    line-height: 1;
+                }
+
+                .toggle-row {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .btn-toggle {
+                        border: none;
+                        background: none;
+                        padding: 0;
+                        font-size: rem(16); // Figma: 16px
+                        font-weight: $fw-bold;
+                        color: $black;
+                        display: flex;
+                        align-items: center;
+                        gap: rem(10);
+                        cursor: pointer;
+                        letter-spacing: rem(-0.5);
+
+                        i {
+                            width: rem(12);
+                            height: rem(12);
+                            background-color: $black; // Icon Color
+                            transition: transform 0.2s;
+                        }
+
+                        &.active i {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                    .total-discount-price {
+                        font-size: rem(20); // Figma: 20px
+                        font-weight: $fw-bold;
+                        color: $black;
+                        letter-spacing: rem(-0.5);
+                    }
+                }
+            }
+
+            .discount-card-body {
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+
+                .discount-unit {
+                    margin-bottom: rem(24);
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .unit-head {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: rem(4);
+
+                        .tit-area {
+                            display: flex;
+                            align-items: center;
+                            gap: rem(16);
+                        }
+
+                        .tit {
+                            font-size: rem(14);
+                            font-weight: $fw-semibold;
+                            color: $gray-850;
+                        }
+
+                        .price {
+                            font-size: rem(16);
+                            font-weight: $fw-bold;
+                            color: $gray-850;
+                        }
+
+                        .unit-total-price {
+                            font-size: rem(14);
+                            font-weight: $fw-semibold;
+                            color: $gray-850;
+                            letter-spacing: rem(-0.5);
+                        }
+
+                        .btn-coupon-change {
+                            display: flex;
+                            align-items: center;
+                            gap: rem(8);
+                            padding: rem(2) rem(8) rem(2) rem(8); // Mirroring .btn-change padding
+                            border: 1px solid $gray-350;
+                            background-color: $white;
+                            font-size: rem(12);
+                            font-weight: $fw-bold;
+                            color: $gray-850;
+                            border-radius: rem(4);
+                            transition: border-color 0.2s ease-in-out;
+                            cursor: pointer;
+
+                            i {
+                                width: rem(6); // Match .btn-change icon size
+                                height: rem(10);
+                                background-color: currentColor; // Fill with text color
+                            }
+
+                            &:hover {
+                                background: $gray-55;
+                                border-color: $gray-600;
+                            }
+                        }
+                    }
+
+                    .unit-list {
+                        list-style: none;
+                        border-left: rem(2) solid $gray-200;
+                        padding-left: rem(12);
+                        display: flex;
+                        flex-direction: column;
+                        padding-top: rem(4);
+                        gap: rem(4);
+
+                        li {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            position: relative;
+                            bottom: rem(-4);
+                            font-size: rem(13);
+                            color: $gray-600;
+
+                            .name {
+                                font-weight: $fw-medium;
+                            }
+
+                            .amount {
+                                font-weight: $fw-medium;
+                                white-space: nowrap;
+                                margin-left: rem(10);
+                            }
+                        }
                     }
                 }
             }

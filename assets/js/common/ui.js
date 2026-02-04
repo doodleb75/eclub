@@ -1,5 +1,11 @@
 // Eclub 공통 UI 스크립트
 const Eclub = {
+    // 현재 적용된 줌 배율 반환
+    getZoomScale() {
+        const zoom = document.body.style.zoom;
+        if (!zoom) return 1;
+        return parseFloat(zoom) / 100;
+    },
     // 토스트 알림
     Toast: {
         container: null,
@@ -29,23 +35,33 @@ const Eclub = {
                 const rect = trigger.getBoundingClientRect();
                 const scrollX = window.scrollX;
                 const scrollY = window.scrollY;
+                const scale = Eclub.getZoomScale(); // 줌 배율 고려
+
                 requestAnimationFrame(() => {
                     const toastWidth = toast.offsetWidth;
                     let left;
 
+                    // 레이아웃 좌표 계산 (물리 좌표 / scale + 스크롤)
+                    const rectLeft = rect.left / scale;
+                    const rectRight = rect.right / scale;
+                    const rectWidth = rect.width / scale;
+                    const rectBottom = rect.bottom / scale;
+
                     if (align === 'right') {
                         // 트리거 우측 정렬
-                        left = rect.right + scrollX - toastWidth;
+                        left = rectRight + scrollX - toastWidth;
                     } else {
                         // 트리거 중앙 정렬
-                        left = rect.left + scrollX - (toastWidth / 2) + (rect.width / 2);
+                        left = rectLeft + scrollX + (rectWidth / 2) - (toastWidth / 2);
                     }
 
-                    let top = rect.bottom + scrollY + 12; // 12px 간격
+                    let top = rectBottom + scrollY + 12; // 12px 간격
                     const margin = 10;
+                    const windowWidth = window.innerWidth / scale;
+
                     if (left < margin) left = margin;
-                    if (left + toastWidth > window.innerWidth - margin) {
-                        left = window.innerWidth - toastWidth - margin;
+                    if (left + toastWidth > windowWidth - margin) {
+                        left = windowWidth - toastWidth - margin;
                     }
                     toast.style.left = `${left}px`;
                     toast.style.top = `${top}px`;
@@ -253,18 +269,21 @@ const Eclub = {
 
     // 탭 시스템
     Tabs: {
-        // 탭 트리거 초기화
+        // 탭 트리거 초기화 (Event Delegation)
         init() {
-            const triggers = document.querySelectorAll('[data-tab-trigger]');
-            triggers.forEach(trigger => {
-                trigger.addEventListener('click', (e) => {
-                    if (trigger.tagName.toLowerCase() === 'a') e.preventDefault();
-                    const targetId = trigger.dataset.tabTarget;
-                    const groupName = trigger.dataset.tabGroup;
-                    const activeClass = trigger.dataset.tabActiveClass || 'active';
-                    if (targetId && groupName) this.activate(groupName, targetId, activeClass);
-                });
-            });
+            document.removeEventListener('click', this.handleTabClick); // 중복 방지
+            this.handleTabClick = (e) => {
+                const trigger = e.target.closest('[data-tab-trigger]');
+                if (!trigger) return;
+
+                if (trigger.tagName.toLowerCase() === 'a') e.preventDefault();
+                const targetId = trigger.dataset.tabTarget;
+                const groupName = trigger.dataset.tabGroup;
+                const activeClass = trigger.dataset.tabActiveClass || 'active';
+
+                if (targetId && groupName) this.activate(groupName, targetId, activeClass);
+            };
+            document.addEventListener('click', this.handleTabClick);
         },
         // 특정 탭 활성화
         activate(group, targetId, defaultActiveClass = 'active') {
@@ -689,8 +708,9 @@ const Eclub = {
                     } else {
                         const targetEl = document.querySelector(targetId);
                         if (targetEl) {
+                            const scale = Eclub.getZoomScale();
                             const offset = getHeaderHeight();
-                            const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+                            const top = (targetEl.getBoundingClientRect().top / scale) + window.scrollY - offset;
                             window.scrollTo({ top, behavior: 'smooth' });
                         }
                     }
@@ -702,11 +722,12 @@ const Eclub = {
                 if (isAutoScrolling || isThrottled) return;
                 isThrottled = true;
                 requestAnimationFrame(() => {
+                    const scale = Eclub.getZoomScale();
                     const offset = getHeaderHeight();
                     const scrollPos = window.scrollY + offset + 10;
                     let currentSection = null;
                     for (const section of sections) {
-                        const offsetTop = section.el === document.body ? 0 : (section.el.getBoundingClientRect().top + window.scrollY);
+                        const offsetTop = section.el === document.body ? 0 : ((section.el.getBoundingClientRect().top / scale) + window.scrollY);
                         if (scrollPos >= offsetTop) currentSection = section;
                     }
                     if (currentSection) {
@@ -750,6 +771,23 @@ const Eclub = {
         }
     },
 
+    // 지인 추천 관련
+    Referral: {
+        init() {
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('.btn-referral-cta');
+                if (!btn) return;
+
+                const message = btn.dataset.toastMessage || '추천 메세지가 발송되었습니다.';
+
+                Eclub.Toast.show({
+                    message: message,
+                    trigger: btn
+                });
+            });
+        }
+    },
+
     // HTML 인클루드 로더
     Loader: {
         async init() {
@@ -773,18 +811,23 @@ const Eclub = {
 
     // 전체 모듈 초기화
     async init() {
-        await this.Loader.init();
-        this.Clipboard.init();
-        this.Toggle.init();
+        // 비동기 로드와 무관한 Delegation 이벤트 우선 바인딩
+        this.Referral.init();
         this.Tabs.init();
         this.Quantity.init();
         this.Favorites.init();
+        this.InputHandler.init();
+
+        // 비동기 포함 나머지 초기화
+        await this.Loader.init();
+        this.Clipboard.init();
+        this.Toggle.init();
         this.BottomSheet.init();
         this.CartSelection.init();
         this.Slider.init();
         this.ScrollSpy.init();
-        this.InputHandler.init();
         if (this.BrowserZoom) this.BrowserZoom.init();
+
         console.log('Eclub Common UI Initialized');
     }
 };

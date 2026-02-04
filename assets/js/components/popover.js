@@ -35,20 +35,27 @@ const Popover = {
         const rect = trigger.getBoundingClientRect();
         const scrollX = window.scrollX;
         const scrollY = window.scrollY;
+        const scale = (typeof Eclub !== 'undefined' && Eclub.getZoomScale) ? Eclub.getZoomScale() : 1;
 
         const popoverWidth = popover.offsetWidth;
-        const windowWidth = window.innerWidth;
+        const windowWidth = window.innerWidth / scale; // 줌 배율 반영
+
+        // 레이아웃 좌표 계산 (물리 좌표 / scale)
+        const rectLeft = rect.left / scale;
+        const rectRight = rect.right / scale;
+        const rectTop = rect.top / scale;
+        const rectBottom = rect.bottom / scale;
 
         let top, left;
 
         // 기본 위치 설정
         if (type === 'pointInfo') {
-            left = rect.right + scrollX + 10;
-            top = rect.top + scrollY;
+            left = rectRight + scrollX + 10;
+            top = rectTop + scrollY;
         } else {
             // 기본: 버튼 우측 하단 정렬
-            left = rect.right + scrollX - popoverWidth;
-            top = rect.bottom + scrollY + 12;
+            left = rectRight + scrollX - popoverWidth;
+            top = rectBottom + scrollY + 12;
         }
 
         // 화면 우측 넘어감 방지
@@ -56,7 +63,7 @@ const Popover = {
         if (left + popoverWidth > windowWidth - margin) {
             if (type === 'pointInfo') {
                 // 왼쪽으로 뒤집기
-                left = rect.left + scrollX - popoverWidth - 10;
+                left = rectLeft + scrollX - popoverWidth - 10;
             } else {
                 // 화면 안쪽으로 밀기
                 left = windowWidth - margin - popoverWidth;
@@ -127,10 +134,11 @@ const Popover = {
         this.instance.style.left = `${left}px`;
 
         // 화면 아래 잘림 방지 스크롤
+        const scale = (typeof Eclub !== 'undefined' && Eclub.getZoomScale) ? Eclub.getZoomScale() : 1;
         const popoverRect = this.instance.getBoundingClientRect();
         if (popoverRect.bottom > window.innerHeight) {
             window.scrollBy({
-                top: popoverRect.bottom - window.innerHeight + 20,
+                top: (popoverRect.bottom - window.innerHeight + 20) / scale,
                 behavior: 'smooth'
             });
         }

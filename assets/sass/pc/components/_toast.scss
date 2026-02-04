@@ -12,7 +12,7 @@
     left: 0;
     top: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 30000; // 모달(20000)보다 높게 설정
     pointer-events: none;
 }
 

@@ -1,0 +1,29 @@
+<div class="modal-header type-center no-close">
+    <h2 class="modal-title">상품 쿠폰</h2>
+</div>
+<div class="modal-body coupon-body">
+    <div class="coupon-list">
+        <!-- 적용 안함 -->
+        <div class="coupon-item">
+            <input type="radio" name="coupon" id="coupon_none" class="coupon-radio" checked>
+            <label for="coupon_none" class="coupon-label">
+                <span class="coupon-name-single">적용안함</span>
+            </label>
+        </div>
+
+        <!-- 장바구니 쿠폰 -->
+        <div class="coupon-item">
+            <input type="radio" name="coupon" id="coupon_cart" class="coupon-radio">
+            <label for="coupon_cart" class="coupon-label">
+                <span class="coupon-name">장바구니 쿠폰</span>
+                <span class="coupon-date">2026.01.31 (토) 23:59 까지 사용 가능</span>
+            </label>
+        </div>
+    </div>
+</div>
+<div class="modal-footer coupon-footer">
+    <div class="btn-group-vertical">
+        <button type="button" class="btn-apply btn-modal-close">적용하기</button>
+        <button type="button" class="btn-cancel btn-modal-close">취소</button>
+    </div>
+</div>

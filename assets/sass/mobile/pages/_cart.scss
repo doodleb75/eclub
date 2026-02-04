@@ -407,6 +407,7 @@ main {
         border-radius: 0;
         overflow: hidden;
         flex-shrink: 0;
+        position: relative;
 
         a {
             display: block;
@@ -418,6 +419,23 @@ main {
             width: 100%;
             height: 100%;
             object-fit: contain;
+        }
+
+        // 품절/상태 라벨
+        .status-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: rem(26);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: $white;
+            font-size: rem(11);
+            font-weight: $fw-bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
         }
     }
 
@@ -434,10 +452,10 @@ main {
             gap: rem(12);
 
             .item-name {
-                font-size: rem(15);
+                font-size: rem(14);
                 line-height: rem(20);
                 color: $gray-900;
-                font-weight: $fw-bold;
+                font-weight: $fw-semibold;
                 @include truncate(2);
                 letter-spacing: rem(-0.5);
             }
@@ -534,6 +552,21 @@ main {
                     outline: none;
                     padding: 0;
                 }
+
+                &.disabled {
+                    background-color: $gray-50;
+                    border-color: $gray-200;
+                    pointer-events: none;
+
+                    button {
+                        color: $gray-350;
+                        cursor: not-allowed;
+                    }
+
+                    input {
+                        color: $gray-400;
+                    }
+                }
             }
 
             .price-area {
@@ -547,6 +580,7 @@ main {
                     color: $gray-600;
                     margin-bottom: rem(4);
                     font-weight: $fw-medium;
+                    justify-content: flex-end;
 
                     .base-price {
                         text-decoration: line-through;
@@ -584,12 +618,12 @@ main {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        gap: rem(6);
+        gap: rem(2);
         margin-top: rem(8);
 
         .unit-info {
             .spec {
-                font-size: rem(12);
+                font-size: rem(11);
                 color: $gray-600;
                 font-weight: $fw-medium;
 
@@ -613,14 +647,69 @@ main {
             color: $gray-700;
 
             .label {
+
+                font-size: rem(11);
                 color: $gray-700;
             }
 
             .val {
+                font-size: rem(11);
                 color: $gray-700;
                 font-weight: $fw-semibold;
             }
         }
+
+        .txt-error {
+            display: block;
+            color: $point-red;
+            font-size: rem(11);
+            font-weight: $fw-bold;
+            margin-top: rem(2);
+            line-height: 1.3;
+            letter-spacing: rem(-0.5);
+            text-align: right;
+        }
+    }
+
+    // 품절 상태 스타일
+    &.is-soldout-discount,
+    &.is-soldout-not-discount {
+
+        .item-thumb a,
+        .item-name,
+        .unit-price,
+        .unit-price .base-price,
+        .unit-price .discount-price,
+        .main-price,
+        .main-price.discounted,
+        .main-price span,
+        .unit-info .spec,
+        .discount-info .label,
+        .discount-info .val {
+            pointer-events: none;
+            color: $gray-600 !important;
+        }
+
+        .item-thumb {
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.5);
+                pointer-events: none;
+            }
+        }
+    }
+
+    // 리드타임 상품 - 썸네일 라벨 스타일링은 HTML 구조에서 처리됨
+    &.leadtime-discount,
+    &.leadtime-not-discount {
+        // 필요 시 추가 스타일 정의
     }
 }
 
