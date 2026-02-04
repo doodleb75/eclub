@@ -1,0 +1,196 @@
+<div class="modal-body referral-body">
+    <div class="referral-sticky-header">
+        <button type="button" class="btn-modal-close btn-close-referral" aria-label="닫기"><i
+                class="icon-clear"></i></button>
+        <!-- 탭 영역 -->
+        <div class="referral-tabs">
+            <button type="button" class="tab-item is-active" data-tab-trigger data-tab-target="referral-info"
+                data-tab-group="referral-modal" data-tab-active-class="is-active">지인추천안내</button>
+            <button type="button" class="tab-item" data-tab-trigger data-tab-target="referral-history"
+                data-tab-group="referral-modal" data-tab-active-class="is-active">추천 내역</button>
+        </div>
+    </div>
+
+    <div class="referral-content">
+        <!-- 탭 1: 지인추천안내 -->
+        <div id="referral-info" data-tab-content="referral-info" data-tab-group="referral-modal"
+            class="tab-pane is-active">
+            <!-- 진행중 화면 (Default) -->
+            <div class="referral-view-default">
+                <!-- 상단 타이틀 -->
+                <header class="referral-header">
+                    <h2 class="title">이클럽 회원 지인사장님 추천 프로그램</h2>
+                    <span class="period">2026. 01. 01 ~ 2026. 12. 31</span>
+                    <p class="desc">
+                        이클럽 회원이라면 ‘누구나’ 참여 가능 !<br>
+                        나만 알기 아까운 이클럽! 지인과 함께 나누시고 혜택도 받아가세요
+                    </p>
+                </header>
+
+                <!-- 추천방법 섹션 -->
+                <section class="referral-section method-section">
+                    <div class="method-col">
+                        <h3 class="sub-title">추천방법</h3>
+                        <div class="step-list">
+                            <p class="step">1. 추천 내용을 나에게 보내기 합니다.</p>
+                            <p class="step">2. 내용 복사해서 지인에게 전달해 주세요.</p>
+                        </div>
+                        <p class="tip-text">추천혜택 적용을 위해 메시지 내용을 꼭 다 복사해서 전달해주세요.</p>
+
+                        <h3 class="sub-title sub-title-send">나에게 보내기</h3>
+                        <div class="send-row">
+                            <span class="label">휴대폰 번호</span>
+                            <div class="input-area">
+                                <input type="text" class="input-text" value="010" readonly>
+                                <input type="text" class="input-text" value="1234">
+                                <input type="text" class="input-text" value="5678">
+                            </div>
+                            <button type="button" class="btn-send">발송</button>
+                        </div>
+                        <p class="sms-tip">사장님께서 카카오톡 회원이 아닌 경우 문자(SMS)로 발송됩니다.</p>
+                    </div>
+
+                    <div class="preview-col">
+                        <div class="message-card">
+                            <p class="card-text">
+                                안녕하세요. 이클럽입니다.<br>
+                                진로마트 사장님께서<br>
+                                이클럽을 추천해주셨습니다.
+                            </p>
+                            <p class="card-desc">가입은 아래 링크를 클릭해주세요</p>
+                            <a href="javascript:void(0);" class="link-join">이클럽 가입하기</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 혜택 섹션 -->
+                <section class="referral-section benefit-section">
+                    <img src="/assets/images/common/referral_sample.png" alt="지인추천 혜택 안내" class="referral-img">
+                </section>
+
+                <!-- 유의사항 -->
+                <ul class="referral-notice">
+                    <li>추천받으신 분이 가입 후 주문한 경우, 가입 후 30일간 구매금액을 합산하여 매월 15일에 지급됩니다.</li>
+                    <li>기존 사업자번호로 가입되어 있는 분께서 가입 시는 혜택 지급이 제외됩니다.</li>
+                </ul>
+            </div>
+
+            <!-- 종료 화면 (Event Ended) -->
+            <div class="referral-view-ended">
+                <header class="referral-header header-ended">
+                    <h2 class="title">이벤트 기간이 종료되었습니다.</h2>
+                </header>
+
+                <!-- 혜택 섹션 (디폴트 화면과 동일) -->
+                <section class="referral-section benefit-section">
+                    <img src="/assets/images/common/referral_sample.png" alt="지인추천 혜택 안내" class="referral-img">
+                </section>
+
+                <!-- 유의사항 -->
+                <ul class="referral-notice">
+                    <li>추천받으신 분이 가입 후 주문한 경우, 가입 후 30일간 구매금액을 합산하여 매월 15일에 지급됩니다.</li>
+                    <li>기존 사업자번호로 가입되어 있는 분께서 가입 시는 혜택 지급이 제외됩니다.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 탭 2: 추천 내역 -->
+        <div id="referral-history" data-tab-content="referral-history" data-tab-group="referral-modal" class="tab-pane">
+            <!-- 내역 있음 (Default) -->
+            <div class="history-view-default">
+                <div class="history-list-wrap">
+                    <table class="history-table">
+                        <colgroup>
+                            <col style="width: 30%">
+                            <col style="width: 12%">
+                            <col style="width: 15%">
+                            <col style="width: 15%">
+                            <col style="width: 13%">
+                            <col style="width: 15%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>추천회원점</th>
+                                <th>가입일자</th>
+                                <th>가입리워드</th>
+                                <th>주문리워드</th>
+                                <th>주문혜택마감일</th>
+                                <th>지급(예정)일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="align-left ellipsis">일이삼사오육칠팔구십일이삼사오육칠팔구십일...</td>
+                                <td>2026.01.01</td>
+                                <td>결제할인쿠폰</td>
+                                <td>장바구니쿠폰</td>
+                                <td>2026.01.30</td>
+                                <td>2026.02.15</td>
+                            </tr>
+                            <tr>
+                                <td class="align-left ellipsis">일이삼사오육칠팔구십일이삼사오육칠팔구십일이</td>
+                                <td>2026.01.01</td>
+                                <td>30,000 포인트</td>
+                                <td>결제할인쿠폰</td>
+                                <td>2026.02.12</td>
+                                <td>2026.02.15</td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">라성식자재마트</td>
+                                <td>2026.01.01</td>
+                                <td>30,000 포인트</td>
+                                <td>상품할인쿠폰</td>
+                                <td>2026.02.14</td>
+                                <td>2026.02.15</td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">테스트이클럽슈퍼마켓</td>
+                                <td>2026.01.01</td>
+                                <td>30,000 포인트</td>
+                                <td>주문 전</td>
+                                <td>2026.02.17</td>
+                                <td>2026.03.15</td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">주식회사큐큐큐마트 식자재클럽</td>
+                                <td>2026.01.01</td>
+                                <td>30,000 포인트</td>
+                                <td>주문 전</td>
+                                <td>2026.03.02</td>
+                                <td>2026.03.15</td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">주식회사 동네슈퍼</td>
+                                <td>2026.01.01</td>
+                                <td>30,000 포인트</td>
+                                <td>주문 전</td>
+                                <td>2026.01.30</td>
+                                <td>2026.03.15</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 유의사항 -->
+                <ul class="referral-notice mt-notice">
+                    <li>추천받으신 분이 가입 후 주문한 경우, 가입 후 30일간 구매금액을 합산하여 매월 15일에 지급됩니다.</li>
+                    <li>기존 사업자번호로 가입되어 있는 분께서 가입 시는 혜택 지급이 제외됩니다.</li>
+                </ul>
+            </div>
+
+            <!-- 내역 없음 (Empty) -->
+            <div class="history-view-empty">
+                <div class="history-empty-msg">
+                    <p class="msg-title">지인추천내역이 없습니다.</p>
+                    <p class="msg-desc">추천하고 혜택을 받아보세요.</p>
+                </div>
+
+                <!-- 유의사항 -->
+                <ul class="referral-notice mt-notice">
+                    <li>추천받으신 분이 가입 후 주문한 경우, 가입 후 30일간 구매금액을 합산하여 매월 15일에 지급됩니다.</li>
+                    <li>기존 사업자번호로 가입되어 있는 분께서 가입 시는 혜택 지급이 제외됩니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

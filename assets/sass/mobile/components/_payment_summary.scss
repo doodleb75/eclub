@@ -67,7 +67,7 @@
                         display: flex;
                         align-items: center;
                         gap: rem(4);
-                        font-size: rem(14);
+                        font-size: rem(13);
                         font-weight: $fw-semibold;
                         color: $gray-850;
                         background: none;
@@ -88,6 +88,7 @@
                     }
 
                     .price {
+                        font-size: rem(13);
                         color: $point-red;
                         font-weight: $fw-bold;
                     }
@@ -112,7 +113,7 @@
                     .group-header {
                         display: flex;
                         justify-content: space-between;
-                        font-size: rem(14);
+                        font-size: rem(13);
                         font-weight: $fw-semibold;
                         color: $gray-850;
                         margin-bottom: rem(10);

@@ -1,0 +1,414 @@
+@charset "UTF-8";
+
+// 지인추천 모달 모바일 스타일 (Mobile Referral Modal Style)
+.referral-body {
+    padding: 0;
+    max-height: 85vh; // 높이 약간 상향
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background-color: $white;
+
+    .referral-sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: $white;
+        padding: rem(12) rem(12) rem(0); // Figma gap 24px 을 padding-bottom으로 유도
+
+        .btn-close-referral {
+            position: absolute;
+            top: rem(12);
+            right: rem(12);
+            width: rem(24);
+            height: rem(24);
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+
+            .icon-clear {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+            }
+        }
+
+        .referral-tabs {
+            display: flex;
+            gap: rem(8);
+            margin-top: rem(34); // 닫기 버튼 아래 간격
+
+            .tab-item {
+                flex: 1;
+                height: rem(44);
+                border-radius: rem(4);
+                font-size: $fs-16;
+                font-weight: $fw-bold;
+                cursor: pointer;
+                transition: all 0.2s;
+
+                &.is-active {
+                    background-color: $gray-900;
+                    color: $white;
+                    border: 1px solid $gray-900;
+                }
+
+                &:not(.is-active) {
+                    background-color: $white;
+                    color: $gray-900;
+                    border: 1px solid $gray-900;
+                }
+            }
+        }
+    }
+
+    .referral-content {
+        padding: rem(24) rem(24);
+
+        // 탭 컨텐츠 제어
+        .tab-pane {
+            display: none;
+
+            &.is-active {
+                display: block;
+            }
+        }
+
+        // 1. 지인추천 안내
+        #referral-info {
+            .referral-view-default {
+                display: flex;
+                flex-direction: column;
+                gap: rem(32);
+            }
+
+            .referral-view-ended {
+                display: none; // 기본 숨김
+                flex-direction: column;
+                gap: rem(32);
+            }
+
+            // 종료 상태 제어
+            &.is-ended {
+                .referral-view-default {
+                    display: none !important;
+                }
+
+                .referral-view-ended {
+                    display: flex;
+                }
+            }
+        }
+
+        // 2. 추천 내역
+        #referral-history {
+            .history-view-default {
+                display: block;
+            }
+
+            .history-view-empty {
+                display: none; // 기본 숨김
+            }
+
+            // 내역 없음 상태 제어
+            &.is-empty {
+                .history-view-default {
+                    display: none !important;
+                }
+
+                .history-view-empty {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // 공통 헤더 스타일 (전역 header 태그 속성 초기화 필수)
+    .referral-header {
+        position: static;
+        top: auto;
+        z-index: auto;
+        height: auto;
+        background: none;
+        border-bottom: none;
+        padding: 0;
+
+        .title {
+            font-size: rem(18);
+            font-weight: $fw-bold;
+            color: $gray-900;
+            line-height: 1.4;
+            margin-bottom: rem(4);
+        }
+
+        .period {
+            display: block;
+            font-size: rem(13);
+            color: $gray-900;
+            margin-bottom: rem(12);
+        }
+
+        .desc {
+            font-size: rem(14);
+            color: $gray-900;
+            line-height: 1.5;
+        }
+
+        &.header-ended {
+            padding: rem(40) 0;
+            text-align: center;
+
+            .title {
+                font-size: rem(20);
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    // 섹션 공통 스타일
+    .referral-section {
+        padding: rem(24) rem(16);
+        background-color: $gray-100;
+        border-radius: rem(8);
+
+        .sub-title {
+            font-size: rem(16);
+            font-weight: $fw-bold;
+            color: $gray-900;
+            margin-bottom: rem(16);
+        }
+
+        &.method-section {
+            .step-list {
+                margin-bottom: rem(8);
+
+                .step {
+                    font-size: rem(14);
+                    font-weight: $fw-bold;
+                    color: $gray-900;
+                    line-height: 1.5;
+                }
+            }
+
+            .tip-text {
+                font-size: rem(12);
+                color: $gray-600;
+                margin-bottom: rem(24);
+            }
+
+            .preview-col {
+                margin-bottom: rem(24);
+            }
+
+            .message-card {
+                padding: rem(20);
+                background-color: $white;
+                border: 1px solid $gray-350;
+                border-radius: rem(8);
+
+                .card-text {
+                    font-size: rem(14);
+                    color: $gray-900;
+                    line-height: 1.6;
+                    margin-bottom: rem(12);
+                }
+
+                .card-desc {
+                    font-size: rem(13);
+                    color: $gray-600;
+                    margin-bottom: rem(8);
+                }
+
+                .link-join {
+                    display: inline-block;
+                    font-size: rem(14);
+                    font-weight: $fw-bold;
+                    color: $color-eclub-blue;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &.benefit-section {
+            padding: 0;
+            background-color: transparent;
+
+            .referral-img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    // 유의사항 공통
+    .referral-notice {
+        padding: 0 rem(4);
+
+        &.mt-notice {
+            margin-top: rem(20);
+        }
+
+        li {
+            position: relative;
+            padding-left: rem(10);
+            font-size: rem(12);
+            color: $gray-600;
+            line-height: 1.6;
+            margin-bottom: rem(4);
+
+            &::before {
+                content: '·';
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+
+    // 추천 내역 테이블 (모바일 카드형)
+    .history-list-wrap {
+        margin-bottom: rem(20);
+
+        .history-table {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            colgroup,
+            thead {
+                display: none;
+            }
+
+            tbody {
+                display: flex;
+                flex-direction: column;
+                gap: rem(12);
+            }
+
+            tr {
+                display: flex;
+                flex-direction: column;
+                gap: rem(12);
+                padding-bottom: rem(12);
+                border-radius: rem(4);
+                overflow: hidden;
+                background-color: $white;
+            }
+
+            td {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 0 rem(12);
+                font-size: $fs-13;
+                color: $gray-700;
+                font-weight: $fw-medium;
+                line-height: 1.5;
+
+                &:first-child {
+                    display: block;
+                    padding: rem(12) rem(12);
+                    background-color: $gray-95;
+                    font-size: $fs-13;
+                    font-weight: $fw-bold;
+                    color: $gray-900;
+                    order: 1;
+
+                    &.ellipsis {
+                        @include ellipsis;
+                    }
+                }
+
+                &::before {
+                    display: inline-block;
+                    flex-shrink: 0;
+                    width: rem(60);
+                    font-size: $fs-13;
+                    color: $gray-900;
+                    font-weight: $fw-medium;
+                }
+
+                &:nth-child(3) {
+                    order: 2;
+
+                    &::before {
+                        content: '가입리워드';
+                    }
+                }
+
+                &:nth-child(2) {
+                    order: 3;
+
+                    &::before {
+                        content: '가입일자';
+                    }
+                }
+
+                &:nth-child(4) {
+                    order: 4;
+
+                    &::before {
+                        content: '주문리워드';
+                    }
+                }
+
+                &:nth-child(5) {
+                    order: 5;
+
+                    &::before {
+                        content: '혜택마감일';
+                    }
+                }
+
+                &:nth-child(6) {
+                    order: 6;
+
+                    &::before {
+                        content: '지급마감일';
+                    }
+                }
+            }
+        }
+    }
+
+    // 내역 없음 (Empty State)
+    .history-view-empty {
+        padding: rem(40) rem(40);
+        text-align: center;
+
+        .history-empty-msg {
+            margin-bottom: rem(40);
+
+            .msg-title {
+                font-size: rem(20);
+                font-weight: $fw-bold;
+                color: $gray-900;
+                line-height: 1.5;
+            }
+        }
+
+        // 내역이 없을 때는 유의사항 숨김 처리
+        .referral-notice {
+            display: none;
+        }
+    }
+
+    // 공통 CTA 버튼
+    .btn-referral-cta {
+        width: 100%;
+        height: rem(52);
+        background-color: $gray-900;
+        color: $white;
+        font-size: rem(16);
+        font-weight: $fw-bold;
+        border-radius: rem(4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+    }
+}

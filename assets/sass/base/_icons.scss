@@ -78,7 +78,7 @@ $icon-path: '/assets/icons'; // 루트 절대 경로 적용
 }
 
 .icon-heart {
-    @include icon-mask('#{$icon-path}/heart.svg', rem(24));
+    @include icon-mask('#{$icon-path}/heart.svg', rem(21));
 }
 
 .icon-user {
