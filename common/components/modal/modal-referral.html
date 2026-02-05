@@ -45,7 +45,8 @@
                                 <input type="text" class="input-text" value="1234">
                                 <input type="text" class="input-text" value="5678">
                             </div>
-                            <button type="button" class="btn-send">발송</button>
+                            <button type="button" id="friend-number-send" class="btn-send"
+                                data-toast-position="right-center">발송</button>
                         </div>
                         <p class="sms-tip">사장님께서 카카오톡 회원이 아닌 경우 문자(SMS)로 발송됩니다.</p>
                     </div>
@@ -170,6 +171,24 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- 페이징 -->
+                <div class="pagination">
+                    <button type="button" class="btn-page btn-prev">
+                        <img src="/eclub/assets/icons/main/icon-main-prev.svg" alt="이전">
+                    </button>
+                    <div class="page-numbers">
+                        <button type="button" class="page-link is-active">1</button>
+                        <button type="button" class="page-link">2</button>
+                        <button type="button" class="page-link">3</button>
+                        <button type="button" class="page-link">4</button>
+                        <button type="button" class="page-link">5</button>
+                    </div>
+                    <button type="button" class="btn-page btn-next">
+                        <img src="/eclub/assets/icons/main/icon-main-next.svg" alt="다음">
+                    </button>
+                </div>
+
 
                 <!-- 유의사항 -->
                 <ul class="referral-notice mt-notice">

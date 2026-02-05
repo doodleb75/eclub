@@ -20,7 +20,7 @@ const Eclub = {
             }
         },
         // 토스트 표시
-        show({ message, trigger, type = 'success', duration = 2500, align = 'center' }) {
+        show({ message, trigger, type = 'success', duration = 2500, position = 'bottom-center' }) {
             this.init();
             const toast = document.createElement('div');
             toast.className = `toast-item type-${type}`;
@@ -28,48 +28,159 @@ const Eclub = {
                 <i class="toast-icon" aria-hidden="true"></i>
                 <span class="toast-message">${message}</span>
             `;
-            toast.style.position = 'absolute';
+
+            const isFixed = position.startsWith('fixed-');
+            if (isFixed) {
+                toast.classList.add('is-fixed');
+                toast.style.position = 'fixed';
+            } else {
+                toast.style.position = 'absolute';
+            }
+
             this.container.appendChild(toast);
 
-            if (trigger) {
-                const rect = trigger.getBoundingClientRect();
-                const scrollX = window.scrollX;
-                const scrollY = window.scrollY;
+            requestAnimationFrame(() => {
+                const toastWidth = toast.offsetWidth;
+                const toastHeight = toast.offsetHeight;
                 const scale = Eclub.getZoomScale(); // 줌 배율 고려
+                const margin = 20;
+                let left, top;
 
-                requestAnimationFrame(() => {
-                    const toastWidth = toast.offsetWidth;
-                    let left;
+                if (isFixed) {
+                    // 브라우저 뷰포트(Fixed) 기준 위치
+                    const winW = window.innerWidth / scale;
+                    const winH = window.innerHeight / scale;
 
-                    // 레이아웃 좌표 계산 (물리 좌표 / scale + 스크롤)
+                    switch (position) {
+                        case 'fixed-top-left':
+                            left = margin;
+                            top = margin;
+                            break;
+                        case 'fixed-top-center':
+                            left = (winW / 2) - (toastWidth / 2);
+                            top = margin;
+                            break;
+                        case 'fixed-top-right':
+                            left = winW - toastWidth - margin;
+                            top = margin;
+                            break;
+                        case 'fixed-bottom-left':
+                            left = margin;
+                            top = winH - toastHeight - margin;
+                            break;
+                        case 'fixed-bottom-center':
+                            left = (winW / 2) - (toastWidth / 2);
+                            top = winH - toastHeight - margin;
+                            break;
+                        case 'fixed-bottom-right':
+                            left = winW - toastWidth - margin;
+                            top = winH - toastHeight - margin;
+                            break;
+                        case 'fixed-center':
+                            left = (winW / 2) - (toastWidth / 2);
+                            top = (winH / 2) - (toastHeight / 2);
+                            break;
+                        default:
+                            left = (winW / 2) - (toastWidth / 2);
+                            top = margin;
+                    }
+                } else if (trigger) {
+                    // 트리거(Relative) 기준 위치
+                    const rect = trigger.getBoundingClientRect();
+                    const scrollX = window.scrollX;
+                    const scrollY = window.scrollY;
+
+                    // 레이아웃 좌표 계산 (물리 좌표 / scale)
                     const rectLeft = rect.left / scale;
+                    const rectTop = rect.top / scale;
                     const rectRight = rect.right / scale;
-                    const rectWidth = rect.width / scale;
                     const rectBottom = rect.bottom / scale;
+                    const rectWidth = rect.width / scale;
+                    const rectHeight = rect.height / scale;
 
-                    if (align === 'right') {
-                        // 트리거 우측 정렬
-                        left = rectRight + scrollX - toastWidth;
-                    } else {
-                        // 트리거 중앙 정렬
-                        left = rectLeft + scrollX + (rectWidth / 2) - (toastWidth / 2);
+                    const offset = 12; // 트리거와의 기본 간격
+
+                    switch (position) {
+                        case 'top-left':
+                            left = rectLeft + scrollX;
+                            top = rectTop + scrollY - toastHeight - offset;
+                            break;
+                        case 'top-center':
+                        case 'top':
+                            left = rectLeft + scrollX + (rectWidth / 2) - (toastWidth / 2);
+                            top = rectTop + scrollY - toastHeight - offset;
+                            break;
+                        case 'top-right':
+                            left = rectRight + scrollX - toastWidth;
+                            top = rectTop + scrollY - toastHeight - offset;
+                            break;
+                        case 'bottom-left':
+                            left = rectLeft + scrollX;
+                            top = rectBottom + scrollY + offset;
+                            break;
+                        case 'bottom-center':
+                        case 'bottom':
+                        case 'center':
+                            left = rectLeft + scrollX + (rectWidth / 2) - (toastWidth / 2);
+                            top = rectBottom + scrollY + offset;
+                            break;
+                        case 'bottom-right':
+                        case 'right':
+                            left = rectRight + scrollX - toastWidth;
+                            top = rectBottom + scrollY + offset;
+                            break;
+                        case 'left-top':
+                            left = rectLeft + scrollX - toastWidth - offset;
+                            top = rectTop + scrollY;
+                            break;
+                        case 'left-center':
+                        case 'left':
+                            left = rectLeft + scrollX - toastWidth - offset;
+                            top = rectTop + scrollY + (rectHeight / 2) - (toastHeight / 2);
+                            break;
+                        case 'left-bottom':
+                            left = rectLeft + scrollX - toastWidth - offset;
+                            top = rectBottom + scrollY - toastHeight;
+                            break;
+                        case 'right-top':
+                            left = rectRight + scrollX + offset;
+                            top = rectTop + scrollY;
+                            break;
+                        case 'right-center':
+                        case 'right':
+                            left = rectRight + scrollX + offset;
+                            top = rectTop + scrollY + (rectHeight / 2) - (toastHeight / 2);
+                            break;
+                        case 'right-bottom':
+                            left = rectRight + scrollX + offset;
+                            top = rectBottom + scrollY - toastHeight;
+                            break;
+                        default:
+                            left = rectLeft + scrollX + (rectWidth / 2) - (toastWidth / 2);
+                            top = rectBottom + scrollY + offset;
                     }
 
-                    let top = rectBottom + scrollY + 12; // 12px 간격
-                    const margin = 10;
+                    // 트리거 기준일 때 화면 밖으로 나가지 않도록 보정
                     const windowWidth = window.innerWidth / scale;
+                    const documentHeight = document.documentElement.scrollHeight / scale;
+                    const safeMargin = 10;
 
-                    if (left < margin) left = margin;
-                    if (left + toastWidth > windowWidth - margin) {
-                        left = windowWidth - toastWidth - margin;
-                    }
-                    toast.style.left = `${left}px`;
-                    toast.style.top = `${top}px`;
-                    toast.classList.add('active');
-                });
-            } else {
+                    if (left < safeMargin) left = safeMargin;
+                    if (left + toastWidth > windowWidth - safeMargin) left = windowWidth - toastWidth - safeMargin;
+                    if (top < safeMargin + scrollY) top = safeMargin + scrollY;
+                    if (top + toastHeight > documentHeight - safeMargin) top = documentHeight - toastHeight - safeMargin;
+                } else {
+                    // 트리거도 없고 고정 위치도 아닐 때 기본값 (브라우저 상단 중앙 고정처럼 동작)
+                    const winW = window.innerWidth / scale;
+                    left = (winW / 2) - (toastWidth / 2);
+                    top = margin;
+                    toast.style.position = 'fixed';
+                }
+
+                toast.style.left = `${left}px`;
+                toast.style.top = `${top}px`;
                 toast.classList.add('active');
-            }
+            });
 
             // 자동 제거
             setTimeout(() => {
@@ -775,14 +886,19 @@ const Eclub = {
     Referral: {
         init() {
             document.addEventListener('click', (e) => {
-                const btn = e.target.closest('.btn-referral-cta');
+                const btn = e.target.closest('.btn-referral-cta, #friend-number-send');
                 if (!btn) return;
 
-                const message = btn.dataset.toastMessage || '추천 메세지가 발송되었습니다.';
+                // 서버 API 연동 시 응답값에 따라 처리되는 로직 (예: data-event-status="ended")
+                const isEnded = btn.dataset.eventStatus === 'ended';
+
+                const message = isEnded ? '이벤트 기간이 종료되었습니다.' : (btn.dataset.toastMessage || '추천 메세지가 발송되었습니다.');
+                const position = btn.dataset.toastPosition || 'bottom-center';
 
                 Eclub.Toast.show({
                     message: message,
-                    trigger: btn
+                    trigger: btn,
+                    position: position
                 });
             });
         }

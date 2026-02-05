@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Club Quick Menu | PC Pages</title>
+    <!-- 공통 스타일 시트 (sass 컴파일 필요) -->
+    <link rel="stylesheet" href="/eclub/assets/css/pc/main.css">
+</head>
+<body>
+    <div id="wrap">
+        <main class="container">
+            <h1 style="padding: 100px 0; text-align: center; color: #666;">PC 페이지 퀵메뉴 마크업 확인용</h1>
+            <p style="text-align: center; color: #999;">우측 플로팅 메뉴를 확인하세요.</p>
+        </main>
+
+        <!-- 지인추천 플로팅 메뉴 START -->
+        <!-- 관련 스타일: /assets/sass/pc/components/_quick-menu.scss -->
+        <aside class="quick-menu">
+            <!-- 01. 베너 롤링 영역 -->
+            <div class="banner-area">
+                <div class="banner-list">
+                    <!-- 유저 추천 베너 -->
+                    <div class="banner-item">
+                        <a href="/eclub/pc/pages/referral.html" style="background-image: url('/eclub/assets/images/pc/banner/quick_banner_01.png');">
+                            <span class="blind">지인추천 3만 포인트 즉시 지급 베너</span>
+                        </a>
+                    </div>
+                    <!-- 이벤트 소식 베너 -->
+                    <div class="banner-item">
+                        <a href="#" style="background-image: url('/eclub/assets/images/pc/banner/quick_banner_02.png');">
+                            <span class="blind">오늘의 특별 혜택 베너</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- 화살표 네비게이션 -->
+                <div class="nav-btns">
+                    <button type="button" class="btn-nav btn-prev" aria-label="이전 베너">
+                        <img src="/eclub/assets/icons/chevron-right.svg" alt="이전 화살표" style="transform: rotate(180deg);">
+                    </button>
+                    <button type="button" class="btn-nav btn-next" aria-label="다음 베너">
+                        <img src="/eclub/assets/icons/chevron-right.svg" alt="다음 화살표">
+                    </button>
+                </div>
+            </div>
+
+            <!-- 02. 장바구니 요약 영역 -->
+            <div class="cart-area">
+                <a href="/eclub/pc/pages/cart.html" class="cart-link">
+                    <!-- 기존 아이콘 에셋 활용 -->
+                    <img src="/eclub/assets/icons/cart.svg" alt="장바구니 아이콘" class="icon-cart">
+                    <span class="badge">82</span>
+                </a>
+            </div>
+
+            <!-- 03. 개인화 메뉴 리스트 -->
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="label">자주구매</span>
+                        <span class="count">201</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="label">최근본상품</span>
+                        <span class="count">99</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="label">관심상품</span>
+                        <span class="count">144</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- 04. 최상단 이동 버튼 -->
+            <div class="top-area">
+                <button type="button" class="btn-top" title="최상단으로 이동">
+                    <img src="/eclub/assets/icons/chevron-down.svg" alt="위쪽 화살표" class="icon-up">
+                    <span>TOP</span>
+                </button>
+            </div>
+        </aside>
+        <!-- // 지인추천 플로팅 메뉴 END -->
+    </div>
+
+    <!-- 퀵메뉴 전용 스크립트 -->
+    <script src="/eclub/assets/js/pc/quick-menu.js"></script>
+</body>
+</html>
