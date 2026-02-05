@@ -227,3 +227,13 @@ $icon-path: '/assets/icons'; // 루트 절대 경로 적용
 .icon-zoom-out {
     @include icon-mask('/assets/icons/main/zoom_out.svg', rem(30));
 }
+
+// Float Navigation Icons
+.icon-nav-back {
+    @include icon-mask('/assets/icons/prev-history.svg', rem(24));
+}
+
+.icon-nav-top {
+    @include icon-mask('/assets/icons/prev-history.svg', rem(24));
+    transform: rotate(90deg);
+}

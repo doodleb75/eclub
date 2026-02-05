@@ -59,4 +59,16 @@
             </p>
         </div>
     </div>
+
+    <!-- 플로팅 유틸리티 버튼 -->
+    <div class="floating-util">
+        <div class="util-inner">
+            <button type="button" id="btn-floating-back" class="btn-floating-back is-hidden" aria-label="이전 페이지로 이동">
+                <i class="icon-nav-back"></i>
+            </button>
+            <button type="button" id="btn-floating-top" class="btn-floating-top is-hidden" aria-label="상단으로 이동">
+                <i class="icon-nav-top"></i>
+            </button>
+        </div>
+    </div>
 </footer>

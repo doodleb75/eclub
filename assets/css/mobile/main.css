@@ -568,6 +568,29 @@ body {
   mask-size: contain;
 }
 
+.icon-nav-back {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/prev-history.svg") no-repeat center;
+  mask: url("/assets/icons/prev-history.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-nav-top {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/prev-history.svg") no-repeat center;
+  mask: url("/assets/icons/prev-history.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transform: rotate(90deg);
+}
+
 header {
   position: sticky;
   top: 0;
@@ -773,6 +796,59 @@ header .header-inner a i {
   text-decoration: underline;
   color: #666666;
   font-weight: 700;
+}
+
+.floating-util {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  pointer-events: none;
+  padding-bottom: env(safe-area-inset-bottom);
+  transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.floating-util .util-inner {
+  position: relative;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  transition: all 0.3s;
+}
+.floating-util.has-bottom-bar button {
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.3);
+  transform: scale(1);
+}
+.floating-util button {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0.25rem 1.125rem rgba(0, 0, 0, 0.25), 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
+  transition: opacity 0.3s, transform 0.3s, bottom 0.35s;
+  border: 1px solid #e5e5e5;
+  padding: 0;
+}
+.floating-util button:active {
+  transform: scale(0.95);
+}
+.floating-util button.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.625rem);
+}
+.floating-util .btn-floating-back .icon-nav-back {
+  color: #333333;
+}
+.floating-util .btn-floating-top .icon-nav-top {
+  color: #333333;
 }
 
 body.no-scroll {
