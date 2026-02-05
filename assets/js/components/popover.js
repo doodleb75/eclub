@@ -32,10 +32,10 @@ const Popover = {
 
     // 위치 계산 로직
     calculatePosition(trigger, popover, type) {
-        const rect = trigger.getBoundingClientRect();
-        const scrollX = window.scrollX;
-        const scrollY = window.scrollY;
         const scale = (typeof Eclub !== 'undefined' && Eclub.getZoomScale) ? Eclub.getZoomScale() : 1;
+        const rect = trigger.getBoundingClientRect();
+        const scrollX = window.scrollX / scale;
+        const scrollY = window.scrollY / scale;
 
         const popoverWidth = popover.offsetWidth;
         const windowWidth = window.innerWidth / scale; // 줌 배율 반영

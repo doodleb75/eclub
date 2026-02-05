@@ -1438,7 +1438,7 @@ body.no-scroll {
   display: inline-block;
   font-size: 0.875rem;
   font-weight: 700;
-  color: #015fc1;
+  color: #222222;
   text-decoration: underline;
 }
 .referral-body .referral-section.benefit-section {
@@ -1519,10 +1519,14 @@ body.no-scroll {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.referral-body .history-list-wrap .history-table td:first-child::before {
+  display: none;
+}
 .referral-body .history-list-wrap .history-table td::before {
+  content: attr(data-label);
   display: inline-block;
   flex-shrink: 0;
-  width: 3.75rem;
+  width: 5.3125rem;
   font-size: 0.8125rem;
   color: #222222;
   font-weight: 500;
@@ -1530,32 +1534,17 @@ body.no-scroll {
 .referral-body .history-list-wrap .history-table td:nth-child(3) {
   order: 2;
 }
-.referral-body .history-list-wrap .history-table td:nth-child(3)::before {
-  content: "가입리워드";
-}
 .referral-body .history-list-wrap .history-table td:nth-child(2) {
   order: 3;
-}
-.referral-body .history-list-wrap .history-table td:nth-child(2)::before {
-  content: "가입일자";
 }
 .referral-body .history-list-wrap .history-table td:nth-child(4) {
   order: 4;
 }
-.referral-body .history-list-wrap .history-table td:nth-child(4)::before {
-  content: "주문리워드";
-}
 .referral-body .history-list-wrap .history-table td:nth-child(5) {
   order: 5;
 }
-.referral-body .history-list-wrap .history-table td:nth-child(5)::before {
-  content: "혜택마감일";
-}
 .referral-body .history-list-wrap .history-table td:nth-child(6) {
   order: 6;
-}
-.referral-body .history-list-wrap .history-table td:nth-child(6)::before {
-  content: "지급마감일";
 }
 .referral-body .history-view-empty {
   padding: 2.5rem 2.5rem;
