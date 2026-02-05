@@ -1,0 +1,71 @@
+// 하단 고정 유틸리티 버튼 (Back, Top)
+.floating-util {
+    position: fixed;
+    bottom: rem(20);
+    left: 0;
+    right: 0;
+    z-index: 1010; // 바텀 시트(1000)보다 높게 설정
+    pointer-events: none;
+    padding-bottom: env(safe-area-inset-bottom);
+    transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    .util-inner {
+        position: relative;
+        max-width: $max-width;
+        margin: 0 auto;
+        padding: 0 rem(20);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        transition: all 0.3s;
+    }
+
+    // 하단 바텀 시트나 CTA가 있을 때 버튼 디자인 보정
+    &.has-bottom-bar {
+
+        // 위치(bottom) 제어는 JS에서 동적으로 수행하므로 스타일은 디자인만 유지
+        button {
+            // 바텀 바 위에서도 확실히 구분되도록 그림자 더욱 강화
+            box-shadow: 0 rem(4) rem(20) rgba(0, 0, 0, 0.3);
+            transform: scale(1);
+        }
+    }
+
+    button {
+        pointer-events: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: rem(48);
+        height: rem(48);
+        background-color: $white;
+        border-radius: 50%;
+        // 깊고 선명한 다중 레이어 그림자 (콘텐츠와 확실하게 구분)
+        box-shadow: 0 rem(4) rem(18) rgba(0, 0, 0, 0.25), 0 rem(2) rem(8) rgba(0, 0, 0, 0.15);
+        transition: opacity 0.3s, transform 0.3s, bottom 0.35s;
+        border: 1px solid $gray-200;
+        padding: 0;
+
+        &:active {
+            transform: scale(0.95);
+        }
+
+        &.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(rem(10));
+        }
+    }
+
+    .btn-floating-back {
+        .icon-nav-back {
+            color: $gray-850;
+        }
+    }
+
+    .btn-floating-top {
+        .icon-nav-top {
+            color: $gray-850;
+        }
+    }
+}

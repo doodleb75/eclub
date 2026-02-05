@@ -568,6 +568,29 @@ body {
   mask-size: contain;
 }
 
+.icon-nav-back {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/eclub/assets/icons/prev-history.svg") no-repeat center;
+  mask: url("/eclub/assets/icons/prev-history.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-nav-top {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/eclub/assets/icons/prev-history.svg") no-repeat center;
+  mask: url("/eclub/assets/icons/prev-history.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transform: rotate(90deg);
+}
+
 .header {
   background-color: #ffffff;
   padding-bottom: 1.25rem;

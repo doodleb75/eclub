@@ -921,6 +921,105 @@ const Eclub = {
         }
     },
 
+    // 플로팅 유틸리티 (Top, Back)
+    FloatingUtil: {
+        init() {
+            const floatingContainer = document.querySelector('.floating-util');
+            const btnBack = document.getElementById('btn-floating-back');
+            const btnTop = document.getElementById('btn-floating-top');
+
+            if (!floatingContainer) return;
+
+            // 바텀 시트 상태에 따라 애니메이션 점프 없는 위치 계산 (이미지 200번 대응)
+            const updatePosition = () => {
+                const sheet = document.querySelector('.bottom-sheet');
+                const summary = document.querySelector('.summary-section');
+                const isExpanded = sheet && sheet.classList.contains('is-expanded');
+
+                let target = null;
+                if (isExpanded) {
+                    // 시트가 펼쳐졌을 때는 시트 전체를 기준으로 위로 이동
+                    target = sheet;
+                } else if (summary && summary.offsetHeight > 0) {
+                    // 시트가 닫혔거나 없을 때는 하단 바(.summary-section)를 기준으로 고정
+                    target = summary;
+                }
+
+                let h = 0;
+                if (target) {
+                    const rect = target.getBoundingClientRect();
+                    // 시각적으로 유효한 범위(화면 안)에 있을 때만 높이 반영
+                    if (rect.top > 0 && rect.top < window.innerHeight) {
+                        h = window.innerHeight - rect.top;
+                    }
+                }
+
+                let nextBottom = h > 0 ? h + 12 : 20;
+
+                // 최종 방어선: 화면 상단 25% 이내(75% 지점)로는 절대 올라가지 않음
+                const topLimit = window.innerHeight * 0.75;
+                if (nextBottom > topLimit) nextBottom = topLimit;
+
+                floatingContainer.style.bottom = `${nextBottom}px`;
+            };
+
+            updatePosition();
+            window.addEventListener('resize', updatePosition);
+            window.addEventListener('scroll', updatePosition, { passive: true });
+
+            // 바텀 시트 상태 변화(펼침/닫힘) 실시간 추적
+            const sheetEl = document.querySelector('.bottom-sheet');
+            if (sheetEl) {
+                const observer = new MutationObserver(updatePosition);
+                observer.observe(sheetEl, { attributes: true, attributeFilter: ['class', 'style'] });
+                sheetEl.addEventListener('transitionend', updatePosition);
+            }
+
+            // 클릭 직후 애니메이션 중 위치 보정 (Tick 시작)
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.sheet-header, .btn-sheet-toggle')) {
+                    let count = 0;
+                    const loop = () => {
+                        updatePosition();
+                        if (count++ < 30) requestAnimationFrame(loop);
+                    };
+                    requestAnimationFrame(loop);
+                }
+            });
+
+            if (btnBack) {
+                // 이전 히스토리가 있을 때만 노출
+                if (window.history.length > 1) {
+                    btnBack.classList.remove('is-hidden');
+                } else {
+                    btnBack.classList.add('is-hidden');
+                }
+                btnBack.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.history.back();
+                });
+            }
+
+            if (btnTop) {
+                const checkScroll = () => {
+                    if (window.scrollY > 300) {
+                        btnTop.classList.remove('is-hidden');
+                    } else {
+                        btnTop.classList.add('is-hidden');
+                    }
+                };
+
+                window.addEventListener('scroll', checkScroll, { passive: true });
+                checkScroll(); // 초기 상태 체크
+
+                btnTop.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        }
+    },
+
     // HTML 인클루드 로더
     Loader: {
         async init() {
@@ -932,6 +1031,11 @@ const Eclub = {
                     if (res.ok) {
                         const html = await res.text();
                         el.outerHTML = html;
+
+                        // 인클루드 직후 관련 모듈 재초기화가 필요한 경우 여기서 처리
+                        if (url.includes('footer')) {
+                            Eclub.FloatingUtil.init();
+                        }
                     } else {
                         console.error('로드 실패:', url);
                     }
@@ -953,6 +1057,7 @@ const Eclub = {
 
         // 비동기 포함 나머지 초기화
         await this.Loader.init();
+        this.FloatingUtil.init(); // 인클루드 완료 후 초기화
         this.Clipboard.init();
         this.Toggle.init();
         this.BottomSheet.init();
