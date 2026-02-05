@@ -49,7 +49,12 @@
 
                     <!-- 모바일 전용 CTA 버튼 -->
                     <div class="referral-cta-wrap">
-                        <button type="button" class="btn-referral-cta">지인 추천하고 3만 포인트 받기</button>
+                        <!-- TODO: 이벤트 종료 시 data-event-status="ended" 추가 -->
+                        <!-- <button type="button" class="btn-referral-cta" ${eventEnded ? 'data-event-status="ended"' : ''}> 
+                            지인 추천하고 혜택 받기
+                        </button> -->
+                        <button type="button" class="btn-referral-cta" data-toast-position="top-bottom">지인 추천하고 3만 포인트
+                            받기</button>
                     </div>
                 </section>
 
@@ -160,6 +165,23 @@
                     </table>
                 </div>
 
+                <!-- 페이징 -->
+                <div class="pagination">
+                    <button type="button" class="btn-page btn-prev">
+                        <img src="/assets/icons/main/icon-main-prev.svg" alt="이전">
+                    </button>
+                    <div class="page-numbers">
+                        <button type="button" class="page-link is-active">1</button>
+                        <button type="button" class="page-link">2</button>
+                        <button type="button" class="page-link">3</button>
+                        <button type="button" class="page-link">4</button>
+                        <button type="button" class="page-link">5</button>
+                    </div>
+                    <button type="button" class="btn-page btn-next">
+                        <img src="/assets/icons/main/icon-main-next.svg" alt="다음">
+                    </button>
+                </div>
+
                 <!-- 유의사항 -->
                 <ul class="referral-notice mt-notice">
                     <li>추천받으신 분이 가입 후 주문한 경우, 가입 후 30일간 구매금액을 합산하여 매월 15일에 지급됩니다.</li>
@@ -175,7 +197,8 @@
 
                 <!-- 추가: 지인 추천 CTA 버튼 -->
                 <div class="history-empty-action">
-                    <button type="button" class="btn-referral-cta">지인 추천하고 3만 포인트 받기</button>
+                    <button type="button" class="btn-referral-cta" data-toast-position="top-bottom">지인 추천하고 3만 포인트
+                        받기</button>
                 </div>
 
                 <!-- 유의사항 (마크업 유지, CSS에서 처리 가능) -->
