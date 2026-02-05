@@ -266,7 +266,7 @@
         gap: rem(8);
 
         .input-text {
-            width: rem(42);
+            width: rem(120);
             height: rem(22);
             border: 1px solid $gray-300;
             text-align: center;
@@ -329,7 +329,7 @@
 
     .link-join {
         font-size: $fs-13;
-        color: $color-eclub-blue; // #015fc1
+        color: $gray-900;
         text-decoration: underline;
         font-weight: $fw-bold;
     }

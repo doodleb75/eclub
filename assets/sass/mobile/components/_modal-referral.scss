@@ -226,7 +226,7 @@
                     display: inline-block;
                     font-size: rem(14);
                     font-weight: $fw-bold;
-                    color: $color-eclub-blue;
+                    color: $gray-900;
                     text-decoration: underline;
                 }
             }
@@ -320,56 +320,48 @@
                     &.ellipsis {
                         @include ellipsis;
                     }
+
+                    &::before {
+                        display: none; // 카드 헤더는 라벨 미출력
+                    }
                 }
 
                 &::before {
+                    content: attr(data-label); // HTML의 data-label 속성 사용
                     display: inline-block;
                     flex-shrink: 0;
-                    width: rem(60);
+                    width: rem(85); // 텍스트 길이에 맞춰 너비 조정
                     font-size: $fs-13;
                     color: $gray-900;
                     font-weight: $fw-medium;
                 }
 
+                // 모바일 표시 순서 (nth-child 기준으로 order 부여)
                 &:nth-child(3) {
                     order: 2;
-
-                    &::before {
-                        content: '가입리워드';
-                    }
                 }
 
+                // 가입리워드
                 &:nth-child(2) {
                     order: 3;
-
-                    &::before {
-                        content: '가입일자';
-                    }
                 }
 
+                // 가입일자
                 &:nth-child(4) {
                     order: 4;
-
-                    &::before {
-                        content: '주문리워드';
-                    }
                 }
 
+                // 주문리워드
                 &:nth-child(5) {
                     order: 5;
-
-                    &::before {
-                        content: '혜택마감일';
-                    }
                 }
 
+                // 혜택마감일
                 &:nth-child(6) {
                     order: 6;
-
-                    &::before {
-                        content: '지급마감일';
-                    }
                 }
+
+                // 지급(예정)일
             }
         }
     }

@@ -87,8 +87,8 @@ const Eclub = {
                 } else if (trigger) {
                     // 트리거(Relative) 기준 위치
                     const rect = trigger.getBoundingClientRect();
-                    const scrollX = window.scrollX;
-                    const scrollY = window.scrollY;
+                    const scrollX = window.scrollX / scale;
+                    const scrollY = window.scrollY / scale;
 
                     // 레이아웃 좌표 계산 (물리 좌표 / scale)
                     const rectLeft = rect.left / scale;
@@ -489,6 +489,7 @@ const Eclub = {
             Eclub.Toast.show({
                 message,
                 trigger: btn.closest('.info-actions') || btn,
+                position: btn.dataset.toastPosition,
                 type: 'success',
                 align: 'right'
             });
@@ -821,7 +822,7 @@ const Eclub = {
                         if (targetEl) {
                             const scale = Eclub.getZoomScale();
                             const offset = getHeaderHeight();
-                            const top = (targetEl.getBoundingClientRect().top / scale) + window.scrollY - offset;
+                            const top = targetEl.getBoundingClientRect().top + window.scrollY - (offset * scale);
                             window.scrollTo({ top, behavior: 'smooth' });
                         }
                     }
@@ -835,10 +836,10 @@ const Eclub = {
                 requestAnimationFrame(() => {
                     const scale = Eclub.getZoomScale();
                     const offset = getHeaderHeight();
-                    const scrollPos = window.scrollY + offset + 10;
+                    const scrollPos = window.scrollY + (offset * scale) + 10;
                     let currentSection = null;
                     for (const section of sections) {
-                        const offsetTop = section.el === document.body ? 0 : ((section.el.getBoundingClientRect().top / scale) + window.scrollY);
+                        const offsetTop = section.el === document.body ? 0 : (section.el.getBoundingClientRect().top + window.scrollY);
                         if (scrollPos >= offsetTop) currentSection = section;
                     }
                     if (currentSection) {
@@ -857,15 +858,31 @@ const Eclub = {
             // 숫자만 입력 가능하도록 제한 (data-input="number")
             document.addEventListener('input', (e) => {
                 const input = e.target;
-                if (input.dataset.input === 'number' || input.getAttribute('data-input') === 'number') {
+                const type = input.dataset.input || input.getAttribute('data-input');
+
+                if (type === 'number') {
                     input.value = input.value.replace(/[^0-9]/g, '');
+                }
+
+                if (type === 'phone') {
+                    let val = input.value.replace(/[^0-9]/g, '');
+                    if (val.length > 11) val = val.substring(0, 11);
+
+                    if (val.length <= 3) {
+                        input.value = val;
+                    } else if (val.length <= 7) {
+                        input.value = val.replace(/(\d{3})(\d{1,4})/, '$1 $2');
+                    } else {
+                        input.value = val.replace(/(\d{3})(\d{3,4})(\d{4})/, '$1 $2 $3');
+                    }
                 }
             });
 
             // 숫자 입력 시 한글/특수문자 차단 (keydown 보조)
             document.addEventListener('keydown', (e) => {
                 const input = e.target;
-                if (input.dataset.input === 'number' || input.getAttribute('data-input') === 'number') {
+                const type = input.dataset.input || input.getAttribute('data-input');
+                if (type === 'number' || type === 'phone') {
                     // 허용 키: BACKSPACE, DELETE, TAB, ESCAPE, ENTER, 방향키, 숫자, 넘패드 숫자
                     const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
                     if (allowedKeys.includes(e.key)) return;
