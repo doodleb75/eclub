@@ -3875,28 +3875,28 @@
 
                     <div class="category-tabs-wrap">
                         <ul class="category-tabs">
-                            <li class="active"><button type="button">전체</button></li>
-                            <li><button type="button">과일/채소</button></li>
-                            <li><button type="button">정육/계란</button></li>
-                            <li><button type="button">수산/건해산</button></li>
-                            <li><button type="button">냉동/냉장 간편식</button></li>
-                            <li><button type="button">우유/유제품</button></li>
-                            <li><button type="button">라면/시리얼</button></li>
-                            <li><button type="button">즉석식품/통조림</button></li>
-                            <li><button type="button">과자</button></li>
-                            <li><button type="button">생수/음료</button></li>
-                            <li><button type="button">커피/차</button></li>
-                            <li><button type="button">양념/소스</button></li>
-                            <li><button type="button">제지/위생</button></li>
-                            <li><button type="button">스킨케어/헤어케어/바디케어</button></li>
-                            <li><button type="button">세탁세재/주방세제</button></li>
-                            <li><button type="button">주방용품</button></li>
+                            <li class="active"><button type="button" data-tab="all">전체</button></li>
+                            <li><button type="button" data-tab="fruit">과일/채소</button></li>
+                            <li><button type="button" data-tab="meat">정육/계란</button></li>
+                            <li><button type="button" data-tab="seafood">수산/건해산</button></li>
+                            <li><button type="button" data-tab="frozen">냉동/냉장 간편식</button></li>
+                            <li><button type="button" data-tab="dairy">우유/유제품</button></li>
+                            <li><button type="button" data-tab="ramen">라면/시리얼</button></li>
+                            <li><button type="button" data-tab="instant">즉석식품/통조림</button></li>
+                            <li><button type="button" data-tab="snack">과자</button></li>
+                            <li><button type="button" data-tab="water">생수/음료</button></li>
+                            <li><button type="button" data-tab="coffee">커피/차</button></li>
+                            <li><button type="button" data-tab="sauce">양념/소스</button></li>
+                            <li><button type="button" data-tab="paper">제지/위생</button></li>
+                            <li><button type="button" data-tab="skincare">스킨케어/헤어케어/바디케어</button></li>
+                            <li><button type="button" data-tab="detergent">세탁세재/주방세제</button></li>
+                            <li><button type="button" data-tab="kitchen">주방용품</button></li>
                         </ul>
                     </div>
 
                     <div class="product-list">
                         <!-- Product Item 1 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="paper">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">01위</span>
@@ -3935,7 +3935,7 @@
                         </div>
 
                         <!-- Product Item 2 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="fruit frozen">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">02위</span>
@@ -3974,7 +3974,7 @@
                         </div>
 
                         <!-- Product Item 3 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="meat">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">03위</span>
@@ -4013,7 +4013,7 @@
                         </div>
 
                         <!-- Product Item 4 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="seafood">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">04위</span>
@@ -4052,7 +4052,7 @@
                         </div>
 
                         <!-- Product Item 5 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="frozen">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">05위</span>
@@ -4091,7 +4091,7 @@
                         </div>
 
                         <!-- Product Item 6 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="dairy">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">06위</span>
@@ -4130,7 +4130,7 @@
                         </div>
 
                         <!-- Product Item 7 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="ramen">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">07위</span>
@@ -4169,7 +4169,7 @@
                         </div>
 
                         <!-- Product Item 8 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="instant">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">08위</span>
@@ -4208,7 +4208,7 @@
                         </div>
 
                         <!-- Product Item 9 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="snack">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">09위</span>
@@ -4247,7 +4247,7 @@
                         </div>
 
                         <!-- Product Item 10 -->
-                        <div class="product-item">
+                        <div class="product-item" data-category="water">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <span class="badge-ranking">10위</span>

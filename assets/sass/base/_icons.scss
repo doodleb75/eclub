@@ -208,7 +208,7 @@ $icon-path: '/assets/icons'; // 루트 절대 경로 적용
 }
 
 .icon-main-play {
-    @include icon-mask('/assets/icons/main/icon-main-play.svg', rem(24));
+    @include icon-mask('/assets/icons/main/icon-main-play.svg', rem(26));
 }
 
 .icon-main-plus {
