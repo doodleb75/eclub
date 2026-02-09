@@ -513,6 +513,17 @@ body {
   mask-size: contain;
 }
 
+.icon-main-play {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons/main/icon-main-play.svg") no-repeat center;
+  mask: url("/assets/icons/main/icon-main-play.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 .icon-main-plus {
   display: inline-block;
   width: 1.5rem;
