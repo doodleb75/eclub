@@ -17,15 +17,14 @@
                 <span class="slogan">사장님들의 성공 파트너</span>
             </div>
 
-            <div class="search-area">
-                <div class="search-box">
+            <div class="search-box">
+            <form class="search-area">
                     <input type="text" placeholder="검색어를 입력하세요">
                     <button type="button" class="btn-search">
                         <i class="icon-search"></i>
                     </button>
+            </form>
                 </div>
-            </div>
-
             <div class="user-controls">
                 <!-- 브라우저 줌 컨트롤 추가-->
                 <div class="browser-zoom">

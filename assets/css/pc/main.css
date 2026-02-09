@@ -659,11 +659,11 @@ body {
   color: #444444;
   font-weight: 600;
 }
-.header-main .search-area {
+.header-main .search-box {
   width: 100%;
   max-width: 100%;
 }
-.header-main .search-area .search-box {
+.header-main .search-box .search-area {
   position: relative;
   border: 1px solid #444444;
   border-radius: 0;
@@ -673,7 +673,7 @@ body {
   display: flex;
   align-items: center;
 }
-.header-main .search-area .search-box input {
+.header-main .search-box .search-area input {
   flex: 1;
   border: none;
   outline: none;
@@ -681,10 +681,10 @@ body {
   color: #000000;
   background: transparent;
 }
-.header-main .search-area .search-box input::placeholder {
+.header-main .search-box .search-area input::placeholder {
   color: #999999;
 }
-.header-main .search-area .search-box .btn-search {
+.header-main .search-box .search-area .btn-search {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -696,10 +696,10 @@ body {
   cursor: pointer;
   color: #444444;
 }
-.header-main .search-area .search-box .btn-search:hover {
+.header-main .search-box .search-area .btn-search:hover {
   transition: background-color 0.2s ease;
 }
-.header-main .search-area .search-box .btn-search:hover:hover {
+.header-main .search-box .search-area .btn-search:hover:hover {
   background-color: #f8f9fa;
   border-color: #aaaaaa;
 }
@@ -764,7 +764,7 @@ body {
 .header-main .user-controls .icon-link:hover {
   color: #222222;
 }
-.header-main .user-controls .icon-link.coupon::after {
+.header-main .user-controls .icon-link.active:not(.cart)::after {
   content: "";
   position: absolute;
   top: -0.125rem;
