@@ -515,8 +515,8 @@ body {
 
 .icon-main-play {
   display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.625rem;
+  height: 1.625rem;
   background-color: currentColor;
   -webkit-mask: url("/assets/icons/main/icon-main-play.svg") no-repeat center;
   mask: url("/assets/icons/main/icon-main-play.svg") no-repeat center;
@@ -2626,6 +2626,13 @@ body {
   gap: 1.25rem;
   row-gap: 2.5rem;
   margin-bottom: 2.5rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+.main-page-wrapper .home-section .product-list.is-fading {
+  opacity: 0;
+  transform: translateY(1.25rem);
 }
 .main-page-wrapper .home-section .product-list.list-slider {
   display: flex;
@@ -3386,7 +3393,8 @@ body {
 .main-page-wrapper .customer-purchase-section .category-tabs-wrap .category-tabs li button:hover,
 .main-page-wrapper .customer-zone-section .category-tabs-wrap .category-tabs li button:hover,
 .main-page-wrapper .customer-recommend-section .category-tabs-wrap .category-tabs li button:hover {
-  border-color: #cccccc;
+  color: #444444;
+  border-color: #444444;
 }
 .main-page-wrapper .category-best-section .category-tabs-wrap .category-tabs li.active button,
 .main-page-wrapper .customer-purchase-section .category-tabs-wrap .category-tabs li.active button,

@@ -515,8 +515,8 @@ body {
 
 .icon-main-play {
   display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.625rem;
+  height: 1.625rem;
   background-color: currentColor;
   -webkit-mask: url("/assets/icons/main/icon-main-play.svg") no-repeat center;
   mask: url("/assets/icons/main/icon-main-play.svg") no-repeat center;
