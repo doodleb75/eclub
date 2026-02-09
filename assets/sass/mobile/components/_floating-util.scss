@@ -4,7 +4,7 @@
     bottom: rem(20);
     left: 0;
     right: 0;
-    z-index: 1010; // 바텀 시트(1000)보다 높게 설정
+    z-index: 1010; // 기본 상태에서 바텀 시트(1000)보다 위에 오게 설정
     pointer-events: none;
     padding-bottom: env(safe-area-inset-bottom);
     transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);

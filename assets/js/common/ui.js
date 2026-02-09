@@ -921,14 +921,14 @@ const Eclub = {
         }
     },
 
-    // 플로팅 유틸리티 (Top, Back)
     FloatingUtil: {
         init() {
             const floatingContainer = document.querySelector('.floating-util');
             const btnBack = document.getElementById('btn-floating-back');
             const btnTop = document.getElementById('btn-floating-top');
 
-            if (!floatingContainer) return;
+            if (!floatingContainer || floatingContainer._isInit) return;
+            floatingContainer._isInit = true;
 
             // 바텀 시트 상태에 따라 애니메이션 점프 없는 위치 계산 (이미지 200번 대응)
             const updatePosition = () => {
@@ -938,11 +938,11 @@ const Eclub = {
 
                 let target = null;
                 if (isExpanded) {
-                    // 시트가 펼쳐졌을 때는 시트 전체를 기준으로 위로 이동
-                    target = sheet;
-                } else if (summary && summary.offsetHeight > 0) {
-                    // 시트가 닫혔거나 없을 때는 하단 바(.summary-section)를 기준으로 고정
+                    // 시트 확장 시: 요약 바를 기준으로 하여 시트 본문에 가려지도록 함
                     target = summary;
+                } else {
+                    // 시트 축소 시: 시트 전체 높이를 기준으로 하여 버튼이 시트 위에 노출되도록 함
+                    target = sheet || summary;
                 }
 
                 let h = 0;
@@ -994,9 +994,10 @@ const Eclub = {
                 } else {
                     btnBack.classList.add('is-hidden');
                 }
-                btnBack.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    window.history.back();
+                btnBack.addEventListener('click', () => {
+                    if (window.history.length > 1) {
+                        window.history.back();
+                    }
                 });
             }
 
@@ -1032,10 +1033,6 @@ const Eclub = {
                         const html = await res.text();
                         el.outerHTML = html;
 
-                        // 인클루드 직후 관련 모듈 재초기화가 필요한 경우 여기서 처리
-                        if (url.includes('footer')) {
-                            Eclub.FloatingUtil.init();
-                        }
                     } else {
                         console.error('로드 실패:', url);
                     }

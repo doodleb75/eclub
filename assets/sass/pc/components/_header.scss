@@ -84,19 +84,17 @@
         }
     }
 
-    .search-area {
-        // width: rem(540);
+    .search-box {
         width: 100%;
         max-width: 100%;
-        // margin: 0 rem(20);
 
-        .search-box {
+        .search-area {
             position: relative;
             border: 1px solid $gray-800; // 보더 1px, 다크 그레이색상 변경
             border-radius: 0; // 사각형 디자인 적용
             padding: 0 rem(16); // 내부 좌우 패딩 조정
             background-color: $white;
-            height: rem(40); // 높이 rem(44)로 조정
+            height: rem(40); // 높이 rem(40)으로 조정
             display: flex;
             align-items: center;
 
@@ -196,7 +194,7 @@
                 color: $gray-900;
             }
 
-            &.coupon {
+            &.active:not(.cart) {
                 &::after {
                     content: '';
                     position: absolute;

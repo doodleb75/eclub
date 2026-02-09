@@ -892,6 +892,9 @@ body.no-scroll {
   -webkit-mask-size: contain;
   mask-size: contain;
 }
+.bottom-sheet.is-expanded {
+  z-index: 1200;
+}
 .bottom-sheet.is-expanded .payment-summary {
   margin-top: 0;
   padding: 0;
@@ -995,6 +998,7 @@ body.no-scroll {
 .sheet-overlay.is-visible {
   opacity: 1;
   visibility: visible;
+  z-index: 1100;
 }
 
 .modal-overlay {
