@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Component Test Result</title>
+    <!-- 공통 스타일 (경로 확인 필요) -->
+    <link rel="stylesheet" href="/eclub/assets/css/pc/main.css" id="pc-css">
+    <link rel="stylesheet" href="/eclub/assets/css/mobile/main.css" id="mo-css" disabled>
+    <style>
+        body {
+            padding: 40px;
+            background-color: #f9f9f9;
+        }
+
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+        }
+
+        .section-title {
+            margin: 40px 0 20px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .modal-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            /* transition: all 0.3s ease; */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            height: 100px;
+        }
+
+        .modal-btn:hover {
+            /* transform: translateY(-5px); */
+            /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); */
+            border-color: #333;
+        }
+
+        .modal-btn span {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .modal-btn .filename {
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="test-container">
+        <h1>모달 컴포넌트 목록 & 테스트</h1>
+
+
+
+        <div class="section-title">공통 모달</div>
+        <div class="modal-grid">
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-alert.html">
+                <span>알림 (Alert)</span>
+                <span class="filename">modal-alert.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-confirm.html">
+                <span>확인 (Confirm)</span>
+                <span class="filename">modal-confirm.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-select-del.html">
+                <span>선택 삭제 (PC)</span>
+                <span class="filename">modal-select-del.html</span>
+            </button>
+        </div>
+
+        <div class="section-title">쿠폰 / 장바구니 관련 </div>
+        <div class="modal-grid">
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-cart-coupon.html">
+                <span>장바구니 쿠폰</span>
+                <span class="filename">modal-cart-coupon.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-pay-coupon.html">
+                <span>결제 쿠폰</span>
+                <span class="filename">modal-pay-coupon.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-pr-coupon.html">
+                <span>상품 쿠폰</span>
+                <span class="filename">modal-pr-coupon.html</span>
+            </button>
+            <button type="button" class="modal-btn"
+                data-modal-url="/eclub/common/components/modal/modal-shipping-coupon.html">
+                <span>배송비 쿠폰</span>
+                <span class="filename">modal-shipping-coupon.html</span>
+            </button>
+        </div>
+
+        <div class="section-title">기능성 모달</div>
+        <div class="modal-grid">
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-excel-upload.html"
+                data-modal-width="600px">
+                <span>엑셀 업로드</span>
+                <span class="filename">modal-excel-upload.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-item-option.html">
+                <span>상품 옵션</span>
+                <span class="filename">modal-item-option.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-referral.html"
+                data-modal-width="800px">
+                <span>지인추천-PC</span>
+                <span class="filename">modal-referral.html</span>
+            </button>
+        </div>
+
+        <div class="section-title">인증 및 안내 </div>
+        <div class="modal-grid">
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-guest-auth.html">
+                <span>미회원 본인인증 안내</span>
+                <span class="filename">modal-guest-auth.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-no-order.html">
+                <span>주문 불가 안내</span>
+                <span class="filename">modal-no-order.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-unpaid-info.html">
+                <span>미납상품 안내</span>
+                <span class="filename">modal-unpaid-info.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-localse-sale.html"
+                data-modal-width="560px">
+                <span>국내 판매 전용 안내 </span>
+                <span class="filename">modal-localse-sale.html</span>
+            </button>
+        </div>
+
+        <div class="section-title">모바일 전용 모달 </div>
+        <div class="modal-grid">
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-mo-confirm.html"
+                data-device="mobile">
+                <span>모바일 확인</span>
+                <span class="filename">modal-mo-confirm.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-mo-referral.html"
+                data-modal-width="800px" data-device="mobile">
+                <span>지인추천-모바일</span>
+                <span class="filename">modal-mo-referral.html</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-mo-sel-del.html"
+                data-device="mobile">
+                <span>모바일 선택 삭제</span>
+                <span class="filename">modal-mo-sel-del.html</span>
+            </button>
+        </div>
+
+        <div class="section-title">팝오버 테스트</div>
+        <div class="modal-grid">
+            <button type="button" class="modal-btn btn-info" data-popover-template="discount">
+                <span>할인 정보 (Discount)</span>
+                <span class="filename">discount.html</span>
+            </button>
+            <button type="button" class="modal-btn btn-info" data-popover-template="pointInfo">
+                <span>포인트 정보 (PointInfo)</span>
+                <span class="filename">pointInfo.html</span>
+            </button>
+            <button type="button" class="modal-btn btn-info" data-popover-template="shiping-guide">
+                <span>배송금액 안내 (shiping-guide)</span>
+                <span class="filename">shiping-guide.html</span>
+            </button>
+            <button type="button" class="modal-btn btn-info" data-popover-template="simple">
+                <span>간단 툴팁 (Simple)</span>
+                <span class="filename">simple.html</span>
+            </button>
+            <button type="button" class="modal-btn btn-info" data-popover-template="offdayinfo">
+                <span>지정 휴무일 안내 (OffdayInfo)</span>
+                <span class="filename">offdayinfo.html</span>
+            </button>
+            <button type="button" class="modal-btn btn-info" data-popover-template="cartinfo">
+                <span>장바구니 안내 (CartInfo)</span>
+                <span class="filename">cartinfo.html</span>
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/eclub/assets/js/common/ui.js"></script>
+    <script src="/eclub/assets/js/components/popover.js"></script>
+    <script src="/eclub/assets/js/components/modal.js"></script>
+    <script src="/eclub/assets/js/components/modal-item-option.js"></script>
+    <script src="/eclub/assets/js/components/modal-excel-upload.js"></script>
+
+    <script>
+        /**
+         * 특정 모달 클릭 시 해당 기기(PC/Mobile)의 CSS로 자동 전환하는 로직
+         * @param {string} mode - 'pc' 또는 'mobile'
+         */
+        function setMode(mode) {
+            const pcCss = document.getElementById('pc-css');
+            const moCss = document.getElementById('mo-css');
+
+            if (mode === 'mobile') {
+                pcCss.disabled = true;
+                moCss.disabled = false;
+                console.log('Switched to Mobile Styles');
+            } else {
+                pcCss.disabled = false;
+                moCss.disabled = true;
+                console.log('Switched to PC Styles');
+            }
+        }
+
+        // 모달 트리거 클릭 시 data-device 값에 따라 스타일 스위칭
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('[data-modal-url]');
+            if (!trigger) return;
+
+            // data-device="mobile"이 명시되어 있으면 모바일로, 없으면 기본 PC로 간주
+            const device = trigger.dataset.device || 'pc';
+            setMode(device);
+        });
+    </script>
+
+</body>
+
+</html>

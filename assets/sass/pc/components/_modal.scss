@@ -150,6 +150,16 @@
     padding: rem(50) rem(32) rem(20); // 상단 및 좌우 여백 재조정
     text-align: center;
 
+    // 헤더가 있는 경우 상단 패딩 축소 및 내부 메시지 간격 조정
+    .modal-header+& {
+        padding-top: $spacing-lg;
+
+        .confirm-message,
+        .alert-message {
+            padding-bottom: rem(6);
+        }
+    }
+
     .confirm-message,
     .alert-message {
         font-size: rem(15); // 사용자 요청에 따라 15px로 수정
@@ -158,6 +168,10 @@
         line-height: 1.5;
         letter-spacing: rem(-0.8);
         word-break: keep-all;
+
+        &.emp-text {
+            color: $point-red;
+        }
     }
 }
 
@@ -205,6 +219,11 @@
 }
 
 // 장바구니 엑셀 일괄등록 모달
+.excel-upload-form,
+.excel-upload-result {
+    margin-bottom: rem(20);
+}
+
 .excel-upload-form {
     .form-row {
         display: flex;
@@ -300,5 +319,133 @@
 
     &:hover {
         background: darken($gray-850, 5%);
+    }
+}
+
+// 모달 내 공통 안내 요소 (테이블 등)
+.modal-body {
+    .info-table-wrap {
+        border-top: rem(2) solid $gray-900;
+        border-bottom: 1px solid $gray-350;
+        margin-top: rem(15);
+    }
+
+    .info-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        table-layout: fixed;
+
+        th {
+            height: rem(44);
+            padding: 0;
+            color: $gray-900;
+            background-color: $gray-50;
+            border-bottom: 1px solid $gray-150;
+            font-size: rem(14);
+            font-weight: $fw-bold;
+            text-align: center;
+            vertical-align: middle;
+
+            &.col-no {
+                width: rem(60);
+            }
+
+            &.col-name {
+                width: auto;
+                text-align: left;
+            }
+
+            &.col-qty {
+                width: rem(80);
+            }
+        }
+
+        td {
+            height: rem(48);
+            padding: rem(10) 0;
+            text-align: center;
+            font-size: rem(14);
+            color: $gray-800;
+            border-bottom: 1px solid $gray-150;
+
+            &.text-left {
+                text-align: left;
+                padding-left: rem(15);
+            }
+
+            &.empty {
+                padding: rem(60) 0;
+                color: $gray-500;
+                background-color: $white;
+            }
+        }
+    }
+
+    // 결과 요약 영역
+    .result-summary {
+        margin-top: rem(25);
+        padding-left: rem(10);
+
+        .summary-text {
+            font-size: rem(16);
+            font-weight: $fw-bold;
+            color: $gray-900;
+            letter-spacing: rem(-0.8);
+
+            .bullet {
+                margin-right: rem(4);
+            }
+
+            .count {
+                &.text-success {
+                    color: $color-eclub-blue;
+                }
+
+                &.text-danger {
+                    color: $primary-red;
+                }
+            }
+        }
+    }
+}
+
+// 결과 화면 푸터
+.result-footer {
+    padding-top: rem(30);
+    margin-top: rem(40);
+
+    .footer-row {
+        display: flex;
+        align-items: center;
+        gap: rem(15);
+
+        .label {
+            font-size: rem(14);
+            font-weight: $fw-medium;
+            color: $black;
+        }
+
+        .btn-result-download {
+            height: rem(44);
+            padding: 0 rem(20);
+            border: 1px solid $gray-400;
+            border-radius: $radius-sm;
+            background: $white;
+            font-size: rem(14);
+            font-weight: $fw-medium;
+            color: $black;
+            display: flex;
+            align-items: center;
+            gap: rem(6);
+            cursor: pointer;
+
+            i {
+                font-size: rem(18);
+            }
+
+            &:hover {
+                background: $gray-100;
+            }
+        }
     }
 }

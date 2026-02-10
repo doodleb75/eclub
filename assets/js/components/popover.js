@@ -49,9 +49,19 @@ const Popover = {
         let top, left;
 
         // 기본 위치 설정
+        // 기본 위치 설정
+        const isIndexPage = document.querySelector('.main-page-wrapper');
+        const productItem = trigger.closest('.product-item');
+
         if (type === 'pointInfo') {
             left = rectRight + scrollX + 10;
             top = rectTop + scrollY;
+        } else if (isIndexPage && productItem && type === 'discount') {
+            // 인덱스 페이지의 상품 아이템 내 할인 팝업: 상품 아이템 우측 끝에 정렬
+            const itemRect = productItem.getBoundingClientRect();
+            const itemRectRight = itemRect.right / scale;
+            left = itemRectRight + scrollX - popoverWidth;
+            top = rectBottom + scrollY + 12;
         } else {
             // 기본: 버튼 우측 하단 정렬
             left = rectRight + scrollX - popoverWidth;
@@ -86,9 +96,9 @@ const Popover = {
         document.body.appendChild(container);
         this.instance = container;
 
-        // 내부 닫기 버튼 위임
+        // 내부 버튼 이벤트 위임 (확인, 취소, 닫기)
         this.instance.addEventListener('click', (e) => {
-            if (e.target.closest('.btn-confirm')) {
+            if (e.target.closest('.btn-confirm') || e.target.closest('.btn-cancel') || e.target.closest('.btn-close')) {
                 this.hide();
             }
         });

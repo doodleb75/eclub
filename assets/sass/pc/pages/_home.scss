@@ -85,6 +85,16 @@
                 transform: translateY(rem(20));
             }
 
+            // Period Tab Lists (Hidden by default, shown when active)
+            &.daily-product,
+            &.weekly-product {
+                display: none;
+
+                &.active {
+                    display: grid;
+                }
+            }
+
             // Slider Type (Flex)
             &.list-slider {
                 display: flex;
@@ -114,6 +124,7 @@
 
             .product-item {
                 width: 100%;
+                min-width: 0; // Fix for grid item expansion with nowrap content
 
                 .image-box {
                     position: relative;
@@ -243,11 +254,20 @@
                 }
 
                 .prod-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: rem(4);
+
+                    &>div {
+                        font-size: rem(12) !important;
+                        font-weight: $fw-medium !important;
+                    }
+
                     .coupon-date {
                         font-size: rem(13);
                         font-weight: $fw-medium;
                         color: $gray-500;
-                        margin-bottom: rem(6);
+                        // margin-bottom: rem(6); // Handled by gap
                         display: flex;
                         align-items: center;
                         gap: rem(4);
@@ -264,11 +284,11 @@
                     }
 
                     .prod-name {
-                        font-size: rem(18);
-                        font-weight: $fw-bold;
+                        font-size: rem(18) !important;
+                        font-weight: $fw-medium;
                         color: $gray-900;
                         line-height: 1.4;
-                        margin-bottom: rem(6);
+                        // margin-bottom: rem(6); // Handled by gap
                         display: -webkit-box;
                         -webkit-line-clamp: 2;
                         line-clamp: 2;
@@ -308,10 +328,10 @@
                     .prod-price-info {
                         font-size: rem(13);
                         color: $gray-500;
-                        margin-bottom: rem(4);
-                        display: flex;
-                        align-items: center;
-                        flex-wrap: wrap;
+                        // margin-bottom: rem(4); // Handled by gap
+                        // display: flex; // Removed to support block layout
+                        // align-items: center;
+                        // flex-wrap: wrap;
 
                         .original {
                             text-decoration: line-through;
@@ -319,7 +339,7 @@
                         }
 
                         .unit-price {
-                            display: flex;
+                            display: inline-flex; // Changed to inline-flex
                             align-items: center;
                             gap: rem(2);
 
@@ -330,18 +350,75 @@
                             }
                         }
 
-                        .icon-info {
-                            display: inline-block;
-                            width: rem(16);
-                            height: rem(16);
-                            border-radius: 50%;
-                            background-color: $gray-500;
-                            color: $white;
-                            text-align: center;
-                            line-height: rem(14);
-                            font-size: rem(10);
-                            font-style: normal;
-                            margin-left: rem(2);
+                        // New Elements
+                        .unit-per-price {
+                            font-weight: $fw-medium;
+                            margin-bottom: rem(4);
+                            line-height: 1.2;
+
+                            .divider {
+                                color: $gray-300;
+                                margin: 0 rem(4);
+                                display: inline-block;
+                                vertical-align: middle;
+                                transform: translateY(-1px);
+                                font-size: rem(10);
+                            }
+                        }
+
+                        .member-benefit-price {
+                            display: flex;
+                            align-items: center;
+                            color: $point-red;
+                            // font-size: rem(14);
+                            font-weight: $fw-regular;
+                            margin-top: rem(6);
+
+                            .icon-coupon-tag {
+                                width: rem(18);
+                                height: rem(14);
+                                background-size: contain;
+                                margin-right: rem(4);
+                            }
+
+                            .label {
+                                margin-right: rem(4);
+                            }
+
+                            .price {
+                                font-weight: $fw-regular;
+                            }
+
+                            .btn-info {
+                                margin-left: rem(4);
+                                display: flex;
+                                align-items: center;
+                            }
+                        }
+
+                        a {
+                            .icon-info {
+                                display: inline-block;
+                                width: rem(16);
+                                height: rem(16);
+                                border-radius: 50%;
+                                background-color: $gray-500;
+                                color: $white;
+                                text-align: center;
+                                line-height: rem(14);
+                                font-size: rem(10);
+                                font-style: normal;
+                                margin-left: rem(2);
+                                @include hover-transition;
+                            }
+
+                            &:hover {
+
+                                .icon-info {
+                                    background-color: $gray-800;
+                                    @include hover-transition;
+                                }
+                            }
                         }
                     }
 
@@ -349,6 +426,7 @@
                         display: flex;
                         align-items: center;
                         gap: rem(6);
+                        // margin-bottom: rem(8); // Handled by gap
 
                         .discount {
                             font-size: rem(14);
@@ -362,8 +440,35 @@
 
                         .price {
                             font-size: rem(22);
+                            line-height: 1.1;
                             font-weight: $fw-bold;
                             color: $point-red;
+                        }
+                    }
+
+                    .benefit-box {
+                        display: flex;
+                        align-items: center;
+                        padding: rem(0) rem(0);
+                        border-radius: rem(2);
+                        font-size: rem(12);
+                        color: $gray-700;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
+                        .tag {
+                            font-size: rem(12);
+                            display: inline-flex;
+                            align-items: center;
+                            font-weight: $fw-medium;
+                        }
+
+                        .divider {
+                            margin: 0 rem(6);
+                            color: $gray-300;
+                            font-size: rem(10);
+                            transform: translateY(-1px);
                         }
                     }
                 }
@@ -619,7 +724,7 @@
 
                         &:hover {
                             i {
-                                background-color: $gray-600;
+                                background-color: $gray-900 !important;
                             }
                         }
                     }

@@ -2,36 +2,47 @@
  * 엑셀 업로드 모달 전용 로직
  */
 document.addEventListener('click', (e) => {
-    // 찾아보기 버튼 클릭 시 파일 선택창 트리거 (이벤트 위임)
-    const btnBrowse = e.target.closest('.btn-browse');
-    if (btnBrowse) {
-        const modal = btnBrowse.closest('.modal-excel-upload');
-        const fileInput = modal.querySelector('#excelFileInput');
+    // 찾아보기 버튼 클릭 (ID 기반 또는 클래스 기반)
+    if (e.target.closest('.btn-file-search')) {
+        const modalBody = e.target.closest('.modal-body');
+        const fileInput = modalBody?.querySelector('#excel-file-hidden');
         if (fileInput) fileInput.click();
     }
 
-    // 등록 버튼 클릭 시 처리 (예비)
-    const btnRegister = e.target.closest('.btn-register');
-    if (btnRegister) {
-        const modal = btnRegister.closest('.modal-excel-upload');
-        const fileName = modal.querySelector('.file-name-display').value;
-        if (!fileName) {
-            alert('업로드할 파일을 선택해주세요.');
+    // 등록 버튼 클릭 시 결과 화면 전환
+    if (e.target.closest('.btn-excel-submit')) {
+        const modalWrap = e.target.closest('.modal-wrap');
+        const fileInput = modalWrap?.querySelector('#excel-file-hidden');
+
+        if (fileInput && !fileInput.value) {
+            alert('첨부파일을 선택해주세요.');
             return;
         }
-        // TODO: 실제 업로드 로직 구현
-        console.log('Excel file upload started:', fileName);
+
+        // 화면 전환 로직
+        const uploadTitle = modalWrap?.querySelector('#excel-upload-title');
+        const resultTitle = modalWrap?.querySelector('#excel-result-title');
+        const uploadSection = modalWrap?.querySelector('#upload-section');
+        const resultSection = modalWrap?.querySelector('#result-section');
+        const modalFooter = modalWrap?.querySelector('#modal-footer-upload');
+
+        if (uploadTitle) uploadTitle.style.display = 'none';
+        if (resultTitle) resultTitle.style.display = 'block';
+        if (uploadSection) uploadSection.style.display = 'none';
+        if (resultSection) resultSection.style.display = 'block';
+        if (modalFooter) modalFooter.style.display = 'none'; // 결과 푸터는 resultSection 내부에 포함됨
     }
 });
 
+// 파일 선택 시 파일명 표시
 document.addEventListener('change', (e) => {
-    // 파일 선택 시 파일명 노출
-    if (e.target.id === 'excelFileInput') {
-        const modal = e.target.closest('.modal-excel-upload');
-        const fileNameDisplay = modal.querySelector('.file-name-display');
-        if (fileNameDisplay) {
-            const fileName = e.target.files[0] ? e.target.files[0].name : '';
-            fileNameDisplay.value = fileName;
+    if (e.target.id === 'excel-file-hidden') {
+        const modalBody = e.target.closest('.modal-body');
+        const fileNameInput = modalBody?.querySelector('#excel-file-name');
+        if (fileNameInput) {
+            const file = e.target.files[0];
+            fileNameInput.value = file ? file.name : '';
         }
     }
 });
+

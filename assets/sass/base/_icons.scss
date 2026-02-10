@@ -223,6 +223,22 @@ $icon-path: '/assets/icons'; // 루트 절대 경로 적용
     @include icon-mask('/assets/icons/main/icon-main-next.svg', rem(24));
 }
 
+.icon-coupon-product {
+    display: inline-block;
+    width: rem(55);
+    height: rem(18);
+    background: url('/assets/icons/main/icon-coupon.svg') no-repeat center / contain;
+}
+
+.icon-coupon-tag {
+    display: inline-block;
+    width: rem(18);
+    height: rem(14);
+    background: url('/assets/icons/main/icon-coupon.svg') no-repeat center / contain;
+    vertical-align: middle;
+    margin-right: rem(2);
+}
+
 // Browser Zoom Icons
 .icon-zoom-in {
     @include icon-mask('/assets/icons/main/zoom_in.svg', rem(30));
