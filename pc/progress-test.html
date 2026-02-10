@@ -167,15 +167,15 @@
         <div class="controls">
             <div class="input-group">
                 <label for="minMoney">0.5 지점 금액 (minMoney)</label>
-                <input type="number" id="minMoney" value="50000" placeholder="예: 50000">
+                <input type="number" id="minMoney" value="1500" placeholder="예: 50000">
             </div>
             <div class="input-group">
                 <label for="maxMoney">3.0 지점 금액 (maxMoney)</label>
-                <input type="number" id="maxMoney" value="300000" placeholder="예: 300000">
+                <input type="number" id="maxMoney" value="6000" placeholder="예: 300000">
             </div>
             <div class="input-group" style="grid-column: span 2;">
                 <label for="currentMoney">현재 달성 금액</label>
-                <input type="number" id="currentMoney" value="0" placeholder="금액 입력">
+                <input type="number" id="currentMoney" value="3000" placeholder="금액 입력">
             </div>
         </div>
 
@@ -243,72 +243,90 @@
 
                 if (maxMoney <= 0) return;
 
-                // 1. 각 마커에 해당하는 '금액' 계산 (선형 보간 가정)
-                // 0.5 = minMoney
-                // 3.0 = maxMoney
-                // 0.5 에서 3.0 까지의 거리 = 2.5
-                // 단위(1.0) 당 금액 증가량 = (maxMoney - minMoney) / 2.5
+                // 시각적 위치 정의 (Marker Value -> %)
+                // 0 -> 0% (Start)
+                // 0.5 -> 16.666... (1/6)
+                // 1.0 -> 33.333... (1/3)
+                // 1.5 -> 50.000... (1/2) - Middle
+                // 2.0 -> 66.666... (2/3)
+                // 3.0 -> 100.000... (1)
 
-                const slope = (maxMoney - minMoney) / 2.5;
+                const posToPercent = (pos) => (pos / 3) * 100;
 
-                const val_0 = 0; // 0지점은 0원 (가정)
-                const val_0_5 = minMoney;
-                const val_1 = minMoney + (slope * 0.5); // 0.5에서 0.5만큼 더 감
-                const val_2 = minMoney + (slope * 1.5); // 0.5에서 1.5만큼 더 감
-                const val_3 = maxMoney;
+                // 구간 설정 (Piecewise Linear Interpolation)
+                // 사용자의 요청을 만족시키기 위해 '다구간 선형 보간'을 사용합니다.
+                // 1. Min (0.5 Marker)
+                // 2. Max (3.0 Marker)
+                // 3. Middle Check (1.5 Marker = Max/2 Value)
 
-                // 2. 각 마커의 '시각적 위치(%)' 정의 (CSS left 값과 일치해야 함)
-                // 0.5 -> 16.66%
-                // 1.0 -> 33.33%
-                // 2.0 -> 66.66%
-                // 3.0 -> 100%
-                const pos_0 = 0;
-                const pos_0_5 = 16.66;
-                const pos_1 = 33.33;
-                const pos_2 = 66.66;
-                const pos_3 = 100;
+                let points = [
+                    { val: 0, pos: 0, percent: 0 },
+                    { val: minMoney, pos: 0.5, percent: posToPercent(0.5) }, // 16.66%
+                    { val: maxMoney, pos: 3.0, percent: posToPercent(3.0) }  // 100%
+                ];
 
-                // 라벨 업데이트
-                label0_5.textContent = formatMoney(val_0_5);
-                label1.textContent = formatMoney(val_1);
-                label2.textContent = formatMoney(val_2);
-                label3.textContent = formatMoney(val_3);
+                const midMoney = maxMoney / 2;
 
-                // 3. 현재 금액이 어느 구간에 있는지 확인하고 퍼센트 계산
+                // 만약 Min < Mid < Max 구조라면 중간에 Mid 포인트(1.5 위치)를 강제로 추가하여
+                // "3000(Max반) -> 1.5(Label반)" 조건을 만족시킴
+                if (midMoney > minMoney && midMoney < maxMoney) {
+                    points.splice(2, 0, { val: midMoney, pos: 1.5, percent: posToPercent(1.5) }); // 50%
+                }
+
+                // 라벨 값을 계산하기 위한 헬퍼 함수
+                const getValueAtPos = (targetPos) => {
+                    // 해당 pos가 포함된 구간 찾기 (points는 pos 기준으로 정렬되어 있다 가정하지만 여기선 splice 위치가 정확하므로 정렬 생략)
+                    // 하지만 위 코드에서는 points가 val 기준으로 정렬될 수도 있고 pos 기준으로 정렬될 수도 있음.
+                    // 여기서는 pos가 Min(0.5) < Mid(1.5)? YES if Min < Mid.
+                    // 그러나 Min > Mid 인 경우도 있을 수 있으나, 일반적으로 Min(최소구매금액) < Max(최대금액)/2 일 확률이 높음.
+                    // 안전을 위해 pos 기준으로 정렬된 참조 배열을 사용하거나 그냥 계산.
+
+                    // points는 val 기준으로 삽입되었음. (Min < Mid < Max)
+                    // 그렇다면 pos 기준도 0.5 < 1.5 < 3.0 이므로 정렬 유지됨.
+
+                    for (let i = 0; i < points.length - 1; i++) {
+                        const p1 = points[i];
+                        const p2 = points[i + 1];
+                        if (targetPos >= p1.pos && targetPos <= p2.pos) {
+                            const ratio = (targetPos - p1.pos) / (p2.pos - p1.pos);
+                            return p1.val + ratio * (p2.val - p1.val);
+                        }
+                    }
+                    // 범위 밖
+                    if (targetPos > 3.0) return maxMoney;
+                    return 0;
+                };
+
+                // 마커 라벨 업데이트 (동적 계산)
+                // 주의: 위 로직에 따르면 마커 1, 2의 값이 Min과 Max/2 사이에서 유동적으로 변함
+                label0_5.textContent = formatMoney(getValueAtPos(0.5)); // minMoney
+                label1.textContent = formatMoney(getValueAtPos(1.0));
+                label2.textContent = formatMoney(getValueAtPos(2.0));
+                label3.textContent = formatMoney(getValueAtPos(3.0)); // maxMoney
+
+                // 3. 현재 금액에 따른 % 계산
                 let finalPercent = 0;
 
                 if (currentMoney <= 0) {
                     finalPercent = 0;
-                } else if (currentMoney <= val_0_5) {
-                    // 구간 1: 0 ~ 0.5 (0% ~ 16.66%)
-                    // 이 구간은 0~minMoney 사이. 
-                    // 주의: 0~minMoney 구간의 기울기는 minMoney~maxMoney 구간과 다를 수 있음
-                    // 0 -> 0%
-                    // minMoney -> 16.66%
-                    const ratio = currentMoney / val_0_5;
-                    finalPercent = ratio * pos_0_5;
-                } else if (currentMoney <= val_1) {
-                    // 구간 2: 0.5 ~ 1.0 (16.66% ~ 33.33%)
-                    const rangeVal = val_1 - val_0_5;
-                    const rangePos = pos_1 - pos_0_5;
-                    const ratio = (currentMoney - val_0_5) / rangeVal;
-                    finalPercent = pos_0_5 + (ratio * rangePos);
-                } else if (currentMoney <= val_2) {
-                    // 구간 3: 1.0 ~ 2.0 (33.33% ~ 66.66%)
-                    const rangeVal = val_2 - val_1;
-                    const rangePos = pos_2 - pos_1;
-                    const ratio = (currentMoney - val_1) / rangeVal;
-                    finalPercent = pos_1 + (ratio * rangePos);
-                } else if (currentMoney <= val_3) {
-                    // 구간 4: 2.0 ~ 3.0 (66.66% ~ 100%)
-                    const rangeVal = val_3 - val_2;
-                    const rangePos = pos_3 - pos_2;
-                    const ratio = (currentMoney - val_2) / rangeVal;
-                    finalPercent = pos_2 + (ratio * rangePos);
-                } else {
-                    // 초과 시 100% (혹은 그 이상 표시하려면 로직 수정)
+                } else if (currentMoney >= maxMoney) {
                     finalPercent = 100;
+                } else {
+                    // 현재 금액이 포함된 구간 찾기
+                    for (let i = 0; i < points.length - 1; i++) {
+                        const p1 = points[i];
+                        const p2 = points[i + 1];
+                        if (currentMoney >= p1.val && currentMoney <= p2.val) {
+                            const ratio = (currentMoney - p1.val) / (p2.val - p1.val);
+                            // 이미 계산된 percent 값 사용
+                            finalPercent = p1.percent + ratio * (p2.percent - p1.percent);
+                            break;
+                        }
+                    }
                 }
+
+                // result-text에 포인트 정보 표시 (디버깅용, 필요 시 제거)
+                // console.log("Points:", points);
 
                 // UI 적용
                 progressFill.style.width = `${finalPercent}%`;

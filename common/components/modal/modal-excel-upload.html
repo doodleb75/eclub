@@ -1,51 +1,77 @@
 <div class="modal-header type-center">
-    <h3 class="modal-title">장바구니 상품 엑셀 일괄등록</h3>
+    <h3 class="modal-title" id="excel-upload-title">장바구니 상품 엑셀 일괄등록</h3>
+    <h3 class="modal-title" id="excel-result-title" style="display: none;">장바구니 엑셀 업로드 결과</h3>
     <button type="button" class="btn-modal-close" aria-label="닫기"><i class="icon-clear"></i></button>
 </div>
 <div class="modal-body">
-    <div class="excel-upload-form">
+    <!-- 업로드 폼 섹션 -->
+    <div id="upload-section" class="excel-upload-form">
         <div class="form-row">
             <span class="form-label">첨부파일</span>
             <div class="file-input-group">
                 <input type="text" id="excel-file-name" class="file-name" placeholder="파일을 선택해주세요" readonly>
                 <input type="file" id="excel-file-hidden" class="file-hidden" accept=".xlsx, .xls"
                     style="display: none;">
-                <button type="button" class="btn-file-search"
-                    onclick="document.getElementById('excel-file-hidden').click()">찾아보기</button>
+                <button type="button" class="btn-file-search">찾아보기</button>
                 <button type="button" class="btn-form-download"><i class="icon-excel"></i>양식다운로드</button>
             </div>
         </div>
     </div>
+
+    <!-- 결과 섹션 (초기 숨김) -->
+    <div id="result-section" class="excel-upload-result" style="display: none;">
+        <div class="info-table-wrap">
+            <table class="info-table">
+                <colgroup>
+                    <col style="width: rem(120);">
+                    <col style="width: rem(80);">
+                    <col style="width: rem(100);">
+                    <col style="width: auto;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>상품코드</th>
+                        <th>입력수량</th>
+                        <th>등록결과</th>
+                        <th>실패사유</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 예시 데이터: 개발 단계에서 동적으로 생성될 영역 -->
+                    <tr>
+                        <td>550319</td>
+                        <td>1</td>
+                        <td>성공</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>550320</td>
+                        <td>2</td>
+                        <td><span class="text-danger">실패</span></td>
+                        <td class="text-left">재고부족</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="result-summary">
+            <p class="summary-text">
+                <span class="bullet">■</span> 총등록 건 <span class="count">2</span> /
+                성공 <span class="count text-success">1</span>건,
+                실패 <span class="count text-danger">1</span>건
+            </p>
+        </div>
+
+        <!-- 결과 하단 액션 -->
+        <div class="result-footer">
+            <div class="footer-row">
+                <span class="label">첨부파일</span>
+                <button type="button" class="btn-result-download">
+                    <i class="icon-excel"></i>업로드결과 다운로드
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="modal-footer">
+<div class="modal-footer" id="modal-footer-upload">
     <button type="button" class="btn-excel-submit">등록</button>
 </div>
-
-<script>
-    // 파일 선택 시 이름 표시 및 유효성 검사
-    (() => {
-        const fileInput = document.getElementById('excel-file-hidden');
-        const fileNameInput = document.getElementById('excel-file-name');
-
-        if (fileInput && fileNameInput) {
-            fileInput.addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    fileNameInput.value = file.name;
-                }
-            });
-        }
-
-        // 등록 버튼 클릭 시 간단한 피드백 (실제 업로드 로직은 백엔드 구현 필요)
-        const submitBtn = document.querySelector('.btn-excel-submit');
-        if (submitBtn) {
-            submitBtn.addEventListener('click', () => {
-                if (!fileInput.value) {
-                    alert('첨부파일을 선택해주세요.');
-                    return;
-                }
-                alert('파일이 선택되었습니다. (업로드 기능은 현재 준비 중입니다)');
-            });
-        }
-    })();
-</script>
