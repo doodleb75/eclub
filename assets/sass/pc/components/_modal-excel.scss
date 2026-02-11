@@ -38,7 +38,7 @@
             cursor: pointer;
 
             .icon-close {
-                @include icon-mask('/assets/icons/clear.svg', rem(24)); // clear.svg 사용
+                @include icon-mask('../..//icons/clear.svg', rem(24)); // clear.svg 사용
                 color: $black;
             }
         }

@@ -81,7 +81,7 @@
 <body>
 
     <div class="test-container">
-        <h1>모달 컴포넌트 목록 & 테스트</h1>
+        <h1>모달 컴포넌트 / 팝오버 - 테스트</h1>
 
 
 
@@ -164,12 +164,12 @@
         <div class="section-title">모바일 전용 모달 </div>
         <div class="modal-grid">
             <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-mo-confirm.html"
-                data-device="mobile">
+                data-modal-width="360px" data-device="mobile">
                 <span>모바일 확인</span>
                 <span class="filename">modal-mo-confirm.html</span>
             </button>
             <button type="button" class="modal-btn" data-modal-url="/eclub/common/components/modal/modal-mo-referral.html"
-                data-modal-width="800px" data-device="mobile">
+                data-modal-width="400px" data-device="mobile">
                 <span>지인추천-모바일</span>
                 <span class="filename">modal-mo-referral.html</span>
             </button>
@@ -183,27 +183,27 @@
         <div class="section-title">팝오버 테스트</div>
         <div class="modal-grid">
             <button type="button" class="modal-btn btn-info" data-popover-template="discount">
-                <span>할인 정보 (Discount)</span>
+                <span>할인 정보 </span>
                 <span class="filename">discount.html</span>
             </button>
             <button type="button" class="modal-btn btn-info" data-popover-template="pointInfo">
-                <span>포인트 정보 (PointInfo)</span>
+                <span>포인트 정보 </span>
                 <span class="filename">pointInfo.html</span>
             </button>
             <button type="button" class="modal-btn btn-info" data-popover-template="shiping-guide">
-                <span>배송금액 안내 (shiping-guide)</span>
+                <span>배송금액 안내 </span>
                 <span class="filename">shiping-guide.html</span>
             </button>
             <button type="button" class="modal-btn btn-info" data-popover-template="simple">
-                <span>간단 툴팁 (Simple)</span>
+                <span>간단 툴팁 </span>
                 <span class="filename">simple.html</span>
             </button>
             <button type="button" class="modal-btn btn-info" data-popover-template="offdayinfo">
-                <span>지정 휴무일 안내 (OffdayInfo)</span>
+                <span>지정 휴무일 안내 </span>
                 <span class="filename">offdayinfo.html</span>
             </button>
             <button type="button" class="modal-btn btn-info" data-popover-template="cartinfo">
-                <span>장바구니 안내 (CartInfo)</span>
+                <span>장바구니 안내 </span>
                 <span class="filename">cartinfo.html</span>
             </button>
 
@@ -237,12 +237,13 @@
             }
         }
 
-        // 모달 트리거 클릭 시 data-device 값에 따라 스타일 스위칭
+        // 모달 및 팝오버 트리거 클릭 시 data-device 값에 따라 스타일 스위칭
         document.addEventListener('click', (e) => {
-            const trigger = e.target.closest('[data-modal-url]');
+            const trigger = e.target.closest('[data-modal-url], [data-popover-template]');
             if (!trigger) return;
 
-            // data-device="mobile"이 명시되어 있으면 모바일로, 없으면 기본 PC로 간주
+            // 팝오버는 현재 PC 테스트용이므로, 별도 지정 없으면 PC 모드로 전환
+            // 모바일 전용 모달이 아니면 기본적으로 PC 모드로 간주
             const device = trigger.dataset.device || 'pc';
             setMode(device);
         });

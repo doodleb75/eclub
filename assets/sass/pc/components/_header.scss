@@ -194,7 +194,7 @@
                 color: $gray-900;
             }
 
-            &.active:not(.cart) {
+            &.active:not(.cart):not(.coupon) {
                 &::after {
                     content: '';
                     position: absolute;
@@ -207,12 +207,11 @@
                 }
             }
 
-            .cart-count {
+            .cart-count,
+            .coupon-count {
                 position: absolute;
                 top: rem(-8);
                 right: rem(-8);
-                // width: rem(12);
-                // height: rem(12);
                 border-radius: 40%;
                 padding: rem(2) rem(6);
                 background-color: $color-search-border;

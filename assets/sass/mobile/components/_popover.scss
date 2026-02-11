@@ -3,7 +3,7 @@
 @import "../../abstract/variables";
 
 /**
- * 전역 레이어 팝업 (범용 툴팁 시스템)
+ * 전역 레이어 팝업 (범용 툴팁 시스템) - Mobile
  */
 
 .popover-layer {
@@ -96,7 +96,8 @@
     &.type-shiping-guide,
     &.type-offdayinfo,
     &.type-cartinfo {
-        width: rem(440);
+        width: rem(440); // 모바일에서는 너비 조정 필요할 수 있음 (max-width 사용 등)
+        max-width: 90vw; // 모바일 대응
 
         .popover-header {
             text-align: center;
@@ -115,7 +116,7 @@
         .popover-content {
             padding: 0 rem(16);
 
-            // 리스트 형태 (cartinfo 등에서 사용)
+            // 리스트 형태
             .info-list {
                 list-style: none;
                 padding: 0;
@@ -148,7 +149,7 @@
                 }
             }
 
-            // 텍스트 박스 (cartinfo 등에서 사용)
+            // 텍스트 박스
             .info-box {
                 background-color: $gray-50;
                 padding: rem(16);
@@ -160,7 +161,7 @@
                 }
             }
 
-            // 일반 설명 텍스트 (offdayinfo 등에서 사용)
+            // 일반 설명 텍스트
             .info-text {
                 font-size: rem(15);
                 line-height: rem(24);
@@ -180,7 +181,7 @@
             }
         }
 
-        // 테이블 스타일 (offdayinfo 등에서 사용)
+        // 테이블 스타일
         .info-table-wrap {
             border-top: rem(2) solid $gray-900;
             border-bottom: 1px solid $gray-350;
@@ -257,6 +258,27 @@
                     padding-top: rem(8);
                     border-top: 1px solid #ddd;
                     font-weight: 700;
+                }
+            }
+        }
+
+        // Discount List Styles (추가됨)
+        .discount-list {
+            list-style: none;
+            padding: 0 rem(16);
+            margin-bottom: rem(12);
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                bottom: rem(-5);
+                font-size: rem(13);
+                color: $gray-600;
+                padding-top: rem(6);
+
+                &:first-child {
+                    padding-top: 0;
                 }
             }
         }

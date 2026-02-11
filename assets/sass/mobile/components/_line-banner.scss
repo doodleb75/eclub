@@ -1,0 +1,22 @@
+// 라인 배너 스타일 (모바일)
+.line-banner {
+    background-color: $color-eclub-blue;
+    height: rem(42);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+
+    .banner-content {
+        color: $white;
+        font-size: rem(13); // PC(14px) 대비 축소
+        font-weight: $fw-regular;
+        letter-spacing: -0.02em;
+
+        b,
+        strong {
+            font-weight: $fw-bold;
+        }
+    }
+}

@@ -45,6 +45,7 @@
                         <i class="icon-cart"></i>
                     </a>
                     <a href="#" class="icon-link coupon" title="쿠폰">
+                        <span class="coupon-count">2</span>
                         <i class="icon-ticket"></i>
                     </a>
                     <a href="#" class="icon-link wish" title="관심상품">

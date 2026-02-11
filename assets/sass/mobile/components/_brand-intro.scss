@@ -1,0 +1,35 @@
+// 브랜드 소개 섹션 스타일 (모바일)
+.brand-intro {
+    margin-top: rem(64); // PC(100px) 대비 축소
+    padding-bottom: rem(40); // PC(100px) 대비 축소
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(12); // PC(15px) 대비 축소
+    text-align: center;
+    padding-left: rem(20);
+    padding-right: rem(20);
+
+    .logo {
+        width: rem(48);
+        height: rem(20);
+        background: url('../../images/common/eclub-logo.svg') no-repeat center / contain;
+    }
+
+    .since {
+        font-size: rem(12); // PC(13px) 대비 축소
+        color: $gray-700;
+        font-weight: $fw-regular;
+        line-height: 1.4;
+    }
+
+    .desc {
+        width: 100%;
+        max-width: rem(380);
+        font-size: rem(11); // PC(13px) 대비 축소
+        color: $gray-700;
+        font-weight: $fw-regular;
+        line-height: 1.5;
+        word-break: keep-all; // 단어 단위 줄바꿈
+    }
+}
