@@ -37,7 +37,7 @@
                 </div>
                 <!-- Right Icons -->
                 <div class="header-right">
-                    <a href="javascript:void(0);" class="btn-cart" aria-label="장바구니">
+                    <a href="/mobile/pages/cart.html" class="btn-cart" aria-label="장바구니">
                         <i class="icon-cart"></i>
                         <span class="badge">12</span>
                     </a>
@@ -4102,9 +4102,10 @@
                     </div>
                     <div class="right-box">
                         <div class="period-tabs">
-                            <button type="button" class="btn-period active">일간</button>
-                            <button type="button" class="btn-period">주간</button>
-                            <button type="button" class="btn-period">월간</button>
+                            <button type="button" class="btn-period active" data-tab-trigger
+                                data-tab-group="best-period" data-tab-target="daily-product">주간</button>
+                            <button type="button" class="btn-period" data-tab-trigger data-tab-group="best-period"
+                                data-tab-target="weekly-product">월간</button>
                         </div>
                     </div>
 
@@ -4129,7 +4130,421 @@
                         </ul>
                     </div>
 
-                    <div class="product-list">
+                    <div class="product-list daily-product active" id="daily-product" data-tab-content="daily-product"
+                        data-tab-group="best-period">
+                        <!-- Product Item 1 -->
+                        <div class="product-item" data-category="fruit">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">01위</span>
+                                    <img src="/assets/images/main/best/best-thumb03.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 2 -->
+                        <div class="product-item" data-category="fruit frozen">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">02위</span>
+                                    <img src="/assets/images/main/best/best-thumb02.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 3 -->
+                        <div class="product-item" data-category="meat">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">03위</span>
+                                    <img src="/assets/images/main/best/best-thumb03.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 4 -->
+                        <div class="product-item" data-category="seafood">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">04위</span>
+                                    <img src="/assets/images/main/best/best-thumb04.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 5 -->
+                        <div class="product-item" data-category="frozen">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">05위</span>
+                                    <img src="/assets/images/main/best/best-thumb05.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 6 -->
+                        <div class="product-item" data-category="dairy">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">06위</span>
+                                    <img src="/assets/images/main/best/best-thumb06.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 7 -->
+                        <div class="product-item" data-category="ramen">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">07위</span>
+                                    <img src="/assets/images/main/best/best-thumb07.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 8 -->
+                        <div class="product-item" data-category="instant">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">08위</span>
+                                    <img src="/assets/images/main/best/best-thumb08.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 9 -->
+                        <div class="product-item" data-category="snack">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">09위</span>
+                                    <img src="/assets/images/main/best/best-thumb09.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Item 10 -->
+                        <div class="product-item" data-category="water">
+                            <div class="image-box">
+                                <a href="javascript:void(0);" class="link-thumb">
+                                    <span class="badge-ranking">10위</span>
+                                    <img src="/assets/images/main/best/best-thumb10.png" alt="상품 이미지" class="prod-img">
+                                </a>
+                            </div>
+                            <div class="control-bar">
+                                <div class="qty-control">
+                                    <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                                    <input type="text" value="1" min="0" aria-label="수량">
+                                    <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                                </div>
+                                <div class="action-btns">
+                                    <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                                    <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                                </div>
+                            </div>
+                            <div class="prod-info">
+                                <div class="coupon-date"><span class="badge-coupon">상품쿠폰</span> 01.09(금) - 01.21(수)
+                                </div>
+                                <div class="prod-name">
+                                    <a href="javascript:void(0);" class="link-name">
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 텍스트가 3줄일 때는
+                                        이렇게...
+                                    </a>
+                                </div>
+                                <div class="prod-price-info">
+                                    <span class="original">45,500원</span>
+                                    <span class="unit-price">| 입수 12 | <span class="price">개당 3,760원</span> <a
+                                            href="javascript:void(0);" class="unit-price btn-info"
+                                            data-popover-template="discount"><i class="icon-info"></i></a></span>
+                                </div>
+                                <div class="main-price">
+                                    <span class="discount">19% 할인</span>
+                                    <span class="price">36,800원</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-list weekly-product" id="weekly-product" data-tab-content="weekly-product"
+                        data-tab-group="best-period">
                         <!-- Product Item 1 -->
                         <div class="product-item" data-category="paper">
                             <div class="image-box">
