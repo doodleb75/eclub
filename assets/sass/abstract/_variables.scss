@@ -13,6 +13,7 @@ $white: #ffffff;
 $black: #000000;
 
 // 그레이 스케일
+$gray-999: #111111; // 모바일 검색 아이콘 색상 (피그마 참조)
 $gray-900: #222222; // 주요 타이틀/텍스트
 $gray-850: #333333; // 활성 탭 등 강조
 $gray-830: #363636; // 뱃지 텍스트
@@ -52,6 +53,7 @@ $color-badge-ambient-text: #4d2424; // 상온 태그 텍스트
 $color-badge-cold-bg: #def1ff; // 저온 태그 배경
 $color-badge-cold-text: #00568a; // 저온 태그 텍스트
 $color-badge-hot-deal: #D00053; // 오늘의 핫딜 태그 배경
+$color-badge-yellow: #feb718; // 장바구니/알림 뱃지 (피그마)
 $color-badge-ranking-bg: #E33939;
 $delivery-cold: #649EC2; // 쓱배송(저온)
 $delivery-frozen: #2f4f89; // 쓱배송(냉동)

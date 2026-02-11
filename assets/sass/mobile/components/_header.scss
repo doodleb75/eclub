@@ -14,9 +14,10 @@ header {
         align-items: center;
         width: 100%;
         height: 100%;
-        padding: 0 rem(4); // 사이드 패딩 (버튼 패딩 포함하여 약 16px 확보)
+        padding: 0 rem(8);
         position: relative;
 
+        // Subpage Title (Keep existing)
         .page-title {
             position: absolute;
             left: 0;
@@ -26,7 +27,7 @@ header {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 rem(48); // 피그마 분석 패딩 적용 (아이콘 영역 확보)
+            padding: 0 rem(48);
             font-size: rem(16);
             font-weight: $fw-bold;
             color: $black;
@@ -34,20 +35,153 @@ header {
             z-index: 1;
         }
 
-        .header-left,
+        // Main Header Layout
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: rem(10); // Figma Spacing 10
+            z-index: 10;
+            flex-shrink: 0;
+
+            .btn-menu {
+                padding: rem(6) rem(3); // Figma padding
+                width: rem(24);
+                height: rem(24);
+                box-sizing: content-box; // width 24 + padding
+
+                i {
+                    font-size: rem(24);
+                    color: $gray-700; // #666
+                }
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+                margin-left: 0;
+
+                a {
+                    padding: 0;
+                    display: flex;
+
+                    img {
+                        height: rem(28); // Figma Height 28
+                        width: auto;
+                    }
+                }
+            }
+        }
+
+        .header-center {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 rem(12);
+            z-index: 10;
+
+            .search-box {
+                width: 100%;
+                height: rem(32);
+                background: $white;
+                border: 1px solid $gray-400;
+                border-radius: rem(999);
+                display: flex;
+                align-items: center;
+                padding: 0 rem(12);
+
+                .input-search {
+                    flex: 1;
+                    border: none;
+                    background: transparent;
+                    height: 100%;
+                    font-size: rem(13);
+                    color: $black;
+                    outline: none;
+                    min-width: 0;
+
+                    &::placeholder {
+                        color: $gray-400;
+                    }
+                }
+
+                .btn-search {
+                    padding: 0;
+                    width: rem(24);
+                    height: rem(24);
+                    min-width: rem(24);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+
+                    i {
+                        font-size: rem(18);
+                        color: $gray-700;
+                    }
+                }
+            }
+        }
+
         .header-right {
             display: flex;
             align-items: center;
-            position: relative;
-            gap: rem(4);
+            gap: rem(20);
             z-index: 10;
+            flex-shrink: 0;
+
+            a,
+            button {
+                position: relative;
+                padding: 0;
+                width: rem(24);
+                height: rem(24);
+
+                i {
+                    font-size: rem(24);
+                    width: rem(24);
+                    height: rem(24);
+                    color: $gray-700;
+                }
+
+                .badge {
+                    position: absolute;
+                    top: rem(-2);
+                    right: rem(-6);
+                    background-color: $color-badge-yellow;
+                    color: $gray-900;
+                    font-family: 'Pretendard', sans-serif;
+                    font-size: rem(10);
+                    font-weight: 500;
+                    height: rem(17);
+                    min-width: rem(18);
+                    padding: 0 rem(4);
+                    border-radius: rem(10);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    line-height: 1;
+                    z-index: 1;
+                }
+
+                .dot {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: rem(4);
+                    height: rem(4);
+                    border-radius: rem(2);
+                    background-color: $color-badge-yellow;
+                }
+            }
         }
 
+        // Common Button Styles
         button,
         a {
             background: none;
             border: none;
-            padding: rem(10); // 기본 터치 영역 확보
+            padding: rem(10);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -56,9 +190,73 @@ header {
 
             i {
                 font-size: rem(24);
-                width: rem(20);
-                height: rem(20);
+                width: rem(24); // 아이콘 크기 24로 통일
+                height: rem(24);
                 color: $black;
+                // object-fit: contain; // mask img인 경우 불필요하지만 혹시 모를 img 태그 대비
+            }
+        }
+    }
+
+    // Global Navigation Bar (Scrollable Menu)
+    .header-gnb {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        background: $white;
+
+        // Hide Scrollbar
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+
+        .gnb-list {
+            display: flex;
+            padding-left: rem(12);
+            gap: rem(12); // li 간격 12px
+            min-width: 100%;
+            width: fit-content;
+            justify-content: center;
+
+            li {
+                flex-shrink: 0;
+
+                &:last-child {
+                    padding-right: rem(12);
+                }
+
+                a {
+                    display: block;
+                    padding: rem(10) 0; // a 태그 좌우 padding 제거
+                    font-size: rem(14);
+                    color: $gray-700;
+                    font-weight: $fw-semibold;
+                    text-decoration: none;
+                    position: relative;
+                }
+
+                &.active {
+                    a {
+                        color: $point-red;
+                        font-weight: $fw-bold;
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 100%;
+                            height: rem(2);
+                            background-color: $point-red;
+                        }
+                    }
+                }
             }
         }
     }

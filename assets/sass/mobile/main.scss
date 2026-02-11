@@ -14,11 +14,14 @@
 @import "components/modal-coupon";
 @import "components/modal-shipping-coupon";
 @import "components/modal-referral";
+@import "components/line-banner";
+@import "components/brand-intro";
+@import "components/popover";
 @import "components/checkbox";
 @import "components/cart_guide";
 @import "components/payment_summary";
 @import "components/tabs";
-@import "../pc/components/toast";
+@import "components/toast";
 
 // 페이지별 스타일
 @import "pages/cart";

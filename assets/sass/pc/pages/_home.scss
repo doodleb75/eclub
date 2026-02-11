@@ -216,9 +216,9 @@
                             height: 100%;
                             border: none;
                             text-align: center;
-                            font-size: rem(14);
-                            font-weight: $fw-medium;
-                            color: $gray-900;
+                            font-size: rem(16);
+                            font-weight: $fw-semibold;
+                            color: $gray-700;
                             outline: none;
                         }
                     }
@@ -308,8 +308,6 @@
 
                         .badge-type {
                             display: inline-block;
-                            background-color: $color-badge-ambient-bg;
-                            color: $color-badge-ambient-text;
                             font-size: rem(14);
                             font-weight: $fw-bold;
                             padding: rem(2) rem(8);
@@ -317,6 +315,11 @@
                             margin-right: rem(4);
                             vertical-align: middle;
                             transform: translateY(-1px);
+
+                            &.type-ambient {
+                                background-color: $color-badge-ambient-bg;
+                                color: $color-badge-ambient-text;
+                            }
 
                             &.type-cold {
                                 background-color: $color-badge-cold-bg;
@@ -911,7 +914,7 @@
             width: 100%;
             height: rem(200);
             margin-bottom: rem(40);
-            background: url('/assets/images/main/banners/original-banner-img.png') no-repeat center center;
+            background: url('../../images/main/banners/original-banner-img.png') no-repeat center center;
             background-size: cover;
             overflow: hidden;
 
@@ -982,10 +985,12 @@
 
         &.type-coffee {
             .exhibition-banner {
-                background: $bg-exhibition-coffee;
+                background: url('../../images/main/banners/horizon-banner02.png') no-repeat center center;
+                background-size: cover;
+                overflow: hidden;
 
                 &::before {
-                    display: none; // 배경이미지가 없으므로 그라데이션 제거
+                    // display: none; // 배경이미지가 없으므로 그라데이션 제거
                 }
             }
         }

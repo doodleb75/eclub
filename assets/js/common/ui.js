@@ -918,9 +918,12 @@ const Eclub = {
             const itemsCount = originalItems.length;
             if (itemsCount === 0) return;
 
+            // [수정] 반응형과 상관없이 항상 최대 개수(3개)만큼 클론 생성하여 오프셋 고정
+            const clonesCount = 3;
             let itemsPerPage = 1;
             let pageIndices = [];
             let totalPages = 0;
+            let uniquePageIndices = [];
 
             const updateLayout = () => {
                 const isMobile = window.matchMedia('(max-width: 768px)').matches;
@@ -934,44 +937,56 @@ const Eclub = {
                         pageIndices.push(i);
                     }
                 }
-                const uniquePageIndices = [...new Set(pageIndices)];
+                uniquePageIndices = [...new Set(pageIndices)];
                 totalPages = uniquePageIndices.length;
                 return uniquePageIndices;
             };
 
-            let uniquePageIndices = updateLayout();
+            // 초기 레이아웃 계산
+            updateLayout();
 
             // 도트 및 카운트 초기화
             if (totalEl) totalEl.innerText = itemsCount < 10 ? `0${itemsCount}` : itemsCount;
-            if (dotsContainer) {
-                dotsContainer.innerHTML = '';
-                originalItems.forEach((_, i) => {
-                    const dot = document.createElement('button');
-                    dot.type = 'button';
-                    dot.className = 'dot';
-                    dot.setAttribute('aria-label', `${i + 1}번 아이템`);
-                    dot.onclick = () => {
-                        const pageIdx = uniquePageIndices.findIndex(startIdx => i >= startIdx && i < startIdx + itemsPerPage);
-                        if (pageIdx !== -1) goToPage(pageIdx);
-                        resetAuto();
-                    };
-                    dotsContainer.appendChild(dot);
-                });
+            const drawDots = () => {
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    originalItems.forEach((_, i) => {
+                        const dot = document.createElement('button');
+                        dot.type = 'button';
+                        dot.className = 'dot';
+                        dot.setAttribute('aria-label', `${i + 1}번 아이템`);
+                        dot.onclick = () => {
+                            const pageIdx = uniquePageIndices.findIndex(startIdx => i >= startIdx && i < startIdx + itemsPerPage);
+                            if (pageIdx !== -1) goToPage(pageIdx);
+                            resetAuto();
+                        };
+                        dotsContainer.appendChild(dot);
+                    });
+                }
+            };
+            drawDots();
+
+            // [수정] 무한 루프를 위한 클로닝 (항상 clonesCount만큼 복제)
+            // 앞쪽에 붙일 클론 (마지막 아이템들)
+            const frontClones = [];
+            for (let i = 0; i < clonesCount; i++) {
+                const idx = (itemsCount - 1 - i + itemsCount) % itemsCount; // 뒤에서부터 가져옴
+                frontClones.unshift(originalItems[idx].cloneNode(true));
             }
 
-            // 무한 루프를 위한 클로닝 (양 끝에 노출 개수만큼 복제)
-            const firstClones = originalItems.slice(0, itemsPerPage).map(el => el.cloneNode(true));
-            const lastSlideStart = uniquePageIndices[uniquePageIndices.length - 1];
-            const lastClones = originalItems.slice(lastSlideStart, lastSlideStart + itemsPerPage).map(el => el.cloneNode(true));
+            // 뒤쪽에 붙일 클론 (처음 아이템들)
+            const backClones = [];
+            for (let i = 0; i < clonesCount; i++) {
+                backClones.push(originalItems[i % itemsCount].cloneNode(true));
+            }
 
-            // 복제본 삽입 시 클래스 추가해서 구분 (필요 시)
-            firstClones.forEach(el => el.classList.add('is-clone'));
-            lastClones.forEach(el => el.classList.add('is-clone'));
+            // 클론 클래스 추가
+            frontClones.forEach(el => el.classList.add('is-clone'));
+            backClones.forEach(el => el.classList.add('is-clone'));
 
-            // 뒤집어서 앞에 추가 (마지막 슬라이드 복제본)
-            lastClones.reverse().forEach(el => list.insertBefore(el, list.firstChild));
-            // 끝에 추가 (첫 슬라이드 복제본)
-            firstClones.forEach(el => list.appendChild(el));
+            // DOM 삽입
+            frontClones.forEach(el => list.insertBefore(el, list.firstChild));
+            backClones.forEach(el => list.appendChild(el));
 
             let currentPageIdx = 0;
             let isTransitioning = false;
@@ -983,7 +998,8 @@ const Eclub = {
                 const gap = parseFloat(style.gap) || 0;
                 const firstItem = list.querySelector(itemSelector);
                 if (!firstItem) return 0;
-                const itemWidth = firstItem.offsetWidth;
+                // [Fix] sub-pixel 렌더링 오차 해결을 위해 getBoundingClientRect 사용
+                const itemWidth = firstItem.getBoundingClientRect().width;
                 return -(itemIdxInWrapper * (itemWidth + gap));
             };
 
@@ -1015,45 +1031,77 @@ const Eclub = {
                 }
             };
 
+            const unlockTransition = () => {
+                isTransitioning = false;
+            };
+
             const goToPage = (pageIdx, animated = true) => {
                 if (isTransitioning && animated) return;
                 isTransitioning = true;
                 currentPageIdx = pageIdx;
 
-                const wrapperIdx = uniquePageIndices[currentPageIdx] + itemsPerPage; // 앞에 복제본 개수만큼 오프셋
+                // [수정] clonesCount가 항상 앞에 있으므로 offset으로 사용
+                const wrapperIdx = uniquePageIndices[currentPageIdx] + clonesCount;
                 const tx = getTranslateX(wrapperIdx);
 
-                list.style.transition = animated ? '' : 'none';
+                // [Fix] 명시적인 트랜지션 적용
+                list.style.transition = animated ? 'transform 0.3s ease-in-out' : 'none';
                 list.style.transform = `translateX(${tx}px)`;
 
                 updateUI();
 
                 if (animated) {
-                    list.addEventListener('transitionend', function handler() {
-                        list.removeEventListener('transitionend', handler);
-                        isTransitioning = false;
-                    }, { once: true });
+                    const transitionEndHandler = () => {
+                        list.removeEventListener('transitionend', transitionEndHandler);
+                        unlockTransition();
+                    };
+                    list.addEventListener('transitionend', transitionEndHandler, { once: true });
+
+                    // [Safety] 트랜지션 엔드 미발생 시 강제 해제
+                    setTimeout(() => {
+                        if (isTransitioning) {
+                            list.removeEventListener('transitionend', transitionEndHandler);
+                            unlockTransition();
+                        }
+                    }, 400);
                 } else {
-                    // transition: none일 때는 즉시 완료
-                    setTimeout(() => { isTransitioning = false; }, 10);
+                    setTimeout(unlockTransition, 10);
                 }
             };
 
             const next = () => {
                 if (isTransitioning) return;
+
                 if (currentPageIdx >= totalPages - 1) {
-                    // 마지막 페이지에서 다음 클릭 시: 끝의 복제본으로 이동 후 점프
+                    // 마지막 페이지에서 다음으로: 뒤쪽 클론 영역으로 이동 후 첫 페이지로 점프
                     isTransitioning = true;
-                    const wrapperIdx = itemsCount + itemsPerPage;
+
+                    // [수정] itemsCount + clonesCount 지점이 첫 번째 뒤쪽 클론(item 0)의 위치
+                    const wrapperIdx = clonesCount + itemsCount;
                     const tx = getTranslateX(wrapperIdx);
-                    list.style.transition = '';
+
+                    // [Fix] 점프 애니메이션 명시적 적용
+                    list.style.transition = 'transform 0.3s ease-in-out';
                     list.style.transform = `translateX(${tx}px)`;
 
-                    list.addEventListener('transitionend', function handler() {
-                        list.removeEventListener('transitionend', handler);
+                    const transitionEndHandler = () => {
+                        list.removeEventListener('transitionend', transitionEndHandler);
+                        // 애니메이션 종료 후 0페이지로 점프 (transition 없이)
                         currentPageIdx = 0;
                         goToPage(0, false);
-                    }, { once: true });
+                    };
+
+                    list.addEventListener('transitionend', transitionEndHandler, { once: true });
+
+                    // [Safety]
+                    setTimeout(() => {
+                        if (isTransitioning) {
+                            list.removeEventListener('transitionend', transitionEndHandler);
+                            currentPageIdx = 0;
+                            goToPage(0, false);
+                        }
+                    }, 400);
+
                 } else {
                     goToPage(currentPageIdx + 1);
                 }
@@ -1061,19 +1109,37 @@ const Eclub = {
 
             const prev = () => {
                 if (isTransitioning) return;
+
                 if (currentPageIdx <= 0) {
-                    // 첫 페이지에서 이전 클릭 시: 앞의 복제본으로 이동 후 점프
+                    // 첫 페이지에서 이전으로: 앞쪽 클론 영역으로 이동 후 마지막 페이지로 점프
                     isTransitioning = true;
-                    const wrapperIdx = 0;
+
+                    // [수정] 앞쪽 클론 영역에서 보여줄 위치: clonesCount - itemsPerPage
+                    const wrapperIdx = clonesCount - itemsPerPage;
                     const tx = getTranslateX(wrapperIdx);
-                    list.style.transition = '';
+
+                    // [Fix] 점프 애니메이션 명시적 적용
+                    list.style.transition = 'transform 0.3s ease-in-out';
                     list.style.transform = `translateX(${tx}px)`;
 
-                    list.addEventListener('transitionend', function handler() {
-                        list.removeEventListener('transitionend', handler);
+                    const transitionEndHandler = () => {
+                        list.removeEventListener('transitionend', transitionEndHandler);
+                        // 애니메이션 종료 후 마지막 페이지로 점프
                         currentPageIdx = totalPages - 1;
                         goToPage(totalPages - 1, false);
-                    }, { once: true });
+                    };
+
+                    list.addEventListener('transitionend', transitionEndHandler, { once: true });
+
+                    // [Safety]
+                    setTimeout(() => {
+                        if (isTransitioning) {
+                            list.removeEventListener('transitionend', transitionEndHandler);
+                            currentPageIdx = totalPages - 1;
+                            goToPage(totalPages - 1, false);
+                        }
+                    }, 400);
+
                 } else {
                     goToPage(currentPageIdx - 1);
                 }
@@ -1122,9 +1188,13 @@ const Eclub = {
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(() => {
-                    uniquePageIndices = updateLayout();
-                    // 현재 페이지 인덱스가 유효한지 확인 (모바일/PC 전환 시 다를 수 있음)
+                    const oldItemsPerPage = itemsPerPage;
+                    updateLayout(); // itemsPerPage, totalPages, uniquePageIndices 업데이트
+
+                    // 페이지 인덱스 보정
                     if (currentPageIdx >= totalPages) currentPageIdx = totalPages - 1;
+
+                    // 즉시 이동 (오프셋 재계산되므로 위치 맞춤)
                     goToPage(currentPageIdx, false);
                 }, 100);
             });
@@ -1494,6 +1564,98 @@ const Eclub = {
         }
     },
 
+    // 퀵메뉴 커스텀 스크롤
+    QuickMenuScroll: {
+        init() {
+            const container = document.querySelector('.quick-menu-container');
+            const thumb = document.querySelector('.quick-menu-section .scroll-thumb');
+            if (!container || !thumb) return;
+
+            let isDragging = false;
+            let startX = 0;
+            let startScrollLeft = 0;
+
+            const updateThumb = () => {
+                const scrollLeft = container.scrollLeft;
+                const scrollWidth = container.scrollWidth;
+                const clientWidth = container.clientWidth;
+
+                const maxScroll = scrollWidth - clientWidth;
+                if (maxScroll <= 0) {
+                    thumb.style.width = '0';
+                    return;
+                }
+
+                const scrollRatio = scrollLeft / maxScroll;
+                const track = thumb.parentElement;
+                const trackWidth = track.clientWidth;
+
+                // 썸네일 너비 계산
+                const thumbWidth = (clientWidth / scrollWidth) * trackWidth;
+                thumb.style.width = `${Math.max(thumbWidth, 20)}px`;
+
+                // 위치 이동
+                const maxThumbTranslate = trackWidth - thumb.offsetWidth;
+                const translateX = scrollRatio * maxThumbTranslate;
+                thumb.style.transform = `translateX(${translateX}px)`;
+            };
+
+            // 드래그 시작 // 드래그 시작
+            const onDragStart = (e) => {
+                isDragging = true;
+                startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+                startScrollLeft = container.scrollLeft;
+                thumb.classList.add('is-dragging');
+                document.body.style.userSelect = 'none';
+            };
+
+            // 드래그 중 // 드래그 움직임 처리
+            const onDragMove = (e) => {
+                if (!isDragging) return;
+
+                // 터치 기기에서 드래그 중 페이지 스크롤 방지
+                if (e.cancelable) e.preventDefault();
+
+                const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                const deltaX = currentX - startX;
+
+                const track = thumb.parentElement;
+                const trackWidth = track.clientWidth;
+                const maxThumbTranslate = trackWidth - thumb.offsetWidth;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+
+                if (maxThumbTranslate <= 0) return;
+
+                // 드래그 비율에 맞춰 컨테이너 스크롤 이동 // 썸네일 이동 비율에 따른 실제 스크롤 위치 계산
+                const scrollDelta = (deltaX / maxThumbTranslate) * maxScroll;
+                container.scrollLeft = startScrollLeft + scrollDelta;
+            };
+
+            // 드래그 종료 // 드래그 상태 해제
+            const onDragEnd = () => {
+                if (!isDragging) return;
+                isDragging = false;
+                thumb.classList.remove('is-dragging');
+                document.body.style.userSelect = '';
+            };
+
+            // 이벤트 바인딩 // 스크롤 바 드래그 이벤트 연결
+            thumb.addEventListener('mousedown', onDragStart);
+            thumb.addEventListener('touchstart', onDragStart, { passive: true });
+
+            window.addEventListener('mousemove', onDragMove, { passive: false });
+            window.addEventListener('touchmove', onDragMove, { passive: false });
+            window.addEventListener('mouseup', onDragEnd);
+            window.addEventListener('touchend', onDragEnd);
+
+            container.addEventListener('scroll', updateThumb);
+            window.addEventListener('resize', updateThumb);
+
+            // 초기 실행
+            updateThumb();
+        }
+    },
+
     // 전체 모듈 초기화
     async init() {
         // 비동기 로드와 무관한 Delegation 이벤트 우선 바인딩
@@ -1503,6 +1665,7 @@ const Eclub = {
         this.Favorites.init();
         this.Cart.init();
         this.InputHandler.init();
+        this.QuickMenuScroll.init();
 
         // 비동기 포함 나머지 초기화
         this.Slider.init(); // 슬라이더는 로더를 기다리지 않고 즉시 실행
