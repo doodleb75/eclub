@@ -475,6 +475,10 @@ const Eclub = {
             document.body.addEventListener('click', (e) => {
                 const btn = e.target.closest('.btn-cart');
                 if (!btn) return;
+
+                // 헤더의 장바구니 이동 버튼 등 실제 링크가 있는 A 태그는 스크립트 처리 제외
+                if (btn.tagName === 'A' && btn.getAttribute('href') !== 'javascript:void(0);') return;
+
                 e.preventDefault();
                 this.add(btn);
             });
@@ -966,7 +970,6 @@ const Eclub = {
             };
             drawDots();
 
-            // [수정] 무한 루프를 위한 클로닝 (항상 clonesCount만큼 복제)
             // 앞쪽에 붙일 클론 (마지막 아이템들)
             const frontClones = [];
             for (let i = 0; i < clonesCount; i++) {
@@ -1147,7 +1150,7 @@ const Eclub = {
 
             const startAuto = () => {
                 if (isPaused || autoTimer) return;
-                autoTimer = setInterval(next, 5000);
+                autoTimer = setInterval(next, 4000);
             };
 
             const stopAuto = () => {
@@ -1182,6 +1185,86 @@ const Eclub = {
 
             list.addEventListener('mouseenter', stopAuto);
             list.addEventListener('mouseleave', () => !isPaused && startAuto());
+
+            // 드래그/스와이프 기능 (Drag & Swipe)
+            let startX = 0;
+            let dragDiff = 0;
+            let isDragging = false;
+            let isSwiped = false;
+            let initialTx = 0;
+
+            const onDragStart = (e) => {
+                // 모바일인 경우에만 드래그 활성화
+                const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                if (!isMobile || isTransitioning) return;
+
+                isDragging = true;
+                isSwiped = false;
+                startX = (e.type.includes('touch')) ? e.touches[0].pageX : e.pageX;
+                dragDiff = 0;
+
+                // 드래그 시작 시점의 위치 계산
+                const wrapperIdx = uniquePageIndices[currentPageIdx] + clonesCount;
+                initialTx = getTranslateX(wrapperIdx);
+
+                list.style.transition = 'none';
+                stopAuto();
+
+                window.addEventListener('mousemove', onDragMove, { passive: false });
+                window.addEventListener('touchmove', onDragMove, { passive: false });
+                window.addEventListener('mouseup', onDragEnd);
+                window.addEventListener('touchend', onDragEnd);
+            };
+
+            const onDragMove = (e) => {
+                if (!isDragging) return;
+                const currentX = (e.type.includes('touch')) ? e.touches[0].pageX : e.pageX;
+                dragDiff = currentX - startX;
+
+                if (Math.abs(dragDiff) > 5) {
+                    isSwiped = true;
+                    if (e.cancelable) e.preventDefault(); // 가로 스와이프 시 세로 스크롤 방지
+                }
+
+                // 실시간 위치 반영
+                list.style.transform = `translateX(${initialTx + dragDiff}px)`;
+            };
+
+            const onDragEnd = () => {
+                if (!isDragging) return;
+                isDragging = false;
+
+                window.removeEventListener('mousemove', onDragMove);
+                window.removeEventListener('touchmove', onDragMove);
+                window.removeEventListener('mouseup', onDragEnd);
+                window.removeEventListener('touchend', onDragEnd);
+
+                list.style.transition = 'transform 0.3s ease-in-out';
+
+                const threshold = 50; // 스와이프 판정 임계값
+                if (dragDiff < -threshold) {
+                    next();
+                } else if (dragDiff > threshold) {
+                    prev();
+                } else {
+                    goToPage(currentPageIdx);
+                }
+
+                resetAuto();
+                // 클릭 이벤트 전파 방지를 위해 약간의 지연 후 상태 해제
+                setTimeout(() => { isSwiped = false; }, 50);
+            };
+
+            list.addEventListener('mousedown', onDragStart);
+            list.addEventListener('touchstart', onDragStart, { passive: false });
+
+            // 드래그 완료 후 의도치 않은 링크 클릭 방지
+            list.addEventListener('click', (e) => {
+                if (isSwiped) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
 
             // 리사이즈 시 위치 재조정
             let resizeTimer = null;
@@ -1655,6 +1738,7 @@ const Eclub = {
             updateThumb();
         }
     },
+
 
     // 전체 모듈 초기화
     async init() {

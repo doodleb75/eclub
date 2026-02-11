@@ -799,6 +799,7 @@ header .header-inner .header-right button .badge {
   justify-content: center;
   line-height: 1;
   z-index: 1;
+  min-width: 1.375rem;
 }
 header .header-inner .header-right a .dot,
 header .header-inner .header-right button .dot {
@@ -4522,6 +4523,12 @@ main {
   opacity: 1;
   transform: translateY(0);
 }
+.home-section .product-list[data-tab-content] {
+  display: none;
+}
+.home-section .product-list[data-tab-content].active {
+  display: grid;
+}
 .home-section .product-list.is-fading {
   opacity: 0;
   transform: translateY(1.25rem);
@@ -4666,11 +4673,21 @@ main {
 }
 .home-section .product-list .product-item .control-bar .action-btns button i {
   background-color: #666666;
-  width: 1rem;
-  height: 1rem;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+.home-section .product-list .product-item .control-bar .action-btns button i.icon-heart-main {
+  position: relative;
+  top: 0.03125rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 .home-section .product-list .product-item .control-bar .action-btns button.active i {
   background-color: #ff5447;
+}
+.home-section .product-list .product-item .control-bar .action-btns button.active i.icon-heart-main, .home-section .product-list .product-item .control-bar .action-btns button.active i.icon-heart-fill, .home-section .product-list .product-item .control-bar .action-btns .cart-item .item-info-group .item-title-row .info-actions button.btn-wish.active i, .cart-item .item-info-group .item-title-row .info-actions .home-section .product-list .product-item .control-bar .action-btns button.btn-wish.active i {
+  width: 1.3125rem;
+  height: 1.3125rem;
 }
 .home-section .product-list .product-item .prod-info .coupon-date {
   font-size: 0.625rem;
