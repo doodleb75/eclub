@@ -1,11 +1,25 @@
 // Eclub 공통 UI 스크립트
 const Eclub = {
+    // 상수 정의
+    Const: {
+        ANIMATION_DURATION: 300,
+        SLIDER_AUTO_INTERVAL: 4000,
+        TOAST_DURATION: 2500,
+        ZOOM: {
+            MIN: 80,
+            MAX: 120,
+            STEP: 10,
+            DEFAULT: 100
+        }
+    },
+
     // 현재 적용된 줌 배율 반환
     getZoomScale() {
         const zoom = document.body.style.zoom;
         if (!zoom) return 1;
         return parseFloat(zoom) / 100;
     },
+
     // 토스트 알림
     Toast: {
         container: null,
@@ -20,7 +34,7 @@ const Eclub = {
             }
         },
         // 토스트 표시
-        show({ message, trigger, type = 'success', duration = 2500, position = 'bottom-center' }) {
+        show({ message, trigger, type = 'success', duration = Eclub.Const.TOAST_DURATION, position = 'bottom-center' }) {
             this.init();
             const toast = document.createElement('div');
             toast.className = `toast-item type-${type}`;
@@ -174,7 +188,7 @@ const Eclub = {
                     if (top < safeMargin + scrollY) top = safeMargin + scrollY;
                     if (top + toastHeight > documentHeight - safeMargin) top = documentHeight - toastHeight - safeMargin;
                 } else {
-                    // 트리거도 없고 고정 위치도 아닐 때 기본값 (브라우저 상단 중앙 고정처럼 동작)
+                    // 트리거도 없고 고정 위치도 아닐 때 기본값
                     const winW = window.innerWidth / scale;
                     left = (winW / 2) - (toastWidth / 2);
                     top = margin;
@@ -189,14 +203,14 @@ const Eclub = {
             // 자동 제거
             setTimeout(() => {
                 toast.classList.remove('active');
-                setTimeout(() => toast.remove(), 300);
+                setTimeout(() => toast.remove(), Eclub.Const.ANIMATION_DURATION);
             }, duration);
         }
     },
 
     // 클립보드 복사
     Clipboard: {
-        // 복사 버튼 이벤트 바인딩
+        // 복사 버튼 이벤트
         init() {
             const copyButtons = document.querySelectorAll('.btn-copy');
             copyButtons.forEach(btn => {
@@ -210,7 +224,7 @@ const Eclub = {
                 });
             });
         },
-        // 클립보드 실제 복사 로직
+        // 텍스트 복사 실행
         copyToClipboard(text, trigger) {
             if (!navigator.clipboard) {
                 const textArea = document.createElement("textarea");
@@ -241,21 +255,21 @@ const Eclub = {
     Toggle: {
         // 트리거 이벤트 바인딩
         init() {
-            const triggers = document.querySelectorAll('[data-toggle="slide"]');
-            triggers.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetSelector = btn.dataset.target;
-                    const scopeSelector = btn.dataset.scope;
-                    let target = null;
-                    if (scopeSelector) {
-                        const scope = btn.closest(scopeSelector);
-                        if (scope) target = scope.querySelector(targetSelector);
-                    } else {
-                        target = document.querySelector(targetSelector);
-                    }
-                    if (target) this.toggle(btn, target);
-                });
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-toggle="slide"]');
+                if (!btn) return;
+
+                e.preventDefault();
+                const targetSelector = btn.dataset.target;
+                const scopeSelector = btn.dataset.scope;
+                let target = null;
+                if (scopeSelector) {
+                    const scope = btn.closest(scopeSelector);
+                    if (scope) target = scope.querySelector(targetSelector);
+                } else {
+                    target = document.querySelector(targetSelector);
+                }
+                if (target) this.toggle(btn, target);
             });
         },
         // 토글 실행
@@ -263,7 +277,7 @@ const Eclub = {
             const isActive = btn.classList.contains('active');
             if (isActive) {
                 btn.classList.remove('active');
-                this.slideUp(target, 300, () => target.classList.remove('active'));
+                this.slideUp(target, Eclub.Const.ANIMATION_DURATION, () => target.classList.remove('active'));
             } else {
                 btn.classList.add('active');
                 target.classList.add('active');
@@ -271,7 +285,7 @@ const Eclub = {
             }
         },
         // 슬라이드 업 (닫기)
-        slideUp(element, duration = 300, callback) {
+        slideUp(element, duration = Eclub.Const.ANIMATION_DURATION, callback) {
             element.style.height = element.offsetHeight + 'px';
             element.offsetHeight; // 리플로우 강제
             element.style.transitionProperty = 'height, margin, padding';
@@ -298,7 +312,7 @@ const Eclub = {
             }, duration);
         },
         // 슬라이드 다운 (열기)
-        slideDown(element, duration = 300, callback) {
+        slideDown(element, duration = Eclub.Const.ANIMATION_DURATION, callback) {
             element.style.removeProperty('display');
             let display = window.getComputedStyle(element).display;
             if (display === 'none') display = 'block';
@@ -332,35 +346,37 @@ const Eclub = {
 
     // 브라우저 줌 (80~120%)
     BrowserZoom: {
-        zoomLevel: 100, // 기본값
-        min: 80,        // 최소 80%
-        max: 120,       // 최대 120%
-        step: 10,       // 10% 단위 증감
+        zoomLevel: 100, // 기본값은 Const.DEFAULT로 설정되나 초기화 시 덮어씀
 
         init() {
-            const container = document.querySelector('.browser-zoom');
-            if (!container) return;
+            // Const 값 참조
+            this.min = Eclub.Const.ZOOM.MIN;
+            this.max = Eclub.Const.ZOOM.MAX;
+            this.step = Eclub.Const.ZOOM.STEP;
+            this.zoomLevel = Eclub.Const.ZOOM.DEFAULT;
 
-            // 로컬스토리지 저장된 값 확인
             const savedZoom = localStorage.getItem('eclub_zoom_level');
             if (savedZoom) {
                 this.zoomLevel = parseInt(savedZoom, 10);
             }
 
+            // 페이지 로드 시 줌 적용 (컨테이너 없어도 적용)
             this.applyZoom();
-            this.bindEvents(container);
-        },
 
-        bindEvents(container) {
-            const btnIn = container.querySelector('.btn-zoom-in');
-            const btnOut = container.querySelector('.btn-zoom-out');
+            // 이벤트 위임
+            document.addEventListener('click', (e) => {
+                const container = e.target.closest('.browser-zoom');
+                if (!container) return; // browser-zoom 내부가 아니면 무시
 
-            if (btnIn) {
-                btnIn.addEventListener('click', () => this.changeZoom(this.step));
-            }
-            if (btnOut) {
-                btnOut.addEventListener('click', () => this.changeZoom(-this.step));
-            }
+                const btnIn = e.target.closest('.btn-zoom-in');
+                const btnOut = e.target.closest('.btn-zoom-out');
+
+                if (btnIn) {
+                    this.changeZoom(this.step);
+                } else if (btnOut) {
+                    this.changeZoom(-this.step);
+                }
+            });
         },
 
         changeZoom(delta) {
@@ -374,7 +390,6 @@ const Eclub = {
 
         applyZoom() {
             document.body.style.zoom = `${this.zoomLevel}%`;
-            // 텍스트 업데이트
             const display = document.querySelector('.browser-zoom .zoom-value');
             if (display) {
                 display.textContent = `${this.zoomLevel}%`;
@@ -384,9 +399,9 @@ const Eclub = {
 
     // 탭 시스템
     Tabs: {
-        // 탭 트리거 초기화 (Event Delegation)
+        // 탭 트리거 초기화
         init() {
-            document.removeEventListener('click', this.handleTabClick); // 중복 방지
+            document.removeEventListener('click', this.handleTabClick);
             this.handleTabClick = (e) => {
                 const trigger = e.target.closest('[data-tab-trigger]');
                 if (!trigger) return;
@@ -415,7 +430,6 @@ const Eclub = {
             });
             document.dispatchEvent(new CustomEvent('tabChanged', { detail: { group, targetId } }));
 
-            // 탭 변경 시 카테고리 필터 초기화
             if (group === 'best-period') {
                 const activeAllBtn = document.querySelector('.category-tabs button[data-tab="all"]');
                 if (activeAllBtn) {
@@ -428,7 +442,6 @@ const Eclub = {
     // 수량 조절 버튼
     Quantity: {
         init() {
-            // 버튼 클릭 핸들러
             document.addEventListener('click', (e) => {
                 const btn = e.target.closest('.qty-box button, .qty-control button');
                 if (!btn) return;
@@ -439,7 +452,7 @@ const Eclub = {
                 e.preventDefault();
                 let currentVal = parseInt(input.value, 10) || 0;
                 const minVal = input.hasAttribute('min') ? parseInt(input.getAttribute('min'), 10) : 0;
-                // 감소/증가 분기
+
                 if (btn === buttons[0]) {
                     if (currentVal > minVal) {
                         input.value = currentVal - 1;
@@ -458,7 +471,7 @@ const Eclub = {
                     input.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             });
-            // 숫자 직접 입력 제어
+
             document.addEventListener('input', (e) => {
                 const input = e.target;
                 if (!input.closest('.qty-box, .qty-control')) return;
@@ -476,7 +489,6 @@ const Eclub = {
                 const btn = e.target.closest('.btn-cart');
                 if (!btn) return;
 
-                // 헤더의 장바구니 이동 버튼 등 실제 링크가 있는 A 태그는 스크립트 처리 제외
                 if (btn.tagName === 'A' && btn.getAttribute('href') !== 'javascript:void(0);') return;
 
                 e.preventDefault();
@@ -484,7 +496,6 @@ const Eclub = {
             });
         },
         add(btn) {
-            // TODO: 실제 장바구니 담기 API 연동 필요
             const imageBox = btn.closest('.product-item')?.querySelector('.image-box');
             const container = btn.closest('.info-actions, .action-btns');
             const resolvedTrigger = imageBox || container || btn;
@@ -507,7 +518,6 @@ const Eclub = {
                 this.toggle(btn);
             });
         },
-        // 찜 상태 토글
         toggle(btn) {
             const icon = btn.querySelector('i');
             const isActive = btn.classList.contains('active');
@@ -518,17 +528,12 @@ const Eclub = {
                     if (icon.classList.contains('icon-heart-fill')) {
                         icon.classList.remove('icon-heart-fill');
 
-                        // 원래 아이콘 복구 (main or normal)
                         if (btn.classList.contains('btn-heart')) {
                             icon.classList.add('icon-heart-main');
-                            // 메인 페이지 아이콘 복구 시 style 변경 필요할 수 있음 (SCSS에서 처리)
                         } else {
                             icon.classList.add('icon-heart');
                         }
                     }
-                    // 이미 main이었다면? (toggle logic assumes swap)
-                    // 현재 active 상태에서 click -> inactive
-                    // active 상태일 때는 heart-fill이 되어 있어야 함.
                 }
                 message = "관심상품에서 해제되었습니다.";
             } else {
@@ -539,7 +544,7 @@ const Eclub = {
                         icon.classList.add('icon-heart-fill');
                     } else if (icon.classList.contains('icon-heart-main')) {
                         icon.classList.remove('icon-heart-main');
-                        icon.classList.add('icon-heart-fill'); // 메인에서도 fill 아이콘 사용
+                        icon.classList.add('icon-heart-fill');
                     }
                 }
                 message = "관심상품에 저장되었습니다.";
@@ -581,7 +586,6 @@ const Eclub = {
             sheet.classList.add('is-expanded');
             body.style.maxHeight = body.scrollHeight + 'px';
 
-            // 만약 오버레이가 필요하다면 여기서 처리
             const overlay = document.querySelector('.sheet-overlay');
             if (overlay) overlay.classList.add('is-visible');
             document.body.classList.add('no-scroll');
@@ -605,13 +609,11 @@ const Eclub = {
             if (!masterCheckbox) return;
             const groups = container.querySelectorAll('.cart-group');
 
-            // 전체 선택 체크박스
             masterCheckbox.addEventListener('change', (e) => {
                 this.toggleAll(e.target.checked, groups);
                 this.updateDeleteButtonState();
             });
 
-            // 그룹 및 개별 체크박스
             groups.forEach(group => {
                 const groupHeaderCheckbox = group.querySelector('.group-header .checkbox-container input[type="checkbox"]');
                 const itemCheckboxes = group.querySelectorAll('.cart-item .item-check input[type="checkbox"]');
@@ -631,7 +633,6 @@ const Eclub = {
                 });
             });
 
-            // 선택 삭제 버튼 모달 연결
             const deleteSelectedBtn = document.querySelector('.btn-delete-selected');
             if (deleteSelectedBtn) {
                 deleteSelectedBtn.addEventListener('click', () => {
@@ -642,10 +643,8 @@ const Eclub = {
                 });
             }
 
-            // 초기 버튼 상태 체크
             this.updateDeleteButtonState();
         },
-        // 전체 체크박스 토글
         toggleAll(isChecked, groups) {
             groups.forEach(group => {
                 const groupHeaderCheckbox = group.querySelector('.group-header .checkbox-container input[type="checkbox"]');
@@ -654,16 +653,13 @@ const Eclub = {
                 itemCheckboxes.forEach(cb => cb.checked = isChecked);
             });
         },
-        // 그룹 내 모든 아이템 토글
         toggleGroupItems(isChecked, itemCheckboxes) {
             itemCheckboxes.forEach(cb => cb.checked = isChecked);
         },
-        // 그룹 헤더 상태 업데이트
         updateGroupHeaderState(groupHeaderCheckbox, itemCheckboxes) {
             if (itemCheckboxes.length === 0) return;
             groupHeaderCheckbox.checked = Array.from(itemCheckboxes).every(cb => cb.checked);
         },
-        // 최상단 전체 선택 상태 업데이트
         updateMasterState(masterCheckbox) {
             const allItemCheckboxes = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]');
             if (allItemCheckboxes.length === 0) {
@@ -672,10 +668,8 @@ const Eclub = {
             }
             masterCheckbox.checked = Array.from(allItemCheckboxes).every(cb => cb.checked);
         },
-        // 선택삭제 버튼 상태 업데이트
         updateDeleteButtonState() {
             const btns = document.querySelectorAll('.cart-select-bar .action-btns .btn-select-action');
-            // '선택삭제' 텍스트를 가진 버튼 찾기
             const targetBtn = Array.from(btns).find(b => b.textContent.trim() === '선택삭제');
 
             if (targetBtn) {
@@ -692,66 +686,53 @@ const Eclub = {
     // 카테고리 탭 정렬/필터링
     CategorySort: {
         init() {
-            // .category-tabs 내부의 버튼에 클릭 이벤트 바인딩
-            // data-tab 속성이 있는 버튼만 대상
-            const tabButtons = document.querySelectorAll('.category-tabs button[data-tab]');
+            document.addEventListener('click', (e) => {
+                const targetBtn = e.target.closest('.category-tabs button[data-tab]');
+                if (!targetBtn) return;
 
-            if (!tabButtons.length) return;
+                const category = targetBtn.dataset.tab;
+                const tabListWrapper = targetBtn.closest('.category-tabs-wrap');
 
-            tabButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const targetBtn = e.currentTarget;
-                    const category = targetBtn.dataset.tab;
-                    const tabListWrapper = targetBtn.closest('.category-tabs-wrap');
+                const tabContainer = targetBtn.closest('.category-tabs');
+                if (tabContainer) {
+                    const currentActive = tabContainer.querySelector('li.active');
+                    if (currentActive) currentActive.classList.remove('active');
+                    targetBtn.parentElement.classList.add('active');
+                }
 
-                    // 탭 활성화 상태 변경
-                    const tabContainer = targetBtn.closest('.category-tabs');
-                    if (tabContainer) {
-                        const currentActive = tabContainer.querySelector('li.active');
-                        if (currentActive) currentActive.classList.remove('active');
-                        targetBtn.parentElement.classList.add('active');
-                    }
+                if (tabListWrapper) {
+                    const productLists = [];
+                    let sibling = tabListWrapper.nextElementSibling;
 
-                    // 연관된 product-list 모두 찾기 (탭 전환으로 여러 개가 존재할 수 있음)
-                    if (tabListWrapper) {
-                        const productLists = [];
-                        let sibling = tabListWrapper.nextElementSibling;
-
-                        // 형제 요소 중 모든 .product-list 수집
-                        while (sibling) {
-                            if (sibling.classList.contains('product-list')) {
-                                productLists.push(sibling);
-                            }
-                            sibling = sibling.nextElementSibling;
+                    while (sibling) {
+                        if (sibling.classList.contains('product-list')) {
+                            productLists.push(sibling);
                         }
-
-                        productLists.forEach(productList => {
-                            // 페이드 아웃 시작
-                            productList.classList.add('is-fading');
-
-                            // 트랜지션 시간(300ms) 만큼 대기 후 필터링 적용
-                            setTimeout(() => {
-                                const items = productList.querySelectorAll('.product-item');
-                                items.forEach(item => {
-                                    const itemCategory = item.dataset.category || '';
-                                    const categories = itemCategory.split(/\s+/); // 공백으로 분리
-
-                                    // 전체보기(all)이거나 카테고리가 포함되어 있으면 표시
-                                    if (category === 'all' || categories.includes(category)) {
-                                        item.style.display = ''; // block/flex 등 원래 스타일 복구
-                                    } else {
-                                        item.style.display = 'none';
-                                    }
-                                });
-
-                                // 필터링 완료 후, DOM 업데이트를 위해 잠시 지연 후 페이드 인
-                                requestAnimationFrame(() => {
-                                    productList.classList.remove('is-fading');
-                                });
-                            }, 300);
-                        });
+                        sibling = sibling.nextElementSibling;
                     }
-                });
+
+                    productLists.forEach(productList => {
+                        productList.classList.add('is-fading');
+
+                        setTimeout(() => {
+                            const items = productList.querySelectorAll('.product-item');
+                            items.forEach(item => {
+                                const itemCategory = item.dataset.category || '';
+                                const categories = itemCategory.split(/\s+/);
+
+                                if (category === 'all' || categories.includes(category)) {
+                                    item.style.display = '';
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
+
+                            requestAnimationFrame(() => {
+                                productList.classList.remove('is-fading');
+                            });
+                        }, Eclub.Const.ANIMATION_DURATION);
+                    });
+                }
             });
         }
     },
@@ -770,19 +751,13 @@ const Eclub = {
                 if (items.length <= limit) {
                     if (moreWrap) moreWrap.style.display = 'none';
                 } else {
-                    // Set initial collapsed height
                     this.setCollapsedHeight(container, limit);
                     container.classList.add('js-initialized');
 
-                    // Add listener for resize
                     window.addEventListener('resize', () => {
                         if (!container.classList.contains('active')) {
                             this.setCollapsedHeight(container, limit);
                         } else {
-                            // Update expanded height if needed
-                            // container.style.maxHeight = container.scrollHeight + 'px';
-                            // Usually max-height: none is better for expanded, but for transition back we need specific height.
-                            // For now, let's keep it simple.
                             container.style.maxHeight = container.scrollHeight + 'px';
                         }
                     });
@@ -818,7 +793,6 @@ const Eclub = {
             const items = container.querySelectorAll('.product-item');
             if (items.length < limit) return;
 
-            // Get the element at index limit-1 (0-based)
             const lastVisibleItem = items[limit - 1];
             if (lastVisibleItem) {
                 const bottom = lastVisibleItem.offsetTop + lastVisibleItem.offsetHeight;
@@ -831,21 +805,14 @@ const Eclub = {
             const isExpanded = container.classList.contains('active');
             const span = btn.querySelector('span');
 
-            // Start transition via class
-            // container needs transition property in CSS
-
             if (isExpanded) {
-                // Close
                 container.classList.remove('active');
                 this.setCollapsedHeight(container, limit);
 
                 if (span) span.textContent = '상품 더보기';
                 btn.classList.remove('active');
-
             } else {
-                // Open
                 container.classList.add('active');
-                // Set max-height to full height to allow transition
                 container.style.maxHeight = container.scrollHeight + 'px';
 
                 if (span) span.textContent = '상품닫기';
@@ -905,7 +872,7 @@ const Eclub = {
             if (nextBtn) nextBtn.onclick = () => this.scroll(list, 'right', itemsPerPage);
         },
 
-        // 메인 비주얼 슬라이더 초기화 (3개씩, transform 방식, 무한 루프)
+        // 메인 비주얼 슬라이더 초기화
         initMainSlider(list) {
             const section = list.closest('.main-visual');
             if (!section) return;
@@ -922,7 +889,7 @@ const Eclub = {
             const itemsCount = originalItems.length;
             if (itemsCount === 0) return;
 
-            // [수정] 반응형과 상관없이 항상 최대 개수(3개)만큼 클론 생성하여 오프셋 고정
+            // 반응형 무관 3개 클론 생성
             const clonesCount = 3;
             let itemsPerPage = 1;
             let pageIndices = [];
@@ -946,7 +913,6 @@ const Eclub = {
                 return uniquePageIndices;
             };
 
-            // 초기 레이아웃 계산
             updateLayout();
 
             // 도트 및 카운트 초기화
@@ -970,24 +936,21 @@ const Eclub = {
             };
             drawDots();
 
-            // 앞쪽에 붙일 클론 (마지막 아이템들)
+            // 클론 생성
             const frontClones = [];
             for (let i = 0; i < clonesCount; i++) {
-                const idx = (itemsCount - 1 - i + itemsCount) % itemsCount; // 뒤에서부터 가져옴
+                const idx = (itemsCount - 1 - i + itemsCount) % itemsCount;
                 frontClones.unshift(originalItems[idx].cloneNode(true));
             }
 
-            // 뒤쪽에 붙일 클론 (처음 아이템들)
             const backClones = [];
             for (let i = 0; i < clonesCount; i++) {
                 backClones.push(originalItems[i % itemsCount].cloneNode(true));
             }
 
-            // 클론 클래스 추가
             frontClones.forEach(el => el.classList.add('is-clone'));
             backClones.forEach(el => el.classList.add('is-clone'));
 
-            // DOM 삽입
             frontClones.forEach(el => list.insertBefore(el, list.firstChild));
             backClones.forEach(el => list.appendChild(el));
 
@@ -999,9 +962,16 @@ const Eclub = {
             const getTranslateX = (itemIdxInWrapper) => {
                 const style = window.getComputedStyle(list);
                 const gap = parseFloat(style.gap) || 0;
+
+                // 모바일(1개씩 보기) 등 itemsPerPage가 1일 때 계산 오차 방지를 위해 컨테이너 너비 사용
+                if (itemsPerPage === 1) {
+                    const containerWidth = list.clientWidth;
+                    return -(itemIdxInWrapper * (containerWidth + gap));
+                }
+
                 const firstItem = list.querySelector(itemSelector);
                 if (!firstItem) return 0;
-                // [Fix] sub-pixel 렌더링 오차 해결을 위해 getBoundingClientRect 사용
+                // 픽셀 오차 보정
                 const itemWidth = firstItem.getBoundingClientRect().width;
                 return -(itemIdxInWrapper * (itemWidth + gap));
             };
@@ -1020,8 +990,6 @@ const Eclub = {
                     let activeStart = realStartIdx;
                     let activeCount = itemsPerPage;
 
-                    // 마지막 페이지이고 나머지가 있을 경우 (예: 17개 아이템, 3개씩 보기 -> 나머지 2개)
-                    // 나머지만큼만 마지막 도트 활성화
                     if (isLastPage && remainder > 0) {
                         activeStart = itemsCount - remainder;
                         activeCount = remainder;
@@ -1043,12 +1011,12 @@ const Eclub = {
                 isTransitioning = true;
                 currentPageIdx = pageIdx;
 
-                // [수정] clonesCount가 항상 앞에 있으므로 offset으로 사용
+                // 클론 오프셋 적용
                 const wrapperIdx = uniquePageIndices[currentPageIdx] + clonesCount;
                 const tx = getTranslateX(wrapperIdx);
 
-                // [Fix] 명시적인 트랜지션 적용
-                list.style.transition = animated ? 'transform 0.3s ease-in-out' : 'none';
+                // 트랜지션 강제 적용
+                list.style.transition = animated ? `transform ${Eclub.Const.ANIMATION_DURATION}ms ease-in-out` : 'none';
                 list.style.transform = `translateX(${tx}px)`;
 
                 updateUI();
@@ -1060,13 +1028,13 @@ const Eclub = {
                     };
                     list.addEventListener('transitionend', transitionEndHandler, { once: true });
 
-                    // [Safety] 트랜지션 엔드 미발생 시 강제 해제
+                    // 트랜지션 엔드 미발생 시 강제 해제
                     setTimeout(() => {
                         if (isTransitioning) {
                             list.removeEventListener('transitionend', transitionEndHandler);
                             unlockTransition();
                         }
-                    }, 400);
+                    }, Eclub.Const.ANIMATION_DURATION + 100);
                 } else {
                     setTimeout(unlockTransition, 10);
                 }
@@ -1076,34 +1044,29 @@ const Eclub = {
                 if (isTransitioning) return;
 
                 if (currentPageIdx >= totalPages - 1) {
-                    // 마지막 페이지에서 다음으로: 뒤쪽 클론 영역으로 이동 후 첫 페이지로 점프
                     isTransitioning = true;
-
-                    // [수정] itemsCount + clonesCount 지점이 첫 번째 뒤쪽 클론(item 0)의 위치
+                    // 마지막 페이지에서 이동
                     const wrapperIdx = clonesCount + itemsCount;
                     const tx = getTranslateX(wrapperIdx);
 
-                    // [Fix] 점프 애니메이션 명시적 적용
-                    list.style.transition = 'transform 0.3s ease-in-out';
+                    list.style.transition = `transform ${Eclub.Const.ANIMATION_DURATION}ms ease-in-out`;
                     list.style.transform = `translateX(${tx}px)`;
 
                     const transitionEndHandler = () => {
                         list.removeEventListener('transitionend', transitionEndHandler);
-                        // 애니메이션 종료 후 0페이지로 점프 (transition 없이)
                         currentPageIdx = 0;
                         goToPage(0, false);
                     };
 
                     list.addEventListener('transitionend', transitionEndHandler, { once: true });
 
-                    // [Safety]
                     setTimeout(() => {
                         if (isTransitioning) {
                             list.removeEventListener('transitionend', transitionEndHandler);
                             currentPageIdx = 0;
                             goToPage(0, false);
                         }
-                    }, 400);
+                    }, Eclub.Const.ANIMATION_DURATION + 100);
 
                 } else {
                     goToPage(currentPageIdx + 1);
@@ -1114,34 +1077,29 @@ const Eclub = {
                 if (isTransitioning) return;
 
                 if (currentPageIdx <= 0) {
-                    // 첫 페이지에서 이전으로: 앞쪽 클론 영역으로 이동 후 마지막 페이지로 점프
                     isTransitioning = true;
-
-                    // [수정] 앞쪽 클론 영역에서 보여줄 위치: clonesCount - itemsPerPage
+                    // 첫 페이지에서 이동
                     const wrapperIdx = clonesCount - itemsPerPage;
                     const tx = getTranslateX(wrapperIdx);
 
-                    // [Fix] 점프 애니메이션 명시적 적용
-                    list.style.transition = 'transform 0.3s ease-in-out';
+                    list.style.transition = `transform ${Eclub.Const.ANIMATION_DURATION}ms ease-in-out`;
                     list.style.transform = `translateX(${tx}px)`;
 
                     const transitionEndHandler = () => {
                         list.removeEventListener('transitionend', transitionEndHandler);
-                        // 애니메이션 종료 후 마지막 페이지로 점프
                         currentPageIdx = totalPages - 1;
                         goToPage(totalPages - 1, false);
                     };
 
                     list.addEventListener('transitionend', transitionEndHandler, { once: true });
 
-                    // [Safety]
                     setTimeout(() => {
                         if (isTransitioning) {
                             list.removeEventListener('transitionend', transitionEndHandler);
                             currentPageIdx = totalPages - 1;
                             goToPage(totalPages - 1, false);
                         }
-                    }, 400);
+                    }, Eclub.Const.ANIMATION_DURATION + 100);
 
                 } else {
                     goToPage(currentPageIdx - 1);
@@ -1150,7 +1108,7 @@ const Eclub = {
 
             const startAuto = () => {
                 if (isPaused || autoTimer) return;
-                autoTimer = setInterval(next, 4000);
+                autoTimer = setInterval(next, Eclub.Const.SLIDER_AUTO_INTERVAL);
             };
 
             const stopAuto = () => {
@@ -1186,7 +1144,7 @@ const Eclub = {
             list.addEventListener('mouseenter', stopAuto);
             list.addEventListener('mouseleave', () => !isPaused && startAuto());
 
-            // 드래그/스와이프 기능 (Drag & Swipe)
+            // 드래그/스와이프 기능
             let startX = 0;
             let dragDiff = 0;
             let isDragging = false;
@@ -1194,7 +1152,7 @@ const Eclub = {
             let initialTx = 0;
 
             const onDragStart = (e) => {
-                // 모바일인 경우에만 드래그 활성화
+                // 모바일일때만 드래그 활성화
                 const isMobile = window.matchMedia('(max-width: 768px)').matches;
                 if (!isMobile || isTransitioning) return;
 
@@ -1203,7 +1161,6 @@ const Eclub = {
                 startX = (e.type.includes('touch')) ? e.touches[0].pageX : e.pageX;
                 dragDiff = 0;
 
-                // 드래그 시작 시점의 위치 계산
                 const wrapperIdx = uniquePageIndices[currentPageIdx] + clonesCount;
                 initialTx = getTranslateX(wrapperIdx);
 
@@ -1223,10 +1180,9 @@ const Eclub = {
 
                 if (Math.abs(dragDiff) > 5) {
                     isSwiped = true;
-                    if (e.cancelable) e.preventDefault(); // 가로 스와이프 시 세로 스크롤 방지
+                    if (e.cancelable) e.preventDefault();
                 }
 
-                // 실시간 위치 반영
                 list.style.transform = `translateX(${initialTx + dragDiff}px)`;
             };
 
@@ -1241,7 +1197,7 @@ const Eclub = {
 
                 list.style.transition = 'transform 0.3s ease-in-out';
 
-                const threshold = 50; // 스와이프 판정 임계값
+                const threshold = 50;
                 if (dragDiff < -threshold) {
                     next();
                 } else if (dragDiff > threshold) {
@@ -1251,14 +1207,13 @@ const Eclub = {
                 }
 
                 resetAuto();
-                // 클릭 이벤트 전파 방지를 위해 약간의 지연 후 상태 해제
                 setTimeout(() => { isSwiped = false; }, 50);
             };
 
             list.addEventListener('mousedown', onDragStart);
             list.addEventListener('touchstart', onDragStart, { passive: false });
 
-            // 드래그 완료 후 의도치 않은 링크 클릭 방지
+            // 클릭 이벤트 방지
             list.addEventListener('click', (e) => {
                 if (isSwiped) {
                     e.preventDefault();
@@ -1266,25 +1221,22 @@ const Eclub = {
                 }
             }, true);
 
-            // 리사이즈 시 위치 재조정
+            // 리사이즈
             let resizeTimer = null;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(() => {
                     const oldItemsPerPage = itemsPerPage;
-                    updateLayout(); // itemsPerPage, totalPages, uniquePageIndices 업데이트
+                    updateLayout();
 
-                    // 페이지 인덱스 보정
                     if (currentPageIdx >= totalPages) currentPageIdx = totalPages - 1;
 
-                    // 즉시 이동 (오프셋 재계산되므로 위치 맞춤)
                     goToPage(currentPageIdx, false);
                 }, 100);
             });
 
-            // 초기 위치 설정 및 자동 롤링 시작
-            // 계산 오차 방지를 위해 레이아웃 확정 후 실행
-            list.style.opacity = '0'; // 초기 위치 잡기 전까지 숨김
+            // 초기 실행
+            list.style.opacity = '0';
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     goToPage(0, false);
@@ -1327,7 +1279,7 @@ const Eclub = {
             const itemWidth = item.offsetWidth;
 
             if (dotsContainer) {
-                // [메인 비주얼 전용] 아이템 개수 기반 (ex: 03 / 17)
+                // 메인 비주얼 페이지네이션
                 const itemsCount = element.querySelectorAll('.slide-item').length;
                 const index = Math.round(scrollLeft / (itemWidth + gap));
                 const lastVisibleIndex = Math.min(index + itemsPerPage, itemsCount);
@@ -1337,18 +1289,16 @@ const Eclub = {
                     currentEl.innerText = formattedVal;
                 }
 
-                // 도트 활성화 (3개씩 활성화)
                 const dots = dotsContainer.querySelectorAll('.dot');
                 dots.forEach((dot, idx) => {
                     const isActive = idx >= index && idx < index + itemsPerPage;
                     dot.classList.toggle('active', isActive);
                 });
             } else {
-                // [일반 상품 슬라이더 전용] 페이지 번호 기반 (ex: 1 / 4)
+                // 상품 슬라이더 페이지네이션
                 const unitWidth = (itemWidth + gap) * itemsPerPage;
                 let page = Math.round(scrollLeft / unitWidth) + 1;
 
-                // 끝에 도달했으면 무조건 마지막 페이지
                 if (scrollLeft + width >= scrollWidth - 5) {
                     page = totalPages;
                 }
@@ -1373,7 +1323,7 @@ const Eclub = {
         },
 
         resetAuto(callback) {
-            // 외부 제어 시 자동 롤링 초기화 등에 사용
+            // 외부 제어
         }
     },
 
@@ -1385,7 +1335,6 @@ const Eclub = {
             const methodLinks = document.querySelectorAll('.cart-tabs .tab-item:not(.recent) .tab-link');
             const sections = [];
 
-            // 헤더 높이(Sticky 포함) 계산
             const getHeaderHeight = () => {
                 const stickyWrap = tabWrap.closest('.cart-sticky-wrap') || tabWrap;
                 const computedStyle = window.getComputedStyle(stickyWrap);
@@ -1394,7 +1343,6 @@ const Eclub = {
                 return stickyTop + stickyWrap.offsetHeight;
             };
 
-            // 섹션 데이터 프리로드
             methodLinks.forEach(link => {
                 const id = link.getAttribute('href');
                 if (id && id.startsWith('#') && id !== '#') {
@@ -1409,7 +1357,6 @@ const Eclub = {
             let scrollTimeout = null;
             let isThrottled = false;
 
-            // 탭 클릭 시 스무스 스크롤
             methodLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -1433,7 +1380,6 @@ const Eclub = {
                 });
             });
 
-            // 스크롤 시 섹션 감지
             window.addEventListener('scroll', () => {
                 if (isAutoScrolling || isThrottled) return;
                 isThrottled = true;
@@ -1456,10 +1402,10 @@ const Eclub = {
         }
     },
 
-    // 입력 필드 핸들러 (숫자 제한 등)
+    // 입력 필드 핸들러
     InputHandler: {
         init() {
-            // 숫자만 입력 가능하도록 제한 (data-input="number")
+            // 숫자만 입력 가능 (data-input="number")
             document.addEventListener('input', (e) => {
                 const input = e.target;
                 const type = input.dataset.input || input.getAttribute('data-input');
@@ -1482,19 +1428,16 @@ const Eclub = {
                 }
             });
 
-            // 숫자 입력 시 한글/특수문자 차단 (keydown 보조)
+            // 숫자 입력 시 제어
             document.addEventListener('keydown', (e) => {
                 const input = e.target;
                 const type = input.dataset.input || input.getAttribute('data-input');
                 if (type === 'number' || type === 'phone') {
-                    // 허용 키: BACKSPACE, DELETE, TAB, ESCAPE, ENTER, 방향키, 숫자, 넘패드 숫자
                     const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
                     if (allowedKeys.includes(e.key)) return;
 
-                    // Ctrl/Cmd 조합 허용 (A, C, V, X)
                     if ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase())) return;
 
-                    // 숫자만 허용
                     if (!/^\d$/.test(e.key)) {
                         e.preventDefault();
                     }
@@ -1510,7 +1453,6 @@ const Eclub = {
                 const btn = e.target.closest('.btn-referral-cta, #friend-number-send');
                 if (!btn) return;
 
-                // 서버 API 연동 시 응답값에 따라 처리되는 로직 (예: data-event-status="ended")
                 const isEnded = btn.dataset.eventStatus === 'ended';
 
                 const message = isEnded ? '이벤트 기간이 종료되었습니다.' : (btn.dataset.toastMessage || '추천 메세지가 발송되었습니다.');
@@ -1534,7 +1476,7 @@ const Eclub = {
             if (!floatingContainer || floatingContainer._isInit) return;
             floatingContainer._isInit = true;
 
-            // 바텀 시트 상태에 따라 애니메이션 점프 없는 위치 계산 (이미지 200번 대응)
+            // 바텀 시트 상태에 따른 위치 계산
             const updatePosition = () => {
                 const sheet = document.querySelector('.bottom-sheet');
                 const summary = document.querySelector('.summary-section');
@@ -1542,17 +1484,14 @@ const Eclub = {
 
                 let target = null;
                 if (isExpanded) {
-                    // 시트 확장 시: 요약 바를 기준으로 하여 시트 본문에 가려지도록 함
                     target = summary;
                 } else {
-                    // 시트 축소 시: 시트 전체 높이를 기준으로 하여 버튼이 시트 위에 노출되도록 함
                     target = sheet || summary;
                 }
 
                 let h = 0;
                 if (target) {
                     const rect = target.getBoundingClientRect();
-                    // 시각적으로 유효한 범위(화면 안)에 있을 때만 높이 반영
                     if (rect.top > 0 && rect.top < window.innerHeight) {
                         h = window.innerHeight - rect.top;
                     }
@@ -1560,7 +1499,6 @@ const Eclub = {
 
                 let nextBottom = h > 0 ? h + 12 : 20;
 
-                // 최종 방어선: 화면 상단 25% 이내(75% 지점)로는 절대 올라가지 않음
                 const topLimit = window.innerHeight * 0.75;
                 if (nextBottom > topLimit) nextBottom = topLimit;
 
@@ -1571,7 +1509,6 @@ const Eclub = {
             window.addEventListener('resize', updatePosition);
             window.addEventListener('scroll', updatePosition, { passive: true });
 
-            // 바텀 시트 상태 변화(펼침/닫힘) 실시간 추적
             const sheetEl = document.querySelector('.bottom-sheet');
             if (sheetEl) {
                 const observer = new MutationObserver(updatePosition);
@@ -1579,7 +1516,6 @@ const Eclub = {
                 sheetEl.addEventListener('transitionend', updatePosition);
             }
 
-            // 클릭 직후 애니메이션 중 위치 보정 (Tick 시작)
             document.addEventListener('click', (e) => {
                 if (e.target.closest('.sheet-header, .btn-sheet-toggle')) {
                     let count = 0;
@@ -1592,7 +1528,6 @@ const Eclub = {
             });
 
             if (btnBack) {
-                // 이전 히스토리가 있을 때만 노출
                 if (window.history.length > 1) {
                     btnBack.classList.remove('is-hidden');
                 } else {
@@ -1615,7 +1550,7 @@ const Eclub = {
                 };
 
                 window.addEventListener('scroll', checkScroll, { passive: true });
-                checkScroll(); // 초기 상태 체크
+                checkScroll();
 
                 btnTop.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -1683,7 +1618,7 @@ const Eclub = {
                 thumb.style.transform = `translateX(${translateX}px)`;
             };
 
-            // 드래그 시작 // 드래그 시작
+            // 드래그 시작
             const onDragStart = (e) => {
                 isDragging = true;
                 startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
@@ -1692,11 +1627,10 @@ const Eclub = {
                 document.body.style.userSelect = 'none';
             };
 
-            // 드래그 중 // 드래그 움직임 처리
+            // 드래그 움직임 처리
             const onDragMove = (e) => {
                 if (!isDragging) return;
 
-                // 터치 기기에서 드래그 중 페이지 스크롤 방지
                 if (e.cancelable) e.preventDefault();
 
                 const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
@@ -1709,12 +1643,12 @@ const Eclub = {
 
                 if (maxThumbTranslate <= 0) return;
 
-                // 드래그 비율에 맞춰 컨테이너 스크롤 이동 // 썸네일 이동 비율에 따른 실제 스크롤 위치 계산
+                // 드래그 비율에 따른 스크롤 이동
                 const scrollDelta = (deltaX / maxThumbTranslate) * maxScroll;
                 container.scrollLeft = startScrollLeft + scrollDelta;
             };
 
-            // 드래그 종료 // 드래그 상태 해제
+            // 드래그 종료
             const onDragEnd = () => {
                 if (!isDragging) return;
                 isDragging = false;
@@ -1722,7 +1656,7 @@ const Eclub = {
                 document.body.style.userSelect = '';
             };
 
-            // 이벤트 바인딩 // 스크롤 바 드래그 이벤트 연결
+            // 이벤트 바인딩
             thumb.addEventListener('mousedown', onDragStart);
             thumb.addEventListener('touchstart', onDragStart, { passive: true });
 
@@ -1752,9 +1686,9 @@ const Eclub = {
         this.QuickMenuScroll.init();
 
         // 비동기 포함 나머지 초기화
-        this.Slider.init(); // 슬라이더는 로더를 기다리지 않고 즉시 실행
+        this.Slider.init();
         await this.Loader.init();
-        this.FloatingUtil.init(); // 인클루드 완료 후 초기화
+        this.FloatingUtil.init();
         this.Clipboard.init();
         this.Toggle.init();
         this.BottomSheet.init();

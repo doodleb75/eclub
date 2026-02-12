@@ -36,6 +36,16 @@ body {
 
 // 폼 요소 전역 스타일
 :focus-visible {
+    border-radius: rem(4);
     outline: 2px solid $gray-900;
     outline-offset: -2px;
+}
+
+// border 값이 없는 input (수량 조절 등) 에만 outline 설정
+.qty-control input,
+.qty-selector input {
+    &:focus {
+        outline: 2px solid $gray-900;
+        outline-offset: -2px;
+    }
 }
