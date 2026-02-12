@@ -67,6 +67,13 @@ body {
 }
 
 :focus-visible {
+  border-radius: 0.25rem;
+  outline: 2px solid #222222;
+  outline-offset: -2px;
+}
+
+.qty-control input:focus,
+.qty-selector input:focus {
   outline: 2px solid #222222;
   outline-offset: -2px;
 }
@@ -2978,7 +2985,7 @@ main {
   background-color: #ffffff;
 }
 .cart-item .item-info-group .item-calc-row .qty-selector button {
-  width: 2rem;
+  width: 1.75rem;
   height: 100%;
   border: none;
   background: none;
@@ -2996,13 +3003,13 @@ main {
 .cart-item .item-info-group .item-calc-row .qty-selector input {
   flex: 1;
   width: 0;
+  height: 100%;
   text-align: center;
   border: none;
   font-size: 0.875rem;
   font-weight: 600;
   color: #222222;
   background: none;
-  outline: none;
   padding: 0;
 }
 .cart-item .item-info-group .item-calc-row .qty-selector.disabled {
@@ -4654,7 +4661,6 @@ main {
   font-size: 1rem;
   font-weight: 600;
   color: #666666;
-  outline: none;
 }
 .home-section .product-list .product-item .control-bar .action-btns {
   display: flex;

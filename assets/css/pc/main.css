@@ -67,6 +67,13 @@ body {
 }
 
 :focus-visible {
+  border-radius: 0.25rem;
+  outline: 2px solid #222222;
+  outline-offset: -2px;
+}
+
+.qty-control input:focus,
+.qty-selector input:focus {
   outline: 2px solid #222222;
   outline-offset: -2px;
 }
@@ -736,6 +743,7 @@ body {
 .header-main .search-box .search-area input {
   flex: 1;
   border: none;
+  height: 100%;
   outline: none;
   font-size: 0.9375rem;
   color: #000000;
@@ -2931,7 +2939,6 @@ body {
   font-size: 1rem;
   font-weight: 600;
   color: #666666;
-  outline: none;
 }
 .main-page-wrapper .home-section .product-list .product-item .control-bar .action-btns {
   display: flex;
@@ -4547,7 +4554,7 @@ body {
   color: #d9d9d9;
 }
 .qty-selector button {
-  width: 2rem;
+  width: 2.5rem;
   height: 100%;
   background: none;
   border: none;
@@ -4577,7 +4584,6 @@ body {
   color: #222222;
   background: none;
   padding: 0;
-  outline: none;
 }
 
 .discount-dropdown {

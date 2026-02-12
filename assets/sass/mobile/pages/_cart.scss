@@ -523,7 +523,7 @@ main {
                 background-color: $white;
 
                 button {
-                    width: rem(32);
+                    width: rem(28);
                     height: 100%;
                     border: none;
                     background: none;
@@ -543,13 +543,13 @@ main {
                 input {
                     flex: 1;
                     width: 0;
+                    height: 100%;
                     text-align: center;
                     border: none;
                     font-size: rem(14);
                     font-weight: $fw-semibold;
                     color: $gray-900;
                     background: none;
-                    outline: none;
                     padding: 0;
                 }
 
