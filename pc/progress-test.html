@@ -160,6 +160,21 @@
         .result-text span {
             color: #ff0000;
         }
+
+        /* 셀렉트 박스 스타일 */
+        select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #ff0000;
+        }
     </style>
 </head>
 
@@ -170,17 +185,24 @@
 
         <div class="controls">
             <div class="input-group">
+                <label for="typeSelect">유형 선택</label>
+                <select id="typeSelect">
+                    <option value="type-a">소매</option>
+                    <option value="type-b">도매</option>
+                </select>
+            </div>
+            <div class="input-group" id="inputGroupA">
                 <label for="currentMoneyA">소매 - 현재 달성 금액</label>
                 <input type="number" id="currentMoneyA" value="1500" placeholder="금액 입력">
             </div>
-            <div class="input-group">
+            <div class="input-group" id="inputGroupB" style="display: none;">
                 <label for="currentMoneyB">도매 - 현재 달성 금액</label>
                 <input type="number" id="currentMoneyB" value="1500" placeholder="금액 입력">
             </div>
         </div>
 
-        <!-- A타입 프로그래스 바 -->
-        <div class="progress-wrapper">
+        <!-- A타입 프로그래스 바 (소매) -->
+        <div class="progress-wrapper" id="wrapperA">
             <div class="type-label"><em>소매</em> (0.5%=1,500 / 1%=2,000 / 2%=3,000 / 3%=4,000)</div>
             <div class="progress-track type-a" id="progressTrackA" data-input="currentMoneyA">
                 <div class="progress-fill"></div>
@@ -210,8 +232,8 @@
             </div>
         </div>
 
-        <!-- B타입 프로그래스 바 -->
-        <div class="progress-wrapper">
+        <!-- B타입 프로그래스 바 (도매) -->
+        <div class="progress-wrapper" id="wrapperB" style="display: none;">
             <div class="type-label"><em>도매</em> (0.5%=1,500 / 1%=3,000 / 2%=4,000 / 3%=5,000)</div>
             <div class="progress-track type-b" id="progressTrackB" data-input="currentMoneyB">
                 <div class="progress-fill"></div>
@@ -332,6 +354,30 @@
                         });
                     }
                 });
+
+                // 유형 선택 전환 로직
+                const typeSelect = document.getElementById('typeSelect');
+                const wrapperA = document.getElementById('wrapperA');
+                const wrapperB = document.getElementById('wrapperB');
+                const inputGroupA = document.getElementById('inputGroupA');
+                const inputGroupB = document.getElementById('inputGroupB');
+
+                const handleTypeChange = (val) => {
+                    if (val === 'type-a') {
+                        wrapperA.style.display = 'block';
+                        wrapperB.style.display = 'none';
+                        inputGroupA.style.display = 'flex';
+                        inputGroupB.style.display = 'none';
+                    } else {
+                        wrapperA.style.display = 'none';
+                        wrapperB.style.display = 'block';
+                        inputGroupA.style.display = 'none';
+                        inputGroupB.style.display = 'flex';
+                    }
+                };
+
+                typeSelect.addEventListener('change', (e) => handleTypeChange(e.target.value));
+                handleTypeChange(typeSelect.value); // 초기 상태 설정
             }
         };
 

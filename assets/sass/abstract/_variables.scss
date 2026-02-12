@@ -52,6 +52,12 @@ $color-badge-ambient-bg: #e6dada; // 상온 태그 배경
 $color-badge-ambient-text: #4d2424; // 상온 태그 텍스트
 $color-badge-cold-bg: #def1ff; // 저온 태그 배경
 $color-badge-cold-text: #00568a; // 저온 태그 텍스트
+$color-badge-frozen-bg: #00568a; // 냉동 태그 배경 (저온 텍스트색과 동일하게 반전)
+$color-badge-frozen-text: #ffffff; // 냉동 태그 텍스트 (흰색으로 반전)
+$color-badge-direct-bg: #ebebeb; // 직납 태그 배경
+$color-badge-direct-text: #222222; // 직납 태그 텍스트
+$color-badge-appliance-bg: #ffeec6; // 가전 태그 배경
+$color-badge-appliance-text: #222222; // 가전 태그 텍스트
 $color-badge-hot-deal: #D00053; // 오늘의 핫딜 태그 배경
 $color-badge-yellow: #feb718; // 장바구니/알림 뱃지 (피그마)
 $color-badge-ranking-bg: #E33939;

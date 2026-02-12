@@ -573,6 +573,71 @@
         }
     }
 
+    // 직납(Direct) 테마
+    &.direct {
+        border: none;
+        margin-bottom: rem(40);
+
+        .group-header {
+            background-color: $color-badge-direct-bg;
+            color: $color-badge-direct-text;
+            padding: rem(16) rem(40);
+            gap: rem(40);
+
+            .header-left .group-title {
+                font-size: rem(22);
+                color: $color-badge-direct-text;
+                font-weight: $fw-bold;
+                margin-left: rem(12);
+            }
+
+            .header-center {
+                display: none; // Hide center container entirely since progress-wrap is hidden
+            }
+
+            .header-right .limit-txt {
+                display: none; // Hide limit text
+            }
+        }
+    }
+
+    // 가전(Appliance) 테마
+    &.appliance {
+        border: none;
+        margin-bottom: rem(40);
+
+        .group-header {
+            background-color: $color-badge-appliance-bg;
+            color: $color-badge-appliance-text;
+            padding: rem(16) rem(40);
+            gap: rem(40);
+
+            .header-left .group-title {
+                font-size: rem(22);
+                color: $color-badge-appliance-text;
+                font-weight: $fw-bold;
+                margin-left: rem(12);
+            }
+
+            .header-center {
+                display: none; // Hide center container entirely since progress-wrap is hidden
+            }
+
+            .header-right .limit-txt {
+                display: flex;
+                flex-shrink: 0;
+                font-size: rem(13);
+                color: $color-badge-appliance-text;
+                font-weight: $fw-bold;
+                letter-spacing: rem(-0.5);
+
+                b {
+                    font-weight: $fw-bold;
+                }
+            }
+        }
+    }
+
     // 빈 장바구니 (Empty)
     &.empty {
         display: flex;

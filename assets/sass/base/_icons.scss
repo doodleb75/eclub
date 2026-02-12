@@ -32,6 +32,11 @@ $icon-path: '../../icons'; // 루트 절대 경로 적용
     // 하위 호환성 유지용 빈 클래스
 }
 
+// 모바일 플러스 메뉴
+.icon-mobile-plus-menu {
+    @include icon-mask('#{$icon-path}/mobile-plus-menu.svg', rem(24));
+}
+
 // 헤더 아이콘 - 절대 경로 적용
 .icon-search {
     @include icon-mask('#{$icon-path}/search.svg', rem(24));
@@ -211,6 +216,15 @@ $icon-path: '../../icons'; // 루트 절대 경로 적용
     @include icon-mask('../..//icons/main/icon-main-pause.svg', rem(24));
 }
 
+// 모바일 전용 pause/play
+.icon-mo-pause {
+    @include icon-mask('#{$icon-path}/main/mo-icon-pause.svg', rem(18), $white);
+}
+
+.icon-mo-play {
+    @include icon-mask('#{$icon-path}/main/mo-icon-play.svg', rem(11), $white);
+}
+
 .icon-main-play {
     @include icon-mask('../..//icons/main/icon-main-play.svg', rem(26));
 }
@@ -254,11 +268,11 @@ $icon-path: '../../icons'; // 루트 절대 경로 적용
 
 // Float Navigation Icons
 .icon-nav-back {
-    @include icon-mask('../..//icons/prev-history.svg', rem(24));
+    @include icon-mask('../..//icons/icon-history-back.svg', rem(24));
 }
 
 .icon-nav-top {
-    @include icon-mask('../..//icons/prev-history.svg', rem(24));
+    @include icon-mask('../..//icons/icon-top.svg', rem(24));
     transform: rotate(90deg);
 }
 

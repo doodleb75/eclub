@@ -346,6 +346,80 @@ main {
         }
     }
 
+    &.direct {
+        .group-header {
+            background-color: $color-badge-direct-bg;
+            color: $color-badge-direct-text;
+            justify-content: center;
+
+            .header-left {
+                .group-title {
+                    color: $color-badge-direct-text;
+                }
+
+                .icon-shipping {
+                    background-color: $color-badge-direct-text;
+                }
+
+                .free-shipping {
+                    font-size: rem(13);
+                    font-weight: $fw-medium;
+                    color: $color-badge-direct-text;
+                    margin-left: rem(6);
+                }
+            }
+
+            .header-center {
+                display: none;
+            }
+        }
+    }
+
+    &.appliance {
+        .group-header {
+            background-color: $color-badge-appliance-bg;
+            color: $color-badge-appliance-text;
+            justify-content: center;
+
+            .header-left {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: rem(20);
+
+                .title-wrap {
+                    display: flex;
+                    align-items: center;
+                    gap: rem(6);
+                }
+
+                .group-title {
+                    color: $color-badge-appliance-text;
+                }
+
+                .icon-shipping {
+                    background-color: $color-badge-appliance-text;
+                }
+
+                .free-shipping {
+                    font-size: rem(10);
+                    font-weight: $fw-medium;
+                    color: $color-badge-appliance-text;
+                }
+
+                .notice-text {
+                    font-size: rem(10);
+                    font-weight: $fw-medium;
+                    color: $color-badge-appliance-text;
+                }
+            }
+
+            .header-center {
+                display: none;
+            }
+        }
+    }
+
     .cart-item-list {
         list-style: none;
     }

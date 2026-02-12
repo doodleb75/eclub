@@ -77,8 +77,10 @@
                                                 class="badge">6</span></a></li>
                                     <li class="tab-item"><a href="#section-ambient" class="tab-link">상온상품 <span
                                                 class="badge">3</span></a></li>
-                                    <li class="tab-item"><a href="#section-cooling" class="tab-link">직납상품 <span
+                                    <li class="tab-item"><a href="#section-direct" class="tab-link">직납상품 <span
                                                 class="badge">5</span></a></li>
+                                    <li class="tab-item"><a href="#section-appliance" class="tab-link">가전배송 <span
+                                                class="badge">1</span></a></li>
                                     <li class="tab-item recent"><a href="#" class="tab-link">최근 구매 상품 <span
                                                 class="badge">62</span></a></li>
                                 </ul>
@@ -993,14 +995,14 @@
                                 </div>
                             </section>
 
-                            <!-- 직냉배송 그룹 -->
-                            <section class="cart-group cooling" id="section-cooling">
+                            <!-- 직납배송 그룹 -->
+                            <section class="cart-group direct" id="section-direct">
                                 <div class="group-header">
                                     <div class="header-left">
                                         <label class="checkbox-container">
                                             <input type="checkbox" checked>
                                             <span class="checkmark"></span>
-                                            <span class="group-title">직납상품</span>
+                                            <span class="group-title">직납배송</span>
                                         </label>
                                     </div>
                                     <div class="header-center">
@@ -1441,6 +1443,457 @@
                                 </ul>
                                 <div class="group-footer">
                                     <p class="footer-msg">배송비 무료 <span class="sep"></span> 직냉상품 50만원 이상 주문 가능</p>
+                                </div>
+                            </section>
+
+                            <!-- 가전배송 그룹 -->
+                            <section class="cart-group appliance" id="section-appliance">
+                                <div class="group-header">
+                                    <div class="header-left">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" checked>
+                                            <span class="checkmark"></span>
+                                            <span class="group-title">가전배송</span>
+                                        </label>
+                                    </div>
+                                    <div class="header-center">
+                                        <div class="progress-wrap">
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 20%;"></div>
+                                            </div>
+                                            <i class="icon-shipping"></i>
+                                        </div>
+                                    </div>
+                                    <div class="header-right">
+                                        <p class="limit-txt"><b>35,000원</b> 추가 시 주문가능 (결제 금액 기준)</p>
+                                    </div>
+                                </div>
+                                <ul class="cart-item-list">
+                                    <!-- 상품 1 (할인 적용 상태) -->
+                                    <li class="cart-item">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#" data-modal-url="#modal-item-option" data-modal-width="50%"
+                                                    data-modal-height="80%"><img
+                                                        src="/assets/images/cart/cart-list-04.png"
+                                                        alt="팔도 비락수정과 1.5L"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-wrap">
+                                            <div class="item-info">
+                                                <a href="#" class="item-name">팔도 비락수정과 1.5L</a>
+                                                <div class="item-meta">
+                                                    <span>팔도</span>
+                                                    <span class="sep"></span>
+                                                    <span>88096239287182</span>
+                                                    <span class="sep"></span>
+                                                    <span>DC</span>
+                                                    <span class="sep"></span>
+                                                    <span>최대구매 2개</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price-qty">
+                                            <div class="info-actions">
+                                                <button type="button" data-toast-position="bottom-right"
+                                                    class="btn-wish active"><i class="icon-heart-fill"></i></button>
+                                                <button type="button" class="btn-delete"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
+                                                    data-modal-width="320px"><i class="icon-trash"></i></button>
+                                            </div>
+                                            <div class="price-info">
+                                                <div class="unit-price is-discount">
+                                                    개당 <del>2,880원</del> <span class="current">2,780원</span>
+                                                </div>
+                                                <div class="main-price is-discount">69,120<span class="unit">원</span>
+                                                </div>
+                                                <div class="unit-info">
+                                                    <div class="spec">박스 당 입수 12 <span class="sep">|</span> 낱개환산 24개
+                                                    </div>
+                                                    <div class="total-discount">총 할인 금액 <span>-2,400원</span></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="qty-selector qty-box">
+                                                <button type="button" class="btn-minus" aria-label="수량 빼기"><i
+                                                        class="icon-minus" aria-hidden="true"></i></button>
+                                                <input type="text" value="2" min="0" aria-label="수량">
+                                                <button type="button" class="btn-plus" aria-label="수량 더하기"><i
+                                                        class="icon-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 상품 2 (할인 미적용 상태) -->
+                                    <li class="cart-item">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#" data-modal-url="#modal-item-option" data-modal-width="50%"
+                                                    data-modal-height="80%"><img
+                                                        src="/assets/images/cart/cart-list-05.png"
+                                                        alt="팔도 비락수정과 1.5L"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-wrap">
+                                            <div class="item-info">
+                                                <a href="#" class="item-name">팔도 비락수정과 1.5L</a>
+                                                <div class="item-meta">
+                                                    <span>팔도</span>
+                                                    <span class="sep"></span>
+                                                    <span>88096239287182</span>
+                                                    <span class="sep"></span>
+                                                    <span>DC</span>
+                                                    <span class="sep"></span>
+                                                    <span>최대구매 2개</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price-qty">
+                                            <div class="info-actions">
+                                                <button type="button" data-toast-position="bottom-right"
+                                                    class="btn-wish"><i class="icon-heart"></i></button>
+                                                <button type="button" class="btn-delete"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
+                                                    data-modal-width="320px"><i class="icon-trash"></i></button>
+                                            </div>
+                                            <div class="price-info">
+                                                <div class="unit-price">
+                                                    개당 <span class="current">2,780원</span>
+                                                </div>
+                                                <div class="main-price">66,720<span class="unit">원</span></div>
+                                                <div class="unit-info">
+                                                    <div class="spec">박스 당 입수 12 <span class="sep">|</span> 낱개환산 24개
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="qty-selector qty-box">
+                                                <button type="button" class="btn-minus" aria-label="수량 빼기"><i
+                                                        class="icon-minus" aria-hidden="true"></i></button>
+                                                <input type="text" value="2" min="0" aria-label="수량">
+                                                <button type="button" class="btn-plus" aria-label="수량 더하기"><i
+                                                        class="icon-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 상품 3 (할인 적용 상태 - 다른 데이터) -->
+                                    <li class="cart-item">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#" data-modal-url="#modal-item-option" data-modal-width="50%"
+                                                    data-modal-height="80%"><img
+                                                        src="/assets/images/cart/cart-list-06.png"
+                                                        alt="팔도 비락수정과 1.5L"></a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-wrap">
+                                            <div class="item-info">
+                                                <a href="#" class="item-name">팔도 비락수정과 1.5L</a>
+                                                <div class="item-meta">
+                                                    <span>팔도</span>
+                                                    <span class="sep"></span>
+                                                    <span>88096239287182</span>
+                                                    <span class="sep"></span>
+                                                    <span>DC</span>
+                                                    <span class="sep"></span>
+                                                    <span>최대구매 2개</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price-qty">
+                                            <div class="info-actions">
+                                                <button type="button" data-toast-position="bottom-right"
+                                                    class="btn-wish"><i class="icon-heart"></i></button>
+                                                <button type="button" class="btn-delete"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
+                                                    data-modal-width="320px"><i class="icon-trash"></i></button>
+                                            </div>
+                                            <div class="price-info">
+                                                <div class="unit-price is-discount">
+                                                    개당 <del>2,880원</del> <span class="current">2,780원</span>
+                                                </div>
+                                                <div class="main-price is-discount">69,120<span class="unit">원</span>
+                                                </div>
+                                                <div class="unit-info">
+                                                    <div class="spec">박스 당 입수 12 <span class="sep">|</span> 낱개환산 24개
+                                                    </div>
+                                                    <div class="total-discount">총 할인 금액 <span>-2,400원</span></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="qty-selector qty-box">
+                                                <button type="button" class="btn-minus" aria-label="수량 빼기"><i
+                                                        class="icon-minus" aria-hidden="true"></i></button>
+                                                <input type="text" value="2" min="0" aria-label="수량">
+                                                <button type="button" class="btn-plus" aria-label="수량 더하기"><i
+                                                        class="icon-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- 상품: 품절 (Sold Out) -->
+                                    <li class="cart-item is-soldout-discount">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/assets/images/cart/cart-list-04.png"
+                                                        alt="팔도 비락수정과 1.5L">
+                                                    <div class="status-label">일시품절</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-wrap">
+                                            <div class="item-info">
+                                                <a href="#" class="item-name">팔도 비락수정과 1.5L</a>
+                                                <div class="item-meta">
+                                                    <span>팔도</span>
+                                                    <span class="sep"></span>
+                                                    <span>88096239287182</span>
+                                                    <span class="sep"></span>
+                                                    <span>DC</span>
+                                                    <span class="sep"></span>
+                                                    <span>최대구매 2개</span>
+                                                </div>
+                                                <p class="txt-error">일시 품절되어 주문이 불가합니다.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price-qty">
+                                            <div class="info-actions">
+                                                <button type="button" data-toast-position="bottom-right"
+                                                    class="btn-wish"><i class="icon-heart"></i></button>
+                                                <button type="button" class="btn-delete"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
+                                                    data-modal-width="320px"><i class="icon-trash"></i></button>
+                                            </div>
+                                            <div class="price-info">
+                                                <div class="unit-price">
+                                                    개당 <del>2,880원</del> <span class="current">2,780원</span>
+                                                </div>
+                                                <div class="main-price">69,120<span class="unit">원</span></div>
+                                                <div class="unit-info">
+                                                    <div class="spec">박스 당 입수 12 <span class="sep">|</span> 낱개환산 24개
+                                                    </div>
+                                                    <div class="total-discount">총 할인 금액 <span>-2,400원</span></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="qty-selector qty-box disabled">
+                                                <button type="button" class="btn-minus" aria-label="수량 빼기"><i
+                                                        class="icon-minus" aria-hidden="true"></i></button>
+                                                <input type="text" value="1" min="0" aria-label="수량" disabled>
+                                                <button type="button" class="btn-plus" aria-label="수량 더하기"><i
+                                                        class="icon-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- 상품: 품절 (Sold Out) -->
+                                    <li class="cart-item is-soldout-not-discount">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/assets/images/cart/cart-list-04.png"
+                                                        alt="팔도 비락수정과 1.5L">
+                                                    <div class="status-label">일시품절</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-wrap">
+                                            <div class="item-info">
+                                                <a href="#" class="item-name">팔도 비락수정과 1.5L</a>
+                                                <div class="item-meta">
+                                                    <span>팔도</span>
+                                                    <span class="sep"></span>
+                                                    <span>88096239287182</span>
+                                                    <span class="sep"></span>
+                                                    <span>DC</span>
+                                                    <span class="sep"></span>
+                                                    <span>최대구매 2개</span>
+                                                </div>
+                                                <p class="txt-error">일시 품절되어 주문이 불가합니다.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price-qty">
+                                            <div class="info-actions">
+                                                <button type="button" data-toast-position="bottom-right"
+                                                    class="btn-wish"><i class="icon-heart"></i></button>
+                                                <button type="button" class="btn-delete"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
+                                                    data-modal-width="320px"><i class="icon-trash"></i></button>
+                                            </div>
+                                            <div class="price-info">
+                                                <div class="unit-price">
+                                                    <span class="current">2,780원</span>
+                                                </div>
+                                                <div class="main-price">69,120<span class="unit">원</span></div>
+                                                <div class="unit-info">
+                                                    <div class="spec">박스 당 입수 12 <span class="sep">|</span> 낱개환산 24개
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="qty-selector qty-box disabled">
+                                                <button type="button" class="btn-minus" aria-label="수량 빼기"><i
+                                                        class="icon-minus" aria-hidden="true"></i></button>
+                                                <input type="text" value="1" min="0" aria-label="수량" disabled>
+                                                <button type="button" class="btn-plus" aria-label="수량 더하기"><i
+                                                        class="icon-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- 상품: 리드타임 대기 - 활성 (Not Lead Time) -->
+                                    <li class="cart-item leadtime-discount">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/assets/images/cart/cart-list-04.png"
+                                                        alt="팔도 비락수정과 1.5L">
+                                                    <div class="status-label">곧 주문가능</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-wrap">
+                                            <div class="item-info">
+                                                <a href="#" class="item-name">팔도 비락수정과 1.5L</a>
+                                                <div class="item-meta">
+                                                    <span>팔도</span>
+                                                    <span class="sep"></span>
+                                                    <span>88096239287182</span>
+                                                    <span class="sep"></span>
+                                                    <span>TC</span>
+                                                </div>
+                                                <p class="txt-error">2월 6일 14시부터 주문 가능합니다.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price-qty">
+                                            <div class="info-actions">
+                                                <button type="button" data-toast-position="bottom-right"
+                                                    class="btn-wish"><i class="icon-heart"></i></button>
+                                                <button type="button" class="btn-delete"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
+                                                    data-modal-width="320px"><i class="icon-trash"></i></button>
+                                            </div>
+                                            <div class="price-info">
+                                                <div class="unit-price">
+                                                    개당 <del>2,880원</del> <span class="current">2,780원</span>
+                                                </div>
+                                                <div class="main-price">69,120<span class="unit">원</span></div>
+                                                <div class="unit-info">
+                                                    <div class="spec">박스 당 입수 12 <span class="sep">|</span> 낱개환산 24개
+                                                    </div>
+                                                    <div class="total-discount">총 할인 금액 <span>-2,400원</span></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="qty-selector qty-box disabled">
+                                                <button type="button" class="btn-minus" aria-label="수량 빼기"><i
+                                                        class="icon-minus" aria-hidden="true"></i></button>
+                                                <input type="text" value="2" min="0" aria-label="수량" disabled>
+                                                <button type="button" class="btn-plus" aria-label="수량 더하기"><i
+                                                        class="icon-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- 상품: 리드타임 대기 - 비활성 (Not Lead Time) -->
+                                    <li class="cart-item leadtime-not-discount">
+                                        <div class="item-visual">
+                                            <div class="item-check">
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" checked>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="item-thumb">
+                                                <a href="#"><img src="/assets/images/cart/cart-list-04.png"
+                                                        alt="팔도 비락수정과 1.5L">
+                                                    <div class="status-label">곧 주문가능</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="item-info-wrap">
+                                            <div class="item-info">
+                                                <a href="#" class="item-name">팔도 비락수정과 1.5L</a>
+                                                <div class="item-meta">
+                                                    <span>팔도</span>
+                                                    <span class="sep"></span>
+                                                    <span>88096239287182</span>
+                                                    <span class="sep"></span>
+                                                    <span>TC</span>
+                                                </div>
+                                                <p class="txt-error">2월 6일 14시부터 주문 가능합니다.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price-qty">
+                                            <div class="info-actions">
+                                                <button type="button" data-toast-position="bottom-right"
+                                                    class="btn-wish"><i class="icon-heart"></i></button>
+                                                <button type="button" class="btn-delete"
+                                                    data-modal-url="/common/components/modal/modal-confirm.html"
+                                                    data-modal-width="320px"><i class="icon-trash"></i></button>
+                                            </div>
+                                            <div class="price-info">
+                                                <div class="unit-price">
+                                                    <span class="current">2,780원</span>
+                                                </div>
+                                                <div class="main-price">69,120<span class="unit">원</span></div>
+                                                <div class="unit-info">
+                                                    <div class="spec">박스 당 입수 12 <span class="sep">|</span> 낱개환산 24개
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="qty-selector qty-box disabled">
+                                                <button type="button" class="btn-minus" aria-label="수량 빼기"><i
+                                                        class="icon-minus" aria-hidden="true"></i></button>
+                                                <input type="text" value="2" min="0" aria-label="수량" disabled>
+                                                <button type="button" class="btn-plus" aria-label="수량 더하기"><i
+                                                        class="icon-plus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="group-footer">
+                                    <p class="footer-msg">배송비 무료 <span class="sep"></span> 가전상품 50만원 이상 주문 가능</p>
                                 </div>
                             </section>
 
