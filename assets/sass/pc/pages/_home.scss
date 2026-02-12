@@ -324,6 +324,11 @@
                                 background-color: $color-badge-cold-bg;
                                 color: $color-badge-cold-text;
                             }
+
+                            &.type-frozen {
+                                background-color: $color-badge-frozen-bg;
+                                color: $color-badge-frozen-text;
+                            }
                         }
                     }
 

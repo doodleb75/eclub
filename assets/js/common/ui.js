@@ -112,7 +112,7 @@ const Eclub = {
                     const rectWidth = rect.width / scale;
                     const rectHeight = rect.height / scale;
 
-                    const offset = 12; // 트리거와의 기본 간격
+                    const offset = 4; // 트리거와의 기본 간격 (썸네일 바로 아래에 노출 하도록 간격 축소)
 
                     switch (position) {
                         case 'top-left':
@@ -435,6 +435,8 @@ const Eclub = {
                 if (activeAllBtn) {
                     activeAllBtn.click();
                 }
+                // 탭 전환 후 활성화된 product-list의 더보기 높이 재계산
+                Eclub.ProductMore.resetActiveList(targetId);
             }
         }
     },
@@ -463,7 +465,7 @@ const Eclub = {
                             message: `최소 수량은 ${minVal} 입니다.`,
                             trigger: resolvedTrigger,
                             type: 'error',
-                            position: btn.dataset.toastPosition || (resolvedTrigger.classList.contains('image-box') ? 'inner-bottom-center' : 'bottom-right')
+                            position: btn.dataset.toastPosition || (resolvedTrigger.classList.contains('image-box') ? 'bottom-center' : 'bottom-right')
                         });
                     }
                 } else if (btn === buttons[1]) {
@@ -502,7 +504,7 @@ const Eclub = {
             Eclub.Toast.show({
                 message: "장바구니에 상품이 담겼습니다.",
                 trigger: resolvedTrigger,
-                position: btn.dataset.toastPosition || (resolvedTrigger.classList.contains('image-box') ? 'inner-bottom-center' : 'bottom-right'),
+                position: btn.dataset.toastPosition || (resolvedTrigger.classList.contains('image-box') ? 'bottom-center' : 'bottom-right'),
                 type: 'success'
             });
         }
@@ -512,7 +514,7 @@ const Eclub = {
     Favorites: {
         init() {
             document.body.addEventListener('click', (e) => {
-                const btn = e.target.closest('.btn-wish, .btn-heart');
+                const btn = e.target.closest('.btn-wish, .btn-heart, .btn-heart-overlay');
                 if (!btn) return;
                 e.preventDefault();
                 this.toggle(btn);
@@ -528,7 +530,7 @@ const Eclub = {
                     if (icon.classList.contains('icon-heart-fill')) {
                         icon.classList.remove('icon-heart-fill');
 
-                        if (btn.classList.contains('btn-heart')) {
+                        if (btn.classList.contains('btn-heart') || btn.classList.contains('btn-heart-overlay')) {
                             icon.classList.add('icon-heart-main');
                         } else {
                             icon.classList.add('icon-heart');
@@ -555,11 +557,56 @@ const Eclub = {
             Eclub.Toast.show({
                 message,
                 trigger: resolvedTrigger,
-                position: btn.dataset.toastPosition || (resolvedTrigger.classList.contains('image-box') ? 'inner-bottom-center' : 'bottom-right'),
+                position: btn.dataset.toastPosition || (resolvedTrigger.classList.contains('image-box') ? 'bottom-center' : 'bottom-right'),
                 type: 'success'
             });
         }
     },
+
+    // 모바일 퀵 메뉴
+    QuickMenu: {
+        init() {
+            const btn = document.getElementById('btn-mobile-quick');
+            const layer = document.getElementById('quick-menu-layer');
+            if (!btn || !layer) return;
+
+            const closeBtn = layer.querySelector('.btn-quick-close');
+
+            // 메뉴 열기
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.open(btn, layer);
+            });
+
+            // 메뉴 닫기 (닫기 버튼)
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.close(btn, layer);
+                });
+            }
+
+            // 외부 클릭 시 닫기
+            document.addEventListener('click', (e) => {
+                if (layer.hidden) return;
+                // 레이어 내부나 버튼을 클릭한 경우는 제외
+                if (!layer.contains(e.target) && !btn.contains(e.target)) {
+                    this.close(btn, layer);
+                }
+            });
+        },
+
+        open(btn, layer) {
+            btn.classList.add('is-hidden');
+            layer.hidden = false;
+        },
+
+        close(btn, layer) {
+            btn.classList.remove('is-hidden');
+            layer.hidden = true;
+        }
+    },
+
 
     // 바텀 시트 (결제/장바구니 요약)
     BottomSheet: {
@@ -727,6 +774,11 @@ const Eclub = {
                                 }
                             });
 
+                            // 카테고리 변경 후 ProductMore 초기화
+                            if (productList.classList.contains('is-more')) {
+                                Eclub.ProductMore.resetByCategory(productList);
+                            }
+
                             requestAnimationFrame(() => {
                                 productList.classList.remove('is-fading');
                             });
@@ -737,31 +789,20 @@ const Eclub = {
         }
     },
 
-    // 상품 더보기 (Show More)
+    // 상품 더보기 (10개씩 페이징)
     ProductMore: {
+        PAGE_SIZE: 10,
+
         init() {
             const containers = document.querySelectorAll('.product-list.is-more');
             if (!containers.length) return;
 
             containers.forEach(container => {
-                const limit = parseInt(container.dataset.moreLimit, 10) || 4;
-                const items = container.querySelectorAll('.product-item');
-                const moreWrap = this.getMoreWrapper(container);
+                this.applyPaging(container);
 
-                if (items.length <= limit) {
-                    if (moreWrap) moreWrap.style.display = 'none';
-                } else {
-                    this.setCollapsedHeight(container, limit);
-                    container.classList.add('js-initialized');
-
-                    window.addEventListener('resize', () => {
-                        if (!container.classList.contains('active')) {
-                            this.setCollapsedHeight(container, limit);
-                        } else {
-                            container.style.maxHeight = container.scrollHeight + 'px';
-                        }
-                    });
-                }
+                window.addEventListener('resize', () => {
+                    this.recalcHeight(container);
+                });
             });
 
             document.addEventListener('click', (e) => {
@@ -769,16 +810,81 @@ const Eclub = {
                 if (!btn) return;
 
                 const moreWrap = btn.closest('.product-more');
-                let container = moreWrap?.previousElementSibling;
-                while (container && !container.classList.contains('product-list')) {
-                    container = container.previousElementSibling;
+                // 이전 형제 중 모든 product-list 수집
+                const productLists = [];
+                let sibling = moreWrap?.previousElementSibling;
+                while (sibling) {
+                    if (sibling.classList.contains('product-list')) {
+                        productLists.push(sibling);
+                    }
+                    sibling = sibling.previousElementSibling;
                 }
+
+                // 탭으로 활성화된 product-list 우선, 없으면 첫 번째 사용
+                const container = productLists.find(el => el.classList.contains('active')) || productLists[0];
 
                 if (container && container.classList.contains('is-more')) {
                     e.preventDefault();
                     this.toggle(container, btn);
                 }
             });
+        },
+
+        // visible 상태인 product-item만 반환
+        getVisibleItems(container) {
+            return Array.from(container.querySelectorAll('.product-item')).filter(
+                item => item.style.display !== 'none' || item.dataset.hiddenByMore === 'true'
+            );
+        },
+
+        // 초기 페이징 적용
+        applyPaging(container) {
+            const allItems = this.getVisibleItems(container);
+            const moreWrap = this.getMoreWrapper(container);
+            const pageSize = this.PAGE_SIZE;
+
+            // 10개 이하면 버튼 숨김, maxHeight 해제
+            if (allItems.length <= pageSize) {
+                if (moreWrap) moreWrap.style.display = 'none';
+                container.style.maxHeight = '';
+                container.style.overflow = '';
+                container.classList.remove('is-expanded');
+                container.dataset.visibleCount = allItems.length;
+                // 숨김 해제
+                allItems.forEach(item => {
+                    delete item.dataset.hiddenByMore;
+                    item.style.display = '';
+                });
+                return;
+            }
+
+            // 10개 초과 → 첫 10개만 노출
+            container.dataset.visibleCount = pageSize;
+            allItems.forEach((item, idx) => {
+                if (idx < pageSize) {
+                    item.style.display = '';
+                    delete item.dataset.hiddenByMore;
+                } else {
+                    item.style.display = 'none';
+                    item.dataset.hiddenByMore = 'true';
+                }
+            });
+
+            container.classList.add('js-initialized');
+            container.classList.remove('is-expanded');
+            container.style.maxHeight = '';
+            container.style.overflow = '';
+
+            // 버튼 상태
+            if (moreWrap) {
+                moreWrap.style.display = '';
+                const btn = moreWrap.querySelector('.btn-more');
+                if (btn) {
+                    btn.classList.remove('active');
+                    const span = btn.querySelector('span');
+                    if (span) span.textContent = '상품 더보기';
+                }
+            }
         },
 
         getMoreWrapper(container) {
@@ -789,35 +895,89 @@ const Eclub = {
             return next;
         },
 
-        setCollapsedHeight(container, limit) {
-            const items = container.querySelectorAll('.product-item');
-            if (items.length < limit) return;
+        // 높이 재계산 (resize 대응)
+        recalcHeight(container) {
+            const visibleCount = parseInt(container.dataset.visibleCount, 10) || this.PAGE_SIZE;
+            const visibleItems = Array.from(container.querySelectorAll('.product-item')).filter(
+                item => item.style.display !== 'none'
+            );
+            if (visibleItems.length === 0) return;
 
-            const lastVisibleItem = items[limit - 1];
-            if (lastVisibleItem) {
-                const bottom = lastVisibleItem.offsetTop + lastVisibleItem.offsetHeight;
-                container.style.maxHeight = bottom + 'px';
+            const lastItem = visibleItems[visibleItems.length - 1];
+            if (lastItem) {
+                container.style.maxHeight = '';
             }
         },
 
         toggle(container, btn) {
-            const limit = parseInt(container.dataset.moreLimit, 10) || 4;
-            const isExpanded = container.classList.contains('active');
+            const allItems = this.getVisibleItems(container);
+            const pageSize = this.PAGE_SIZE;
+            let visibleCount = parseInt(container.dataset.visibleCount, 10) || pageSize;
+            const isExpanded = container.classList.contains('is-expanded');
             const span = btn.querySelector('span');
 
+            // 상품닫기 → 초기 10개로 복원
             if (isExpanded) {
-                container.classList.remove('active');
-                this.setCollapsedHeight(container, limit);
+                container.classList.remove('is-expanded');
+                container.dataset.visibleCount = pageSize;
+
+                allItems.forEach((item, idx) => {
+                    if (idx < pageSize) {
+                        item.style.display = '';
+                        delete item.dataset.hiddenByMore;
+                    } else {
+                        item.style.display = 'none';
+                        item.dataset.hiddenByMore = 'true';
+                    }
+                });
 
                 if (span) span.textContent = '상품 더보기';
                 btn.classList.remove('active');
-            } else {
-                container.classList.add('active');
-                container.style.maxHeight = container.scrollHeight + 'px';
+                return;
+            }
 
+            // 상품 더보기 → 다음 10개 추가 노출
+            const nextCount = Math.min(visibleCount + pageSize, allItems.length);
+            for (let i = visibleCount; i < nextCount; i++) {
+                allItems[i].style.display = '';
+                delete allItems[i].dataset.hiddenByMore;
+            }
+            container.dataset.visibleCount = nextCount;
+
+            // 모두 노출 완료 → '상품닫기' 전환
+            if (nextCount >= allItems.length) {
+                container.classList.add('is-expanded');
                 if (span) span.textContent = '상품닫기';
                 btn.classList.add('active');
             }
+        },
+
+        // 탭 전환 후 활성 product-list 초기화
+        resetActiveList(targetId) {
+            const activeList = document.getElementById(targetId);
+            if (!activeList || !activeList.classList.contains('is-more')) return;
+
+            // hiddenByMore 마킹 해제 후 재적용
+            activeList.querySelectorAll('.product-item[data-hidden-by-more]').forEach(item => {
+                item.style.display = '';
+                delete item.dataset.hiddenByMore;
+            });
+
+            requestAnimationFrame(() => {
+                this.applyPaging(activeList);
+            });
+        },
+
+        // 카테고리 정렬 후 초기화
+        resetByCategory(container) {
+            // hiddenByMore 마킹 해제
+            container.querySelectorAll('.product-item[data-hidden-by-more]').forEach(item => {
+                delete item.dataset.hiddenByMore;
+            });
+
+            requestAnimationFrame(() => {
+                this.applyPaging(container);
+            });
         }
     },
 
@@ -882,7 +1042,7 @@ const Eclub = {
             const currentEl = section.querySelector('.count-box .current');
             const totalEl = section.querySelector('.count-box .total');
             const dotsContainer = section.querySelector('.pagination-dots');
-            const btnPause = section.querySelector('.icon-main-pause')?.closest('button');
+            const btnPause = (section.querySelector('.icon-mo-pause') || section.querySelector('.icon-main-pause'))?.closest('button');
 
             const itemSelector = '.slide-item';
             const originalItems = Array.from(list.querySelectorAll(itemSelector));
@@ -1124,15 +1284,19 @@ const Eclub = {
             };
 
             if (btnPause) {
+                // 모바일/PC pause 아이콘 클래스 판별
+                const isMoPause = !!btnPause.querySelector('.icon-mo-pause');
+                const pauseClass = isMoPause ? 'icon-mo-pause' : 'icon-main-pause';
+                const playClass = isMoPause ? 'icon-mo-play' : 'icon-main-play';
                 btnPause.onclick = () => {
                     const icon = btnPause.querySelector('i');
                     if (isPaused) {
                         isPaused = false;
-                        icon.className = 'icon-main-pause';
+                        icon.className = pauseClass;
                         startAuto();
                     } else {
                         isPaused = true;
-                        icon.className = 'icon-main-play';
+                        icon.className = playClass;
                         stopAuto();
                     }
                 };
@@ -1472,60 +1636,17 @@ const Eclub = {
             const floatingContainer = document.querySelector('.floating-util');
             const btnBack = document.getElementById('btn-floating-back');
             const btnTop = document.getElementById('btn-floating-top');
+            const btnQuick = document.getElementById('btn-mobile-quick');
 
             if (!floatingContainer || floatingContainer._isInit) return;
             floatingContainer._isInit = true;
 
-            // 바텀 시트 상태에 따른 위치 계산
-            const updatePosition = () => {
-                const sheet = document.querySelector('.bottom-sheet');
-                const summary = document.querySelector('.summary-section');
-                const isExpanded = sheet && sheet.classList.contains('is-expanded');
-
-                let target = null;
-                if (isExpanded) {
-                    target = summary;
-                } else {
-                    target = sheet || summary;
-                }
-
-                let h = 0;
-                if (target) {
-                    const rect = target.getBoundingClientRect();
-                    if (rect.top > 0 && rect.top < window.innerHeight) {
-                        h = window.innerHeight - rect.top;
-                    }
-                }
-
-                let nextBottom = h > 0 ? h + 12 : 20;
-
-                const topLimit = window.innerHeight * 0.75;
-                if (nextBottom > topLimit) nextBottom = topLimit;
-
-                floatingContainer.style.bottom = `${nextBottom}px`;
-            };
-
-            updatePosition();
-            window.addEventListener('resize', updatePosition);
-            window.addEventListener('scroll', updatePosition, { passive: true });
-
+            // 바텀 시트가 있으면 클래스 추가 (위치 보정을 위함)
             const sheetEl = document.querySelector('.bottom-sheet');
             if (sheetEl) {
-                const observer = new MutationObserver(updatePosition);
-                observer.observe(sheetEl, { attributes: true, attributeFilter: ['class', 'style'] });
-                sheetEl.addEventListener('transitionend', updatePosition);
+                floatingContainer.classList.add('has-bottom-sheet');
             }
 
-            document.addEventListener('click', (e) => {
-                if (e.target.closest('.sheet-header, .btn-sheet-toggle')) {
-                    let count = 0;
-                    const loop = () => {
-                        updatePosition();
-                        if (count++ < 30) requestAnimationFrame(loop);
-                    };
-                    requestAnimationFrame(loop);
-                }
-            });
 
             if (btnBack) {
                 if (window.history.length > 1) {
@@ -1541,11 +1662,17 @@ const Eclub = {
             }
 
             if (btnTop) {
+                const quickMenuLayer = document.getElementById('quick-menu-layer');
+
                 const checkScroll = () => {
                     if (window.scrollY > 300) {
                         btnTop.classList.remove('is-hidden');
+                        if (btnQuick) btnQuick.classList.add('move-up');
+                        if (quickMenuLayer) quickMenuLayer.classList.add('move-up');
                     } else {
                         btnTop.classList.add('is-hidden');
+                        if (btnQuick) btnQuick.classList.remove('move-up');
+                        if (quickMenuLayer) quickMenuLayer.classList.remove('move-up');
                     }
                 };
 
@@ -1688,6 +1815,7 @@ const Eclub = {
         // 비동기 포함 나머지 초기화
         this.Slider.init();
         await this.Loader.init();
+        this.QuickMenu.init();
         this.FloatingUtil.init();
         this.Clipboard.init();
         this.Toggle.init();

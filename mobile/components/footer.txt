@@ -63,6 +63,34 @@
     <!-- 플로팅 유틸리티 버튼 -->
     <div class="floating-util">
         <div class="util-inner">
+            <!-- 퀵메뉴 레이아웃 -->
+            <div id="quick-menu-layer" class="quick-menu-layer" hidden>
+                <div class="menu-list">
+                    <a href="#" class="quick-item">
+                        <span class="tit">관심상품</span>
+                        <span class="val">201</span>
+                    </a>
+                    <a href="#" class="quick-item">
+                        <span class="tit">자주구매</span>
+                        <span class="val">99</span>
+                    </a>
+                    <a href="#" class="quick-item">
+                        <span class="tit">나의쿠폰</span>
+                        <span class="val">144</span>
+                    </a>
+                    <a href="#" class="quick-item">
+                        <span class="tit">주문내역</span>
+                        <span class="val">14</span>
+                    </a>
+                    <button type="button" class="btn-quick-close" aria-label="메뉴 닫기">
+                        <i class="icon-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="button" id="btn-mobile-quick" class="btn-mobile-quick" aria-label="메뉴 열기">
+                <i class="icon-mobile-plus-menu"></i>
+            </button>
             <button type="button" id="btn-floating-back" class="btn-floating-back is-hidden" aria-label="이전 페이지로 이동">
                 <i class="icon-nav-back"></i>
             </button>

@@ -20,6 +20,11 @@
         transition: all 0.3s;
     }
 
+    // 바텀 시트가 있을 때 위치 보정 (닫힌 상태의 높이만큼 올림)
+    &.has-bottom-sheet {
+        bottom: rem(180); // 헤더 + 요약정보 + 결제버튼 + 여백 고려한 높이
+    }
+
     // 하단 바텀 시트나 CTA가 있을 때 버튼 디자인 보정
     &.has-bottom-bar {
 
@@ -36,14 +41,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: rem(48);
-        height: rem(48);
+        width: rem(40);
+        height: rem(40);
         background-color: $white;
         border-radius: 50%;
-        // 깊고 선명한 다중 레이어 그림자 (콘텐츠와 확실하게 구분)
-        box-shadow: 0 rem(4) rem(4) rgba(0, 0, 0, 0.25), 0 rem(2) rem(8) rgba(0, 0, 0, 0.15);
-        transition: opacity 0.3s, transform 0.3s, bottom 0.35s;
-        border: 1px solid $gray-200;
+        border: 2px solid $gray-700;
         padding: 0;
 
         &:active {
@@ -55,17 +57,108 @@
             visibility: hidden;
             transform: translateY(rem(10));
         }
+
+        i {
+            width: rem(16);
+            height: rem(16);
+        }
     }
 
     .btn-floating-back {
         .icon-nav-back {
-            color: $gray-850;
+            color: $gray-700;
         }
     }
 
     .btn-floating-top {
         .icon-nav-top {
-            color: $gray-850;
+            transform: rotate(0deg);
+            color: $gray-700;
+        }
+    }
+
+    // 모바일 퀵 메뉴 레이어
+    .quick-menu-layer {
+        position: absolute;
+        right: rem(20);
+        bottom: 0;
+        z-index: 10;
+        min-width: rem(130);
+        pointer-events: auto;
+
+        &[hidden] {
+            display: none;
+        }
+
+        &.move-up {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(rem(-60));
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            background-color: $white;
+            border: 1px solid $gray-700;
+            overflow: hidden;
+
+            .quick-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: rem(13) rem(16);
+                text-decoration: none;
+                color: $gray-900;
+                font-size: rem(14);
+                // border-bottom: 1px solid $gray-200;
+
+                .tit {
+                    font-weight: $fw-medium;
+                    color: $gray-700;
+                    margin-right: rem(12);
+                }
+
+                .val {
+                    font-weight: $fw-bold;
+                    color: $gray-900;
+                    margin-left: auto;
+                }
+            }
+
+            .btn-quick-close {
+                width: 100%;
+                height: rem(40);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: $white;
+                border: none;
+                cursor: pointer;
+                margin-top: rem(10);
+
+                i {
+                    width: rem(24);
+                    height: rem(24);
+                    background-color: $gray-700;
+                }
+            }
+        }
+    }
+
+    // 모바일 퀵 메뉴 버튼
+    .btn-mobile-quick {
+        position: absolute;
+        right: rem(20);
+        bottom: 0;
+        z-index: 5;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &.move-up {
+            transform: translateY(rem(-60)); // 버튼 높이(40) + 간격(50) = 90
+        }
+
+        .icon-mobile-plus-menu {
+            background-color: $gray-700;
         }
     }
 }

@@ -110,6 +110,12 @@
                     background-color: $color-badge-cooling-bg;
                     color: $color-badge-cooling-text;
                 }
+
+                &.direct {
+                    background-color: $color-badge-direct-bg;
+                    color: $color-badge-direct-text;
+                    justify-content: flex-start;
+                }
             }
 
             .cart-item-list {

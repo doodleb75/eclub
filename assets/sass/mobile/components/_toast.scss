@@ -16,16 +16,16 @@
     display: inline-flex;
     align-items: center;
     gap: rem(8);
-    padding: rem(3) rem(4); // 폰트 비율에 맞춰 축소
-    background: #00B87A; // 디자인 가이드 컬러 (성공)
-    border-radius: rem(4);
+    padding: rem(4) rem(8); // 폰트 비율에 맞춰 축소
+    background: rgba(0, 0, 0, .75); // 디자인 가이드 컬러 (성공)
+    // border-radius: rem(4);
     box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.15);
     color: $white;
-    font-size: rem(11); // 모바일 폰트 사이즈 조정 (14px -> 12px)
+    font-size: rem(12); // 모바일 폰트 사이즈 조정 (14px -> 12px)
     font-weight: $fw-medium;
     line-height: 1.5;
     opacity: 0;
-    transform: translateY(rem(10));
+    transform: translateY(rem(4)); // 노출 위치와 자연스럽게 연결되도록 애니메이션 거리 축소
     transition: opacity 0.3s, transform 0.3s;
     pointer-events: auto;
 
@@ -36,6 +36,7 @@
 
     // 아이콘 세팅
     .toast-icon {
+        display: none;
         flex-shrink: 0;
         width: rem(14); // 폰트 비율에 맞춰 축소 (20px -> 17px)
         height: rem(14);

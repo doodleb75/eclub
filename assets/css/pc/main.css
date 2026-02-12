@@ -92,6 +92,17 @@ body {
   mask-size: contain;
 }
 
+.icon-mobile-plus-menu {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("../../icons/mobile-plus-menu.svg") no-repeat center;
+  mask: url("../../icons/mobile-plus-menu.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 .icon-search {
   display: inline-block;
   width: 1.5rem;
@@ -531,6 +542,28 @@ body {
   mask-size: contain;
 }
 
+.icon-mo-pause {
+  display: inline-block;
+  width: 1.125rem;
+  height: 1.125rem;
+  background-color: #ffffff;
+  -webkit-mask: url("../../icons/main/mo-icon-pause.svg") no-repeat center;
+  mask: url("../../icons/main/mo-icon-pause.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-mo-play {
+  display: inline-block;
+  width: 0.6875rem;
+  height: 0.6875rem;
+  background-color: #ffffff;
+  -webkit-mask: url("../../icons/main/mo-icon-play.svg") no-repeat center;
+  mask: url("../../icons/main/mo-icon-play.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 .icon-main-play {
   display: inline-block;
   width: 1.625rem;
@@ -618,8 +651,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../..//icons/prev-history.svg") no-repeat center;
-  mask: url("../..//icons/prev-history.svg") no-repeat center;
+  -webkit-mask: url("../..//icons/icon-history-back.svg") no-repeat center;
+  mask: url("../..//icons/icon-history-back.svg") no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -629,8 +662,8 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   background-color: currentColor;
-  -webkit-mask: url("../..//icons/prev-history.svg") no-repeat center;
-  mask: url("../..//icons/prev-history.svg") no-repeat center;
+  -webkit-mask: url("../..//icons/icon-top.svg") no-repeat center;
+  mask: url("../..//icons/icon-top.svg") no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
   transform: rotate(90deg);
@@ -3027,6 +3060,10 @@ body {
   background-color: #def1ff;
   color: #00568a;
 }
+.main-page-wrapper .home-section .product-list .product-item .prod-info .prod-name .badge-type.type-frozen {
+  background-color: #00568a;
+  color: #ffffff;
+}
 .main-page-wrapper .home-section .product-list .product-item .prod-info .prod-price-info {
   font-size: 0.8125rem;
   color: #aaaaaa;
@@ -4235,6 +4272,58 @@ body {
 .cart-group.cooling .group-header .header-right .limit-txt b {
   font-weight: 700;
 }
+.cart-group.direct {
+  border: none;
+  margin-bottom: 2.5rem;
+}
+.cart-group.direct .group-header {
+  background-color: #ebebeb;
+  color: #222222;
+  padding: 1rem 2.5rem;
+  gap: 2.5rem;
+}
+.cart-group.direct .group-header .header-left .group-title {
+  font-size: 1.375rem;
+  color: #222222;
+  font-weight: 700;
+  margin-left: 0.75rem;
+}
+.cart-group.direct .group-header .header-center {
+  display: none;
+}
+.cart-group.direct .group-header .header-right .limit-txt {
+  display: none;
+}
+.cart-group.appliance {
+  border: none;
+  margin-bottom: 2.5rem;
+}
+.cart-group.appliance .group-header {
+  background-color: #ffeec6;
+  color: #222222;
+  padding: 1rem 2.5rem;
+  gap: 2.5rem;
+}
+.cart-group.appliance .group-header .header-left .group-title {
+  font-size: 1.375rem;
+  color: #222222;
+  font-weight: 700;
+  margin-left: 0.75rem;
+}
+.cart-group.appliance .group-header .header-center {
+  display: none;
+}
+.cart-group.appliance .group-header .header-right .limit-txt {
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  color: #222222;
+  font-weight: 700;
+  letter-spacing: -0.03125rem;
+}
+.cart-group.appliance .group-header .header-right .limit-txt b {
+  font-weight: 700;
+}
 .cart-group.empty {
   display: flex;
   align-items: center;
@@ -5051,42 +5140,21 @@ body {
   object-fit: cover;
 }
 .checkout-page .payment-method .box-header .checkbox-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  height: 1.5rem;
-}
-.checkout-page .payment-method .box-header .checkbox-container input {
-  display: none;
+  padding-left: 1.875rem;
 }
 .checkout-page .payment-method .box-header .checkbox-container .checkmark {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 0.1875rem;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0.0625rem;
+  width: 1.375rem;
+  height: 1.375rem;
 }
 .checkout-page .payment-method .box-header .checkbox-container .checkmark::after {
-  content: "";
-  position: absolute;
-  left: 0.5rem;
-  top: 0.25rem;
-  width: 0.375rem;
-  height: 0.6875rem;
-  border: solid white;
-  border-width: 0 0.125rem 0.125rem 0;
-  transform: rotate(45deg);
+  left: 0.4375rem;
+  top: 0.1875rem;
 }
 .checkout-page .payment-method .box-header .checkbox-container .label-text {
   font-size: 0.875rem;
   color: #999999;
   font-weight: 500;
-  line-height: 1;
-  margin-top: 0.0625rem;
+  line-height: normal;
 }
 .checkout-page .payment-method .method-grid {
   display: grid;
@@ -5598,6 +5666,37 @@ body {
   font-size: 1rem;
   font-weight: 700;
 }
+.checkout-page .estimate {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0rem 0rem 1.25rem;
+}
+.checkout-page .estimate .guide-text {
+  font-size: 0.8125rem;
+  color: #666666;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.03125rem;
+}
+.checkout-page .estimate .btn-print {
+  height: 2rem;
+  padding: 0 1rem;
+  border: 1px solid #d9d9d9;
+  background-color: #ffffff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #666666;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  letter-spacing: -0.03125rem;
+  transition: all 0.2s;
+}
+.checkout-page .estimate .btn-print:hover {
+  background-color: #f7f7f7;
+  border-color: #999999;
+}
 .checkout-page .checkout-products-area {
   margin-top: 1.25rem;
 }
@@ -5649,11 +5748,11 @@ body {
   margin-bottom: 0 !important;
 }
 .checkout-page .checkout-products-area .cart-group .group-header {
-  height: 2.5rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   padding: 0 1.25rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 .checkout-page .checkout-products-area .cart-group .group-header.ambient {

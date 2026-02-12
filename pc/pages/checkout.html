@@ -20,7 +20,13 @@
             <!-- 페이지 타이틀 & 브레드크럼 -->
             <div class="page-header">
                 <div class="container">
-                    <h2 class="page-title">주문결제</h2>
+                    <div class="title-area">
+                        <h2 class="page-title">주문결제</h2>
+                        <div class="min-order-info" aria-label="최소주문금액 안내">
+                            <span class="info-label">최소주문금액 안내</span>
+                            <span class="info-value">저온 250,000원 / 상온 300,000원</span>
+                        </div>
+                    </div>
                     <nav aria-label="현재 진행 단계">
                         <ol class="breadcrumb">
                             <li>장바구니</li>
@@ -374,7 +380,7 @@
                                                         <span class="badge">3</span></a></li>
                                                 <li class="tab-item"><a href="#section-ambient" class="tab-link">상온상품
                                                         <span class="badge">12</span></a></li>
-                                                <li class="tab-item"><a href="#section-cooling" class="tab-link">직납상품
+                                                <li class="tab-item"><a href="#section-direct" class="tab-link">직납상품
                                                         <span class="badge">0</span></a></li>
                                             </ul>
                                         </div>
@@ -565,9 +571,9 @@
                                     </ul>
                                 </section>
 
-                                <!-- 직납상품 그룹 -->
-                                <section class="cart-group cooling" id="section-cooling">
-                                    <div class="group-header cooling">직납상품</div>
+                                <!-- 직납배송 그룹 -->
+                                <section class="cart-group direct" id="section-direct">
+                                    <div class="group-header direct">직납배송</div>
                                     <ul class="cart-item-list">
                                         <li class="cart-item">
                                             <div class="item-thumb">
@@ -612,6 +618,12 @@
                                 </div>
                             </div>
                         </section>
+                        <!-- 견적서 인쇄 -->
+                        <section class="estimate">
+                            <p class="guide-text">포인트 합산 구매시(견적서 인쇄)내역에는 합산된 금액이 노출됩니다.</p>
+                            <button type="button" class="btn-print">견적서 인쇄</button>
+                        </section>
+                        <!-- //견적서 인쇄 -->
                     </div>
 
                     <!-- 오른쪽 사이드바 영역 -->
