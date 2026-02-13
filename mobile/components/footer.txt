@@ -82,10 +82,10 @@
                         <span class="tit">주문내역</span>
                         <span class="val">14</span>
                     </a>
-                    <button type="button" class="btn-quick-close" aria-label="메뉴 닫기">
-                        <i class="icon-chevron-down"></i>
-                    </button>
                 </div>
+                <button type="button" class="btn-quick-close" aria-label="메뉴 닫기">
+                    <i class="icon-chevron-down"></i>
+                </button>
             </div>
 
             <button type="button" id="btn-mobile-quick" class="btn-mobile-quick" aria-label="메뉴 열기">

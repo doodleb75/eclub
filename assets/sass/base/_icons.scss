@@ -281,6 +281,10 @@ $icon-path: '../../icons'; // 루트 절대 경로 적용
     @include icon-mask('#{$icon-path}/menu.svg', rem(24));
 }
 
+.icon-category-menu {
+    @include icon-mask('#{$icon-path}/main/icon-category-menu.svg', rem(24));
+}
+
 .icon-alarm {
     @include icon-mask('#{$icon-path}/bell.svg', rem(24));
 }

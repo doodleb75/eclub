@@ -77,7 +77,6 @@
         }
     }
 
-    // 모바일 퀵 메뉴 레이어
     .quick-menu-layer {
         position: absolute;
         right: rem(20);
@@ -85,6 +84,12 @@
         z-index: 10;
         min-width: rem(130);
         pointer-events: auto;
+        display: flex;
+        flex-direction: column;
+        background-color: $white;
+        border: 1px solid $gray-700;
+        border-bottom-right-radius: rem(30);
+        gap: 0;
 
         &[hidden] {
             display: none;
@@ -98,9 +103,7 @@
         .menu-list {
             display: flex;
             flex-direction: column;
-            background-color: $white;
-            border: 1px solid $gray-700;
-            overflow: hidden;
+            width: 100%;
 
             .quick-item {
                 display: flex;
@@ -109,8 +112,7 @@
                 padding: rem(13) rem(16);
                 text-decoration: none;
                 color: $gray-900;
-                font-size: rem(14);
-                // border-bottom: 1px solid $gray-200;
+                font-size: rem(16);
 
                 .tit {
                     font-weight: $fw-medium;
@@ -124,23 +126,18 @@
                     margin-left: auto;
                 }
             }
+        }
 
-            .btn-quick-close {
-                width: 100%;
-                height: rem(40);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: $white;
-                border: none;
-                cursor: pointer;
-                margin-top: rem(10);
+        .btn-quick-close {
+            align-self: flex-end;
+            margin: 0 -1px -1px 0;
+            border: 2px solid $gray-700;
+            background-color: $white;
 
-                i {
-                    width: rem(24);
-                    height: rem(24);
-                    background-color: $gray-700;
-                }
+            i {
+                width: rem(16);
+                height: rem(16);
+                background-color: $gray-700; // Chevron 아이콘 색상
             }
         }
     }

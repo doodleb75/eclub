@@ -3,10 +3,21 @@
         <!-- 정보 바 -->
         <div class="header-info-bar">
             <ul class="info-list">
-                <li>당월배송금액 <b>83,003,000원</b></li>
+                <li>당월배송금액 <b>83,003,000원</b>
+                <a href="javascript:void(0);" class="btn-info" data-popover-template="shiping-guide"><i class="icon-info"></i></a>
+                </li>
                 <li>당일주문금액 <b>503,000원</b></li>
                 <li>배송예정금액 <b>1,203,560원</b></li>
-                <li>가용포인트 <b>600,400원</b></li>
+                <li>가용포인트 <b>600,400원</b>
+                <a href="javascript:void(0);" class="btn-info" data-popover-template="pointinfo"><i class="icon-info"></i></a></li>
+                <li>
+                    <!-- 브라우저 줌 컨트롤 추가-->
+                    <div class="browser-zoom">
+                        <button type="button" class="btn-zoom-out" title="축소"><i class="icon-zoom-out"></i></button>
+                        <span class="zoom-value">100%</span>
+                        <button type="button" class="btn-zoom-in" title="확대"><i class="icon-zoom-in"></i></button>                        
+                    </div>
+                </li>
             </ul>
         </div>
 
@@ -26,13 +37,6 @@
             </form>
                 </div>
             <div class="user-controls">
-                <!-- 브라우저 줌 컨트롤 추가-->
-                <div class="browser-zoom">
-                    <button type="button" class="btn-zoom-out" title="축소"><i class="icon-zoom-out"></i></button>
-                    <span class="divider"></span>
-                    <button type="button" class="btn-zoom-in" title="확대"><i class="icon-zoom-in"></i></button>
-                    <span class="zoom-value">100%</span>
-                </div>
                 <div class="user-menu">
                     <a href="#" class="icon-link archive" title="주문건수">
                         <i class="icon-document"></i>
@@ -62,7 +66,7 @@
         <nav class="header-nav">
             <div class="nav-left">
                 <button type="button" class="category-toggle">
-                    카테고리<i class="icon-chevron-down"></i>
+                    <i class="icon-category-menu"></i>카테고리
                 </button>
                 <ul class="main-menu">
                     <li><a href="#">오늘의 핫딜</a></li>
