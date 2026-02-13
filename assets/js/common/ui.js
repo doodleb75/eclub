@@ -1685,9 +1685,28 @@ const Eclub = {
         }
     },
 
-    // HTML 인클루드 로더
+    // HTML 인클루드 로더 & 스피너 제어
     Loader: {
+        overlay: null,
+
         async init() {
+            // 로딩 오버레이가 없으면 동적 생성
+            if (!document.querySelector('.loading-overlay')) {
+                const loaderHTML = `
+                    <div class="loading-overlay is-active">
+                        <div class="spinner">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('afterbegin', loaderHTML);
+            }
+
+            this.overlay = document.querySelector('.loading-overlay');
+
+            // HTML Include 처리
             const includes = document.querySelectorAll('[data-include]');
             for (const el of includes) {
                 const url = el.dataset.include;
@@ -1696,13 +1715,41 @@ const Eclub = {
                     if (res.ok) {
                         const html = await res.text();
                         el.outerHTML = html;
-
                     } else {
                         console.error('로드 실패:', url);
                     }
                 } catch (e) {
                     console.error('인클루드 오류:', url, e);
                 }
+            }
+
+            // 모든 처리 완료 후 스피너 숨김
+            if (this.overlay) {
+                // 약간의 지연을 두어 렌더링 안정화 후 숨김
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => this.hide());
+                });
+
+                // 안전장치
+                setTimeout(() => this.hide(), 3000);
+            }
+        },
+
+        show() {
+            if (!this.overlay) this.overlay = document.querySelector('.loading-overlay');
+            if (this.overlay) {
+                this.overlay.style.display = 'flex';
+                this.overlay.classList.add('is-active');
+                document.body.style.overflow = 'hidden';
+            }
+        },
+
+        hide() {
+            if (!this.overlay) this.overlay = document.querySelector('.loading-overlay');
+            if (this.overlay) {
+                this.overlay.style.display = 'none';
+                this.overlay.classList.remove('is-active');
+                document.body.style.overflow = '';
             }
         }
     },

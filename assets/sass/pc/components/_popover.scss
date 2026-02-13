@@ -182,8 +182,8 @@
 
         // 테이블 스타일 (offdayinfo 등에서 사용)
         .info-table-wrap {
-            border-top: rem(2) solid $gray-900;
-            border-bottom: 1px solid $gray-350;
+            // border-top: rem(2) solid $gray-900;
+            // border-bottom: 1px solid $gray-350;
             margin-bottom: rem(20);
         }
 
@@ -193,11 +193,11 @@
 
             th {
                 padding: rem(12) 0;
-                background-color: $gray-50;
+                background-color: $gray-60;
                 color: $gray-900;
                 font-size: rem(13);
                 font-weight: $fw-semibold;
-                border-bottom: 1px solid $gray-150;
+                // border-bottom: 1px solid $gray-150;
             }
 
             td {

@@ -169,6 +169,10 @@
         letter-spacing: rem(-0.8);
         word-break: keep-all;
 
+        &.price-check {
+            font-size: rem(12);
+        }
+
         &.emp-text {
             color: $point-red;
         }
@@ -268,7 +272,7 @@
 
         .file-name {
             flex: 1;
-            height: rem(40);
+            height: rem(30);
             padding: 0 rem(12);
             border: 1px solid $gray-400;
             border-radius: $radius-sm;
@@ -286,14 +290,14 @@
             align-items: center;
             justify-content: center;
             gap: rem(6);
-            height: rem(40);
+            height: rem(30);
             padding: 0 rem(12);
-            border: 1px solid $gray-400;
+            border: 1px solid $gray-350;
             border-radius: $radius-sm;
             background: $white;
-            font-size: rem(14);
+            font-size: rem(13);
             font-weight: $fw-medium;
-            color: $black;
+            color: $gray-700;
             cursor: pointer;
             transition: background 0.2s;
 
@@ -325,8 +329,8 @@
 // 모달 내 공통 안내 요소 (테이블 등)
 .modal-body {
     .info-table-wrap {
-        border-top: rem(2) solid $gray-900;
-        border-bottom: 1px solid $gray-350;
+        // border-top: rem(2) solid $gray-900;
+        // border-bottom: 1px solid $gray-350;
         margin-top: rem(15);
     }
 
@@ -339,9 +343,9 @@
             height: rem(44);
             padding: 0;
             color: $gray-900;
-            background-color: $gray-50;
-            border-bottom: 1px solid $gray-150;
-            font-size: rem(14);
+            background-color: $gray-60;
+            // border-bottom: 1px solid $gray-150;
+            font-size: rem(13);
             font-weight: $fw-bold;
             text-align: center;
             vertical-align: middle;
@@ -364,7 +368,7 @@
             height: rem(48);
             padding: rem(10) 0;
             text-align: center;
-            font-size: rem(14);
+            font-size: rem(13);
             color: $gray-800;
             border-bottom: 1px solid $gray-150;
 
@@ -379,6 +383,41 @@
                 background-color: $white;
             }
         }
+
+
+    }
+
+    .ver-table {
+        border-top: rem(2) solid $gray-900;
+
+        th {
+            text-align: center;
+            vertical-align: middle;
+            background-color: $gray-50;
+
+            span {
+                display: inline-block;
+                text-align: left;
+                line-height: 1.4;
+                min-width: rem(75);
+            }
+        }
+
+        th,
+        td {
+            font-size: rem(13);
+            color: $gray-900;
+            padding: rem(10) rem(20);
+            border-bottom: rem(1) solid $gray-300; // 하단 선으로 변경하여 마지막 줄까지 닫히도록 함
+
+            em {
+                font-style: normal;
+            }
+        }
+
+        td {
+            text-align: left;
+        }
     }
 
     // 결과 요약 영역
@@ -387,10 +426,9 @@
         padding-left: rem(10);
 
         .summary-text {
-            font-size: rem(16);
-            font-weight: $fw-bold;
+            font-size: rem(12);
+            font-weight: $fw-medium;
             color: $gray-900;
-            letter-spacing: rem(-0.8);
 
             .bullet {
                 margin-right: rem(4);
@@ -426,22 +464,21 @@
         }
 
         .btn-result-download {
-            height: rem(44);
-            padding: 0 rem(20);
-            border: 1px solid $gray-400;
-            border-radius: $radius-sm;
-            background: $white;
-            font-size: rem(14);
-            font-weight: $fw-medium;
-            color: $black;
+
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: rem(6);
+            height: rem(30);
+            padding: 0 rem(12);
+            border: 1px solid $gray-350;
+            border-radius: $radius-sm;
+            background: $white;
+            font-size: rem(13);
+            font-weight: $fw-medium;
+            color: $gray-700;
             cursor: pointer;
-
-            i {
-                font-size: rem(18);
-            }
+            transition: background 0.2s;
 
             &:hover {
                 background: $gray-100;

@@ -1,11 +1,9 @@
-/**
- * 전역 모달 시스템 (HTML 로드 방식)
- * - Modal.open('/path/to/file.html') 형식으로 외부 마크업을 읽어옵니다.
- */
+// 전역 모달 시스템
 const Modal = (() => {
     let overlay = null;
     let wrap = null;
-    const cache = new Map(); // HTML 캐싱용
+    let closeTimer = null; // 닫기 애니메이션 타이머
+    const cache = new Map(); // HTML 캐싱
 
     const init = () => {
         if (overlay) return;
@@ -34,28 +32,25 @@ const Modal = (() => {
         });
     };
 
-    /**
-     * DOM 데이터 자동 추출 (Smart Discovery)
-     * - data-item-* 속성이 없으면 주변 .cart-item에서 정보를 찾아옴
-     */
+    // 데이터 자동 추출
     const bindSmartData = (contentArea, trigger) => {
         const itemContainer = trigger.closest('.cart-item');
 
-        // 1. 상품명 추출 (data 우선 -> 주변 .item-name)
+        // 상품명 추출 (dataset 우선)
         const name = trigger.dataset.itemName || (itemContainer && itemContainer.querySelector('.item-name')?.textContent);
         if (name) {
             const nameTarget = contentArea.querySelector('.modal-item-name');
             if (nameTarget) nameTarget.textContent = name;
         }
 
-        // 2. 이미지 추출 (data 우선 -> trigger 내부 img -> 주변 img)
+        // 이미지 추출 (dataset/img 우선)
         const img = trigger.dataset.itemImg || trigger.querySelector('img')?.src || (itemContainer && itemContainer.querySelector('img')?.src);
         if (img) {
             const imgTarget = contentArea.querySelector('.modal-item-img');
             if (imgTarget) imgTarget.src = img;
         }
 
-        // 3. 기타 data-item-* 직접 매핑
+        // 기타 data-item-* 매핑
         Object.keys(trigger.dataset).forEach(key => {
             if (key.startsWith('item')) {
                 const selector = `.modal-item-${key.slice(4).toLowerCase()}`;
@@ -69,17 +64,23 @@ const Modal = (() => {
     };
 
     const open = async (url, options = {}) => {
+        // 연속 호출 시 이전 닫기 작업 취소
+        if (closeTimer) {
+            clearTimeout(closeTimer);
+            closeTimer = null;
+        }
+
         if (!overlay) init();
         const contentArea = overlay.querySelector('.modal-content');
         let html = '';
 
         try {
-            // #으로 시작하면 Template ID로 간주 (방식 3)
+            // Template ID 로드
             if (url.startsWith('#')) {
                 const template = document.querySelector(url);
                 html = template ? template.innerHTML : '';
             }
-            // 아니면 외부 파일 fetch (캐시 적용)
+            // 외부 파일 fetch 및 캐싱
             else {
                 if (cache.has(url)) {
                     html = cache.get(url);
@@ -105,7 +106,7 @@ const Modal = (() => {
 
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden'; // 모바일 사파리 대응
+            document.documentElement.style.overflow = 'hidden'; // 모바일 대응
 
             // 스크립트 실행
             contentArea.querySelectorAll('script').forEach(oldScript => {
@@ -125,9 +126,18 @@ const Modal = (() => {
         overlay.classList.remove('active');
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
-        setTimeout(() => {
-            overlay.querySelector('.modal-content').innerHTML = '';
-            wrap.style = '';
+
+        // 대기 중인 타이머 제거
+        if (closeTimer) clearTimeout(closeTimer);
+
+        // 애니메이션 종료 후 리소스 정리
+        closeTimer = setTimeout(() => {
+            // 재오픈 되지 않았을 때만 비우기
+            if (!overlay.classList.contains('active')) {
+                overlay.querySelector('.modal-content').innerHTML = '';
+                wrap.style = '';
+            }
+            closeTimer = null;
         }, 300);
     };
 

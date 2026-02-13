@@ -115,6 +115,18 @@ $icon-path: '../../icons'; // 루트 절대 경로 적용
     @include icon-mask('#{$icon-path}/file_upload.svg', rem(16));
 }
 
+.icon-file-upload {
+    @include icon-mask('#{$icon-path}/file_upload.svg', rem(16));
+}
+
+.icon-file-download {
+    @include icon-mask('#{$icon-path}/file_download.svg', rem(18));
+}
+
+.icon-small-arrow {
+    @include icon-mask('#{$icon-path}/icon-small-arrow.svg', rem(10));
+}
+
 // 공통/기타 아이콘
 .icon-toggle {
     @include icon-mask('#{$icon-path}/chevron-down.svg', rem(16));

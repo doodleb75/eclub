@@ -13,7 +13,8 @@
                 <input type="file" id="excel-file-hidden" class="file-hidden" accept=".xlsx, .xls"
                     style="display: none;">
                 <button type="button" class="btn-file-search">찾아보기</button>
-                <button type="button" class="btn-form-download"><i class="icon-excel"></i>양식다운로드</button>
+                <button type="button" class="btn-form-download"><i class="icon-excel"></i>양식다운로드<i
+                        class="icon-file-download"></i></button>
             </div>
         </div>
     </div>
@@ -55,7 +56,7 @@
         </div>
         <div class="result-summary">
             <p class="summary-text">
-                <span class="bullet">■</span> 총등록 건 <span class="count">2</span> /
+                <span class="bullet">•</span> 총등록 건 <span class="count">2</span> /
                 성공 <span class="count text-success">1</span>건,
                 실패 <span class="count text-danger">1</span>건
             </p>
@@ -66,7 +67,7 @@
             <div class="footer-row">
                 <span class="label">첨부파일</span>
                 <button type="button" class="btn-result-download">
-                    <i class="icon-excel"></i>업로드결과 다운로드
+                    <i class="icon-excel"></i>업로드결과 다운로드<i class="icon-file-download"></i>
                 </button>
             </div>
         </div>
@@ -74,4 +75,7 @@
 </div>
 <div class="modal-footer" id="modal-footer-upload">
     <button type="button" class="btn-excel-submit">등록</button>
+</div>
+<div class="modal-footer" id="modal-footer-confirm" style="display: none;">
+    <button type="button" class="btn-excel-submit btn-modal-close">확인</button>
 </div>
