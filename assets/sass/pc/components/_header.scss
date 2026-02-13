@@ -2,7 +2,6 @@
 
 .header {
     background-color: $white;
-    padding-bottom: rem(20);
 
     // 헤더 전체 컨테이너 1280px 적용
     >.container {
@@ -14,7 +13,12 @@
 
 // 상단 정보 바 (당월배송금액 등)
 .header-info-bar {
+    display: none; // 기본적으로 숨김
     padding: rem(8) 0;
+
+    .main-page & {
+        display: block; // 메인 페이지에서만 노출
+    }
 
     .info-list {
         display: flex;
@@ -28,6 +32,17 @@
             position: relative;
             font-weight: $fw-regular;
 
+            i {
+                position: relative;
+                top: rem(-2);
+                background-color: $gray-600;
+
+
+                &:hover {
+                    background-color: $gray-900;
+                }
+            }
+
             &::after {
                 content: '';
                 position: absolute;
@@ -39,7 +54,8 @@
                 background-color: $gray-500;
             }
 
-            &:last-child::after {
+            &:last-child::after,
+            &:nth-last-child(2)::after {
                 display: none;
             }
 
@@ -47,6 +63,36 @@
                 font-weight: $fw-regular;
                 color: $gray-600;
                 margin-left: rem(4);
+            }
+
+            // 브라우저 줌 컨트롤 (info-bar 내 배치)
+            .browser-zoom {
+                display: flex;
+                align-items: center;
+                gap: rem(6);
+
+                button {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    @include flex-center;
+                    width: rem(24);
+                    height: rem(24);
+                    color: $gray-700;
+                    transition: color $transition-speed ease;
+
+                    &:hover {
+                        color: $black;
+                    }
+                }
+
+                .zoom-value {
+                    font-size: rem(13);
+                    color: $gray-700;
+                    font-weight: $fw-regular;
+                    min-width: rem(32);
+                    text-align: center;
+                }
             }
         }
     }
@@ -58,7 +104,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: rem(64);
+    gap: rem(150);
 
     .logo-area {
         display: flex;
@@ -90,7 +136,7 @@
 
         .search-area {
             position: relative;
-            border: 1px solid $gray-800; // 보더 1px, 다크 그레이색상 변경
+            border: 1px solid $gray-700; // 보더 1px, 다크 그레이색상 변경
             border-radius: 0; // 사각형 디자인 적용
             padding: 0 rem(16); // 내부 좌우 패딩 조정
             background-color: $white;
@@ -134,46 +180,6 @@
         gap: rem(24);
         align-items: center;
 
-        .browser-zoom {
-            display: flex;
-            align-items: center;
-            margin-right: rem(8);
-            position: relative;
-
-            button {
-                background: none;
-                border: none;
-                cursor: pointer;
-                @include flex-center;
-                width: rem(32);
-                height: rem(32);
-                color: $gray-600;
-                transition: color 0.2s ease;
-
-                &:hover {
-                    color: $black;
-                }
-            }
-
-            .divider {
-                width: 1px;
-                height: rem(14);
-                background-color: $gray-400;
-                margin: 0 rem(16);
-            }
-
-            .zoom-value {
-                position: absolute;
-                left: rem(-38);
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: rem(12);
-                color: $gray-600;
-                font-family: inherit;
-                font-weight: $fw-medium;
-                letter-spacing: -0.02em;
-            }
-        }
 
         .user-menu {
             display: flex;
@@ -229,7 +235,7 @@
 
 // 내비게이션 바
 .header-nav {
-    padding: rem(12) 0;
+    padding: rem(12) 0 rem(16);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -250,11 +256,11 @@
             border: none;
             cursor: pointer;
 
-            [class^="icon-chevron"] {
-                color: $gray-700;
+            i {
+                color: $gray-900;
             }
 
-            &:hover [class^="icon-chevron"] {
+            &:hover i {
                 color: $black;
             }
         }

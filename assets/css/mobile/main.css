@@ -680,6 +680,17 @@ body {
   mask-size: contain;
 }
 
+.icon-category-menu {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  -webkit-mask: url("../../icons/main/icon-category-menu.svg") no-repeat center;
+  mask: url("../../icons/main/icon-category-menu.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 .icon-alarm {
   display: inline-block;
   width: 1.5rem;
@@ -1141,6 +1152,12 @@ header .header-gnb .gnb-list li.active a::after {
   z-index: 10;
   min-width: 8.125rem;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #666666;
+  border-bottom-right-radius: 1.875rem;
+  gap: 0;
 }
 .floating-util .quick-menu-layer[hidden] {
   display: none;
@@ -1152,9 +1169,7 @@ header .header-gnb .gnb-list li.active a::after {
 .floating-util .quick-menu-layer .menu-list {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  border: 1px solid #666666;
-  overflow: hidden;
+  width: 100%;
 }
 .floating-util .quick-menu-layer .menu-list .quick-item {
   display: flex;
@@ -1163,7 +1178,7 @@ header .header-gnb .gnb-list li.active a::after {
   padding: 0.8125rem 1rem;
   text-decoration: none;
   color: #222222;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 .floating-util .quick-menu-layer .menu-list .quick-item .tit {
   font-weight: 500;
@@ -1175,20 +1190,15 @@ header .header-gnb .gnb-list li.active a::after {
   color: #222222;
   margin-left: auto;
 }
-.floating-util .quick-menu-layer .menu-list .btn-quick-close {
-  width: 100%;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  border: none;
-  cursor: pointer;
-  margin-top: 0.625rem;
+.floating-util .quick-menu-layer .btn-quick-close {
+  align-self: flex-end;
+  margin: 0 -1px -1px 0;
+  border: 2px solid #666666;
+  background-color: #ffffff;
 }
-.floating-util .quick-menu-layer .menu-list .btn-quick-close i {
-  width: 1.5rem;
-  height: 1.5rem;
+.floating-util .quick-menu-layer .btn-quick-close i {
+  width: 1rem;
+  height: 1rem;
   background-color: #666666;
 }
 .floating-util .btn-mobile-quick {

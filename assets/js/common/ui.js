@@ -6,8 +6,8 @@ const Eclub = {
         SLIDER_AUTO_INTERVAL: 4000,
         TOAST_DURATION: 2500,
         ZOOM: {
-            MIN: 80,
-            MAX: 120,
+            MIN: 70,
+            MAX: 130,
             STEP: 10,
             DEFAULT: 100
         }
@@ -394,6 +394,8 @@ const Eclub = {
             if (display) {
                 display.textContent = `${this.zoomLevel}%`;
             }
+            // 줌 변경 후 슬라이더 레이아웃 재계산
+            window.dispatchEvent(new Event('resize'));
         }
     },
 
@@ -1123,17 +1125,13 @@ const Eclub = {
                 const style = window.getComputedStyle(list);
                 const gap = parseFloat(style.gap) || 0;
 
-                // 모바일(1개씩 보기) 등 itemsPerPage가 1일 때 계산 오차 방지를 위해 컨테이너 너비 사용
-                if (itemsPerPage === 1) {
-                    const containerWidth = list.clientWidth;
-                    return -(itemIdxInWrapper * (containerWidth + gap));
-                }
+                //itemsPerPage가 1이든 3이든, 부모 컨테이너(뷰포트) 너비를 기준으로 정확한 단위를 계산해야
+                //줌 배율(body.style.zoom)이 적용된 상태에서도 논리적 픽셀 단위로 정확히 이동하여 밀림 현상 방지
+                const container = list.parentElement;
+                const containerWidth = parseFloat(window.getComputedStyle(container).width);
 
-                const firstItem = list.querySelector(itemSelector);
-                if (!firstItem) return 0;
-                // 픽셀 오차 보정
-                const itemWidth = firstItem.getBoundingClientRect().width;
-                return -(itemIdxInWrapper * (itemWidth + gap));
+                const step = (containerWidth + gap) / itemsPerPage;
+                return -(itemIdxInWrapper * step);
             };
 
             const updateUI = () => {
