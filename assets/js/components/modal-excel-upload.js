@@ -24,13 +24,15 @@ document.addEventListener('click', (e) => {
         const resultTitle = modalWrap?.querySelector('#excel-result-title');
         const uploadSection = modalWrap?.querySelector('#upload-section');
         const resultSection = modalWrap?.querySelector('#result-section');
-        const modalFooter = modalWrap?.querySelector('#modal-footer-upload');
+        const uploadFooter = modalWrap?.querySelector('#modal-footer-upload');
+        const confirmFooter = modalWrap?.querySelector('#modal-footer-confirm');
 
         if (uploadTitle) uploadTitle.style.display = 'none';
         if (resultTitle) resultTitle.style.display = 'block';
         if (uploadSection) uploadSection.style.display = 'none';
         if (resultSection) resultSection.style.display = 'block';
-        if (modalFooter) modalFooter.style.display = 'none'; // 결과 푸터는 resultSection 내부에 포함됨
+        if (uploadFooter) uploadFooter.style.display = 'none';
+        if (confirmFooter) confirmFooter.style.display = 'block';
     }
 });
 

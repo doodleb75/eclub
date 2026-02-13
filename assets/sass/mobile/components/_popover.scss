@@ -183,8 +183,8 @@
 
         // 테이블 스타일
         .info-table-wrap {
-            border-top: rem(2) solid $gray-900;
-            border-bottom: 1px solid $gray-350;
+            // border-top: rem(2) solid $gray-900;
+            // border-bottom: 1px solid $gray-350;
             margin-bottom: rem(20);
         }
 
@@ -194,7 +194,7 @@
 
             th {
                 padding: rem(12) 0;
-                background-color: $gray-50;
+                background-color: $gray-60;
                 color: $gray-900;
                 font-size: rem(13);
                 font-weight: $fw-semibold;
