@@ -1688,12 +1688,13 @@ const Eclub = {
     // HTML 인클루드 로더 & 스피너 제어
     Loader: {
         overlay: null,
+        requestCount: 0,
 
         async init() {
-            // 로딩 오버레이가 없으면 동적 생성
+            // 로딩 오버레이 구조 생성 (기본 숨김)
             if (!document.querySelector('.loading-overlay')) {
                 const loaderHTML = `
-                    <div class="loading-overlay is-active">
+                    <div class="loading-overlay" style="display: none;">
                         <div class="spinner">
                             <div class="bounce1"></div>
                             <div class="bounce2"></div>
@@ -1723,16 +1724,64 @@ const Eclub = {
                 }
             }
 
-            // 모든 처리 완료 후 스피너 숨김
-            if (this.overlay) {
-                // 약간의 지연을 두어 렌더링 안정화 후 숨김
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => this.hide());
+            // Fetch 인터셉터 활성화 (데이터 통신 감지)
+            this.enableInterceptor();
+        },
+
+        enableInterceptor() {
+            const self = this;
+
+            // 1. Fetch API 인터셉트
+            const originalFetch = window.fetch;
+            window.fetch = async (...args) => {
+                self.requestCount++;
+                self.show();
+
+                try {
+                    const response = await originalFetch(...args);
+                    return response;
+                } catch (error) {
+                    throw error;
+                } finally {
+                    self.requestCount--;
+                    if (self.requestCount <= 0) {
+                        // 약간의 지연을 두어 깜빡임 방지
+                        setTimeout(() => {
+                            if (self.requestCount <= 0) {
+                                self.requestCount = 0;
+                                self.hide();
+                            }
+                        }, 300);
+                    }
+                }
+            };
+
+            // 2. XMLHttpRequest (Ajax/jQuery) 인터셉트
+            const originalOpen = XMLHttpRequest.prototype.open;
+            const originalSend = XMLHttpRequest.prototype.send;
+
+            XMLHttpRequest.prototype.open = function (...args) {
+                return originalOpen.apply(this, args);
+            };
+
+            XMLHttpRequest.prototype.send = function (...args) {
+                self.requestCount++;
+                self.show();
+
+                this.addEventListener('loadend', () => {
+                    self.requestCount--;
+                    if (self.requestCount <= 0) {
+                        setTimeout(() => {
+                            if (self.requestCount <= 0) {
+                                self.requestCount = 0;
+                                self.hide();
+                            }
+                        }, 300);
+                    }
                 });
 
-                // 안전장치
-                setTimeout(() => this.hide(), 3000);
-            }
+                return originalSend.apply(this, args);
+            };
         },
 
         show() {
@@ -1746,6 +1795,9 @@ const Eclub = {
 
         hide() {
             if (!this.overlay) this.overlay = document.querySelector('.loading-overlay');
+            // 요청이 남아있으면 숨기지 않음
+            if (this.requestCount > 0) return;
+
             if (this.overlay) {
                 this.overlay.style.display = 'none';
                 this.overlay.classList.remove('is-active');
