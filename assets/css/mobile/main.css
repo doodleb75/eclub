@@ -78,6 +78,59 @@ body {
   outline-offset: -2px;
 }
 
+.checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+  user-select: none;
+}
+.checkbox-container input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkbox-container input[type=checkbox]:checked ~ .checkmark {
+  background-color: #222222;
+  border-color: #222222;
+}
+.checkbox-container input[type=checkbox]:checked ~ .checkmark::after {
+  display: block;
+}
+.checkbox-container .checkmark {
+  position: relative;
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 0.125rem;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.checkbox-container .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 0.40625rem;
+  top: 0.15625rem;
+  width: 0.3125rem;
+  height: 0.625rem;
+  border: solid #ffffff;
+  border-width: 0 0.125rem 0.125rem 0;
+  transform: rotate(45deg);
+}
+.checkbox-container .text {
+  font-size: 0.875rem;
+  color: #444444;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
 .icon,
 [class^=icon-],
 [class*=" icon-"] {
@@ -731,6 +784,52 @@ body {
   background-color: currentColor;
   -webkit-mask: url("../../icons/bell.svg") no-repeat center;
   mask: url("../../icons/bell.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-down-bullet {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #111111;
+  -webkit-mask: url("/eclub/assets/icons/icon-down-bullet.svg") no-repeat center;
+  mask: url("/eclub/assets/icons/icon-down-bullet.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-page-bullet {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  background-color: currentColor;
+  -webkit-mask: url("../../icons/category-sep-bullet.svg") no-repeat center;
+  mask: url("../../icons/category-sep-bullet.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.icon-category-sep-bullet {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  background-color: #666666;
+  -webkit-mask: url("../../icons/category-sep-bullet.svg") no-repeat center;
+  mask: url("../../icons/category-sep-bullet.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  width: 0.4375rem;
+  vertical-align: -0.0625rem;
+}
+
+.icon-reset {
+  display: inline-block;
+  width: 1.125rem;
+  height: 1.125rem;
+  background-color: currentColor;
+  -webkit-mask: url("../../icons/refresh.svg") no-repeat center;
+  mask: url("../../icons/refresh.svg") no-repeat center;
   -webkit-mask-size: contain;
   mask-size: contain;
 }

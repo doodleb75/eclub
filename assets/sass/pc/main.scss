@@ -19,12 +19,14 @@
 @import "components/modal-referral";
 @import "components/quick-menu";
 @import "components/loading";
+@import "components/product-list";
 
 // 페이지별 스타일
 @import "pages/home";
 @import "pages/cart";
 @import "pages/checkout";
 @import "pages/order_complete";
+@import "pages/category";
 
 // PC 전용 스타일
 #wrap {

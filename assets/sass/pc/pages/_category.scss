@@ -1,0 +1,904 @@
+.category-page-layout {
+    display: flex;
+    gap: rem(30);
+    padding-bottom: rem(80);
+    padding-top: rem(24);
+
+    .category-sidebar {
+        width: rem(220);
+        flex-shrink: 0;
+
+        .sidebar-menu {
+            font-size: rem(13);
+            
+            > li {
+                border-bottom: 1px solid $gray-150;
+
+                > a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: rem(8) rem(12); 
+                    font-size: rem(13);
+                    color: $gray-700;
+                    font-weight: $fw-regular;
+                    line-height: 130%;
+                    transition: all 0.2s ease;
+
+                    &:first-child, &.active:first-child {
+                        font-weight: $fw-regular;
+                        color: $gray-900;
+                        padding: rem(12) rem(12);
+                    }
+
+                    &.active-header {
+                        font-weight: $fw-bold;
+                        color: $gray-900;
+                        padding-top: rem(12);
+                    }
+
+                    .icon-toggle {
+                        width: rem(12);
+                        height: rem(12);
+                        color: $gray-400;
+                        transition: transform 0.3s ease;
+                    }
+                }
+
+                &:first-child {
+                    > a {
+                        font-size: rem(18);
+                        line-height: 150%;
+                        font-weight: $fw-bold;
+                    }
+                }
+
+                &.is-open {
+                    
+                    > a {
+                        font-weight: $fw-bold;
+                        background-color: $gray-100; // 열린 메뉴 배경 강조
+                        .icon-toggle {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+
+                .sub-menu {
+                    background-color: transparent; // 부모 배경색 상속
+                    overflow: hidden; // 슬라이드 애니메이션을 위한 설정
+                    
+                    li {
+                        border: none;
+                        a {
+                            padding: rem(8) rem(32); 
+                            font-size: rem(13);
+                            color: $gray-600;
+                            line-height: 150%;
+                            display: flex;
+                            align-items: center;
+
+                            &.active {
+                                background-color: $gray-900;
+                                color: $white;
+                                font-weight: $fw-semibold;
+                                width: 100%;
+                                
+                                &:before {
+                                    display: none;
+                                }
+                            }
+
+                            &:hover:not(.active) {
+                                color: $gray-900;
+                                font-weight: $fw-medium;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .search-filter-sidebar {
+        width: rem(220);
+        flex-shrink: 0;
+
+        .filter-header {
+            margin-bottom: rem(24);
+            .title {
+                font-size: rem(18);
+                font-weight: $fw-bold;
+                color: $gray-900;
+                line-height: 1.3;
+            }
+        }
+
+        .filter-group {
+            margin-bottom: rem(32);
+
+            .group-title {
+                font-size: rem(13);
+                font-weight: $fw-bold;
+                color: $gray-900;
+                margin-bottom: rem(16);
+                line-height: 1.3;
+            }
+
+            .filter-list {
+                display: flex;
+                flex-direction: column;
+                gap: rem(12);
+                margin-bottom: rem(16);
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+
+                li {
+                    .checkbox-container {
+                        .text {
+                            font-size: rem(13);
+                            font-weight: $fw-regular;
+                            color: $gray-700;
+                        }
+                        
+                        input:checked ~ .checkmark {
+                            background-color: $gray-900;
+                            border-color: $gray-900;
+                        }
+
+                        .checkmark {
+                            border-color: $gray-300;
+                        }
+                    }
+                }
+            }
+
+            .filter-more {
+                border: 1px solid $gray-200;
+                border-radius: rem(2);
+                height: rem(36);
+                @include hover-transition;
+                background-color: $white;
+
+                &:hover {
+                    background-color: $gray-50;
+                }
+
+                .btn-more {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: rem(8);
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+
+                    span {
+                        font-size: rem(13);
+                        font-weight: $fw-medium;
+                        color: $gray-700;
+                    }
+
+                    .icon-down-bullet {
+                        width: rem(12);
+                        height: rem(6);
+                        @include icon-mask('#{$icon-path}/icon-down-bullet.svg', rem(12));
+                        background-color: $gray-700;
+                        transition: transform 0.3s ease;
+                    }
+
+                    &.active .icon-down-bullet {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+
+        .filter-reset {
+            margin-top: rem(40);
+            
+            .btn-reset {
+                width: 100%;
+                height: rem(48);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: rem(8);
+                border: 1px solid $gray-200;
+                background-color: $gray-50;
+                border-radius: rem(2);
+                cursor: pointer;
+                @include hover-transition;
+
+                &:hover {
+                    background-color: $gray-100;
+                    
+                    i {
+                        transform: rotate(180deg); // Hover 
+                    }
+                }
+
+                span {
+                    font-size: rem(14);
+                    font-weight: $fw-medium;
+                    color: $gray-700;
+                }
+
+                i {
+                    transition: transform 0.4s ease;
+                }
+            }
+        }
+    }
+
+    .category-main {
+        flex: 1;
+        min-width: 0;
+
+        .category-header {
+            display: flex;
+            align-items: center; // change to flex-end if bottom aligned
+            justify-content: space-between;
+            border-bottom: 2px solid $gray-900;
+            padding: rem(10) rem(12);
+            margin-bottom: rem(12);
+
+            .title-breadcrumb {
+                font-size: $fs-24;
+                font-weight: $fw-bold;
+                color: $gray-900;
+                display: flex;
+                align-items: center;
+                gap: rem(16); // 피그마 분석: 간격 16px
+            }
+
+            .title-search {
+                font-size: $fs-24;
+                font-weight: $fw-bold;
+                color: $gray-900;
+                
+                .keyword {
+                    color: $point-red;
+                }
+            }
+
+
+            .total-count {
+                font-size: $fs-13;
+                color: $gray-600;
+
+                strong {
+                    color: $primary-red;
+                    font-weight: $fw-bold;
+                }
+            }
+        }
+
+        // 검색결과 추가
+        .search-result-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: rem(6) rem(12);
+            margin-bottom: rem(12);
+            background-color: $white;
+
+            .related-search {
+                display: flex;
+                align-items: center;
+
+                .label {
+                    font-size: rem(13);
+                    font-weight: $fw-semibold;
+                    color: $gray-900;
+                }
+
+                .v-divider {
+                    width: 1px;
+                    height: rem(10);
+                    background-color: $gray-500;
+                    margin: 0 rem(16);
+                }
+                
+                .tag-list {
+                    display: flex;
+                    align-items: center;
+                    gap: rem(12);
+
+                    a {
+                        font-size: rem(13);
+                        font-weight: $fw-regular;
+                        color: $gray-700;
+                        text-decoration: underline;
+                        @include hover-transition;
+
+                        &:hover {
+                            color: $gray-900;
+                        }
+                    }
+                }
+            }
+
+            .result-re-search {
+                display: flex;
+                align-items: center;
+
+                .label {
+                    font-size: rem(13);
+                    font-weight: $fw-semibold;
+                    color: $gray-900;
+                    margin-right: rem(12);
+                }
+
+                .search-input {
+                    position: relative;
+                    width: rem(160);
+                    height: rem(32);
+
+                    input {
+                        width: 100%;
+                        height: 100%;
+                        border: 1px solid $gray-300;
+                        border-radius: $radius-xs;
+                        padding: 0 rem(32) 0 rem(12);
+                        font-size: rem(13);
+                        color: $gray-900;
+                        outline: none;
+
+                        &::placeholder {
+                            color: $gray-500;
+                            font-size: rem(13);
+                        }
+
+                        &:focus {
+                            border-color: $gray-900;
+                        }
+                    }
+
+                    .btn-search {
+                        position: absolute;
+                        right: rem(8);
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: none;
+                        border: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+
+                        .icon-search {
+                            width: rem(16);
+                            height: rem(16);
+                            @include icon-mask('#{$icon-path}/search.svg', rem(16));
+                            background-color: $gray-900;
+                        }
+                    }
+                }
+            }
+        }
+
+        .category-filter-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $white;
+            padding: rem(10) rem(12);
+            margin-bottom: rem(12);
+
+            .checkbox-container {
+                .text {
+                    font-size: $fs-13;
+                    color: $gray-900;
+                    font-weight: $fw-semibold;
+                    margin-left: rem(8);
+                }
+                
+                .checkmark {
+                    border-color: $gray-300;
+                }
+                
+                input:checked ~ .checkmark {
+                    background-color: $gray-900;
+                    border-color: $gray-900;
+                }
+            }
+
+            .filter-left {
+                display: flex;
+                align-items: center;
+
+                .btn-add-cart {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: rem(4);
+                    // height: rem(24);
+                    padding: rem(4) rem(10);
+                    border: 1px solid $gray-700;
+                    border-radius: rem(2);
+                    background: $white;
+                    border-radius: rem(2);
+                    font-size: $fs-13;
+                    font-weight: $fw-semibold;
+                    line-height: 120%;
+                    color: $gray-700;
+                    margin-left: rem(12);
+
+                    i {
+                        width: rem(16);
+                        height: rem(16);
+                    }
+                }
+            }
+
+            .filter-right {
+                display: flex;
+                align-items: center;
+
+                .v-divider {
+                    width: 1px;
+                    height: rem(14);
+                    background-color: $gray-200; // More subtle divider
+                    margin: 0 rem(16);
+                    
+                    // &.big {
+                    //     margin: 0 rem(24);
+                    // }
+                }
+
+                .delivery-types {
+                    display: flex;
+                    align-items: center;
+                    gap: rem(6);
+                    font-size: $fs-13;
+                    color: $gray-800;
+
+                    .label {
+                        color: $gray-600;
+                    }
+
+                    .btn-info {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: $gray-450;
+                        margin-right: rem(4);
+                        
+                        svg {
+                            circle { stroke: $gray-400; }
+                            path { stroke: $gray-400; }
+                        }
+                    }
+
+                    .type-buttons {
+                        display: flex;
+                        align-items: center;
+                        margin-left: rem(4);
+
+                        .btn-group {
+                            display: flex;
+                            gap: rem(8);
+                        }
+
+                        .type-btn {
+                            padding: rem(4) rem(8);
+                            height: rem(24);
+                            border: 1px solid $gray-200;
+                            background: $white;
+                            border-radius: rem(4);
+                            font-size: $fs-13;
+                            line-height: 130%;
+                            color: $gray-600;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 0 rem(10);
+                            cursor: pointer;
+
+                            input {
+                                display: none;
+                            }
+
+                            &.active {
+                                border-color: $gray-900;
+                                color: $gray-900;
+                                font-weight: $fw-semibold;
+                            }
+                        }
+                    }
+                }
+
+                .sort-selector {
+                    display: flex;
+                    align-items: center;
+                    gap: rem(24); // 상품 정렬 간격
+
+                    .custom-select {
+                        position: relative;
+
+                        // 드롭다운 라벨 (현재 선택된 값 표시)
+                        .select-label {
+                            display: flex;
+                            align-items: center;
+                            gap: rem(4);
+                            font-size: rem(13); // 라벨 13px
+                            font-weight: $fw-bold;
+                            color: $gray-900;
+                            background: transparent;
+                            border: none;
+                            padding: 0;
+                            cursor: pointer;
+
+                            .icon-down-bullet {
+                                width: rem(12); // 아이콘 가로 12px
+                                height: rem(6); // 아이콘 세로 6px
+                            }
+                        }
+
+                        // 드롭다운 옵션 목록
+                        .select-options {
+                            display: none;
+                            position: absolute;
+                            top: calc(100% + rem(8));
+                            left: 0;
+                            min-width: 100%;
+                            white-space: nowrap; // 텍스트 줄바꿈 방지
+                            background-color: $white;
+                            border: 1px solid $gray-350;
+                            // box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.08); // 그림자 효과
+                            z-index: 100;
+                            padding: rem(8) 0;
+
+                            li {
+                                padding: rem(8) rem(16);
+                                font-size: rem(11); // 옵션 11px
+                                line-height: 120%; // line-height 120%
+                                color: $gray-600;
+                                cursor: pointer;
+                                transition: all 0.2s;
+
+                                &:hover, &.active {
+                                    color: $gray-900;
+                                    font-weight: $fw-bold;
+                                }
+                            }
+                        }
+
+                        // open 상태일 때 (클릭 시 JS로 is-open 클래스 추가됨)
+                        &.is-open { 
+                            .select-options {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .product-list {
+            grid-template-columns: repeat(4, 1fr);
+            gap: rem(24) rem(16);
+            margin-bottom: rem(60);
+
+            .product-item {
+                position: relative;
+                width: 100%;
+
+                .item-badge-wrap {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    display: flex;
+                    gap: 0;
+
+                    .item-check {
+                        width: rem(32);
+                        height: rem(32);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        
+                        .checkbox-container {
+                            margin: 0;
+                            padding: 0;
+                            min-height: rem(20);
+                            
+                            .checkmark {
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                    }
+
+                    .badge-ranking {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: rem(48);
+                        height: rem(32);
+                        background-color: $color-badge-ranking-bg;
+                        color: $white;
+                        font-size: $fs-14;
+                        font-weight: $fw-bold;
+                    }
+                }
+                
+                .control-bar {
+                    // 기본 common style (_product-list.scss) 사용
+                    margin-top: rem(12);
+                }
+
+                .prod-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: rem(4);
+
+                    &>div {
+                        font-size: rem(12);
+                        font-weight: $fw-medium;
+                    }
+
+                    .coupon-date {
+                        font-size: rem(13);
+                        font-weight: $fw-medium;
+                        color: $gray-500;
+                        display: flex;
+                        align-items: center;
+                        gap: rem(4);
+                        white-space: nowrap;
+
+                        .badge-coupon {
+                            color: $point-dark-red;
+                            background-color: rgba($point-red, 0.1);
+                            font-size: rem(11);
+                            font-weight: $fw-bold;
+                            padding: rem(2) rem(8);
+                            border-radius: rem(2);
+                        }
+                    }
+
+                    .prod-name {
+                        font-size: rem(18);
+                        font-weight: $fw-medium;
+                        color: $gray-900;
+                        line-height: 1.4;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
+                        .link-name {
+                            color: inherit;
+                            text-decoration: none;
+                            @include hover-transition;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+
+                        .badge-type {
+                            display: inline-block;
+                            font-size: rem(14);
+                            font-weight: $fw-bold;
+                            padding: rem(2) rem(8);
+                            border-radius: rem(2);
+                            margin-right: rem(4);
+                            vertical-align: middle;
+                            transform: translateY(-1px);
+
+                            &.type-ambient {
+                                background-color: $color-badge-ambient-bg;
+                                color: $color-badge-ambient-text;
+                            }
+
+                            &.type-cold {
+                                background-color: $color-badge-cold-bg;
+                                color: $color-badge-cold-text;
+                            }
+
+                            &.type-frozen {
+                                background-color: $color-badge-frozen-bg;
+                                color: $color-badge-frozen-text;
+                            }
+                        }
+                    }
+
+                    .prod-price-info {
+                        font-size: rem(13);
+                        color: $gray-500;
+
+                        .original {
+                            text-decoration: line-through;
+                            margin-right: rem(4);
+                        }
+
+                        .unit-price {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: rem(2);
+
+                            .price {
+                                color: $point-red;
+                                font-weight: $fw-semibold;
+                                font-size: inherit;
+                            }
+                        }
+
+                        .unit-per-price {
+                            font-weight: $fw-medium;
+                            margin-bottom: rem(4);
+                            line-height: 1.2;
+
+                            .divider {
+                                color: $gray-300;
+                                margin: 0 rem(4);
+                                display: inline-block;
+                                vertical-align: middle;
+                                transform: translateY(-1px);
+                                font-size: rem(10);
+                            }
+                        }
+
+                        .member-benefit-price {
+                            display: flex;
+                            align-items: center;
+                            color: $point-red;
+                            font-weight: $fw-regular;
+                            margin-top: rem(6);
+
+                            .icon-coupon-tag {
+                                width: rem(18);
+                                height: rem(14);
+                                background-size: contain;
+                                margin-right: rem(4);
+                            }
+
+                            .label {
+                                margin-right: rem(4);
+                            }
+
+                            .price {
+                                font-weight: $fw-regular;
+                            }
+
+                            .btn-info {
+                                margin-left: rem(4);
+                                display: flex;
+                                align-items: center;
+                            }
+                        }
+
+                        a {
+                            .icon-info {
+                                display: inline-block;
+                                width: rem(16);
+                                height: rem(16);
+                                border-radius: 50%;
+                                background-color: $gray-500;
+                                color: $white;
+                                text-align: center;
+                                line-height: rem(14);
+                                font-size: rem(10);
+                                font-style: normal;
+                                margin-left: rem(2);
+                                @include hover-transition;
+                            }
+
+                            &:hover {
+
+                                .icon-info {
+                                    background-color: $gray-800;
+                                    @include hover-transition;
+                                }
+                            }
+                        }
+                    }
+
+                    .main-price {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(6);
+
+                        .discount {
+                            font-size: rem(14);
+                            font-weight: $fw-bold;
+                            color: $white;
+                            background-color: $point-red;
+                            padding: rem(4) rem(8);
+                            border-radius: rem(2);
+                            line-height: 1;
+                        }
+
+                        .price {
+                            font-size: rem(22);
+                            line-height: 1.1;
+                            font-weight: $fw-bold;
+                            color: $point-red;
+                        }
+                    }
+
+                    .benefit-box {
+                        display: flex;
+                        align-items: center;
+                        padding: rem(0) rem(0);
+                        border-radius: rem(2);
+                        font-size: rem(12);
+                        color: $gray-700;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
+                        .tag {
+                            font-size: rem(12);
+                            display: inline-flex;
+                            align-items: center;
+                            font-weight: $fw-medium;
+                        }
+
+                        .divider {
+                            margin: 0 rem(6);
+                            color: $gray-300;
+                            font-size: rem(10);
+                            transform: translateY(-1px);
+                        }
+                    }
+                }
+            }
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: rem(4);
+
+            button, a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: rem(24);
+                height: rem(24);
+                border: 1px solid $gray-150;
+                background: $white;
+                border-radius: $radius-sm;
+                font-size: $fs-13;
+                color: $gray-600;
+                
+                &.active {
+                    background: $gray-900;
+                    color: $white;
+                    border-color: $gray-900;
+                    font-weight: $fw-bold;
+                }
+
+                &:hover:not(.active) {
+                    background: $gray-50;
+                }
+
+                .icon-page-bullet {
+                    width: rem(6) !important;
+                    height: rem(13) !important;
+                    -webkit-mask-size: 100% 100% !important;
+                    mask-size: 100% 100% !important;
+                }
+
+                &.btn-page-first, &.btn-page-prev {
+                    .icon-page-bullet {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                &.btn-page-first, &.btn-page-last {
+                    gap: rem(-2); // 간격 조정
+                }
+            }
+        }
+    }
+}

@@ -49,3 +49,63 @@ body {
         outline-offset: -2px;
     }
 }
+
+// 공통 체크박스 컨테이너
+.checkbox-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+    user-select: none;
+
+    input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked ~ .checkmark {
+            background-color: $gray-900;
+            border-color: $gray-900;
+
+            &::after {
+                display: block;
+            }
+        }
+    }
+
+    .checkmark {
+        position: relative;
+        display: inline-block;
+        width: rem(20);
+        height: rem(20);
+        background-color: $white;
+        border: 1px solid $gray-300;
+        border-radius: rem(2);
+        flex-shrink: 0; // 아이템 크기 유지
+        transition: all 0.2s ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: rem(6.5);
+            top: rem(2.5);
+            width: rem(5);
+            height: rem(10);
+            border: solid $white;
+            border-width: 0 rem(2) rem(2) 0;
+            transform: rotate(45deg);
+        }
+    }
+
+    .text {
+        font-size: rem(14);
+        color: $gray-800;
+        font-weight: $fw-semibold;
+        margin-left: rem(8);
+        white-space: nowrap;
+    }
+}

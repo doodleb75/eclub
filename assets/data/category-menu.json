@@ -1,0 +1,202 @@
+[
+    {
+        "id": "all",
+        "name": "전체",
+        "link": "javascript:void(0);",
+        "hasSub": false
+    },
+    {
+        "id": "fruit-vege",
+        "name": "과일/채소",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "과일 전체", "link": "javascript:void(0);" },
+            { "name": "국산과일", "link": "javascript:void(0);" },
+            { "name": "수입과일", "link": "javascript:void(0);" },
+            { "name": "냉동/간편과일", "link": "javascript:void(0);" },
+            { "name": "채소 전체", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "meat-egg",
+        "name": "축수산/계란",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "축산 전체", "link": "javascript:void(0);" },
+            { "name": "소고기", "link": "javascript:void(0);" },
+            { "name": "돼지고기", "link": "javascript:void(0);" },
+            { "name": "계란/알류", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "grain-seafood",
+        "name": "양곡/건해산/견과",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "양곡", "link": "javascript:void(0);" },
+            { "name": "건해산", "link": "javascript:void(0);" },
+            { "name": "견과", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "cold-processed",
+        "name": "냉장가공",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "active": true,
+        "subMenu": [
+            { "name": "냉장가공 전체보기", "link": "javascript:void(0);", "active": true },
+            { "name": "김치/단무지/반찬", "link": "javascript:void(0);" },
+            { "name": "어묵/유부/맛살", "link": "javascript:void(0);" },
+            { "name": "닭가슴살/가공육", "link": "javascript:void(0);" },
+            { "name": "햄/베이컨/소세지", "link": "javascript:void(0);" },
+            { "name": "냉장면/떡", "link": "javascript:void(0);" },
+            { "name": "냉장간식", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "frozen-processed",
+        "name": "냉동가공",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "냉동가공 전체보기", "link": "javascript:void(0);" },
+            { "name": "냉동만두/피자", "link": "javascript:void(0);" },
+            { "name": "냉동돈까스/튀김", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "ice-cream",
+        "name": "아이스크림",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "바/콘", "link": "javascript:void(0);" },
+            { "name": "홈/컵", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "dairy",
+        "name": "유제품",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "우유", "link": "javascript:void(0);" },
+            { "name": "요거트", "link": "javascript:void(0);" },
+            { "name": "치즈", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "seasoning",
+        "name": "장류/조미료/분말류",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "고추장/된장", "link": "javascript:void(0);" },
+            { "name": "설탕/소금", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "oil-sauce",
+        "name": "오일/소스/양념",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "식용유/참기름", "link": "javascript:void(0);" },
+            { "name": "케찹/마요네즈", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "canned",
+        "name": "통조림",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "참치/햄", "link": "javascript:void(0);" },
+            { "name": "과일통조림", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "ramen",
+        "name": "라면/면류",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "봉지라면", "link": "javascript:void(0);" },
+            { "name": "컵라면", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "instant",
+        "name": "상온간편식/시리얼",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "즉석밥", "link": "javascript:void(0);" },
+            { "name": "컵반/죽", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "snack",
+        "name": "과자/빵",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "스낵/비스킷", "link": "javascript:void(0);" },
+            { "name": "빵/케이크", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "water",
+        "name": "생수/음료/건강",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "생수/탄산수", "link": "javascript:void(0);" },
+            { "name": "과채음료", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "coffee",
+        "name": "커피/차",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "커피믹스", "link": "javascript:void(0);" },
+            { "name": "원두커피", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "hygiene",
+        "name": "제지/위생/세제",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "화장지", "link": "javascript:void(0);" },
+            { "name": "세탁세제", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "hair-body",
+        "name": "헤어/바디케어",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "샴푸/린스", "link": "javascript:void(0);" },
+            { "name": "바디워시", "link": "javascript:void(0);" }
+        ]
+    },
+    {
+        "id": "disposable",
+        "name": "일회용품/캠핑/애완",
+        "link": "javascript:void(0);",
+        "hasSub": true,
+        "subMenu": [
+            { "name": "위생장갑", "link": "javascript:void(0);" },
+            { "name": "반려동물용품", "link": "javascript:void(0);" }
+        ]
+    }
+]
