@@ -1,6 +1,6 @@
-// Eclub 공통 UI 스크립트
+// 공통 UI
 const Eclub = {
-    // 상수 정의
+    // 상수
     Const: {
         ANIMATION_DURATION: 300,
         SLIDER_AUTO_INTERVAL: 4000,
@@ -13,17 +13,17 @@ const Eclub = {
         }
     },
 
-    // 현재 적용된 줌 배율 반환
+    // 줌 배율 반환
     getZoomScale() {
         const zoom = document.body.style.zoom;
         if (!zoom) return 1;
         return parseFloat(zoom) / 100;
     },
 
-    // 토스트 알림
+    // 토스트
     Toast: {
         container: null,
-        // 토스트 컨테이너 초기화
+        // 컨테이너 초기화
         init() {
             if (this.container) return;
             this.container = document.querySelector('.toast-container');
@@ -33,7 +33,7 @@ const Eclub = {
                 document.body.appendChild(this.container);
             }
         },
-        // 토스트 표시
+        // 토스트 노출
         show({ message, trigger, type = 'success', duration = Eclub.Const.TOAST_DURATION, position = 'bottom-center' }) {
             this.init();
             const toast = document.createElement('div');
@@ -56,12 +56,12 @@ const Eclub = {
             requestAnimationFrame(() => {
                 const toastWidth = toast.offsetWidth;
                 const toastHeight = toast.offsetHeight;
-                const scale = Eclub.getZoomScale(); // 줌 배율 고려
+                const scale = Eclub.getZoomScale(); // 줌 Scale 반영
                 const margin = 20;
                 let left, top;
 
                 if (isFixed) {
-                    // 브라우저 뷰포트(Fixed) 기준 위치
+                    // 뷰포트 기준
                     const winW = window.innerWidth / scale;
                     const winH = window.innerHeight / scale;
 
@@ -99,12 +99,12 @@ const Eclub = {
                             top = margin;
                     }
                 } else if (trigger) {
-                    // 트리거(Relative) 기준 위치
+                    // 트리거 기준
                     const rect = trigger.getBoundingClientRect();
                     const scrollX = window.scrollX / scale;
                     const scrollY = window.scrollY / scale;
 
-                    // 레이아웃 좌표 계산 (물리 좌표 / scale)
+                    // 좌표 계산 (줌 스케일 반영)
                     const rectLeft = rect.left / scale;
                     const rectTop = rect.top / scale;
                     const rectRight = rect.right / scale;
@@ -112,7 +112,7 @@ const Eclub = {
                     const rectWidth = rect.width / scale;
                     const rectHeight = rect.height / scale;
 
-                    const offset = 4; // 트리거와의 기본 간격 (썸네일 바로 아래에 노출 하도록 간격 축소)
+                    const offset = 4; // 트리거 간격 조정 (썸네일 대응)
 
                     switch (position) {
                         case 'top-left':
@@ -178,7 +178,7 @@ const Eclub = {
                             top = rectBottom + scrollY + offset;
                     }
 
-                    // 트리거 기준일 때 화면 밖으로 나가지 않도록 보정
+                    // 화면 이탈 방지
                     const windowWidth = window.innerWidth / scale;
                     const documentHeight = document.documentElement.scrollHeight / scale;
                     const safeMargin = 10;
@@ -188,7 +188,7 @@ const Eclub = {
                     if (top < safeMargin + scrollY) top = safeMargin + scrollY;
                     if (top + toastHeight > documentHeight - safeMargin) top = documentHeight - toastHeight - safeMargin;
                 } else {
-                    // 트리거도 없고 고정 위치도 아닐 때 기본값
+                    // 기본 위치 설정
                     const winW = window.innerWidth / scale;
                     left = (winW / 2) - (toastWidth / 2);
                     top = margin;
@@ -200,7 +200,7 @@ const Eclub = {
                 toast.classList.add('active');
             });
 
-            // 자동 제거
+            // 토스트 자동 소멸
             setTimeout(() => {
                 toast.classList.remove('active');
                 setTimeout(() => toast.remove(), Eclub.Const.ANIMATION_DURATION);
@@ -210,7 +210,7 @@ const Eclub = {
 
     // 클립보드 복사
     Clipboard: {
-        // 복사 버튼 이벤트
+        // 복사 이벤트 바인딩
         init() {
             const copyButtons = document.querySelectorAll('.btn-copy');
             copyButtons.forEach(btn => {
@@ -224,7 +224,7 @@ const Eclub = {
                 });
             });
         },
-        // 텍스트 복사 실행
+        // 복사 실행
         copyToClipboard(text, trigger) {
             if (!navigator.clipboard) {
                 const textArea = document.createElement("textarea");
@@ -251,9 +251,9 @@ const Eclub = {
         }
     },
 
-    // 토글 (슬라이드 애니메이션)
+    // 슬라이드 토글
     Toggle: {
-        // 트리거 이벤트 바인딩
+        // 이벤트 바인딩
         init() {
             document.addEventListener('click', (e) => {
                 const btn = e.target.closest('[data-toggle="slide"]');
@@ -272,7 +272,7 @@ const Eclub = {
                 if (target) this.toggle(btn, target);
             });
         },
-        // 토글 실행
+        // 토글 동작
         toggle(btn, target) {
             const isActive = btn.classList.contains('active');
             if (isActive) {
@@ -284,10 +284,10 @@ const Eclub = {
                 this.slideDown(target);
             }
         },
-        // 슬라이드 업 (닫기)
+        // 슬라이드 닫기
         slideUp(element, duration = Eclub.Const.ANIMATION_DURATION, callback) {
             element.style.height = element.offsetHeight + 'px';
-            element.offsetHeight; // 리플로우 강제
+            element.offsetHeight; // Reflow 강제
             element.style.transitionProperty = 'height, margin, padding';
             element.style.transitionDuration = duration + 'ms';
             element.style.overflow = 'hidden';
@@ -311,7 +311,7 @@ const Eclub = {
                 if (callback) callback();
             }, duration);
         },
-        // 슬라이드 다운 (열기)
+        // 슬라이드 열기
         slideDown(element, duration = Eclub.Const.ANIMATION_DURATION, callback) {
             element.style.removeProperty('display');
             let display = window.getComputedStyle(element).display;
@@ -344,12 +344,12 @@ const Eclub = {
         }
     },
 
-    // 브라우저 줌 (80~120%)
+    // 줌 배율 설정 (80~120%)
     BrowserZoom: {
-        zoomLevel: 100, // 기본값은 Const.DEFAULT로 설정되나 초기화 시 덮어씀
+        zoomLevel: 100, // 초기화 시 DEFAULT 기준 설정
 
         init() {
-            // Const 값 참조
+            // 상수 참조
             this.min = Eclub.Const.ZOOM.MIN;
             this.max = Eclub.Const.ZOOM.MAX;
             this.step = Eclub.Const.ZOOM.STEP;
@@ -360,10 +360,10 @@ const Eclub = {
                 this.zoomLevel = parseInt(savedZoom, 10);
             }
 
-            // 페이지 로드 시 줌 적용 (컨테이너 없어도 적용)
+            // 초기 줌 배율 적용
             this.applyZoom();
 
-            // 이벤트 위임
+            // 이벤트 위임 처리
             document.addEventListener('click', (e) => {
                 const container = e.target.closest('.browser-zoom');
                 if (!container) return; // browser-zoom 내부가 아니면 무시
@@ -394,14 +394,14 @@ const Eclub = {
             if (display) {
                 display.textContent = `${this.zoomLevel}%`;
             }
-            // 줌 변경 후 슬라이더 레이아웃 재계산
+            // 레이아웃 재계산 (슬라이더 대응)
             window.dispatchEvent(new Event('resize'));
         }
     },
 
-    // 탭 시스템
+    // 탭
     Tabs: {
-        // 탭 트리거 초기화
+        // 탭 초기화
         init() {
             document.removeEventListener('click', this.handleTabClick);
             this.handleTabClick = (e) => {
@@ -417,7 +417,7 @@ const Eclub = {
             };
             document.addEventListener('click', this.handleTabClick);
         },
-        // 특정 탭 활성화
+        // 탭 활성화
         activate(group, targetId, defaultActiveClass = 'active') {
             const groupTriggers = document.querySelectorAll(`[data-tab-group="${group}"][data-tab-trigger]`);
             groupTriggers.forEach(btn => {
@@ -437,13 +437,13 @@ const Eclub = {
                 if (activeAllBtn) {
                     activeAllBtn.click();
                 }
-                // 탭 전환 후 활성화된 product-list의 더보기 높이 재계산
+                // 더보기 높이 갱신 (탭 전환 대응)
                 Eclub.ProductMore.resetActiveList(targetId);
             }
         }
     },
 
-    // 수량 조절 버튼
+    // 수량 제어
     Quantity: {
         init() {
             document.addEventListener('click', (e) => {
@@ -486,7 +486,52 @@ const Eclub = {
         }
     },
 
-    // 장바구니 (담기)
+    // 커스텀 셀렉트
+    CustomSelect: {
+        init() {
+            document.addEventListener('click', (e) => {
+                const label = e.target.closest('.custom-select .select-label');
+                const option = e.target.closest('.custom-select .select-options li');
+                const allSelects = document.querySelectorAll('.custom-select');
+
+                // 라벨 클릭 처리
+                if (label) {
+                    const select = label.closest('.custom-select');
+                    const isOpen = select.classList.contains('is-open');
+
+                    // 외부 드롭다운 닫기
+                    allSelects.forEach(s => s.classList.remove('is-open'));
+
+                    if (!isOpen) {
+                        select.classList.add('is-open');
+                    }
+                    return;
+                }
+
+                // 옵션 선택 처리
+                if (option) {
+                    const select = option.closest('.custom-select');
+                    const labelText = select.querySelector('.select-label');
+                    const icon = labelText.querySelector('i');
+                    
+                    // 값 변경 (아이콘 보존)
+                    labelText.innerHTML = `${option.textContent} <i class="${icon.className}"></i>`;
+                    
+                    // active 상태 갱신
+                    select.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+                    option.classList.add('active');
+                    
+                    select.classList.remove('is-open');
+                    return;
+                }
+
+                // 외부 클릭 해제
+                allSelects.forEach(s => s.classList.remove('is-open'));
+            });
+        }
+    },
+
+    // 장바구니
     Cart: {
         init() {
             document.body.addEventListener('click', (e) => {
@@ -512,7 +557,7 @@ const Eclub = {
         }
     },
 
-    // 관심상품 (찜하기)
+    // 관심상품
     Favorites: {
         init() {
             document.body.addEventListener('click', (e) => {
@@ -565,7 +610,7 @@ const Eclub = {
         }
     },
 
-    // 모바일 퀵 메뉴
+    // 모바일 퀵메뉴
     QuickMenu: {
         init() {
             const btn = document.getElementById('btn-mobile-quick');
@@ -574,13 +619,13 @@ const Eclub = {
 
             const closeBtn = layer.querySelector('.btn-quick-close');
 
-            // 메뉴 열기
+            // 메뉴 노출
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.open(btn, layer);
             });
 
-            // 메뉴 닫기 (닫기 버튼)
+            // 메뉴 숨김
             if (closeBtn) {
                 closeBtn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -588,7 +633,7 @@ const Eclub = {
                 });
             }
 
-            // 외부 클릭 시 닫기
+            // 외부 클릭 대응
             document.addEventListener('click', (e) => {
                 if (layer.hidden) return;
                 // 레이어 내부나 버튼을 클릭한 경우는 제외
@@ -610,7 +655,7 @@ const Eclub = {
     },
 
 
-    // 바텀 시트 (결제/장바구니 요약)
+    // 바텀 시트
     BottomSheet: {
         init() {
             const sheets = document.querySelectorAll('.bottom-sheet');
@@ -649,90 +694,147 @@ const Eclub = {
         }
     },
 
-    // 장바구니 전체/그룹 선택
-    CartSelection: {
+    // 전체/그룹 선택 (장바구니, 카테고리 등)
+    Selection: {
         init() {
-            const container = document.querySelector('.cart-container');
-            if (!container) return;
-            const masterCheckbox = document.querySelector('.cart-select-bar .checkbox-container input[type="checkbox"]');
-            if (!masterCheckbox) return;
+            // 1. 장바구니 페이지
+            const cartContainer = document.querySelector('.cart-container');
+            const cartMaster = document.querySelector('.cart-select-bar .checkbox-container input[type="checkbox"]');
+            
+            if (cartContainer && cartMaster) {
+                this.initCart(cartContainer, cartMaster);
+            }
+
+            // 2. 카테고리 페이지
+            const categoryBar = document.querySelector('.category-filter-bar');
+            const productList = document.querySelector('.product-list');
+            const categoryMaster = categoryBar?.querySelector('.filter-left .checkbox-container input[type="checkbox"]');
+
+            if (productList && categoryMaster) {
+                this.initCategory(productList, categoryMaster);
+            }
+        },
+
+        // 장바구니 로직 (그룹 존재)
+        initCart(container, master) {
             const groups = container.querySelectorAll('.cart-group');
 
-            masterCheckbox.addEventListener('change', (e) => {
-                this.toggleAll(e.target.checked, groups);
+            master.addEventListener('change', (e) => {
+                const isChecked = e.target.checked;
+                groups.forEach(group => {
+                    const groupHeader = group.querySelector('.group-header .checkbox-container input[type="checkbox"]');
+                    const items = group.querySelectorAll('.cart-item .item-check input[type="checkbox"]');
+                    if (groupHeader) groupHeader.checked = isChecked;
+                    items.forEach(cb => cb.checked = isChecked);
+                });
                 this.updateDeleteButtonState();
             });
 
             groups.forEach(group => {
-                const groupHeaderCheckbox = group.querySelector('.group-header .checkbox-container input[type="checkbox"]');
-                const itemCheckboxes = group.querySelectorAll('.cart-item .item-check input[type="checkbox"]');
-                if (groupHeaderCheckbox) {
-                    groupHeaderCheckbox.addEventListener('change', (e) => {
-                        this.toggleGroupItems(e.target.checked, itemCheckboxes);
-                        this.updateMasterState(masterCheckbox);
+                const groupHeader = group.querySelector('.group-header .checkbox-container input[type="checkbox"]');
+                const items = group.querySelectorAll('.cart-item .item-check input[type="checkbox"]');
+                
+                if (groupHeader) {
+                    groupHeader.addEventListener('change', (e) => {
+                        const isChecked = e.target.checked;
+                        items.forEach(cb => cb.checked = isChecked);
+                        this.updateMasterState(master, '.cart-item .item-check input[type="checkbox"]');
                         this.updateDeleteButtonState();
                     });
                 }
-                itemCheckboxes.forEach(itemCheckbox => {
-                    itemCheckbox.addEventListener('change', () => {
-                        if (groupHeaderCheckbox) this.updateGroupHeaderState(groupHeaderCheckbox, itemCheckboxes);
-                        this.updateMasterState(masterCheckbox);
+
+                items.forEach(item => {
+                    item.addEventListener('change', () => {
+                        if (groupHeader) {
+                            groupHeader.checked = Array.from(items).every(cb => cb.checked);
+                        }
+                        this.updateMasterState(master, '.cart-item .item-check input[type="checkbox"]');
                         this.updateDeleteButtonState();
                     });
                 });
             });
 
-            const deleteSelectedBtn = document.querySelector('.btn-delete-selected');
-            if (deleteSelectedBtn) {
-                deleteSelectedBtn.addEventListener('click', () => {
-                    const checkedItems = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]:checked');
-                    deleteSelectedBtn.dataset.modalUrl = checkedItems.length === 0
-                        ? '/common/components/modal/modal-alert.html'
-                        : '/common/components/modal/modal-select-del.html';
-                });
-            }
-
+            // 초기 상태 업데이트
             this.updateDeleteButtonState();
         },
-        toggleAll(isChecked, groups) {
-            groups.forEach(group => {
-                const groupHeaderCheckbox = group.querySelector('.group-header .checkbox-container input[type="checkbox"]');
-                const itemCheckboxes = group.querySelectorAll('.cart-item .item-check input[type="checkbox"]');
-                if (groupHeaderCheckbox) groupHeaderCheckbox.checked = isChecked;
-                itemCheckboxes.forEach(cb => cb.checked = isChecked);
+
+        // 카테고리 로직 (평면 리스트)
+        initCategory(container, master) {
+            const items = container.querySelectorAll('.product-item .item-check input[type="checkbox"]');
+
+            master.addEventListener('change', (e) => {
+                const isChecked = e.target.checked;
+                items.forEach(cb => cb.checked = isChecked);
+                this.updateAddCartButtonState();
             });
+
+            items.forEach(item => {
+                item.addEventListener('change', () => {
+                    master.checked = Array.from(items).every(cb => cb.checked);
+                    this.updateAddCartButtonState();
+                });
+            });
+
+            // 초기 상태 업데이트
+            master.checked = items.length > 0 && Array.from(items).every(cb => cb.checked);
+            this.updateAddCartButtonState();
         },
-        toggleGroupItems(isChecked, itemCheckboxes) {
-            itemCheckboxes.forEach(cb => cb.checked = isChecked);
-        },
-        updateGroupHeaderState(groupHeaderCheckbox, itemCheckboxes) {
-            if (itemCheckboxes.length === 0) return;
-            groupHeaderCheckbox.checked = Array.from(itemCheckboxes).every(cb => cb.checked);
-        },
-        updateMasterState(masterCheckbox) {
-            const allItemCheckboxes = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]');
-            if (allItemCheckboxes.length === 0) {
-                masterCheckbox.checked = false;
+
+        updateMasterState(master, itemSelector) {
+            const allItems = document.querySelectorAll(itemSelector);
+            if (allItems.length === 0) {
+                master.checked = false;
                 return;
             }
-            masterCheckbox.checked = Array.from(allItemCheckboxes).every(cb => cb.checked);
+            master.checked = Array.from(allItems).every(cb => cb.checked);
         },
-        updateDeleteButtonState() {
-            const btns = document.querySelectorAll('.cart-select-bar .action-btns .btn-select-action');
-            const targetBtn = Array.from(btns).find(b => b.textContent.trim() === '선택삭제');
 
-            if (targetBtn) {
-                const checkedItems = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]:checked');
-                if (checkedItems.length > 0) {
-                    targetBtn.removeAttribute('disabled');
+        updateDeleteButtonState() {
+            const btn = document.querySelector('.btn-delete-selected');
+            if (btn) {
+                const checkedCount = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]:checked').length;
+                if (checkedCount > 0) {
+                    btn.removeAttribute('disabled');
                 } else {
-                    targetBtn.setAttribute('disabled', '');
+                    btn.setAttribute('disabled', '');
+                }
+            }
+        },
+        // 상품 선택 초기화
+        resetCategorySelection() {
+            const productList = document.querySelector('.product-list');
+            if (!productList) return;
+            
+            const items = productList.querySelectorAll('.product-item .item-check input[type="checkbox"]');
+            const master = document.querySelector('.category-filter-bar .filter-left .checkbox-container input[type="checkbox"]');
+            
+            items.forEach(cb => {
+                cb.checked = false;
+            });
+            
+            if (master) {
+                master.checked = false;
+            }
+            
+            this.updateAddCartButtonState();
+        },
+
+        updateAddCartButtonState() {
+            const btn = document.querySelector('.category-filter-bar .btn-add-cart');
+            if (btn) {
+                const checkedCount = document.querySelectorAll('.product-item .item-check input[type="checkbox"]:checked').length;
+                if (checkedCount > 0) {
+                    btn.classList.add('active'); // active 상태 표시
+                    btn.removeAttribute('disabled');
+                } else {
+                    btn.classList.remove('active');
+                    btn.setAttribute('disabled', '');
                 }
             }
         }
     },
 
-    // 카테고리 탭 정렬/필터링
+    // 카테고리 필터링
     CategorySort: {
         init() {
             document.addEventListener('click', (e) => {
@@ -750,6 +852,9 @@ const Eclub = {
                 }
 
                 if (tabListWrapper) {
+                    // 상품 선택 초기화
+                    Eclub.Selection.resetCategorySelection();
+
                     const productLists = [];
                     let sibling = tabListWrapper.nextElementSibling;
 
@@ -776,7 +881,7 @@ const Eclub = {
                                 }
                             });
 
-                            // 카테고리 변경 후 ProductMore 초기화
+                            // 더보기 초기화
                             if (productList.classList.contains('is-more')) {
                                 Eclub.ProductMore.resetByCategory(productList);
                             }
@@ -791,7 +896,185 @@ const Eclub = {
         }
     },
 
-    // 상품 더보기 (10개씩 페이징)
+    // 배송 필터링
+    DeliverySort: {
+        init() {
+            // 초기 상태 동기화
+            document.querySelectorAll('.delivery-types .type-btn').forEach(btn => {
+                const input = btn.querySelector('input');
+                if (input && input.checked) {
+                    btn.classList.add('active');
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('.delivery-types .type-btn');
+                if (!btn) return;
+
+                // 체크박스 수동 제어
+                if (e.target.tagName === 'INPUT') return; 
+                e.preventDefault();
+
+                const group = btn.closest('.btn-group');
+                const filterGroup = group?.dataset.filterGroup;
+                if (!filterGroup) return;
+
+                const input = btn.querySelector('input');
+                const wasActive = btn.classList.contains('active');
+
+                // 상호 배타 선택 처리
+                group.querySelectorAll('.type-btn').forEach(b => {
+                    b.classList.remove('active');
+                    const cb = b.querySelector('input');
+                    if (cb) cb.checked = false;
+                });
+
+                // 현재 항목 토글
+                if (!wasActive) {
+                    btn.classList.add('active');
+                    if (input) input.checked = true;
+                } else {
+                    if (input) input.checked = false;
+                }
+
+                // 상품 선택 초기화
+                Eclub.Selection.resetCategorySelection();
+
+                this.applyFilter();
+            });
+
+            // 초기 필터 적용
+            this.applyFilter();
+        },
+
+        // 상품 노출 제어
+        applyFilter() {
+            const activeFilter = document.querySelector('.btn-group[data-filter-group="delivery"] .type-btn.active')?.dataset.type;
+            const productItems = document.querySelectorAll('.product-list .product-item');
+            
+            productItems.forEach(item => {
+                const itemDelivery = item.dataset.deliveryType;
+                const itemCenter = item.dataset.deliveryCenter;
+                
+                let isMatch = true;
+                
+                // 통합 필터 매칭
+                if (activeFilter) {
+                    isMatch = (itemDelivery === activeFilter || itemCenter === activeFilter);
+                }
+                
+                // Display 제어
+                item.style.display = isMatch ? '' : 'none';
+            });
+        }
+    },
+
+    // 사이드바 아코디언
+    CategoryMenu: {
+        init() {
+            const sidebar = document.querySelector('.category-sidebar');
+            if (!sidebar) return;
+
+            // 데이터 렌더링
+            this.loadMenu();
+
+            // 이벤트 위임
+            sidebar.addEventListener('click', (e) => {
+                const header = e.target.closest('.sidebar-menu > li.has-sub > a');
+                const subLink = e.target.closest('.sub-menu a');
+
+                // 1Depth 토글
+                if (header) {
+                    e.preventDefault();
+                    const parent = header.parentElement;
+                    const subMenu = parent.querySelector('.sub-menu');
+                    const isOpen = parent.classList.contains('is-open');
+
+                    // 타 메뉴 닫기
+                    const otherOpenMenus = sidebar.querySelectorAll('.sidebar-menu > li.has-sub.is-open');
+                    otherOpenMenus.forEach(menu => {
+                        if (menu !== parent) {
+                            const otherSub = menu.querySelector('.sub-menu');
+                            menu.classList.remove('is-open');
+                            Eclub.Toggle.slideUp(otherSub);
+                        }
+                    });
+
+                    // 현재 메뉴 토글
+                    if (isOpen) {
+                        parent.classList.remove('is-open');
+                        Eclub.Toggle.slideUp(subMenu);
+                    } else {
+                        parent.classList.add('is-open');
+                        Eclub.Toggle.slideDown(subMenu);
+                    }
+                    return;
+                }
+
+                // 서브메뉴 활성화
+                if (subLink) {
+                    // active 상태 초기화
+                    const allLinks = sidebar.querySelectorAll('a');
+                    allLinks.forEach(link => link.classList.remove('active', 'active-header'));
+
+                    // 클릭한 서브메뉴 활성화
+                    subLink.classList.add('active');
+
+                    // 부모 헤더 강조
+                    const parentLi = subLink.closest('.has-sub');
+                    if (parentLi) {
+                        const parentHeader = parentLi.querySelector('> a');
+                        if (parentHeader) parentHeader.classList.add('active-header');
+                    }
+                }
+            });
+        },
+
+        // 데이터 로드 (JSON)
+        async loadMenu() {
+            try {
+                const response = await fetch('/assets/data/category-menu.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                this.render(data);
+            } catch (err) {
+                console.error('카테고리 메뉴 로드 실패:', err);
+            }
+        },
+
+        // DOM 렌더링
+        render(data) {
+            const container = document.querySelector('.category-sidebar');
+            if (!container) return;
+
+            let html = '<ul class="sidebar-menu">';
+            data.forEach(item => {
+                const hasSub = item.hasSub ? 'has-sub' : '';
+                const activeClass = item.active ? 'active' : '';
+                const headerActiveClass = item.active && item.hasSub ? 'active-header' : '';
+                
+                html += `
+                    <li class="${hasSub} ${item.active && item.hasSub ? 'is-open' : ''}">
+                        <a href="${item.link}" class="${activeClass} ${headerActiveClass}">
+                            ${item.name}
+                            ${item.hasSub ? '<i class="icon-toggle"></i>' : ''}
+                        </a>
+                        ${item.hasSub ? `
+                            <ul class="sub-menu" style="${item.active ? 'display: block;' : 'display: none;'}">
+                                ${item.subMenu.map(sub => `
+                                    <li><a href="${sub.link}" class="${sub.active ? 'active' : ''}">${sub.name}</a></li>
+                                `).join('')}
+                            </ul>
+                        ` : ''}
+                    </li>
+                `;
+            });
+            html += '</ul>';
+            container.innerHTML = html;
+        }
+    },
+
+    // 상품 더보기 (Paging)
     ProductMore: {
         PAGE_SIZE: 10,
 
@@ -832,20 +1115,20 @@ const Eclub = {
             });
         },
 
-        // visible 상태인 product-item만 반환
+        // 노출 아이템 필터링
         getVisibleItems(container) {
             return Array.from(container.querySelectorAll('.product-item')).filter(
                 item => item.style.display !== 'none' || item.dataset.hiddenByMore === 'true'
             );
         },
 
-        // 초기 페이징 적용
+        // 초기 페이징 설정
         applyPaging(container) {
             const allItems = this.getVisibleItems(container);
             const moreWrap = this.getMoreWrapper(container);
             const pageSize = this.PAGE_SIZE;
 
-            // 10개 이하면 버튼 숨김, maxHeight 해제
+            // 10개 이하 버튼 숨김
             if (allItems.length <= pageSize) {
                 if (moreWrap) moreWrap.style.display = 'none';
                 container.style.maxHeight = '';
@@ -860,7 +1143,7 @@ const Eclub = {
                 return;
             }
 
-            // 10개 초과 → 첫 10개만 노출
+            // 초기 10개 노출
             container.dataset.visibleCount = pageSize;
             allItems.forEach((item, idx) => {
                 if (idx < pageSize) {
@@ -877,7 +1160,7 @@ const Eclub = {
             container.style.maxHeight = '';
             container.style.overflow = '';
 
-            // 버튼 상태
+            // 버튼 상태 갱신
             if (moreWrap) {
                 moreWrap.style.display = '';
                 const btn = moreWrap.querySelector('.btn-more');
@@ -897,7 +1180,7 @@ const Eclub = {
             return next;
         },
 
-        // 높이 재계산 (resize 대응)
+        // 높이 갱신 (Resize 대응)
         recalcHeight(container) {
             const visibleCount = parseInt(container.dataset.visibleCount, 10) || this.PAGE_SIZE;
             const visibleItems = Array.from(container.querySelectorAll('.product-item')).filter(
@@ -918,7 +1201,7 @@ const Eclub = {
             const isExpanded = container.classList.contains('is-expanded');
             const span = btn.querySelector('span');
 
-            // 상품닫기 → 초기 10개로 복원
+            // 목록 축소 (10개 복원)
             if (isExpanded) {
                 container.classList.remove('is-expanded');
                 container.dataset.visibleCount = pageSize;
@@ -938,7 +1221,7 @@ const Eclub = {
                 return;
             }
 
-            // 상품 더보기 → 다음 10개 추가 노출
+            // 목록 확장 (+10개)
             const nextCount = Math.min(visibleCount + pageSize, allItems.length);
             for (let i = visibleCount; i < nextCount; i++) {
                 allItems[i].style.display = '';
@@ -946,7 +1229,7 @@ const Eclub = {
             }
             container.dataset.visibleCount = nextCount;
 
-            // 모두 노출 완료 → '상품닫기' 전환
+            // 전체 노출 완료 처리
             if (nextCount >= allItems.length) {
                 container.classList.add('is-expanded');
                 if (span) span.textContent = '상품닫기';
@@ -954,12 +1237,12 @@ const Eclub = {
             }
         },
 
-        // 탭 전환 후 활성 product-list 초기화
+        // 활성 리스트 초기화 (탭 대응)
         resetActiveList(targetId) {
             const activeList = document.getElementById(targetId);
             if (!activeList || !activeList.classList.contains('is-more')) return;
 
-            // hiddenByMore 마킹 해제 후 재적용
+            // 상태 마킹 갱신
             activeList.querySelectorAll('.product-item[data-hidden-by-more]').forEach(item => {
                 item.style.display = '';
                 delete item.dataset.hiddenByMore;
@@ -970,9 +1253,9 @@ const Eclub = {
             });
         },
 
-        // 카테고리 정렬 후 초기화
+        // 정렬 초기화
         resetByCategory(container) {
-            // hiddenByMore 마킹 해제
+            // 마킹 해제
             container.querySelectorAll('.product-item[data-hidden-by-more]').forEach(item => {
                 delete item.dataset.hiddenByMore;
             });
@@ -983,19 +1266,140 @@ const Eclub = {
         }
     },
 
-    // 슬라이더 (가로 스크롤)
+    // 필터 더보기 (Paging)
+    FilterMore: {
+        init() {
+            const containers = document.querySelectorAll('.filter-list.is-more');
+            if (!containers.length) return;
+
+            containers.forEach(container => {
+                this.applyPaging(container);
+            });
+
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('.filter-more .btn-more');
+                if (!btn) return;
+
+                const moreWrap = btn.closest('.filter-more');
+                // 이전 형제 중 filter-list 찾기
+                const container = moreWrap?.previousElementSibling;
+
+                if (container && container.classList.contains('is-more')) {
+                    e.preventDefault();
+                    this.toggle(container, btn);
+                }
+            });
+        },
+
+        getVisibleItems(container) {
+            return Array.from(container.querySelectorAll('li')).filter(
+                item => item.style.display !== 'none' || item.dataset.hiddenByMore === 'true'
+            );
+        },
+
+        applyPaging(container) {
+            const allItems = this.getVisibleItems(container);
+            const moreWrap = container.nextElementSibling;
+            const pageSize = parseInt(container.dataset.moreLimit || '5', 10);
+
+            if (allItems.length <= pageSize) {
+                if (moreWrap && moreWrap.classList.contains('filter-more')) {
+                    moreWrap.style.display = 'none';
+                }
+                container.dataset.visibleCount = allItems.length;
+                allItems.forEach(item => {
+                    delete item.dataset.hiddenByMore;
+                    item.style.display = '';
+                });
+                return;
+            }
+
+            container.dataset.visibleCount = pageSize;
+            allItems.forEach((item, idx) => {
+                if (idx < pageSize) {
+                    item.style.display = '';
+                    delete item.dataset.hiddenByMore;
+                } else {
+                    item.style.display = 'none';
+                    item.dataset.hiddenByMore = 'true';
+                }
+            });
+
+            container.classList.add('js-initialized');
+            container.classList.remove('is-expanded');
+
+            if (moreWrap && moreWrap.classList.contains('filter-more')) {
+                moreWrap.style.display = '';
+                const btn = moreWrap.querySelector('.btn-more');
+                if (btn) {
+                    btn.classList.remove('active');
+                    const span = btn.querySelector('span');
+                    if (span) {
+                        const originalText = span.dataset.originalText || span.textContent;
+                        span.dataset.originalText = originalText;
+                        span.textContent = originalText;
+                    }
+                }
+            }
+        },
+
+        toggle(container, btn) {
+            const allItems = this.getVisibleItems(container);
+            const pageSize = parseInt(container.dataset.moreLimit || '5', 10);
+            let visibleCount = parseInt(container.dataset.visibleCount, 10) || pageSize;
+            const isExpanded = container.classList.contains('is-expanded');
+            const span = btn.querySelector('span');
+            const originalText = span ? (span.dataset.originalText || span.textContent) : '';
+
+            if (isExpanded) {
+                container.classList.remove('is-expanded');
+                container.dataset.visibleCount = pageSize;
+
+                allItems.forEach((item, idx) => {
+                    if (idx < pageSize) {
+                        item.style.display = '';
+                        delete item.dataset.hiddenByMore;
+                    } else {
+                        item.style.display = 'none';
+                        item.dataset.hiddenByMore = 'true';
+                    }
+                });
+
+                if (span) span.textContent = originalText;
+                btn.classList.remove('active');
+                return;
+            }
+
+            const nextCount = Math.min(visibleCount + pageSize, allItems.length);
+            for (let i = visibleCount; i < nextCount; i++) {
+                allItems[i].style.display = '';
+                delete allItems[i].dataset.hiddenByMore;
+            }
+            container.dataset.visibleCount = nextCount;
+
+            if (nextCount >= allItems.length) {
+                container.classList.add('is-expanded');
+                if (span) {
+                    span.textContent = '닫기'; // // 피그마 분석 기반 텍스트 변경
+                }
+                btn.classList.add('active');
+            }
+        }
+    },
+
+    // 슬라이더
     Slider: {
         init() {
-            // 상품 리스트 슬라이더 (5개씩)
+            // 상품 슬라이더
             const productSliders = document.querySelectorAll('.list-slider');
             productSliders.forEach(list => this.initProductSlider(list));
 
-            // 메인 비주얼 슬라이더 (3개씩)
+            // 메인 슬라이더
             const mainSliders = document.querySelectorAll('.main-visual .slider-wrapper');
             mainSliders.forEach(list => this.initMainSlider(list));
         },
 
-        // 상품 슬라이더 초기화 (5개씩)
+        // 상품 슬라이더 초기화 (5개 단위)
         initProductSlider(list) {
             const section = list.closest('.home-container');
             if (!section) return;
@@ -1034,7 +1438,7 @@ const Eclub = {
             if (nextBtn) nextBtn.onclick = () => this.scroll(list, 'right', itemsPerPage);
         },
 
-        // 메인 비주얼 슬라이더 초기화
+        // 메인 슬라이더 초기화
         initMainSlider(list) {
             const section = list.closest('.main-visual');
             if (!section) return;
@@ -1051,7 +1455,7 @@ const Eclub = {
             const itemsCount = originalItems.length;
             if (itemsCount === 0) return;
 
-            // 반응형 무관 3개 클론 생성
+            // 클론 생성 (3개 고정)
             const clonesCount = 3;
             let itemsPerPage = 1;
             let pageIndices = [];
@@ -1077,7 +1481,7 @@ const Eclub = {
 
             updateLayout();
 
-            // 도트 및 카운트 초기화
+            // Pagination 초기화
             if (totalEl) totalEl.innerText = itemsCount < 10 ? `0${itemsCount}` : itemsCount;
             const drawDots = () => {
                 if (dotsContainer) {
@@ -1125,8 +1529,7 @@ const Eclub = {
                 const style = window.getComputedStyle(list);
                 const gap = parseFloat(style.gap) || 0;
 
-                //itemsPerPage가 1이든 3이든, 부모 컨테이너(뷰포트) 너비를 기준으로 정확한 단위를 계산해야
-                //줌 배율(body.style.zoom)이 적용된 상태에서도 논리적 픽셀 단위로 정확히 이동하여 밀림 현상 방지
+                // 뷰포트 기준 이동 거리 계산
                 const container = list.parentElement;
                 const containerWidth = parseFloat(window.getComputedStyle(container).width);
 
@@ -1169,11 +1572,11 @@ const Eclub = {
                 isTransitioning = true;
                 currentPageIdx = pageIdx;
 
-                // 클론 오프셋 적용
+                // 클론 Offset 적용
                 const wrapperIdx = uniquePageIndices[currentPageIdx] + clonesCount;
                 const tx = getTranslateX(wrapperIdx);
 
-                // 트랜지션 강제 적용
+                // Transition 강제
                 list.style.transition = animated ? `transform ${Eclub.Const.ANIMATION_DURATION}ms ease-in-out` : 'none';
                 list.style.transform = `translateX(${tx}px)`;
 
@@ -1186,7 +1589,7 @@ const Eclub = {
                     };
                     list.addEventListener('transitionend', transitionEndHandler, { once: true });
 
-                    // 트랜지션 엔드 미발생 시 강제 해제
+                    // 해제 보장 (Timeout)
                     setTimeout(() => {
                         if (isTransitioning) {
                             list.removeEventListener('transitionend', transitionEndHandler);
@@ -1203,7 +1606,7 @@ const Eclub = {
 
                 if (currentPageIdx >= totalPages - 1) {
                     isTransitioning = true;
-                    // 마지막 페이지에서 이동
+                    // Last Page -> First Page 이동
                     const wrapperIdx = clonesCount + itemsCount;
                     const tx = getTranslateX(wrapperIdx);
 
@@ -1236,7 +1639,7 @@ const Eclub = {
 
                 if (currentPageIdx <= 0) {
                     isTransitioning = true;
-                    // 첫 페이지에서 이동
+                    // First Page -> Last Page 이동
                     const wrapperIdx = clonesCount - itemsPerPage;
                     const tx = getTranslateX(wrapperIdx);
 
@@ -1282,7 +1685,7 @@ const Eclub = {
             };
 
             if (btnPause) {
-                // 모바일/PC pause 아이콘 클래스 판별
+                // 아이콘 클래스 구분
                 const isMoPause = !!btnPause.querySelector('.icon-mo-pause');
                 const pauseClass = isMoPause ? 'icon-mo-pause' : 'icon-main-pause';
                 const playClass = isMoPause ? 'icon-mo-play' : 'icon-main-play';
@@ -1306,7 +1709,7 @@ const Eclub = {
             list.addEventListener('mouseenter', stopAuto);
             list.addEventListener('mouseleave', () => !isPaused && startAuto());
 
-            // 드래그/스와이프 기능
+            // 스와이프 기능
             let startX = 0;
             let dragDiff = 0;
             let isDragging = false;
@@ -1314,7 +1717,7 @@ const Eclub = {
             let initialTx = 0;
 
             const onDragStart = (e) => {
-                // 모바일일때만 드래그 활성화
+                // Mobile 전용 드래그 활성화
                 const isMobile = window.matchMedia('(max-width: 768px)').matches;
                 if (!isMobile || isTransitioning) return;
 
@@ -1375,7 +1778,7 @@ const Eclub = {
             list.addEventListener('mousedown', onDragStart);
             list.addEventListener('touchstart', onDragStart, { passive: false });
 
-            // 클릭 이벤트 방지
+            // 클릭 방지
             list.addEventListener('click', (e) => {
                 if (isSwiped) {
                     e.preventDefault();
@@ -1383,7 +1786,7 @@ const Eclub = {
                 }
             }, true);
 
-            // 리사이즈
+            // Resize 대응
             let resizeTimer = null;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimer);
@@ -1441,7 +1844,7 @@ const Eclub = {
             const itemWidth = item.offsetWidth;
 
             if (dotsContainer) {
-                // 메인 비주얼 페이지네이션
+                // 메인 Pagination
                 const itemsCount = element.querySelectorAll('.slide-item').length;
                 const index = Math.round(scrollLeft / (itemWidth + gap));
                 const lastVisibleIndex = Math.min(index + itemsPerPage, itemsCount);
@@ -1457,7 +1860,7 @@ const Eclub = {
                     dot.classList.toggle('active', isActive);
                 });
             } else {
-                // 상품 슬라이더 페이지네이션
+                // 상품 Pagination
                 const unitWidth = (itemWidth + gap) * itemsPerPage;
                 let page = Math.round(scrollLeft / unitWidth) + 1;
 
@@ -1489,7 +1892,7 @@ const Eclub = {
         }
     },
 
-    // 스크롤 위치 감지 (탭 활성화)
+    // 스크롤 스파이
     ScrollSpy: {
         init() {
             const tabWrap = document.querySelector('.cart-tab-wrap');
@@ -1564,10 +1967,10 @@ const Eclub = {
         }
     },
 
-    // 입력 필드 핸들러
+    // 입력 핸들러
     InputHandler: {
         init() {
-            // 숫자만 입력 가능 (data-input="number")
+            // 숫자 전용 입력 처리
             document.addEventListener('input', (e) => {
                 const input = e.target;
                 const type = input.dataset.input || input.getAttribute('data-input');
@@ -1590,7 +1993,7 @@ const Eclub = {
                 }
             });
 
-            // 숫자 입력 시 제어
+            // 숫자 입력 제어
             document.addEventListener('keydown', (e) => {
                 const input = e.target;
                 const type = input.dataset.input || input.getAttribute('data-input');
@@ -1608,7 +2011,7 @@ const Eclub = {
         }
     },
 
-    // 지인 추천 관련
+    // 지인 추천
     Referral: {
         init() {
             document.addEventListener('click', (e) => {
@@ -1639,7 +2042,7 @@ const Eclub = {
             if (!floatingContainer || floatingContainer._isInit) return;
             floatingContainer._isInit = true;
 
-            // 바텀 시트가 있으면 클래스 추가 (위치 보정을 위함)
+            // 위치 보정 (바텀 시트 대응)
             const sheetEl = document.querySelector('.bottom-sheet');
             if (sheetEl) {
                 floatingContainer.classList.add('has-bottom-sheet');
@@ -1685,13 +2088,13 @@ const Eclub = {
         }
     },
 
-    // HTML 인클루드 로더 & 스피너 제어
+    // 인클루드/로딩 제어
     Loader: {
         overlay: null,
         requestCount: 0,
 
         async init() {
-            // 로딩 오버레이 구조 생성 (기본 숨김)
+            // 오버레이 생성
             if (!document.querySelector('.loading-overlay')) {
                 const loaderHTML = `
                     <div class="loading-overlay" style="display: none;">
@@ -1707,7 +2110,7 @@ const Eclub = {
 
             this.overlay = document.querySelector('.loading-overlay');
 
-            // HTML Include 처리
+            // HTML Include
             const includes = document.querySelectorAll('[data-include]');
             for (const el of includes) {
                 const url = el.dataset.include;
@@ -1724,14 +2127,14 @@ const Eclub = {
                 }
             }
 
-            // Fetch 인터셉터 활성화 (데이터 통신 감지)
+            // 통신 감지 인터셉터
             this.enableInterceptor();
         },
 
         enableInterceptor() {
             const self = this;
 
-            // 1. Fetch API 인터셉트
+            // Fetch 인터셉트
             const originalFetch = window.fetch;
             window.fetch = async (...args) => {
                 self.requestCount++;
@@ -1745,7 +2148,7 @@ const Eclub = {
                 } finally {
                     self.requestCount--;
                     if (self.requestCount <= 0) {
-                        // 약간의 지연을 두어 깜빡임 방지
+                        // 깜빡임 방지 (Delay)
                         setTimeout(() => {
                             if (self.requestCount <= 0) {
                                 self.requestCount = 0;
@@ -1756,7 +2159,7 @@ const Eclub = {
                 }
             };
 
-            // 2. XMLHttpRequest (Ajax/jQuery) 인터셉트
+            // XHR 인터셉트
             const originalOpen = XMLHttpRequest.prototype.open;
             const originalSend = XMLHttpRequest.prototype.send;
 
@@ -1806,7 +2209,7 @@ const Eclub = {
         }
     },
 
-    // 퀵메뉴 커스텀 스크롤
+    // 퀵메뉴 스크롤
     QuickMenuScroll: {
         init() {
             const container = document.querySelector('.quick-menu-container');
@@ -1851,7 +2254,7 @@ const Eclub = {
                 document.body.style.userSelect = 'none';
             };
 
-            // 드래그 움직임 처리
+            // 드래그 이동
             const onDragMove = (e) => {
                 if (!isDragging) return;
 
@@ -1867,7 +2270,7 @@ const Eclub = {
 
                 if (maxThumbTranslate <= 0) return;
 
-                // 드래그 비율에 따른 스크롤 이동
+                // 스크롤 동기화
                 const scrollDelta = (deltaX / maxThumbTranslate) * maxScroll;
                 container.scrollLeft = startScrollLeft + scrollDelta;
             };
@@ -1897,11 +2300,83 @@ const Eclub = {
         }
     },
 
+    // 상품 정렬/개수
+    ProductSortAndCount: {
+        init() {
+            document.addEventListener('click', (e) => {
+                const sortOption = e.target.closest('.sort-select .select-options li');
+                const countOption = e.target.closest('.count-select .select-options li');
+                
+                if (sortOption || countOption) {
+                    // 상품 선택 초기화
+                    Eclub.Selection.resetCategorySelection();
+                    
+                    // UI 갱신 대기 (Timeout)
+                    setTimeout(() => {
+                        this.applyFilterAndSort();
+                    }, 0);
+                }
+            });
 
-    // 전체 모듈 초기화
+            const productList = document.querySelector('.product-list');
+            if (productList) {
+                // 초기 정렬 적용
+                this.applyFilterAndSort();
+            }
+        },
+
+        applyFilterAndSort() {
+            const productList = document.querySelector('.product-list');
+            if (!productList) return;
+
+            const items = Array.from(productList.querySelectorAll('.product-item'));
+            if (items.length === 0) return;
+
+            const sortActive = document.querySelector('.sort-select .select-options li.active');
+            const countActive = document.querySelector('.count-select .select-options li.active');
+            
+            const sortType = sortActive ? sortActive.textContent.trim() : '판매순';
+            let countLimit = 80;
+            if (countActive) {
+                const countText = countActive.textContent.trim();
+                countLimit = parseInt(countText.replace(/[^0-9]/g, ''), 10) || 80;
+            }
+
+            items.sort((a, b) => {
+                if (sortType === '판매순') {
+                    // 판매량 기준 정렬
+                    return (parseInt(b.dataset.sales) || 0) - (parseInt(a.dataset.sales) || 0);
+                } else if (sortType === '많은 구매횟수') {
+                    // 구매 횟수 정렬
+                    return (parseInt(b.dataset.purchase) || 0) - (parseInt(a.dataset.purchase) || 0);
+                } else if (sortType === '신상품순') {
+                    // 신상품 정렬
+                    return (parseInt(b.dataset.new) || 0) - (parseInt(a.dataset.new) || 0);
+                } else if (sortType === '낮은가격순') {
+                    // 최저가 정렬
+                    return (parseInt(a.dataset.price) || 0) - (parseInt(b.dataset.price) || 0);
+                }
+                return 0;
+            });
+
+            items.forEach((item, index) => {
+                if (index < countLimit) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+                productList.appendChild(item); // 노드 재배치 (정렬 반영)
+            });
+        }
+    },
+
+
+
+    // 모듈 초기화
     async init() {
-        // 비동기 로드와 무관한 Delegation 이벤트 우선 바인딩
+        // 이벤트 위임 우선 바인딩
         this.Referral.init();
+        this.CustomSelect.init();
         this.Tabs.init();
         this.Quantity.init();
         this.Favorites.init();
@@ -1909,7 +2384,7 @@ const Eclub = {
         this.InputHandler.init();
         this.QuickMenuScroll.init();
 
-        // 비동기 포함 나머지 초기화
+        // 비동기 모듈 초기화
         this.Slider.init();
         await this.Loader.init();
         this.QuickMenu.init();
@@ -1917,9 +2392,13 @@ const Eclub = {
         this.Clipboard.init();
         this.Toggle.init();
         this.BottomSheet.init();
-        this.CartSelection.init();
+        this.Selection.init();
         this.CategorySort.init();
+        this.DeliverySort.init();
+        this.ProductSortAndCount.init();
+        this.CategoryMenu.init();
         this.ProductMore.init();
+        this.FilterMore.init();
         this.ScrollSpy.init();
         if (this.BrowserZoom) this.BrowserZoom.init();
 
@@ -1927,5 +2406,5 @@ const Eclub = {
     }
 };
 
-// DOM 로드 시 실행
+// DOM 로딩 완료 시 실행
 document.addEventListener('DOMContentLoaded', () => Eclub.init());

@@ -28,9 +28,7 @@ $icon-path: '../../icons'; // 루트 절대 경로 적용
     mask-size: contain;
 }
 
-.icon {
-    // 하위 호환성 유지용 빈 클래스
-}
+// .icon { } - 하위 호환성 유지용 빈 클래스 (제거됨)
 
 // 모바일 플러스 메뉴
 .icon-mobile-plus-menu {
@@ -299,4 +297,26 @@ $icon-path: '../../icons'; // 루트 절대 경로 적용
 
 .icon-alarm {
     @include icon-mask('#{$icon-path}/bell.svg', rem(24));
+}
+
+// 카테고리 상품 정렬 드롭다운 아이콘
+.icon-down-bullet {
+    @include icon-mask('/assets/icons/icon-down-bullet.svg', rem(24), $gray-999);
+}
+
+// 페이지네이션 화살표 아이콘
+.icon-page-bullet {
+    @include icon-mask('#{$icon-path}/category-sep-bullet.svg', rem(14));
+}
+
+// 카테고리 구분자 아이콘 (Breadcrumb Separator)
+.icon-category-sep-bullet {
+    @include icon-mask('#{$icon-path}/category-sep-bullet.svg', rem(14), $gray-700);
+    width: rem(7); // 피그마 분석: 너비 7.17px 기반
+    vertical-align: -#{rem(1)}; // 중앙 정렬 보정
+}
+
+// 검색 필터 초기화 아이콘
+.icon-reset {
+    @include icon-mask('#{$icon-path}/refresh.svg', rem(18));
 }
