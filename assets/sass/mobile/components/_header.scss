@@ -1,238 +1,81 @@
 @charset "UTF-8";
 
 header {
-    position: sticky;
-    top: 0;
+    position: relative; // 기본적으로는 relative (서브 페이지 트랙 제한용)
     z-index: 100;
-    height: rem(50);
-    background: $white;
-    border-bottom: 1px solid $gray-200;
+    background: transparent;
+    pointer-events: none;
 
-    .header-inner {
+    // 서브 페이지: 한정된 공간 안에서만 Sticky 동작 후 자연스럽게 스크롤 되도록 설정
+    &:not(.main-page) {
+        min-height: rem(269); // 측정된 내부 콘텐츠(169px) + 헤더(100px)에 맞춘 트랙 확보
+        margin-bottom: rem(-169); // 콘텐츠를 헤더 바로 아래에 붙임
+    }
+
+    // 메인 페이지: 전체 헤더가 상단에 Sticky로 계속 유지되어야 함
+    &.main-page,
+    .main-page & {
+        position: sticky;
+        top: rem(-50);
+        min-height: auto;
+        margin-bottom: 0;
+        background: $white;
+        pointer-events: auto;
+    }
+
+    .header-inner,
+    .header-sub,
+    .header-gnb {
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        height: 100%;
+        height: rem(50);
         padding: 0 rem(16);
         position: relative;
+        background: $white;
+        // border-bottom: 1px solid $gray-200;
+        z-index: 1;
+        pointer-events: auto; // 실제 요소는 클릭 가능하게 설정
 
-        // Subpage Title (Keep existing)
-        .page-title {
-            position: absolute;
-            left: 0;
+        &.header-gnb {
+            height: rem(41);
+        }
+
+        &.header-sub,
+        &.header-gnb {
+            position: sticky;
             top: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 rem(48);
-            font-size: rem(16);
-            font-weight: $fw-bold;
-            color: $black;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        // Main Header Layout
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: rem(10); // Figma Spacing 10
             z-index: 10;
-            flex-shrink: 0;
-
-            .btn-menu {
-                padding: rem(6) rem(3); // Figma padding
-                width: rem(24);
-                height: rem(24);
-                box-sizing: content-box; // width 24 + padding
-
-                i {
-                    font-size: rem(24);
-                    color: $gray-700; // #666
-                }
-            }
-
-            .logo {
-                display: flex;
-                align-items: center;
-                margin-left: 0;
-
-                a {
-                    padding: 0;
-                    display: flex;
-
-                    img {
-                        height: rem(28); // Figma Height 28
-                        width: auto;
-                    }
-                }
-            }
-
-            .btn-prev {
-                margin-left: rem(-16);
-            }
-        }
-
-        .header-center {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-            align-items: center;
-            padding: 0 rem(20);
-            z-index: 10;
-
-            .search-box {
-                width: 100%;
-                height: rem(32);
-                background: $white;
-                border: 1px solid $gray-600;
-                border-radius: rem(2);
-                display: flex;
-                align-items: center;
-                padding: 0 rem(8) 0 rem(10);
-
-                .input-search {
-                    flex: 1;
-                    border: none;
-                    background: transparent;
-                    height: 100%;
-                    font-size: rem(13);
-                    color: $black;
-                    outline: none;
-                    min-width: 0;
-
-                    &::placeholder {
-                        color: $gray-400;
-                    }
-                }
-
-                .btn-search {
-                    padding: 0;
-                    width: rem(24);
-                    height: rem(24);
-                    min-width: rem(24);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-shrink: 0;
-
-                    i {
-                        font-size: rem(18);
-                        color: $gray-700;
-                    }
-                }
-
-                .icon-search {
-                    width: rem(18);
-                    height: rem(18);
-                }
-            }
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: rem(20);
-            z-index: 10;
-            flex-shrink: 0;
-
-            a,
-            button {
-                position: relative;
-                padding: 0;
-                width: rem(24);
-                height: rem(24);
-
-                i {
-                    font-size: rem(24);
-                    width: rem(24);
-                    height: rem(24);
-                    color: $gray-700;
-                }
-
-                .badge {
-                    position: absolute;
-                    top: rem(-6);
-                    right: rem(-8);
-                    background-color: $color-badge-yellow;
-                    color: $gray-700;
-                    font-family: 'Pretendard', sans-serif;
-                    font-size: rem(10);
-                    font-weight: 500;
-                    height: rem(17);
-                    min-width: rem(18);
-                    padding: 0 rem(2);
-                    border-radius: rem(10);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    line-height: 1;
-                    z-index: 1;
-                    min-width: rem(22);
-                }
-
-                .dot {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    width: rem(4);
-                    height: rem(4);
-                    border-radius: rem(2);
-                    background-color: $color-badge-yellow;
-                }
-            }
-        }
-
-        // Common Button Styles
-        button,
-        a {
-            background: none;
-            border: none;
-            padding: rem(10);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: $black;
-
-            i {
-                font-size: rem(24);
-                width: rem(24); // 아이콘 크기 24로 통일
-                height: rem(24);
-                color: $black;
-                // object-fit: contain; // mask img인 경우 불필요하지만 혹시 모를 img 태그 대비
-            }
         }
     }
 
-    // Global Navigation Bar (Scrollable Menu)
+    // Row 2: GNB (메인 전용)
     .header-gnb {
-        width: 100%;
+        display: none; // 기본 숨김
         overflow-x: auto;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
-        background: $white;
 
-        // Hide Scrollbar
         &::-webkit-scrollbar {
             display: none;
         }
 
         -ms-overflow-style: none;
-        /* IE and Edge */
         scrollbar-width: none;
-        /* Firefox */
+
+        .main-page & {
+            display: flex;
+        }
 
         .gnb-list {
             display: flex;
             padding-left: rem(12);
-            gap: rem(12); // li 간격 12px
+            gap: rem(12);
             min-width: 100%;
             width: fit-content;
             justify-content: center;
+            height: 100%;
 
             li {
                 flex-shrink: 0;
@@ -243,7 +86,7 @@ header {
 
                 a {
                     display: block;
-                    padding: rem(10) 0; // a 태그 좌우 padding 제거
+                    padding: rem(10) 0;
                     font-size: rem(14);
                     color: $gray-700;
                     font-weight: $fw-semibold;
@@ -251,23 +94,188 @@ header {
                     position: relative;
                 }
 
-                &.active {
-                    a {
-                        color: $point-red;
-                        font-weight: $fw-bold;
+                &.active a {
+                    color: $point-red;
+                    font-weight: $fw-bold;
 
-                        &::after {
-                            content: '';
-                            position: absolute;
-                            bottom: 0;
-                            left: 0;
-                            width: 100%;
-                            height: rem(2);
-                            background-color: $point-red;
-                        }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: rem(2);
+                        background-color: $point-red;
                     }
                 }
             }
+        }
+    }
+
+    // Row 2: Sub Header (서브 전용)
+    .header-sub {
+        display: flex;
+        padding: rem(12) rem(16); // 피그ma 분석 속성 반영
+        height: auto;
+        min-height: rem(50);
+        justify-content: flex-start; // 좌측 정렬 레이아웃
+        gap: rem(12); // 아이콘과 타이틀 사이 간격
+
+        .main-page & {
+            display: none !important;
+        }
+
+        .header-left {
+            gap: 0; // 내부 간격 초기화
+        }
+
+        .page-title {
+            position: static; // 중앙 배치에서 일반 flex 아이템으로 변경
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            font-size: rem(18);
+            font-weight: $fw-bold;
+            color: $gray-900; // #222222 적용
+            pointer-events: auto;
+            z-index: 1;
+
+            .keyword {
+                color: $point-red;
+            }
+        }
+    }
+
+    // Common Layout Units
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: rem(10);
+        z-index: 10;
+        flex-shrink: 0;
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            a {
+                padding: 0;
+                display: flex;
+
+                img {
+                    height: rem(28);
+                    width: auto;
+                }
+            }
+        }
+
+    }
+
+    .header-center {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 rem(20);
+        z-index: 10;
+
+        .search-box {
+            width: 100%;
+            height: rem(32);
+            background: $white;
+            border: 1px solid $gray-600;
+            border-radius: rem(2);
+            display: flex;
+            align-items: center;
+            padding: 0 rem(8) 0 rem(10);
+
+            .input-search {
+                flex: 1;
+                border: none;
+                background: transparent;
+                height: 100%;
+                font-size: rem(13);
+                color: $black;
+                outline: none;
+                min-width: 0;
+
+                &::placeholder {
+                    color: $gray-400;
+                }
+            }
+
+            .btn-search {
+                padding: 0;
+                width: rem(24);
+                height: rem(24);
+                min-width: rem(24);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+
+                i {
+                    font-size: rem(18);
+                    color: $gray-700;
+                }
+            }
+        }
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: rem(16);
+        z-index: 10;
+        flex-shrink: 0;
+
+        a,
+        button {
+            position: relative;
+            padding: 0;
+            width: rem(24);
+            height: rem(24);
+
+            i {
+                font-size: rem(24);
+                color: $gray-700;
+            }
+
+            .badge {
+                position: absolute;
+                top: rem(-6);
+                right: rem(-8);
+                background-color: $color-badge-yellow;
+                color: $gray-700;
+                font-family: 'Pretendard', sans-serif;
+                font-size: rem(10);
+                font-weight: 500;
+                height: rem(17);
+                min-width: rem(22);
+                padding: 0 rem(2);
+                border-radius: rem(10);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 1;
+                z-index: 1;
+            }
+        }
+    }
+
+    // Global Action Button Styles
+    button,
+    a {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: $black;
+
+        i {
+            font-size: rem(24);
+            color: $black;
         }
     }
 }

@@ -29,13 +29,129 @@
             </div>
 
             <div class="search-box">
-            <form class="search-area">
-                    <input type="text" placeholder="검색어를 입력하세요">
-                    <button type="button" class="btn-search">
-                        <i class="icon-search"></i>
+                <form class="search-area">
+                    <input type="text" class="search-input" placeholder="검색어를 입력하세요">
+                    <button type="button" class="btn-clear" style="display: none;">
+                        <i class="icon-clear"></i>
                     </button>
-            </form>
+                    <a href="/eclub/pc/pages/search-result.html" class="btn-search">
+                        <i class="icon-search"></i>
+                    </a>
+                </form>
+                <!-- 검색 드롭다운 -->
+                <div class="search-dropdown" style="display: none;">
+                    <!-- 기본 뷰: 최근 검색어 & 급상승 검색어 -->
+                    <div class="search-default-view">
+                        <!-- 최근 검색어 -->
+                        <div class="dropdown-section recent-search">
+                            <div class="section-header">
+                                <h3 class="section-title">최근 검색어</h3>
+                                <button type="button" class="btn-delete-all">전체삭제</button>
+                            </div>
+                            <ul class="recent-list">
+                                <li>
+                                    <a href="#">코카콜라</a>
+                                    <button type="button" class="btn-delete-item"><i class="icon-clear"></i></button>
+                                </li>
+                                <li>
+                                    <a href="#">삼다수 2L</a>
+                                    <button type="button" class="btn-delete-item"><i class="icon-clear"></i></button>
+                                </li>
+                                <li>
+                                    <a href="#">비트</a>
+                                    <button type="button" class="btn-delete-item"><i class="icon-clear"></i></button>
+                                </li>
+                                <li>
+                                    <a href="#">라이온코리아</a>
+                                    <button type="button" class="btn-delete-item"><i class="icon-clear"></i></button>
+                                </li>
+                                <li>
+                                    <a href="#">진라면순한맛</a>
+                                    <button type="button" class="btn-delete-item"><i class="icon-clear"></i></button>
+                                </li>
+                                <li>
+                                    <a href="#">농심라면</a>
+                                    <button type="button" class="btn-delete-item"><i class="icon-clear"></i></button>
+                                </li>
+                                <li>
+                                    <a href="#">하겐다즈</a>
+                                    <button type="button" class="btn-delete-item"><i class="icon-clear"></i></button>
+                                </li>
+                            </ul>
+                            <!-- 데이터 없을 때 
+                            <div class="no-data">최근 검색어가 없습니다.</div>
+                            -->
+                        </div>
+                        <!-- 급상승 검색어 -->
+                        <div class="dropdown-section trending-search">
+                            <div class="section-header">
+                                <h3 class="section-title">급상승 검색어</h3>
+                                <span class="update-time">2026.02.23 (월) 08:00 기준</span>
+                            </div>
+                            <div class="trending-columns">
+                                <ol class="popular-list">
+                                    <li><span class="rank">1</span><a href="#" class="keyword">코카콜라</a><span class="change up">5</span></li>
+                                    <li><span class="rank">2</span><a href="#" class="keyword">맥북프로 16인치</a><span class="change new">NEW</span></li>
+                                    <li><span class="rank">3</span><a href="#" class="keyword">앤커</a><span class="change down">2</span></li>
+                                    <li><span class="rank">4</span><a href="#" class="keyword">에어팟 맥스</a><span class="change up">6</span></li>
+                                    <li><span class="rank">5</span><a href="#" class="keyword">종이컵 330ml</a><span class="change up">8</span></li>
+                                    <li><span class="rank">6</span><a href="#" class="keyword">햇반</a><span class="change none"></span></li>
+                                    <li><span class="rank">7</span><a href="#" class="keyword">라면</a><span class="change up">1</span></li>
+                                    <li><span class="rank">8</span><a href="#" class="keyword">휴지</a><span class="change up">3</span></li>
+                                    <li><span class="rank">9</span><a href="#" class="keyword">생수</a><span class="change down">1</span></li>
+                                    <li><span class="rank">10</span><a href="#" class="keyword">커피</a><span class="change up">2</span></li>
+                                </ol>
+                                <div class="sep-line"></div>
+                                <ol class="popular-list">
+                                    <li><span class="rank">11</span><a href="#" class="keyword">코카콜라</a><span class="change up">5</span></li>
+                                    <li><span class="rank">12</span><a href="#" class="keyword">앤커</a><span class="change down">4</span></li>
+                                    <li><span class="rank">13</span><a href="#" class="keyword">맥북프로 16인치</a><span class="change none"></span></li>
+                                    <li><span class="rank">14</span><a href="#" class="keyword">에어팟 맥스</a><span class="change up">6</span></li>
+                                    <li><span class="rank">15</span><a href="#" class="keyword">프링글스 양파맛</a><span class="change up">8</span></li>
+                                    <li><span class="rank">16</span><a href="#" class="keyword">종이컵 330ml</a><span class="change up">8</span></li>
+                                    <li><span class="rank">17</span><a href="#" class="keyword">종이컵 330ml</a><span class="change up">8</span></li>
+                                    <li><span class="rank">18</span><a href="#" class="keyword">종이컵 330ml</a><span class="change up">8</span></li>
+                                    <li><span class="rank">19</span><a href="#" class="keyword">종이컵 330ml</a><span class="change up">8</span></li>
+                                    <li><span class="rank">20</span><a href="#" class="keyword">종이컵 330ml</a><span class="change up">8</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 초성 검색 뷰 -->
+                    <div class="search-autocomplete-view" style="display: none;">
+                        <div class="autocomplete-layout">
+                            <div class="matching-list">
+                                <ul>
+                                    <li><a href="#"><mark>두부</mark></a></li>
+                                    <li><a href="#">순<mark>두부</mark></a></li>
+                                    <li><a href="#">연<mark>두부</mark></a></li>
+                                    <li><a href="#"><mark>두부</mark>면</a></li>
+                                    <li><a href="#">마파<mark>두부</mark></a></li>
+                                    <li><a href="#">초당<mark>두부</mark></a></li>
+                                    <li><a href="#">촌<mark>두부</mark></a></li>
+                                    <li><a href="#"><mark>두부</mark>봉</a></li>
+                                    <li><a href="#"><mark>두부</mark> 과자</a></li>
+                                    <li><a href="#">건<mark>두부</mark></a></li>
+                                </ul>
+                            </div>
+                            <div class="promotion-list">
+                                <ul>
+                                    <li><a href="#"><mark>두부</mark> 관련 프로모션입니다.</a></li>
+                                    <li><a href="#"><mark>두부</mark> 프로모션 오늘의 특가</a></li>
+                                    <li><a href="#"><mark>두부</mark> 프로모션 주간행사</a></li>
+                                    <li><a href="#"><mark>두부</mark> 프로모션 월간행사</a></li>
+                                    <li><a href="#">프로모션 <mark>두부</mark> 식품 12월 행사</a></li>
+                                    <li><a href="#">프로모션 <mark>두부</mark> 비식품 12월 행사</a></li>
+                                    <li><a href="#">이벤트 <mark>두부</mark> 단독런칭 스위트콘 초특가</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">단백질 모음전</a></li>
+                                    <li><a href="#">매일 장보기 모음전</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
             <div class="user-controls">
                 <div class="user-menu">
                     <a href="#" class="icon-link archive" title="주문건수">
@@ -68,12 +184,37 @@
                 <button type="button" class="category-toggle">
                     <i class="icon-category-menu"></i>카테고리
                 </button>
+                <!-- 카테고리 메뉴 레이어 -->
+                <div class="category-menu-layer" style="display: none;">
+                    <div class="category-inner">
+                        <ul class="depth1-list">
+                            <!-- JS에서 렌더링 -->
+                        </ul>
+                        <div class="depth2-wrap">
+                            <ul class="depth2-list">
+                                <!-- JS에서 렌더링 -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <ul class="main-menu">
                     <li><a href="#">오늘의 핫딜</a></li>
-                    <li><a href="#">이달의 신상품</a></li>
-                    <li><a href="#">카테고리 베스트</a></li>
-                    <li><a href="#">브랜드관</a></li>
-                    <li><a href="#">엠디 기획전</a></li>
+                    <li><a href="#">신상품</a></li>
+                    <li><a href="/eclub/pc/pages/category.html">베스트</a></li>
+                    <li>
+                        <a href="javascript:void(0);" class="brand-toggle">브랜드관</a>
+                        <!-- 브랜드관 레이어 -->
+                        <div class="brand-menu-layer" style="display: none;">
+                            <div class="brand-inner">
+                                <ul class="brand-list">
+                                    <!-- JS에서 렌더링 -->
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li><a href="/eclub/pc/pages/exhibition.html">기획전</a></li>
+                    <li><a href="/eclub/pc/pages/exhibition-store.html">가전매장</a></li>
                 </ul>
             </div>
             <div class="nav-right">

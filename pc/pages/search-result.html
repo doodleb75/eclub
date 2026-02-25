@@ -133,7 +133,7 @@
                         </div>
                     </div>
 
-                    <div class="filter-group">
+                    <div class="filter-group last-group">
                         <h3 class="group-title">상품형태</h3>
                         <ul class="filter-list">
                             <li>
@@ -149,7 +149,7 @@
                     <div class="filter-reset">
                         <button type="button" class="btn-reset">
                             <span>검색필터 초기화</span>
-                            <i class="icon-reset"></i>
+                            <i class="icon-refresh"></i>
                         </button>
                     </div>
                 </aside>
@@ -253,14 +253,14 @@
                                 </div>
                                 <div class="custom-select count-select">
                                     <button type="button" class="select-label">
-                                        80개씩 <i class="icon-down-bullet"></i>
+                                        8개씩 <i class="icon-down-bullet"></i>
                                     </button>
                                     <ul class="select-options">
                                         <li class="active">8개씩</li>
-                                        <li>24개씩</li>
-                                        <li>40씩</li>
-                                        <li>80개씩</li>
-                                        <li>120개씩</li>
+                                        <li>16개씩</li>
+                                        <li>24씩</li>
+                                        <li>32개씩</li>
+                                        <li>100개씩</li>
                                     </ul>
                                 </div>
                             </div>
@@ -270,8 +270,8 @@
                     <!-- 상품 리스트 4개 출력 -->
                     <div class="product-list">
                         <!-- Product Item 1 -->
-                        <div class="product-item" data-sales="711" data-purchase="353" data-new="91" data-price="49200"
-                            data-delivery-type="cold" data-delivery-center="tc">
+                        <div class="product-item sold-out" data-sales="711" data-purchase="353" data-new="91"
+                            data-price="49200" data-delivery-type="cold" data-delivery-center="tc">
                             <div class="item-badge-wrap">
                                 <div class="item-check">
                                     <label class="checkbox-container">
@@ -286,9 +286,13 @@
                                     <img src="/eclub/assets/images/main/hot-deal/cold/hot-cold-thumb01.png" alt="소고기 장조림"
                                         class="prod-img">
                                 </a>
+                                <div class="sold-out-overlay">
+                                    <span class="sold-out-text">품절</span>
+                                    <button type="button" class="btn-replace">대체상품 보기</button>
+                                </div>
                             </div>
                             <div class="control-bar">
-                                <div class="qty-control">
+                                <div class="qty-control disabled">
                                     <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
                                     <input type="text" value="1" min="0" aria-label="수량">
                                     <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
@@ -326,8 +330,8 @@
                             </div>
                         </div>
                         <!-- Product Item 2 -->
-                        <div class="product-item" data-sales="542" data-purchase="403" data-new="1" data-price="41700"
-                            data-delivery-type="room" data-delivery-center="dc">
+                        <div class="product-item order-soon" data-sales="542" data-purchase="403" data-new="1"
+                            data-price="41700" data-delivery-type="room" data-delivery-center="dc">
                             <div class="item-badge-wrap">
                                 <div class="item-check">
                                     <label class="checkbox-container">
@@ -342,6 +346,11 @@
                                     <img src="/eclub/assets/images/main/hot-deal/cold/hot-cold-thumb02.png" alt="소고기 장조림"
                                         class="prod-img">
                                 </a>
+
+                                <div class="sold-out-overlay">
+                                    <span class="sold-out-text">곧 주문가능</span>
+                                    <button type="button" class="btn-replace">대체상품 보기</button>
+                                </div>
                             </div>
                             <div class="control-bar">
                                 <div class="qty-control">
@@ -357,7 +366,7 @@
                             <div class="prod-info">
                                 <div class="prod-name">
                                     <a href="javascript:void(0);" class="link-name">
-                                        <span class="badge-type type-room">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
                                     </a>
                                 </div>
                                 <div class="prod-price-info">
@@ -581,7 +590,7 @@
                             <div class="prod-info">
                                 <div class="prod-name">
                                     <a href="javascript:void(0);" class="link-name">
-                                        <span class="badge-type type-room">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
                                     </a>
                                 </div>
                                 <div class="prod-price-info">
@@ -805,7 +814,7 @@
                             <div class="prod-info">
                                 <div class="prod-name">
                                     <a href="javascript:void(0);" class="link-name">
-                                        <span class="badge-type type-room">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
                                     </a>
                                 </div>
                                 <div class="prod-price-info">
@@ -1029,7 +1038,7 @@
                             <div class="prod-info">
                                 <div class="prod-name">
                                     <a href="javascript:void(0);" class="link-name">
-                                        <span class="badge-type type-room">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
                                     </a>
                                 </div>
                                 <div class="prod-price-info">
@@ -1253,7 +1262,7 @@
                             <div class="prod-info">
                                 <div class="prod-name">
                                     <a href="javascript:void(0);" class="link-name">
-                                        <span class="badge-type type-room">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
                                     </a>
                                 </div>
                                 <div class="prod-price-info">
@@ -1477,7 +1486,7 @@
                             <div class="prod-info">
                                 <div class="prod-name">
                                     <a href="javascript:void(0);" class="link-name">
-                                        <span class="badge-type type-room">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
                                     </a>
                                 </div>
                                 <div class="prod-price-info">
@@ -1701,7 +1710,7 @@
                             <div class="prod-info">
                                 <div class="prod-name">
                                     <a href="javascript:void(0);" class="link-name">
-                                        <span class="badge-type type-room">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
                                     </a>
                                 </div>
                                 <div class="prod-price-info">
@@ -1925,7 +1934,7 @@
                             <div class="prod-info">
                                 <div class="prod-name">
                                     <a href="javascript:void(0);" class="link-name">
-                                        <span class="badge-type type-room">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
+                                        <span class="badge-type type-ambient">상온</span> 유한킴벌리 크리넥스 데코&소프트 30m*30롤
                                     </a>
                                 </div>
                                 <div class="prod-price-info">

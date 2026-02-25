@@ -1,0 +1,142 @@
+@use "sass:math";
+
+// 브랜드관 바텀시트 오버레이
+.brand-sheet-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+
+    &.is-visible {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+// 브랜드관 바텀시트
+.brand-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: $white;
+    padding: 0;
+    z-index: 1200;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    border-radius: 0;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+
+    &.is-open {
+        transform: translateY(0);
+    }
+
+    // 헤더 영역
+    .sheet-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: rem(16);
+
+        .title-text {
+            font-size: rem(15);
+            font-weight: $fw-bold;
+            color: $gray-900;
+            line-height: 1.5;
+        }
+
+        .btn-sheet-close {
+            position: absolute;
+            right: rem(16);
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+
+            i {
+                display: block;
+                width: rem(20);
+                height: rem(20);
+                background-color: $gray-900;
+                -webkit-mask-image: url("#{$icon-path}/clear.svg");
+                mask-image: url("#{$icon-path}/clear.svg");
+                -webkit-mask-size: contain;
+                mask-size: contain;
+                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+            }
+        }
+    }
+
+    // 브랜드 본문
+    .brand-body {
+        padding: rem(24) rem(16);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar {
+            width: rem(2);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $gray-400;
+            border-radius: rem(2);
+        }
+
+        .brand-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: rem(20) rem(12);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                a {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: rem(8);
+                    text-decoration: none;
+
+                    .thumb {
+                        width: rem(64);
+                        height: rem(64);
+                        border-radius: 50%;
+                        background-color: $gray-55;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .name {
+                        font-size: rem(12);
+                        color: $gray-700;
+                        font-weight: $fw-medium;
+                        line-height: 1.2;
+                        text-align: center;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+}

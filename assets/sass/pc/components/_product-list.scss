@@ -1,5 +1,6 @@
 // 상품 리스트 기본 그리드
-.product-list {
+.product-list,
+.product-pick {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: rem(20);
@@ -22,6 +23,7 @@
         &.active {
             display: grid;
         }
+
     }
 
     // 슬라이더 형태
@@ -424,6 +426,104 @@
                 }
             }
         }
+
+
+        &.sold-out,
+        &.order-soon {
+            .item-badge-wrap {
+                display: none !important;
+            }
+
+            &:not(.order-soon) {
+
+                .qty-control {
+                    &.disabled {
+                        cursor: not-allowed;
+
+                        button,
+                        input {
+                            color: #ddd;
+                            pointer-events: none;
+                            border-color: #ddd;
+
+                            i {
+                                background-color: #ddd;
+                            }
+
+                        }
+                    }
+                }
+
+                .action-btns {
+                    .btn-cart {
+                        pointer-events: none;
+                        border-color: #ddd;
+                        cursor: not-allowed;
+
+                        i {
+                            background-color: #ddd;
+                        }
+                    }
+                }
+            }
+
+            .image-box {
+
+                // 딤 처리
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($black, 0.5);
+                    z-index: 10;
+                }
+
+                // 품절 안내 레이어
+                .sold-out-overlay {
+                    position: absolute;
+                    inset: 0;
+                    display: flex;
+                    top: 25%;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 11;
+                    gap: rem(12);
+
+                    .sold-out-text {
+                        color: $white;
+                        font-size: rem(24);
+                        font-weight: $fw-bold;
+                    }
+
+                    .btn-replace {
+                        display: flex;
+                        align-items: center;
+                        margin-top: rem(12);
+                        gap: rem(12);
+                        height: rem(48);
+                        padding: rem(6) rem(8);
+                        color: $white;
+                        font-size: rem(18);
+                        font-weight: $fw-semibold;
+                        border-bottom: rem(1) solid $white;
+                        background: transparent;
+                        @include hover-transition;
+
+                        &::after {
+                            content: '';
+                            @include icon-mask('#{$icon-path}/category-sep-bullet.svg', rem(12), $white);
+                        }
+
+                        &:hover {
+                            background-color: rgba($white, 0.1);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-
