@@ -1,0 +1,97 @@
+@use "sass:math";
+
+.header-nav {
+    .nav-left {
+        position: relative; // 레이어 기준점
+    }
+}
+
+.category-menu-layer {
+    position: absolute;
+    top: calc(100% + rem(4)); // 내비게이션 바 바로 아래
+    left: 0;
+    z-index: 1000;
+    width: rem(400);
+    background-color: $white;
+    border: 1px solid $gray-300;
+    box-shadow: 0 rem(8) rem(16) rgba(0, 0, 0, 0.1);
+
+    .category-inner {
+        display: flex;
+        // height: rem(600); // 넉넉히 고정 높이
+    }
+
+    .depth1-list {
+        width: rem(140);
+        background-color: $primary-main; // 다크 배경
+        overflow-y: auto;
+
+        // 스크롤바 커스텀
+        &::-webkit-scrollbar {
+            width: rem(4);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $gray-700;
+        }
+
+        li {
+            a {
+                display: flex;
+                align-items: center;
+                // height: rem(44);
+                padding: rem(8) rem(12);
+                color: $gray-900;
+                font-size: rem(13);
+                font-weight: $fw-medium;
+                transition: all 0.2s;
+
+                &:hover {
+                    color: $white;
+                    background-color: rgba($white, 0.05);
+                }
+            }
+
+            &.active {
+                a {
+                    background-color: $gray-900;
+                    color: $white;
+                    font-weight: $fw-bold;
+                }
+            }
+        }
+    }
+
+    .depth2-wrap {
+        flex: 1;
+        background-color: $white;
+        overflow-y: auto;
+
+        .depth2-list {
+            li {
+                a {
+                    display: block;
+                    padding: rem(8) rem(12);
+                    font-size: rem(13);
+                    color: $gray-900;
+                    border-bottom: 1px solid $gray-350;
+                    transition: color 0.2s;
+
+                    &:hover {
+                        color: $primary-red;
+                    }
+
+                    // "전체" 항목 스타일 (피그마 참조)
+                    &.is-all {
+                        background-color: #fff4cc;
+                        font-weight: $fw-bold;
+                    }
+                }
+
+                &:last-child a {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}

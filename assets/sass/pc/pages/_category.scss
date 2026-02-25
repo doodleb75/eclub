@@ -10,22 +10,23 @@
 
         .sidebar-menu {
             font-size: rem(13);
-            
-            > li {
+
+            >li {
                 border-bottom: 1px solid $gray-150;
 
-                > a {
+                >a {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    padding: rem(8) rem(12); 
+                    padding: rem(8) rem(12);
                     font-size: rem(13);
                     color: $gray-700;
                     font-weight: $fw-regular;
                     line-height: 130%;
                     transition: all 0.2s ease;
 
-                    &:first-child, &.active:first-child {
+                    &:first-child,
+                    &.active:first-child {
                         font-weight: $fw-regular;
                         color: $gray-900;
                         padding: rem(12) rem(12);
@@ -46,7 +47,7 @@
                 }
 
                 &:first-child {
-                    > a {
+                    >a {
                         font-size: rem(18);
                         line-height: 150%;
                         font-weight: $fw-bold;
@@ -54,10 +55,11 @@
                 }
 
                 &.is-open {
-                    
-                    > a {
+
+                    >a {
                         font-weight: $fw-bold;
                         background-color: $gray-100; // 열린 메뉴 배경 강조
+
                         .icon-toggle {
                             transform: rotate(180deg);
                         }
@@ -67,11 +69,12 @@
                 .sub-menu {
                     background-color: transparent; // 부모 배경색 상속
                     overflow: hidden; // 슬라이드 애니메이션을 위한 설정
-                    
+
                     li {
                         border: none;
+
                         a {
-                            padding: rem(8) rem(32); 
+                            padding: rem(8) rem(32);
                             font-size: rem(13);
                             color: $gray-600;
                             line-height: 150%;
@@ -83,7 +86,7 @@
                                 color: $white;
                                 font-weight: $fw-semibold;
                                 width: 100%;
-                                
+
                                 &:before {
                                     display: none;
                                 }
@@ -100,12 +103,65 @@
         }
     }
 
+    // 기획전 sidebar
+    .exhibition-sidebar {
+        width: rem(220);
+        flex-shrink: 0;
+
+        .sidebar-menu {
+            >li {
+                border-bottom: 1px solid $gray-150;
+
+                >a {
+                    display: block;
+                    padding: rem(10) rem(12);
+                    font-size: rem(13);
+                    color: $gray-700;
+                    line-height: 1.4;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        color: $gray-900;
+                        background-color: $gray-50;
+                    }
+
+                    // 활성 메뉴 스타일 (이미지 참조: 어두운 배경 + 흰색 글씨)
+                    &.active {
+                        background-color: $gray-900;
+                        color: $white;
+                        font-weight: $fw-bold;
+
+                        &:hover {
+                            color: $white;
+                            background-color: $gray-900;
+                        }
+                    }
+                }
+
+                // 첫 번째 항목 (기획전 전체)
+                &:first-child {
+                    >a {
+                        padding: rem(12) rem(12);
+                        font-size: rem(18);
+                        font-weight: $fw-bold;
+                        color: $gray-900;
+
+                        &:hover {
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .search-filter-sidebar {
         width: rem(220);
         flex-shrink: 0;
 
         .filter-header {
             margin-bottom: rem(24);
+
             .title {
                 font-size: rem(18);
                 font-weight: $fw-bold;
@@ -140,8 +196,8 @@
                             font-weight: $fw-regular;
                             color: $gray-700;
                         }
-                        
-                        input:checked ~ .checkmark {
+
+                        input:checked~.checkmark {
                             background-color: $gray-900;
                             border-color: $gray-900;
                         }
@@ -153,10 +209,14 @@
                 }
             }
 
+            &.last-group {
+                margin-bottom: rem(24);
+            }
+
             .filter-more {
                 border: 1px solid $gray-200;
                 border-radius: rem(2);
-                height: rem(36);
+                height: rem(38);
                 @include hover-transition;
                 background-color: $white;
 
@@ -198,10 +258,10 @@
 
         .filter-reset {
             margin-top: rem(40);
-            
+
             .btn-reset {
                 width: 100%;
-                height: rem(48);
+                height: rem(36);
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -214,7 +274,7 @@
 
                 &:hover {
                     background-color: $gray-100;
-                    
+
                     i {
                         transform: rotate(180deg); // Hover 
                     }
@@ -258,7 +318,7 @@
                 font-size: $fs-24;
                 font-weight: $fw-bold;
                 color: $gray-900;
-                
+
                 .keyword {
                     color: $point-red;
                 }
@@ -301,11 +361,13 @@
                     background-color: $gray-500;
                     margin: 0 rem(16);
                 }
-                
+
                 .tag-list {
                     display: flex;
                     align-items: center;
-                    gap: rem(12);
+                    flex-wrap: wrap;
+                    gap: rem(6) rem(12);
+                    padding-right: rem(20);
 
                     a {
                         font-size: rem(13);
@@ -324,6 +386,7 @@
             .result-re-search {
                 display: flex;
                 align-items: center;
+                min-width: rem(246);
 
                 .label {
                     font-size: rem(13);
@@ -385,7 +448,7 @@
             align-items: center;
             justify-content: space-between;
             background-color: $white;
-            padding: rem(10) rem(12);
+            padding: rem(10) rem(6);
             margin-bottom: rem(12);
 
             .checkbox-container {
@@ -395,12 +458,12 @@
                     font-weight: $fw-semibold;
                     margin-left: rem(8);
                 }
-                
+
                 .checkmark {
                     border-color: $gray-300;
                 }
-                
-                input:checked ~ .checkmark {
+
+                input:checked~.checkmark {
                     background-color: $gray-900;
                     border-color: $gray-900;
                 }
@@ -442,7 +505,7 @@
                     height: rem(14);
                     background-color: $gray-200; // More subtle divider
                     margin: 0 rem(16);
-                    
+
                     // &.big {
                     //     margin: 0 rem(24);
                     // }
@@ -465,10 +528,10 @@
                         justify-content: center;
                         color: $gray-450;
                         margin-right: rem(4);
-                        
-                        svg {
-                            circle { stroke: $gray-400; }
-                            path { stroke: $gray-400; }
+
+                        .icon-info {
+                            background-color: $gray-600;
+                            @include hover-transition;
                         }
                     }
 
@@ -513,7 +576,7 @@
                 .sort-selector {
                     display: flex;
                     align-items: center;
-                    gap: rem(24); // 상품 정렬 간격
+                    gap: rem(16); // 상품 정렬 간격
 
                     .custom-select {
                         position: relative;
@@ -559,7 +622,8 @@
                                 cursor: pointer;
                                 transition: all 0.2s;
 
-                                &:hover, &.active {
+                                &:hover,
+                                &.active {
                                     color: $gray-900;
                                     font-weight: $fw-bold;
                                 }
@@ -567,7 +631,7 @@
                         }
 
                         // open 상태일 때 (클릭 시 JS로 is-open 클래스 추가됨)
-                        &.is-open { 
+                        &.is-open {
                             .select-options {
                                 display: block;
                             }
@@ -600,12 +664,12 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        
+
                         .checkbox-container {
                             margin: 0;
                             padding: 0;
                             min-height: rem(20);
-                            
+
                             .checkmark {
                                 top: 50%;
                                 left: 50%;
@@ -626,7 +690,7 @@
                         font-weight: $fw-bold;
                     }
                 }
-                
+
                 .control-bar {
                     // 기본 common style (_product-list.scss) 사용
                     margin-top: rem(12);
@@ -706,6 +770,11 @@
                             &.type-frozen {
                                 background-color: $color-badge-frozen-bg;
                                 color: $color-badge-frozen-text;
+                            }
+
+                            &.type-direct {
+                                background-color: $color-badge-direct-bg;
+                                color: $color-badge-direct-text;
                             }
                         }
                     }
@@ -859,7 +928,8 @@
             justify-content: center;
             gap: rem(4);
 
-            button, a {
+            button,
+            a {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
@@ -870,7 +940,7 @@
                 border-radius: $radius-sm;
                 font-size: $fs-13;
                 color: $gray-600;
-                
+
                 &.active {
                     background: $gray-900;
                     color: $white;
@@ -889,16 +959,85 @@
                     mask-size: 100% 100% !important;
                 }
 
-                &.btn-page-first, &.btn-page-prev {
+                &.btn-page-first,
+                &.btn-page-prev {
                     .icon-page-bullet {
                         transform: rotate(180deg);
                     }
                 }
 
-                &.btn-page-first, &.btn-page-last {
+                &.btn-page-first,
+                &.btn-page-last {
                     gap: rem(-2); // 간격 조정
                 }
             }
+        }
+    }
+
+
+
+    &.exh-shop-layout {
+        flex-direction: column;
+        gap: rem(24);
+
+        .exh-shop-banner {
+            height: rem(200);
+            background: $gray-400;
+        }
+
+        .exi-brand-tab {
+            display: block;
+
+            .tab-menu {
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin-bottom: rem(24);
+                ;
+                gap: rem(12);
+
+                li {
+                    list-style: none;
+
+                    a {
+                        display: block;
+                        color: $gray-900;
+                        font-size: rem(18);
+                        min-width: rem(140);
+                        text-align: center;
+                        font-weight: $fw-bold;
+                        line-height: 1.2;
+                        padding: rem(16) rem(32);
+                        border: rem(1) solid $gray-350;
+                        border-radius: rem(4);
+
+                        &:hover {
+                            background: $gray-100;
+                            @include hover-transition;
+                        }
+
+                        &.active {
+                            color: $white;
+                            background: $gray-900;
+                        }
+                    }
+                }
+            }
+
+            .product-list {
+                margin-bottom: rem(0);
+
+                .product-item .image-box {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .product-list {
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem 1rem;
+            margin-bottom: 3.75rem;
         }
     }
 }

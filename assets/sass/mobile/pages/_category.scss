@@ -1,0 +1,318 @@
+// 브레드크럼 네비게이션 (sticky 독립 적용)
+.breadcrumb-nav {
+    position: sticky;
+    top: rem(47); // GNB(41px) + 상단 여백(6px)
+    z-index: 10;
+    background-color: $white;
+    box-shadow: 0 rem(-6) 0 0 $white, 0 rem(6) 0 0 $white; // 위아래 6px 여유 공간
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: rem(4) 0 rem(16);
+    height: rem(36);
+    border: rem(1) solid $gray-200;
+
+    &:hover {
+        border-color: $gray-900;
+    }
+
+    .depth {
+        font-size: $fs-14;
+        font-weight: $fw-bold;
+        color: $gray-900;
+        line-height: 1.2;
+    }
+
+    .icon-category-sep-bullet {
+        margin: 0 rem(16);
+        width: rem(5);
+        height: rem(10);
+    }
+
+    .breadcrumb-select {
+        display: inline-flex;
+        align-items: center;
+
+        .select-label {
+            font-size: $fs-14;
+            font-weight: $fw-bold;
+            color: $gray-900;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            line-height: 1.2;
+        }
+    }
+
+    .icon-small-arrow {
+        position: absolute;
+        transform: rotate(90deg);
+        width: rem(14);
+        height: rem(14);
+        right: rem(8);
+    }
+}
+
+// 모바일 카테고리 정렬 바
+.category-breadcrumb-bar {
+    padding: 0 0 rem(16);
+
+    // 검색결과 상단
+    .search-result-top {
+        padding: rem(12) 0;
+
+        .title-search {
+            font-size: $fs-14;
+            color: $gray-900;
+            font-weight: $fw-regular;
+            line-height: 1.4;
+            word-break: keep-all;
+
+            .keyword {
+                color: $primary-red;
+                font-weight: $fw-bold;
+            }
+        }
+    }
+
+    // 검색결과 영역
+    .search-result-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: rem(12);
+        margin-bottom: rem(16);
+
+        .related-search {
+            display: flex;
+            align-items: flex-start;
+
+            .label {
+                font-size: $fs-13;
+                font-weight: $fw-bold;
+                color: $gray-900;
+                flex-shrink: 0;
+            }
+
+            .v-divider {
+                width: rem(1);
+                height: rem(10);
+                background-color: $gray-300;
+                margin: rem(4) rem(8) 0;
+                flex-shrink: 0;
+            }
+
+            .tag-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: rem(4) rem(8);
+
+                a {
+                    font-size: $fs-13;
+                    color: $gray-600;
+                    text-decoration: none; // 피그마 분석: underline 제거, PC판에도 없도록 조정
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+
+                    .ellipsis {
+                        letter-spacing: rem(-1);
+                    }
+                }
+            }
+        }
+
+        .mobile-filter-row {
+            .btn-group {
+                display: flex;
+                flex-wrap: wrap;
+                gap: rem(6);
+
+                .type-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: rem(26);
+                    padding: 0 rem(10);
+                    border: rem(1) solid $gray-200;
+                    border-radius: $radius-sm;
+                    font-size: $fs-12;
+                    color: $gray-700;
+                    background-color: $white;
+                    cursor: pointer;
+
+                    input {
+                        display: none;
+                    }
+
+                    // checked 상태일때 스타일
+                    &.active {
+                        border-color: $gray-900;
+                        color: $gray-900;
+                        font-weight: $fw-bold;
+                    }
+
+                    &.border-black {
+                        border-color: $gray-900;
+                        color: $gray-900;
+                    }
+                }
+            }
+        }
+
+        .result-re-search {
+            display: flex;
+            align-items: center;
+            gap: rem(8);
+
+            .label {
+                font-size: $fs-13;
+                font-weight: $fw-bold;
+                color: $gray-900;
+                flex-shrink: 0;
+            }
+
+            .search-input {
+                position: relative;
+                flex: 1;
+                min-width: 0;
+
+                input {
+                    width: 100%;
+                    height: rem(30);
+                    border: rem(1) solid $gray-300;
+                    border-radius: $radius-sm;
+                    padding: 0 rem(24) 0 rem(8);
+                    font-size: $fs-12;
+                    color: $gray-900;
+
+                    &::placeholder {
+                        color: $gray-400;
+                    }
+                }
+
+                .btn-search {
+                    position: absolute;
+                    right: rem(6);
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: none;
+                    border: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .icon-search {
+                        width: rem(14);
+                        height: rem(14);
+                        background-color: $gray-900;
+                        @include icon-mask('#{$icon-path}/search.svg', rem(14));
+                    }
+                }
+            }
+
+            .filter-select {
+                position: relative;
+                flex-shrink: 0;
+
+                .select-label {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: rem(76);
+                    height: rem(30);
+                    padding: 0 rem(8);
+                    border: rem(1) solid $gray-300;
+                    border-radius: $radius-sm;
+                    background-color: $white;
+                    font-size: $fs-12;
+                    color: $gray-900;
+
+                    .icon-down-bullet {
+                        width: rem(8);
+                        height: rem(4);
+                        @include icon-mask('#{$icon-path}/icon-down-bullet.svg', rem(8));
+                        background-color: $gray-900;
+                    }
+                }
+            }
+        }
+    }
+
+    // 상품 갯수 + 정렬
+    .category-count-sort {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .total-count {
+            font-size: $fs-11;
+            color: $gray-700;
+            line-height: 1.2;
+
+            strong {
+                color: $primary-red;
+                font-weight: $fw-bold;
+            }
+        }
+
+        // 정렬 드롭다운 (PC custom-select sort-select 재사용)
+        .sort-select {
+            position: relative;
+
+            .select-label {
+                display: flex;
+                align-items: center;
+                gap: rem(4);
+                font-size: $fs-11;
+                font-weight: $fw-semibold;
+                color: $gray-900;
+                background: transparent;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                line-height: 1.2;
+
+                .icon-down-bullet {
+                    width: rem(10);
+                    height: rem(5);
+                }
+            }
+
+            .select-options {
+                display: none;
+                position: absolute;
+                top: calc(100% + rem(8));
+                right: 0;
+                min-width: 100%;
+                white-space: nowrap;
+                background-color: $white;
+                border: rem(1) solid $gray-350;
+                z-index: 100;
+                padding: rem(8) 0;
+
+                li {
+                    padding: rem(8) rem(16);
+                    font-size: $fs-11;
+                    line-height: 1.2;
+                    color: $gray-600;
+                    cursor: pointer;
+                    transition: all 0.2s;
+
+                    &:hover,
+                    &.active {
+                        color: $gray-900;
+                        font-weight: $fw-bold;
+                    }
+                }
+            }
+
+            &.is-open {
+                .select-options {
+                    display: block;
+                }
+            }
+        }
+    }
+}

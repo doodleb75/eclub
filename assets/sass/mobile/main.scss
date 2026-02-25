@@ -23,12 +23,18 @@
 @import "components/tabs";
 @import "components/toast";
 @import "components/loading";
+@import "components/category-sheet";
+@import "components/brand-sheet";
+@import "components/search-overlay";
+
+
 
 // 페이지별 스타일
 @import "pages/cart";
 @import "pages/checkout";
 @import "pages/order_complete";
 @import "pages/_home";
+@import "pages/category";
 
 // Mobile 전용 스타일 (APK 대응)
 

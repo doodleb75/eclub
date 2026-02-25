@@ -1,0 +1,270 @@
+// 검색창 드롭다운 스타일
+.search-box {
+    position: relative; // 드롭다운 배치를 위한 기준
+
+    .search-area {
+        position: relative;
+        z-index: 101; // 드롭다운보다 위에 표시
+
+        .btn-clear {
+            padding: 0 rem(8);
+            color: $gray-600;
+            background: none;
+            border: none;
+            cursor: pointer;
+            @include flex-center;
+
+            i {
+                width: rem(16);
+                height: rem(16);
+                background-color: $gray-600;
+            }
+
+            &:hover i {
+                background-color: $gray-900;
+            }
+        }
+    }
+}
+
+// 드롭다운 메인 컨테이너
+.search-dropdown {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    width: 100%;
+    background-color: $white;
+    border: 1px solid $gray-700;
+    border-top: none;
+    box-shadow: 0 rem(4) rem(10) $color-shadow;
+    z-index: 1000;
+    padding: rem(20);
+    margin-top: -1px; // 검색창 보더와 겹침 처리
+
+    // 섹션 공통
+    .dropdown-section {
+        &+.dropdown-section {
+            margin-top: rem(24);
+        }
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: rem(16);
+
+        .section-title {
+            font-size: rem(13);
+            font-weight: $fw-bold;
+            color: $black;
+        }
+
+        .btn-delete-all {
+            font-size: rem(12);
+            font-weight: $fw-semibold;
+            color: $gray-700;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+
+            &:hover {
+                color: $black;
+            }
+        }
+
+        .update-time {
+            font-size: rem(12);
+            font-weight: $fw-regular;
+            color: $gray-600;
+        }
+    }
+
+    // 최근 검색어 리스트
+    .recent-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(8);
+
+        li {
+            display: flex;
+            align-items: center;
+            padding: 0 rem(10);
+            line-height: rem(28);
+            border: rem(1) solid $gray-200;
+            border-radius: rem(2);
+            font-size: rem(12);
+
+            a {
+                color: $gray-700;
+                font-weight: $fw-regular;
+                text-decoration: none;
+
+                &:hover {
+                    color: $black;
+                }
+            }
+
+            .btn-delete-item {
+                margin-left: rem(6);
+                background: none;
+                border: none;
+                cursor: pointer;
+                @include flex-center;
+                color: $gray-500;
+
+                i {
+                    width: rem(12);
+                    height: rem(12);
+                    background-color: $gray-500;
+                }
+
+                &:hover i {
+                    background-color: $gray-800;
+                }
+            }
+        }
+    }
+
+    .no-data {
+        padding: rem(10) 0;
+        font-size: rem(14);
+        color: $gray-600;
+    }
+
+    // 급상승 검색어
+    .trending-columns {
+        display: flex;
+        gap: rem(16);
+
+        .popular-list {
+            flex: 1;
+
+            li {
+                display: flex;
+                align-items: center;
+                padding: rem(2) 0;
+                font-size: rem(12);
+                margin-bottom: rem(2);
+
+                .rank {
+                    width: rem(16);
+                    font-weight: $fw-bold;
+                    color: $black;
+                    margin-right: rem(8);
+                }
+
+                .keyword {
+                    flex: 1;
+                    color: $gray-800;
+                    text-decoration: none;
+                    font-weight: $fw-regular;
+                    @include ellipsis;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                .change {
+                    font-size: rem(10);
+                    min-width: rem(30);
+                    text-align: right;
+
+                    &.up {
+                        color: $primary-red;
+
+                        &::before {
+                            content: '';
+                            @include icon-mask('#{$icon-path}/icons-search-up.svg', rem(12) rem(12));
+                            margin-right: rem(2);
+                            vertical-align: middle;
+                        }
+                    }
+
+                    &.down {
+                        color: $color-eclub-blue;
+
+                        &::before {
+                            content: '';
+                            @include icon-mask('#{$icon-path}/icons-search-down.svg', rem(12) rem(12));
+                            margin-right: rem(2);
+                            vertical-align: middle;
+                        }
+                    }
+
+                    &.new {
+                        font-size: rem(10);
+                        color: $primary-red;
+                        font-weight: $fw-medium;
+                    }
+
+                    &.none {
+                        color: $gray-900;
+
+                        &::before {
+                            content: '';
+                            @include icon-mask('#{$icon-path}/icons-search-none.svg', rem(12) rem(12));
+                            // margin-right: rem(2);
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+        }
+
+        .sep-line {
+            width: rem(1);
+            align-self: stretch; // 세로로 꽉 차게 설정
+            background-color: $gray-350; // 구분선 색상
+        }
+    }
+
+    // 초성 검색 결과 뷰
+    .search-autocomplete-view {
+        .autocomplete-layout {
+            display: flex;
+            gap: rem(16);
+            min-height: rem(300);
+        }
+
+        .matching-list,
+        .promotion-list {
+            flex: 1;
+
+            ul li {
+                margin-bottom: rem(12);
+
+                a {
+                    display: block;
+                    font-size: rem(12);
+                    color: $gray-800;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $black;
+                        background-color: $gray-50;
+                    }
+
+                    mark {
+                        background: none;
+                        color: $primary-red;
+                        font-weight: $fw-medium;
+                    }
+                }
+
+                &.divider {
+                    height: 1px;
+                    background-color: $gray-200;
+                    margin: rem(20) 0;
+                }
+            }
+        }
+
+        .matching-list {
+            border-right: 1px solid $gray-200;
+            // padding-right: rem(20);
+        }
+    }
+}

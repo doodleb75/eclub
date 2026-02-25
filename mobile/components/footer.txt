@@ -63,34 +63,8 @@
     <!-- 플로팅 유틸리티 버튼 -->
     <div class="floating-util">
         <div class="util-inner">
-            <!-- 퀵메뉴 레이아웃 -->
-            <div id="quick-menu-layer" class="quick-menu-layer" hidden>
-                <div class="menu-list">
-                    <a href="#" class="quick-item">
-                        <span class="tit">관심상품</span>
-                        <span class="val">201</span>
-                    </a>
-                    <a href="#" class="quick-item">
-                        <span class="tit">자주구매</span>
-                        <span class="val">99</span>
-                    </a>
-                    <a href="#" class="quick-item">
-                        <span class="tit">나의쿠폰</span>
-                        <span class="val">144</span>
-                    </a>
-                    <a href="#" class="quick-item">
-                        <span class="tit">주문내역</span>
-                        <span class="val">14</span>
-                    </a>
-                </div>
-                <button type="button" class="btn-quick-close" aria-label="메뉴 닫기">
-                    <i class="icon-chevron-down"></i>
-                </button>
-            </div>
 
-            <button type="button" id="btn-mobile-quick" class="btn-mobile-quick" aria-label="메뉴 열기">
-                <i class="icon-mobile-plus-menu"></i>
-            </button>
+
             <button type="button" id="btn-floating-back" class="btn-floating-back is-hidden" aria-label="이전 페이지로 이동">
                 <i class="icon-nav-back"></i>
             </button>
@@ -100,3 +74,51 @@
         </div>
     </div>
 </footer>
+
+
+
+<!-- 브랜드관 바텀시트 오버레이 -->
+
+<div class="brand-sheet-overlay" id="brand-sheet-overlay"></div>
+<!-- 브랜드관 바텀시트 -->
+<div class="brand-sheet" id="brand-sheet">
+    <div class="sheet-title">
+        <span class="title-text">브랜드관</span>
+        <button type="button" class="btn-sheet-close" aria-label="닫기">
+            <i class="icon-clear"></i>
+        </button>
+    </div>
+    <div class="brand-body">
+        <ul class="brand-list">
+            <!-- JS에서 렌더링 -->
+        </ul>
+    </div>
+</div>
+
+
+<!-- 카테고리 바텀시트 오버레이 -->
+<div class="category-sheet-overlay" id="category-sheet-overlay"></div>
+<!-- 카테고리 바텀시트 -->
+<div class="category-sheet" id="category-sheet">
+    <div class="sheet-title">
+        <span class="title-text">카테고리</span>
+        <button type="button" class="btn-sheet-close" aria-label="닫기">
+            <i class="icon-clear"></i>
+        </button>
+    </div>
+    <div class="category-body">
+        <ul class="depth1-list">
+            <!-- JS 렌더링 -->
+        </ul>
+        <div class="depth2-wrap">
+            <ul class="depth2-list">
+                <!-- JS 렌더링 -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 임시 카테고리 트리거 버튼 -->
+<button type="button" class="btn-category-trigger js-category-sheet-trigger" id="btn-category-trigger">
+    카테고리
+</button>

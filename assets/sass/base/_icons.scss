@@ -1,11 +1,13 @@
 // 공통 아이콘 스타일 세팅
-$icon-path: '../../icons'; // 루트 절대 경로 적용
 
 // 마스크 아이콘 믹스인
 @mixin icon-mask($url, $size: rem(24), $color: currentColor) {
+    $width: if(type-of($size)=='list', nth($size, 1), $size);
+    $height: if(type-of($size)=='list', nth($size, 2), $size);
+
     display: inline-block;
-    width: $size;
-    height: $size;
+    width: $width;
+    height: $height;
     background-color: $color;
     -webkit-mask: url($url) no-repeat center;
     mask: url($url) no-repeat center;
@@ -64,9 +66,16 @@ $icon-path: '../../icons'; // 루트 절대 경로 적용
     vertical-align: middle;
 }
 
+// 헤더 서브 - 히스토리 백 아이콘
 .icon-history {
-    @include icon-mask('#{$icon-path}/history-back.svg', rem(24));
+    display: inline-block;
+    width: rem(24);
+    height: rem(24);
+    background: url('#{$icon-path}/icons-history.svg') no-repeat center / contain; // 이미지 형태로 적용
+    vertical-align: middle;
 }
+
+
 
 .icon-clock {
     @include icon-mask('#{$icon-path}/history.svg', rem(24));
@@ -319,4 +328,8 @@ $icon-path: '../../icons'; // 루트 절대 경로 적용
 // 검색 필터 초기화 아이콘
 .icon-reset {
     @include icon-mask('#{$icon-path}/refresh.svg', rem(18));
+}
+
+.icon-refresh {
+    @include icon-mask('#{$icon-path}/icons-refresh.svg', rem(16));
 }

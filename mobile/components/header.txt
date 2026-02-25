@@ -1,18 +1,57 @@
-<header id="header" class="mobile-header">
+<header class="header">
     <div class="header-inner">
+        <!-- Row 1: Common (Logo, Search Box, Alarm, Cart) -->
+        <div class="header-left">
+            <h1 class="logo">
+                <a href="/mobile/index.html">
+                    <img src="/assets/images/common/eclub-logo.svg" alt="eClub">
+                </a>
+            </h1>
+        </div>
+
+        <div class="header-center">
+            <div class="search-box">
+                <input type="text" class="input-search" placeholder="검색어를 입력해주세요" aria-label="검색">
+                <button type="button" class="btn-search">
+                    <i class="icon-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <a href="javascript:void(0);" class="btn-alarm" aria-label="알림">
+                <i class="icon-alarm"></i>
+                <span class="badge">12</span>
+            </a>
+            <a href="/mobile/pages/cart.html" class="btn-cart" aria-label="장바구니">
+                <i class="icon-cart"></i>
+                <span class="badge">12</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Row 2: Main ONLY (GNB) -->
+    <nav class="header-gnb">
+        <ul class="gnb-list">
+            <li><a href="javascript:void(0);">홈</a></li>
+            <li class="active"><a href="javascript:void(0);">오늘의 핫딜</a></li>
+            <li><a href="javascript:void(0);" class="brand-toggle">브랜드관</a></li>
+            <li><a href="javascript:void(0);">신상품</a></li>
+            <li><a href="javascript:void(0);">기획전</a></li>
+            <li><a href="javascript:void(0);">가전매장</a></li>
+        </ul>
+    </nav>
+
+    <!-- Row 2: Sub ONLY (Title Bar) -->
+    <div class="header-sub">
         <div class="header-left">
             <button type="button" class="btn-prev" onclick="history.back();" aria-label="이전 페이지">
                 <i class="icon-history"></i>
             </button>
         </div>
-        <h1 class="page-title">장바구니</h1>
-        <div class="header-right">
-            <button type="button" class="btn-search" aria-label="검색">
-                <i class="icon-search"></i>
-            </button>
-            <a href="/mobile/index.html" class="btn-home" aria-label="메인으로">
-                <i class="icon-home"></i>
-            </a>
-        </div>
+        <h1 class="page-title">카테고리</h1>
     </div>
 </header>
+
+<!-- 검색 오버레이 -->
+<div data-include="/mobile/components/search-overlay.txt"></div>

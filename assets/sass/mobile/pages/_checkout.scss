@@ -77,13 +77,13 @@
 
         .cart-tab-wrap {
             position: sticky;
-            top: rem(50);
+            top: 0;
             z-index: 10;
         }
 
         .cart-group {
             margin-bottom: 0;
-            scroll-margin-top: rem(104); // 헤더(50px) + 탭(54px) 높이만큼 여백 확보
+            scroll-margin-top: rem(54); // 탭(54px) 높이만큼 여백 확보 (헤더는 스크롤되므로 제외)
 
 
             .group-header {
@@ -243,8 +243,6 @@
                             color: $gray-700;
                             margin-top: rem(4);
                             line-height: rem(16);
-
-                            span {}
                         }
                     }
                 }
