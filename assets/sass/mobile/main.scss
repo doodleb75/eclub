@@ -25,6 +25,7 @@
 @import "components/loading";
 @import "components/category-sheet";
 @import "components/brand-sheet";
+@import "components/menu-sheet";
 @import "components/search-overlay";
 
 
@@ -35,6 +36,8 @@
 @import "pages/order_complete";
 @import "pages/_home";
 @import "pages/category";
+@import "pages/product-detail";
+
 
 // Mobile 전용 스타일 (APK 대응)
 

@@ -38,7 +38,9 @@ const Popover = {
         const scrollY = window.scrollY / scale;
 
         const popoverWidth = popover.offsetWidth;
+        const popoverHeight = popover.offsetHeight;
         const windowWidth = window.innerWidth / scale; // 줌 배율 반영
+        const windowHeight = window.innerHeight / scale;
 
         // 레이아웃 좌표 계산 (물리 좌표 / scale)
         const rectLeft = rect.left / scale;
@@ -47,35 +49,41 @@ const Popover = {
         const rectBottom = rect.bottom / scale;
 
         let top, left;
+        const verticalMargin = 12;
 
-        // 기본 위치 설정
-        // 기본 위치 설정
+        // 기본 위치 설정 (좌우 정렬)
         const isIndexPage = document.querySelector('.main-page-wrapper');
         const productItem = trigger.closest('.product-item');
 
         if (type === 'pointInfo') {
             left = rectRight + scrollX + 10;
-            top = rectTop + scrollY;
         } else if (isIndexPage && productItem && type === 'discount') {
             // 인덱스 페이지의 상품 아이템 내 할인 팝업: 상품 아이템 우측 끝에 정렬
             const itemRect = productItem.getBoundingClientRect();
             const itemRectRight = itemRect.right / scale;
             left = itemRectRight + scrollX - popoverWidth;
-            top = rectBottom + scrollY + 12;
         } else {
-            // 기본: 버튼 우측 하단 정렬
+            // 기본: 버튼 우측 정렬
             left = rectRight + scrollX - popoverWidth;
-            top = rectBottom + scrollY + 12;
+        }
+
+        // 수직 위치 결정 및 하단 잘림 체크
+        top = rectBottom + scrollY + verticalMargin;
+
+        const isModalActive = document.querySelector('.modal-overlay.active');
+        const viewportBottom = scrollY + windowHeight;
+
+        // 화면 하단 경계를 넘어가거나, 모달 안에서 공간이 부족할 경우 위로 띄움
+        if (top + popoverHeight > viewportBottom - this.config.margin) {
+            top = rectTop + scrollY - popoverHeight - verticalMargin;
         }
 
         // 화면 우측 넘어감 방지
         const margin = this.config.margin;
         if (left + popoverWidth > windowWidth - margin) {
             if (type === 'pointInfo') {
-                // 왼쪽으로 뒤집기
                 left = rectLeft + scrollX - popoverWidth - 10;
             } else {
-                // 화면 안쪽으로 밀기
                 left = windowWidth - margin - popoverWidth;
             }
         }
@@ -111,6 +119,19 @@ const Popover = {
                 }
             }
         });
+
+        // 스크롤 시 팝오버 닫기 (모달 내부에서 호출된 경우에만)
+        window.addEventListener('scroll', (e) => {
+            if (this.instance && this.instance.classList.contains('active')) {
+                // 팝오버 내부 자체 스크롤은 제외
+                if (this.instance.contains(e.target)) return;
+
+                // 트리거가 모달 내부에 있는 경우에만 닫음 (본문에서는 따라가도록 놔둠)
+                if (this.lastTrigger && this.lastTrigger.closest('.modal-overlay')) {
+                    this.hide();
+                }
+            }
+        }, true);
     },
 
     hide() {
@@ -143,14 +164,17 @@ const Popover = {
         this.instance.style.top = `${top}px`;
         this.instance.style.left = `${left}px`;
 
-        // 화면 아래 잘림 방지 스크롤
-        const scale = (typeof Eclub !== 'undefined' && Eclub.getZoomScale) ? Eclub.getZoomScale() : 1;
-        const popoverRect = this.instance.getBoundingClientRect();
-        if (popoverRect.bottom > window.innerHeight) {
-            window.scrollBy({
-                top: (popoverRect.bottom - window.innerHeight + 20) / scale,
-                behavior: 'smooth'
-            });
+        // 화면 아래 잘림 방지 스크롤 (모달이 없을 때만 실행)
+        const isModalActive = document.querySelector('.modal-overlay.active');
+        if (!isModalActive) {
+            const scale = (typeof Eclub !== 'undefined' && Eclub.getZoomScale) ? Eclub.getZoomScale() : 1;
+            const popoverRect = this.instance.getBoundingClientRect();
+            if (popoverRect.bottom > window.innerHeight) {
+                window.scrollBy({
+                    top: (popoverRect.bottom - window.innerHeight + 20) / scale,
+                    behavior: 'smooth'
+                });
+            }
         }
     }
 };

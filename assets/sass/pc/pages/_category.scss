@@ -974,6 +974,35 @@
         }
     }
 
+    .category-empty {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            font-size: rem(24);
+            font-weight: $fw-bold;
+            color: $gray-600;
+            line-height: 1.2;
+
+            .search-word {
+                color: $point-red;
+                margin-right: rem(8);
+            }
+
+            &.mention {
+                font-size: rem(16);
+                font-weight: $fw-medium;
+                color: $gray-600;
+                line-height: 1.2;
+                margin-top: rem(20);
+            }
+        }
+    }
+
 
 
     &.exh-shop-layout {
@@ -1038,6 +1067,63 @@
             grid-template-columns: repeat(5, 1fr);
             gap: 1.5rem 1rem;
             margin-bottom: 3.75rem;
+        }
+    }
+}
+
+.recommend-area {
+    .slider-title-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid $gray-900;
+        gap: rem(16);
+        padding-bottom: rem(24);
+        margin-bottom: rem(24);
+
+        .modal-title {
+            font-size: rem(24);
+            font-weight: $fw-bold;
+            color: $gray-900;
+            line-height: 1.2;
+        }
+
+        .btn-slide-prev,
+        .btn-slide-next {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: rem(32);
+            height: rem(32);
+            border-radius: rem(4);
+            background: $white;
+            border: 1px solid $gray-350;
+            cursor: pointer;
+            @include hover-transition;
+
+            .icon-nav-back {
+                width: rem(12);
+                height: rem(12);
+                -webkit-mask-size: 100% 100%;
+                mask-size: 100% 100%;
+                background-color: $gray-900;
+            }
+
+            &:hover {
+                background: $gray-100;
+            }
+
+            &.btn-slide-prev {
+                .icon-nav-back {
+                    transform: rotate(0deg);
+                }
+            }
+
+            &.btn-slide-next {
+                .icon-nav-back {
+                    transform: rotate(180deg);
+                }
+            }
         }
     }
 }

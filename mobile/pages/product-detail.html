@@ -5,110 +5,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="E-Club 장바구니">
-    <title>검색결과 | E-Club</title>
+    <title>상품정보 | E-Club</title>
     <!-- 공통 스타일 -->
     <link rel="stylesheet" href="/assets/css/mobile/main.css">
     <!-- 페이지 전용 스타일 -->
 </head>
 
-<body class="search-page">
+<body class="product-detail-page">
     <div id="wrap">
         <!-- 상단 헤더 -->
-        <div data-include="/mobile/components/header.txt" data-page-title="<span class='keyword'>카카오</span> 검색결과"></div>
+        <div data-include="/mobile/components/header.txt" data-page-title="상품정보"></div>
 
         <main id="container" class="main-page-wrapper">
             <!-- 저온상품의 핫딜 -->
             <section class="home-section time-sale-section">
-                <div class="home-container category-main">
-                    <!-- 검색결과 필터 (Sticky) -->
-                    <div class="sticky-filter-area">
-                        <div class="related-search">
-                            <span class="label">연관검색어</span>
-                            <span class="v-divider"></span>
-                            <div class="tag-list">
-                                <a href="javascript:void(0);">초콜릿</a>
-                                <a href="javascript:void(0);">기라델리</a>
-                                <a href="javascript:void(0);">다크</a>
-                                <a href="javascript:void(0);">다크카카오</a>
-                                <a href="javascript:void(0);">롯데</a>
-                                <a href="javascript:void(0);">아이쇼핑</a>
-                                <a href="javascript:void(0);">가나</a>
-                                <a href="javascript:void(0);">허쉬</a>
-                                <a href="javascript:void(0);">ABC초코</a>
+                <div class="product-detail-main category-main">
+
+                    <!-- 상품상세 정보 -->
+                    <div class="product-detail-area">
+                        <!-- 상품 이미지 갤러리 -->
+                        <div class="product-gallery">
+                            <div class="main-image">
+                                <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb01.png" alt="상품 메인 이미지"
+                                    class="modal-item-img" />
+                                <span class="image-counter">1 / 3</span>
                             </div>
-                        </div>
-
-                        <!-- 모바일 필터 1: 배송타입 및 낱개상품 -->
-                        <div class="mobile-filter-row delivery-types">
-                            <div class="btn-group" data-filter-group="delivery">
-                                <label class="type-btn" data-type="room">
-                                    <input type="checkbox"> 상온
-                                </label>
-                                <label class="type-btn" data-type="cold">
-                                    <input type="checkbox"> 저온
-                                </label>
-                                <label class="type-btn" data-type="direct">
-                                    <input type="checkbox"> 직납
-                                </label>
-                                <label class="type-btn" data-type="tc">
-                                    <input type="checkbox"> TC
-                                </label>
-                                <label class="type-btn" data-type="dc">
-                                    <input type="checkbox"> DC
-                                </label>
-                                <label class="type-btn single-item border-black" data-type="single">
-                                    <input type="checkbox"> 낱개상품만 조회
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="category-breadcrumb-bar">
-                        <!-- 검색결과 상단 -->
-                        <div class="search-result-wrap">
-
-
-                            <!-- 결과 내 재검색 및 드롭다운 -->
-                            <div class="result-re-search">
-                                <span class="label">결과 내 재검색</span>
-                                <div class="search-input">
-                                    <input type="text" placeholder="검색어 입력" title="검색어 입력">
-                                    <button type="button" class="btn-search" aria-label="재검색"><i
-                                            class="icon-search"></i></button>
-                                </div>
-                                <!-- 바텀시트 트리거 버튼 -->
-                                <div class="filter-select-trigger">
-                                    <button type="button" class="select-label" data-filter-tab="brand">
-                                        <span>브랜드</span> <i class="icon-down-bullet"></i>
-                                    </button>
-                                </div>
-                                <div class="filter-select-trigger">
-                                    <button type="button" class="select-label" data-filter-tab="category">
-                                        <span>카테고리</span> <i class="icon-down-bullet"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-count-sort">
-                            <div class="total-count"><strong>221</strong>개의 상품이 있습니다</div>
-                            <div class="custom-select sort-select">
-                                <button type="button" class="select-label">
-                                    <span>많은 구매횟수</span> <i class="icon-down-bullet"></i>
+                            <div class="thumb-list">
+                                <button type="button" class="thumb-item active" aria-label="선택된 썸네일">
+                                    <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb01.png" alt="" />
                                 </button>
-                                <ul class="select-options">
-                                    <li>판매순</li>
-                                    <li class="active">많은 구매횟수</li>
-                                    <li>신상품순</li>
-                                    <li>낮은가격순</li>
-                                </ul>
+                                <button type="button" class="thumb-item" aria-label="썸네일2">
+                                    <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb02.png" alt="" />
+                                </button>
+                                <div class="thumb-item placeholder"></div>
+                            </div>
+                        </div>
+
+                        <!-- 상품 정보 영역 -->
+                        <div class="product-info-area">
+                            <!-- info-wrap: 브랜드/뱃지/상품명/가격표/합계 -->
+                            <div class="product-info-block">
+                                <div class="info-wrap">
+                                    <div class="info-block-header">
+                                        <div class="info-block-content">
+                                            <div class="badge-group">
+                                                <span class="badge-type type-cold">저온</span>
+                                                <span class="divider">|</span>
+                                                <span class="text-gray">DC</span>
+                                                <span class="divider">|</span>
+                                                <span class="text-gray">최대구매 2개</span>
+                                                <span class="divider">|</span>
+                                                <span class="text-gray">소비기한 50일</span>
+                                            </div>
+                                            <a href="javascript:void(0);" class="brand-link">엘지생활건강(주) <i
+                                                    class="icon-history"></i></a>
+                                            <h3 class="product-name modal-item-name">코카콜라 1.8L</h3>
+                                            <p class="product-desc">100ml 당 : 96원</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-table">
+                                        <dl>
+                                            <dt>20일 내 최저가</dt>
+                                            <dd>개당 950원</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>할인가</dt>
+                                            <dd>개당 900원</dd>
+                                        </dl>
+                                        <dl class="highlight">
+                                            <dt>
+                                                <i class="icon-coupon-tag"></i> 회원혜택가격
+                                                <a href="javascript:void(0);" class="btn-info"
+                                                    data-popover-template="discount"><i class="icon-info"></i></a>
+                                            </dt>
+                                            <dd class="price-val">
+                                                개당 683원 <i class="icon-chevron-down"></i>
+                                            </dd>
+                                        </dl>
+                                    </div>
+
+                                    <div class="price-summary">
+                                        <span class="unit-desc">입수 12 / BOX</span>
+                                        <strong class="discount-rate">19<span>%</span></strong>
+                                        <strong class="total-price">38,196<span>원</span></strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 프로모션 -->
+                            <div class="info-section type-promotion">
+                                <div class="section-row">
+                                    <span class="row-label">적용 프로모션</span>
+                                    <div class="row-content">
+                                        <!-- 프로모션 1 -->
+                                        <div class="promo-item">
+                                            <div class="promo-title">
+                                                <span class="badge-round">수량릴레이</span>
+                                                <span class="text">
+                                                    <a href="#" class="btn-link"> 음료 26년 전점행사<i
+                                                            class="icon-chevron-right"></i></a></span>
+                                            </div>
+                                            <div class="promo-date">
+                                                03.05 화요일 00시 ~ 03.12 화요일 14시
+                                            </div>
+                                        </div>
+                                        <!-- 프로모션 2 -->
+                                        <div class="promo-item mt-8">
+                                            <div class="promo-title">
+                                                <span class="badge-round">가격에누리</span>
+                                                <span class="text"><a href="#" class="btn-link"> 봄맞이 매대 준비 응원 행사<i
+                                                            class="icon-chevron-right"></i></a></span>
+
+                                            </div>
+                                            <div class="promo-date">
+                                                03.05 화요일 00시 ~ 03.12 화요일 14시
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 배송 정보 -->
+                            <div class="info-section deliver-info">
+                                <div class="section-row">
+                                    <span class="row-label">배송정보</span>
+                                    <div class="row-content">
+                                        지금 주문하시면 01.15 목요일 도착
+                                    </div>
+                                </div>
+                                <div class="section-row">
+                                    <span class="row-label">차기주문일</span>
+                                    <div class="row-content">
+                                        01.14 수요일 오후2시 이후
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 상품정보 토글 -->
+                            <div class="info-section product-info-scope type-border-box" id="product-info-toggle-scope">
+                                <div class="section-row">
+                                    <span class="row-label">상품정보</span>
+                                    <div class="row-content">
+                                        <button type="button" class="btn-toggle-info" data-toggle="slide"
+                                            data-scope="#product-info-toggle-scope" data-target=".product-info-detail">
+                                            <i class="icon-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-info-detail" style="display:none;">
+                                    <div class="info-detail-content">
+                                        <p>상품코드 8801056068606</p>
+                                        <p>상품설명 1PLT=112박스</p>
+                                        <p>원산지 상세설명참고</p>
+                                        <p>소비기한 센터배송 상품으로 입고일에 따른 유통(소비)기한이 다를 수 있습니다.</p>
+                                        <p>※ 자세한 문의는 담당 영업사원에게 문의해주세요.<br>
+                                            주문일로부터 유통(소비)기한이 475일 이상 남은 상품을 판매합니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 상품정보 이미지 -->
+                            <div class="info-section type-product-detail-img">
+                                <div class="section-row align-center">
+                                    <span class="row-label">상품정보</span>
+                                    <div class="row-content">
+                                        <button type="button" class="btn-toggle-info" data-toggle="slide"
+                                            data-scope=".info-section.type-product-detail-img"
+                                            data-target=".product-detail-img-wrap">
+                                            <i class="icon-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="product-detail-img-wrap" style="display:none;">
+
+                                    <div class="product-detail-title">
+                                        상품상세정보
+                                    </div>
+                                    <img src="/assets/images/common/prodcut-detail-sample01.jpg" alt="상품 상세 이미지" />
+                                </div>
+                            </div>
+                            <!-- 하단 구매 제어 고정 영역 -->
+                            <div class="product-purchase-area">
+                                <div class="qty-control">
+
+                                    <div class="controller-wrap">
+                                        <div class="amount-stepper">
+                                            <button type="button" class="btn-minus" aria-label="수량 감소">
+                                                <i class="icon-minus"></i>
+                                            </button>
+                                            <input type="number" class="amount" value="4" readonly title="수량" />
+                                            <button type="button" class="btn-plus" aria-label="수량 증가">
+                                                <i class="icon-plus"></i>
+                                            </button>
+                                        </div>
+                                        <span class="converted-qty">낱개환산 48</span>
+                                        <strong class="final-price">38,196<span>원</span></strong>
+                                    </div>
+                                </div>
+
+                                <div class="btn-group-cart">
+                                    <button type="button" class="btn-heart btn-icon">
+                                        <i class="icon-heart"></i>
+                                    </button>
+                                    <button type="button" class="btn-primary btn-add-cart">
+                                        장바구니
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- // 브랜드관 breadcrumb -->
-
-
+                    <!-- //상품상세 정보 -->
 
                     <!-- Product List -->
+                    <div class="product-title">
+                        <span class="point-red">탄산음료</span> 판매량 베스트 상품
+                    </div>
                     <div class="product-list is-more" data-more-limit="10">
                         <!-- Product Item 1 -->
                         <div class="product-item" data-sales="943" data-purchase="379" data-new="5" data-price="28600"
@@ -677,7 +790,7 @@
 
         <div data-include="/mobile/components/footer.txt"></div>
 
-        <div class="floating-util">
+        <div class="floating-util has-purchase-area">
         </div>
     </div>
     <div data-include="/mobile/components/search-overlay.txt"></div>

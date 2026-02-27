@@ -25,6 +25,11 @@
         bottom: rem(180); // 헤더 + 요약정보 + 결제버튼 + 여백 고려한 높이
     }
 
+    // 상품 상세 하단 구매 영역 대응
+    &.has-purchase-area {
+        bottom: rem(150);
+    }
+
     // 하단 바텀 시트나 CTA가 있을 때 버튼 디자인 보정
     &.has-bottom-bar {
 
