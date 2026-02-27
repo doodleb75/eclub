@@ -33,12 +33,12 @@
     <!-- Row 2: Main ONLY (GNB) -->
     <nav class="header-gnb">
         <ul class="gnb-list">
-            <li><a href="javascript:void(0);">홈</a></li>
-            <li class="active"><a href="javascript:void(0);">오늘의 핫딜</a></li>
+            <li><a href="/eclub/mobile/index.html">홈</a></li>
+            <li><a href="javascript:void(0);">오늘의 핫딜</a></li>
             <li><a href="javascript:void(0);" class="brand-toggle">브랜드관</a></li>
             <li><a href="javascript:void(0);">신상품</a></li>
-            <li><a href="javascript:void(0);">기획전</a></li>
-            <li><a href="javascript:void(0);">가전매장</a></li>
+            <li><a href="javascript:void(0);" class="btn-menu-sheet" data-menu-type="exhibition">기획전</a></li>
+            <li><a href="javascript:void(0);" class="btn-menu-sheet" data-menu-type="appliance">가전매장</a></li>
         </ul>
     </nav>
 

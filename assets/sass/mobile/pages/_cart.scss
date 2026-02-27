@@ -815,8 +815,8 @@ main {
 
 .payment-summary {
     // 피그마 패딩 및 간격 정밀 조정
-    padding: rem(20) rem(16);
-    margin-top: rem(18);
+    padding: rem(20) rem(16) !important;
+    // margin-top: rem(18);
 
     .box-title {
         font-size: rem(20);
