@@ -752,6 +752,17 @@ body {
   transform: rotate(90deg);
 }
 
+.icon-quick-top {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: currentColor;
+  -webkit-mask: url("../../icons/icon-quick-top.svg") no-repeat center;
+  mask: url("../../icons/icon-quick-top.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 .icon-menu {
   display: inline-block;
   width: 1.5rem;
@@ -6667,6 +6678,38 @@ main {
   font-size: 0.625rem !important;
 }
 
+.product-detail-page .header.main-page {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  transition: transform 0.3s ease;
+}
+.product-detail-page .header.main-page .header-inner.header-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.1875rem;
+}
+.product-detail-page .header.main-page .header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.product-detail-page .header.main-page:has(.is-pushed) {
+  transform: translateY(-100%);
+}
+.product-detail-page .sticky-filter-area {
+  height: 0;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  pointer-events: none;
+  z-index: -1;
+}
 .product-detail-page .footer {
   padding-bottom: 10rem;
 }
@@ -6690,6 +6733,37 @@ main {
   align-items: center;
   overflow: hidden;
 }
+.product-detail-area .product-gallery .main-image .gallery-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.product-detail-area .product-gallery .main-image .gallery-slider:active {
+  cursor: grabbing;
+}
+.product-detail-area .product-gallery .main-image .gallery-slider .slider-list {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+.product-detail-area .product-gallery .main-image .gallery-slider .slider-item {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-detail-area .product-gallery .main-image .gallery-slider .slider-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 .product-detail-area .product-gallery .main-image img.modal-item-img {
   width: 100%;
   height: 100%;
@@ -6707,6 +6781,7 @@ main {
   padding: 0.1875rem 0.5rem;
   border-radius: 1.25rem;
   line-height: 1.4;
+  z-index: 10;
 }
 .product-detail-area .product-gallery .thumb-list {
   display: none;

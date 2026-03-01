@@ -752,6 +752,17 @@ body {
   transform: rotate(90deg);
 }
 
+.icon-quick-top {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: currentColor;
+  -webkit-mask: url("../../icons/icon-quick-top.svg") no-repeat center;
+  mask: url("../../icons/icon-quick-top.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 .icon-menu {
   display: inline-block;
   width: 1.5rem;
@@ -4119,18 +4130,17 @@ body {
   position: fixed;
   bottom: 2.5rem;
   right: 1.25rem;
-  width: 5.625rem;
+  width: 4.625rem;
   background-color: #ffffff;
   border: 0.0625rem solid #e5e5e5;
   z-index: 1000;
   text-align: center;
-  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.08);
+  background: #f8f9fa;
   overflow: hidden;
-  border-radius: 0.25rem;
 }
 .quick-menu .banner-area {
   position: relative;
-  height: 8.5rem;
+  height: 8.75rem;
   overflow: hidden;
   background-color: #015fc1;
 }
@@ -4209,14 +4219,13 @@ body {
   transform: scale(1.1);
 }
 .quick-menu .banner-area .nav-btns .btn-nav img {
-  width: 0.875rem;
-  height: 0.875rem;
+  width: 0.4375rem;
+  height: 0.75rem;
   filter: brightness(0) invert(1);
 }
 .quick-menu .cart-area {
-  padding: 1.5rem 0 0.75rem;
-  background-color: #ffffff;
-  border-bottom: 0.0625rem solid #666666;
+  padding: 0.75rem 0 1rem;
+  border-bottom: none;
 }
 .quick-menu .cart-area .cart-link {
   position: relative;
@@ -4232,14 +4241,14 @@ body {
 }
 .quick-menu .cart-area .cart-link .badge {
   position: absolute;
-  top: -0.375rem;
-  right: -0.875rem;
-  min-width: 2rem;
+  top: -0.25rem;
+  right: -1.25rem;
+  min-width: 1.75rem;
   height: 1.25rem;
   padding: 0 0.375rem;
-  background-color: #ffaa00;
-  color: #666666;
-  font-size: 0.625rem;
+  background-color: #f7b500;
+  color: #333333;
+  font-size: 0.75rem;
   font-weight: 700;
   border-radius: 0.625rem;
   display: flex;
@@ -4249,19 +4258,14 @@ body {
   line-height: 1;
 }
 .quick-menu .menu-list {
-  padding: 0.25rem 0;
-  background-color: #ffffff;
-}
-.quick-menu .menu-list .menu-item {
-  border-bottom: 0.0625rem solid #f8f9fa;
-}
-.quick-menu .menu-list .menu-item:last-child {
-  border-bottom: none;
+  padding: 0 0 0.375rem;
 }
 .quick-menu .menu-list .menu-item a {
   display: flex;
-  flex-direction: column;
-  padding: 0.75rem 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0.5625rem;
   color: #666666;
   text-decoration: none;
   transition: background-color 0.2s;
@@ -4273,16 +4277,15 @@ body {
   color: #000000;
 }
 .quick-menu .menu-list .menu-item a .label {
-  font-size: 0.75rem;
+  font-size: 0.5625rem;
   color: #666666;
   letter-spacing: -0.03125rem;
   transition: color 0.2s;
 }
 .quick-menu .menu-list .menu-item a .count {
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 0.5625rem;
+  font-weight: 600;
   color: #333333;
-  margin-top: 0.125rem;
 }
 .quick-menu .top-area {
   background-color: #fbfbfb;
@@ -4293,7 +4296,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0.625rem 0;
+  padding: 0.375rem 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -4302,11 +4305,8 @@ body {
 .quick-menu .top-area .btn-top:hover {
   background-color: #f8f9fa;
 }
-.quick-menu .top-area .btn-top .icon-up {
-  width: 0.625rem;
-  height: 0.625rem;
-  transform: rotate(180deg);
-  margin-bottom: 0.125rem;
+.quick-menu .top-area .btn-top .icon-quick-top {
+  margin-bottom: 0.25rem;
   opacity: 0.6;
 }
 .quick-menu .top-area .btn-top span {

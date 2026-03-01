@@ -8,13 +8,12 @@
     <title>상품정보 | E-Club</title>
     <!-- 공통 스타일 -->
     <link rel="stylesheet" href="/assets/css/mobile/main.css">
-    <!-- 페이지 전용 스타일 -->
 </head>
 
 <body class="product-detail-page">
     <div id="wrap">
         <!-- 상단 헤더 -->
-        <div data-include="/mobile/components/header.txt" data-page-title="상품정보"></div>
+        <div data-include="/mobile/components/header-product.txt" data-page-title="상품정보"></div>
 
         <main id="container" class="main-page-wrapper">
             <!-- 저온상품의 핫딜 -->
@@ -26,20 +25,28 @@
                         <!-- 상품 이미지 갤러리 -->
                         <div class="product-gallery">
                             <div class="main-image">
-                                <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb01.png" alt="상품 메인 이미지"
-                                    class="modal-item-img" />
-                                <span class="image-counter">1 / 3</span>
-                            </div>
-                            <div class="thumb-list">
-                                <button type="button" class="thumb-item active" aria-label="선택된 썸네일">
-                                    <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb01.png" alt="" />
-                                </button>
-                                <button type="button" class="thumb-item" aria-label="썸네일2">
-                                    <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb02.png" alt="" />
-                                </button>
-                                <div class="thumb-item placeholder"></div>
+                                <div class="gallery-slider" id="productGallerySlider">
+                                    <div class="slider-list">
+                                        <div class="slider-item">
+                                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb01.png"
+                                                alt="상품 메인 이미지 1" class="modal-item-img" />
+                                        </div>
+                                        <div class="slider-item">
+                                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb02.png"
+                                                alt="상품 메인 이미지 2" class="modal-item-img" />
+                                        </div>
+                                        <div class="slider-item">
+                                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb03.png"
+                                                alt="상품 메인 이미지 3" class="modal-item-img" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="image-counter"><span id="gallery-current">01</span> / 03</span>
                             </div>
                         </div>
+
+                        <!-- Sticky 헤더 트리거 영역 -->
+                        <div class="sticky-filter-area"></div>
 
                         <!-- 상품 정보 영역 -->
                         <div class="product-info-area">
@@ -960,6 +967,150 @@
     <script src="/assets/js/components/modal-excel-upload.js"></script>
     <script src="/assets/js/components/menu-sheet.js"></script>
     <script src="/assets/js/components/search-filter-sheet.js"></script>
+    <script>
+        // 상품 상세 갤러리 슬라이더 로직 (루프형)
+        (function () {
+            const slider = document.getElementById('productGallerySlider');
+            const list = slider.querySelector('.slider-list');
+            const originalItems = list.querySelectorAll('.slider-item');
+            const counter = document.getElementById('gallery-current');
+            const thumbs = document.querySelectorAll('.thumb-list .thumb-item');
+
+            const itemCount = originalItems.length;
+            if (itemCount <= 1) return; // 이미지가 1개 이하면 루프 불필요
+
+            // 클론 생성
+            const firstClone = originalItems[0].cloneNode(true);
+            const lastClone = originalItems[itemCount - 1].cloneNode(true);
+
+            list.appendChild(firstClone);
+            list.insertBefore(lastClone, originalItems[0]);
+
+            let currentIndex = 1; // 클론 때문에 1부터 시작
+            let isTransitioning = false;
+
+            // 초기 위치 설정
+            list.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            function updateUI(index) {
+                // 실제 인덱스 계산 (1~itemCount -> 0~itemCount-1)
+                let realIndex = index - 1;
+                if (index === 0) realIndex = itemCount - 1;
+                if (index === itemCount + 1) realIndex = 0;
+
+                // 카운터 업데이트
+                if (counter) {
+                    const displayIndex = realIndex + 1;
+                    counter.textContent = displayIndex < 10 ? `0${displayIndex}` : displayIndex;
+                }
+
+                // 썸네일 업데이트
+                thumbs.forEach((thumb, idx) => {
+                    thumb.classList.toggle('active', idx === realIndex);
+                });
+            }
+
+            function goToSlide(index, animated = true) {
+                if (isTransitioning && animated) return;
+
+                isTransitioning = animated;
+                currentIndex = index;
+
+                list.style.transition = animated ? 'transform 0.3s ease-out' : 'none';
+                list.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                updateUI(currentIndex);
+            }
+
+            list.addEventListener('transitionend', () => {
+                isTransitioning = false;
+
+                // 루프 처리
+                if (currentIndex === 0) {
+                    goToSlide(itemCount, false);
+                } else if (currentIndex === itemCount + 1) {
+                    goToSlide(1, false);
+                }
+            });
+
+            // 스와이프 이벤트
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+            let startTime = 0;
+
+            slider.addEventListener('touchstart', (e) => {
+                if (isTransitioning) return;
+                startX = e.touches[0].clientX;
+                startTime = Date.now();
+                isDragging = true;
+                list.style.transition = 'none';
+            }, { passive: true });
+
+            slider.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX;
+                const diff = currentX - startX;
+                list.style.transform = `translateX(calc(-${currentIndex * 100}% + ${diff}px))`;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = e.changedTouches[0].clientX - startX;
+                const endTime = Date.now();
+                const timeDiff = endTime - startTime;
+
+                if (Math.abs(diff) > 50 || (Math.abs(diff) > 20 && timeDiff < 250)) {
+                    if (diff > 0) {
+                        goToSlide(currentIndex - 1);
+                    } else {
+                        goToSlide(currentIndex + 1);
+                    }
+                } else {
+                    goToSlide(currentIndex);
+                }
+            });
+
+            // 마우스 드래그 지원
+            slider.addEventListener('mousedown', (e) => {
+                if (isTransitioning) return;
+                startX = e.clientX;
+                isDragging = true;
+                list.style.transition = 'none';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                currentX = e.clientX;
+                const diff = currentX - startX;
+                list.style.transform = `translateX(calc(-${currentIndex * 100}% + ${diff}px))`;
+            });
+
+            window.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = e.clientX - startX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        goToSlide(currentIndex - 1);
+                    } else {
+                        goToSlide(currentIndex + 1);
+                    }
+                } else {
+                    goToSlide(currentIndex);
+                }
+            });
+
+            // 썸네일 클릭 이벤트
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    const index = parseInt(thumb.dataset.index);
+                    goToSlide(index + 1);
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>
