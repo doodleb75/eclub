@@ -295,6 +295,10 @@
     transform: rotate(90deg);
 }
 
+.icon-quick-top {
+    @include icon-mask('#{$icon-path}/icon-quick-top.svg', rem(20));
+}
+
 // Mobile Header Icons
 .icon-menu {
     @include icon-mask('#{$icon-path}/menu.svg', rem(24));

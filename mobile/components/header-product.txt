@@ -1,0 +1,20 @@
+<header class="header main-page">
+    <div class="header-inner header-sub">
+        <div class="header-left">
+            <button type="button" class="btn-prev" onclick="history.back();" aria-label="이전 페이지">
+                <i class="icon-history"></i>
+            </button>
+            <h1 class="page-title">상품정보</h1>
+        </div>
+
+        <div class="header-right">
+            <button type="button" class="btn-search-trigger" aria-label="검색">
+                <img src="/eclub/assets/icons/product-gnb-search.svg" alt="">
+            </button>
+            <a href="/eclub/mobile/pages/cart.html" class="btn-cart" aria-label="장바구니">
+                <i class="icon-cart"></i>
+                <span class="badge">9</span>
+            </a>
+        </div>
+    </div>
+</header>

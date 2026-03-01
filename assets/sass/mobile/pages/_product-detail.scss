@@ -27,6 +27,48 @@
 
 // 하단 고정 구매 영역 대응을 위한 푸터 여백
 .product-detail-page {
+
+    // 상품 상세 헤더 전용 스타일
+    .header.main-page {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: $white;
+        transition: transform 0.3s ease;
+
+        .header-inner.header-sub {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: rem(51);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: rem(12);
+        }
+
+        // 내부 요소가 pushes 되면 전체 헤더를 위로 밀어 올림 (영역 남음 방지)
+        // is-pushed 클래스가 내부 엘리먼트에 추가될 때 부모인 .header도 함께 작동하도록 설정
+        &:has(.is-pushed) {
+            transform: translateY(-100%);
+        }
+    }
+
+    // Sticky 헤더 상태 전환 트리거
+    .sticky-filter-area {
+        height: 0;
+        min-height: 0;
+        padding: 0;
+        border: none;
+        overflow: hidden;
+        position: sticky;
+        top: 0;
+        pointer-events: none;
+        z-index: -1;
+    }
+
     .footer {
         padding-bottom: rem(160);
     }
@@ -56,6 +98,43 @@
             align-items: center;
             overflow: hidden;
 
+            // 상품 갤러리 슬라이더
+            .gallery-slider {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                touch-action: pan-y;
+                cursor: grab;
+
+                &:active {
+                    cursor: grabbing;
+                }
+
+                .slider-list {
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+                    transition: transform 0.3s ease-out;
+                    will-change: transform;
+                }
+
+                .slider-item {
+                    flex: 0 0 100%;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+            }
+
             img.modal-item-img {
                 width: 100%;
                 height: 100%;
@@ -75,6 +154,7 @@
                 padding: rem(3) rem(8);
                 border-radius: rem(20);
                 line-height: 1.4;
+                z-index: 10;
             }
         }
 

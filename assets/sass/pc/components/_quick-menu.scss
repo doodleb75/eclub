@@ -1,24 +1,23 @@
 @charset "UTF-8";
 
 // 퀵메뉴 (지인추천 플로팅 메뉴)
-// 관련 파일: /pc/pages/quick-menu.html, /assets/js/pc/quick-menu.js
+// 관련 파일: /pc/pages/quick-menu.html, /assets/js/components/quick-menu.js
 .quick-menu {
     position: fixed;
     bottom: rem(40); // 하단 위치로 변경
     right: rem(20);
-    width: rem(90);
+    width: rem(74);
     background-color: $white;
     border: rem(1) solid $gray-200;
     z-index: 1000;
     text-align: center;
-    box-shadow: 0 rem(4) rem(20) rgba(0, 0, 0, 0.08);
+    background: $gray-100;
     overflow: hidden;
-    border-radius: rem(4);
 
     // 상단 베너 영역
     .banner-area {
         position: relative;
-        height: rem(136);
+        height: rem(140);
         overflow: hidden;
         background-color: $color-eclub-blue; // 이클럽 블루 적용
 
@@ -106,8 +105,8 @@
                 }
 
                 img {
-                    width: rem(14);
-                    height: rem(14);
+                    width: rem(7);
+                    height: rem(12);
                     filter: brightness(0) invert(1); // 흰색 화살표
                 }
             }
@@ -116,9 +115,8 @@
 
     // 장바구니 영역
     .cart-area {
-        padding: rem(24) 0 rem(12);
-        background-color: $white; // 배경 흰색으로 변경
-        border-bottom: rem(1) solid $gray-700; // 구분선 강조
+        padding: rem(12) 0 rem(16);
+        border-bottom: none; // 구분선 제거
 
         .cart-link {
             position: relative;
@@ -130,21 +128,21 @@
             }
 
             .icon-cart {
-                width: rem(24); // 크기 조정
+                width: rem(24); // figma 비례에 맞게 크기 확대
                 height: rem(24);
             }
 
-            // 카트 수량 뱃지 (필형태 강조)
+            // 카트 수량 뱃지
             .badge {
                 position: absolute;
-                top: rem(-6);
-                right: rem(-14);
-                min-width: rem(32);
+                top: rem(-4);
+                right: rem(-20);
+                min-width: rem(28);
                 height: rem(20);
                 padding: 0 rem(6);
-                background-color: #ffaa00; // 포인트 뱃지
-                color: $gray-700;
-                font-size: rem(10);
+                background-color: #f7b500; // 포인트 뱃지 색상
+                color: $gray-850;
+                font-size: rem(12);
                 font-weight: $fw-bold;
                 border-radius: rem(10);
                 display: flex;
@@ -158,20 +156,15 @@
 
     // 퀵 링크 메뉴 리스트
     .menu-list {
-        padding: rem(4) 0;
-        background-color: $white;
+        padding: 0 0 rem(6);
 
         .menu-item {
-            border-bottom: rem(1) solid $gray-100;
-
-            &:last-child {
-                border-bottom: none;
-            }
-
             a {
                 display: flex;
-                flex-direction: column;
-                padding: rem(12) 0;
+                flex-direction: row; // 가로 정렬로 변경
+                justify-content: space-between;
+                align-items: center;
+                padding: rem(4) rem(9);
                 color: $gray-700;
                 text-decoration: none;
                 transition: background-color 0.2s;
@@ -185,17 +178,16 @@
                 }
 
                 .label {
-                    font-size: rem(12);
+                    font-size: rem(9);
                     color: $gray-700;
                     letter-spacing: rem(-0.5);
                     transition: color 0.2s;
                 }
 
                 .count {
-                    font-size: rem(14);
-                    font-weight: $fw-bold;
+                    font-size: rem(9);
+                    font-weight: $fw-semibold;
                     color: $gray-850;
-                    margin-top: rem(2);
                 }
             }
         }
@@ -203,15 +195,15 @@
 
     // 하단 TOP 버튼 영역
     .top-area {
-        background-color: $gray-50;
-        border-top: rem(1) solid $gray-200;
+        background-color: $gray-50; // 살짝 어두운 배경
+        border-top: rem(1) solid $gray-200; // 윗 선 추가
 
         .btn-top {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
-            padding: rem(10) 0;
+            padding: rem(6) 0;
             background: none;
             border: none;
             cursor: pointer;
@@ -221,11 +213,8 @@
                 background-color: $gray-100;
             }
 
-            .icon-up {
-                width: rem(10);
-                height: rem(10);
-                transform: rotate(180deg);
-                margin-bottom: rem(2);
+            .icon-quick-top {
+                margin-bottom: rem(4);
                 opacity: 0.6;
             }
 
