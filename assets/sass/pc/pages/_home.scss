@@ -579,10 +579,6 @@
                 background: url('../../images/main/banners/horizon-banner02.png') no-repeat center center;
                 background-size: cover;
                 overflow: hidden;
-
-                &::before {
-                    // display: none; // 배경이미지가 없으므로 그라데이션 제거
-                }
             }
         }
     }
@@ -674,10 +670,20 @@
         }
 
         .product-list {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); // 5열 고정
-            gap: rem(20);
-            row-gap: rem(40);
+            &.active {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr); // 5열 고정
+                gap: rem(20);
+                row-gap: rem(40);
+            }
+
+            // 기간 탭이 없는 섹션의 경우 기본적으로 그리드 표시
+            &:not(.daily-product):not(.weekly-product) {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: rem(20);
+                row-gap: rem(40);
+            }
 
             .product-item {
                 width: 100%;

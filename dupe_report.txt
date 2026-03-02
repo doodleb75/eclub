@@ -1,0 +1,52 @@
+Duplicate Logic Analysis:
+============================
+Files sharing similar logic blocks (>= 6 lines):
+- c:\eclub\assets\js\common\ui.js (Internal): 19 identical blocks
+- c:\eclub\assets\js\components\checkbox.js AND c:\eclub\assets\js\components\radio.js: 24 identical blocks
+
+Example Duplicate Logs:
+
+Example 1 found in:
+  - c:\eclub\assets\js\components\checkbox.js (Lines 84-89)
+  - c:\eclub\assets\js\components\radio.js (Lines 80-85)
+  Code snippet:
+     updateIconState(isChecked) {
+     if (!this.uncheckedIcon || !this.checkedIcon) return;
+     
+     ...
+
+Example 2 found in:
+  - c:\eclub\assets\js\components\checkbox.js (Lines 85-90)
+  - c:\eclub\assets\js\components\radio.js (Lines 81-86)
+  Code snippet:
+     if (!this.uncheckedIcon || !this.checkedIcon) return;
+     
+     if (isChecked) {
+     ...
+
+Example 3 found in:
+  - c:\eclub\assets\js\components\checkbox.js (Lines 86-91)
+  - c:\eclub\assets\js\components\radio.js (Lines 82-87)
+  Code snippet:
+     
+     if (isChecked) {
+     this.checkedIcon.style.display = 'block';
+     ...
+
+Example 4 found in:
+  - c:\eclub\assets\js\components\checkbox.js (Lines 87-92)
+  - c:\eclub\assets\js\components\radio.js (Lines 83-88)
+  Code snippet:
+     if (isChecked) {
+     this.checkedIcon.style.display = 'block';
+     this.uncheckedIcon.style.display = 'none';
+     ...
+
+Example 5 found in:
+  - c:\eclub\assets\js\components\checkbox.js (Lines 88-93)
+  - c:\eclub\assets\js\components\radio.js (Lines 84-89)
+  Code snippet:
+     this.checkedIcon.style.display = 'block';
+     this.uncheckedIcon.style.display = 'none';
+     } else {
+     ...

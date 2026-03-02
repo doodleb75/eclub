@@ -20,6 +20,160 @@ const Eclub = {
         return parseFloat(zoom) / 100;
     },
 
+    // 오버레이 및 시트 공통 관리
+    OverlayManager: {
+        open(element, overlayElement = null) {
+            if (element) {
+                element.classList.add('is-open');
+                element.classList.add('open');
+            }
+            if (overlayElement) overlayElement.classList.add('is-visible');
+            document.body.classList.add('no-scroll');
+            document.body.style.overflow = 'hidden'; // fallback
+        },
+        close(element, overlayElement = null) {
+            if (element) {
+                element.classList.remove('is-open');
+                element.classList.remove('open');
+            }
+            if (overlayElement) overlayElement.classList.remove('is-visible');
+            document.body.classList.remove('no-scroll');
+            document.body.style.overflow = ''; // fallback
+        }
+    },
+
+    // 검색 및 최근 검색어 관리 공통 유틸리티
+    SearchUtil: {
+        bindInput(input, clearBtn, defaultView, autocompleteView, onUpdate = null) {
+            if (!input) return null;
+            const updateView = () => {
+                const val = input.value.trim();
+                const hasText = val.length > 0;
+
+                if (clearBtn) clearBtn.style.display = hasText ? 'flex' : 'none';
+
+                if (hasText) {
+                    if (defaultView) defaultView.style.display = 'none';
+                    if (autocompleteView) autocompleteView.style.display = 'block';
+                } else {
+                    if (defaultView) defaultView.style.display = 'block';
+                    if (autocompleteView) autocompleteView.style.display = 'none';
+                }
+                if (onUpdate) onUpdate(hasText);
+            };
+
+            input.addEventListener('input', updateView);
+
+            if (clearBtn) {
+                clearBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    input.value = '';
+                    input.focus();
+                    updateView();
+                });
+            }
+            return updateView;
+        },
+
+        bindRecentSearch(container) {
+            if (typeof container === 'string') container = document.querySelector(container);
+            if (!container) return;
+
+            const deleteButtons = container.querySelectorAll('.btn-delete-item');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const li = this.closest('li');
+                    const list = li.closest('.recent-list');
+                    if (li) li.remove();
+
+                    if (list && list.children.length === 0) {
+                        let noData = container.querySelector('.no-data');
+                        if (!noData) {
+                            noData = document.createElement('div');
+                            noData.className = 'no-data';
+                            noData.textContent = '최근 검색어가 없습니다.';
+                            list.parentNode.appendChild(noData);
+                            list.remove();
+                        } else {
+                            noData.style.display = 'block';
+                        }
+                    }
+                });
+            });
+
+            const deleteAllBtn = container.querySelector('.btn-delete-all');
+            if (deleteAllBtn) {
+                deleteAllBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const list = container.querySelector('.recent-list');
+                    if (list) {
+                        let noData = container.querySelector('.no-data');
+                        if (!noData) {
+                            noData = document.createElement('div');
+                            noData.className = 'no-data';
+                            noData.textContent = '최근 검색어가 없습니다.';
+                            list.parentNode.appendChild(noData);
+                            list.remove();
+                        } else {
+                            list.innerHTML = '';
+                            noData.style.display = 'block';
+                        }
+                    }
+                });
+            }
+        }
+    },
+
+    // 공통 데이터 로더 (중복 Fetch 방지)
+    DataLoader: {
+        _categoryData: null,
+        async getCategoryMenu() {
+            if (this._categoryData) return this._categoryData;
+            try {
+                const response = await fetch('/eclub/assets/data/category-menu.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                this._categoryData = await response.json();
+                return this._categoryData;
+            } catch (error) {
+                console.error('카테고리 메뉴 데이터를 불러오는 중 오류 발생:', error);
+                return null;
+            }
+        }
+    },
+
+    // 카테고리 렌더링 유틸리티
+    CategoryRenderUtil: {
+        renderDepth1(menuData, depth1List) {
+            if (!depth1List || !menuData) return;
+            depth1List.innerHTML = menuData.map(item => `
+                <li data-id="${item.id}">
+                    <a href="${item.link}">${item.name}</a>
+                </li>
+            `).join('');
+        },
+        updateDepth2(id, menuData, depth1List, depth2List) {
+            if (!menuData || !depth1List || !depth2List) return;
+            const data = menuData.find(item => item.id === id);
+            if (!data) return;
+
+            depth1List.querySelectorAll('li').forEach(li => {
+                li.classList.toggle('active', li.dataset.id === id);
+            });
+
+            let html = `<li><a href="${data.link}" class="is-all">${data.name === '전체' ? '전체' : data.name + ' 전체'}</a></li>`;
+            if (data.subMenu) {
+                html += data.subMenu.map(sub => `
+                    <li><a href="${sub.link}">${sub.name}</a></li>
+                `).join('');
+            }
+            depth2List.innerHTML = html;
+        }
+    },
+
     // 토스트
     Toast: {
         container: null,
@@ -700,18 +854,14 @@ const Eclub = {
         expand(sheet, body) {
             sheet.classList.add('is-expanded');
             body.style.maxHeight = body.scrollHeight + 'px';
-
             const overlay = document.querySelector('.sheet-overlay');
-            if (overlay) overlay.classList.add('is-visible');
-            document.body.classList.add('no-scroll');
+            Eclub.OverlayManager.open(null, overlay);
         },
         collapse(sheet, body) {
             sheet.classList.remove('is-expanded');
             body.style.maxHeight = '0';
-
             const overlay = document.querySelector('.sheet-overlay');
-            if (overlay) overlay.classList.remove('is-visible');
-            document.body.classList.remove('no-scroll');
+            Eclub.OverlayManager.close(null, overlay);
         }
     },
 
@@ -737,6 +887,21 @@ const Eclub = {
             }
         },
 
+        bindMasterCheckbox(masterCb, itemCbs, onUpdate) {
+            masterCb.addEventListener('change', (e) => {
+                const isChecked = e.target.checked;
+                itemCbs.forEach(cb => cb.checked = isChecked);
+                if (onUpdate) onUpdate();
+            });
+
+            itemCbs.forEach(item => {
+                item.addEventListener('change', () => {
+                    masterCb.checked = Array.from(itemCbs).every(cb => cb.checked);
+                    if (onUpdate) onUpdate();
+                });
+            });
+        },
+
         // 장바구니 로직 (그룹 존재)
         initCart(container, master) {
             const groups = container.querySelectorAll('.cart-group');
@@ -757,23 +922,18 @@ const Eclub = {
                 const items = group.querySelectorAll('.cart-item .item-check input[type="checkbox"]');
 
                 if (groupHeader) {
-                    groupHeader.addEventListener('change', (e) => {
-                        const isChecked = e.target.checked;
-                        items.forEach(cb => cb.checked = isChecked);
+                    this.bindMasterCheckbox(groupHeader, items, () => {
                         this.updateMasterState(master, '.cart-item .item-check input[type="checkbox"]');
                         this.updateDeleteButtonState();
+                    });
+                } else {
+                    items.forEach(item => {
+                        item.addEventListener('change', () => {
+                            this.updateMasterState(master, '.cart-item .item-check input[type="checkbox"]');
+                            this.updateDeleteButtonState();
+                        });
                     });
                 }
-
-                items.forEach(item => {
-                    item.addEventListener('change', () => {
-                        if (groupHeader) {
-                            groupHeader.checked = Array.from(items).every(cb => cb.checked);
-                        }
-                        this.updateMasterState(master, '.cart-item .item-check input[type="checkbox"]');
-                        this.updateDeleteButtonState();
-                    });
-                });
             });
 
             // 초기 상태 업데이트
@@ -784,18 +944,7 @@ const Eclub = {
         initCategory(container, master) {
             const items = container.querySelectorAll('.product-item:not(.sold-out):not(.order-soon) .item-check input[type="checkbox"]');
 
-            master.addEventListener('change', (e) => {
-                const isChecked = e.target.checked;
-                items.forEach(cb => cb.checked = isChecked);
-                this.updateAddCartButtonState();
-            });
-
-            items.forEach(item => {
-                item.addEventListener('change', () => {
-                    master.checked = Array.from(items).every(cb => cb.checked);
-                    this.updateAddCartButtonState();
-                });
-            });
+            this.bindMasterCheckbox(master, items, () => this.updateAddCartButtonState());
 
             // 초기 상태 업데이트
             master.checked = items.length > 0 && Array.from(items).every(cb => cb.checked);
@@ -866,8 +1015,8 @@ const Eclub = {
 
                 const category = targetBtn.dataset.tab;
                 const tabListWrapper = targetBtn.closest('.category-tabs-wrap');
-
                 const tabContainer = targetBtn.closest('.category-tabs');
+
                 if (tabContainer) {
                     const currentActive = tabContainer.querySelector('li.active');
                     if (currentActive) currentActive.classList.remove('active');
@@ -876,43 +1025,49 @@ const Eclub = {
 
                 if (tabListWrapper) {
                     // 상품 선택 초기화
-                    Eclub.Selection.resetCategorySelection();
-
-                    const productLists = [];
-                    let sibling = tabListWrapper.nextElementSibling;
-
-                    while (sibling) {
-                        if (sibling.classList.contains('product-list')) {
-                            productLists.push(sibling);
-                        }
-                        sibling = sibling.nextElementSibling;
+                    if (Eclub && Eclub.Selection) {
+                        Eclub.Selection.resetCategorySelection();
                     }
 
+                    // 현재 섹션 안에서 대상 상품 리스트 찾기
+                    const currentSection = targetBtn.closest('.home-section');
+                    if (!currentSection) return;
+
+                    const productLists = currentSection.querySelectorAll('.product-list');
+                    const activePeriodBtn = currentSection.querySelector('.period-tabs button[data-tab-trigger].active');
+                    const hasPeriodTabs = !!currentSection.querySelector('.period-tabs');
+                    const activePeriodTarget = activePeriodBtn ? activePeriodBtn.dataset.tabTarget : null;
+
                     productLists.forEach(productList => {
-                        productList.classList.add('is-fading');
+                        // 기간 탭이 없는 섹션이거나, 기간 탭이 있다면 현재 활성화된 리스트인 경우에만 처리
+                        const isCurrentActiveList = !hasPeriodTabs || (productList.id === activePeriodTarget);
 
-                        setTimeout(() => {
-                            const items = productList.querySelectorAll('.product-item');
-                            items.forEach(item => {
-                                const itemCategory = item.dataset.category || '';
-                                const categories = itemCategory.split(/\s+/);
+                        if (isCurrentActiveList) {
+                            productList.classList.add('is-fading');
+                            productList.classList.add('active'); // 활성 상태 명시적으로 설정
 
-                                if (category === 'all' || categories.includes(category)) {
-                                    item.style.display = '';
-                                } else {
-                                    item.style.display = 'none';
+                            setTimeout(() => {
+                                const items = productList.querySelectorAll('.product-item');
+                                items.forEach((item, idx) => {
+                                    const itemCategory = item.dataset.category || '';
+                                    const categories = itemCategory.split(/\s+/);
+                                    let isMatch = (category === 'all' || categories.includes(category));
+
+                                    item.style.display = isMatch ? '' : 'none';
+                                });
+
+                                // 더보기 초기화 (is-more인 경우 페이징 재정렬)
+                                if (productList.classList.contains('is-more') && Eclub && Eclub.ProductMore) {
+                                    Eclub.ProductMore.resetByCategory(productList);
                                 }
-                            });
 
-                            // 더보기 초기화
-                            if (productList.classList.contains('is-more')) {
-                                Eclub.ProductMore.resetByCategory(productList);
-                            }
-
-                            requestAnimationFrame(() => {
-                                productList.classList.remove('is-fading');
-                            });
-                        }, Eclub.Const.ANIMATION_DURATION);
+                                requestAnimationFrame(() => {
+                                    productList.classList.remove('is-fading');
+                                });
+                            }, (Eclub && Eclub.Const && Eclub.Const.ANIMATION_DURATION) ? Eclub.Const.ANIMATION_DURATION : 300);
+                        } else {
+                            productList.classList.remove('active'); // 비활성 리스트 숨기기
+                        }
                     });
                 }
             });
@@ -1060,14 +1215,9 @@ const Eclub = {
 
         // 데이터 로드 (JSON)
         async loadMenu() {
-            try {
-                const response = await fetch('/eclub/assets/data/category-menu.json');
-                if (!response.ok) throw new Error('Network response was not ok');
-                const data = await response.json();
-                this.render(data);
-            } catch (err) {
-                console.error('카테고리 메뉴 로드 실패:', err);
-            }
+            const data = await Eclub.DataLoader.getCategoryMenu();
+            if (data) this.render(data);
+            else console.error('카테고리 메뉴 데이터를 불러오지 못했습니다.');
         },
 
         // DOM 렌더링
@@ -1099,6 +1249,98 @@ const Eclub = {
             });
             html += '</ul>';
             container.innerHTML = html;
+        }
+    },
+
+    // 페이징 공통 유틸리티
+    PagingUtil: {
+        getVisibleItems(container, itemSelector) {
+            return Array.from(container.querySelectorAll(itemSelector)).filter(
+                item => item.style.display !== 'none' || item.dataset.hiddenByMore === 'true'
+            );
+        },
+        applyPaging(container, itemSelector, pageSize, moreWrapClass = '') {
+            const allItems = this.getVisibleItems(container, itemSelector);
+            let next = container.nextElementSibling;
+            while (next && moreWrapClass && !next.classList.contains(moreWrapClass)) next = next.nextElementSibling;
+            const moreWrap = moreWrapClass ? next : container.nextElementSibling;
+
+            if (allItems.length <= pageSize) {
+                if (moreWrap && (!moreWrapClass || moreWrap.classList.contains(moreWrapClass))) moreWrap.style.display = 'none';
+                container.style.maxHeight = '';
+                container.style.overflow = '';
+                container.classList.remove('is-expanded');
+                container.dataset.visibleCount = allItems.length;
+                allItems.forEach(item => { delete item.dataset.hiddenByMore; item.style.display = ''; });
+                return;
+            }
+
+            container.dataset.visibleCount = pageSize;
+            allItems.forEach((item, idx) => {
+                if (idx < pageSize) {
+                    item.style.display = '';
+                    delete item.dataset.hiddenByMore;
+                } else {
+                    item.style.display = 'none';
+                    item.dataset.hiddenByMore = 'true';
+                }
+            });
+
+            container.classList.add('js-initialized');
+            container.classList.remove('is-expanded');
+            container.style.maxHeight = '';
+            container.style.overflow = '';
+
+            if (moreWrap && (!moreWrapClass || moreWrap.classList.contains(moreWrapClass))) {
+                moreWrap.style.display = '';
+                const btn = moreWrap.querySelector('.btn-more');
+                if (btn) {
+                    btn.classList.remove('active');
+                    const span = btn.querySelector('span');
+                    if (span) {
+                        const originalText = span.dataset.originalText || span.textContent;
+                        span.dataset.originalText = originalText;
+                        span.textContent = originalText;
+                    }
+                }
+            }
+        },
+        toggle(container, btn, itemSelector, pageSize, closeText) {
+            const allItems = this.getVisibleItems(container, itemSelector);
+            let visibleCount = parseInt(container.dataset.visibleCount, 10) || pageSize;
+            const isExpanded = container.classList.contains('is-expanded');
+            const span = btn.querySelector('span');
+            const originalText = span ? (span.dataset.originalText || span.textContent) : '';
+
+            if (isExpanded) {
+                container.classList.remove('is-expanded');
+                container.dataset.visibleCount = pageSize;
+                allItems.forEach((item, idx) => {
+                    if (idx < pageSize) {
+                        item.style.display = '';
+                        delete item.dataset.hiddenByMore;
+                    } else {
+                        item.style.display = 'none';
+                        item.dataset.hiddenByMore = 'true';
+                    }
+                });
+                if (span) span.textContent = originalText;
+                btn.classList.remove('active');
+                return;
+            }
+
+            const nextCount = Math.min(visibleCount + pageSize, allItems.length);
+            for (let i = visibleCount; i < nextCount; i++) {
+                allItems[i].style.display = '';
+                delete allItems[i].dataset.hiddenByMore;
+            }
+            container.dataset.visibleCount = nextCount;
+
+            if (nextCount >= allItems.length) {
+                container.classList.add('is-expanded');
+                if (span) span.textContent = closeText;
+                btn.classList.add('active');
+            }
         }
     },
 
@@ -1145,59 +1387,12 @@ const Eclub = {
 
         // 노출 아이템 필터링
         getVisibleItems(container) {
-            return Array.from(container.querySelectorAll('.product-item')).filter(
-                item => item.style.display !== 'none' || item.dataset.hiddenByMore === 'true'
-            );
+            return Eclub.PagingUtil.getVisibleItems(container, '.product-item');
         },
 
         // 초기 페이징 설정
         applyPaging(container) {
-            const allItems = this.getVisibleItems(container);
-            const moreWrap = this.getMoreWrapper(container);
-            const pageSize = this.PAGE_SIZE;
-
-            // 10개 이하 버튼 숨김
-            if (allItems.length <= pageSize) {
-                if (moreWrap) moreWrap.style.display = 'none';
-                container.style.maxHeight = '';
-                container.style.overflow = '';
-                container.classList.remove('is-expanded');
-                container.dataset.visibleCount = allItems.length;
-                // 숨김 해제
-                allItems.forEach(item => {
-                    delete item.dataset.hiddenByMore;
-                    item.style.display = '';
-                });
-                return;
-            }
-
-            // 초기 10개 노출
-            container.dataset.visibleCount = pageSize;
-            allItems.forEach((item, idx) => {
-                if (idx < pageSize) {
-                    item.style.display = '';
-                    delete item.dataset.hiddenByMore;
-                } else {
-                    item.style.display = 'none';
-                    item.dataset.hiddenByMore = 'true';
-                }
-            });
-
-            container.classList.add('js-initialized');
-            container.classList.remove('is-expanded');
-            container.style.maxHeight = '';
-            container.style.overflow = '';
-
-            // 버튼 상태 갱신
-            if (moreWrap) {
-                moreWrap.style.display = '';
-                const btn = moreWrap.querySelector('.btn-more');
-                if (btn) {
-                    btn.classList.remove('active');
-                    const span = btn.querySelector('span');
-                    if (span) span.textContent = '상품 더보기';
-                }
-            }
+            Eclub.PagingUtil.applyPaging(container, '.product-item', this.PAGE_SIZE, 'product-more');
         },
 
         getMoreWrapper(container) {
@@ -1210,59 +1405,14 @@ const Eclub = {
 
         // 높이 갱신 (Resize 대응)
         recalcHeight(container) {
-            const visibleCount = parseInt(container.dataset.visibleCount, 10) || this.PAGE_SIZE;
-            const visibleItems = Array.from(container.querySelectorAll('.product-item')).filter(
-                item => item.style.display !== 'none'
-            );
+            const visibleItems = Eclub.PagingUtil.getVisibleItems(container, '.product-item');
             if (visibleItems.length === 0) return;
-
             const lastItem = visibleItems[visibleItems.length - 1];
-            if (lastItem) {
-                container.style.maxHeight = '';
-            }
+            if (lastItem) container.style.maxHeight = '';
         },
 
         toggle(container, btn) {
-            const allItems = this.getVisibleItems(container);
-            const pageSize = this.PAGE_SIZE;
-            let visibleCount = parseInt(container.dataset.visibleCount, 10) || pageSize;
-            const isExpanded = container.classList.contains('is-expanded');
-            const span = btn.querySelector('span');
-
-            // 목록 축소 (10개 복원)
-            if (isExpanded) {
-                container.classList.remove('is-expanded');
-                container.dataset.visibleCount = pageSize;
-
-                allItems.forEach((item, idx) => {
-                    if (idx < pageSize) {
-                        item.style.display = '';
-                        delete item.dataset.hiddenByMore;
-                    } else {
-                        item.style.display = 'none';
-                        item.dataset.hiddenByMore = 'true';
-                    }
-                });
-
-                if (span) span.textContent = '상품 더보기';
-                btn.classList.remove('active');
-                return;
-            }
-
-            // 목록 확장 (+10개)
-            const nextCount = Math.min(visibleCount + pageSize, allItems.length);
-            for (let i = visibleCount; i < nextCount; i++) {
-                allItems[i].style.display = '';
-                delete allItems[i].dataset.hiddenByMore;
-            }
-            container.dataset.visibleCount = nextCount;
-
-            // 전체 노출 완료 처리
-            if (nextCount >= allItems.length) {
-                container.classList.add('is-expanded');
-                if (span) span.textContent = '상품닫기';
-                btn.classList.add('active');
-            }
+            Eclub.PagingUtil.toggle(container, btn, '.product-item', this.PAGE_SIZE, '상품닫기');
         },
 
         // 활성 리스트 초기화 (탭 대응)
@@ -1270,27 +1420,19 @@ const Eclub = {
             const activeList = document.getElementById(targetId);
             if (!activeList || !activeList.classList.contains('is-more')) return;
 
-            // 상태 마킹 갱신
             activeList.querySelectorAll('.product-item[data-hidden-by-more]').forEach(item => {
                 item.style.display = '';
                 delete item.dataset.hiddenByMore;
             });
-
-            requestAnimationFrame(() => {
-                this.applyPaging(activeList);
-            });
+            requestAnimationFrame(() => this.applyPaging(activeList));
         },
 
         // 정렬 초기화
         resetByCategory(container) {
-            // 마킹 해제
             container.querySelectorAll('.product-item[data-hidden-by-more]').forEach(item => {
                 delete item.dataset.hiddenByMore;
             });
-
-            requestAnimationFrame(() => {
-                this.applyPaging(container);
-            });
+            requestAnimationFrame(() => this.applyPaging(container));
         }
     },
 
@@ -1309,7 +1451,6 @@ const Eclub = {
                 if (!btn) return;
 
                 const moreWrap = btn.closest('.filter-more');
-                // 이전 형제 중 filter-list 찾기
                 const container = moreWrap?.previousElementSibling;
 
                 if (container && container.classList.contains('is-more')) {
@@ -1320,98 +1461,17 @@ const Eclub = {
         },
 
         getVisibleItems(container) {
-            return Array.from(container.querySelectorAll('li')).filter(
-                item => item.style.display !== 'none' || item.dataset.hiddenByMore === 'true'
-            );
+            return Eclub.PagingUtil.getVisibleItems(container, 'li');
         },
 
         applyPaging(container) {
-            const allItems = this.getVisibleItems(container);
-            const moreWrap = container.nextElementSibling;
             const pageSize = parseInt(container.dataset.moreLimit || '5', 10);
-
-            if (allItems.length <= pageSize) {
-                if (moreWrap && moreWrap.classList.contains('filter-more')) {
-                    moreWrap.style.display = 'none';
-                }
-                container.dataset.visibleCount = allItems.length;
-                allItems.forEach(item => {
-                    delete item.dataset.hiddenByMore;
-                    item.style.display = '';
-                });
-                return;
-            }
-
-            container.dataset.visibleCount = pageSize;
-            allItems.forEach((item, idx) => {
-                if (idx < pageSize) {
-                    item.style.display = '';
-                    delete item.dataset.hiddenByMore;
-                } else {
-                    item.style.display = 'none';
-                    item.dataset.hiddenByMore = 'true';
-                }
-            });
-
-            container.classList.add('js-initialized');
-            container.classList.remove('is-expanded');
-
-            if (moreWrap && moreWrap.classList.contains('filter-more')) {
-                moreWrap.style.display = '';
-                const btn = moreWrap.querySelector('.btn-more');
-                if (btn) {
-                    btn.classList.remove('active');
-                    const span = btn.querySelector('span');
-                    if (span) {
-                        const originalText = span.dataset.originalText || span.textContent;
-                        span.dataset.originalText = originalText;
-                        span.textContent = originalText;
-                    }
-                }
-            }
+            Eclub.PagingUtil.applyPaging(container, 'li', pageSize, 'filter-more');
         },
 
         toggle(container, btn) {
-            const allItems = this.getVisibleItems(container);
             const pageSize = parseInt(container.dataset.moreLimit || '5', 10);
-            let visibleCount = parseInt(container.dataset.visibleCount, 10) || pageSize;
-            const isExpanded = container.classList.contains('is-expanded');
-            const span = btn.querySelector('span');
-            const originalText = span ? (span.dataset.originalText || span.textContent) : '';
-
-            if (isExpanded) {
-                container.classList.remove('is-expanded');
-                container.dataset.visibleCount = pageSize;
-
-                allItems.forEach((item, idx) => {
-                    if (idx < pageSize) {
-                        item.style.display = '';
-                        delete item.dataset.hiddenByMore;
-                    } else {
-                        item.style.display = 'none';
-                        item.dataset.hiddenByMore = 'true';
-                    }
-                });
-
-                if (span) span.textContent = originalText;
-                btn.classList.remove('active');
-                return;
-            }
-
-            const nextCount = Math.min(visibleCount + pageSize, allItems.length);
-            for (let i = visibleCount; i < nextCount; i++) {
-                allItems[i].style.display = '';
-                delete allItems[i].dataset.hiddenByMore;
-            }
-            container.dataset.visibleCount = nextCount;
-
-            if (nextCount >= allItems.length) {
-                container.classList.add('is-expanded');
-                if (span) {
-                    span.textContent = '닫기'; // // 피그마 분석 기반 텍스트 변경
-                }
-                btn.classList.add('active');
-            }
+            Eclub.PagingUtil.toggle(container, btn, 'li', pageSize, '닫기');
         }
     },
 
@@ -1913,6 +1973,26 @@ const Eclub = {
                 nextBtn.classList.toggle('disabled', isLast);
                 nextBtn.disabled = isLast;
             }
+        },
+
+        bindNavButtons(list, prevBtn, nextBtn) {
+            if (!list) return null;
+            const updateBtns = () => {
+                const scrollLeft = list.scrollLeft;
+                if (prevBtn) {
+                    const isFirst = scrollLeft <= 5;
+                    prevBtn.classList.toggle('disabled', isFirst);
+                    prevBtn.disabled = isFirst;
+                }
+                if (nextBtn) {
+                    const isLast = scrollLeft + list.clientWidth >= list.scrollWidth - 5;
+                    nextBtn.classList.toggle('disabled', isLast);
+                    nextBtn.disabled = isLast;
+                }
+            };
+            updateBtns();
+            list.addEventListener('scroll', updateBtns);
+            return updateBtns;
         },
 
         resetAuto(callback) {
@@ -2566,9 +2646,7 @@ const Eclub = {
             if (Eclub.Search && Eclub.Search.hideDropdown) Eclub.Search.hideDropdown();
 
             if (this.sheet) {
-                this.sheet.classList.add('is-open');
-                this.overlay?.classList.add('is-visible');
-                document.body.classList.add('no-scroll');
+                Eclub.OverlayManager.open(this.sheet, this.overlay);
             } else if (this.container) {
                 this.container.style.display = 'block';
             }
@@ -2578,9 +2656,7 @@ const Eclub = {
 
         close() {
             if (this.sheet) {
-                this.sheet.classList.remove('is-open');
-                this.overlay?.classList.remove('is-visible');
-                document.body.classList.remove('no-scroll');
+                Eclub.OverlayManager.close(this.sheet, this.overlay);
             } else if (this.container) {
                 this.container.style.display = 'none';
             }
@@ -2632,46 +2708,20 @@ const Eclub = {
         },
 
         async loadMenu() {
-            try {
-                const response = await fetch('/eclub/assets/data/category-menu.json');
-                if (!response.ok) throw new Error('Network response was not ok');
-                this.menuData = await response.json();
-                this.renderDepth1();
+            this.menuData = await Eclub.DataLoader.getCategoryMenu();
+            if (this.menuData) {
+                Eclub.CategoryRenderUtil.renderDepth1(this.menuData, this.depth1List);
                 // 초기값으로 첫 번째 카테고리 활성화
                 if (this.menuData.length > 0) {
                     this.updateDepth2(this.menuData[0].id);
                 }
-            } catch (err) {
-                console.error('카테고리 메뉴 로드 실패:', err);
+            } else {
+                console.error('헤더 카테고리 메뉴 로드 실패');
             }
-        },
-
-        renderDepth1() {
-            this.depth1List.innerHTML = this.menuData.map(item => `
-                <li data-id="${item.id}">
-                    <a href="${item.link}">${item.name}</a>
-                </li>
-            `).join('');
         },
 
         updateDepth2(id) {
-            const data = this.menuData.find(item => item.id === id);
-            if (!data) return;
-
-            // Depth1 활성화 상태 변경
-            const items = this.depth1List.querySelectorAll('li');
-            items.forEach(li => {
-                li.classList.toggle('active', li.dataset.id === id);
-            });
-
-            // Depth2 렌더링
-            let html = `<li><a href="${data.link}" class="is-all">${data.name === '전체' ? '전체' : data.name + ' 전체'}</a></li>`; // '전체' 카테고리는 중복 방지
-            if (data.subMenu) {
-                html += data.subMenu.map(sub => `
-                    <li><a href="${sub.link}">${sub.name}</a></li>
-                `).join('');
-            }
-            this.depth2List.innerHTML = html;
+            Eclub.CategoryRenderUtil.updateDepth2(id, this.menuData, this.depth1List, this.depth2List);
         },
 
         toggle() {
@@ -2746,57 +2796,28 @@ const Eclub = {
         },
 
         async loadMenu() {
-            try {
-                const response = await fetch('/eclub/assets/data/category-menu.json');
-                if (!response.ok) throw new Error('Network response was not ok');
-                this.menuData = await response.json();
-                this.renderDepth1();
+            this.menuData = await Eclub.DataLoader.getCategoryMenu();
+            if (this.menuData) {
+                Eclub.CategoryRenderUtil.renderDepth1(this.menuData, this.depth1List);
                 // 첫 번째 카테고리 활성화
                 if (this.menuData.length > 0) {
                     this.updateDepth2(this.menuData[0].id);
                 }
-            } catch (err) {
-                console.error('모바일 카테고리 메뉴 로드 실패:', err);
+            } else {
+                console.error('모바일 카테고리 메뉴 로드 실패');
             }
-        },
-
-        renderDepth1() {
-            this.depth1List.innerHTML = this.menuData.map(item => `
-                <li data-id="${item.id}">
-                    <a href="${item.link}">${item.name}</a>
-                </li>
-            `).join('');
         },
 
         updateDepth2(id) {
-            const data = this.menuData.find(item => item.id === id);
-            if (!data) return;
-
-            // depth1 활성화 상태 변경
-            this.depth1List.querySelectorAll('li').forEach(li => {
-                li.classList.toggle('active', li.dataset.id === id);
-            });
-
-            // depth2 렌더링
-            let html = `<li><a href="${data.link}" class="is-all">${data.name === '전체' ? '전체' : data.name + ' 전체'}</a></li>`;
-            if (data.subMenu) {
-                html += data.subMenu.map(sub => `
-                    <li><a href="${sub.link}">${sub.name}</a></li>
-                `).join('');
-            }
-            this.depth2List.innerHTML = html;
+            Eclub.CategoryRenderUtil.updateDepth2(id, this.menuData, this.depth1List, this.depth2List);
         },
 
         open() {
-            this.overlay.classList.add('is-visible');
-            this.sheet.classList.add('is-open');
-            document.body.classList.add('no-scroll');
+            Eclub.OverlayManager.open(this.sheet, this.overlay);
         },
 
         close() {
-            this.sheet.classList.remove('is-open');
-            this.overlay.classList.remove('is-visible');
-            document.body.classList.remove('no-scroll');
+            Eclub.OverlayManager.close(this.sheet, this.overlay);
         }
     },
 
@@ -2812,26 +2833,8 @@ const Eclub = {
             const defaultView = searchBox.querySelector('.search-default-view');
             const autocompleteView = searchBox.querySelector('.search-autocomplete-view');
 
-            // UI 상태 업데이트
-            const updateView = () => {
-                const val = input.value.trim();
-                const hasText = val.length > 0;
-
-                // 텍스트 삭제 버튼 노출
-                if (clearBtn) {
-                    clearBtn.style.display = hasText ? 'flex' : 'none';
-                }
-
-                if (hasText) {
-                    // 초성 검색 블럭으로 전환
-                    if (defaultView) defaultView.style.display = 'none';
-                    if (autocompleteView) autocompleteView.style.display = 'block';
-                } else {
-                    // 최근검색어, 급상승 검색어로 복구
-                    if (defaultView) defaultView.style.display = 'block';
-                    if (autocompleteView) autocompleteView.style.display = 'none';
-                }
-            };
+            // UI 상태 업데이트 공통 유틸 적용
+            const updateView = Eclub.SearchUtil.bindInput(input, clearBtn, defaultView, autocompleteView);
 
             const showDropdown = () => {
                 // 브랜드관 및 카테고리 레이어 닫기
@@ -2839,7 +2842,7 @@ const Eclub = {
                 if (Eclub.HeaderCategory && Eclub.HeaderCategory.close) Eclub.HeaderCategory.close();
 
                 if (dropdown) dropdown.style.display = 'block';
-                updateView();
+                if (updateView) updateView();
             };
 
             const hideDropdown = () => {
@@ -2849,24 +2852,12 @@ const Eclub = {
             this.showDropdown = showDropdown;
             this.hideDropdown = hideDropdown;
 
-            // 이벤트 바인딩
+            // 추가 이벤트 바인딩
             if (input) {
                 input.addEventListener('focus', this.showDropdown);
                 input.addEventListener('click', (e) => {
                     e.stopPropagation();
                     this.showDropdown();
-                });
-                input.addEventListener('input', updateView);
-            }
-
-            // 입력 텍스트 전체 삭제
-            if (clearBtn) {
-                clearBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    input.value = '';
-                    input.focus();
-                    updateView();
                 });
             }
 
@@ -2884,34 +2875,8 @@ const Eclub = {
                 });
             }
 
-            // 최근 검색어 개별 삭제 (예시 및 전파 방지)
-            const deleteItems = searchBox.querySelectorAll('.btn-delete-item');
-            deleteItems.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const li = btn.closest('li');
-                    if (li) li.remove();
-
-                    // 모든 항목 삭제 시 '최근 검색어가 없습니다' 노출 로직 (추가 가능)
-                    const list = searchBox.querySelector('.recent-list');
-                    if (list && list.children.length === 0) {
-                        const noData = searchBox.querySelector('.no-data');
-                        if (noData) noData.style.display = 'block';
-                    }
-                });
-            });
-
-            // 전체 삭제 버튼
-            const deleteAllBtn = searchBox.querySelector('.btn-delete-all');
-            if (deleteAllBtn) {
-                deleteAllBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const list = searchBox.querySelector('.recent-list');
-                    if (list) list.innerHTML = '';
-                    const noData = searchBox.querySelector('.no-data');
-                    if (noData) noData.style.display = 'block';
-                });
-            }
+            // 최근 검색어 관리 공통 유틸 적용
+            Eclub.SearchUtil.bindRecentSearch(searchBox);
         }
     },
 
@@ -2929,12 +2894,13 @@ const Eclub = {
             const overlaySearchInput = searchOverlay.querySelector('.input-search-overlay');
             const overlayDefaultView = searchOverlay.querySelector('.search-default-view');
             const overlayAutocompleteView = searchOverlay.querySelector('.search-autocomplete-view');
+            const clearBtn = searchOverlay.querySelector('.btn-clear');
 
             // 오버레이 열기
             triggerInputs.forEach(input => {
                 input.addEventListener('click', (e) => {
                     e.preventDefault();
-                    searchOverlay.classList.add('open');
+                    Eclub.OverlayManager.open(searchOverlay);
 
                     // 만약 검색결과 페이지에서 클릭한 경우 기존 검색어 유지
                     if (input.classList.contains('input-search-overlay') && overlaySearchInput) {
@@ -2943,89 +2909,19 @@ const Eclub = {
                     }
 
                     if (overlaySearchInput) overlaySearchInput.focus();
-                    document.body.style.overflow = 'hidden';
                 });
             });
 
             // 오버레이 닫기
             if (overlayCloseBtn) {
                 overlayCloseBtn.addEventListener('click', () => {
-                    searchOverlay.classList.remove('open');
-                    document.body.style.overflow = '';
+                    Eclub.OverlayManager.close(searchOverlay);
                 });
             }
 
-            const clearBtn = searchOverlay.querySelector('.btn-clear');
-
-            // 입력값에 따라 뷰 전환 및 삭제 버튼 제어 (PC 로직 적용)
-            if (overlaySearchInput) {
-                const updateOverlayView = () => {
-                    const value = overlaySearchInput.value.trim();
-                    const hasText = value.length > 0;
-
-                    // 텍스트 삭제 버튼 노출 제어
-                    if (clearBtn) {
-                        clearBtn.style.display = hasText ? 'flex' : 'none';
-                    }
-
-                    if (hasText) {
-                        if (overlayDefaultView) overlayDefaultView.style.display = 'none';
-                        if (overlayAutocompleteView) overlayAutocompleteView.style.display = 'block';
-                    } else {
-                        if (overlayDefaultView) overlayDefaultView.style.display = 'block';
-                        if (overlayAutocompleteView) overlayAutocompleteView.style.display = 'none';
-                    }
-                };
-
-                overlaySearchInput.addEventListener('input', updateOverlayView);
-
-                // 삭제 버튼 클릭 이벤트
-                if (clearBtn) {
-                    clearBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        overlaySearchInput.value = '';
-                        overlaySearchInput.focus();
-                        updateOverlayView();
-                    });
-                }
-            }
-
-            // 최근 검색어 개별 삭제
-            const deleteButtons = document.querySelectorAll('.search-overlay .btn-delete-item');
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const li = this.closest('li');
-                    const list = li.closest('.recent-list');
-                    li.remove();
-
-                    if (list && list.children.length === 0) {
-                        const noData = document.createElement('div');
-                        noData.className = 'no-data';
-                        noData.textContent = '최근 검색어가 없습니다.';
-                        list.parentNode.appendChild(noData);
-                        list.remove();
-                    }
-                });
-            });
-
-            // 전체 삭제
-            const deleteAllBtn = document.querySelector('.search-overlay .btn-delete-all');
-            if (deleteAllBtn) {
-                deleteAllBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const list = document.querySelector('.search-overlay .recent-list');
-                    if (list) {
-                        const noData = document.createElement('div');
-                        noData.className = 'no-data';
-                        noData.textContent = '최근 검색어가 없습니다.';
-                        list.parentNode.appendChild(noData);
-                        list.remove();
-                    }
-                });
-            }
+            // 입력값 상태 제어 및 최근 검색어 관리 공통화
+            Eclub.SearchUtil.bindInput(overlaySearchInput, clearBtn, overlayDefaultView, overlayAutocompleteView);
+            Eclub.SearchUtil.bindRecentSearch(searchOverlay);
         }
     },
 
@@ -3067,35 +2963,18 @@ const Eclub = {
             const nextBtn = area.querySelector('.btn-slide-next');
             const itemsPerPage = 5;
 
-            const updateBtns = () => {
-                const scrollLeft = list.scrollLeft;
-                const maxScroll = list.scrollWidth - list.clientWidth;
-
-                if (prevBtn) {
-                    const isFirst = scrollLeft <= 5;
-                    prevBtn.classList.toggle('disabled', isFirst);
-                    prevBtn.disabled = isFirst;
-                }
-                if (nextBtn) {
-                    const isLast = scrollLeft + list.clientWidth >= list.scrollWidth - 5;
-                    nextBtn.classList.toggle('disabled', isLast);
-                    nextBtn.disabled = isLast;
-                }
-            };
+            const updateBtns = Eclub.Slider.bindNavButtons(list, prevBtn, nextBtn);
 
             // 요소가 화면에 나타날 때 (display: block 등) 감지
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    if (entry.isIntersecting && updateBtns) {
                         updateBtns();
                     }
                 });
             }, { threshold: 0.1 });
 
             observer.observe(area);
-
-            updateBtns();
-            list.addEventListener('scroll', updateBtns);
 
             if (prevBtn) prevBtn.onclick = () => Eclub.Slider.scroll(list, 'left', itemsPerPage);
             if (nextBtn) nextBtn.onclick = () => Eclub.Slider.scroll(list, 'right', itemsPerPage);
@@ -3154,24 +3033,7 @@ const Eclub = {
             const nextBtn = document.querySelector('.add-cart-header .btn-slide-next');
             const itemsPerPage = 4;
 
-            const updateBtns = () => {
-                const scrollLeft = list.scrollLeft;
-                const maxScroll = list.scrollWidth - list.clientWidth;
-
-                if (prevBtn) {
-                    const isFirst = scrollLeft <= 5;
-                    prevBtn.classList.toggle('disabled', isFirst);
-                    prevBtn.disabled = isFirst;
-                }
-                if (nextBtn) {
-                    const isLast = scrollLeft + list.clientWidth >= list.scrollWidth - 5;
-                    nextBtn.classList.toggle('disabled', isLast);
-                    nextBtn.disabled = isLast;
-                }
-            };
-
-            updateBtns();
-            list.addEventListener('scroll', updateBtns);
+            Eclub.Slider.bindNavButtons(list, prevBtn, nextBtn);
 
             if (prevBtn) prevBtn.onclick = () => Eclub.Slider.scroll(list, 'left', itemsPerPage);
             if (nextBtn) nextBtn.onclick = () => Eclub.Slider.scroll(list, 'right', itemsPerPage);

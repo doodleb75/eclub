@@ -4132,7 +4132,6 @@ body {
   right: 1.25rem;
   width: 4.625rem;
   background-color: #ffffff;
-  border: 0.0625rem solid #e5e5e5;
   z-index: 1000;
   text-align: center;
   background: #f8f9fa;
@@ -5483,10 +5482,19 @@ body {
   border-color: #ff5447;
   font-weight: 700;
 }
-.main-page-wrapper .category-best-section .product-list,
-.main-page-wrapper .customer-purchase-section .product-list,
-.main-page-wrapper .customer-zone-section .product-list,
-.main-page-wrapper .customer-recommend-section .product-list {
+.main-page-wrapper .category-best-section .product-list.active,
+.main-page-wrapper .customer-purchase-section .product-list.active,
+.main-page-wrapper .customer-zone-section .product-list.active,
+.main-page-wrapper .customer-recommend-section .product-list.active {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  row-gap: 2.5rem;
+}
+.main-page-wrapper .category-best-section .product-list:not(.daily-product):not(.weekly-product),
+.main-page-wrapper .customer-purchase-section .product-list:not(.daily-product):not(.weekly-product),
+.main-page-wrapper .customer-zone-section .product-list:not(.daily-product):not(.weekly-product),
+.main-page-wrapper .customer-recommend-section .product-list:not(.daily-product):not(.weekly-product) {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1.25rem;
