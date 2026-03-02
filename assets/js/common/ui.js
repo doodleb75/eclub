@@ -936,6 +936,26 @@ const Eclub = {
                 }
             });
 
+            // 선택 삭제 버튼 핸들러 추가 (PC/모바일 공통)
+            const deleteButtons = document.querySelectorAll('.btn-delete-selected, .btn-select-action');
+            deleteButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const checkedItems = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]:checked');
+
+                    if (checkedItems.length === 0) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation(); // Modal.js의 전역 클릭 이벤트를 중단시킴
+
+                        // 모바일인 경우 너비 조절 (필요시)
+                        const modalWidth = window.innerWidth < 768 ? '80%' : '320px';
+
+                        Modal.open('/common/components/modal/modal-alert.html', {
+                            width: modalWidth
+                        });
+                    }
+                });
+            });
+
             // 초기 상태 업데이트
             this.updateDeleteButtonState();
         },
@@ -961,13 +981,21 @@ const Eclub = {
         },
 
         updateDeleteButtonState() {
-            const btn = document.querySelector('.btn-delete-selected, .btn-select-action');
-            if (btn) {
-                const checkedCount = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]:checked').length;
+            const pcBtn = document.querySelector('.btn-delete-selected');
+            const moBtn = document.querySelector('.btn-select-action');
+            const checkedCount = document.querySelectorAll('.cart-item .item-check input[type="checkbox"]:checked').length;
+
+            // PC: 버튼을 비활성화하지 않고 클릭 시 알림 로직으로 처리하기 위해 disabled 제거 유지
+            if (pcBtn) {
+                pcBtn.removeAttribute('disabled');
+            }
+
+            // Mobile: 선택된 상품이 없으면 버튼 비활성화
+            if (moBtn) {
                 if (checkedCount > 0) {
-                    btn.removeAttribute('disabled');
+                    moBtn.removeAttribute('disabled');
                 } else {
-                    btn.setAttribute('disabled', '');
+                    moBtn.setAttribute('disabled', '');
                 }
             }
         },
