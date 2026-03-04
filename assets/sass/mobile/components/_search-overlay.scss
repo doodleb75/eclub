@@ -390,4 +390,49 @@
             }
         }
     }
+
+    // 검색상품 없을 때 display 설정 필요.
+
+    .search-empty-view {
+        font-size: rem(13);
+        color: $gray-900;
+        line-height: 1.2;
+        margin-top: rem(16);
+        padding: rem(12);
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .empty-title {
+            font-weight: $fw-semibold;
+            margin-bottom: rem(12);
+
+            span {
+                color: $primary-red;
+            }
+        }
+
+        .empty-subtitle {
+            font-size: rem(12);
+            font-weight: $fw-medium;
+            line-height: 1.5;
+
+        }
+
+        .product-wrapper {
+            margin-top: rem(40);
+        }
+
+        .product-title {
+            text-align: center;
+            padding: 0.625rem 0;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #222222;
+            margin-left: -1rem;
+            margin-right: -1rem;
+            border-bottom: 1px solid #222222;
+            margin-bottom: 0.75rem;
+        }
+
+    }
 }

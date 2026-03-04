@@ -100,6 +100,8 @@
                     }
                 }
             }
+
+
         }
     }
 
@@ -110,7 +112,7 @@
 
         .sidebar-menu {
             >li {
-                border-bottom: 1px solid $gray-150;
+                // border-bottom: 1px solid $gray-150;
 
                 >a {
                     display: block;
@@ -148,6 +150,73 @@
 
                         &:hover {
                             background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // mypage 메뉴
+    .mypage-menu {
+        padding-top: rem(20);
+
+        // 메인 타이틀 (마이페이지)
+        .menu-main-title {
+            font-size: rem(24);
+            font-weight: $fw-bold;
+            color: $gray-999;
+            margin-bottom: rem(34);
+            line-height: 1.2;
+        }
+
+        // 하위 섹션 그룹 리스트
+        .menu-section-list {
+
+            // 섹션 단위 (주문내역, 혜택정보 등)
+            .menu-section {
+                margin-bottom: rem(4);
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            // 섹션 타이틀
+            .menu-section-title {
+                font-size: rem(13);
+                font-weight: $fw-medium;
+                color: $gray-900;
+                padding: rem(8) rem(12);
+                border-bottom: 1px solid $gray-150;
+            }
+
+            // 상세 메뉴 리스트
+            .menu-sub-list {
+                margin-bottom: 0;
+
+                .menu-item {
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .menu-link {
+                        display: block;
+                        font-size: rem(13);
+                        color: $gray-700;
+                        line-height: 1.5;
+                        padding: rem(8) rem(0) rem(8) rem(32);
+                        transition: background-color 0.2s, color 0.2s;
+
+                        &:hover {
+                            color: $gray-999;
+                        }
+
+                        &.active {
+                            background-color: #222;
+                            color: #fff;
+                            font-weight: $fw-medium;
                         }
                     }
                 }
@@ -775,6 +844,11 @@
                             &.type-direct {
                                 background-color: $color-badge-direct-bg;
                                 color: $color-badge-direct-text;
+                            }
+
+                            &.type-appliance {
+                                background-color: $color-badge-appliance-bg;
+                                color: $color-badge-appliance-text;
                             }
                         }
                     }

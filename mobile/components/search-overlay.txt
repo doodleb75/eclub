@@ -20,6 +20,7 @@
             </a>
         </div>
     </div>
+    <!-- 검색결과 defalut : search-empty-view toggle 처리-->
     <div class="search-overlay-content">
         <div class="search-dropdown">
             <!-- 기본 뷰: 최근 검색어 & 급상승 검색어 -->
@@ -152,4 +153,538 @@
             </div>
         </div>
     </div>
+
+    <!-- 검색상품 없음 -->
+    <div class="search-empty-view " style="display: none;">
+        <div class="empty-layout">
+            <p class="empty-title"><span>enqn</span> 상품이 없습니다.</p>
+            <p class="empty-subtitle">
+            다시 검색해보세요! 조회된 상품이 없습니다. <br>
+            띄어쓰기 또는 넓은 의미의 단어를 사용해보세요 상품이 품절되었을 경우 검색되지 않을 수도 있습니다.
+            </p>
+        </div>
+        <div class="product-wrapper">           
+            
+            <div class="product-title">
+                <span class="point-red">탄산음료</span> 판매량 베스트 상품
+            </div>
+
+            <div class="product-list is-more js-initialized" data-more-limit="10">
+                <!-- Product Item 1 -->
+                <div class="product-item" data-sales="943" data-purchase="379" data-new="5" data-price="28600" data-delivery-type="cold" data-delivery-center="tc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+                            <img src="/assets/images/main/time-sales/time_product_02.png" alt="비비고 소고기 장조림" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <!-- 쿠폰 날짜 제거 -->
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-frozen">냉동</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 2 -->
+                <div class="product-item" data-sales="120" data-purchase="45" data-new="1" data-price="15000" data-delivery-type="room" data-delivery-center="dc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb02.png" alt="대용량 칵테일 새우살" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 3 -->
+                <div class="product-item" data-sales="850" data-purchase="210" data-new="0" data-price="32000" data-delivery-type="frozen" data-delivery-center="tc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb03.png" alt="싱싱한 완도 전복" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 4 -->
+                <div class="product-item" data-sales="430" data-purchase="120" data-new="8" data-price="25000" data-delivery-type="cold" data-delivery-center="tc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb04.png" alt="명품 손질 생선살" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 5 -->
+                <div class="product-item" data-sales="670" data-purchase="310" data-new="2" data-price="42000" data-delivery-type="room" data-delivery-center="dc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb05.png" alt="프리미엄 생연어회" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 6 -->
+                <div class="product-item" data-sales="210" data-purchase="80" data-new="10" data-price="19000" data-delivery-type="frozen" data-delivery-center="tc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb06.png" alt="명품 손질 생선살" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 7 -->
+                <div class="product-item" data-sales="990" data-purchase="450" data-new="3" data-price="28000" data-delivery-type="cold" data-delivery-center="tc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb07.png" alt="프리미엄 생연어회" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item" data-sales="50" data-purchase="10" data-new="9" data-price="12000" data-delivery-type="room" data-delivery-center="dc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/time-sales/time_product_02.png" alt="비비고 소고기 장조림" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <!-- 쿠폰 날짜 제거 -->
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item" data-sales="720" data-purchase="180" data-new="4" data-price="38000" data-delivery-type="frozen" data-delivery-center="tc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb02.png" alt="대용량 칵테일 새우살" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item" data-sales="340" data-purchase="95" data-new="7" data-price="22000" data-delivery-type="cold" data-delivery-center="dc">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb03.png" alt="싱싱한 완도 전복" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 11 -->
+                <div class="product-item" data-sales="560" data-purchase="240" data-new="1" data-price="31000" data-delivery-type="room" data-delivery-center="tc" data-hidden-by-more="true" style="display: none;">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/time-sales/time_product_02.png" alt="비비고 소고기 장조림" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <!-- 쿠폰 날짜 제거 -->
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Item 12 -->
+                <div class="product-item" data-sales="150" data-purchase="30" data-new="6" data-price="45000" data-delivery-type="frozen" data-delivery-center="dc" data-hidden-by-more="true" style="display: none;">
+                    <div class="image-box">
+                        <a href="javascript:void(0);" class="link-thumb">
+
+                            <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb02.png" alt="대용량 칵테일 새우살" class="prod-img">
+                        </a>
+                    </div>
+                    <div class="control-bar">
+                        <div class="qty-control">
+                            <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
+                            <input type="text" value="1" min="0" aria-label="수량">
+                            <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
+                        </div>
+                        <div class="action-btns">
+                            <button type="button" class="btn-cart"><i class="icon-cart-main"></i></button>
+                            <button type="button" class="btn-heart"><i class="icon-heart-main"></i></button>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <div class="prod-name">
+                            <a href="javascript:void(0);" class="link-name">
+                                <span class="badge-type type-cold">저온</span> 유한킴벌리 크리넥스 데코&amp;소프트 30m*30롤
+                            </a>
+                        </div>
+                        <div class="prod-price-info">
+                            입수 12 | 개당 950원 | 행사가 900
+                        </div>
+                        <div class="member-price-box">
+                            <i class="icon-coupon-tag"></i>
+                            회원혜택가격 773원
+                            <a href="javascript:void(0);" class="unit-price btn-info" data-popover-template="discount"><i class="icon-info"></i></a>
+                        </div>
+                        <div class="main-price">
+                            <span class="discount">19% 할인</span>
+                            <span class="price">36,800원</span>
+                        </div>
+                        <div class="bottom-info">
+                            수량릴레이 | 프링글스 26년 전점 행사
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
 </div>

@@ -5,9 +5,9 @@
   "main": "pc/index.html",
   "scripts": {
     "sass": "sass assets/sass:assets/css --no-source-map",
-    "watch": "sass --watch assets/sass:assets/css --no-source-map",
-    "serve": "live-server --port=8081 --host=127.0.0.1 --open=pc/index.html",
-    "dev": "concurrently \"npm run watch\" \"npm run serve\""
+    "watch:sass": "sass --watch assets/sass:assets/css --no-source-map",
+    "dev": "concurrently --kill-others \"npm run watch:sass\" \"webpack serve\"",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "babel-loader": "^9.1.3",
     "concurrently": "^8.2.2",
     "live-server": "^1.2.2",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
