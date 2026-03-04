@@ -8129,7 +8129,7 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   color: #111111;
-  margin-bottom: 2.125rem;
+  margin-bottom: 0.75rem;
   line-height: 1.2;
 }
 .category-page-layout .mypage-menu .menu-section-list .menu-section {
@@ -8305,6 +8305,11 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+.category-page-layout .category-main .category-header .title-breadcrumb .icon-nav-back {
+  width: 0.4483125rem;
+  height: 0.8750625rem;
+  transform: scaleX(-1);
 }
 .category-page-layout .category-main .category-header .title-search {
   font-size: 1.5rem;
@@ -9196,8 +9201,8 @@ body {
 .mypage-section.profile-section .profile-info-side .auth-toggle-wrap .switch-control .btn-switch::before {
   content: "";
   display: block;
-  width: 0.8125rem;
-  height: 0.8125rem;
+  width: 0.75rem;
+  height: 0.75rem;
   background-color: #ffffff;
   border-radius: 50%;
   flex-shrink: 0;
@@ -9527,6 +9532,96 @@ body {
   font-weight: 500;
   line-height: 2;
   word-break: keep-all;
+}
+
+.order-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid #222222;
+  margin-bottom: 1.25rem;
+  background-color: #ffffff;
+}
+.order-table-header .order-info-list {
+  display: flex;
+  align-items: center;
+}
+.order-table-header .order-info-list .order-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+.order-table-header .order-info-list .order-info-item:not(:last-child)::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0.75rem;
+  background-color: #d9d9d9;
+  margin: 0 1rem;
+}
+.order-table-header .order-info-list .order-info-item .info-label {
+  color: #999999;
+  font-weight: 400;
+}
+.order-table-header .order-info-list .order-info-item .info-value {
+  color: #222222;
+  font-weight: 500;
+}
+.order-table-header .order-total-count {
+  font-size: 0.8125rem;
+  color: #666666;
+  line-height: 1.4;
+}
+.order-table-header .order-total-count strong {
+  font-weight: 700;
+  color: #222222;
+}
+
+.order-list-controls {
+  display: flex;
+  align-items: center;
+  padding: 0.625rem 1rem 0.625rem 0.5rem;
+}
+.order-list-controls .control-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.order-list-controls .control-left .checkbox-container .text {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #999999;
+}
+.order-list-controls .control-left .btn-add-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.25rem 1rem;
+  height: 1.75rem;
+  background-color: #ffffff;
+  border: 1px solid #999999;
+  border-radius: 0.125rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #999999;
+}
+.order-list-controls .control-left .btn-add-cart .icon-chevron-right {
+  display: inline-block;
+  width: 0.3125rem;
+  height: 0.5625rem;
+  background-color: #999999;
+  mask-image: url("../../icons/chevron-right.svg");
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("../../icons/chevron-right.svg");
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
 }
 
 #wrap {

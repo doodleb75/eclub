@@ -200,7 +200,7 @@
                 <ul class="main-menu">
                     <li><a href="#">오늘의 핫딜</a></li>
                     <li><a href="#">신상품</a></li>
-                    <li><a href="/eclub/pc/pages/category.html">베스트</a></li>
+                    <li><a href="/eclub/pc/pages/category-best.html">베스트</a></li>
                     <li>
                         <a href="javascript:void(0);" class="brand-toggle">브랜드관</a>
                         <!-- 브랜드관 레이어 -->

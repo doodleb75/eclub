@@ -251,8 +251,8 @@
                         &::before {
                             content: '';
                             display: block;
-                            width: rem(13);
-                            height: rem(13);
+                            width: rem(12);
+                            height: rem(12);
                             background-color: $white;
                             border-radius: 50%;
                             flex-shrink: 0;
@@ -675,6 +675,116 @@
                 font-weight: $fw-medium;
                 line-height: 2;
                 word-break: keep-all;
+            }
+        }
+    }
+
+}
+
+
+// 주문내역 조회
+
+// 주문 상세 서브헤더
+.order-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: rem(10) rem(12);
+    border-bottom: 1px solid $gray-900;
+    margin-bottom: rem(20);
+    background-color: $white;
+
+    .order-info-list {
+        display: flex;
+        align-items: center;
+
+        .order-info-item {
+            display: flex;
+            align-items: center;
+            gap: rem(8);
+            font-size: rem(13);
+            line-height: 1.4;
+
+            // 구분선
+            &:not(:last-child)::after {
+                content: '';
+                display: inline-block;
+                width: 1px;
+                height: rem(12);
+                background-color: $gray-300;
+                margin: 0 rem(16);
+            }
+
+            .info-label {
+                color: $gray-600;
+                font-weight: $fw-regular;
+            }
+
+            .info-value {
+                color: $gray-900;
+                font-weight: $fw-medium;
+            }
+        }
+    }
+
+    .order-total-count {
+        font-size: rem(13);
+        color: $gray-700;
+        line-height: 1.4;
+
+        strong {
+            font-weight: $fw-bold;
+            color: $gray-900;
+        }
+    }
+}
+
+// 주문내역 리스트 컨트롤 영역
+.order-list-controls {
+    display: flex;
+    align-items: center;
+    padding: rem(10) rem(16) rem(10) rem(8);
+
+    .control-left {
+        display: flex;
+        align-items: center;
+        gap: rem(16);
+
+        .checkbox-container {
+            .text {
+                font-size: rem(13);
+                font-weight: $fw-regular;
+                color: $gray-600;
+            }
+        }
+
+        .btn-add-cart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: rem(8);
+            padding: rem(4) rem(16);
+            height: rem(28);
+            background-color: $white;
+            border: 1px solid $gray-600;
+            border-radius: rem(2);
+            font-size: rem(13);
+            font-weight: $fw-semibold;
+            color: $gray-600;
+
+            .icon-chevron-right {
+                display: inline-block;
+                width: rem(5);
+                height: rem(9);
+                background-color: $gray-600;
+                mask-image: url('#{$icon-path}/chevron-right.svg');
+                mask-size: contain;
+                mask-position: center;
+                mask-repeat: no-repeat;
+                -webkit-mask-image: url('#{$icon-path}/chevron-right.svg');
+                -webkit-mask-size: contain;
+                -webkit-mask-position: center;
+                -webkit-mask-repeat: no-repeat;
             }
         }
     }

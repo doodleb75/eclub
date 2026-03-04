@@ -17,8 +17,9 @@ const Modal = (() => {
         document.body.appendChild(overlay);
         wrap = overlay.querySelector('.modal-wrap');
 
+        // 배경 클릭 시 닫기 (옵션에 따라 처리)
         overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) close();
+            if (e.target === overlay && overlay.dataset.closeOnOverlay !== 'false') close();
         });
 
         overlay.addEventListener('click', (e) => {
@@ -105,8 +106,16 @@ const Modal = (() => {
             }
 
             overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden'; // 모바일 대응
+            
+            // 옵션 저장: 스크롤 잠금 (기본값: true)
+            overlay.dataset.lockScroll = options.lockScroll !== false ? 'true' : 'false';
+            if (options.lockScroll !== false) {
+                document.body.style.overflow = 'hidden';
+                document.documentElement.style.overflow = 'hidden'; // 모바일 대응
+            }
+
+            // 옵션 저장: 배경 클릭 시 닫기 (기본값: true)
+            overlay.dataset.closeOnOverlay = options.closeOnOverlay !== false ? 'true' : 'false';
 
             // 스크립트 실행
             contentArea.querySelectorAll('script').forEach(oldScript => {
@@ -124,8 +133,12 @@ const Modal = (() => {
     const close = () => {
         if (!overlay) return;
         overlay.classList.remove('active');
-        document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
+        
+        // 스크롤 잠금이 설정된 경우만 해제 (기본적으로 초기화)
+        if (overlay.dataset.lockScroll !== 'false') {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        }
 
         // 대기 중인 타이머 제거
         if (closeTimer) clearTimeout(closeTimer);
@@ -151,6 +164,8 @@ document.addEventListener('click', (e) => {
         Modal.open(trigger.dataset.modalUrl, {
             width: trigger.dataset.modalWidth || '500px',
             height: trigger.dataset.modalHeight,
+            lockScroll: trigger.dataset.modalLockScroll !== 'false',
+            closeOnOverlay: trigger.dataset.modalCloseOnOverlay !== 'false',
             trigger
         });
     }
