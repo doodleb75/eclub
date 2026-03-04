@@ -8,6 +8,11 @@
     text-align: center;
 
 
+    &.red-banner {
+        background-color: $primary-red;
+        margin-bottom: rem(48);
+    }
+
     .banner-content {
         color: $white;
         font-size: rem(13); // PC(14px) 대비 축소

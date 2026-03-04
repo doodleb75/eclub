@@ -12,9 +12,10 @@ header {
         margin-bottom: rem(-169); // 콘텐츠를 헤더 바로 아래에 붙임
     }
 
-    // 메인 페이지: 전체 헤더가 상단에 Sticky로 계속 유지되어야 함
+    // 메인 페이지 & 신상품 페이지: 전체 헤더가 상단에 Sticky로 계속 유지되어야 함
     &.main-page,
-    .main-page & {
+    .main-page &,
+    .new-product & {
         position: sticky;
         top: rem(-50);
         min-height: auto;
@@ -40,6 +41,7 @@ header {
 
         &.header-gnb {
             height: rem(41);
+            padding: 0; // 화살표가 있는 GNB는 padding을 자식 수준에서 제어
         }
 
         &.header-sub,
@@ -58,36 +60,60 @@ header {
     // Row 2: GNB (메인 전용)
     .header-gnb {
         display: none; // 기본 숨김
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+        position: relative; // 화살표 배치를 위한 기준점
+        background: $white;
+        z-index: 10;
 
         .main-page & {
             display: flex;
+            align-items: center;
+        }
+
+        // 화살표 버튼 (좌우 여백(벽) 역할)
+        .btn-gnb-arrow {
+            position: absolute;
+            top: 0;
+            width: rem(36); // 이미지의 마킹 너비 고려
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $white; // 메뉴 텍스트를 가리는 마스크 역할
+            z-index: 5;
+            padding: 0;
+
+            i {
+                font-size: rem(20);
+                color: $gray-900;
+            }
+
+            &.btn-prev {
+                left: 0;
+                box-shadow: 10px 0 10px -5px $white; // 살짝 겹칠 때 부드럽게 (선택사항)
+            }
+
+            &.btn-next {
+                right: 0;
+                box-shadow: -10px 0 10px -5px $white;
+            }
         }
 
         .gnb-list {
+            flex: 1;
             display: flex;
-            padding-left: rem(12);
+            padding: 0 rem(18); // 화살표 너비만큼 패딩을 주어 시작 지점 확보
             gap: rem(12);
-            min-width: 100%;
-            width: fit-content;
-            justify-content: center;
-            height: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             li {
                 flex-shrink: 0;
-
-                &:last-child {
-                    padding-right: rem(12);
-                }
 
                 a {
                     display: block;

@@ -962,12 +962,32 @@ const Eclub = {
 
         // 카테고리 로직 (평면 리스트)
         initCategory(container, master) {
-            const items = container.querySelectorAll('.product-item:not(.sold-out):not(.order-soon) .item-check input[type="checkbox"]');
+            master.addEventListener('change', (e) => {
+                const isChecked = e.target.checked;
+                const items = Array.from(container.querySelectorAll('.product-item:not(.sold-out):not(.order-soon)'))
+                                   .filter(item => item.style.display !== 'none')
+                                   .map(item => item.querySelector('.item-check input[type="checkbox"]'))
+                                   .filter(cb => cb);
+                items.forEach(cb => cb.checked = isChecked);
+                this.updateAddCartButtonState();
+            });
 
-            this.bindMasterCheckbox(master, items, () => this.updateAddCartButtonState());
+            container.addEventListener('change', (e) => {
+                if (e.target.matches('.product-item .item-check input[type="checkbox"]')) {
+                    const items = Array.from(container.querySelectorAll('.product-item:not(.sold-out):not(.order-soon)'))
+                                       .filter(item => item.style.display !== 'none')
+                                       .map(item => item.querySelector('.item-check input[type="checkbox"]'))
+                                       .filter(cb => cb);
+                    if (items.length > 0) {
+                        master.checked = items.every(cb => cb.checked);
+                    } else {
+                        master.checked = false;
+                    }
+                    this.updateAddCartButtonState();
+                }
+            });
 
             // 초기 상태 업데이트
-            master.checked = items.length > 0 && Array.from(items).every(cb => cb.checked);
             this.updateAddCartButtonState();
         },
 
@@ -1022,7 +1042,9 @@ const Eclub = {
         updateAddCartButtonState() {
             const btn = document.querySelector('.category-filter-bar .btn-add-cart');
             if (btn) {
-                const checkedCount = document.querySelectorAll('.product-item .item-check input[type="checkbox"]:checked').length;
+                const checkedCount = Array.from(document.querySelectorAll('.product-item:not(.sold-out):not(.order-soon)'))
+                                          .filter(item => item.style.display !== 'none' && item.querySelector('.item-check input[type="checkbox"]:checked'))
+                                          .length;
                 if (checkedCount > 0) {
                     btn.classList.add('active'); // active 상태 표시
                     btn.removeAttribute('disabled');
@@ -1234,7 +1256,7 @@ const Eclub = {
                     // 부모 헤더 강조
                     const parentLi = subLink.closest('.has-sub');
                     if (parentLi) {
-                        const parentHeader = parentLi.querySelector('> a');
+                        const parentHeader = parentLi.querySelector(':scope > a');
                         if (parentHeader) parentHeader.classList.add('active-header');
                     }
                 }
@@ -3019,8 +3041,12 @@ const Eclub = {
                 if (!btn) return;
                 e.preventDefault();
 
-                // 체크된 product-item 수집 (품절/주문불가 제외)
-                const checked = document.querySelectorAll('.product-list .product-item:not(.sold-out):not(.order-soon) .item-check input[type="checkbox"]:checked');
+                // 체크된 product-item 수집 (품절/주문불가 제외 및 숨김 항목 제외, 모달 내부 상품 제외)
+                const checkedInputs = Array.from(document.querySelectorAll('.product-list:not(.add-cart-list) .product-item:not(.sold-out):not(.order-soon)'))
+                                           .filter(item => item.style.display !== 'none' && item.querySelector('.item-check input[type="checkbox"]:checked'))
+                                           .map(item => item.querySelector('.item-check input[type="checkbox"]:checked'));
+                const checked = checkedInputs.filter(Boolean);
+
                 if (checked.length === 0) {
                     Modal.open('/eclub/common/components/modal/modal-alert.html', { width: '400px' });
                     return;
@@ -3040,6 +3066,8 @@ const Eclub = {
         populateItems(checkedInputs) {
             const list = document.querySelector('.add-cart-list');
             if (!list) return;
+
+            list.innerHTML = ''; // 기존 복제된 자식들 지우기
 
             checkedInputs.forEach(input => {
                 const item = input.closest('.product-item');

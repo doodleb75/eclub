@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: rem(4) 0 rem(16);
+    margin: rem(4) 0 rem(0);
     height: rem(36);
     border: rem(1) solid $gray-200;
 
@@ -63,9 +63,9 @@
     top: 0; // 헤더 위치에 정확히 맞춤
     z-index: 5;
     background-color: $white;
-    box-shadow: 0 rem(2) rem(4) rgba($black, 0.05); // 상단 고정 시 하단에만 아주 얇게 그림자
+    // box-shadow: 0 rem(2) rem(4) rgba($black, 0.05); // 상단 고정 시 하단에만 아주 얇게 그림자
     padding-top: rem(12); // 내부 여백으로 상단 간격 확보
-    padding-bottom: rem(4);
+    padding-bottom: rem(12);
 
     .related-search {
         display: flex;
@@ -115,38 +115,50 @@
     }
 
     .mobile-filter-row {
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: rem(6);
+        margin-bottom: 0 !important;
+    }
 
-            .type-btn {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                height: rem(21);
-                padding: 0 rem(10);
-                border: rem(1) solid $gray-200;
-                border-radius: $radius-sm;
-                font-size: $fs-12;
-                color: $gray-700;
-                background-color: $white;
-                cursor: pointer;
+    &+.category-breadcrumb-bar .result-re-search {
+        padding-top: rem(0) !important;
+        margin-top: rem(0) !important;
+    }
+}
 
-                input {
-                    display: none;
-                }
 
-                &.active {
-                    border-color: $gray-900;
-                    color: $gray-900;
-                    font-weight: $fw-bold;
-                }
+.mobile-filter-row {
+    margin-bottom: rem(12);
 
-                &.border-black {
-                    border-color: $gray-900;
-                    color: $gray-900;
-                }
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(6);
+
+        .type-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: rem(21);
+            padding: 0 rem(10);
+            border: rem(1) solid $gray-200;
+            border-radius: $radius-sm;
+            font-size: $fs-12;
+            color: $gray-700;
+            background-color: $white;
+            cursor: pointer;
+
+            input {
+                display: none;
+            }
+
+            &.active {
+                border-color: $gray-900;
+                color: $gray-900;
+                font-weight: $fw-bold;
+            }
+
+            &.border-black {
+                border-color: $gray-900;
+                color: $gray-900;
             }
         }
     }
@@ -261,6 +273,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-top: rem(8);
         margin-bottom: rem(12);
 
         .total-count {
@@ -525,4 +538,78 @@
             text-align: center;
         }
     }
+}
+
+// 카테고리 페이지만의 특별 Sticky 규칙
+body[data-page-id="category"] {
+    .header {
+        .header-gnb {
+            // border-bottom: rem(1) solid $gray-200; // 디자인상 구분선 추가
+
+            &.is-pushed {
+                transform: translateY(0) !important; // 필터 sticky 시 Header push 방지
+                // box-shadow: 0 rem(2) rem(4) rgba($black, 0.05); // 상단 고정 시 그림자 추가
+            }
+        }
+    }
+
+    .sticky-filter-area {
+        top: rem(41) !important; // GNB(41px) 바로 아래 붙도록 설정
+        padding: rem(12) rem(0); // 디자인 여백 조정
+        border-bottom: rem(1) solid $gray-100;
+
+        .breadcrumb-nav {
+            position: static; // 부모가 sticky이므로 자신은 정적으로
+            height: rem(40);
+            margin: 0;
+            box-shadow: none;
+            padding: 0 rem(12);
+            justify-content: space-between;
+
+            .breadcrumb-select {
+                flex: 1;
+                text-align: center;
+
+                .select-label {
+                    width: 100%;
+                    font-size: $fs-14;
+                    font-weight: $fw-regular;
+                    color: $gray-900;
+
+                    .icon-nav-back {
+                        width: rem(18);
+                        height: rem(12);
+                        transform: rotate(180deg);
+                        background: $gray-600;
+                    }
+                }
+            }
+
+            .icon-down-bullet {
+                width: rem(12);
+                height: rem(6);
+                @include icon-mask('#{$icon-path}/icon-down-bullet.svg', rem(12));
+                background-color: $gray-700;
+            }
+        }
+
+        &.category {
+            top: 0 !important;
+        }
+    }
+}
+
+// 신상품 페이지
+.new-product {
+    .header {
+        top: -90px !important;
+    }
+
+    /* .header-sub.is-pushed {
+        transform: translateY(0) !important;
+    }
+
+    &[data-page-id="category"] .sticky-filter-area.category {
+        top: rem(50) !important; 
+    } */
 }

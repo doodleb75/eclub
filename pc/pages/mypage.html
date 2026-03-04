@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 카테고리">
+    <title>마이페이지 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/eclub/assets/css/pc/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="mypage" data-page-id="mypage">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/eclub/pc/components/header.txt"></div>
+
+        <main id="container">
+            <!-- 카테고리 메인 레이아웃 -->
+            <div class="container category-page-layout">
+                <!-- 좌측 사이드바: 카테고리 메뉴 (임시) -->
+                <aside class="exhibition-sidebar">
+                    <ul class="sidebar-menu mypage-menu">
+                        <li class="has-sub">
+                            <h3 class="menu-main-title">마이페이지</h3>
+                            <ul class="menu-section-list">
+                                <li class="menu-section">
+                                    <h4 class="menu-section-title">주문내역</h4>
+                                    <ul class="menu-sub-list">
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                주문내역조회(영수증)
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                당일배송 조회
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                배송상품 내역
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                미납상품 조회
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                취소/환불 내역
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                오배송 조회
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                직납배송 조회
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-section">
+                                    <h4 class="menu-section-title">혜택정보</h4>
+                                    <ul class="menu-sub-list">
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                가용포인트
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                당월 장려금
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                쿠폰
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                회원등급 안내
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                지인추천 내역
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-section">
+                                    <h4 class="menu-section-title">활동정보</h4>
+                                    <ul class="menu-sub-list">
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                자주구매 상품
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                장바구니
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-section">
+                                    <h4 class="menu-section-title">나의정보</h4>
+                                    <ul class="menu-sub-list">
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                회원정보 수정
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);" class="menu-link">
+                                                문의하기 / 문의내역
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
+
+                <!-- 중앙/우측 컨텐츠 영역 -->
+                <div class="category-main">
+                    <div class="mypage-content-wrap">
+                        <!-- 1. 프로필 영역 -->
+                        <div class="mypage-section profile-section">
+                            <div class="profile-container">
+                                <!-- 좌측 프로필 정보 -->
+                                <div class="profile-info-side">
+                                    <div class="user-grade-row">
+                                        <span class="grade-text">LV.2 브론즈</span>
+                                    </div>
+                                    <div class="user-name-row">
+                                        <span class="user-name">이승규</span>
+                                        <span class="join-date">(가입일: 2014월 07월 12일)</span>
+                                    </div>
+                                    <div class="auth-toggle-wrap">
+                                        <span class="auth-label">로그인 2차 인증 설정</span>
+                                        <button type="button" class="btn-help"><i class="icon-info"></i></button>
+                                        <div class="switch-control">
+                                            <input type="radio" id="auth-on" name="auth2fa" value="on" checked>
+                                            <input type="radio" id="auth-off" name="auth2fa" value="off">
+                                            <label for="auth-off" class="btn-switch on">ON</label>
+                                            <label for="auth-on" class="btn-switch off">OFF</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 우측 현황 통계 -->
+                                <div class="profile-stats-side">
+                                    <div class="stat-item">
+                                        <a href="javascript:void(0);" class="stat-link">
+                                            <span class="stat-num">0</span>
+                                            <span class="stat-label">진행중 주문</span>
+                                        </a>
+                                    </div>
+                                    <div class="stat-item">
+                                        <a href="javascript:void(0);" class="stat-link">
+                                            <span class="stat-num">3</span>
+                                            <span class="stat-label">당일배송 조회</span>
+                                        </a>
+                                    </div>
+                                    <div class="stat-item">
+                                        <a href="javascript:void(0);" class="stat-link">
+                                            <span class="stat-num">149</span>
+                                            <span class="stat-label">관심상품</span>
+                                        </a>
+                                    </div>
+                                    <div class="stat-item">
+                                        <a href="javascript:void(0);" class="stat-link">
+                                            <span class="stat-num">4</span>
+                                            <span class="stat-label">보유쿠폰</span>
+                                        </a>
+                                    </div>
+                                    <div class="stat-item">
+                                        <a href="javascript:void(0);" class="stat-link">
+                                            <span class="stat-num">19</span>
+                                            <span class="stat-label">장바구니</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- 2. 당월 장려 현황 -->
+                        <div class="mypage-section incentive-section">
+                            <div class="section-header">
+                                <h3 class="section-title">당월 장려 현황 <button type="button" class="btn-help"><i
+                                            class="icon-info"></i></button></h3>
+                            </div>
+                            <div class="section-content">
+                                <!-- 컨텐츠 영역 코딩 예정 -->
+                                <div class="incentive-summary">
+                                    <div class="summary-left">
+                                        <span class="item">
+                                            <span class="label">누계 주문금액</span>
+                                            <span class="value"><em>46,000,000</em>원</span>
+                                            <span class="sub">(VAT제외)</span>
+                                        </span>
+                                        <i class="divider"></i>
+                                        <span class="item">
+                                            <span class="label">예상 장려금</span>
+                                            <span class="value highlight"><em>836,000</em>원</span>
+                                        </span>
+                                    </div>
+                                    <div class="summary-right">
+                                        <p class="notice">당월 마감시 변경될 수 있습니다.</p>
+                                    </div>
+                                </div>
+
+                                <div class="incentive-progress-wrap" data-current-money="3000" data-type="type-a">
+                                    <h4 class="progress-title"><span class="reward-value">1</span>% 리워드 지급 달성</h4>
+                                    <div class="progress-area">
+                                        <div class="progress-bar">
+                                            <div class="bar-bg"></div>
+                                            <div class="bar-fill"></div>
+                                            <div class="bar-steps">
+                                                <div class="step step-05">
+                                                    <span class="dot"></span>
+                                                    <span class="tooltip">0.5%</span>
+                                                </div>
+                                                <div class="step step-1">
+                                                    <span class="dot"></span>
+                                                    <span class="tooltip">1%</span>
+                                                </div>
+                                                <div class="step step-2">
+                                                    <span class="dot"></span>
+                                                    <span class="tooltip">2%</span>
+                                                </div>
+                                                <div class="step step-3">
+                                                    <span class="dot"></span>
+                                                    <span class="tooltip">3%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. 회원 등급 -->
+                        <div class="mypage-section membership-section">
+                            <div class="section-header">
+                                <h3 class="section-title">회원 등급</h3>
+                            </div>
+                            <div class="section-content">
+                                <!-- 승급 필요 조건 -->
+                                <div class="membership-upgrade-info">
+                                    <h4 class="title">LV.3 실버 승급 필요 조건</h4>
+                                    <ul class="condition-list">
+                                        <li class="item">배송금액 : <span class="highlight">4,164,402원</span></li>
+                                        <li class="divider"></li>
+                                        <li class="item">배송일수 : <span class="highlight">9일</span></li>
+                                        <li class="divider"></li>
+                                        <li class="item">배송품목수 : <span class="highlight">68품목</span></li>
+                                    </ul>
+                                </div>
+
+                                <!-- 등급 그리드 -->
+                                <div class="membership-grade-grid">
+                                    <!-- LV.1 패밀리 -->
+                                    <div class="grade-card">
+                                        <div class="card-head">LV.1 패밀리</div>
+                                        <div class="card-body">
+                                            <div class="info-group">
+                                                <div class="label">월 등급기준</div>
+                                                <div class="value">-</div>
+                                            </div>
+                                            <div class="info-group">
+                                                <div class="label">월간 쿠폰팩</div>
+                                                <div class="value">-</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- LV.2 브론즈 (현재 등급) -->
+                                    <div class="grade-card is-current">
+                                        <div class="card-head">LV.2 브론즈</div>
+                                        <div class="card-body">
+                                            <div class="info-group">
+                                                <div class="label">월 등급기준</div>
+                                                <div class="value">
+                                                    배송금액 300만원 이상<br>
+                                                    배송일수 3일<br>
+                                                    배송품목수 50품목
+                                                </div>
+                                            </div>
+                                            <div class="info-group">
+                                                <div class="label">월간 쿠폰팩</div>
+                                                <div class="value">2% 할인 쿠폰 1장</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- LV.3 실버 -->
+                                    <div class="grade-card">
+                                        <div class="card-head">LV.3 실버</div>
+                                        <div class="card-body">
+                                            <div class="info-group">
+                                                <div class="label">월 등급기준</div>
+                                                <div class="value">
+                                                    배송금액 500만원 이상<br>
+                                                    배송일수 5일<br>
+                                                    배송품목수 50품목
+                                                </div>
+                                            </div>
+                                            <div class="info-group">
+                                                <div class="label">월간 쿠폰팩</div>
+                                                <div class="value">2% 할인 쿠폰 2장</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- LV.4 골드 -->
+                                    <div class="grade-card">
+                                        <div class="card-head">LV.4 골드</div>
+                                        <div class="card-body">
+                                            <div class="info-group">
+                                                <div class="label">월 등급기준</div>
+                                                <div class="value">
+                                                    배송금액 1,000만원 이상<br>
+                                                    배송일수 7일<br>
+                                                    배송품목수 100품목
+                                                </div>
+                                            </div>
+                                            <div class="info-group">
+                                                <div class="label">월간 쿠폰팩</div>
+                                                <div class="value">3% 할인 쿠폰 2장</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- LV.5 VIP -->
+                                    <div class="grade-card">
+                                        <div class="card-head">LV.5 VIP</div>
+                                        <div class="card-body">
+                                            <div class="info-group">
+                                                <div class="label">월 등급기준</div>
+                                                <div class="value">
+                                                    배송금액 3,000만원 이상<br>
+                                                    배송일수 10일<br>
+                                                    배송품목수 100품목
+                                                </div>
+                                            </div>
+                                            <div class="info-group">
+                                                <div class="label">월간 쿠폰팩</div>
+                                                <div class="value">3% 할인 쿠폰 3장</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- LV.6 VVIP -->
+                                    <div class="grade-card">
+                                        <div class="card-head">LV.6 VVIP</div>
+                                        <div class="card-body">
+                                            <div class="info-group">
+                                                <div class="label">월 등급기준</div>
+                                                <div class="value">
+                                                    배송금액 1억원 이상<br>
+                                                    배송일수 15일<br>
+                                                    배송품목수 300품목
+                                                </div>
+                                            </div>
+                                            <div class="info-group">
+                                                <div class="label">월간 쿠폰팩</div>
+                                                <div class="value">3% 할인 쿠폰 5장</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 안내 문구 -->
+                                <div class="membership-guide">
+                                    <p>모든 등급 기준(배송금액/일수/품목수)을 달성하면 해당 등급이 됩니다.</p>
+                                    <p>매월 1일, 지난달 실적을 바탕으로 새로운 등급이 부여됩니다.</p>
+                                    <p>최근 3개월간의 평균 실적을 기준으로 하며, 가입한 지 3개월이 안 된 회원사는 가입 기간의 평균 실적을 반영합니다.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. 최근 주문 내역 -->
+                        <section class="section-container order-history-section">
+                            <div class="section-head">
+                                <h3 class="section-title">최근 주문 내역</h3>
+                            </div>
+                            <div class="section-body">
+                                <div class="cmn-table-wrap">
+                                    <table class="cmn-table">
+                                        <colgroup>
+                                            <col style="width: 15%;">
+                                            <col style="width: auto;">
+                                            <col style="width: 10%;">
+                                            <col style="width: 12%;">
+                                            <col style="width: 12%;">
+                                            <col style="width: 12%;">
+                                            <col style="width: 7%;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>주문일자 (주문번호)</th>
+                                                <th>상품명</th>
+                                                <th>결제수단</th>
+                                                <th class="align-right">주문금액</th>
+                                                <th class="align-right">배송금액</th>
+                                                <th>배송예정일</th>
+                                                <th>상태</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    2026.01.03
+                                                    <span class="order-num">(202603020001)</span>
+                                                </td>
+                                                <td class="align-left">잘풀리는집 더 도톰한 데코3겹 30M*30롤, 외 5건</td>
+                                                <td>가상계좌</td>
+                                                <td class="align-right">12,080,020</td>
+                                                <td class="align-right">12,080,020</td>
+                                                <td>2026.01.03</td>
+                                                <td><span class="status-text">결제완료</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    2026.01.03
+                                                    <span class="order-num">(202603020001)</span>
+                                                </td>
+                                                <td class="align-left">잘풀리는집 더 도톰한 데코3겹 30M*30롤, 외 5건</td>
+                                                <td>가상계좌</td>
+                                                <td class="align-right">12,080,020</td>
+                                                <td class="align-right">12,080,020</td>
+                                                <td>2026.01.03</td>
+                                                <td><span class="status-text">결제완료</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    2026.01.03
+                                                    <span class="order-num">(202603020001)</span>
+                                                </td>
+                                                <td class="align-left">잘풀리는집 더 도톰한 데코3겹 30M*30롤, 외 5건</td>
+                                                <td>가상계좌</td>
+                                                <td class="align-right">12,080,020</td>
+                                                <td class="align-right">12,080,020</td>
+                                                <td>2026.01.03</td>
+                                                <td><span class="status-text">결제완료</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    2026.01.03
+                                                    <span class="order-num">(202603020001)</span>
+                                                </td>
+                                                <td class="align-left">잘풀리는집 더 도톰한 데코3겹 30M*30롤, 외 5건</td>
+                                                <td>가상계좌</td>
+                                                <td class="align-right">12,080,020</td>
+                                                <td class="align-right">12,080,020</td>
+                                                <td>2026.01.03</td>
+                                                <td><span class="status-text">결제완료</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- <div class="pagination">
+                        <button type="button" class="btn-page-first">
+                            <i class="icon-page-bullet"></i><i class="icon-page-bullet"></i>
+                        </button>
+                        <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
+                        <button type="button" class="active">1</button>
+                        <button type="button">2</button>
+                        <button type="button">3</button>
+                        <button type="button">4</button>
+                        <button type="button">5</button>
+                        <button type="button">6</button>
+                        <button type="button">7</button>
+                        <button type="button">8</button>
+                        <button type="button">9</button>
+                        <button type="button">10</button>
+                        <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
+                        <button type="button" class="btn-page-last">
+                            <i class="icon-page-bullet"></i><i class="icon-page-bullet"></i>
+                        </button>
+                    </div> -->
+                </div>
+        </main>
+
+        <div data-include="/eclub/pc/components/footer.txt"></div>
+    </div>
+
+    <!-- 상품 옵션 모달 템플릿 -->
+    <template id="modal-item-option">
+        <div class="modal-header">
+            <button type="button" class="btn-modal-close" aria-label="닫기"><i class="icon-clear"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="option-setup">
+                <div class="item-preview">
+                    <img src="" alt="상품 이미지" class="modal-item-img">
+                    <p class="modal-item-name"></p>
+                </div>
+                <!-- 옵션 설정 영역 -->
+                <div class="option-controls">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-confirm-option">설정 완료</button>
+        </div>
+    </template>
+
+    <script src="/dist/bundle.js"></script>
+
+
+
+</body>
+
+</html>

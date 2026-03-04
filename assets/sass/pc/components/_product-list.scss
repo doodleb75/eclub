@@ -284,6 +284,11 @@
                         background-color: $color-badge-frozen-bg;
                         color: $color-badge-frozen-text;
                     }
+
+                    &.type-appliance {
+                        background-color: $color-badge-appliance-bg;
+                        color: $color-badge-appliance-text;
+                    }
                 }
             }
 

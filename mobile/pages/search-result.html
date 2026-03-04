@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -11,7 +11,7 @@
     <!-- 페이지 전용 스타일 -->
 </head>
 
-<body class="search-page">
+<body class="search-page" data-page-id="search">
     <div id="wrap">
         <!-- 상단 헤더 -->
         <div data-include="/eclub/mobile/components/header.txt" data-page-title="<span class='keyword'>카카오</span> 검색결과"></div>
@@ -111,16 +111,20 @@
                     <!-- Product List -->
                     <div class="product-list is-more" data-more-limit="10">
                         <!-- Product Item 1 -->
-                        <div class="product-item" data-sales="943" data-purchase="379" data-new="5" data-price="28600"
-                            data-delivery-type="cold" data-delivery-center="tc">
+                        <div class="product-item sold-out" data-sales="943" data-purchase="379" data-new="5"
+                            data-price="28600" data-delivery-type="cold" data-delivery-center="tc">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <img src="/eclub/assets/images/main/time-sales/time_product_02.png" alt="비비고 소고기 장조림"
                                         class="prod-img">
+                                    <div class="sold-out-overlay">
+                                        <span class="sold-out-text">품절</span>
+                                        <button type="button" class="btn-replace">대체상품 보기</button>
+                                    </div>
                                 </a>
                             </div>
                             <div class="control-bar">
-                                <div class="qty-control">
+                                <div class="qty-control disabled">
                                     <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
                                     <input type="text" value="1" min="0" aria-label="수량">
                                     <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
@@ -840,13 +844,13 @@
         </div>
     </template>
 
-    <script src="/eclub/assets/js/common/ui.js"></script>
-    <script src="/eclub/assets/js/components/popover.js"></script>
-    <script src="/eclub/assets/js/components/modal.js"></script>
-    <script src="/eclub/assets/js/components/modal-item-option.js"></script>
-    <script src="/eclub/assets/js/components/modal-excel-upload.js"></script>
-    <script src="/eclub/assets/js/components/menu-sheet.js"></script>
-    <script src="/eclub/assets/js/components/search-filter-sheet.js"></script>
+    <script src="/dist/bundle.js"></script>
+
+
+
+
+
+
 </body>
 
 </html>

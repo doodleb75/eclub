@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="E-Club 장바구니">
-    <title>브랜드관 | E-Club</title>
+    <title>카테고리 | E-Club</title>
     <!-- 공통 스타일 -->
     <link rel="stylesheet" href="/eclub/assets/css/mobile/main.css">
     <!-- 페이지 전용 스타일 -->
 </head>
 
-<body class="main-page">
+<body class="" data-page-id="category">
     <div id="wrap">
         <!-- 상단 헤더 -->
         <div data-include="/eclub/mobile/components/header.txt" data-page-title="카테고리"></div>
@@ -20,16 +20,39 @@
             <!-- 저온상품의 핫딜 -->
             <section class="home-section time-sale-section">
                 <div class="home-container">
-                    <!--  브랜드관 breadcrumb -->
-                    <div class="breadcrumb-nav js-category-sheet-trigger">
-                        <span class="depth">브랜드관</span>
-                        <i class="icon-category-sep-bullet"></i>
-                        <div class="breadcrumb-select">
-                            <button type="button" class="select-label">
-                                풀무원
-                            </button>
+                    <div class="sticky-filter-area category">
+                        <!--  카테고리 breadcrumb -->
+                        <div class="breadcrumb-nav js-category-sheet-trigger">
+                            <div class="breadcrumb-select">
+                                <button type="button" class="select-label">
+                                    아이스크립 <i class="icon-nav-back"></i> 홈류
+                                </button>
+                            </div>
+                            <i class="icon-down-bullet"></i>
                         </div>
-                        <i class="icon-small-arrow"></i>
+                    </div>
+
+                    <div class="mobile-filter-row delivery-types">
+                        <div class="btn-group" data-filter-group="delivery">
+                            <label class="type-btn" data-type="room">
+                                <input type="checkbox"> 상온
+                            </label>
+                            <label class="type-btn" data-type="cold">
+                                <input type="checkbox"> 저온
+                            </label>
+                            <label class="type-btn" data-type="direct">
+                                <input type="checkbox"> 직납
+                            </label>
+                            <label class="type-btn" data-type="tc">
+                                <input type="checkbox"> TC
+                            </label>
+                            <label class="type-btn" data-type="dc">
+                                <input type="checkbox"> DC
+                            </label>
+                            <label class="type-btn single-item border-black" data-type="single">
+                                <input type="checkbox"> 낱개상품만 조회
+                            </label>
+                        </div>
                     </div>
                     <div class="category-breadcrumb-bar">
                         <div class="category-count-sort">
@@ -54,16 +77,20 @@
                     <!-- Product List -->
                     <div class="product-list is-more" data-more-limit="10">
                         <!-- Product Item 1 -->
-                        <div class="product-item" data-sales="943" data-purchase="379" data-new="5" data-price="28600"
-                            data-delivery-type="cold" data-delivery-center="tc">
+                        <div class="product-item sold-out" data-sales="943" data-purchase="379" data-new="5"
+                            data-price="28600" data-delivery-type="cold" data-delivery-center="tc">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
                                     <img src="/eclub/assets/images/main/time-sales/time_product_02.png" alt="비비고 소고기 장조림"
                                         class="prod-img">
+                                    <div class="sold-out-overlay">
+                                        <p class="sold-out-text">품절</p>
+                                        <button type="button" class="btn-replace">다른 상품 보기</button>
+                                    </div>
                                 </a>
                             </div>
                             <div class="control-bar">
-                                <div class="qty-control">
+                                <div class="qty-control disabled">
                                     <button type="button" class="btn-minus"><i class="icon-minus-main"></i></button>
                                     <input type="text" value="1" min="0" aria-label="수량">
                                     <button type="button" class="btn-plus"><i class="icon-plus-main"></i></button>
@@ -192,13 +219,17 @@
                         </div>
 
                         <!-- Product Item 4 -->
-                        <div class="product-item" data-sales="430" data-purchase="120" data-new="8" data-price="25000"
-                            data-delivery-type="cold" data-delivery-center="tc">
+                        <div class="product-item order-soon" data-sales="430" data-purchase="120" data-new="8"
+                            data-price="25000" data-delivery-type="cold" data-delivery-center="tc">
                             <div class="image-box">
                                 <a href="javascript:void(0);" class="link-thumb">
 
                                     <img src="/eclub/assets/images/main/hot-deal/cold/hot-cold-thumb04.png" alt="명품 손질 생선살"
                                         class="prod-img">
+                                    <div class="sold-out-overlay">
+                                        <p class="sold-out-text">입고예정</p>
+                                        <button type="button" class="btn-replace">다른 상품 보기</button>
+                                    </div>
                                 </a>
                             </div>
                             <div class="control-bar">
@@ -645,11 +676,11 @@
         </div>
     </template>
 
-    <script src="/eclub/assets/js/common/ui.js"></script>
-    <script src="/eclub/assets/js/components/popover.js"></script>
-    <script src="/eclub/assets/js/components/modal.js"></script>
-    <script src="/eclub/assets/js/components/modal-item-option.js"></script>
-    <script src="/eclub/assets/js/components/modal-excel-upload.js"></script>
+    <script src="/dist/bundle.js"></script>
+    
+    
+    
+    
 </body>
 
 </html>

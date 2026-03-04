@@ -35,6 +35,7 @@
         <ul class="gnb-list">
             <li><a href="/eclub/mobile/index.html">홈</a></li>
             <li><a href="javascript:void(0);">오늘의 핫딜</a></li>
+            <li><a href="/eclub/mobile/pages/category.html">베스트</a></li>
             <li><a href="javascript:void(0);" class="brand-toggle">브랜드관</a></li>
             <li><a href="javascript:void(0);">신상품</a></li>
             <li><a href="javascript:void(0);" class="btn-menu-sheet" data-menu-type="exhibition">기획전</a></li>

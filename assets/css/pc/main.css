@@ -4004,6 +4004,10 @@ body {
   background-color: #00568a;
   color: #def1ff;
 }
+.modal-product-detail .best-product-slider .slider-content .product-list.list-slider .product-item .prod-info .prod-name .badge-type.type-appliance {
+  background-color: #ffeec6;
+  color: #222222;
+}
 .modal-product-detail .best-product-slider .slider-content .product-list.list-slider .product-item .prod-info .main-price {
   display: flex;
   align-items: center;
@@ -4652,6 +4656,11 @@ body {
 .product-pick .product-item .prod-info .prod-name .badge-type.type-frozen {
   background-color: #00568a;
   color: #def1ff;
+}
+.product-list .product-item .prod-info .prod-name .badge-type.type-appliance,
+.product-pick .product-item .prod-info .prod-name .badge-type.type-appliance {
+  background-color: #ffeec6;
+  color: #222222;
 }
 .product-list .product-item .prod-info .prod-price-info,
 .product-pick .product-item .prod-info .prod-price-info {
@@ -8081,9 +8090,6 @@ body {
   width: 13.75rem;
   flex-shrink: 0;
 }
-.category-page-layout .exhibition-sidebar .sidebar-menu > li {
-  border-bottom: 1px solid #e1e1e1;
-}
 .category-page-layout .exhibition-sidebar .sidebar-menu > li > a {
   display: block;
   padding: 0.625rem 0.75rem;
@@ -8113,6 +8119,51 @@ body {
 }
 .category-page-layout .exhibition-sidebar .sidebar-menu > li:first-child > a:hover {
   background-color: transparent;
+}
+.category-page-layout .mypage-menu {
+  padding-top: 1.25rem;
+}
+.category-page-layout .mypage-menu .menu-main-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 2.125rem;
+  line-height: 1.2;
+}
+.category-page-layout .mypage-menu .menu-section-list .menu-section {
+  margin-bottom: 0.25rem;
+}
+.category-page-layout .mypage-menu .menu-section-list .menu-section:last-child {
+  margin-bottom: 0;
+}
+.category-page-layout .mypage-menu .menu-section-list .menu-section-title {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #222222;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #e1e1e1;
+}
+.category-page-layout .mypage-menu .menu-section-list .menu-sub-list {
+  margin-bottom: 0;
+}
+.category-page-layout .mypage-menu .menu-section-list .menu-sub-list .menu-item:last-child {
+  margin-bottom: 0;
+}
+.category-page-layout .mypage-menu .menu-section-list .menu-sub-list .menu-item .menu-link {
+  display: block;
+  font-size: 0.8125rem;
+  color: #666666;
+  line-height: 1.5;
+  padding: 0.5rem 0rem 0.5rem 2rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+.category-page-layout .mypage-menu .menu-section-list .menu-sub-list .menu-item .menu-link:hover {
+  color: #111111;
+}
+.category-page-layout .mypage-menu .menu-section-list .menu-sub-list .menu-item .menu-link.active {
+  background-color: #222;
+  color: #fff;
+  font-weight: 500;
 }
 .category-page-layout .search-filter-sidebar {
   width: 13.75rem;
@@ -8645,6 +8696,10 @@ body {
   background-color: #ebebeb;
   color: #222222;
 }
+.category-page-layout .category-main .product-list .product-item .prod-info .prod-name .badge-type.type-appliance {
+  background-color: #ffeec6;
+  color: #222222;
+}
 .category-page-layout .category-main .product-list .product-item .prod-info .prod-price-info {
   font-size: 0.8125rem;
   color: #aaaaaa;
@@ -8934,6 +8989,542 @@ body {
 .recommend-area .slider-title-wrap .btn-slide-prev.btn-slide-next .icon-nav-back,
 .recommend-area .slider-title-wrap .btn-slide-next.btn-slide-next .icon-nav-back {
   transform: rotate(180deg);
+}
+
+.mypage-content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mypage-content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section-container {
+  width: 100%;
+}
+.section-container .section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.625rem;
+  border-bottom: 2px solid #222222;
+  margin-bottom: 0.75rem;
+}
+.section-container .section-head .section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222222;
+}
+.section-container.order-history-section .section-head {
+  margin-bottom: 0 !important;
+}
+
+.cmn-table-wrap {
+  width: 100%;
+}
+
+.cmn-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.cmn-table thead tr th {
+  background-color: #f8f9fa;
+  padding: 0.9375rem 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 1.3;
+}
+.cmn-table thead tr th.align-left {
+  text-align: left;
+  padding-left: 1.25rem;
+}
+.cmn-table thead tr th.align-right {
+  text-align: right;
+  padding-right: 1.25rem;
+}
+.cmn-table tbody tr td {
+  padding: 1.125rem 0.625rem;
+  font-size: 0.875rem;
+  color: #444444;
+  font-weight: 400;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  vertical-align: middle;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.cmn-table tbody tr td .order-num {
+  font-size: 0.8125rem;
+  color: #999999;
+  margin-top: 0.25rem;
+  display: block;
+}
+.cmn-table tbody tr td .status-text {
+  font-weight: 500;
+  color: #222222;
+}
+.cmn-table tbody tr td.align-left {
+  text-align: left;
+  padding-left: 1.25rem;
+}
+.cmn-table tbody tr td.align-right {
+  text-align: right;
+  padding-right: 1.25rem;
+}
+
+.mypage-section {
+  width: 100%;
+  overflow: visible;
+}
+.mypage-section .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.625rem;
+  border-bottom: 2px solid #222222;
+}
+.mypage-section .section-header .section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222222;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.mypage-section .section-header .section-title .btn-help {
+  font-size: 1rem;
+  color: #999999;
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.mypage-section .section-header .section-title .btn-help i {
+  background-color: #666666;
+}
+.mypage-section .section-content {
+  padding: 1rem 0.875rem;
+}
+.mypage-section.profile-section {
+  background-color: #f8f9fa;
+}
+.mypage-section.profile-section .profile-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2.5rem;
+}
+.mypage-section.profile-section .profile-info-side .user-grade-row {
+  margin-bottom: 0.25rem;
+}
+.mypage-section.profile-section .profile-info-side .user-grade-row .grade-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222222;
+}
+.mypage-section.profile-section .profile-info-side .user-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.mypage-section.profile-section .profile-info-side .user-name-row .user-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222222;
+}
+.mypage-section.profile-section .profile-info-side .user-name-row .join-date {
+  font-size: 0.8125rem;
+  color: #999999;
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .auth-label {
+  font-size: 0.8125rem;
+  color: #666666;
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .btn-help {
+  color: #666666;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .switch-control {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 0.875rem;
+  margin-left: 0.25rem;
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .switch-control input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .switch-control .btn-switch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.4375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: inset 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.14), 0 0.0625rem 0.0625rem rgba(255, 255, 255, 0.14);
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .switch-control .btn-switch::before {
+  content: "";
+  display: block;
+  width: 0.8125rem;
+  height: 0.8125rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .switch-control .btn-switch.on {
+  padding: 0 0.625rem 0 0.0625rem;
+  background-color: #ff5447;
+  flex-direction: row;
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .switch-control .btn-switch.off {
+  padding: 0 0.0625rem 0 0.5rem;
+  background-color: #999999;
+  flex-direction: row-reverse;
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .switch-control input[value=on]:checked ~ .btn-switch.on {
+  display: inline-flex;
+}
+.mypage-section.profile-section .profile-info-side .auth-toggle-wrap .switch-control input[value=off]:checked ~ .btn-switch.off {
+  display: inline-flex;
+}
+.mypage-section.profile-section .profile-stats-side {
+  display: flex;
+  gap: 3rem;
+}
+.mypage-section.profile-section .profile-stats-side .stat-item .stat-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.mypage-section.profile-section .profile-stats-side .stat-item .stat-link:hover .stat-num {
+  color: #ff5452;
+}
+.mypage-section.profile-section .profile-stats-side .stat-item .stat-link:hover .stat-num::after {
+  background-color: #ff5452;
+}
+.mypage-section.profile-section .profile-stats-side .stat-item .stat-link:hover .stat-label {
+  color: #222222;
+}
+.mypage-section.profile-section .profile-stats-side .stat-item .stat-num {
+  font-size: 2.125rem;
+  font-weight: 700;
+  color: #222222;
+  position: relative;
+  padding-bottom: 0.25rem;
+  line-height: 1;
+}
+.mypage-section.profile-section .profile-stats-side .stat-item .stat-num::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1875rem;
+  background-color: #222222;
+}
+.mypage-section.profile-section .profile-stats-side .stat-item .stat-label {
+  font-size: 0.9375rem;
+  color: #363636;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.mypage-section.incentive-section .section-content {
+  padding: 2.25rem;
+}
+.mypage-section.incentive-section .incentive-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mypage-section.incentive-section .incentive-summary .summary-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.mypage-section.incentive-section .incentive-summary .summary-left .item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.mypage-section.incentive-section .incentive-summary .summary-left .item .label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #333333;
+}
+.mypage-section.incentive-section .incentive-summary .summary-left .item .value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #333333;
+}
+.mypage-section.incentive-section .incentive-summary .summary-left .item .value em {
+  font-style: normal;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #015fc1;
+}
+.mypage-section.incentive-section .incentive-summary .summary-left .item .value.highlight {
+  color: #015fc1;
+}
+.mypage-section.incentive-section .incentive-summary .summary-left .item .sub {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #333333;
+}
+.mypage-section.incentive-section .incentive-summary .summary-left .divider {
+  width: 1px;
+  height: 0.875rem;
+  background-color: #e5e5e5;
+}
+.mypage-section.incentive-section .incentive-summary .summary-right .notice {
+  font-size: 0.875rem;
+  color: #999999;
+}
+.mypage-section.incentive-section .incentive-progress-wrap {
+  padding: 1.5rem 0;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #015fc1;
+  margin-bottom: 1rem;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area {
+  position: relative;
+  padding: 0;
+  margin-bottom: 3.75rem;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar {
+  height: 2.375rem;
+  background-color: #e5e5e5;
+  border-radius: 1.1875rem;
+  position: relative;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #015fc1;
+  border-radius: 2.5rem;
+  z-index: 1;
+  width: 0;
+  transition: width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step.step-05 {
+  left: 9.46875rem;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step.step-1 {
+  left: 18.9375rem;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step.step-2 {
+  left: calc(50% + 8.65625rem);
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step.step-3 {
+  left: calc(100% - 1.625rem);
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step .dot {
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #015fc1;
+  border-radius: 50%;
+  z-index: 2;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step.is-active .dot {
+  background-color: #ffffff;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step.is-current {
+  z-index: 10;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step.is-current .dot {
+  background-color: #ffffff;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step.is-current .tooltip {
+  display: block;
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step .tooltip {
+  position: absolute;
+  top: 2.5rem;
+  background-color: #0F62FE;
+  color: #ffffff;
+  width: 3.4375rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.mypage-section.incentive-section .incentive-progress-wrap .progress-area .progress-bar .bar-steps .step .tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: calc(100% - 1px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0.5rem solid transparent;
+  border-bottom-color: #0F62FE;
+}
+.mypage-section.membership-section .membership-upgrade-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  padding-bottom: 1rem;
+}
+.mypage-section.membership-section .membership-upgrade-info .title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #222222;
+}
+.mypage-section.membership-section .membership-upgrade-info .condition-list {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.mypage-section.membership-section .membership-upgrade-info .condition-list .item {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333333;
+}
+.mypage-section.membership-section .membership-upgrade-info .condition-list .item .highlight {
+  color: #ff5447;
+  margin-left: 0.25rem;
+}
+.mypage-section.membership-section .membership-upgrade-info .condition-list .divider {
+  width: 1px;
+  height: 0.75rem;
+  background-color: #e5e5e5;
+}
+.mypage-section.membership-section .membership-grade-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card {
+  border: 1px solid #999999;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card .card-head {
+  height: 4.3125rem;
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #222222;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: center;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card .card-body {
+  padding: 0.75rem 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card .card-body .info-group {
+  position: relative;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card .card-body .info-group:not(:last-child) {
+  height: 7.5rem;
+  padding-bottom: 0.75rem;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card .card-body .info-group:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #e1e1e1;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card .card-body .info-group .label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding-bottom: 0.25rem;
+  color: #222222;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card .card-body .info-group .value {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #666666;
+  letter-spacing: -0.5px;
+  font-weight: 500;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card.is-current {
+  border: 2px solid #222222;
+}
+.mypage-section.membership-section .membership-grade-grid .grade-card.is-current .card-head {
+  background-color: #222222;
+  color: #ffffff;
+  border-bottom: none;
+}
+.mypage-section.membership-section .membership-guide {
+  padding-top: 1.5rem;
+}
+.mypage-section.membership-section .membership-guide p {
+  font-size: 0.875rem;
+  color: #666666;
+  font-weight: 500;
+  line-height: 2;
+  word-break: keep-all;
 }
 
 #wrap {
