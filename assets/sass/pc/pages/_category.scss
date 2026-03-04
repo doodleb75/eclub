@@ -166,7 +166,7 @@
             font-size: rem(24);
             font-weight: $fw-bold;
             color: $gray-999;
-            margin-bottom: rem(34);
+            margin-bottom: rem(12);
             line-height: 1.2;
         }
 
@@ -366,6 +366,7 @@
         flex: 1;
         min-width: 0;
 
+
         .category-header {
             display: flex;
             align-items: center; // change to flex-end if bottom aligned
@@ -381,6 +382,12 @@
                 display: flex;
                 align-items: center;
                 gap: rem(16); // 피그마 분석: 간격 16px
+
+                .icon-nav-back {
+                    width: rem(7.173);
+                    height: rem(14.001);
+                    transform: scaleX(-1); // 좌우 반전 → 다음 방향 화살표
+                }
             }
 
             .title-search {

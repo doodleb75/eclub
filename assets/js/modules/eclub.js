@@ -105,10 +105,10 @@ const Eclub = {
     ModalProductDetail,
 
     async init() {
-        // 전역 객체로 등록 (하위 호환성 유지)
+        // 전역 객체로 등록 
         window.Eclub = this;
 
-        // 공통 모듈 초기화 (모든 페이지 공통)
+        // 공통 모듈 초기화 
         this.initCommon();
 
         // 비동기 모듈 초기화 (헤더 인클루드 등 외부 리소스 로딩)
@@ -134,6 +134,7 @@ const Eclub = {
     },
 
     initCommon() {
+        console.log("[Eclub] Initializing common UI modules...");
         // 이벤트 위임 기반 공통 UI
         this.CategoryFilter.init();
         this.Referral.init();
@@ -163,9 +164,11 @@ const Eclub = {
         this.BottomSheet.init();
         this.ReplaceProductSheet.init();
         this.ModalProductDetail.init();
+        console.log("[Eclub] Common UI modules initialized.");
     },
 
     initPage(pageId) {
+        console.log(`[Eclub] Initializing page-specific modules for: ${pageId || 'unknown'}`);
         // 1. 상품 리스트가 있는 페이지들 (홈, 카테고리, 장바구니, 검색결과, 상품상세 등)
         this.Slider.init();
         this.ProductMore.init();
@@ -176,6 +179,7 @@ const Eclub = {
         switch (pageId) {
             case 'new-product':
             case 'category':
+                console.log("[Eclub] Loading Category/New-Product modules");
                 // 카테고리 및 신상품 페이지 특화 패널
                 this.Selection.init();
                 this.CategorySort.init();
@@ -187,6 +191,7 @@ const Eclub = {
                 break;
 
             case 'search':
+                console.log("[Eclub] Loading Search modules");
                 // 검색 결과 페이지 특화 패널 (사이드바 메뉴 대신 검색 필터 사용)
                 this.Selection.init();
                 this.CategorySort.init();
@@ -199,6 +204,7 @@ const Eclub = {
                 
             case 'cart':
             case 'checkout':
+                console.log("[Eclub] Loading Cart/Checkout modules");
                 // 장바구니 및 구매/결제 페이지 특화 로직
                 this.Selection.init(); // 장바구니 내 체크박스 로직 공용
                 this.ScrollSpy.init();
@@ -206,23 +212,25 @@ const Eclub = {
                 break;
                 
             case 'product':
-                // 상품 상세 전용
+                console.log("[Eclub] Loading Product Detail modules");
                 break;
                 
             case 'home':
-                // 홈(메인) 페이지 전용 로직 (슬라이더 등은 공통에서 처리중)
+                console.log("[Eclub] Loading Home modules");
                 break;
 
-            case 'exhibition':
-                this.ProductSortAndCount.init();
-                this.DeliverySort.init();
+            case 'order-complete':
+                console.log("[Eclub] Loading Order Complete modules");
                 break;
+
             case 'mypage':
+                console.log("[Eclub] Loading MyPage modules");
                 this.CategoryMenu.init();
                 this.IncentiveProgress.init();
                 break;
                 
             default:
+                console.log("[Eclub] Loading Default modules (Fallback)");
                 // 지정되지 않은 페이지의 경우 필요시 전체 실행 (하위 호환)
                 this.Selection.init();
                 this.CategorySort.init();

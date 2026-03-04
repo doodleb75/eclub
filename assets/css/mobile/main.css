@@ -5396,7 +5396,7 @@ main {
 }
 .main-visual .slider-container {
   width: 100%;
-  aspect-ratio: 375/400;
+  aspect-ratio: 360/320;
   overflow: hidden;
   position: relative;
 }
@@ -6466,6 +6466,7 @@ main {
   text-decoration: underline;
 }
 .sticky-filter-area .mobile-filter-row {
+  margin-top: 0.0625rem;
   margin-bottom: 0 !important;
 }
 .sticky-filter-area + .category-breadcrumb-bar .result-re-search {
@@ -6474,6 +6475,7 @@ main {
 }
 
 .mobile-filter-row {
+  margin-top: 0.0625rem;
   margin-bottom: 0.75rem;
 }
 .mobile-filter-row .btn-group {

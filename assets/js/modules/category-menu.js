@@ -23,32 +23,45 @@ export const CategoryMenu = {
             const header = e.target.closest('.sidebar-menu > li.has-sub > a');
             const subLink = e.target.closest('.sub-menu a');
 
-            // 1Depth 토글
+            // 1Depth 토글 및 활성화
             if (header) {
                 e.preventDefault();
                 const parent = header.parentElement;
                 const subMenu = parent.querySelector('.sub-menu');
-                if (!subMenu) return;
 
-                const isOpen = parent.classList.contains('is-open');
+                if (subMenu) {
+                    const isOpen = parent.classList.contains('is-open');
 
-                // 타 메뉴 닫기
-                const otherOpenMenus = this.sidebar.querySelectorAll('.sidebar-menu > li.has-sub.is-open');
-                otherOpenMenus.forEach(menu => {
-                    if (menu !== parent) {
-                        const otherSub = menu.querySelector('.sub-menu');
-                        menu.classList.remove('is-open');
-                        if (otherSub) Toggle.slideUp(otherSub);
+                    // 타 메뉴 닫기
+                    const otherOpenMenus = this.sidebar.querySelectorAll('.sidebar-menu > li.has-sub.is-open');
+                    otherOpenMenus.forEach(menu => {
+                        if (menu !== parent) {
+                            const otherSub = menu.querySelector('.sub-menu');
+                            menu.classList.remove('is-open');
+                            if (otherSub) Toggle.slideUp(otherSub);
+                        }
+                    });
+
+                    // 현재 메뉴 토글
+                    if (isOpen) {
+                        parent.classList.remove('is-open');
+                        Toggle.slideUp(subMenu);
+                    } else {
+                        parent.classList.add('is-open');
+                        Toggle.slideDown(subMenu);
                     }
-                });
-
-                // 현재 메뉴 토글
-                if (isOpen) {
-                    parent.classList.remove('is-open');
-                    Toggle.slideUp(subMenu);
                 } else {
-                    parent.classList.add('is-open');
-                    Toggle.slideDown(subMenu);
+                    // 서브메뉴가 없는 경우 (예: 기획전) active 토글
+                    const isActive = header.classList.contains('active');
+
+                    // 기존 active 초기화
+                    const allLinks = this.sidebar.querySelectorAll('.sidebar-menu a');
+                    allLinks.forEach(link => link.classList.remove('active', 'active-header'));
+
+                    // 토글 (이미 active면 해제, 아니면 적용)
+                    if (!isActive) {
+                        header.classList.add('active');
+                    }
                 }
                 return;
             }

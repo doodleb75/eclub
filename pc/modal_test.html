@@ -185,6 +185,20 @@
             </button>
         </div>
 
+        <div class="section-title">옵션 테스트 (Scroll / Overlay Close)</div>
+        <div class="modal-grid">
+            <button type="button" class="modal-btn" data-modal-url="/common/components/modal/modal-alert.html"
+                data-modal-lock-scroll="false" data-modal-width="400px">
+                <span>스크롤 허용 모달</span>
+                <span class="filename">data-modal-lock-scroll="false"</span>
+            </button>
+            <button type="button" class="modal-btn" data-modal-url="/common/components/modal/modal-confirm.html"
+                data-modal-close-on-overlay="false" data-modal-width="400px">
+                <span>배경클릭 닫기 방지</span>
+                <span class="filename">data-modal-close-on-overlay="false"</span>
+            </button>
+        </div>
+
         <div class="section-title">팝오버 테스트</div>
         <div class="modal-grid">
             <button type="button" class="modal-btn btn-info" data-popover-template="discount">
@@ -217,10 +231,10 @@
 
     <!-- Scripts -->
     <script src="/dist/bundle.js"></script>
-    
-    
-    
-    
+
+
+
+
 
     <script>
         /**
