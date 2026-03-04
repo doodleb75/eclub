@@ -186,7 +186,7 @@
                     transition: transform 0.3s ease;
                 }
 
-                &::after {
+                /* &::after {
                     content: '';
                     display: block;
                     position: absolute;
@@ -196,7 +196,7 @@
                     height: 50%;
                     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
                     z-index: 1;
-                }
+                } */
 
                 .visual-info {
                     position: absolute;
@@ -509,7 +509,7 @@
             background-size: cover;
             overflow: hidden;
 
-            &::before {
+            /* &::before {
                 content: '';
                 position: absolute;
                 top: 0;
@@ -518,7 +518,7 @@
                 height: 100%;
                 background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
                 z-index: 1;
-            }
+            } */
 
             .banner-content {
                 position: absolute;

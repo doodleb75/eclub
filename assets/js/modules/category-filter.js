@@ -44,7 +44,7 @@ export const CategoryFilter = {
                                 const itemCategory = item.dataset.category || '';
                                 const categories = itemCategory.split(/\s+/);
                                 let isMatch = (category === 'all' || categories.includes(category));
-                                console.log(`Item cat [${itemCategory}], selected [${category}] -> isMatch: ${isMatch}`);
+
                                 item.style.display = isMatch ? '' : 'none';
                             });
 
