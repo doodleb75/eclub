@@ -31,6 +31,12 @@ export const Selection = {
         if (unpaidWrap && unpaidMaster) {
             this.initPaymentUnpaid(unpaidWrap, unpaidMaster);
         }
+        // 5. 문의하기 / 문의내역
+        const inquiryWrap = document.querySelector('.inquiry-section');
+        const inquiryMaster = inquiryWrap?.querySelector('.type-list-filter .checkbox-container input[type="checkbox"]');
+        if (inquiryWrap && inquiryMaster) {
+            this.initInquiry(inquiryWrap, inquiryMaster);
+        }
     },
 
     bindMasterCheckbox(masterCb, itemCbs, onUpdate) {
@@ -306,6 +312,31 @@ export const Selection = {
             btn.classList.add('active');
         } else {
             btn.classList.add('active');
+        }
+    },
+
+    // 문의하기 / 문의내역 로직
+    initInquiry(container, master) {
+        const itemCbs = container.querySelectorAll('.product-list .checkbox-container input[type="checkbox"]');
+        
+        this.bindMasterCheckbox(master, itemCbs, () => {
+            this.updateInquiryButtonState(container);
+        });
+
+        this.updateInquiryButtonState(container);
+    },
+
+    updateInquiryButtonState(container) {
+        const btnDelete = container.querySelector('.btn-delete');
+        const btnEdit = container.querySelector('.btn-edit');
+        const checkedCount = container.querySelectorAll('.product-list .checkbox-container input[type="checkbox"]:checked').length;
+
+        if (checkedCount > 0) {
+            btnDelete?.classList.add('active');
+            btnEdit?.classList.add('active');
+        } else {
+            // 기본 상태가 active가 아닐 경우를 위해 제거 로직은 필요에 따라 추가
+            // btnDelete?.classList.remove('active');
         }
     }
 };

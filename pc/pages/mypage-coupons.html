@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 카테고리">
+    <title>마이페이지 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/eclub/assets/css/pc/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="mypage type-general" data-page-id="mypage">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/eclub/pc/components/header.txt"></div>
+
+        <main id="container">
+            <!-- 카테고리 메인 레이아웃 -->
+            <div class="container category-page-layout">
+                <!-- 좌측 사이드바: 마이페이지 메뉴 -->
+                <div data-include="/eclub/pc/components/mypage-sidebar.txt"></div>
+
+                <!-- 중앙/우측 컨텐츠 영역 -->
+                <div class="category-main">
+                    <div class="category-header">
+                        <h2 class="title-search title-breadcrumb">
+                            <span>쿠폰</span>
+                        </h2>
+                    </div>
+
+                    <div class="coupon-category-tab">
+                        <button type="button" class="tab-btn active" data-tab-group="coupon-tabs" data-tab-trigger
+                            data-tab-target="available">사용 가능 쿠폰</button>
+                        <button type="button" class="tab-btn" data-tab-group="coupon-tabs" data-tab-trigger
+                            data-tab-target="expired">기간만료/사용쿠폰</button>
+                    </div>
+
+                    <!-- 사용 가능 쿠폰 탭 컨텐츠 -->
+                    <div class="tab-content active" data-tab-group="coupon-tabs" data-tab-content="available">
+                        <div class="sameday-delivery-list-wrap">
+                            <div class="list-count-txt">총 <span>6</span> 건</div>
+                            <div class="cmn-table-wrap" style="border-top: none;">
+                                <table class="cmn-table">
+                                    <colgroup>
+                                        <col style="width: 150px;">
+                                        <col style="width: 17%;">
+                                        <col style="width: auto">
+                                        <col style="width: 80px;">
+                                        <col style="width: 200px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">쿠폰명</th>
+                                            <th scope="col" class="align-right">혜택</th>
+                                            <th scope="col">적용상품</th>
+                                            <th scope="col">수량</th>
+                                            <th scope="col">사용기간</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="product-list ">
+                                        <tr class="product-item">
+                                            <td class="align-left emphasis-list">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right emphasis-list">품목당 3% 할인</td>
+                                            <td><a href="">농심, 삼다수, 맥심 180/250T 제외</a> </td>
+                                            <td>5</td>
+                                            <td>2026.03.01 일 00:00 <br>~ 2026.03.31 화 23:59</td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="align-left emphasis-list">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right emphasis-list">품목당 3% 할인</td>
+                                            <td><a href="">농심, 삼다수, 맥심 180/250T 제외</a> </td>
+                                            <td>5</td>
+                                            <td>2026.03.01 일 00:00 <br>~ 2026.03.31 화 23:59</td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="align-left emphasis-list">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right emphasis-list">품목당 3% 할인</td>
+                                            <td><a href="">농심, 삼다수, 맥심 180/250T 제외</a> </td>
+                                            <td>5</td>
+                                            <td>2026.03.01 일 00:00 <br>~ 2026.03.31 화 23:59</td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="align-left emphasis-list">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right emphasis-list">품목당 3% 할인</td>
+                                            <td><a href="">농심, 삼다수, 맥심 180/250T 제외</a> </td>
+                                            <td>5</td>
+                                            <td>2026.03.01 일 00:00 <br>~ 2026.03.31 화 23:59</td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="align-left emphasis-list">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right emphasis-list">품목당 3% 할인</td>
+                                            <td><a href="">농심, 삼다수, 맥심 180/250T 제외</a> </td>
+                                            <td>5</td>
+                                            <td>2026.03.01 일 00:00 <br>~ 2026.03.31 화 23:59</td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="align-left emphasis-list">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right emphasis-list">품목당 3% 할인</td>
+                                            <td><a href="">농심, 삼다수, 맥심 180/250T 제외</a> </td>
+                                            <td>5</td>
+                                            <td>2026.03.01 일 00:00 <br>~ 2026.03.31 화 23:59</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="order-receipt-bottom-actions action-group">
+                                <div class="action-buttons">
+                                    <button type="button" class="btn-outline btn-excel">계좌수정</button>
+                                    <button type="button" class="btn-outline btn-excel"><i class="icon-excel"></i> 엑셀
+                                        저장</button>
+                                </div>
+                            </div>
+
+                            <div class="pagination">
+                                <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
+                                <button type="button" class="active">1</button>
+                                <button type="button">2</button>
+                                <button type="button">3</button>
+                                <button type="button">4</button>
+                                <button type="button">5</button>
+                                <button type="button">6</button>
+                                <button type="button">7</button>
+                                <button type="button">8</button>
+                                <button type="button">9</button>
+                                <button type="button">10</button>
+                                <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 기간만료/사용쿠폰 탭 컨텐츠 (내용은 사용 가능 쿠폰과 동일한 구조로 테스트 데이터만 변경 혹은 동일하게 유지) -->
+                    <div class="tab-content" data-tab-group="coupon-tabs" data-tab-content="expired">
+                        <div class="sameday-delivery-list-wrap">
+
+                            <div class="list-count-txt">총 <span>2</span> 건</div>
+                            <div class="cmn-table-wrap" style="border-top: none;">
+                                <table class="cmn-table">
+                                    <colgroup>
+                                        <col style="">
+                                        <col style="">
+                                        <col style="width: 40%;">
+                                        <col style="width: 80px;">
+                                        <col style="width: 180px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th class="align-left" scope="col">쿠폰명</th>
+                                            <th class="align-right" scope="col">혜택</th>
+                                            <th scope="col">적용상품</th>
+                                            <th scope="col">수량</th>
+                                            <th scope="col">사용기간</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="product-list">
+                                        <tr class="product-item">
+                                            <td class="align-left">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right">품목당 3% 할인</td>
+                                            <td class="align-left"><a href="">농심, 삼다수, 맥심 180/250T 제외</a></td>
+                                            <td>1</td>
+                                            <td>사용일 : 2026.03.31 화 </td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="align-left">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right">품목당 3% 할인</td>
+                                            <td class="align-left"><a href="">농심, 삼다수, 맥심 180/250T 제외</a></td>
+                                            <td>1</td>
+                                            <td>사용일 : 2026.03.31 화 </td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="align-left">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right">품목당 3% 할인</td>
+                                            <td class="align-left"><a href="">농심, 삼다수, 맥심 180/250T 제외</a></td>
+                                            <td>1</td>
+                                            <td>사용일 : 2026.03.31 화 </td>
+                                        </tr>
+                                        <tr class="product-item">
+                                            <td class="align-left">03월 VVIP 등급쿠폰</td>
+                                            <td class="align-right">품목당 3% 할인</td>
+                                            <td class="align-left"><a href="">적용상품보기</a></td>
+                                            <td>1</td>
+                                            <td>사용일 : 2026.03.31 화 </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="pagination">
+                                <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
+                                <button type="button" class="active">1</button>
+                                <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+    </div>
+    </main>
+
+    <div data-include="/eclub/pc/components/footer.txt"></div>
+    </div>
+
+    <!-- 상품 옵션 모달 템플릿 -->
+    <template id="modal-item-option">
+        <div class="modal-header">
+            <button type="button" class="btn-modal-close" aria-label="닫기"><i class="icon-clear"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="option-setup">
+                <div class="item-preview">
+                    <img src="" alt="상품 이미지" class="modal-item-img">
+                    <p class="modal-item-name"></p>
+                </div>
+                <!-- 옵션 설정 영역 -->
+                <div class="option-controls">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-confirm-option">설정 완료</button>
+        </div>
+    </template>
+
+    <script src="/eclub/dist/bundle.js"></script>
+
+
+
+</body>
+
+</html>

@@ -133,13 +133,27 @@
                                     <div class="split-layout">
                                         <!-- Left Column: Bank Account Info -->
                                         <div class="col-left">
-                                            <div class="bank-info-group">
+                                            <div class="bank-info-group" style="display: none;">
                                                 <div class="bank-row">
                                                     <span class="label">무통장 입금계좌</span>
                                                     <span class="value">기업은행 728 9192990 807</span>
                                                 </div>
                                                 <button type="button" class="btn-copy"><i class="icon-content-copy"></i>
                                                     계좌번호 복사하기</button>
+                                            </div>
+                                            <div class="bank-info-group">
+                                                <div class="custom-select" style="width: 100%;">
+                                                    <button type="button" class="select-label" id="payMethodTrigger">
+                                                        <span>전체</span>
+                                                        <i class="icon-down-bullet"></i>
+                                                    </button>
+                                                    <ul class="select-options" role="listbox">
+                                                        <li class="active" data-value="">전체</li>
+                                                        <li data-value="card">신용카드</li>
+                                                        <li data-value="virtual">가상계좌</li>
+                                                        <li data-value="transfer">계좌이체</li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -221,7 +235,8 @@
 
 
 
-                                <ul class="notice-list">
+                                <ul class="notice-list active" data-tab-content="method-virtual"
+                                    data-tab-group="payment-method">
                                     <li>가상계좌 결제는 주문마감시간(상온 14시 00분 / 저온 14시 00분)까지 입금하지 않으면 주문이 취소됩니다.</li>
                                     <li>회원점 정보가 수정되었을 때는 [회원점 정보] 에서 정보 수정 후 결제 진행해주시기 바랍니다.</li>
                                     <li>회원점 정보가 불일치 할 경우 환불이 지연 될 수 있습니다. [회원점 정보]에서 수정 후 결제 진행하여 주시기 바랍니다.</li>
@@ -709,6 +724,6 @@
         <div data-include="/eclub/pc/components/footer.txt"></div>
     </div>
     <script src="/eclub/dist/bundle.js"></script>
-            </body>
+</body>
 
 </html>

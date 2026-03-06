@@ -150,6 +150,11 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- 검색 결과 없음 -->
+                    <div class="search-no-result-view" style="display: none;">
+                        <div class="no-data">자동완성 검색 결과가 없습니다.</div>
+                    </div>
                 </div>
             </div>
             <div class="user-controls">

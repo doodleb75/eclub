@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 카테고리">
+    <title>마이페이지 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/eclub/assets/css/pc/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="mypage type-general" data-page-id="mypage">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/eclub/pc/components/header.txt"></div>
+
+        <main id="container" class="mypage-container">
+            <!-- 카테고리 메인 레이아웃 -->
+            <div class="container category-page-layout">
+                <!-- 좌측 사이드바: 마이페이지 메뉴 -->
+                <div data-include="/eclub/pc/components/mypage-sidebar.txt"></div>
+
+                <!-- 중앙/우측 컨텐츠 영역 -->
+                <div class="category-main">
+                    <div class="category-header">
+                        <h2 class="title-search title-breadcrumb em-cmt">
+                            <span>문의하기 / 문의내역</span>
+                            <em>문의사항 및 개선사항을 자유롭게 올려주시면 24간이내 답변드립니다.</em>
+                        </h2>
+                    </div>
+
+                    <!-- 회원기본정보 -->
+                    <div class="mypage-section inquiry-section">
+                        <div class="sameday-delivery-list-wrap inquiry-list">
+                            <!-- 요약 정보 -->
+                            <div class="category-filter-bar type-summary">
+                                <div class="filter-left">
+                                    <span class="summary-text">질문 : <em class="price">0 건</em></span>
+                                    <span class="v-divider"></span>
+                                    <span class="summary-text">답변 : <em class="price">0 건</em></span>
+                                </div>
+                                <div class="filter-right">
+                                    <label class="filter-label">문의유형</label>
+                                    <div class="custom-select">
+                                        <button type="button" class="select-label" id="payMethodTrigger">
+                                            <span>전체</span>
+                                            <i class="icon-down-bullet"></i>
+                                        </button>
+                                        <ul class="select-options" role="listbox">
+                                            <li class="active" data-value="">전체</li>
+                                            <li data-value="card">신용카드</li>
+                                            <li data-value="virtual">가상계좌</li>
+                                            <li data-value="transfer">계좌이체</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- 리스트 필터 -->
+                            <div class="category-filter-bar type-list-filter">
+                                <div class="order-list-controls">
+                                    <div class="control-left">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                            <span class="text">전체선택</span>
+                                        </label>
+                                        <div class="button-wrapper">
+                                            <button type="button" class="btn-delete">삭제하기 <i
+                                                    class="icon-chevron-right"></i></button>
+                                            <button type="button" class="btn-edit">수정하기 <i
+                                                    class="icon-chevron-right"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cmn-table-wrap" style="border-top: none;">
+                                <table class="cmn-table">
+                                    <colgroup>
+                                        <col style="width: 42px">
+                                        <col>
+                                        <col>
+                                        <col style="width: 50%;">
+                                        <col>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                            </th>
+                                            <th scope="col">번호</th>
+                                            <th scope="col">유형</th>
+                                            <th scope="col">질문제목</th>
+                                            <th scope="col">질문날짜</th>
+                                            <th scope="col">답변</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="product-list">
+                                        <tr class="product-item" data-sales="1000" data-purchase="20" data-new="5"
+                                            data-price="1000" data-delivery-type="cold" data-delivery-center="tc"
+                                            data-tax-type="taxable">
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td>8801074255707 <br>
+                                                8801074255707</td>
+                                            <td>1,220</td>
+                                            <td class="align-left">
+                                                <div class="txt-ellipsis">삼진어묵 딱한끼어묵탕 딱한끼어묵탕딱한끼어묵탕삼진어묵 딱한끼어묵탕
+                                                    딱한끼어묵탕딱한끼어묵탕 180g (상품
+                                                    1)끼어묵탕딱한끼어묵탕
+                                                    180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)</div>
+                                            </td>
+                                            <td>950</td>
+                                            <td>999</td>
+                                        </tr>
+                                        <tr class="product-item" data-sales="1000" data-purchase="20" data-new="5"
+                                            data-price="1000" data-delivery-type="cold" data-delivery-center="tc"
+                                            data-tax-type="taxable">
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td>8801074255707 <br>
+                                                8801074255707</td>
+                                            <td>1,220</td>
+                                            <td class="align-left">
+                                                <div class="txt-ellipsis">삼진어묵 딱한끼어묵탕 딱한끼어묵탕딱한끼어묵탕삼진어묵 딱한끼어묵탕
+                                                    딱한끼어묵탕딱한끼어묵탕 180g (상품
+                                                    1)끼어묵탕딱한끼어묵탕
+                                                    180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)</div>
+                                            </td>
+                                            <td>950</td>
+                                            <td>999</td>
+                                        </tr>
+                                        <tr class="product-item" data-sales="1000" data-purchase="20" data-new="5"
+                                            data-price="1000" data-delivery-type="cold" data-delivery-center="tc"
+                                            data-tax-type="taxable">
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td>8801074255707 <br>
+                                                8801074255707</td>
+                                            <td>1,220</td>
+                                            <td class="align-left">
+                                                <div class="txt-ellipsis">삼진어묵 딱한끼어묵탕 딱한끼어묵탕딱한끼어묵탕삼진어묵 딱한끼어묵탕
+                                                    딱한끼어묵탕딱한끼어묵탕 180g (상품
+                                                    1)끼어묵탕딱한끼어묵탕
+                                                    180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)</div>
+                                            </td>
+                                            <td>950</td>
+                                            <td>999</td>
+                                        </tr>
+                                        <tr class="product-item" data-sales="1000" data-purchase="20" data-new="5"
+                                            data-price="1000" data-delivery-type="cold" data-delivery-center="tc"
+                                            data-tax-type="taxable">
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td>8801074255707 <br>
+                                                8801074255707</td>
+                                            <td>1,220</td>
+                                            <td class="align-left">
+                                                <div class="txt-ellipsis">삼진어묵 딱한끼어묵탕 딱한끼어묵탕딱한끼어묵탕삼진어묵 딱한끼어묵탕
+                                                    딱한끼어묵탕딱한끼어묵탕 180g (상품
+                                                    1)끼어묵탕딱한끼어묵탕
+                                                    180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)</div>
+                                            </td>
+                                            <td>950</td>
+                                            <td>999</td>
+                                        </tr>
+                                        <tr class="product-item" data-sales="1000" data-purchase="20" data-new="5"
+                                            data-price="1000" data-delivery-type="cold" data-delivery-center="tc"
+                                            data-tax-type="taxable">
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td>8801074255707 <br>
+                                                8801074255707</td>
+                                            <td>1,220</td>
+                                            <td class="align-left">
+                                                <div class="txt-ellipsis">삼진어묵 딱한끼어묵탕 딱한끼어묵탕딱한끼어묵탕삼진어묵 딱한끼어묵탕
+                                                    딱한끼어묵탕딱한끼어묵탕 180g (상품
+                                                    1)끼어묵탕딱한끼어묵탕
+                                                    180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)끼어묵탕딱한끼어묵탕 180g (상품 1)</div>
+                                            </td>
+                                            <td>950</td>
+                                            <td>999</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="order-receipt-bottom-actions"
+                                style="justify-content: flex-end; margin-top: 10px;">
+                                <div class="action-buttons">
+                                    <button type="button" class="btn-inquiry"> 질문하기</button>
+                                </div>
+                            </div>
+
+                            <div class="pagination">
+                                <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
+                                <button type="button" class="active">1</button>
+                                <button type="button">2</button>
+                                <button type="button">3</button>
+                                <button type="button">4</button>
+                                <button type="button">5</button>
+                                <button type="button">6</button>
+                                <button type="button">7</button>
+                                <button type="button">8</button>
+                                <button type="button">9</button>
+                                <button type="button">10</button>
+                                <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="sameday-delivery-list-wrap inquiry-write" style="display: none;">
+                            <div class="cmn-table-wrap">
+                                <table class="cmn-table table-form">
+                                    <colgroup>
+                                        <col style="width: 200px;">
+                                        <col style="width: auto;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">유형</th>
+                                            <td>
+                                                <div class="custom-select">
+                                                    <button type="button" class="select-label" id="inquiryTypeTrigger">
+                                                        <span>전체</span>
+                                                        <i class="icon-down-bullet"></i>
+                                                    </button>
+                                                    <ul class="select-options" role="listbox">
+                                                        <li class="active" data-value="">전체</li>
+                                                        <li data-value="1">배송문의</li>
+                                                        <li data-value="2">상품문의</li>
+                                                        <li data-value="3">기타</li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">제목</th>
+                                            <td>
+                                                <input type="text" class="input-text w-full" placeholder="제목을 입력하세요">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">내용</th>
+                                            <td>
+                                                <div class="textarea-wrap">
+                                                    <textarea class="textarea" placeholder="본문을 입력하세요"
+                                                        maxlength="800"></textarea>
+                                                    <div class="char-count">0 / 800 byte</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="btn-group-center">
+                                <button type="button" class="btn-outline btn-cancel-write">취소</button>
+                                <button type="button" class="btn-solid-dark btn-submit-inquiry">등록하기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //회원기본정보 -->
+
+
+                </div>
+
+            </div>
+    </div>
+    </main>
+
+    <div data-include="/eclub/pc/components/footer.txt"></div>
+    </div>
+
+    <!-- 상품 옵션 모달 템플릿 -->
+    <template id="modal-item-option">
+        <div class="modal-header">
+            <button type="button" class="btn-modal-close" aria-label="닫기"><i class="icon-clear"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="option-setup">
+                <div class="item-preview">
+                    <img src="" alt="상품 이미지" class="modal-item-img">
+                    <p class="modal-item-name"></p>
+                </div>
+                <!-- 옵션 설정 영역 -->
+                <div class="option-controls">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-confirm-option">설정 완료</button>
+        </div>
+    </template>
+
+    <script src="/eclub/dist/bundle.js"></script>
+
+
+
+</body>
+
+</html>

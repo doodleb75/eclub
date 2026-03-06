@@ -185,7 +185,7 @@
             // 섹션 타이틀
             .menu-section-title {
                 font-size: rem(13);
-                font-weight: $fw-medium;
+                font-weight: $fw-bold;
                 color: $gray-900;
                 padding: rem(8) rem(12);
                 border-bottom: 1px solid $gray-150;
@@ -201,9 +201,40 @@
                         margin-bottom: 0;
                     }
 
+                    // 유저 타입별 노출 제어
+                    &[data-user-type="credit"] {
+                        display: none;
+                    }
+
+                    &[data-user-type="general"] {
+                        display: none;
+                    }
+
+                    // body 클래스에 따른 노출 처리
+                    body.type-credit & {
+                        &[data-user-type="credit"] {
+                            display: block;
+                        }
+
+                        &[data-user-type="general"] {
+                            display: none !important;
+                        }
+                    }
+
+                    body.type-general & {
+                        &[data-user-type="general"] {
+                            display: block;
+                        }
+
+                        &[data-user-type="credit"] {
+                            display: none !important;
+                        }
+                    }
+
                     .menu-link {
                         display: block;
                         font-size: rem(13);
+                        font-weight: $fw-regular;
                         color: $gray-700;
                         line-height: 1.5;
                         padding: rem(8) rem(0) rem(8) rem(32);
@@ -383,10 +414,28 @@
                 align-items: center;
                 gap: rem(20); // 피그마 분석: 간격 16px
 
+                &.em-cmt {
+                    align-items: flex-end;
+                }
+
+                .point-amount {
+                    color: $point-red;
+                }
+
                 .icon-nav-back {
                     width: rem(7.173);
                     height: rem(14.001);
                     transform: scaleX(-1); // 좌우 반전 → 다음 방향 화살표
+                }
+
+                em {
+                    position: relative;
+                    bottom: rem(4);
+                    font-style: normal;
+                    font-size: rem(13);
+                    font-weight: $fw-regular;
+                    line-height: 1.5;
+                    color: $gray-700;
                 }
             }
 
@@ -806,14 +855,16 @@
             }
         }
 
-        .pagination {
+        .pagination,
+        .pagingArea .paging {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: rem(4);
 
             button,
-            a {
+            a,
+            strong {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
@@ -823,24 +874,68 @@
                 background: $white;
                 border-radius: $radius-sm;
                 font-size: $fs-13;
+                font-weight: $fw-regular;
                 color: $gray-600;
+                font-style: normal; // em 등 태그 대응
 
-                &.active {
+                &.active,
+                &.on {
                     background: $gray-900;
                     color: $white;
                     border-color: $gray-900;
                     font-weight: $fw-bold;
                 }
 
-                &:hover:not(.active) {
+                &:hover:not(.active):not(.on) {
                     background: $gray-50;
                 }
 
+                // 기존 아이콘 유지
                 .icon-page-bullet {
                     width: rem(6) !important;
                     height: rem(13) !important;
                     -webkit-mask-size: 100% 100% !important;
                     mask-size: 100% 100% !important;
+                }
+
+                // 새로운 마크업의 텍스트 버튼 대응 (FIRST, PREV 등)
+                &.prevEnd,
+                &.prev,
+                &.next,
+                &.nextEnd {
+                    font-size: 0; // 텍스트 숨김
+                    position: relative;
+
+                    &::before {
+                        content: '';
+                        @include icon-mask('#{$icon-path}/category-sep-bullet.svg', rem(14));
+                        width: rem(6);
+                        height: rem(13);
+                        background-color: $gray-600;
+                    }
+                }
+
+                &.prevEnd,
+                &.prev {
+                    &::before {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                // 양방향 끝 이동 (화살표 두개 효과)
+                &.prevEnd,
+                &.nextEnd {
+                    &::after {
+                        content: '';
+                        @include icon-mask('#{$icon-path}/category-sep-bullet.svg', rem(14));
+                        width: rem(6);
+                        height: rem(13);
+                        background-color: $gray-600;
+                    }
+                }
+
+                &.prevEnd::after {
+                    transform: rotate(180deg);
                 }
 
                 &.btn-page-first,
@@ -853,6 +948,10 @@
                 &.btn-page-first,
                 &.btn-page-last {
                     gap: rem(-2); // 간격 조정
+                }
+
+                em {
+                    font-style: normal;
                 }
             }
         }

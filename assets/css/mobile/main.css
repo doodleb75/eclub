@@ -1648,6 +1648,52 @@ body.no-scroll {
   font-weight: 700;
 }
 
+.modal-body .info-table-wrap {
+  margin-top: 0.9375rem;
+}
+.modal-body .info-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  table-layout: fixed;
+}
+.modal-body .info-table th {
+  height: 2.75rem;
+  padding: 0;
+  color: #222222;
+  background-color: #f3f3f3;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+}
+.modal-body .info-table th.col-no {
+  width: 3.75rem;
+}
+.modal-body .info-table th.col-name {
+  width: auto;
+  text-align: left;
+}
+.modal-body .info-table th.col-qty {
+  width: 5rem;
+}
+.modal-body .info-table td {
+  height: 3rem;
+  padding: 0.625rem 0;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: #444444;
+  border-bottom: 1px solid #e1e1e1;
+}
+.modal-body .info-table td.text-left {
+  text-align: left;
+  padding-left: 0.9375rem;
+}
+.modal-body .info-table td.empty {
+  padding: 3.75rem 0;
+  color: #aaaaaa;
+  background-color: #ffffff;
+}
+
 .modal-header {
   padding: 1.25rem 1rem 0;
   min-height: 3.5rem;

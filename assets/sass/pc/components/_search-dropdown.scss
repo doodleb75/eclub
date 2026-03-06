@@ -267,4 +267,18 @@
             // padding-right: rem(20);
         }
     }
+
+    // 검색 결과 없음 뷰
+    .search-no-result-view {
+
+        // min-height: rem(300);
+        @include flex-center;
+
+        .no-data {
+            padding: 0;
+            font-size: rem(14);
+            font-weight: $fw-regular;
+            color: $gray-600;
+        }
+    }
 }

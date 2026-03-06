@@ -58,9 +58,10 @@
                 padding: rem(15) rem(5);
                 font-size: rem(14);
                 font-weight: $fw-semibold;
-                color: $gray-850;
+                color: $gray-900;
                 text-align: center;
-                line-height: 1.3;
+                line-height: 1.5;
+                letter-spacing: -0.5px;
 
                 &.align-left {
                     text-align: left;
@@ -88,21 +89,38 @@
             gap: unset;
         }
 
+
+        td.emphasis-list {
+            font-weight: $fw-semibold !important;
+        }
+
+
         tr {
             &.product-item {
                 display: table-row;
                 width: auto;
             }
 
+            &.no-result {
+                height: 100px;
+                display: none;
+            }
+
             td {
-                padding: rem(12) rem(5);
+                padding: rem(12) rem(16);
                 font-size: rem(14);
-                color: $gray-800;
+                color: $gray-900;
                 font-weight: $fw-regular;
                 text-align: center;
                 vertical-align: middle;
-                line-height: 1.4;
+                line-height: 1.5;
+                letter-spacing: -0.5px;
                 word-break: keep-all;
+
+                .txt-ellipsis {
+                    @include multi-ellipsis(2); // 2줄 이상 시 말줄임 적용
+                    word-break: break-all; // 글자 단위로 줄바꿈하여 말줄임 최적화
+                }
 
                 .order-num {
                     font-size: rem(13);
@@ -157,6 +175,19 @@
                     font-weight: $fw-semibold;
                     color: $gray-900;
                 }
+
+                &.pay-cost {
+                    color: $point-red;
+                }
+
+                a {
+                    display: block;
+                    text-decoration: underline;
+
+                    &:hover {
+                        color: $gray-700;
+                    }
+                }
             }
         }
     }
@@ -206,6 +237,15 @@
 
     &.profile-section {
         background-color: $gray-100;
+
+        // 회원타입에 따른 토글
+        body.type-general &.type-credit {
+            display: none;
+        }
+
+        body.type-credit &.type-general {
+            display: none;
+        }
 
         .profile-container {
             display: flex;
@@ -382,6 +422,36 @@
                     color: $gray-830;
                     font-weight: $fw-medium;
                     white-space: nowrap;
+                }
+            }
+        }
+
+        .profile-container.type-credit {
+            .profile-info-side {
+                .manager-info-wrap {
+                    margin-top: rem(12);
+                    display: flex;
+                    flex-direction: column;
+                    gap: rem(6);
+
+                    p {
+                        font-size: rem(13);
+                        color: $gray-700;
+                        line-height: 1.4;
+                    }
+                }
+            }
+
+            .profile-stats-side {
+                flex-direction: column;
+                gap: rem(24);
+                align-items: center;
+
+                .stats-top,
+                .stats-bottom {
+                    display: flex;
+                    gap: rem(48);
+                    justify-content: center;
                 }
             }
         }
@@ -915,7 +985,9 @@
         }
     }
 
-    .btn-add-cart {
+    .btn-add-cart,
+    .btn-delete,
+    .btn-edit {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -929,6 +1001,7 @@
         font-weight: $fw-semibold;
         color: $gray-700;
         white-space: nowrap;
+        transition: all .2s;
 
         .icon-chevron-right {
             display: inline-block;
@@ -944,6 +1017,18 @@
             -webkit-mask-position: center;
             -webkit-mask-repeat: no-repeat;
         }
+
+        &:hover {
+            background: $gray-100;
+            border-color: $gray-350;
+            transition: all .2s;
+
+        }
+    }
+
+    .button-wrapper {
+        display: flex;
+        gap: rem(6);
     }
 }
 
@@ -1260,6 +1345,10 @@
         align-items: center;
         gap: rem(4);
 
+        &.point-type-group {
+            gap: rem(8);
+        }
+
         .quick-period-btn {
             display: inline-flex;
             align-items: center;
@@ -1318,112 +1407,7 @@
         }
 
         // 필터 전용 드롭다운 재정의
-        .custom-select {
-            position: relative;
 
-            // 드롭다운별 너비 설정 (피그마 참조)
-            &:nth-of-type(1) {
-                width: rem(126);
-            }
-
-            // 결제수단
-            &:nth-of-type(2) {
-                width: rem(89);
-            }
-
-            // 주문상태
-            &:nth-of-type(3) {
-                width: rem(89);
-            }
-
-            // 결제상태
-            &:nth-of-type(4) {
-                width: rem(89);
-            }
-
-            // 상품구분
-
-            .select-label {
-                display: inline-flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-                gap: rem(8);
-                height: rem(28);
-                padding: 0 rem(12);
-                border: 1px solid $gray-350;
-                border-radius: $radius-xs;
-                background-color: $white;
-                font-size: $fs-13;
-                font-weight: $fw-regular;
-                color: $gray-900;
-                cursor: pointer;
-                white-space: nowrap;
-                transition: border-color $transition-speed ease;
-
-                span {
-                    pointer-events: none;
-                }
-
-                .icon-down-bullet {
-                    width: rem(10);
-                    height: rem(6);
-                    @include icon-mask('#{$icon-path}/icon-down-bullet.svg', rem(10) rem(6));
-                    background-color: $gray-700;
-                    flex-shrink: 0;
-                    transition: transform $transition-speed ease;
-                }
-
-                &:hover {
-                    border-color: $gray-800;
-                }
-            }
-
-            .select-options {
-                display: none;
-                position: absolute;
-                top: calc(100% + rem(2));
-                left: 0;
-                min-width: 100%;
-                white-space: nowrap;
-                background-color: $white;
-                border: 1px solid $gray-350;
-                box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.08);
-                z-index: 200;
-                padding: rem(4) 0;
-                border-radius: $radius-xs;
-                list-style: none;
-
-                li {
-                    padding: rem(7) rem(16);
-                    font-size: $fs-13;
-                    color: $gray-700;
-                    cursor: pointer;
-                    transition: all $transition-speed ease;
-
-                    &:hover,
-                    &.active {
-                        color: $gray-900;
-                        font-weight: $fw-semibold;
-                        background-color: $gray-55;
-                    }
-                }
-            }
-
-            &.is-open {
-                .select-label {
-                    border-color: $gray-900;
-
-                    .icon-down-bullet {
-                        transform: rotate(180deg);
-                    }
-                }
-
-                .select-options {
-                    display: block;
-                }
-            }
-        }
     }
 
     // Row 3: 상품검색
@@ -1648,6 +1632,16 @@
     padding: 0 rem(20);
     margin-top: rem(16);
 
+    .text-muted {
+        display: flex;
+        flex: 3;
+        font-size: rem(13);
+        color: $gray-700;
+        font-weight: $fw-medium;
+        line-height: 1.5;
+        letter-spacing: -0.5px;
+    }
+
     .guide-text {
         font-size: rem(13);
         color: $gray-600;
@@ -1659,6 +1653,8 @@
     .action-buttons {
         display: flex;
         gap: rem(8);
+        justify-content: flex-end;
+        // flex: .5;
 
         .btn-outline {
             display: inline-flex;
@@ -1677,8 +1673,8 @@
             transition: all $transition-speed ease;
 
             &:hover {
-                border-color: $gray-400;
-                background-color: $gray-150;
+                background: $gray-100;
+                border-color: $gray-500;
                 transition: all $transition-speed ease;
             }
         }
@@ -1703,6 +1699,8 @@
 }
 
 .sameday-delivery-list-wrap {
+    // padding: 0 rem(20);
+
     .filter-row-body {
         gap: 0 !important;
     }
@@ -1736,6 +1734,10 @@
                         font-weight: $fw-semibold;
                         color: $primary-red;
                     }
+                }
+
+                em {
+                    font-style: normal;
                 }
 
                 .v-divider {
@@ -1878,8 +1880,666 @@
     justify-content: space-between;
 }
 
+.point-filter-row {
+    gap: rem(12) !important;
+
+    .filter-row-item {
+        display: flex;
+        gap: rem(16);
+    }
+}
+
+.action-group {
+    justify-content: flex-end;
+}
+
 .single-line-wrap {
     display: flex;
     align-items: center;
     gap: rem(16);
+}
+
+// 쿠폰 카테고리 탭
+.coupon-category-tab {
+    display: flex;
+    gap: rem(10); // 피그마 분석: 탭 사이 간격
+    // margin-bottom: rem(24);
+    padding: rem(20);
+
+    .tab-btn {
+        flex: 1;
+        height: rem(45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $white;
+        border: 1px solid $gray-300;
+        font-size: rem(14);
+        color: $gray-900;
+        font-weight: $fw-semibold;
+        cursor: pointer;
+        transition: all $transition-speed;
+
+        &.active {
+            border-color: $gray-900;
+            color: $gray-900;
+            font-weight: $fw-bold;
+        }
+
+        &:hover:not(.active) {
+            background-color: $gray-50;
+            border-color: $gray-400;
+        }
+    }
+}
+
+.tab-content {
+    .list-count-txt {
+        padding: rem(10) rem(16);
+        font-size: $fs-14;
+        font-weight: $fw-regular;
+        color: $gray-700;
+
+        span {
+            color: $primary-red;
+        }
+    }
+}
+
+// 탭 컨텐츠 토글
+[data-tab-content] {
+    display: none;
+
+    &.active {
+        display: block;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// 정보수정 폼 테이블 (table-form)
+.profile-edit-section {
+    margin-top: rem(40);
+
+    // 본인인증 잠금 블럭
+    .auth-unlock-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: rem(40) 0 rem(80); // 상단 40px (섹션 마진 40px합쳐서 80px), 하단 80px 여백
+
+        .btn-auth {
+            width: rem(304);
+            height: rem(48);
+            background-color: $gray-900;
+            color: $white;
+            border-radius: rem(4);
+            font-size: rem(16);
+            font-weight: $fw-bold;
+            letter-spacing: rem(-0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            margin-bottom: rem(16);
+
+            &:hover {
+                background-color: $gray-800;
+            }
+        }
+
+        .auth-desc {
+            color: $gray-900;
+            font-size: rem(14);
+            font-weight: $fw-semibold;
+            line-height: 1.2;
+            text-align: center;
+        }
+    }
+
+    .section-container {
+        display: flex;
+        flex-direction: column;
+        gap: rem(60);
+    }
+
+    .section-head {
+        padding: rem(10) rem(16);
+        margin-bottom: 0;
+
+        .section-title {
+            font-size: rem(24);
+            font-weight: $fw-bold;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            height: rem(28);
+            padding: 0 rem(12);
+            border: 1px solid $gray-700;
+            background-color: $white;
+            font-size: rem(13);
+            color: $gray-800;
+            gap: rem(8);
+            border-radius: rem(2);
+
+            &:hover {
+
+                background: $gray-100;
+                border-color: $gray-500;
+            }
+
+            i {
+                width: rem(6);
+                height: rem(11);
+                background-color: $gray-600;
+            }
+        }
+    }
+}
+
+.table-form {
+    // border-top: 2px solid $gray-900;
+
+    .checkbox-container .text {
+        margin-left: rem(28);
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid $gray-200;
+
+            th {
+                background-color: $gray-55;
+                text-align: left;
+                padding: rem(16) rem(24);
+                font-size: rem(14);
+                font-weight: $fw-semibold;
+                color: $gray-900;
+                vertical-align: middle;
+
+                .required {
+                    color: $point-red;
+                    margin-left: rem(2);
+                    display: inline-block;
+                    line-height: 1;
+                }
+            }
+
+            td {
+                text-align: left;
+                padding: rem(16) rem(24);
+                color: $gray-800;
+                vertical-align: middle;
+
+                .form-group-addr,
+                .form-group-email,
+                .form-group-phone,
+                .form-group-branch,
+                .form-group-manager,
+                .form-group-account {
+                    display: flex;
+                    flex-direction: column;
+                    gap: rem(8);
+
+                    .form-row,
+                    .form-inline {
+                        display: flex;
+                        align-items: center;
+                        gap: rem(8);
+                        width: 100%;
+                    }
+                }
+
+                .form-group-phone,
+                .form-group-branch,
+                .form-group-manager,
+                .form-group-email {
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                .form-group-account {
+                    flex-direction: row;
+                    align-items: center;
+                    flex-wrap: wrap; // 내용이 길면 내려가도록
+                    gap: rem(8);
+
+                    .checkbox-container {
+                        margin-left: rem(16);
+                        white-space: nowrap; // 줄바꿈 방지
+                    }
+                }
+
+                .input-text {
+                    height: rem(32);
+                    padding: 0 rem(12);
+                    border: 1px solid $gray-300;
+                    border-radius: rem(2);
+                    font-size: rem(14);
+                    color: $gray-900;
+                    background-color: $white;
+
+                    &:read-only {
+                        background-color: $gray-100;
+                        color: $gray-600;
+                    }
+
+                    &:focus {
+                        border-color: $gray-900;
+                        outline: none;
+                    }
+                }
+
+                .w-80 {
+                    width: rem(80) !important;
+                }
+
+                .w-120 {
+                    width: rem(120) !important;
+                }
+
+                .w-200 {
+                    width: rem(200) !important;
+                }
+
+                .w-320 {
+                    width: rem(320) !important;
+                }
+
+                .flex-1 {
+                    flex: 1;
+                }
+
+                .text-center {
+                    text-align: center;
+                }
+
+
+                .btn-outline {
+                    height: rem(34);
+                    padding: 0 rem(16);
+                    border: 1px solid $gray-700;
+                    background-color: $white;
+                    font-size: rem(14);
+                    color: $gray-800;
+                    border-radius: rem(2);
+                    display: inline-flex;
+                    align-items: center;
+                    gap: rem(8);
+                    cursor: pointer;
+
+                    &:hover {
+                        background: $gray-100;
+                        border-color: $gray-500;
+                    }
+
+                    i {
+                        background-color: $gray-600;
+                        width: rem(6);
+                        height: rem(11);
+                    }
+                }
+
+                .dash {
+                    color: $gray-600;
+                    padding: 0 rem(4);
+                }
+
+                .branch-name {
+                    font-size: rem(14);
+                    color: $gray-900;
+                    margin-left: rem(4);
+                }
+
+                .custom-select {
+                    width: rem(120);
+
+                    .select-label {
+                        width: 100%; // 고정 너비 제거 (기존 134px가 부모 120px를 넘어서 겹침 발생)
+                        height: rem(32); // input-text와 높이 통일
+                        font-size: rem(14);
+                    }
+                }
+
+                .btn-solid-dark {
+                    height: rem(32); // input-text와 높이 통일
+                    padding: 0 rem(16);
+                    background-color: $gray-500;
+                    color: $white;
+                    font-size: rem(14);
+                    font-weight: $fw-medium;
+                    border: none;
+                    border-radius: rem(2);
+                    white-space: nowrap;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: $gray-700;
+                    }
+                }
+            }
+        }
+    }
+
+    .checkbox-container {
+        .text {
+            color: $gray-700;
+        }
+    }
+}
+
+.custom-select {
+    position: relative;
+
+    // 드롭다운별 너비 설정 (피그마 참조)
+    &:nth-of-type(1) {
+        width: rem(126);
+    }
+
+    // 결제수단
+    &:nth-of-type(2) {
+        width: rem(89);
+    }
+
+    // 주문상태
+    &:nth-of-type(3) {
+        width: rem(89);
+    }
+
+    // 결제상태
+    &:nth-of-type(4) {
+        width: rem(89);
+    }
+
+    // 상품구분
+
+    .select-label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: rem(8);
+        height: rem(28);
+        padding: 0 rem(12);
+        border: 1px solid $gray-350;
+        border-radius: $radius-xs;
+        background-color: $white;
+        font-size: $fs-13;
+        font-weight: $fw-regular;
+        color: $gray-900;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: border-color $transition-speed ease;
+
+        span {
+            pointer-events: none;
+        }
+
+        .icon-down-bullet {
+            width: rem(10);
+            height: rem(6);
+            @include icon-mask('#{$icon-path}/icon-down-bullet.svg', rem(10) rem(6));
+            background-color: $gray-700;
+            flex-shrink: 0;
+            transition: transform $transition-speed ease;
+        }
+
+        &:hover {
+            border-color: $gray-800;
+        }
+    }
+
+    .select-options {
+        display: none;
+        position: absolute;
+        top: calc(100% + rem(2));
+        left: 0;
+        min-width: 100%;
+        white-space: nowrap;
+        background-color: $white;
+        border: 1px solid $gray-350;
+        box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.08);
+        z-index: 200;
+        padding: rem(4) 0;
+        border-radius: $radius-xs;
+        list-style: none;
+
+        li {
+            padding: rem(7) rem(16);
+            font-size: $fs-13;
+            color: $gray-700;
+            cursor: pointer;
+            transition: all $transition-speed ease;
+
+            &:hover,
+            &.active {
+                color: $gray-900;
+                font-weight: $fw-semibold;
+                background-color: $gray-55;
+            }
+        }
+    }
+
+    &.is-open {
+        .select-label {
+            border-color: $gray-900;
+
+            .icon-down-bullet {
+                transform: rotate(180deg);
+            }
+        }
+
+        .select-options {
+            display: block;
+        }
+    }
+}
+
+// 선택정보 섹션 스타일
+.profile-edit-section {
+    .terms-info {
+        padding: rem(24) rem(16) rem(32);
+
+        .terms-title {
+            font-size: rem(14);
+            font-weight: $fw-bold;
+            color: $gray-900;
+            margin-bottom: rem(8);
+            line-height: 1.5;
+        }
+
+        .terms-desc {
+            font-size: rem(14);
+            color: $gray-900;
+            margin-bottom: rem(20);
+            line-height: 1.5;
+        }
+
+        .terms-list {
+            margin-bottom: rem(20);
+            font-weight: $fw-regular;
+
+            li {
+                font-size: rem(14);
+                color: $gray-900;
+                line-height: 1.6;
+
+                strong {
+                    font-weight: $fw-semibold;
+                }
+            }
+        }
+
+        .terms-notice {
+            font-size: rem(13);
+            font-weight: $fw-regular;
+            color: $gray-600;
+            margin-bottom: rem(24);
+            line-height: 1.5;
+        }
+
+        .terms-agree {
+            .checkbox-container {
+                margin: 0;
+                font-weight: $fw-regular;
+
+                .text {
+                    font-size: rem(14);
+                    color: $gray-700;
+                }
+            }
+        }
+    }
+
+    .terms-check-group {
+        display: inline-flex;
+        align-items: center;
+        gap: rem(16);
+        margin-left: rem(16);
+
+        .checkbox-container {
+            margin: 0;
+            font-weight: $fw-regular;
+
+            input[type="checkbox"]:disabled~.text {
+                color: $gray-500;
+            }
+        }
+    }
+}
+
+.save-btn-area {
+    text-align: center;
+
+    .btn-save {
+        display: flex;
+        height: rem(48);
+        width: rem(224);
+        color: $white;
+        justify-content: center;
+        align-items: center;
+        align-self: stretch;
+        border-radius: rem(4);
+        background: $gray-900;
+        font-size: rem(16);
+        font-weight: $fw-semibold;
+        letter-spacing: rem(-0.5);
+        margin: 0 auto;
+
+        &:hover {
+            background: $gray-800;
+        }
+    }
+}
+
+.filter-label {
+    font-size: rem(13);
+    margin-right: rem(10);
+}
+
+.inquiry-section {
+    margin-top: rem(32) !important;
+}
+
+.btn-inquiry {
+    height: rem(28);
+    background: $gray-900;
+    color: $white;
+    font-size: rem(13);
+    padding: rem(4) rem(32);
+    border-radius: rem(2);
+
+    &:hover {
+        background: $gray-800;
+    }
+}
+
+.inquiry-write {
+    .cmn-table-wrap {
+        border-top: rem(1) solid $gray-700;
+    }
+
+    .textarea-wrap {
+        .textarea {
+            width: 100%;
+            height: rem(300);
+            padding: rem(16);
+            border: 1px solid $gray-300;
+            border-radius: rem(2);
+            font-size: rem(14);
+            color: $gray-900;
+            background-color: $white;
+            resize: none;
+
+            &:focus {
+                border-color: $gray-900;
+                outline: none;
+            }
+
+            &::placeholder {
+                color: $gray-400;
+            }
+        }
+
+        .char-count {
+            text-align: left;
+            margin-top: rem(10);
+            color: $gray-500;
+            font-size: rem(13);
+        }
+    }
+
+    .btn-group-center {
+        margin-top: rem(40);
+        display: flex;
+        justify-content: center;
+        gap: rem(16);
+
+        button {
+            width: rem(224);
+            height: rem(48);
+            font-size: rem(16);
+            font-weight: $fw-bold;
+            border-radius: rem(4);
+            letter-spacing: rem(-0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            border: 1px solid $gray-900;
+            background-color: $white;
+            color: $gray-900;
+
+            &:hover {
+                background-color: $gray-50;
+            }
+        }
+
+        .btn-solid-dark {
+            background-color: $gray-900;
+            color: $white;
+            border: none;
+
+            &:hover {
+                background-color: $gray-850;
+            }
+        }
+    }
 }

@@ -7,16 +7,26 @@
                 <li class="menu-section">
                     <h4 class="menu-section-title">주문내역</h4>
                     <ul class="menu-sub-list">
-                        <li class="menu-item">
+                        <!-- 일반유저 전용 -->
+                        <li class="menu-item" data-user-type="general">
                             <a href="/eclub/pc/pages/order-daily-amount.html" class="menu-link">
                                 금일 주문금액
                             </a>
                         </li>
-                        <li class="menu-item">
+                        <!-- 신용회원사 전용 -->
+                        <li class="menu-item" data-user-type="credit">
+                            <a href="/eclub/pc/pages/order-history-list.html" class="menu-link">
+                                주문내역 조회
+                            </a>
+                        </li>
+                        <!-- 일반유저 전용 -->
+                        <li class="menu-item" data-user-type="general">
                             <a href="/eclub/pc/pages/order-history-receipt.html" class="menu-link">
                                 주문내역조회(영수증)
                             </a>
                         </li>
+
+                        <!-- 공통 -->
                         <li class="menu-item">
                             <a href="/eclub/pc/pages/delivery-sameday.html" class="menu-link">
                                 당일배송 조회
@@ -27,29 +37,54 @@
                                 당월배송 조회
                             </a>
                         </li>
-                        <li class="menu-item">
+
+                        <!-- 일반/신용 레이블 상이 -->
+                        <li class="menu-item" data-user-type="credit">
+                            <a href="/eclub/pc/pages/delivery-item-list.html" class="menu-link">
+                                배송상품 조회
+                            </a>
+                        </li>
+                        <li class="menu-item" data-user-type="general">
                             <a href="/eclub/pc/pages/delivery-item-list.html" class="menu-link">
                                 배송상품 내역
                             </a>
                         </li>
+
+                        <!-- 공통 -->
                         <li class="menu-item">
                             <a href="/eclub/pc/pages/payment-unpaid.html" class="menu-link">
                                 미납상품 조회
                             </a>
                         </li>
-                        <li class="menu-item">
+
+                        <!-- 일반유저 전용 -->
+                        <li class="menu-item" data-user-type="general">
                             <a href="/eclub/pc/pages/order-cancel-refund.html" class="menu-link">
                                 취소/환불 내역
                             </a>
                         </li>
-                        <li class="menu-item">
+                        <li class="menu-item" data-user-type="general">
                             <a href="/eclub/pc/pages/delivery-mis-shipped.html" class="menu-link">
                                 오배송 조회
                             </a>
                         </li>
+
+                        <!-- 공통 -->
                         <li class="menu-item">
                             <a href="javascript:void(0);" class="menu-link">
                                 직납배송 조회
+                            </a>
+                        </li>
+
+                        <!-- 신용회원사 전용 -->
+                        <li class="menu-item" data-user-type="credit">
+                            <a href="javascript:void(0);" class="menu-link">
+                                청구내역 조회
+                            </a>
+                        </li>
+                        <li class="menu-item" data-user-type="credit">
+                            <a href="javascript:void(0);" class="menu-link">
+                                주문한도
                             </a>
                         </li>
                     </ul>
@@ -57,18 +92,25 @@
                 <li class="menu-section">
                     <h4 class="menu-section-title">혜택정보</h4>
                     <ul class="menu-sub-list">
-                        <li class="menu-item">
-                            <a href="javascript:void(0);" class="menu-link">
+                        <!-- 신용회원사 전용 -->
+                        <li class="menu-item" data-user-type="credit">
+                            <a href="/eclub/pc/pages/mypage-points.html" class="menu-link">
+                                가용 포인트
+                            </a>
+                        </li>
+                        <!-- 일반유저 전용 -->
+                        <li class="menu-item" data-user-type="general">
+                            <a href="/eclub/pc/pages/mypage-points.html" class="menu-link">
                                 가용포인트
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:void(0);" class="menu-link">
+                            <a href="/eclub/pc/pages/mypage-incentive.html" class="menu-link">
                                 당월 장려금
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:void(0);" class="menu-link">
+                            <a href="/eclub/pc/pages/mypage-coupons.html" class="menu-link">
                                 쿠폰
                             </a>
                         </li>
@@ -87,6 +129,12 @@
                 <li class="menu-section">
                     <h4 class="menu-section-title">활동정보</h4>
                     <ul class="menu-sub-list">
+                        <!-- 신용회원사 전용 -->
+                        <li class="menu-item" data-user-type="credit">
+                            <a href="javascript:void(0);" class="menu-link">
+                                관심 상품
+                            </a>
+                        </li>
                         <li class="menu-item">
                             <a href="javascript:void(0);" class="menu-link">
                                 자주구매 상품
@@ -103,12 +151,12 @@
                     <h4 class="menu-section-title">나의정보</h4>
                     <ul class="menu-sub-list">
                         <li class="menu-item">
-                            <a href="javascript:void(0);" class="menu-link">
+                            <a href="/eclub/pc/pages/mypage-profile-edit.html" class="menu-link">
                                 회원정보 수정
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:void(0);" class="menu-link">
+                            <a href="/eclub/pc/pages/mypage-inquiry.html" class="menu-link">
                                 문의하기 / 문의내역
                             </a>
                         </li>
