@@ -944,7 +944,7 @@
     margin-top: rem(20);
 
     // 탭 구조에서 비활성 리스트 뒤의 버튼 숨김
-    .product-list:not(.active)+& {
+    .product-list[data-tab-content]:not(.active)+& {
         display: none !important;
     }
 

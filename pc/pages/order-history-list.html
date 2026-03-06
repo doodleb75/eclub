@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 카테고리">
+    <title>마이페이지 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/assets/css/pc/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="mypage" data-page-id="mypage">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/pc/components/header.txt"></div>
+
+        <main id="container">
+            <!-- 카테고리 메인 레이아웃 -->
+            <div class="container category-page-layout">
+                <!-- 좌측 사이드바: 마이페이지 메뉴 -->
+                <div data-include="/pc/components/mypage-sidebar.txt"></div>
+
+                <!-- 중앙/우측 컨텐츠 영역 -->
+                <div class="category-main">
+                    <div class="category-header">
+                        <h2 class="title-search title-breadcrumb">
+                            <span>주문내역조회 (영수증)</span>
+                            <i class="icon-nav-back"></i>
+                            <span>상세내역</span>
+                        </h2>
+                    </div>
+                    <div class="mypage-content-wrap product-detail-list">
+                        <!-- 서브헤더 -->
+                        <div class="order-table-header">
+                            <ul class="order-info-list">
+                                <li class="order-info-item">
+                                    <span class="info-label">주문일</span>
+                                    <span class="info-value">2026-02-21</span>
+                                </li>
+                                <li class="order-info-item">
+                                    <span class="info-label">결제상태</span>
+                                    <span class="info-value">주문취소</span>
+                                </li>
+                                <li class="order-info-item">
+                                    <span class="info-label">주문번호</span>
+                                    <span class="info-value">202602270005</span>
+                                </li>
+                                <li class="order-info-item">
+                                    <span class="info-label">결제번호</span>
+                                    <span class="info-value">5681502600227050438​01</span>
+                                </li>
+                            </ul>
+                            <p class="order-total-count">주문하신 상품은 총 <strong>27</strong>건 입니다</p>
+                        </div>
+
+                        <!-- 선택 컨트롤 -->
+                        <div class="order-list-controls">
+                            <div class="control-left">
+                                <label class="checkbox-container">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="text">전체선택</span>
+                                </label>
+                                <button type="button" class="btn-add-cart">장바구니 담기 <i
+                                        class="icon-chevron-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- 상세내역 리스트 -->
+                        <div class="order-detail-list">
+                            <div class="cmn-table-wrap">
+                                <table class="cmn-table order-table">
+                                    <colgroup>
+                                        <col style="width: 42px;">
+                                        <col style="width: auto;">
+                                        <col style="width: 7%;">
+                                        <col style="width: 5%;">
+                                        <col style="width: 6%;">
+                                        <col style="width: 5%;">
+                                        <col style="width: 6%;">
+                                        <col style="width: 8%;">
+                                        <col style="width: 8%;">
+                                        <col style="width: 5%;">
+                                        <col style="width: 8%;">
+                                        <col style="width: 6%;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>상품명</th>
+                                            <th>낱개금액</th>
+                                            <th>입수</th>
+                                            <th>입력수량</th>
+                                            <th>낱개</th>
+                                            <th>배송수량</th>
+                                            <th>주문금액</th>
+                                            <th>배송금액</th>
+                                            <th>과면세</th>
+                                            <th>배송일자</th>
+                                            <th>비고</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td class="align-left product-info-td">
+                                                <div class="product-info-box">
+                                                    <img src="/assets/images/mypage/product-detail-list01.png"
+                                                        alt="상품 이미지" class="product-img">
+                                                    <div class="product-text">
+                                                        <span class="tag tag-cold">저온</span>
+                                                        <span class="brand">CJ 제일제당 (주)</span>
+                                                        <strong class="name">CJ 비비고 소고기장조림 125g</strong>
+                                                        <span class="barcode">8801007805948</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-right">1,550</td>
+                                            <td>24</td>
+                                            <td>12</td>
+                                            <td>16</td>
+                                            <td>-</td>
+                                            <td class="align-right">31,000</td>
+                                            <td>예정</td>
+                                            <td>과세</td>
+                                            <td>2026.01.01</td>
+                                            <td><a href="javascript:;" class="link-wait">입금대기</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td class="align-left product-info-td">
+                                                <div class="product-info-box">
+                                                    <img src="/assets/images/mypage/product-detail-list01.png"
+                                                        alt="상품 이미지" class="product-img">
+                                                    <div class="product-text">
+                                                        <span class="tag tag-cold">저온</span>
+                                                        <span class="brand">CJ 제일제당 (주)</span>
+                                                        <strong class="name">CJ 비비고 소고기장조림 125g</strong>
+                                                        <span class="barcode">8801007805948</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-right">1,550</td>
+                                            <td>24</td>
+                                            <td>12</td>
+                                            <td>16</td>
+                                            <td>-</td>
+                                            <td class="align-right">31,000</td>
+                                            <td>예정</td>
+                                            <td>과세</td>
+                                            <td>2026.01.01</td>
+                                            <td><a href="javascript:;" class="link-wait">입금대기</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td class="align-left product-info-td">
+                                                <div class="product-info-box">
+                                                    <img src="/assets/images/mypage/product-detail-list01.png"
+                                                        alt="상품 이미지" class="product-img">
+                                                    <div class="product-text">
+                                                        <span class="tag tag-cold">저온</span>
+                                                        <span class="brand">CJ 제일제당 (주)</span>
+                                                        <strong class="name">CJ 비비고 소고기장조림 125g</strong>
+                                                        <span class="barcode">8801007805948</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-right">1,550</td>
+                                            <td>24</td>
+                                            <td>12</td>
+                                            <td>16</td>
+                                            <td>-</td>
+                                            <td class="align-right">31,000</td>
+                                            <td>예정</td>
+                                            <td>과세</td>
+                                            <td>2026.01.01</td>
+                                            <td><a href="javascript:;" class="link-wait">입금대기</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td class="align-left product-info-td">
+                                                <div class="product-info-box">
+                                                    <img src="/assets/images/mypage/product-detail-list01.png"
+                                                        alt="상품 이미지" class="product-img">
+                                                    <div class="product-text">
+                                                        <span class="tag tag-cold">저온</span>
+                                                        <span class="brand">CJ 제일제당 (주)</span>
+                                                        <strong class="name">CJ 비비고 소고기장조림 125g</strong>
+                                                        <span class="barcode">8801007805948</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-right">1,550</td>
+                                            <td>24</td>
+                                            <td>12</td>
+                                            <td>16</td>
+                                            <td>-</td>
+                                            <td class="align-right">31,000</td>
+                                            <td>예정</td>
+                                            <td>과세</td>
+                                            <td>2026.01.01</td>
+                                            <td><a href="javascript:;" class="link-wait">입금대기</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td class="align-left product-info-td">
+                                                <div class="product-info-box">
+                                                    <img src="/assets/images/mypage/product-detail-list01.png"
+                                                        alt="상품 이미지" class="product-img">
+                                                    <div class="product-text">
+                                                        <span class="tag tag-ambient">상온</span>
+                                                        <span class="brand">CJ 제일제당 (주)</span>
+                                                        <strong class="name">CJ 비비고 소고기장조림 125g</strong>
+                                                        <span class="barcode">8801007805948</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-right">1,550</td>
+                                            <td>24</td>
+                                            <td>12</td>
+                                            <td>16</td>
+                                            <td>-</td>
+                                            <td class="align-right">31,000</td>
+                                            <td>예정</td>
+                                            <td>과세</td>
+                                            <td>2026.01.01</td>
+                                            <td><a href="javascript:;" class="link-wait">입금대기</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td class="align-left product-info-td">
+                                                <div class="product-info-box">
+                                                    <img src="/assets/images/mypage/product-detail-list01.png"
+                                                        alt="상품 이미지" class="product-img">
+                                                    <div class="product-text">
+                                                        <span class="tag tag-ambient">상온</span>
+                                                        <span class="brand">CJ 제일제당 (주)</span>
+                                                        <strong class="name">CJ 비비고 소고기장조림 125g</strong>
+                                                        <span class="barcode">8801007805948</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-right">1,550</td>
+                                            <td>24</td>
+                                            <td>12</td>
+                                            <td>16</td>
+                                            <td>-</td>
+                                            <td class="align-right">31,000</td>
+                                            <td>예정</td>
+                                            <td>과세</td>
+                                            <td>2026.01.01</td>
+                                            <td><a href="javascript:;" class="link-wait">입금대기</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- // 상세내역 리스트 -->
+                    </div>
+
+                    <!-- 결제정보 영역 -->
+                    <div class="order-payment-section">
+                        <div class="section-head">
+                            <h3 class="section-title">결제정보</h3>
+                            <button type="button" class="btn-print">주문내역 인쇄</button>
+                        </div>
+                        <div class="payment-info-wrap">
+                            <div class="info-group">
+                                <dl>
+                                    <dt>결제수단 (카드종류)</dt>
+                                    <dd>전체 6건 (저온 3건 / 상온 3건)</dd>
+                                </dl>
+                                <dl>
+                                    <dt>입금계좌</dt>
+                                    <dd>국민은행 (02519071754529)</dd>
+                                </dl>
+                                <dl>
+                                    <dt>예금주</dt>
+                                    <dd>(주)이마트</dd>
+                                </dl>
+                                <dl>
+                                    <dt>결제상태</dt>
+                                    <dd>주문취소</dd>
+                                </dl>
+                            </div>
+                            <div class="info-group">
+                                <dl>
+                                    <dt>주문상품금액 합계</dt>
+                                    <dd>671,370원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>배송금액 합계</dt>
+                                    <dd>0원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>주문할인금액 합계</dt>
+                                    <dd class="text-danger">-19,710원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>주문최종금액 합계</dt>
+                                    <dd>684,440원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>포인트 금액</dt>
+                                    <dd class="text-danger">-590원</dd>
+                                </dl>
+                                <dl class="total">
+                                    <dt>최종결제금액</dt>
+                                    <dd class="text-danger">683,910원</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="payment-notice">
+                            <p>* 가상계좌 결제 주문건은 주문 마감시간까지 입금하지 않으시면 주문이 취소됩니다.</p>
+                            <p>* 미입금된 가상계좌 결제건은 주문 마감 시간 전까지는 주문 취소 가능합니다.</p>
+                        </div>
+                    </div>
+                    <!-- // 결제정보 영역 -->
+
+                    <!-- 하단 주문 액션 버튼 영역 -->
+                    <div class="order-action-buttons">
+                        <button type="button" class="btn-cancel">주문 취소</button>
+                        <button type="button" class="btn-list">주문내역 전체 보기</button>
+                    </div>
+                    <!-- // 하단 주문 액션 버튼 영역 -->
+                </div>
+
+                <!-- <div class="pagination">
+                        <button type="button" class="btn-page-first">
+                            <i class="icon-page-bullet"></i><i class="icon-page-bullet"></i>
+                        </button>
+                        <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
+                        <button type="button" class="active">1</button>
+                        <button type="button">2</button>
+                        <button type="button">3</button>
+                        <button type="button">4</button>
+                        <button type="button">5</button>
+                        <button type="button">6</button>
+                        <button type="button">7</button>
+                        <button type="button">8</button>
+                        <button type="button">9</button>
+                        <button type="button">10</button>
+                        <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
+                        <button type="button" class="btn-page-last">
+                            <i class="icon-page-bullet"></i><i class="icon-page-bullet"></i>
+                        </button>
+                    </div> -->
+            </div>
+        </main>
+
+        <div data-include="/pc/components/footer.txt"></div>
+    </div>
+
+    <!-- 상품 옵션 모달 템플릿 -->
+    <template id="modal-item-option">
+        <div class="modal-header">
+            <button type="button" class="btn-modal-close" aria-label="닫기"><i class="icon-clear"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="option-setup">
+                <div class="item-preview">
+                    <img src="" alt="상품 이미지" class="modal-item-img">
+                    <p class="modal-item-name"></p>
+                </div>
+                <!-- 옵션 설정 영역 -->
+                <div class="option-controls">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-confirm-option">설정 완료</button>
+        </div>
+    </template>
+
+    <script src="/dist/bundle.js"></script>
+
+
+
+</body>
+
+</html>

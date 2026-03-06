@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 카테고리">
+    <title>마이페이지 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/assets/css/pc/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="mypage" data-page-id="mypage">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/pc/components/header.txt"></div>
+
+        <main id="container">
+            <!-- 카테고리 메인 레이아웃 -->
+            <div class="container category-page-layout">
+                <!-- 좌측 사이드바: 마이페이지 메뉴 -->
+                <div data-include="/pc/components/mypage-sidebar.txt"></div>
+
+                <!-- 중앙/우측 컨텐츠 영역 -->
+                <div class="category-main">
+                    <div class="category-header">
+                        <h2 class="title-search title-breadcrumb">
+                            <span>주문내역조회 (영수증)</span>
+                        </h2>
+                    </div>
+                    <div class="mypage-content-wrap product-detail-list">
+                        <!-- 조회필터 area -->
+                        <div class="receipt-filter-wrap">
+                            <!-- Row 1: 주문기간 -->
+                            <div class="filter-row">
+                                <span class="filter-label">주문기간</span>
+                                <div class="filter-row-body">
+                                    <!-- 기간 유형 라디오 버튼 -->
+                                    <div class="period-type-group">
+                                        <label class="period-type-btn">
+                                            <input type="radio" name="periodType" id="periodTypeOrder" value="order"
+                                                checked>
+                                            <span>주문일</span>
+                                        </label>
+                                        <label class="period-type-btn">
+                                            <input type="radio" name="periodType" id="periodTypeReg" value="reg">
+                                            <span>주문등록일</span>
+                                        </label>
+                                        <label class="period-type-btn">
+                                            <input type="radio" name="periodType" id="periodTypeDelivery"
+                                                value="delivery">
+                                            <span>배송완료일</span>
+                                        </label>
+                                    </div>
+                                    <!-- 날짜 직접 입력 -->
+                                    <div class="date-range-group">
+                                        <div class="date-input-wrap">
+                                            <input type="text" id="startDate" class="date-input"
+                                                placeholder="2026-02-21">
+                                            <button type="button" class="btn-calendar" aria-label="시작일 달력 열기"><i
+                                                    class="icon-calendar"></i></button>
+                                        </div>
+                                        <div id="calendar-start" class="calendar-popup"></div>
+                                        <span class="date-sep">—</span>
+                                        <div class="date-input-wrap">
+                                            <input type="text" id="endDate" class="date-input" placeholder="2026-02-21">
+                                            <button type="button" class="btn-calendar" aria-label="종료일 달력 열기"><i
+                                                    class="icon-calendar"></i></button>
+                                        </div>
+                                        <div id="calendar-end" class="calendar-popup"></div>
+                                    </div>
+                                    <!-- 빠른 기간 선택 -->
+                                    <div class="quick-period-group">
+                                        <label class="quick-period-btn">
+                                            <input type="radio" name="period" id="month1" value="1m">
+                                            <span>1개월</span>
+                                        </label>
+                                        <label class="quick-period-btn">
+                                            <input type="radio" name="period" id="month3" value="3m">
+                                            <span>3개월</span>
+                                        </label>
+                                        <label class="quick-period-btn">
+                                            <input type="radio" name="period" id="month6" value="6m">
+                                            <span>6개월</span>
+                                        </label>
+                                        <label class="quick-period-btn">
+                                            <input type="radio" name="period" id="month12" value="12m">
+                                            <span>12개월</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row 2: 드롭다운 필터 -->
+                            <div class="filter-row">
+                                <span class="filter-label">결제수단</span>
+                                <div class="filter-row-body filter-selects-row">
+                                    <!-- 결제수단 -->
+                                    <div class="custom-select">
+                                        <button type="button" class="select-label" id="payMethodTrigger">
+                                            <span>전체</span>
+                                            <i class="icon-down-bullet"></i>
+                                        </button>
+                                        <ul class="select-options" role="listbox">
+                                            <li class="active" data-value="">전체</li>
+                                            <li data-value="card">신용카드</li>
+                                            <li data-value="virtual">가상계좌</li>
+                                            <li data-value="transfer">계좌이체</li>
+                                        </ul>
+                                    </div>
+                                    <!-- 구분선 -->
+                                    <span class="filter-label">주문상태</span>
+                                    <!-- 주문상태 -->
+                                    <div class="custom-select">
+                                        <button type="button" class="select-label" id="orderStatusTrigger">
+                                            <span>전체</span>
+                                            <i class="icon-down-bullet"></i>
+                                        </button>
+                                        <ul class="select-options" role="listbox">
+                                            <li class="active" data-value="">전체</li>
+                                            <li data-value="pending">주문대기</li>
+                                            <li data-value="confirmed">주문확인</li>
+                                            <li data-value="shipping">배송중</li>
+                                            <li data-value="delivered">배송완료</li>
+                                            <li data-value="canceled">주문취소</li>
+                                        </ul>
+                                    </div>
+                                    <!-- 구분선 -->
+                                    <span class="filter-label">결제상태</span>
+                                    <!-- 결제상태 -->
+                                    <div class="custom-select">
+                                        <button type="button" class="select-label" id="payStatusTrigger">
+                                            <span>전체</span>
+                                            <i class="icon-down-bullet"></i>
+                                        </button>
+                                        <ul class="select-options" role="listbox">
+                                            <li class="active" data-value="">전체</li>
+                                            <li data-value="paid">결제완료</li>
+                                            <li data-value="waiting">입금대기</li>
+                                            <li data-value="refunded">환불완료</li>
+                                        </ul>
+                                    </div>
+                                    <!-- 구분선 -->
+                                    <span class="filter-label">상품구분</span>
+                                    <!-- 상품구분 -->
+                                    <div class="custom-select">
+                                        <button type="button" class="select-label" id="productTypeTrigger">
+                                            <span>전체</span>
+                                            <i class="icon-down-bullet"></i>
+                                        </button>
+                                        <ul class="select-options" role="listbox">
+                                            <li class="active" data-value="">전체</li>
+                                            <li data-value="cold">저온</li>
+                                            <li data-value="ambient">상온</li>
+                                            <li data-value="frozen">냉동</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row 3: 상품검색 -->
+                            <div class="filter-row">
+                                <span class="filter-label">상품검색</span>
+                                <div class="filter-row-body">
+                                    <div class="product-search-wrap">
+                                        <div class="search-input-wrap">
+                                            <input type="text" id="productSearchInput" class="search-input"
+                                                placeholder="검색어 입력">
+                                            <button type="button" class="btn-search-icon" aria-label="검색">
+                                                <i class="icon-search"></i>
+                                            </button>
+                                        </div>
+                                        <button type="button" id="btnFilterSearch" class="btn-filter-search">조회</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 주문내역 리스트 영역 -->
+                        <div class="order-receipt-list-wrap">
+                            <div class="cmn-table-wrap">
+                                <table class="cmn-table">
+                                    <colgroup>
+                                        <col style="width: 15%;">
+                                        <col style="width: auto;">
+                                        <col style="width: 15%;">
+                                        <col style="width: 15%;">
+                                        <col style="width: 15%;">
+                                        <col style="width: 10%;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">주문등록일자</th>
+                                            <th scope="col" class="align-left">상품명</th>
+                                            <th scope="col">결제수단</th>
+                                            <th scope="col" class="align-right">주문금액</th>
+                                            <th scope="col" class="align-right">배송금액</th>
+                                            <th scope="col">영수증</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2026.01.03</td>
+                                            <td class="align-left">해태 맛동산 341g, 외 19건</td>
+                                            <td>가상계좌</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td><a href="javascript:void(0);" class="btn-text-link">출력</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2026.01.03</td>
+                                            <td class="align-left">해태 맛동산 341g, 외 19건</td>
+                                            <td>가상계좌</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td><a href="javascript:void(0);" class="btn-text-link">출력</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2026.01.03</td>
+                                            <td class="align-left">해태 맛동산 341g, 외 19건</td>
+                                            <td>가상계좌</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td><a href="javascript:void(0);" class="btn-text-link">출력</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2026.01.03</td>
+                                            <td class="align-left">해태 맛동산 341g, 외 19건</td>
+                                            <td>가상계좌</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td><a href="javascript:void(0);" class="btn-text-link">출력</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2026.01.03</td>
+                                            <td class="align-left">해태 맛동산 341g, 외 19건</td>
+                                            <td>가상계좌</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td class="align-right">12,080,020</td>
+                                            <td><a href="javascript:void(0);" class="btn-text-link">출력</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="order-receipt-bottom-actions">
+                                <p class="guide-text">상세내역은 주문등록일 또는 상품명을 클릭하시면 확인하실 수 있습니다.</p>
+                                <div class="action-buttons">
+                                    <button type="button" class="btn-outline">오배송조회</button>
+                                    <button type="button" class="btn-outline">영수증 일괄 출력</button>
+                                    <button type="button" class="btn-outline btn-excel"><i class="icon-excel"></i> 엑셀
+                                        저장</button>
+                                    <button type="button" class="btn-outline btn-excel"><i class="icon-excel"></i> 엑셀상세
+                                        저장</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // 주문내역 리스트 영역 -->
+
+                        <div class="pagination">
+                            <!-- <button type="button" class="btn-page-first">
+                            <i class="icon-page-bullet"></i><i class="icon-page-bullet"></i>
+                        </button> -->
+                            <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
+                            <button type="button" class="active">1</button>
+                            <button type="button">2</button>
+                            <button type="button">3</button>
+                            <button type="button">4</button>
+                            <button type="button">5</button>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                            <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
+                            <!-- <button type="button" class="btn-page-last">
+                            <i class="icon-page-bullet"></i><i class="icon-page-bullet"></i>
+                        </button> -->
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </main>
+
+        <div data-include="/pc/components/footer.txt"></div>
+    </div>
+
+    <!-- 상품 옵션 모달 템플릿 -->
+    <template id="modal-item-option">
+        <div class="modal-header">
+            <button type="button" class="btn-modal-close" aria-label="닫기"><i class="icon-clear"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="option-setup">
+                <div class="item-preview">
+                    <img src="" alt="상품 이미지" class="modal-item-img">
+                    <p class="modal-item-name"></p>
+                </div>
+                <!-- 옵션 설정 영역 -->
+                <div class="option-controls">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-confirm-option">설정 완료</button>
+        </div>
+    </template>
+
+    <script src="/dist/bundle.js"></script>
+
+
+
+</body>
+
+</html>

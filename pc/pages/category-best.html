@@ -55,8 +55,8 @@
                                 <button type="button" class="btn-info"><i class="icon-info"></i></button>
                                 <div class="type-buttons">
                                     <div class="btn-group" data-filter-group="delivery">
-                                        <label class="type-btn active" data-type="room">
-                                            <input type="checkbox" checked> 상온
+                                        <label class="type-btn" data-type="room">
+                                            <input type="checkbox"> 상온
                                         </label>
                                         <label class="type-btn" data-type="cold">
                                             <input type="checkbox"> 저온
@@ -96,14 +96,14 @@
                                 </div>
                                 <div class="custom-select count-select">
                                     <button type="button" class="select-label">
-                                        80개씩 <i class="icon-down-bullet"></i>
+                                        10개씩 <i class="icon-down-bullet"></i>
                                     </button>
                                     <ul class="select-options">
-                                        <li class="active">8개씩</li>
-                                        <li>24개씩</li>
+                                        <li class="active">10개씩</li>
+                                        <li>20개씩</li>
                                         <li>40씩</li>
                                         <li>80개씩</li>
-                                        <li>120개씩</li>
+                                        <li>100개씩</li>
                                     </ul>
                                 </div>
                             </div>
@@ -113,8 +113,8 @@
                     <!-- 상품 리스트 4개 출력 -->
                     <div class="product-list">
                         <!-- Product Item 1 -->
-                        <div class="product-item" data-sales="711" data-purchase="353" data-new="91" data-price="49200"
-                            data-delivery-type="cold" data-delivery-center="tc">
+                        <div class="product-item sold-out" data-sales="711" data-purchase="353" data-new="91"
+                            data-price="49200" data-delivery-type="cold" data-delivery-center="tc">
                             <div class="item-badge-wrap">
                                 <div class="item-check">
                                     <label class="checkbox-container">
@@ -129,6 +129,10 @@
                                     <img src="/assets/images/main/hot-deal/cold/hot-cold-thumb01.png" alt="소고기 장조림"
                                         class="prod-img">
                                 </a>
+                                <div class="sold-out-overlay">
+                                    <span class="sold-out-text">품절</span>
+                                    <button type="button" class="btn-replace">대체상품 보기</button>
+                                </div>
                             </div>
                             <div class="control-bar">
                                 <div class="qty-control">

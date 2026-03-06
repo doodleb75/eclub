@@ -57,6 +57,10 @@ export const ProductSortAndCount = {
         const activeFilterBtn = document.querySelector('.btn-group[data-filter-group="delivery"] .type-btn.active');
         const activeDeliveryFilter = activeFilterBtn?.dataset.type;
 
+        // 세금 필터 상태 확인 추가
+        const activeTaxFilterBtn = document.querySelector('.btn-group[data-filter-group="tax"] .type-btn.active');
+        const activeTaxFilter = activeTaxFilterBtn?.dataset.type;
+
         items.sort((a, b) => {
             if (sortType === '판매순') {
                 // 판매량 기준 정렬
@@ -84,7 +88,14 @@ export const ProductSortAndCount = {
                 isDeliveryMatch = (itemDelivery === activeDeliveryFilter || itemCenter === activeDeliveryFilter);
             }
 
-            if (isDeliveryMatch) {
+            // 세금 필터 매치 여부
+            let isTaxMatch = true;
+            if (activeTaxFilter) {
+                const itemTax = item.dataset.taxType;
+                isTaxMatch = (itemTax === activeTaxFilter);
+            }
+
+            if (isDeliveryMatch && isTaxMatch) {
                 if (visibleCount < countLimit) {
                     item.style.display = '';
                 } else {

@@ -171,7 +171,7 @@
                     <a href="#" class="icon-link wish" title="관심상품">
                         <i class="icon-heart"></i>
                     </a>
-                    <a href="#" class="icon-link mypage" title="마이페이지">
+                    <a href="/pc/pages/mypage.html" class="icon-link mypage" title="마이페이지">
                         <i class="icon-user"></i>
                     </a>
                 </div>

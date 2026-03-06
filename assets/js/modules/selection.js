@@ -17,6 +17,20 @@ export const Selection = {
         if (productList && categoryMaster) {
             this.initCategory(productList, categoryMaster);
         }
+
+        // 3. 마이페이지 주문내역
+        const orderHistoryWrap = document.querySelector('.product-detail-list');
+        const orderMaster = orderHistoryWrap?.querySelector('.order-list-controls .checkbox-container input[type="checkbox"]');
+        if (orderHistoryWrap && orderMaster) {
+            this.initOrderHistory(orderHistoryWrap, orderMaster);
+        }
+
+        // 4. 미납상품 조회
+        const unpaidWrap = document.querySelector('.payment-unpaid');
+        const unpaidMaster = unpaidWrap?.querySelector('.type-list-filter .checkbox-container input[type="checkbox"]');
+        if (unpaidWrap && unpaidMaster) {
+            this.initPaymentUnpaid(unpaidWrap, unpaidMaster);
+        }
     },
 
     bindMasterCheckbox(masterCb, itemCbs, onUpdate) {
@@ -187,6 +201,111 @@ export const Selection = {
                 btn.classList.add('active'); // 아무것도 선택 안 되어도 모달을 띄울 수 있도록 active 유지
                 btn.removeAttribute('disabled');
             }
+        }
+    },
+
+    // 마이페이지 주문내역 로직
+    initOrderHistory(container, master) {
+        const table = container.querySelector('.order-table');
+        const itemCbs = Array.from(table?.querySelectorAll('tbody .checkbox-container input[type="checkbox"]') || []);
+
+        master.addEventListener('change', (e) => {
+            const isChecked = e.target.checked;
+            itemCbs.forEach(cb => cb.checked = isChecked);
+            this.updateOrderHistoryAddCartButtonState(container);
+        });
+
+        table?.addEventListener('change', (e) => {
+            if (e.target.matches('tbody .checkbox-container input[type="checkbox"]')) {
+                master.checked = itemCbs.length > 0 && itemCbs.every(cb => cb.checked);
+                this.updateOrderHistoryAddCartButtonState(container);
+            }
+        });
+
+        // 장바구니 담기 버튼 로직
+        const addCartBtn = container.querySelector('.btn-add-cart');
+        if (addCartBtn) {
+            addCartBtn.addEventListener('click', () => {
+                const checkedCount = itemCbs.filter(cb => cb.checked).length;
+                if (checkedCount === 0) {
+                    if (window.Modal) {
+                        window.Modal.open('/common/components/modal/modal-alert.html', { width: '400px' });
+                    }
+                } else {
+                    if (window.Modal) {
+                        // 기존 장바구니 담기 확인 모달 호출
+                        window.Modal.open('/common/components/modal/modal-cart-confirm.html', { width: '400px' });
+                    }
+                }
+            });
+        }
+
+        // 초기 상태
+        this.updateOrderHistoryAddCartButtonState(container);
+    },
+
+    updateOrderHistoryAddCartButtonState(container) {
+        const btn = container.querySelector('.btn-add-cart');
+        if (!btn) return;
+        const checkedCount = container.querySelectorAll('tbody .checkbox-container input[type="checkbox"]:checked').length;
+        if (checkedCount > 0) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.add('active'); // 알림 팝업 오픈을 위해 항상 활성 상태 유지
+        }
+    },
+
+    // 미납상품 조회 로직
+    initPaymentUnpaid(container, master) {
+        const productList = container.querySelector('.product-list');
+        const getItems = () => Array.from(productList?.querySelectorAll('.product-item') || [])
+                                   .filter(item => item.style.display !== 'none')
+                                   .map(item => item.querySelector('.checkbox-container input[type="checkbox"]'))
+                                   .filter(cb => cb);
+
+        master.addEventListener('change', (e) => {
+            const isChecked = e.target.checked;
+            const itemCbs = getItems();
+            itemCbs.forEach(cb => cb.checked = isChecked);
+            this.updatePaymentUnpaidAddCartButtonState(container);
+        });
+
+        productList?.addEventListener('change', (e) => {
+            if (e.target.matches('.product-item .checkbox-container input[type="checkbox"]')) {
+                const itemCbs = getItems();
+                master.checked = itemCbs.length > 0 && itemCbs.every(cb => cb.checked);
+                this.updatePaymentUnpaidAddCartButtonState(container);
+            }
+        });
+
+        // 장바구니 담기 버튼
+        const addCartBtn = container.querySelector('.btn-add-cart');
+        if (addCartBtn) {
+            addCartBtn.addEventListener('click', () => {
+                const checkedItems = getItems().filter(cb => cb.checked);
+                if (checkedItems.length === 0) {
+                    if (window.Modal) {
+                        window.Modal.open('/common/components/modal/modal-alert.html', { width: '400px' });
+                    }
+                } else {
+                    if (window.Modal) {
+                        window.Modal.open('/common/components/modal/modal-cart-confirm.html', { width: '400px' });
+                    }
+                }
+            });
+        }
+
+        this.updatePaymentUnpaidAddCartButtonState(container);
+    },
+
+    updatePaymentUnpaidAddCartButtonState(container) {
+        const btn = container.querySelector('.btn-add-cart');
+        if (!btn) return;
+        const checkedCount = container.querySelectorAll('.product-list .product-item .checkbox-container input[type="checkbox"]:checked').length;
+        if (checkedCount > 0) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.add('active');
         }
     }
 };

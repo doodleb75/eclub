@@ -38,6 +38,8 @@ import { SearchOverlay } from './search-overlay.js';
 import { StickyExchange } from './sticky-exchange.js';
 import { RecommendArea } from './recommend-area.js';
 import { AddCartModal } from './add-cart-modal.js';
+import { AlternativeProductModal } from './alternative-product-modal.js';
+import { CartConfirmModal } from './cart-confirm-modal.js';
 import { CategoryFilter } from './category-filter.js';
 import { GlobalModal } from './global-modal.js';
 import { Popover } from './popover.js';
@@ -49,6 +51,8 @@ import { ModalItemOption } from './modal-item-option.js';
 import { ReplaceProductSheet } from './replace-product-sheet.js';
 import { IncentiveProgress } from './incentive-progress.js';
 import { ModalProductDetail } from './modal-product-detail.js';
+import { initOrderHistoryReceipt } from './order-history-receipt.js';
+import { MypageSidebar } from './mypage-sidebar.js';
 
 const Eclub = {
     Const,
@@ -92,6 +96,8 @@ const Eclub = {
     StickyExchange,
     RecommendArea,
     AddCartModal,
+    AlternativeProductModal,
+    CartConfirmModal,
     CategoryFilter,
     GlobalModal,
     Popover,
@@ -103,6 +109,7 @@ const Eclub = {
     ReplaceProductSheet,
     IncentiveProgress,
     ModalProductDetail,
+    MypageSidebar,
 
     async init() {
         // 전역 객체로 등록 
@@ -161,6 +168,7 @@ const Eclub = {
         this.ModalExcelUpload.init();
         this.ModalItemOption.init();
         this.AddCartModal.init();
+        this.AlternativeProductModal.init();
         this.BottomSheet.init();
         this.ReplaceProductSheet.init();
         this.ModalProductDetail.init();
@@ -188,6 +196,7 @@ const Eclub = {
                 this.StickyExchange.init();
                 this.CategoryMenu.init();
                 this.AddCartModal.init();
+                this.CartConfirmModal.init();
                 break;
 
             case 'search':
@@ -219,14 +228,26 @@ const Eclub = {
                 console.log("[Eclub] Loading Home modules");
                 break;
 
+            case 'exhibition-store':
+                console.log("[Eclub] Loading Exhibition Store modules");
+                this.Selection.init();
+                this.CartConfirmModal.init();
+                break;
+
             case 'order-complete':
                 console.log("[Eclub] Loading Order Complete modules");
                 break;
 
             case 'mypage':
                 console.log("[Eclub] Loading MyPage modules");
+                this.Selection.init();
                 this.CategoryMenu.init();
                 this.IncentiveProgress.init();
+                this.DeliverySort.init();
+                this.ProductSortAndCount.init();
+                this.MypageSidebar.init(); // 활성 상태 업데이트 추가
+                // 주문내역조회(영수증) 필터 초기화
+                initOrderHistoryReceipt();
                 break;
                 
             default:

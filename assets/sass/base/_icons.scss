@@ -337,3 +337,7 @@
 .icon-refresh {
     @include icon-mask('#{$icon-path}/icons-refresh.svg', rem(16));
 }
+
+.icon-calendar {
+    @include icon-mask('#{$icon-path}/icons-calendar.svg', rem(14));
+}

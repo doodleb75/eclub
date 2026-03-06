@@ -1,0 +1,773 @@
+{
+  "id": "1740:25077",
+  "name": "Frame 1597883654",
+  "type": "FRAME",
+  "scrollBehavior": "SCROLLS",
+  "children": [
+    {
+      "id": "1740:25078",
+      "name": "Frame 86760",
+      "type": "FRAME",
+      "scrollBehavior": "SCROLLS",
+      "children": [
+        {
+          "id": "1740:25079",
+          "name": "Frame 1597883653",
+          "type": "FRAME",
+          "scrollBehavior": "SCROLLS",
+          "children": [
+            {
+              "id": "1740:25080",
+              "name": "총 주문금액 : 4,164,402원",
+              "type": "TEXT",
+              "scrollBehavior": "SCROLLS",
+              "blendMode": "PASS_THROUGH",
+              "fills": [
+                {
+                  "blendMode": "NORMAL",
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.13333334028720856,
+                    "g": 0.13333334028720856,
+                    "b": 0.13333334028720856,
+                    "a": 1
+                  }
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "strokeAlign": "OUTSIDE",
+              "absoluteBoundingBox": {
+                "x": 5174,
+                "y": 905,
+                "width": 153,
+                "height": 17
+              },
+              "absoluteRenderBounds": {
+                "x": 5174.4921875,
+                "y": 906.92578125,
+                "width": 150.6640625,
+                "height": 13.931640625
+              },
+              "constraints": {
+                "vertical": "TOP",
+                "horizontal": "LEFT"
+              },
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "layoutSizingHorizontal": "HUG",
+              "layoutSizingVertical": "HUG",
+              "characters": "총 주문금액 : 4,164,402원",
+              "characterStyleOverrides": [
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                4
+              ],
+              "styleOverrideTable": {
+                "3": {
+                  "fontFamily": "Pretendard",
+                  "fontPostScriptName": "Pretendard-SemiBold",
+                  "fontStyle": "SemiBold",
+                  "fontWeight": 600,
+                  "fontSize": 14,
+                  "fills": [
+                    {
+                      "blendMode": "NORMAL",
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 0.328000009059906,
+                        "b": 0.2800000011920929,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                "4": {
+                  "fontSize": 14
+                }
+              },
+              "lineTypes": [
+                "NONE"
+              ],
+              "lineIndentations": [
+                0
+              ],
+              "style": {
+                "fontFamily": "Pretendard",
+                "fontPostScriptName": "Pretendard-Regular",
+                "fontStyle": "Regular",
+                "fontWeight": 400,
+                "textAutoResize": "WIDTH_AND_HEIGHT",
+                "fontSize": 14,
+                "textAlignHorizontal": "LEFT",
+                "textAlignVertical": "CENTER",
+                "letterSpacing": 0,
+                "lineHeightPx": 16.80000114440918,
+                "lineHeightPercent": 100.55647277832031,
+                "lineHeightPercentFontSize": 120.00000762939453,
+                "lineHeightUnit": "FONT_SIZE_%"
+              },
+              "layoutVersion": 5,
+              "effects": [],
+              "interactions": [],
+              "complexStrokeProperties": {
+                "strokeType": "BASIC"
+              }
+            }
+          ],
+          "blendMode": "PASS_THROUGH",
+          "clipsContent": false,
+          "background": [],
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "backgroundColor": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0
+          },
+          "layoutMode": "HORIZONTAL",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 8,
+          "layoutWrap": "NO_WRAP",
+          "absoluteBoundingBox": {
+            "x": 5174,
+            "y": 905,
+            "width": 153,
+            "height": 17
+          },
+          "absoluteRenderBounds": {
+            "x": 5174,
+            "y": 905,
+            "width": 153,
+            "height": 17
+          },
+          "constraints": {
+            "vertical": "TOP",
+            "horizontal": "LEFT"
+          },
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutSizingHorizontal": "HUG",
+          "layoutSizingVertical": "HUG",
+          "effects": [],
+          "interactions": [],
+          "complexStrokeProperties": {
+            "strokeType": "BASIC"
+          }
+        },
+        {
+          "id": "1740:25081",
+          "name": "Line 182",
+          "type": "LINE",
+          "scrollBehavior": "SCROLLS",
+          "rotation": 1.5707962830835012,
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "blendMode": "NORMAL",
+              "type": "SOLID",
+              "color": {
+                "r": 0.5333333611488342,
+                "g": 0.5333333611488342,
+                "b": 0.5333333611488342,
+                "a": 1
+              }
+            }
+          ],
+          "strokes": [
+            {
+              "blendMode": "NORMAL",
+              "type": "SOLID",
+              "color": {
+                "r": 0.8676470518112183,
+                "g": 0.8676470518112183,
+                "b": 0.8676470518112183,
+                "a": 1
+              }
+            }
+          ],
+          "strokeWeight": 1,
+          "strokeAlign": "CENTER",
+          "absoluteBoundingBox": {
+            "x": 5343,
+            "y": 905.5,
+            "width": 6.993823262746446e-7,
+            "height": 16
+          },
+          "absoluteRenderBounds": {
+            "x": 5343,
+            "y": 905.5,
+            "width": 1,
+            "height": 16
+          },
+          "constraints": {
+            "vertical": "TOP",
+            "horizontal": "LEFT"
+          },
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutSizingHorizontal": "FIXED",
+          "layoutSizingVertical": "FIXED",
+          "effects": [],
+          "interactions": [],
+          "complexStrokeProperties": {
+            "strokeType": "BASIC"
+          }
+        },
+        {
+          "id": "1740:25082",
+          "name": "Frame 1597883651",
+          "type": "FRAME",
+          "scrollBehavior": "SCROLLS",
+          "children": [
+            {
+              "id": "1740:25083",
+              "name": "총 배송예정금액 : 4,145,462원",
+              "type": "TEXT",
+              "scrollBehavior": "SCROLLS",
+              "blendMode": "PASS_THROUGH",
+              "fills": [
+                {
+                  "blendMode": "NORMAL",
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.13333334028720856,
+                    "g": 0.13333334028720856,
+                    "b": 0.13333334028720856,
+                    "a": 1
+                  }
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "strokeAlign": "OUTSIDE",
+              "absoluteBoundingBox": {
+                "x": 5359,
+                "y": 905,
+                "width": 177,
+                "height": 17
+              },
+              "absoluteRenderBounds": {
+                "x": 5359.4921875,
+                "y": 906.92578125,
+                "width": 174.521484375,
+                "height": 13.931640625
+              },
+              "constraints": {
+                "vertical": "TOP",
+                "horizontal": "LEFT"
+              },
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "layoutSizingHorizontal": "HUG",
+              "layoutSizingVertical": "HUG",
+              "characters": "총 배송예정금액 : 4,145,462원",
+              "characterStyleOverrides": [
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                4
+              ],
+              "styleOverrideTable": {
+                "3": {
+                  "fontFamily": "Pretendard",
+                  "fontPostScriptName": "Pretendard-SemiBold",
+                  "fontStyle": "SemiBold",
+                  "fontWeight": 600,
+                  "fontSize": 14,
+                  "fills": [
+                    {
+                      "blendMode": "NORMAL",
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 0.328000009059906,
+                        "b": 0.2800000011920929,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                "4": {
+                  "fontSize": 14
+                }
+              },
+              "lineTypes": [
+                "NONE"
+              ],
+              "lineIndentations": [
+                0
+              ],
+              "style": {
+                "fontFamily": "Pretendard",
+                "fontPostScriptName": "Pretendard-Regular",
+                "fontStyle": "Regular",
+                "fontWeight": 400,
+                "textAutoResize": "WIDTH_AND_HEIGHT",
+                "fontSize": 14,
+                "textAlignHorizontal": "LEFT",
+                "textAlignVertical": "CENTER",
+                "letterSpacing": 0,
+                "lineHeightPx": 16.80000114440918,
+                "lineHeightPercent": 100.55647277832031,
+                "lineHeightPercentFontSize": 120.00000762939453,
+                "lineHeightUnit": "FONT_SIZE_%"
+              },
+              "layoutVersion": 5,
+              "effects": [],
+              "interactions": [],
+              "complexStrokeProperties": {
+                "strokeType": "BASIC"
+              }
+            }
+          ],
+          "blendMode": "PASS_THROUGH",
+          "clipsContent": false,
+          "background": [],
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "backgroundColor": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0
+          },
+          "layoutMode": "HORIZONTAL",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 8,
+          "layoutWrap": "NO_WRAP",
+          "absoluteBoundingBox": {
+            "x": 5359,
+            "y": 905,
+            "width": 177,
+            "height": 17
+          },
+          "absoluteRenderBounds": {
+            "x": 5359,
+            "y": 905,
+            "width": 177,
+            "height": 17
+          },
+          "constraints": {
+            "vertical": "TOP",
+            "horizontal": "LEFT"
+          },
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutSizingHorizontal": "HUG",
+          "layoutSizingVertical": "HUG",
+          "effects": [],
+          "interactions": [],
+          "complexStrokeProperties": {
+            "strokeType": "BASIC"
+          }
+        }
+      ],
+      "blendMode": "PASS_THROUGH",
+      "clipsContent": false,
+      "background": [],
+      "fills": [],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE",
+      "backgroundColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "layoutMode": "HORIZONTAL",
+      "counterAxisAlignItems": "CENTER",
+      "itemSpacing": 16,
+      "layoutWrap": "NO_WRAP",
+      "absoluteBoundingBox": {
+        "x": 5174,
+        "y": 905,
+        "width": 362,
+        "height": 17
+      },
+      "absoluteRenderBounds": {
+        "x": 5174,
+        "y": 905,
+        "width": 362,
+        "height": 17
+      },
+      "constraints": {
+        "vertical": "TOP",
+        "horizontal": "LEFT"
+      },
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "layoutSizingHorizontal": "HUG",
+      "layoutSizingVertical": "HUG",
+      "effects": [],
+      "interactions": [],
+      "complexStrokeProperties": {
+        "strokeType": "BASIC"
+      }
+    },
+    {
+      "id": "1740:25084",
+      "name": "Frame 1597883667",
+      "type": "FRAME",
+      "scrollBehavior": "SCROLLS",
+      "children": [
+        {
+          "id": "1740:25085",
+          "name": "Frame 86760",
+          "type": "FRAME",
+          "scrollBehavior": "SCROLLS",
+          "children": [
+            {
+              "id": "1740:25086",
+              "name": "Frame 1597883668",
+              "type": "FRAME",
+              "scrollBehavior": "SCROLLS",
+              "children": [
+                {
+                  "id": "1740:25087",
+                  "name": "131개의 상품이 있습니다",
+                  "type": "TEXT",
+                  "scrollBehavior": "SCROLLS",
+                  "blendMode": "PASS_THROUGH",
+                  "fills": [
+                    {
+                      "blendMode": "NORMAL",
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.13333334028720856,
+                        "g": 0.13333334028720856,
+                        "b": 0.13333334028720856,
+                        "a": 1
+                      }
+                    }
+                  ],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "strokeAlign": "OUTSIDE",
+                  "absoluteBoundingBox": {
+                    "x": 6024,
+                    "y": 905,
+                    "width": 138,
+                    "height": 17
+                  },
+                  "absoluteRenderBounds": {
+                    "x": 6024.68359375,
+                    "y": 906.953125,
+                    "width": 136.7734375,
+                    "height": 12.181640625
+                  },
+                  "constraints": {
+                    "vertical": "TOP",
+                    "horizontal": "LEFT"
+                  },
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutSizingHorizontal": "HUG",
+                  "layoutSizingVertical": "HUG",
+                  "characters": "131개의 상품이 있습니다",
+                  "characterStyleOverrides": [
+                    4,
+                    4,
+                    4,
+                    3,
+                    3,
+                    3,
+                    3,
+                    3,
+                    3,
+                    3,
+                    3,
+                    3,
+                    3,
+                    3
+                  ],
+                  "styleOverrideTable": {
+                    "3": {
+                      "fontFamily": "Pretendard",
+                      "fontPostScriptName": "Pretendard-Regular",
+                      "fontStyle": "Regular",
+                      "fontWeight": 400,
+                      "fontSize": 14,
+                      "fills": [
+                        {
+                          "blendMode": "NORMAL",
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.4000000059604645,
+                            "g": 0.4000000059604645,
+                            "b": 0.4000000059604645,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    },
+                    "4": {
+                      "fontFamily": "Pretendard",
+                      "fontPostScriptName": "Pretendard-SemiBold",
+                      "fontStyle": "SemiBold",
+                      "fontWeight": 600,
+                      "fontSize": 14,
+                      "fills": [
+                        {
+                          "blendMode": "NORMAL",
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.328000009059906,
+                            "b": 0.2800000011920929,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "lineTypes": [
+                    "NONE"
+                  ],
+                  "lineIndentations": [
+                    0
+                  ],
+                  "style": {
+                    "fontFamily": "Pretendard",
+                    "fontPostScriptName": "Pretendard-SemiBold",
+                    "fontStyle": "SemiBold",
+                    "fontWeight": 600,
+                    "textAutoResize": "WIDTH_AND_HEIGHT",
+                    "fontSize": 14,
+                    "textAlignHorizontal": "LEFT",
+                    "textAlignVertical": "CENTER",
+                    "letterSpacing": 0,
+                    "lineHeightPx": 16.80000114440918,
+                    "lineHeightPercent": 100.55647277832031,
+                    "lineHeightPercentFontSize": 120.00000762939453,
+                    "lineHeightUnit": "FONT_SIZE_%"
+                  },
+                  "layoutVersion": 5,
+                  "effects": [],
+                  "interactions": [],
+                  "complexStrokeProperties": {
+                    "strokeType": "BASIC"
+                  }
+                }
+              ],
+              "blendMode": "PASS_THROUGH",
+              "clipsContent": false,
+              "background": [],
+              "fills": [],
+              "strokes": [],
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE",
+              "backgroundColor": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "layoutMode": "HORIZONTAL",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 8,
+              "layoutWrap": "NO_WRAP",
+              "absoluteBoundingBox": {
+                "x": 6024,
+                "y": 905,
+                "width": 138,
+                "height": 17
+              },
+              "absoluteRenderBounds": {
+                "x": 6024,
+                "y": 905,
+                "width": 138,
+                "height": 17
+              },
+              "constraints": {
+                "vertical": "TOP",
+                "horizontal": "LEFT"
+              },
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "layoutSizingHorizontal": "HUG",
+              "layoutSizingVertical": "HUG",
+              "effects": [],
+              "interactions": [],
+              "complexStrokeProperties": {
+                "strokeType": "BASIC"
+              }
+            }
+          ],
+          "blendMode": "PASS_THROUGH",
+          "clipsContent": false,
+          "background": [],
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "backgroundColor": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0
+          },
+          "layoutMode": "HORIZONTAL",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 16,
+          "layoutWrap": "NO_WRAP",
+          "absoluteBoundingBox": {
+            "x": 6024,
+            "y": 905,
+            "width": 138,
+            "height": 17
+          },
+          "absoluteRenderBounds": {
+            "x": 6024,
+            "y": 905,
+            "width": 138,
+            "height": 17
+          },
+          "constraints": {
+            "vertical": "TOP",
+            "horizontal": "LEFT"
+          },
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutSizingHorizontal": "HUG",
+          "layoutSizingVertical": "HUG",
+          "effects": [],
+          "interactions": [],
+          "complexStrokeProperties": {
+            "strokeType": "BASIC"
+          }
+        }
+      ],
+      "blendMode": "PASS_THROUGH",
+      "clipsContent": false,
+      "background": [],
+      "fills": [],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE",
+      "backgroundColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      },
+      "layoutMode": "HORIZONTAL",
+      "counterAxisAlignItems": "CENTER",
+      "itemSpacing": 16,
+      "layoutWrap": "NO_WRAP",
+      "absoluteBoundingBox": {
+        "x": 6024,
+        "y": 905,
+        "width": 138,
+        "height": 17
+      },
+      "absoluteRenderBounds": {
+        "x": 6024,
+        "y": 905,
+        "width": 138,
+        "height": 17
+      },
+      "constraints": {
+        "vertical": "TOP",
+        "horizontal": "LEFT"
+      },
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "layoutSizingHorizontal": "HUG",
+      "layoutSizingVertical": "HUG",
+      "effects": [],
+      "interactions": [],
+      "complexStrokeProperties": {
+        "strokeType": "BASIC"
+      }
+    }
+  ],
+  "blendMode": "PASS_THROUGH",
+  "clipsContent": false,
+  "background": [],
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "backgroundColor": {
+    "r": 0,
+    "g": 0,
+    "b": 0,
+    "a": 0
+  },
+  "layoutMode": "HORIZONTAL",
+  "primaryAxisSizingMode": "FIXED",
+  "counterAxisAlignItems": "CENTER",
+  "primaryAxisAlignItems": "SPACE_BETWEEN",
+  "paddingLeft": 16,
+  "paddingRight": 16,
+  "paddingTop": 10,
+  "paddingBottom": 10,
+  "itemSpacing": 154,
+  "layoutWrap": "NO_WRAP",
+  "absoluteBoundingBox": {
+    "x": 5158,
+    "y": 895,
+    "width": 1020,
+    "height": 37
+  },
+  "absoluteRenderBounds": {
+    "x": 5158,
+    "y": 895,
+    "width": 1020,
+    "height": 37
+  },
+  "constraints": {
+    "vertical": "TOP",
+    "horizontal": "LEFT"
+  },
+  "layoutAlign": "STRETCH",
+  "layoutGrow": 0,
+  "layoutSizingHorizontal": "FILL",
+  "layoutSizingVertical": "HUG",
+  "effects": [],
+  "interactions": [],
+  "complexStrokeProperties": {
+    "strokeType": "BASIC"
+  }
+}

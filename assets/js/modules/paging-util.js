@@ -40,7 +40,7 @@ export const PagingUtil = {
             if (!moreBtnWrap || !moreBtnWrap.classList.contains(moreBtnClass)) {
                 moreBtnWrap = document.createElement('div');
                 moreBtnWrap.className = moreBtnClass;
-                moreBtnWrap.innerHTML = `<button type="button" class="btn-more"><span>${isOpen ? '닫기' : '더보기'}</span><i class="${isOpen ? 'icon-chevron-up' : 'icon-chevron-down'}"></i></button>`;
+                moreBtnWrap.innerHTML = `<button type="button" class="btn-more"><span>${isOpen ? '닫기' : '상품 더보기'}</span><i class="${isOpen ? 'icon-chevron-up' : 'icon-chevron-down'}"></i></button>`;
                 container.parentNode.insertBefore(moreBtnWrap, container.nextSibling);
             } else {
                 moreBtnWrap.style.display = 'flex';
@@ -92,7 +92,9 @@ export const PagingUtil = {
         if (isOpen) {
             // 접기 모드
             container.classList.remove('is-open');
-            if (span) span.textContent = '더보기';
+            if (span) {
+                span.textContent = btn.dataset.openText || '상품 더보기';
+            }
             if (icon) icon.className = 'icon-chevron-down';
             if (btn) btn.classList.remove('active');
 
