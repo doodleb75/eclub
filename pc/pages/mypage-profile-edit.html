@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 카테고리">
+    <title>마이페이지 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/assets/css/pc/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="mypage type-general" data-page-id="mypage">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/pc/components/header.txt"></div>
+
+        <main id="container" class="mypage-container">
+            <!-- 카테고리 메인 레이아웃 -->
+            <div class="container category-page-layout">
+                <!-- 좌측 사이드바: 마이페이지 메뉴 -->
+                <div data-include="/pc/components/mypage-sidebar.txt"></div>
+
+                <!-- 중앙/우측 컨텐츠 영역 -->
+                <div class="category-main">
+                    <div class="category-header">
+                        <h2 class="title-search title-breadcrumb em-cmt">
+                            <span>회원정보 수정</span>
+                            <em>＊ 표시가 없는 정보는 직접 변경이 어렵습니다. 수정이 필요한 경우 영업담당자에게 문의해 주세요.</em>
+                        </h2>
+                    </div>
+
+                    <!-- 회원기본정보 -->
+                    <div class="mypage-section profile-edit-section">
+                        <!-- 본인인증 -->
+                        <div class="auth-unlock-block">
+                            <button type="button" class="btn-auth">본인인증 하기</button>
+                            <p class="auth-desc">본인인증 후 회원정보를 변경 해주세요.</p>
+                        </div>
+                        <!-- //본인인증 -->
+                        <div class="section-container" style="display: none;">
+                            <!-- 기본정보 -->
+                            <div class="basic-info inner-wrap">
+                                <div class="section-head">
+                                    <h3 class="section-title">기본정보</h3>
+                                    <button type="button" class="btn-outline">정보안내 <i
+                                            class="icon-chevron-right"></i></button>
+                                </div>
+
+                                <div class="cmn-table-wrap">
+                                    <table class="cmn-table table-form">
+                                        <colgroup>
+                                            <col style="width: 240px;">
+                                            <col style="width: auto;">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">회원명</th>
+                                                <td>(주)이비즈운영</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">대표자명</th>
+                                                <td>이용규</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">사업자번호</th>
+                                                <td>000-00-00000</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">계약기간</th>
+                                                <td>2020.08.01 - 2099.12.31</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">업태</th>
+                                                <td>도소매업</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">종목</th>
+                                                <td>소모품</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">주소 <span class="required">*</span></th>
+                                                <td>
+                                                    <div class="form-group-addr">
+                                                        <div class="form-row">
+                                                            <input type="text" value="07812" class="input-text w-120"
+                                                                title="우편번호" readonly>
+                                                            <button type="button" class="btn-outline">주소 검색 <i
+                                                                    class="icon-chevron-right"></i></button>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <input type="text" value="서울특별시 성동구 성수일로 56"
+                                                                class="input-text flex-1" title="기본주소" readonly>
+                                                            <input type="text" value="10층 1004호"
+                                                                class="input-text flex-1" title="상세주소">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">배송지 주소 <span class="required">*</span></th>
+                                                <td>
+                                                    <div class="form-group-addr">
+                                                        <div class="form-row">
+                                                            <input type="text" value="07812" class="input-text w-120"
+                                                                title="우편번호" readonly>
+                                                            <button type="button" class="btn-outline">주소 검색 <i
+                                                                    class="icon-chevron-right"></i></button>
+                                                            <label class="checkbox-container">
+                                                                <input type="checkbox">
+                                                                <span class="checkmark"></span>
+                                                                <span class="text">주소와 동일</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <input type="text" value="서울특별시 성동구 성수일로 56"
+                                                                class="input-text flex-1" title="기본주소" readonly>
+                                                            <input type="text" value="10층 1004호"
+                                                                class="input-text flex-1" title="상세주소">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">사업장 전화번호 <span class="required">*</span></th>
+                                                <td>
+                                                    <div class="form-group-phone">
+                                                        <input type="text" value="02"
+                                                            class="input-text w-80 text-center" title="전화번호 첫자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="380"
+                                                            class="input-text w-80 text-center" title="전화번호 중간자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="8672"
+                                                            class="input-text w-80 text-center" title="전화번호 끝자리">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">휴대폰 번호 <span class="required">*</span></th>
+                                                <td>
+                                                    <div class="form-group-phone">
+                                                        <input type="text" value="010"
+                                                            class="input-text w-80 text-center" title="휴대폰 번호 첫자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="9999"
+                                                            class="input-text w-80 text-center" title="휴대폰 번호 중간자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="1234"
+                                                            class="input-text w-80 text-center" title="휴대폰 번호 끝자리">
+                                                        <button type="button" class="btn-solid-dark">인증완료</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">이메일 주소 (세금계산서 수취인) <span class="required">*</span></th>
+                                                <td>
+                                                    <div class="form-group-email">
+                                                        <input type="text" value="normal9992@emarteveryday.co.kr"
+                                                            class="input-text w-320" title="이메일 주소">
+                                                        <label class="checkbox-container">
+                                                            <input type="checkbox" checked>
+                                                            <span class="checkmark"></span>
+                                                            <span class="text">이메일 수신</span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">운영상태</th>
+                                                <td>정상</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">가입형태</th>
+                                                <td>선결제</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">아이디</th>
+                                                <td>eclubtest002</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">신청일</th>
+                                                <td>2020.09.01</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">패널징수</th>
+                                                <td>소형(50평미만)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">가입위치</th>
+                                                <td>
+                                                    <div class="form-group-branch">
+                                                        <input type="text" value="202203131" class="input-text w-120"
+                                                            title="가입위치 코드" readonly>
+                                                        <span class="branch-name">세종이마트점</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">가상계좌 <span class="required">*</span></th>
+                                                <td>
+                                                    <div class="form-group-account">
+                                                        <div class="custom-select w-120">
+                                                            <button type="button" class="select-label">
+                                                                <span>국민은행</span>
+                                                                <i class="icon-down-bullet"></i>
+                                                            </button>
+                                                            <ul class="select-options" role="listbox">
+                                                                <li class="active" data-value="kookmin">국민은행</li>
+                                                            </ul>
+                                                        </div>
+                                                        <input type="text" value="1002324003035"
+                                                            class="input-text w-200" title="계좌번호">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">정산예금주 <span class="required">*</span></th>
+                                                <td>
+                                                    <div class="form-group-manager">
+                                                        <input type="text" value="이승구" class="input-text w-120"
+                                                            title="정산예금주">
+                                                        <button type="button" class="btn-solid-dark">계좌인증완료</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">비밀번호 <span class="required">*</span></th>
+                                                <td>
+                                                    <button type="button" class="btn-outline">변경하기 <i
+                                                            class="icon-chevron-right"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">장려금계좌</th>
+                                                <td>
+                                                    <div class="form-group-account">
+                                                        <div class="custom-select w-120">
+                                                            <button type="button" class="select-label">
+                                                                <span>은행선택</span>
+                                                                <i class="icon-down-bullet"></i>
+                                                            </button>
+                                                            <ul class="select-options" role="listbox">
+                                                                <li class="active" data-value="">은행선택</li>
+                                                                <li data-value="1">국민은행</li>
+                                                            </ul>
+                                                        </div>
+                                                        <input type="text" class="input-text w-120" placeholder="예금주명"
+                                                            title="예금주명">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">장려금계좌</th>
+                                                <td>
+                                                    <div class="form-group-account">
+                                                        <input type="text" class="input-text w-200" placeholder="계좌번호"
+                                                            title="계좌번호">
+                                                        <button type="button" class="btn-solid-dark">계좌인증완료</button>
+                                                        <label class="checkbox-container">
+                                                            <input type="checkbox">
+                                                            <span class="checkmark"></span>
+                                                            <span class="text">장려금 전자계산서 자동 발행</span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- 선택정보 -->
+                            <div class="option-info inner-wrap">
+                                <div class="section-head">
+                                    <h3 class="section-title">선택정보</h3>
+                                </div>
+
+                                <div class="terms-info">
+                                    <p class="terms-title">[선택] 마케팅 정보 수집 및 이용 동의</p>
+                                    <p class="terms-desc">이클럽의 다양한 혜택과 유용한 쇼핑 정보를 제공해 드리기 위해 아래 정보를 수집합니다.</p>
+                                    <ul class="terms-list">
+                                        <li><strong>&middot; 수집 항목 : </strong>휴대전화 번호, 담당자 연락처</li>
+                                        <li><strong>&middot; 이용 목적 : </strong>배송 안내 및 맞춤형 혜택(이벤트) 정보 제공</li>
+                                        <li><strong>&middot; 보유 및 이용 기간 : </strong>회원 탈퇴 또는 동의 철회 시까지</li>
+                                    </ul>
+                                    <p class="terms-notice">※ 동의를 거부하실 수 있으며, 거부하시더라도 이클럽 서비스는 정상적으로 이용 가능합니다. 단, 유용한 배송
+                                        안내 및 이벤트 혜택을 받으실 수 없습니다.</p>
+                                    <div class="terms-agree">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                            <span class="text">배송 안내 및 상품 이벤트 정보 수신 동의 (선택)</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="cmn-table-wrap">
+                                    <table class="cmn-table table-form">
+                                        <colgroup>
+                                            <col style="width: 240px;">
+                                            <col style="width: auto;">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">대표자 연락처</th>
+                                                <td>
+                                                    <div class="form-group-phone">
+                                                        <input type="text" value="010"
+                                                            class="input-text w-80 text-center" title="대표자 연락처 첫자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="0000"
+                                                            class="input-text w-80 text-center" title="대표자 연락처 중간자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="0000"
+                                                            class="input-text w-80 text-center" title="대표자 연락처 끝자리">
+                                                        <div class="terms-check-group">
+                                                            <label class="checkbox-container">
+                                                                <input type="checkbox">
+                                                                <span class="checkmark"></span>
+                                                                <span class="text">상품 이벤트 정보 동의</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">담당자 1 연락처</th>
+                                                <td>
+                                                    <div class="form-group-phone">
+                                                        <input type="text" value="010"
+                                                            class="input-text w-80 text-center" title="담당자 1 연락처 첫자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="0000"
+                                                            class="input-text w-80 text-center" title="담당자 1 연락처 중간자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="0000"
+                                                            class="input-text w-80 text-center" title="담당자 1 연락처 끝자리">
+                                                        <div class="terms-check-group">
+                                                            <label class="checkbox-container">
+                                                                <input type="checkbox">
+                                                                <span class="checkmark"></span>
+                                                                <span class="text">배송 안내 동의</span>
+                                                            </label>
+                                                            <label class="checkbox-container">
+                                                                <input type="checkbox">
+                                                                <span class="checkmark"></span>
+                                                                <span class="text">상품 이벤트 정보 동의</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">담당자 2 연락처</th>
+                                                <td>
+                                                    <div class="form-group-phone">
+                                                        <input type="text" value="010"
+                                                            class="input-text w-80 text-center" title="담당자 2 연락처 첫자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="0000"
+                                                            class="input-text w-80 text-center" title="담당자 2 연락처 중간자리">
+                                                        <span class="dash">-</span>
+                                                        <input type="text" value="0000"
+                                                            class="input-text w-80 text-center" title="담당자 2 연락처 끝자리">
+                                                        <div class="terms-check-group">
+                                                            <label class="checkbox-container">
+                                                                <input type="checkbox">
+                                                                <span class="checkmark"></span>
+                                                                <span class="text">배송 안내 동의</span>
+                                                            </label>
+                                                            <label class="checkbox-container">
+                                                                <input type="checkbox" checked>
+                                                                <span class="checkmark"></span>
+                                                                <span class="text">상품 이벤트 정보 동의</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">비고</th>
+                                                <td style="height: 158px; vertical-align: top;">안녕하세요 이마트입니다.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- 장려금 기준 정보 -->
+                            <div class="incentive-give-guide inner-wrap">
+                                <div class="section-head">
+                                    <h3 class="section-title">장려금 기준 정보</h3>
+                                </div>
+
+                                <table class="cmn-table">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">장려비율(%)</th>
+                                            <th scope="col">기준-시작금액(세제외)</th>
+                                            <th scope="col">기준-종료금액(세제외)</th>
+                                            <th scope="col">지급수단</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="product-list">
+                                        <tr class="no-result">
+                                            <td colspan="4">
+                                                조회된 내역이 없습니다.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2026.01.03</td>
+                                            <td>사용</td>
+                                            <td>포인트 적립 프로모션</td>
+                                            <td>410원 적립</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2026.01.03</td>
+                                            <td>사용</td>
+                                            <td>포인트 적립 프로모션</td>
+                                            <td>410원 적립</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2026.01.03</td>
+                                            <td>사용</td>
+                                            <td>포인트 적립 프로모션</td>
+                                            <td>410원 적립</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- 저장하기 -->
+                            <div class="save-btn-area">
+                                <button class="btn-save">저장하기</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- //회원기본정보 -->
+
+
+                </div>
+
+            </div>
+    </div>
+    </main>
+
+    <div data-include="/pc/components/footer.txt"></div>
+    </div>
+
+    <!-- 상품 옵션 모달 템플릿 -->
+    <template id="modal-item-option">
+        <div class="modal-header">
+            <button type="button" class="btn-modal-close" aria-label="닫기"><i class="icon-clear"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="option-setup">
+                <div class="item-preview">
+                    <img src="" alt="상품 이미지" class="modal-item-img">
+                    <p class="modal-item-name"></p>
+                </div>
+                <!-- 옵션 설정 영역 -->
+                <div class="option-controls">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-confirm-option">설정 완료</button>
+        </div>
+    </template>
+
+    <script src="/dist/bundle.js"></script>
+
+
+
+</body>
+
+</html>

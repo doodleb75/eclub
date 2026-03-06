@@ -11,7 +11,7 @@
     <!-- 페이지 전용 스타일 -->
 </head>
 
-<body class="mypage" data-page-id="mypage">
+<body class="mypage type-general" data-page-id="mypage">
     <div id="wrap">
         <!-- 상단 헤더 -->
         <div data-include="/pc/components/header.txt"></div>
@@ -51,7 +51,7 @@
                         </div>
 
                         <!-- 당일배송 리스트 영역 -->
-                        <div class="sameday-delivery-list-wrap" style="padding: 0 20px;">
+                        <div class="sameday-delivery-list-wrap">
                             <!-- 요약 정보 -->
                             <div class="category-filter-bar type-summary">
                                 <div class="filter-left">
@@ -811,19 +811,26 @@
                                 </div>
                             </div>
 
-                            <div class="pagination">
-                                <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
-                                <button type="button" class="active">1</button>
-                                <button type="button">2</button>
-                                <button type="button">3</button>
-                                <button type="button">4</button>
-                                <button type="button">5</button>
-                                <button type="button">6</button>
-                                <button type="button">7</button>
-                                <button type="button">8</button>
-                                <button type="button">9</button>
-                                <button type="button">10</button>
-                                <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
+                            <div class="pagingArea">
+                                <div class="paging">
+                                    <a href="#" class="prevEnd"
+                                        onclick="fn_egov_link_page(1); return false;">FIRST</a><a href="#" class="prev"
+                                        onclick="fn_egov_link_page(1); return false;"><em>PREV</em></a><strong
+                                        class="on">1</strong><a href="#"
+                                        onclick="fn_egov_link_page(2); return false;"><em>2</em></a><a href="#"
+                                        onclick="fn_egov_link_page(3); return false;"><em>3</em></a><a href="#"
+                                        onclick="fn_egov_link_page(4); return false;"><em>4</em></a><a href="#"
+                                        onclick="fn_egov_link_page(5); return false;"><em>5</em></a><a href="#"
+                                        onclick="fn_egov_link_page(6); return false;"><em>6</em></a><a href="#"
+                                        onclick="fn_egov_link_page(7); return false;"><em>7</em></a><a href="#"
+                                        onclick="fn_egov_link_page(8); return false;"><em>8</em></a><a href="#"
+                                        onclick="fn_egov_link_page(9); return false;"><em>9</em></a><a href="#"
+                                        onclick="fn_egov_link_page(10); return false;"><em>10</em></a><a href="#"
+                                        class="next" onclick="fn_egov_link_page(11); return false;"><em>NEXT</em></a><a
+                                        href="#" class="nextEnd" onclick="fn_egov_link_page(25); return false;">END</a>
+
+                                    <input type="hidden" name="pageIndex" id="pageIndex" value="1">
+                                </div>
                             </div>
                         </div>
 

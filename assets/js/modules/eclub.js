@@ -53,6 +53,8 @@ import { IncentiveProgress } from './incentive-progress.js';
 import { ModalProductDetail } from './modal-product-detail.js';
 import { initOrderHistoryReceipt } from './order-history-receipt.js';
 import { MypageSidebar } from './mypage-sidebar.js';
+import { MypageInquiry } from './mypage-inquiry.js';
+import { MypageProfileEdit } from './mypage-profile-edit.js';
 
 const Eclub = {
     Const,
@@ -110,6 +112,8 @@ const Eclub = {
     IncentiveProgress,
     ModalProductDetail,
     MypageSidebar,
+    MypageInquiry,
+    MypageProfileEdit,
 
     async init() {
         // 전역 객체로 등록 
@@ -246,6 +250,8 @@ const Eclub = {
                 this.DeliverySort.init();
                 this.ProductSortAndCount.init();
                 this.MypageSidebar.init(); // 활성 상태 업데이트 추가
+                this.MypageInquiry.init(); // 문의내역 토글 초기화
+                this.MypageProfileEdit.init(); // 본인인증 토글 초기화
                 // 주문내역조회(영수증) 필터 초기화
                 initOrderHistoryReceipt();
                 break;

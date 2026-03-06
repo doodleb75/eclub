@@ -11,7 +11,9 @@
     <!-- 페이지 전용 스타일 -->
 </head>
 
-<body class="mypage" data-page-id="mypage">
+<!-- body class - type-credit| type-general 블럭, profile-container/ side menu 다르게 display -->
+
+<body class="mypage type-credit" data-page-id="mypage">
     <div id="wrap">
         <!-- 상단 헤더 -->
         <div data-include="/pc/components/header.txt"></div>
@@ -25,8 +27,8 @@
                 <!-- 중앙/우측 컨텐츠 영역 -->
                 <div class="category-main">
                     <div class="mypage-content-wrap">
-                        <!-- 1. 프로필 영역 -->
-                        <div class="mypage-section profile-section">
+                        <!-- 1-1. 프로필 영역 (일반회원사) -->
+                        <div class="mypage-section profile-section type-general">
                             <div class="profile-container">
                                 <!-- 좌측 프로필 정보 -->
                                 <div class="profile-info-side">
@@ -79,6 +81,86 @@
                                             <span class="stat-num">19</span>
                                             <span class="stat-label">장바구니</span>
                                         </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1-2. 프로필 영역 (신용회원사) -->
+                        <div class="mypage-section profile-section type-credit">
+                            <div class="profile-container type-credit">
+                                <!-- 좌측 프로필 정보 -->
+                                <div class="profile-info-side">
+                                    <div class="user-grade-row">
+                                        <span class="grade-text">LV.2 브론즈</span>
+                                    </div>
+                                    <div class="user-name-row">
+                                        <span class="user-name">이승규</span>
+                                        <span class="join-date">(가입일: 2014월 07월 12일)</span>
+                                    </div>
+                                    <div class="auth-toggle-wrap">
+                                        <span class="auth-label">로그인 2차 인증 설정</span>
+                                        <button type="button" class="btn-help"><i class="icon-info"></i></button>
+                                        <div class="switch-control">
+                                            <input type="radio" id="auth-on-credit" name="auth2fa_credit" value="on"
+                                                checked>
+                                            <input type="radio" id="auth-off-credit" name="auth2fa_credit" value="off">
+                                            <label for="auth-off-credit" class="btn-switch on">ON</label>
+                                            <label for="auth-on-credit" class="btn-switch off">OFF</label>
+                                        </div>
+                                    </div>
+                                    <div class="manager-info-wrap">
+                                        <p>영업담당자 : 조*갑 02-380-9383</p>
+                                        <p>가상계좌 : 수협중앙회 06640085439312</p>
+                                    </div>
+                                </div>
+                                <!-- 우측 현황 통계 -->
+                                <div class="profile-stats-side">
+                                    <div class="stats-top">
+                                        <div class="stat-item">
+                                            <a href="javascript:void(0);" class="stat-link">
+                                                <span class="stat-num">0</span>
+                                                <span class="stat-label">진행중 주문</span>
+                                            </a>
+                                        </div>
+                                        <div class="stat-item">
+                                            <a href="javascript:void(0);" class="stat-link">
+                                                <span class="stat-num">3</span>
+                                                <span class="stat-label">당일배송 조회</span>
+                                            </a>
+                                        </div>
+                                        <div class="stat-item">
+                                            <a href="javascript:void(0);" class="stat-link">
+                                                <span class="stat-num">149</span>
+                                                <span class="stat-label">관심상품</span>
+                                            </a>
+                                        </div>
+                                        <div class="stat-item">
+                                            <a href="javascript:void(0);" class="stat-link">
+                                                <span class="stat-num">4</span>
+                                                <span class="stat-label">보유쿠폰</span>
+                                            </a>
+                                        </div>
+                                        <div class="stat-item">
+                                            <a href="javascript:void(0);" class="stat-link">
+                                                <span class="stat-num">38</span>
+                                                <span class="stat-label">장바구니</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="stats-bottom">
+                                        <div class="stat-item">
+                                            <a href="javascript:void(0);" class="stat-link">
+                                                <span class="stat-num">6,400,242</span>
+                                                <span class="stat-label">주문한도</span>
+                                            </a>
+                                        </div>
+                                        <div class="stat-item">
+                                            <a href="javascript:void(0);" class="stat-link">
+                                                <span class="stat-num">4,200,080</span>
+                                                <span class="stat-label">미결제 금액</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

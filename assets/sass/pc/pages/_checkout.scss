@@ -452,8 +452,13 @@
 
 
         .notice-list {
+            display: none; // 기본 숨김
             margin-top: rem(20);
             list-style: none;
+
+            &.active {
+                display: block; // 활성화 시 노출
+            }
 
             li {
                 position: relative;
