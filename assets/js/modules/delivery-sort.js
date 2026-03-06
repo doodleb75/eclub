@@ -11,7 +11,7 @@ export const DeliverySort = {
 
     // 상품 리스트 배송 필터링 (상온, 저온, 직납 등)
     initProductFilter() {
-        const triggers = document.querySelectorAll('.delivery-types .type-btn');
+        const triggers = document.querySelectorAll('.delivery-types .type-btn, .tax-types .type-btn');
         if (!triggers.length) return;
 
         // 초기 상태 동기화 (HTML에 미리 체크된 경우)
@@ -25,7 +25,7 @@ export const DeliverySort = {
         // 이벤트 위임 대신 직접 바인딩 또는 공용 위임 사용 (여기서는 직접 바인딩 선호)
         // 하지만 버튼이 많을 수 있으므로 위임 방식 유지 (ui.js 로직 참고)
         document.addEventListener('click', (e) => {
-            const btn = e.target.closest('.delivery-types .type-btn');
+            const btn = e.target.closest('.delivery-types .type-btn, .tax-types .type-btn');
             if (!btn) return;
 
             // 라벨 안의 인풋 클릭은 기본 동작 허용
@@ -95,8 +95,11 @@ export const DeliverySort = {
             return;
         }
 
-        const activeFilterBtn = document.querySelector('.btn-group[data-filter-group="delivery"] .type-btn.active');
-        const activeFilter = activeFilterBtn?.dataset.type;
+        const activeDeliveryFilterBtn = document.querySelector('.btn-group[data-filter-group="delivery"] .type-btn.active');
+        const activeDeliveryFilter = activeDeliveryFilterBtn?.dataset.type;
+
+        const activeTaxFilterBtn = document.querySelector('.btn-group[data-filter-group="tax"] .type-btn.active');
+        const activeTaxFilter = activeTaxFilterBtn?.dataset.type;
 
         // 필터링 대상 범위 (우선순위: .category-main -> #container -> body)
         const scope = document.querySelector('.category-main') || 
@@ -112,8 +115,13 @@ export const DeliverySort = {
             let isMatch = true;
 
             // 필터가 활성화된 경우만 체크
-            if (activeFilter) {
-                isMatch = (itemDelivery === activeFilter || itemCenter === activeFilter);
+            if (activeDeliveryFilter) {
+                isMatch = isMatch && (itemDelivery === activeDeliveryFilter || itemCenter === activeDeliveryFilter);
+            }
+            
+            if (activeTaxFilter) {
+                const itemTax = item.dataset.taxType;
+                isMatch = isMatch && (itemTax === activeTaxFilter);
             }
 
             // Display 제어

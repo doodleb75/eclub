@@ -1,0 +1,18 @@
+/* Error: 2 arguments required, but only 1 was passed.
+ *    ,
+ * 79 | $base-font-size: rem(16); // 기준 폰트 사이즈
+ *    |                  ^^^^^^^
+ *    '
+ *   assets\sass\abstract\_variables.scss 79:18  @import
+ *   assets\sass\pc\pages\_mypage.scss 1:9       root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: 2 arguments required, but only 1 was passed.\a    \2577 \a 79 \2502  $base-font-size: rem(16); // \ae30 \c900  \d3f0 \d2b8  \c0ac \c774 \c988 \a    \2502                   ^^^^^^^\a    \2575 \a   assets\\sass\\abstract\\_variables.scss 79:18  @import\a   assets\\sass\\pc\\pages\\_mypage.scss 1:9       root stylesheet";
+}

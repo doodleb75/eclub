@@ -87,7 +87,11 @@ export const CategoryMenu = {
             // 마이페이지 메뉴 active 토글
             const menuLink = e.target.closest('.menu-link');
             if (menuLink) {
-                e.preventDefault();
+                const href = menuLink.getAttribute('href');
+                if (!href || href === 'javascript:void(0);') {
+                    e.preventDefault();
+                }
+
                 const isActive = menuLink.classList.contains('active');
 
                 // 기존 active 초기화

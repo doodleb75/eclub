@@ -853,6 +853,17 @@ body {
   mask-size: contain;
 }
 
+.icon-calendar {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  background-color: currentColor;
+  -webkit-mask: url("../../icons/icons-calendar.svg") no-repeat center;
+  mask: url("../../icons/icons-calendar.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 header {
   position: relative;
   z-index: 100;
@@ -6163,7 +6174,7 @@ main {
   justify-content: center;
   margin-top: 1.25rem;
 }
-.product-list:not(.active) + .product-more {
+.product-list[data-tab-content]:not(.active) + .product-more {
   display: none !important;
 }
 .product-more .btn-more {
