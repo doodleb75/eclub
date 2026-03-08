@@ -133,7 +133,7 @@ const Eclub = {
         this.HeaderCategory.init();
         this.MobileCategorySheet.init();
         this.SearchOverlay.init();
-        
+
         // 플로팅 메뉴 (푸터 로딩 후 실행되어야 할 수 있음)
         this.FloatingUtil.init();
 
@@ -157,21 +157,20 @@ const Eclub = {
         this.InputHandler.init();
         this.Clipboard.init();
         this.Toggle.init();
-        
+
         // 플로팅 메뉴 등 공통 레이아웃 (FloatingUtil은 init에서 처리)
         this.QuickMenu.init();
         this.PcQuickMenu.init();
         this.QuickMenuScroll.init();
-        
+
         // 공통 유틸리티
-        
+
         // 추가 모달 등 범용 기능
         this.Popover.init();
         this.MenuSheet.init();
         this.SearchFilterSheet.init();
         this.ModalExcelUpload.init();
         this.ModalItemOption.init();
-        this.AddCartModal.init();
         this.AlternativeProductModal.init();
         this.BottomSheet.init();
         this.ReplaceProductSheet.init();
@@ -199,7 +198,6 @@ const Eclub = {
                 this.ProductSortAndCount.init();
                 this.StickyExchange.init();
                 this.CategoryMenu.init();
-                this.AddCartModal.init();
                 this.CartConfirmModal.init();
                 break;
 
@@ -211,10 +209,10 @@ const Eclub = {
                 this.DeliverySort.init();
                 this.ProductSortAndCount.init();
                 this.StickyExchange.init();
-                this.AddCartModal.init();
+                this.CartConfirmModal.init();
                 // CategoryMenu.init() 대신 FilterMore.init()이 공통 init에서 호출됨
                 break;
-                
+
             case 'cart':
             case 'checkout':
                 console.log("[Eclub] Loading Cart/Checkout modules");
@@ -223,11 +221,11 @@ const Eclub = {
                 this.ScrollSpy.init();
                 this.DeliverySort.init();
                 break;
-                
+
             case 'product':
                 console.log("[Eclub] Loading Product Detail modules");
                 break;
-                
+
             case 'home':
                 console.log("[Eclub] Loading Home modules");
                 break;
@@ -255,7 +253,7 @@ const Eclub = {
                 // 주문내역조회(영수증) 필터 초기화
                 initOrderHistoryReceipt();
                 break;
-                
+
             default:
                 console.log("[Eclub] Loading Default modules (Fallback)");
                 // 지정되지 않은 페이지의 경우 필요시 전체 실행 (하위 호환)
