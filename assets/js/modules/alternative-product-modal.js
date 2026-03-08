@@ -5,6 +5,10 @@ export const AlternativeProductModal = {
         document.addEventListener('click', async (e) => {
             const btn = e.target.closest('.btn-replace');
             if (!btn) return;
+
+            // 모바일 환경(바텀시트가 존재하는 경우)에서는 모달을 열지 않음
+            if (document.getElementById('replace-product-sheet')) return;
+
             e.preventDefault();
 
             // 모달 열기

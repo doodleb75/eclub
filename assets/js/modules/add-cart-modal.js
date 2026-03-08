@@ -2,6 +2,7 @@ import { Slider } from './slider.js';
 
 export const AddCartModal = {
     init() {
+        if (this.initialized) return; this.initialized = true;
         document.addEventListener('click', async (e) => {
             const btn = e.target.closest('.btn-add-cart');
             if (!btn) return;
@@ -9,8 +10,8 @@ export const AddCartModal = {
 
             // 체크된 product-item 수집 (품절/주문불가 제외 및 숨김 항목 제외, 모달 내부 상품 제외)
             const checkedInputs = Array.from(document.querySelectorAll('.product-list:not(.add-cart-list) .product-item:not(.sold-out):not(.order-soon)'))
-                                       .filter(item => item.style.display !== 'none' && item.querySelector('.item-check input[type="checkbox"]:checked'))
-                                       .map(item => item.querySelector('.item-check input[type="checkbox"]:checked'));
+                .filter(item => item.style.display !== 'none' && item.querySelector('.item-check input[type="checkbox"]:checked'))
+                .map(item => item.querySelector('.item-check input[type="checkbox"]:checked'));
             const checked = checkedInputs.filter(Boolean);
 
             if (checked.length === 0) {
