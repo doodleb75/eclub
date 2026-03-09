@@ -41,7 +41,7 @@ import { AddCartModal } from './add-cart-modal.js';
 import { AlternativeProductModal } from './alternative-product-modal.js';
 import { CartConfirmModal } from './cart-confirm-modal.js';
 import { CategoryFilter } from './category-filter.js';
-import { GlobalModal } from './global-modal.js';
+import { Modal } from './global-modal.js';
 import { Popover } from './popover.js';
 import { PcQuickMenu } from './pc-quick-menu.js';
 import { MenuSheet } from './menu-sheet.js';
@@ -101,7 +101,7 @@ const Eclub = {
     AlternativeProductModal,
     CartConfirmModal,
     CategoryFilter,
-    GlobalModal,
+    Modal,
     Popover,
     PcQuickMenu,
     MenuSheet,

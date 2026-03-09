@@ -61,6 +61,14 @@ export const ProductSortAndCount = {
         const activeTaxFilterBtn = document.querySelector('.btn-group[data-filter-group="tax"] .type-btn.active');
         const activeTaxFilter = activeTaxFilterBtn?.dataset.type;
 
+        // 결제 상태 필터 (청구내역 조회 등)
+        const activePaymentStatusFilterBtn = document.querySelector('.btn-group[data-filter-group="payment-status"] .type-btn.active');
+        const activePaymentStatusFilter = activePaymentStatusFilterBtn?.dataset.type;
+
+        // 기수 필터 (청구내역 조회 등)
+        const activeTermFilterBtn = document.querySelector('.btn-group[data-filter-group="term"] .type-btn.active');
+        const activeTermFilter = activeTermFilterBtn?.dataset.type;
+
         items.sort((a, b) => {
             if (sortType === '판매순') {
                 // 판매량 기준 정렬
@@ -82,7 +90,7 @@ export const ProductSortAndCount = {
         items.forEach((item) => {
             // 배송 필터 매치 여부
             let isDeliveryMatch = true;
-            if (activeDeliveryFilter) {
+            if (activeDeliveryFilter && activeDeliveryFilter !== 'all') {
                 const itemDelivery = item.dataset.deliveryType;
                 const itemCenter = item.dataset.deliveryCenter;
                 isDeliveryMatch = (itemDelivery === activeDeliveryFilter || itemCenter === activeDeliveryFilter);
@@ -90,12 +98,24 @@ export const ProductSortAndCount = {
 
             // 세금 필터 매치 여부
             let isTaxMatch = true;
-            if (activeTaxFilter) {
+            if (activeTaxFilter && activeTaxFilter !== 'all') {
                 const itemTax = item.dataset.taxType;
                 isTaxMatch = (itemTax === activeTaxFilter);
             }
 
-            if (isDeliveryMatch && isTaxMatch) {
+            // 결제 상태 필터 매치 여부
+            let isPaymentStatusMatch = true;
+            if (activePaymentStatusFilter && activePaymentStatusFilter !== 'all') {
+                isPaymentStatusMatch = (item.dataset.paymentStatus === activePaymentStatusFilter);
+            }
+
+            // 기수 필터 매치 여부
+            let isTermMatch = true;
+            if (activeTermFilter && activeTermFilter !== 'all') {
+                isTermMatch = (item.dataset.term === activeTermFilter);
+            }
+
+            if (isDeliveryMatch && isTaxMatch && isPaymentStatusMatch && isTermMatch) {
                 if (visibleCount < countLimit) {
                     item.style.display = '';
                 } else {

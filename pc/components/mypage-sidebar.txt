@@ -78,12 +78,12 @@
 
                         <!-- 신용회원사 전용 -->
                         <li class="menu-item" data-user-type="credit">
-                            <a href="javascript:void(0);" class="menu-link">
+                            <a href="/pc/pages/payment-history.html" class="menu-link">
                                 청구내역 조회
                             </a>
                         </li>
                         <li class="menu-item" data-user-type="credit">
-                            <a href="javascript:void(0);" class="menu-link">
+                            <a href="/pc/pages/order-limit.html" class="menu-link">
                                 주문한도
                             </a>
                         </li>

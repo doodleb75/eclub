@@ -11,7 +11,7 @@ export const DeliverySort = {
 
     // 상품 리스트 배송 필터링 (상온, 저온, 직납 등)
     initProductFilter() {
-        const triggers = document.querySelectorAll('.delivery-types .type-btn, .tax-types .type-btn');
+        const triggers = document.querySelectorAll('.delivery-types .type-btn, .tax-types .type-btn, .payment-status-filter .type-btn, .term-filter .type-btn');
         if (!triggers.length) return;
 
         // 초기 상태 동기화 (HTML에 미리 체크된 경우)
@@ -25,7 +25,7 @@ export const DeliverySort = {
         // 이벤트 위임 대신 직접 바인딩 또는 공용 위임 사용 (여기서는 직접 바인딩 선호)
         // 하지만 버튼이 많을 수 있으므로 위임 방식 유지 (ui.js 로직 참고)
         document.addEventListener('click', (e) => {
-            const btn = e.target.closest('.delivery-types .type-btn, .tax-types .type-btn');
+            const btn = e.target.closest('.delivery-types .type-btn, .tax-types .type-btn, .payment-status-filter .type-btn, .term-filter .type-btn');
             if (!btn) return;
 
             // 라벨 안의 인풋 클릭은 기본 동작 허용
@@ -101,6 +101,13 @@ export const DeliverySort = {
         const activeTaxFilterBtn = document.querySelector('.btn-group[data-filter-group="tax"] .type-btn.active');
         const activeTaxFilter = activeTaxFilterBtn?.dataset.type;
 
+        // 추가된 필터 그룹
+        const activePaymentStatusFilterBtn = document.querySelector('.btn-group[data-filter-group="payment-status"] .type-btn.active');
+        const activePaymentStatusFilter = activePaymentStatusFilterBtn?.dataset.type;
+
+        const activeTermFilterBtn = document.querySelector('.btn-group[data-filter-group="term"] .type-btn.active');
+        const activeTermFilter = activeTermFilterBtn?.dataset.type;
+
         // 필터링 대상 범위 (우선순위: .category-main -> #container -> body)
         const scope = document.querySelector('.category-main') || 
                       document.querySelector('#container') || 
@@ -109,19 +116,31 @@ export const DeliverySort = {
         const productItems = scope.querySelectorAll('.product-list .product-item');
 
         productItems.forEach(item => {
-            const itemDelivery = item.dataset.deliveryType;
-            const itemCenter = item.dataset.deliveryCenter;
-
             let isMatch = true;
 
-            // 필터가 활성화된 경우만 체크
-            if (activeDeliveryFilter) {
+            // 1. 배송 필터
+            if (activeDeliveryFilter && activeDeliveryFilter !== 'all') {
+                const itemDelivery = item.dataset.deliveryType;
+                const itemCenter = item.dataset.deliveryCenter;
                 isMatch = isMatch && (itemDelivery === activeDeliveryFilter || itemCenter === activeDeliveryFilter);
             }
             
-            if (activeTaxFilter) {
+            // 2. 세금 필터
+            if (activeTaxFilter && activeTaxFilter !== 'all') {
                 const itemTax = item.dataset.taxType;
                 isMatch = isMatch && (itemTax === activeTaxFilter);
+            }
+
+            // 3. 결제 상태 필터
+            if (activePaymentStatusFilter && activePaymentStatusFilter !== 'all') {
+                const itemStatus = item.dataset.paymentStatus;
+                isMatch = isMatch && (itemStatus === activePaymentStatusFilter);
+            }
+
+            // 4. 기수 필터
+            if (activeTermFilter && activeTermFilter !== 'all') {
+                const itemTerm = item.dataset.term;
+                isMatch = isMatch && (itemTerm === activeTermFilter);
             }
 
             // Display 제어

@@ -1,0 +1,2718 @@
+{
+  "name": "이클럽 2026",
+  "lastModified": "2026-03-09T02:24:42Z",
+  "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/c6dbca7d-4f05-43e2-9639-1b653355fb5f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWCVC2SVVHO%2F20260308%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260308T120000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=48fa024783dc08e35fd936a8e8c3a2724593e82a6efdec1038b0653278353e38",
+  "version": "2328757102665945808",
+  "role": "viewer",
+  "editorType": "figma",
+  "linkAccess": "view",
+  "nodes": {
+    "1740:22788": {
+      "document": {
+        "id": "1740:22788",
+        "name": "Frame 1597884005",
+        "type": "FRAME",
+        "scrollBehavior": "SCROLLS",
+        "children": [
+          {
+            "id": "1740:22789",
+            "name": "table row",
+            "type": "INSTANCE",
+            "scrollBehavior": "SCROLLS",
+            "componentId": "1740:22790",
+            "overrides": [
+              {
+                "id": "1740:22789",
+                "overriddenFields": [
+                  "fills",
+                  "height",
+                  "width"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22792",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22794",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22795",
+                "overriddenFields": [
+                  "primaryAxisAlignItems"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22796",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22797",
+                "overriddenFields": [
+                  "primaryAxisAlignItems"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22798",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22799",
+                "overriddenFields": [
+                  "primaryAxisAlignItems"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22800",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22801",
+                "overriddenFields": [
+                  "primaryAxisAlignItems"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22802",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22803",
+                "overriddenFields": [
+                  "primaryAxisAlignItems"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22804",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22805",
+                "overriddenFields": [
+                  "primaryAxisAlignItems"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22806",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22807",
+                "overriddenFields": [
+                  "primaryAxisAlignItems"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22808",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22809",
+                "overriddenFields": [
+                  "primaryAxisAlignItems"
+                ]
+              },
+              {
+                "id": "I1740:22789;1740:22810",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "fontFamily",
+                  "fontPostScriptName",
+                  "fontWeight",
+                  "italic",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              }
+            ],
+            "children": [
+              {
+                "id": "I1740:22789;1740:22791",
+                "name": "상품코드",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": false,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6406,
+                  "y": 7835,
+                  "width": 120,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6406,
+                  "y": 7835,
+                  "width": 120,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22789;1740:22793",
+                "name": "상품명",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6530.4443359375,
+                  "y": 7835,
+                  "width": 60,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6530.4443359375,
+                  "y": 7835,
+                  "width": 60,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22789;1740:22795",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6594.888671875,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6594.888671875,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22789;1740:22797",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6691.33349609375,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6691.33349609375,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22789;1740:22799",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6787.77783203125,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6787.77783203125,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22789;1740:22801",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6884.22216796875,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6884.22216796875,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22789;1740:22803",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6980.66650390625,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6980.66650390625,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22789;1740:22805",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7077.111328125,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7077.111328125,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22789;1740:22807",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7173.5556640625,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7173.5556640625,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22789;1740:22809",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7270,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7270,
+                  "y": 7835,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              }
+            ],
+            "blendMode": "PASS_THROUGH",
+            "clipsContent": false,
+            "background": [
+              {
+                "blendMode": "NORMAL",
+                "type": "SOLID",
+                "color": {
+                  "r": 0.9725490212440491,
+                  "g": 0.9725490212440491,
+                  "b": 0.9725490212440491,
+                  "a": 1
+                }
+              }
+            ],
+            "fills": [
+              {
+                "blendMode": "NORMAL",
+                "type": "SOLID",
+                "color": {
+                  "r": 0.9725490212440491,
+                  "g": 0.9725490212440491,
+                  "b": 0.9725490212440491,
+                  "a": 1
+                }
+              }
+            ],
+            "strokes": [],
+            "strokeWeight": 1,
+            "strokeAlign": "INSIDE",
+            "backgroundColor": {
+              "r": 0.9725490212440491,
+              "g": 0.9725490212440491,
+              "b": 0.9725490212440491,
+              "a": 1
+            },
+            "layoutMode": "HORIZONTAL",
+            "primaryAxisSizingMode": "FIXED",
+            "primaryAxisAlignItems": "SPACE_BETWEEN",
+            "paddingLeft": 32,
+            "paddingRight": 32,
+            "layoutWrap": "NO_WRAP",
+            "absoluteBoundingBox": {
+              "x": 6374,
+              "y": 7835,
+              "width": 1020,
+              "height": 45
+            },
+            "absoluteRenderBounds": {
+              "x": 6374,
+              "y": 7835,
+              "width": 1020,
+              "height": 45
+            },
+            "constraints": {
+              "vertical": "TOP",
+              "horizontal": "LEFT"
+            },
+            "layoutAlign": "STRETCH",
+            "layoutGrow": 0,
+            "layoutSizingHorizontal": "FILL",
+            "layoutSizingVertical": "HUG",
+            "effects": [],
+            "interactions": [],
+            "complexStrokeProperties": {
+              "strokeType": "BASIC"
+            }
+          },
+          {
+            "id": "1740:22790",
+            "name": "table row",
+            "type": "COMPONENT",
+            "scrollBehavior": "SCROLLS",
+            "children": [
+              {
+                "id": "1740:22791",
+                "name": "상품코드",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": false,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6406,
+                  "y": 7880,
+                  "width": 120,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6406,
+                  "y": 7880,
+                  "width": 120,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "1740:22793",
+                "name": "상품명",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6530.4443359375,
+                  "y": 7880,
+                  "width": 60,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6530.4443359375,
+                  "y": 7880,
+                  "width": 60,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "1740:22795",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6594.888671875,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6594.888671875,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "1740:22797",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6691.33349609375,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6691.33349609375,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "1740:22799",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6787.77783203125,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6787.77783203125,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "1740:22801",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6884.22216796875,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6884.22216796875,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "1740:22803",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6980.66650390625,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6980.66650390625,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "1740:22805",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7077.111328125,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7077.111328125,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "1740:22807",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7173.5556640625,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7173.5556640625,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "1740:22809",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7270,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7270,
+                  "y": 7880,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              }
+            ],
+            "blendMode": "PASS_THROUGH",
+            "clipsContent": false,
+            "background": [],
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 1,
+            "strokeAlign": "INSIDE",
+            "backgroundColor": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0
+            },
+            "layoutMode": "HORIZONTAL",
+            "primaryAxisSizingMode": "FIXED",
+            "primaryAxisAlignItems": "SPACE_BETWEEN",
+            "paddingLeft": 32,
+            "paddingRight": 32,
+            "layoutWrap": "NO_WRAP",
+            "absoluteBoundingBox": {
+              "x": 6374,
+              "y": 7880,
+              "width": 1020,
+              "height": 45
+            },
+            "absoluteRenderBounds": {
+              "x": 6374,
+              "y": 7880,
+              "width": 1020,
+              "height": 45
+            },
+            "constraints": {
+              "vertical": "TOP",
+              "horizontal": "LEFT"
+            },
+            "layoutAlign": "STRETCH",
+            "layoutGrow": 0,
+            "layoutSizingHorizontal": "FILL",
+            "layoutSizingVertical": "HUG",
+            "effects": [],
+            "interactions": [],
+            "complexStrokeProperties": {
+              "strokeType": "BASIC"
+            }
+          },
+          {
+            "id": "1740:22811",
+            "name": "table row",
+            "type": "INSTANCE",
+            "scrollBehavior": "SCROLLS",
+            "componentId": "1740:22790",
+            "overrides": [],
+            "children": [
+              {
+                "id": "I1740:22811;1740:22791",
+                "name": "상품코드",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": false,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6406,
+                  "y": 7925,
+                  "width": 120,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6406,
+                  "y": 7925,
+                  "width": 120,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22811;1740:22793",
+                "name": "상품명",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6530.4443359375,
+                  "y": 7925,
+                  "width": 60,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6530.4443359375,
+                  "y": 7925,
+                  "width": 60,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22811;1740:22795",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6594.888671875,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6594.888671875,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22811;1740:22797",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6691.33349609375,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6691.33349609375,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22811;1740:22799",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6787.77783203125,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6787.77783203125,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22811;1740:22801",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6884.22216796875,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6884.22216796875,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22811;1740:22803",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6980.66650390625,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6980.66650390625,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22811;1740:22805",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7077.111328125,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7077.111328125,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22811;1740:22807",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7173.5556640625,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7173.5556640625,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22811;1740:22809",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7270,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7270,
+                  "y": 7925,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              }
+            ],
+            "blendMode": "PASS_THROUGH",
+            "clipsContent": false,
+            "background": [],
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 1,
+            "strokeAlign": "INSIDE",
+            "backgroundColor": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0
+            },
+            "layoutMode": "HORIZONTAL",
+            "primaryAxisSizingMode": "FIXED",
+            "primaryAxisAlignItems": "SPACE_BETWEEN",
+            "paddingLeft": 32,
+            "paddingRight": 32,
+            "layoutWrap": "NO_WRAP",
+            "absoluteBoundingBox": {
+              "x": 6374,
+              "y": 7925,
+              "width": 1020,
+              "height": 45
+            },
+            "absoluteRenderBounds": {
+              "x": 6374,
+              "y": 7925,
+              "width": 1020,
+              "height": 45
+            },
+            "constraints": {
+              "vertical": "TOP",
+              "horizontal": "LEFT"
+            },
+            "layoutAlign": "STRETCH",
+            "layoutGrow": 0,
+            "layoutSizingHorizontal": "FILL",
+            "layoutSizingVertical": "HUG",
+            "effects": [],
+            "interactions": [],
+            "complexStrokeProperties": {
+              "strokeType": "BASIC"
+            }
+          },
+          {
+            "id": "1740:22812",
+            "name": "table row",
+            "type": "INSTANCE",
+            "scrollBehavior": "SCROLLS",
+            "componentId": "1740:22790",
+            "overrides": [
+              {
+                "id": "I1740:22812;1740:22792",
+                "overriddenFields": [
+                  "characterStyleOverrides",
+                  "characters",
+                  "lineIndentations",
+                  "lineTypes",
+                  "styleOverrideTable"
+                ]
+              }
+            ],
+            "children": [
+              {
+                "id": "I1740:22812;1740:22791",
+                "name": "상품코드",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": false,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6406,
+                  "y": 7970,
+                  "width": 120,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6406,
+                  "y": 7970,
+                  "width": 120,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22812;1740:22793",
+                "name": "상품명",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "CENTER",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6530.4443359375,
+                  "y": 7970,
+                  "width": 60,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6530.4443359375,
+                  "y": 7970,
+                  "width": 60,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22812;1740:22795",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6594.888671875,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6594.888671875,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22812;1740:22797",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6691.33349609375,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6691.33349609375,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22812;1740:22799",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6787.77783203125,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6787.77783203125,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22812;1740:22801",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6884.22216796875,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6884.22216796875,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22812;1740:22803",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 6980.66650390625,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 6980.66650390625,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22812;1740:22805",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7077.111328125,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7077.111328125,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22812;1740:22807",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7173.5556640625,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7173.5556640625,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              },
+              {
+                "id": "I1740:22812;1740:22809",
+                "name": "주문금액",
+                "type": "FRAME",
+                "scrollBehavior": "SCROLLS",
+                "children": [],
+                "blendMode": "PASS_THROUGH",
+                "clipsContent": true,
+                "background": [],
+                "fills": [],
+                "strokes": [],
+                "strokeWeight": 1,
+                "strokeAlign": "INSIDE",
+                "backgroundColor": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 0
+                },
+                "layoutMode": "HORIZONTAL",
+                "primaryAxisSizingMode": "FIXED",
+                "counterAxisAlignItems": "CENTER",
+                "primaryAxisAlignItems": "MAX",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 12,
+                "paddingBottom": 12,
+                "itemSpacing": 10,
+                "layoutWrap": "NO_WRAP",
+                "absoluteBoundingBox": {
+                  "x": 7270,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "absoluteRenderBounds": {
+                  "x": 7270,
+                  "y": 7970,
+                  "width": 92,
+                  "height": 45
+                },
+                "constraints": {
+                  "vertical": "TOP",
+                  "horizontal": "LEFT"
+                },
+                "layoutAlign": "INHERIT",
+                "layoutGrow": 0,
+                "layoutSizingHorizontal": "FIXED",
+                "layoutSizingVertical": "HUG",
+                "effects": [],
+                "interactions": [],
+                "complexStrokeProperties": {
+                  "strokeType": "BASIC"
+                }
+              }
+            ],
+            "blendMode": "PASS_THROUGH",
+            "clipsContent": false,
+            "background": [],
+            "fills": [],
+            "strokes": [],
+            "strokeWeight": 1,
+            "strokeAlign": "INSIDE",
+            "backgroundColor": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 0
+            },
+            "layoutMode": "HORIZONTAL",
+            "primaryAxisSizingMode": "FIXED",
+            "primaryAxisAlignItems": "SPACE_BETWEEN",
+            "paddingLeft": 32,
+            "paddingRight": 32,
+            "layoutWrap": "NO_WRAP",
+            "absoluteBoundingBox": {
+              "x": 6374,
+              "y": 7970,
+              "width": 1020,
+              "height": 45
+            },
+            "absoluteRenderBounds": {
+              "x": 6374,
+              "y": 7970,
+              "width": 1020,
+              "height": 45
+            },
+            "constraints": {
+              "vertical": "TOP",
+              "horizontal": "LEFT"
+            },
+            "layoutAlign": "STRETCH",
+            "layoutGrow": 0,
+            "layoutSizingHorizontal": "FILL",
+            "layoutSizingVertical": "HUG",
+            "effects": [],
+            "interactions": [],
+            "complexStrokeProperties": {
+              "strokeType": "BASIC"
+            }
+          }
+        ],
+        "blendMode": "PASS_THROUGH",
+        "clipsContent": false,
+        "background": [],
+        "fills": [],
+        "strokes": [],
+        "strokeWeight": 1,
+        "strokeAlign": "INSIDE",
+        "backgroundColor": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 0
+        },
+        "layoutMode": "VERTICAL",
+        "counterAxisSizingMode": "FIXED",
+        "layoutWrap": "NO_WRAP",
+        "absoluteBoundingBox": {
+          "x": 6374,
+          "y": 7835,
+          "width": 1020,
+          "height": 180
+        },
+        "absoluteRenderBounds": {
+          "x": 6374,
+          "y": 7835,
+          "width": 1020,
+          "height": 180
+        },
+        "constraints": {
+          "vertical": "TOP",
+          "horizontal": "LEFT"
+        },
+        "layoutAlign": "INHERIT",
+        "layoutGrow": 0,
+        "layoutSizingHorizontal": "FIXED",
+        "layoutSizingVertical": "HUG",
+        "effects": [],
+        "interactions": [],
+        "complexStrokeProperties": {
+          "strokeType": "BASIC"
+        }
+      },
+      "components": {
+        "1740:22790": {
+          "key": "eebce0f4cf20919cd20b6f68bb852c3425dc06e7",
+          "name": "table row",
+          "description": "",
+          "remote": false,
+          "documentationLinks": []
+        }
+      },
+      "componentSets": {},
+      "schemaVersion": 0,
+      "styles": {}
+    }
+  }
+}

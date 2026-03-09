@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 카테고리">
+    <title>마이페이지 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/assets/css/pc/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="mypage type-general" data-page-id="mypage">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/pc/components/header.txt"></div>
+
+        <main id="container">
+            <!-- 카테고리 메인 레이아웃 -->
+            <div class="container category-page-layout">
+                <!-- 좌측 사이드바: 마이페이지 메뉴 -->
+                <div data-include="/pc/components/mypage-sidebar.txt"></div>
+
+                <!-- 중앙/우측 컨텐츠 영역 -->
+                <div class="category-main">
+                    <div class="category-header">
+                        <h2 class="title-search title-breadcrumb">
+                            <span>주문한도</span>
+                        </h2>
+                    </div>
+                    <div class="mypage-content-wrap delivery-sameday-wrap">
+                        <!-- 조회필터 area -->
+                        <div class="receipt-filter-wrap">
+                            <!-- 단일 행: 상품검색 -->
+                            <div class="filter-row">
+                                <div class="filter-row-body">
+                                    <span class="filter-label">주문한도</span>
+                                    <div class="product-search-wrap">
+                                        <div class="date-range-group">
+                                            <div class="date-input-wrap">
+                                                <input type="text" id="startDate" class="date-input"
+                                                    placeholder="2026-02-21">
+                                                <button type="button" class="btn-calendar" aria-label="시작일 달력 열기"><i
+                                                        class="icon-calendar"></i></button>
+                                            </div>
+                                            <div id="calendar-start" class="calendar-popup"></div>
+                                            <span class="date-sep">—</span>
+                                            <div class="date-input-wrap">
+                                                <input type="text" id="endDate" class="date-input"
+                                                    placeholder="2026-02-21">
+                                                <button type="button" class="btn-calendar" aria-label="종료일 달력 열기"><i
+                                                        class="icon-calendar"></i></button>
+                                            </div>
+                                            <div id="calendar-end" class="calendar-popup"></div>
+                                        </div>
+                                        <button type="button" id="btnFilterSearch" class="btn-filter-search">조회</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 당일배송 리스트 영역 -->
+                        <div class="sameday-delivery-list-wrap">
+
+                            <!-- 리스트 필터 -->
+                            <div class="category-filter-bar type-list-filter">
+                                <div class="filter-right">
+                                    <div class="sort-selector">
+                                        <div class="custom-select count-select">
+                                            <button type="button" class="select-label">
+                                                20개씩 <i class="icon-down-bullet"></i>
+                                            </button>
+                                            <ul class="select-options">
+                                                <li>10개씩</li>
+                                                <li class="active">20개씩</li>
+                                                <li>40개씩</li>
+                                                <li>80개씩</li>
+                                                <li>100개씩</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cmn-table-wrap" style="border-top: none;">
+                                <table class="cmn-table">
+                                    <colgroup>
+                                        <col style="width: 150px;">
+                                        <col style="width: 6%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">일자</th>
+                                            <th scope="col">기수</th>
+                                            <th scope="col" class="align-right">청구금액</th>
+                                            <th scope="col" class="align-right">배송정정금액</th>
+                                            <th scope="col" class="align-right">입금금액</th>
+                                            <th scope="col" class="align-right">신용한도</th>
+                                            <th scope="col" class="align-right">누계배송금액</th>
+                                            <th scope="col" class="align-right">누계입금금액</th>
+                                            <th scope="col" class="align-right">배송예정금액</th>
+                                            <th scope="col" class="align-right">한도금액</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2026.02.23 ~ 현재</td>
+                                            <td>1기</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2026.02.23 ~ 현재</td>
+                                            <td>1기</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                        </tr>
+                                        <tr>
+                                            <td>전일 미정산 금액</td>
+                                            <td>1기</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td class="align-right">1,214,250</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="pagination">
+                                <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
+                                <button type="button" class="active">1</button>
+                                <button type="button">2</button>
+                                <button type="button">3</button>
+                                <button type="button">4</button>
+                                <button type="button">5</button>
+                                <button type="button">6</button>
+                                <button type="button">7</button>
+                                <button type="button">8</button>
+                                <button type="button">9</button>
+                                <button type="button">10</button>
+                                <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <div data-include="/pc/components/footer.txt"></div>
+    </div>
+
+    <!-- 상품 옵션 모달 템플릿 -->
+    <template id="modal-item-option">
+        <div class="modal-header">
+            <button type="button" class="btn-modal-close" aria-label="닫기"><i class="icon-clear"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="option-setup">
+                <div class="item-preview">
+                    <img src="" alt="상품 이미지" class="modal-item-img">
+                    <p class="modal-item-name"></p>
+                </div>
+                <!-- 옵션 설정 영역 -->
+                <div class="option-controls">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-confirm-option">설정 완료</button>
+        </div>
+    </template>
+
+    <script src="/dist/bundle.js"></script>
+
+
+
+</body>
+
+</html>

@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="/assets/css/pc/main.css">
     <!-- 페이지 전용 스타일 -->
 </head>
+<!-- type-credit/type-gendral(sidemenu) 토글-->
+<!-- is-cancelable/is-completed(order-action-buttons) 토글-->
 
-<body class="mypage type-general" data-page-id="mypage">
+<body class="mypage type-general is-completed" data-page-id="mypage">
     <div id="wrap">
         <!-- 상단 헤더 -->
         <div data-include="/pc/components/header.txt"></div>
@@ -291,7 +293,7 @@
                     </div>
 
                     <!-- 결제정보 영역 -->
-                    <div class="order-payment-section">
+                    <div class="order-payment-section type-general">
                         <div class="section-head">
                             <h3 class="section-title">결제정보</h3>
                             <button type="button" class="btn-print">주문내역 인쇄</button>
@@ -350,33 +352,17 @@
                     <!-- // 결제정보 영역 -->
 
                     <!-- 하단 주문 액션 버튼 영역 -->
-                    <div class="order-action-buttons">
+                    <!-- 주문내역조회 > 취소가능 상태 -->
+                    <div class="order-action-buttons state-cancelable">
                         <button type="button" class="btn-cancel">주문 취소</button>
                         <button type="button" class="btn-list">주문내역 전체 보기</button>
                     </div>
-                    <!-- // 하단 주문 액션 버튼 영역 -->
-                </div>
 
-                <!-- <div class="pagination">
-                        <button type="button" class="btn-page-first">
-                            <i class="icon-page-bullet"></i><i class="icon-page-bullet"></i>
-                        </button>
-                        <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
-                        <button type="button" class="active">1</button>
-                        <button type="button">2</button>
-                        <button type="button">3</button>
-                        <button type="button">4</button>
-                        <button type="button">5</button>
-                        <button type="button">6</button>
-                        <button type="button">7</button>
-                        <button type="button">8</button>
-                        <button type="button">9</button>
-                        <button type="button">10</button>
-                        <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
-                        <button type="button" class="btn-page-last">
-                            <i class="icon-page-bullet"></i><i class="icon-page-bullet"></i>
-                        </button>
-                    </div> -->
+                    <!-- 주문내역조회 > 결제완료 상태 -->
+                    <div class="order-action-buttons state-completed">
+                        <button type="button" class="btn-list">주문내역 전체 보기</button>
+                    </div>
+                </div>
             </div>
         </main>
 

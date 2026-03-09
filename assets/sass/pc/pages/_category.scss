@@ -1189,7 +1189,9 @@
         }
 
         .delivery-types,
-        .tax-types {
+        .tax-types,
+        .payment-status-filter,
+        .term-filter {
             display: flex;
             align-items: center;
             gap: rem(6);
