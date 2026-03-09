@@ -5613,13 +5613,13 @@ body {
   border-color: #ff5447;
   font-weight: 700;
 }
-.main-page-wrapper .product-list.active {
+.main-page-wrapper .product-list.active:not(.list-slider) {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1.25rem;
   row-gap: 2.5rem;
 }
-.main-page-wrapper .product-list:not(.daily-product):not(.weekly-product) {
+.main-page-wrapper .product-list:not(.daily-product):not(.weekly-product):not(.list-slider) {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1.25rem;
@@ -9196,7 +9196,9 @@ body.type-general .category-page-layout .mypage-menu .menu-section-list .menu-su
   margin: 0 1rem;
 }
 .category-filter-bar .filter-right .delivery-types,
-.category-filter-bar .filter-right .tax-types {
+.category-filter-bar .filter-right .tax-types,
+.category-filter-bar .filter-right .payment-status-filter,
+.category-filter-bar .filter-right .term-filter {
   display: flex;
   align-items: center;
   gap: 0.375rem;
@@ -9204,11 +9206,15 @@ body.type-general .category-page-layout .mypage-menu .menu-section-list .menu-su
   color: #444444;
 }
 .category-filter-bar .filter-right .delivery-types .label,
-.category-filter-bar .filter-right .tax-types .label {
+.category-filter-bar .filter-right .tax-types .label,
+.category-filter-bar .filter-right .payment-status-filter .label,
+.category-filter-bar .filter-right .term-filter .label {
   color: #999999;
 }
 .category-filter-bar .filter-right .delivery-types .btn-info,
-.category-filter-bar .filter-right .tax-types .btn-info {
+.category-filter-bar .filter-right .tax-types .btn-info,
+.category-filter-bar .filter-right .payment-status-filter .btn-info,
+.category-filter-bar .filter-right .term-filter .btn-info {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9216,23 +9222,31 @@ body.type-general .category-page-layout .mypage-menu .menu-section-list .menu-su
   margin-right: 0.25rem;
 }
 .category-filter-bar .filter-right .delivery-types .btn-info .icon-info,
-.category-filter-bar .filter-right .tax-types .btn-info .icon-info {
+.category-filter-bar .filter-right .tax-types .btn-info .icon-info,
+.category-filter-bar .filter-right .payment-status-filter .btn-info .icon-info,
+.category-filter-bar .filter-right .term-filter .btn-info .icon-info {
   background-color: #999999;
   transition: all 0.2s ease;
 }
 .category-filter-bar .filter-right .delivery-types .type-buttons,
-.category-filter-bar .filter-right .tax-types .type-buttons {
+.category-filter-bar .filter-right .tax-types .type-buttons,
+.category-filter-bar .filter-right .payment-status-filter .type-buttons,
+.category-filter-bar .filter-right .term-filter .type-buttons {
   display: flex;
   align-items: center;
   margin-left: 0.25rem;
 }
 .category-filter-bar .filter-right .delivery-types .type-buttons .btn-group,
-.category-filter-bar .filter-right .tax-types .type-buttons .btn-group {
+.category-filter-bar .filter-right .tax-types .type-buttons .btn-group,
+.category-filter-bar .filter-right .payment-status-filter .type-buttons .btn-group,
+.category-filter-bar .filter-right .term-filter .type-buttons .btn-group {
   display: flex;
   gap: 0.5rem;
 }
 .category-filter-bar .filter-right .delivery-types .type-buttons .type-btn,
-.category-filter-bar .filter-right .tax-types .type-buttons .type-btn {
+.category-filter-bar .filter-right .tax-types .type-buttons .type-btn,
+.category-filter-bar .filter-right .payment-status-filter .type-buttons .type-btn,
+.category-filter-bar .filter-right .term-filter .type-buttons .type-btn {
   padding: 0.25rem 0.5rem;
   height: 1.5rem;
   border: 1px solid #e5e5e5;
@@ -9248,11 +9262,15 @@ body.type-general .category-page-layout .mypage-menu .menu-section-list .menu-su
   cursor: pointer;
 }
 .category-filter-bar .filter-right .delivery-types .type-buttons .type-btn input,
-.category-filter-bar .filter-right .tax-types .type-buttons .type-btn input {
+.category-filter-bar .filter-right .tax-types .type-buttons .type-btn input,
+.category-filter-bar .filter-right .payment-status-filter .type-buttons .type-btn input,
+.category-filter-bar .filter-right .term-filter .type-buttons .type-btn input {
   display: none;
 }
 .category-filter-bar .filter-right .delivery-types .type-buttons .type-btn.active,
-.category-filter-bar .filter-right .tax-types .type-buttons .type-btn.active {
+.category-filter-bar .filter-right .tax-types .type-buttons .type-btn.active,
+.category-filter-bar .filter-right .payment-status-filter .type-buttons .type-btn.active,
+.category-filter-bar .filter-right .term-filter .type-buttons .type-btn.active {
   border-color: #222222;
   color: #222222;
   font-weight: 600;
@@ -9319,6 +9337,22 @@ body.type-general .category-page-layout .mypage-menu .menu-section-list .menu-su
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+body.type-general .type-credit {
+  display: none !important;
+}
+
+body.type-credit .type-general {
+  display: none !important;
+}
+
+body.is-cancelable .state-completed {
+  display: none !important;
+}
+
+body.is-completed .state-cancelable {
+  display: none !important;
 }
 
 .section-container {
@@ -9496,12 +9530,6 @@ body.type-general .category-page-layout .mypage-menu .menu-section-list .menu-su
 }
 .mypage-section.profile-section {
   background-color: #f8f9fa;
-}
-body.type-general .mypage-section.profile-section.type-credit {
-  display: none;
-}
-body.type-credit .mypage-section.profile-section.type-general {
-  display: none;
 }
 .mypage-section.profile-section .profile-container {
   display: flex;
@@ -9888,13 +9916,12 @@ body.type-credit .mypage-section.profile-section.type-general {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 .mypage-section.membership-section .membership-grade-grid .grade-card .card-body .info-group {
   position: relative;
 }
 .mypage-section.membership-section .membership-grade-grid .grade-card .card-body .info-group:not(:last-child) {
-  height: 7.5rem;
   padding-bottom: 0.75rem;
 }
 .mypage-section.membership-section .membership-grade-grid .grade-card .card-body .info-group:not(:last-child)::after {
@@ -9915,7 +9942,7 @@ body.type-credit .mypage-section.profile-section.type-general {
   font-size: 0.875rem;
   line-height: 1.5;
   color: #666666;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.7px;
   font-weight: 400;
 }
 .mypage-section.membership-section .membership-grade-grid .grade-card.is-current {
@@ -10545,6 +10572,9 @@ body.type-credit .mypage-section.profile-section.type-general {
 .order-payment-section .section-head .btn-print:hover {
   background-color: #fbfbfb;
 }
+.order-payment-section .section-head.secondary-section {
+  margin-bottom: 0 !important;
+}
 .order-payment-section .payment-info-wrap {
   padding: 1.5rem 0 0;
 }
@@ -10599,6 +10629,39 @@ body.type-credit .mypage-section.profile-section.type-general {
   gap: 0.625rem;
   margin-top: 2.5rem;
   padding-bottom: 5rem;
+}
+.order-action-buttons.state-completed {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.order-action-buttons.state-completed .top-row {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.order-action-buttons.state-completed .top-row .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.75rem;
+  padding: 0 0.75rem;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  color: #363636;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 0.125rem;
+  cursor: pointer;
+}
+.order-action-buttons.state-completed .top-row .btn-outline:hover {
+  background-color: #fbfbfb;
+  border-color: #aaaaaa;
+}
+.order-action-buttons.state-completed .btn-list {
+  width: 18.75rem;
+  padding: 0;
 }
 .order-action-buttons button {
   display: inline-flex;
@@ -11152,18 +11215,6 @@ body.type-credit .mypage-section.profile-section.type-general {
 .custom-select {
   position: relative;
 }
-.custom-select:nth-of-type(1) {
-  width: 7.875rem;
-}
-.custom-select:nth-of-type(2) {
-  width: 5.5625rem;
-}
-.custom-select:nth-of-type(3) {
-  width: 5.5625rem;
-}
-.custom-select:nth-of-type(4) {
-  width: 5.5625rem;
-}
 .custom-select .select-label {
   display: inline-flex;
   align-items: center;
@@ -11399,6 +11450,73 @@ body.type-credit .mypage-section.profile-section.type-general {
 }
 .inquiry-write .btn-group-center .btn-solid-dark:hover {
   background-color: #333333;
+}
+
+.receipt-filter-wrap .custom-select:nth-of-type(1) {
+  width: 7.875rem;
+}
+.receipt-filter-wrap .custom-select:nth-of-type(2) {
+  width: 5.5625rem;
+}
+.receipt-filter-wrap .custom-select:nth-of-type(3) {
+  width: 5.5625rem;
+}
+.receipt-filter-wrap .custom-select:nth-of-type(4) {
+  width: 5.5625rem;
+}
+
+.receipt-filter-wrap.payment-history-wrap .filter-row {
+  gap: 0rem;
+}
+
+.payment-detail-wrap .order-payment-section:first-of-type {
+  margin-top: 0;
+}
+.payment-detail-wrap .order-payment-section + .order-payment-section {
+  margin-top: 2.5rem;
+}
+.payment-detail-wrap .order-payment-section .section-head {
+  margin-bottom: 0.5rem;
+}
+.payment-detail-wrap .order-payment-section .section-head .section-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.payment-detail-wrap .order-payment-section .section-head .section-sub-info {
+  font-size: 0.9375rem;
+  color: #222222;
+}
+.payment-detail-wrap .order-payment-section .section-head .section-sub-info .text-danger {
+  font-weight: 700;
+  color: #ff5447;
+}
+.payment-detail-wrap .order-payment-section .icon-nav-back {
+  display: inline-block;
+  transform: scaleX(-1);
+  width: 0.4483125rem;
+  height: 0.8750625rem;
+  vertical-align: middle;
+}
+.payment-detail-wrap .order-payment-section .payment-info-wrap {
+  padding: 0rem 1rem 0;
+  margin-top: 2rem;
+}
+.payment-detail-wrap .order-payment-section .payment-info-wrap .info-group + .info-group {
+  margin-top: 1.5rem;
+}
+.payment-detail-wrap .cmn-table-wrap {
+  border-top: none;
+}
+.payment-detail-wrap .cmn-table-wrap .cmn-table colgroup col:first-of-type {
+  width: 8.75rem;
+}
+.payment-detail-wrap .order-action-buttons .btn-list {
+  width: 20rem;
+  height: 3.5rem;
+  font-size: 1rem;
+  border-radius: 0.125rem;
+  font-weight: 700;
 }
 
 #wrap {

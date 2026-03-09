@@ -671,7 +671,7 @@
     }
 
     .product-list {
-        &.active {
+        &.active:not(.list-slider) {
             display: grid;
             grid-template-columns: repeat(5, 1fr); // 5열 고정
             gap: rem(20);
@@ -679,7 +679,7 @@
         }
 
         // 기간 탭이 없는 섹션의 경우 기본적으로 그리드 표시
-        &:not(.daily-product):not(.weekly-product) {
+        &:not(.daily-product):not(.weekly-product):not(.list-slider) {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: rem(20);

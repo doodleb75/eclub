@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Club 카테고리">
+    <title>마이페이지 | E-Club</title>
+    <!-- 공통 스타일 -->
+    <link rel="stylesheet" href="/eclub/assets/css/pc/main.css">
+    <!-- 페이지 전용 스타일 -->
+</head>
+
+<body class="mypage type-general" data-page-id="mypage">
+    <div id="wrap">
+        <!-- 상단 헤더 -->
+        <div data-include="/eclub/pc/components/header.txt"></div>
+
+        <main id="container">
+            <!-- 카테고리 메인 레이아웃 -->
+            <div class="container category-page-layout">
+                <!-- 좌측 사이드바: 마이페이지 메뉴 -->
+                <div data-include="/eclub/pc/components/mypage-sidebar.txt"></div>
+
+                <!-- 중앙/우측 컨텐츠 영역 -->
+                <div class="category-main">
+                    <div class="category-header">
+                        <h2 class="title-search title-breadcrumb">
+                            <span>청구내역 조회</span>
+                        </h2>
+                    </div>
+                    <div class="mypage-content-wrap delivery-sameday-wrap">
+                        <!-- 조회필터 area -->
+                        <div class="receipt-filter-wrap payment-history-wrap">
+                            <!-- Row 1: 주문기간 -->
+                            <div class="filter-row">
+                                <span class="filter-label">청구기간</span>
+                                <div class="filter-row-body single-line">
+
+                                    <div class="single-line-wrap">
+                                        <!-- 날짜 직접 입력 -->
+                                        <div class="date-range-group">
+                                            <div class="date-input-wrap">
+                                                <input type="text" id="startDate" class="date-input"
+                                                    placeholder="2026-02-21">
+                                                <button type="button" class="btn-calendar" aria-label="시작일 달력 열기"><i
+                                                        class="icon-calendar"></i></button>
+                                            </div>
+                                            <div id="calendar-start" class="calendar-popup"></div>
+                                            <span class="date-sep">—</span>
+                                            <div class="date-input-wrap">
+                                                <input type="text" id="endDate" class="date-input"
+                                                    placeholder="2026-02-21">
+                                                <button type="button" class="btn-calendar" aria-label="종료일 달력 열기"><i
+                                                        class="icon-calendar"></i></button>
+                                            </div>
+                                            <div id="calendar-end" class="calendar-popup"></div>
+                                        </div>
+                                        <!-- 빠른 기간 선택 -->
+                                        <div class="quick-period-group">
+                                            <label class="quick-period-btn">
+                                                <input type="radio" name="period" id="month3" value="1m">
+                                                <span>1개월</span>
+                                            </label>
+                                            <label class="quick-period-btn">
+                                                <input type="radio" name="period" id="month3" value="3m">
+                                                <span>3개월</span>
+                                            </label>
+                                            <label class="quick-period-btn">
+                                                <input type="radio" name="period" id="month3" value="6m">
+                                                <span>6개월</span>
+                                            </label>
+                                            <label class="quick-period-btn">
+                                                <input type="radio" name="period" id="month12" value="12m">
+                                                <span>12개월</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="product-search-wrap">
+                                        <button type="button" id="btnFilterSearch" class="btn-filter-search">조회</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 당일배송 리스트 영역 -->
+                        <div class="sameday-delivery-list-wrap">
+                            <!-- 요약 정보 -->
+                            <div class="category-filter-bar type-summary">
+                                <div class="filter-left">
+                                    <span class="summary-text">총 주문금액 : <em class="price">4,164,402</em>원</span>
+                                    <span class="v-divider"></span>
+                                    <span class="summary-text">총 배송예정금액 : <em class="price">4,145,462</em>원</span>
+                                </div>
+                                <div class="filter-right">
+                                    <span class="total-text"><em class="count">131</em>개의 상품이 있습니다</span>
+                                </div>
+                            </div>
+
+
+                            <!-- 리스트 필터 -->
+                            <div class="category-filter-bar type-list-filter">
+                                <div class="filter-right">
+                                    <div class="payment-status-filter">
+                                        <div class="type-buttons">
+                                            <div class="btn-group" data-filter-group="payment-status">
+                                                <label class="type-btn active" data-type="all">
+                                                    <input type="checkbox"> 전체
+                                                </label>
+                                                <label class="type-btn" data-type="paid">
+                                                    <input type="checkbox"> 입금
+                                                </label>
+                                                <label class="type-btn" data-type="unpaid">
+                                                    <input type="checkbox"> 미입금
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="v-divider big"></span>
+                                    <div class="term-filter">
+                                        <div class="type-buttons">
+                                            <div class="btn-group" data-filter-group="term">
+                                                <label class="type-btn active" data-type="all">
+                                                    <input type="checkbox"> 전체
+                                                </label>
+                                                <label class="type-btn" data-type="term1">
+                                                    <input type="checkbox"> 1기
+                                                </label>
+                                                <label class="type-btn" data-type="term2">
+                                                    <input type="checkbox"> 2기
+                                                </label>
+                                                <label class="type-btn" data-type="term3">
+                                                    <input type="checkbox"> 3기
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sort-selector">
+                                        <div class="custom-select count-select">
+                                            <button type="button" class="select-label"><span>10개씩</span> <i
+                                                    class="icon-down-bullet"></i></button>
+                                            <ul class="select-options">
+                                                <li class="active">10개씩</li>
+                                                <li class="">20개씩</li>
+                                                <li>40개씩</li>
+                                                <li>80개씩</li>
+                                                <li>100개씩</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cmn-table-wrap" style="border-top: none;">
+                                <table class="cmn-table">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col style="width: 50px;">
+                                        <col style="width: 72px;">
+                                        <col style="width: 180px;">
+                                        <col style="width: 128px;">
+                                        <col style="width: 88px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">입금요청일자</th>
+                                            <th scope="col" class="align-right">청구금액</th>
+                                            <th scope="col">납입기한</th>
+                                            <th scope="col">구분</th>
+                                            <th scope="col">입금일</th>
+                                            <th scope="col">정산년월</th>
+                                            <th scope="col">기수</th>
+                                            <th scope="col" class="align-center">입금유형</th>
+                                            <th scope="col">적요</th>
+                                            <th scope="col">계좌번호</th>
+                                            <th scope="col">은행명</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="product-list">
+                                        <tr class="product-item" data-payment-status="paid" data-term="term1">
+                                            <td>2026.02.23</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td>2026.02.23</td>
+                                            <td>입금완료</td>
+                                            <td>2026.02.25</td>
+                                            <td>2026.02</td>
+                                            <td>1기</td>
+                                            <td>상품대</td>
+                                            <td class="align-center"><a
+                                                    href="/eclub/pc/pages/payment-history-list.html">2026-02-11~2026-02-20
+                                                    상품대</a></td>
+                                            <td>06640085439312</td>
+                                            <td>수협중앙회</td>
+                                        </tr>
+                                        <tr class="product-item" data-payment-status="unpaid" data-term="term2">
+                                            <td>2026.02.23</td>
+                                            <td class="align-right highlight-price">1,214,250</td>
+                                            <td>2026.02.23</td>
+                                            <td class="pay-cost">미입금(연체)</td>
+                                            <td>-</td>
+                                            <td>2026.02</td>
+                                            <td>2기</td>
+                                            <td>상품대</td>
+                                            <td class="align-center"><a
+                                                    href="/eclub/pc/pages/payment-history-list.html">2026-02-21~2026-02-28
+                                                    상품대</a></td>
+                                            <td>06640085439312</td>
+                                            <td>수협중앙회</td>
+                                        </tr>
+                                        <tr class="product-item" data-payment-status="paid" data-term="term3">
+                                            <td>2026.02.23</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td>2026.02.23</td>
+                                            <td>입금완료</td>
+                                            <td>2026.02.23</td>
+                                            <td>2026.02</td>
+                                            <td>3기</td>
+                                            <td>상품대</td>
+                                            <td class="align-center"><a
+                                                    href="/eclub/pc/pages/payment-history-list.html">2026-02-11~2026-02-20
+                                                    상품대</a></td>
+                                            <td>06640085439312</td>
+                                            <td>수협중앙회</td>
+                                        </tr>
+                                        <tr class="product-item" data-payment-status="unpaid" data-term="term1">
+                                            <td>2026.01.23</td>
+                                            <td class="align-right highlight-price">1,214,250</td>
+                                            <td>2026.01.23</td>
+                                            <td class="pay-cost">미입금(연체)</td>
+                                            <td>-</td>
+                                            <td>2026.01</td>
+                                            <td>1기</td>
+                                            <td>상품대</td>
+                                            <td class="align-center"><a
+                                                    href="/eclub/pc/pages/payment-history-list.html">2026-01-11~2026-01-20
+                                                    상품대</a></td>
+                                            <td>06640085439312</td>
+                                            <td>수협중앙회</td>
+                                        </tr>
+                                        <!-- 샘플 데이터 - 필터링 확인용으로 속성 유지 -->
+                                        <tr class="product-item" data-payment-status="paid" data-term="term1">
+                                            <td>2026.02.23</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td>2026.02.23</td>
+                                            <td>입금완료</td>
+                                            <td>2026.02.23</td>
+                                            <td>2026.02</td>
+                                            <td>1기</td>
+                                            <td>상품대</td>
+                                            <td class="align-center"><a
+                                                    href="/eclub/pc/pages/payment-history-list.html">2026-02-11~2026-02-20
+                                                    상품대</a></td>
+                                            <td>06640085439312</td>
+                                            <td>수협중앙회</td>
+                                        </tr>
+                                        <tr class="product-item" data-payment-status="unpaid" data-term="term2">
+                                            <td>2026.02.23</td>
+                                            <td class="align-right highlight-price">1,214,250</td>
+                                            <td>2026.02.23</td>
+                                            <td class="pay-cost">미입금(연체)</td>
+                                            <td>-</td>
+                                            <td>2026.02</td>
+                                            <td>2기</td>
+                                            <td>상품대</td>
+                                            <td class="align-center"><a
+                                                    href="/eclub/pc/pages/payment-history-list.html">2026-02-11~2026-02-20
+                                                    상품대</a></td>
+                                            <td>06640085439312</td>
+                                            <td>수협중앙회</td>
+                                        </tr>
+                                        <tr class="product-item" data-payment-status="paid" data-term="term3">
+                                            <td>2026.02.23</td>
+                                            <td class="align-right">1,214,250</td>
+                                            <td>2026.02.23</td>
+                                            <td>입금완료</td>
+                                            <td>2026.02.23</td>
+                                            <td>2026.02</td>
+                                            <td>3기</td>
+                                            <td>상품대</td>
+                                            <td class="align-center"><a
+                                                    href="/eclub/pc/pages/payment-history-list.html">2026-02-11~2026-02-20
+                                                    상품대</a></td>
+                                            <td>06640085439312</td>
+                                            <td>수협중앙회</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="order-receipt-bottom-actions"
+                                style="justify-content: flex-end; margin-top: 10px;">
+                                <div class="action-buttons">
+                                    <button type="button" class="btn-outline btn-excel">오배송 조회</button>
+                                    <button type="button" class="btn-outline btn-excel"><i class="icon-excel"></i> 엑셀
+                                        저장</button>
+                                </div>
+                            </div>
+
+                            <div class="pagination">
+                                <button type="button" class="btn-page-prev"><i class="icon-page-bullet"></i></button>
+                                <button type="button" class="active">1</button>
+                                <button type="button">2</button>
+                                <button type="button">3</button>
+                                <button type="button">4</button>
+                                <button type="button">5</button>
+                                <button type="button">6</button>
+                                <button type="button">7</button>
+                                <button type="button">8</button>
+                                <button type="button">9</button>
+                                <button type="button">10</button>
+                                <button type="button" class="btn-page-next"><i class="icon-page-bullet"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <div data-include="/eclub/pc/components/footer.txt"></div>
+    </div>
+
+    <!-- 상품 옵션 모달 템플릿 -->
+    <template id="modal-item-option">
+        <div class="modal-header">
+            <button type="button" class="btn-modal-close" aria-label="닫기"><i class="icon-clear"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="option-setup">
+                <div class="item-preview">
+                    <img src="" alt="상품 이미지" class="modal-item-img">
+                    <p class="modal-item-name"></p>
+                </div>
+                <!-- 옵션 설정 영역 -->
+                <div class="option-controls">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-confirm-option">설정 완료</button>
+        </div>
+    </template>
+
+    <script src="/eclub/dist/bundle.js"></script>
+
+
+
+</body>
+
+</html>

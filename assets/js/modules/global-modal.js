@@ -1,5 +1,5 @@
 // 전역 모달 시스템
-export const GlobalModal = (() => {
+export const Modal = (() => {
     let overlay = null;
     let wrap = null;
     let closeTimer = null; // 닫기 애니메이션 타이머
@@ -172,4 +172,4 @@ document.addEventListener('click', (e) => {
     }
 });
 
-window.Modal = GlobalModal;
+window.Modal = Modal;

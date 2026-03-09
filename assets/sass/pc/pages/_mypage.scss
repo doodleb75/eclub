@@ -15,6 +15,24 @@
     gap: $spacing-xxl; // 블럭 간 간격 32px ($spacing-xxl) 적용
 }
 
+// 회원유형(일반/신용)에 따른 노출 제어
+body.type-general .type-credit {
+    display: none !important;
+}
+
+body.type-credit .type-general {
+    display: none !important;
+}
+
+// 주문상태(취소가능/결제완료)에 따른 액션 버튼 노출 제어
+body.is-cancelable .state-completed {
+    display: none !important;
+}
+
+body.is-completed .state-cancelable {
+    display: none !important;
+}
+
 // 범용 섹션 레이아웃 (section-head, section-title 뼈대)
 .section-container {
     width: 100%;
@@ -237,15 +255,6 @@
 
     &.profile-section {
         background-color: $gray-100;
-
-        // 회원타입에 따른 토글
-        body.type-general &.type-credit {
-            display: none;
-        }
-
-        body.type-credit &.type-general {
-            display: none;
-        }
 
         .profile-container {
             display: flex;
@@ -733,14 +742,14 @@
                     flex: 1;
                     display: flex;
                     flex-direction: column;
-                    gap: rem(16);
+                    gap: rem(12);
 
                     .info-group {
                         position: relative;
 
 
                         &:not(:last-child) {
-                            height: rem(120);
+                            // height: rem(120);
                             padding-bottom: rem(12);
 
                             &::after {
@@ -764,7 +773,7 @@
                             font-size: rem(14);
                             line-height: 1.5;
                             color: $gray-700;
-                            letter-spacing: -0.5px;
+                            letter-spacing: -0.7px;
                             font-weight: $fw-regular;
                             // min-height: rem(56);
                         }
@@ -1521,6 +1530,10 @@
                 background-color: $gray-50;
             }
         }
+
+        &.secondary-section {
+            margin-bottom: 0 !important;
+        }
     }
 
     .payment-info-wrap {
@@ -1588,6 +1601,44 @@
     gap: rem(10);
     margin-top: rem(40);
     padding-bottom: rem(80);
+
+    &.state-completed {
+        flex-direction: column;
+        align-items: center;
+        gap: rem(12);
+
+        .top-row {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            gap: rem(8);
+
+            .btn-outline {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                height: rem(28);
+                padding: 0 rem(12);
+                border: 1px solid $gray-400;
+                background-color: $white;
+                color: $gray-830;
+                font-size: rem(13);
+                font-weight: $fw-medium;
+                border-radius: rem(2);
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $gray-50;
+                    border-color: $gray-500;
+                }
+            }
+        }
+
+        .btn-list {
+            width: rem(300); // 결제완료 시 길어짐
+            padding: 0;
+        }
+    }
 
     button {
         display: inline-flex;
@@ -2246,26 +2297,6 @@
 .custom-select {
     position: relative;
 
-    // 드롭다운별 너비 설정 (피그마 참조)
-    &:nth-of-type(1) {
-        width: rem(126);
-    }
-
-    // 결제수단
-    &:nth-of-type(2) {
-        width: rem(89);
-    }
-
-    // 주문상태
-    &:nth-of-type(3) {
-        width: rem(89);
-    }
-
-    // 결제상태
-    &:nth-of-type(4) {
-        width: rem(89);
-    }
-
     // 상품구분
 
     .select-label {
@@ -2540,6 +2571,113 @@
             &:hover {
                 background-color: $gray-850;
             }
+        }
+    }
+}
+
+.receipt-filter-wrap {
+    .custom-select // 드롭다운별 너비 설정 (피그마 참조)
+
+        {
+        &:nth-of-type(1) {
+            width: rem(126);
+        }
+
+        // 결제수단
+        &:nth-of-type(2) {
+            width: rem(89);
+        }
+
+        // 주문상태
+        &:nth-of-type(3) {
+            width: rem(89);
+        }
+
+        // 결제상태
+        &:nth-of-type(4) {
+            width: rem(89);
+        }
+    }
+}
+
+.receipt-filter-wrap {
+    &.payment-history-wrap {
+        .filter-row {
+            gap: rem(0);
+        }
+    }
+}
+
+// 청구내역 상세 페이지 
+.payment-detail-wrap {
+    .order-payment-section {
+        &:first-of-type {
+            margin-top: 0;
+        }
+
+        &+.order-payment-section {
+            margin-top: rem(40);
+        }
+
+        .section-head {
+            margin-bottom: rem(8);
+
+            .section-title {
+                display: flex;
+                align-items: center;
+                gap: rem(16);
+            }
+
+            .section-sub-info {
+                font-size: rem(15);
+                color: $gray-900;
+
+                .text-danger {
+                    font-weight: $fw-bold;
+                    color: $point-red;
+                }
+            }
+        }
+
+        .icon-nav-back {
+            display: inline-block;
+            transform: scaleX(-1);
+            width: rem(7.173);
+            height: rem(14.001);
+            vertical-align: middle;
+        }
+
+        .payment-info-wrap {
+            padding: rem(0) rem(16) 0;
+            margin-top: rem(32);
+
+            .info-group {
+                &+.info-group {
+                    margin-top: rem(24);
+                }
+            }
+        }
+    }
+
+    .cmn-table-wrap {
+        border-top: none;
+
+        .cmn-table {
+            colgroup {
+                col:first-of-type {
+                    width: rem(140);
+                }
+            }
+        }
+    }
+
+    .order-action-buttons {
+        .btn-list {
+            width: rem(320);
+            height: rem(56);
+            font-size: rem(16);
+            border-radius: rem(2);
+            font-weight: $fw-bold;
         }
     }
 }
