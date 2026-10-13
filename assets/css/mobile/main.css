@@ -2858,7 +2858,7 @@ body.no-scroll {
 }
 .payment-summary .btn-order:hover,
 .payment-summary .btn-pay:hover {
-  background-color: rgb(255, 60.3016304348, 45.5);
+  background-color: rgb(100%, 23.6476982097%, 17.8431372549%);
 }
 
 .cart-tab-wrap {
@@ -4463,7 +4463,7 @@ main {
   justify-content: center;
 }
 .checkout-page .checkout-container .payment-summary .btn-order:hover {
-  background-color: rgb(255, 60.3016304348, 45.5);
+  background-color: rgb(100%, 23.6476982097%, 17.8431372549%);
 }
 .checkout-page .checkout-content {
   display: flex;
@@ -5923,7 +5923,7 @@ main {
   height: 1.125rem;
 }
 .product-list .product-item .control-bar .qty-control button:hover {
-  background: rgb(242.25, 242.25, 242.25);
+  background: rgb(95%, 95%, 95%);
 }
 .product-list .product-item .control-bar .qty-control input {
   width: calc(100% - 3.5rem);

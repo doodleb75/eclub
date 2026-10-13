@@ -2305,7 +2305,7 @@ body {
   letter-spacing: -0.05rem;
 }
 .btn-excel-submit:hover {
-  background: rgb(38.25, 38.25, 38.25);
+  background: rgb(15%, 15%, 15%);
 }
 
 .modal-body .info-table-wrap {
@@ -2747,7 +2747,7 @@ body {
   justify-content: center;
 }
 .modal-excel-upload .modal-footer .btn-register:hover {
-  background-color: rgb(255, 60.3016304348, 45.5);
+  background-color: rgb(100%, 23.6476982097%, 17.8431372549%);
 }
 
 .coupon-body {
@@ -3976,7 +3976,7 @@ body {
   transition: background 0.2s;
 }
 .modal-product-detail .product-purchase-area .btn-group-cart .btn-add-cart:hover {
-  background: rgb(255, 60.3016304348, 45.5);
+  background: rgb(100%, 23.6476982097%, 17.8431372549%);
 }
 .modal-product-detail .best-product-slider {
   padding: 2.5rem 1.25rem;
@@ -4659,7 +4659,7 @@ body {
 }
 .product-list .product-item .control-bar .qty-control button:hover,
 .product-pick .product-item .control-bar .qty-control button:hover {
-  background: rgb(242.25, 242.25, 242.25);
+  background: rgb(95%, 95%, 95%);
 }
 .product-list .product-item .control-bar .qty-control input,
 .product-pick .product-item .control-bar .qty-control input {
@@ -6809,7 +6809,7 @@ body {
   transition: background-color 0.2s;
 }
 .payment-summary .btn-order:hover {
-  background-color: rgb(255, 60.3016304348, 45.5);
+  background-color: rgb(100%, 23.6476982097%, 17.8431372549%);
 }
 .payment-summary .btn-order.empty-cart {
   color: #999999;
@@ -8073,8 +8073,8 @@ body {
   background-color: #cccccc;
 }
 .order-complete-container .btn-copy-small:hover {
-  color: rgb(114.75, 114.75, 114.75);
-  background-color: rgb(242.25, 242.25, 242.25);
+  color: rgb(45%, 45%, 45%);
+  background-color: rgb(95%, 95%, 95%);
 }
 .order-complete-container .action-buttons {
   display: flex;
@@ -8101,14 +8101,14 @@ body {
   background-color: #ffffff;
 }
 .order-complete-container .action-buttons .btn.btn-shopping:hover {
-  background-color: rgb(242.25, 242.25, 242.25);
+  background-color: rgb(95%, 95%, 95%);
 }
 .order-complete-container .action-buttons .btn.btn-detail {
   background-color: #ff5447;
   color: #ffffff;
 }
 .order-complete-container .action-buttons .btn.btn-detail:hover {
-  background-color: rgb(255, 60.3016304348, 45.5);
+  background-color: rgb(100%, 23.6476982097%, 17.8431372549%);
 }
 
 .category-page-layout {
